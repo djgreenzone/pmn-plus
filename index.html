@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PMN+ — Coming soon</title>
+<meta name="description" content="Polynesian Music Network. Bringing you inside access to the Pacific. Coming soon.">
+
+<meta property="og:title" content="PMN+ — Coming soon">
+<meta property="og:description" content="Polynesian Music Network is coming back. Stories, sound, and a store.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://polynesianmusicnetwork.com">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#000000">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"Organization",
+  "name":"Polynesian Music Network",
+  "alternateName":"PMN+",
+  "url":"https://polynesianmusicnetwork.com"
+}
+</script>
+
+<style>
+:root{
+  --bg:#000;
+  --ink:#fff;
+  --dim:#8A8A8E;
+  --line:#242426;
+  --font:'Instrument Sans',system-ui,-apple-system,sans-serif;
+  --display:'Bebas Neue','Instrument Sans',system-ui,sans-serif;
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+
+body{
+  background:var(--bg);
+  color:var(--ink);
+  font-family:var(--font);
+  line-height:1.55;
+  min-height:100svh;
+  display:flex;
+  flex-direction:column;
+  overflow-x:hidden;
+}
+
+.stage{
+  position:relative;
+  z-index:1;
+  flex:1;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding:clamp(2rem,6vw,3.5rem) clamp(1.5rem,5vw,2.5rem);
+  gap:clamp(1.5rem,3.5vw,2rem);
+}
+
+.logo{
+  width:clamp(140px,24vw,250px);
+  height:auto;
+  display:block;
+}
+
+.status{
+  font-family:var(--display);
+  font-size:clamp(3.5rem,13vw,8.5rem);
+  font-weight:400;
+  line-height:.85;
+  letter-spacing:.02em;
+  text-transform:uppercase;
+  color:var(--ink);
+}
+
+.line{
+  max-width:30ch;
+  color:var(--dim);
+  font-size:clamp(1.0625rem,1rem + .35vw,1.25rem);
+  text-wrap:balance;
+}
+
+.foot{
+  position:relative;
+  z-index:1;
+  width:100%;
+  padding:1.25rem clamp(1.5rem,5vw,2.5rem) 1.75rem;
+  display:flex;
+  justify-content:center;
+  gap:.5rem 1.5rem;
+  flex-wrap:wrap;
+  font-size:.8125rem;
+  color:#5E5E63;
+}
+.foot a{color:var(--dim);text-decoration:none;border-bottom:1px solid var(--line)}
+.foot a:hover{color:var(--ink);border-color:#4A4A4E}
+.foot a:focus-visible{outline:2px solid #fff;outline-offset:3px}
+</style>
+</head>
+<body>
+
+<main class="stage">
+  <img class="logo" src="assets/pmn-logo.png" alt="PMN+ — Polynesian Music Network">
+
+  <p class="status">Coming soon</p>
+
+  <p class="line">Bringing you inside access to the Pacific.</p>
+
+</main>
+
+<footer class="foot">
+  <span>&copy; <span id="yr"></span> Polynesian Music Network</span>
+  <span>An <a href="https://islandcitymediagroup.com">Island City Media</a> project</span>
+</footer>
+
+<script>
+document.getElementById('yr').textContent = new Date().getFullYear();
+</script>
+</body>
+</html>

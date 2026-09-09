@@ -86,6 +86,16 @@ body{
 
 .logo{width:clamp(140px,24vw,250px);height:auto;display:block}
 
+.eyebrow{
+  font-family:var(--display);
+  font-size:clamp(1rem,2.6vw,1.5rem);
+  font-weight:400;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+  color:var(--dim);
+  margin-bottom:-.5rem;
+}
+
 .status{
   font-family:var(--display);
   font-size:clamp(3.5rem,13vw,8.5rem);
@@ -129,13 +139,13 @@ body{
 
 <main class="stage">
   <img class="logo" src="assets/pmn-logo.png" alt="PMN+ — Polynesian Music Network">
+  <p class="eyebrow">New PMN+ project</p>
   <p class="status">Coming soon</p>
   <p class="line">Bringing you inside access to the Pacific.</p>
 </main>
 
 <footer class="foot">
   <span>&copy; <span id="yr"></span> Polynesian Music Network</span>
-  <span>An <a href="https://islandcitymediagroup.com">Island City Media</a> project</span>
 </footer>
 
 <script>document.getElementById('yr').textContent=new Date().getFullYear();</script>

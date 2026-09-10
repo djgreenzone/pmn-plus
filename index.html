@@ -75,7 +75,8 @@ body{
     linear-gradient(180deg,rgba(0,0,0,.55) 0%,transparent 25%,transparent 60%,rgba(0,0,0,.8) 100%);
 }
 
-@media (max-width:640px),(prefers-reduced-motion:reduce){
+/* Video plays on mobile too. Reduced-motion users still get plain black. */
+@media (prefers-reduced-motion:reduce){
   .bg video{display:none}
 }
 

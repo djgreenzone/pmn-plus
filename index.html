@@ -124,6 +124,35 @@ h1.status{
   text-wrap:balance;
 }
 
+.capture{width:100%;max-width:25rem;margin-top:.25rem;position:relative;z-index:1}
+form{display:flex;gap:.5rem;flex-wrap:wrap;justify-content:center}
+input[type=email]{
+  flex:1 1 12rem;min-width:0;font:inherit;color:#fff;
+  background:rgba(255,255,255,.06);
+  border:1px solid rgba(255,255,255,.18);
+  border-radius:3px;padding:.8rem 1rem;
+  backdrop-filter:blur(6px);
+  transition:border-color .15s,background .15s;
+}
+input[type=email]::placeholder{color:#6E6E73}
+input[type=email]:hover{border-color:rgba(255,255,255,.32)}
+input[type=email]:focus{outline:2px solid #fff;outline-offset:2px;border-color:transparent;background:rgba(255,255,255,.1)}
+button{
+  font-family:var(--display);font-size:1.15rem;letter-spacing:.08em;text-transform:uppercase;
+  color:#000;background:#fff;border:0;border-radius:3px;padding:.8rem 1.5rem;
+  cursor:pointer;transition:opacity .15s,transform .1s;
+}
+button:hover{opacity:.86}
+button:active{transform:translateY(1px)}
+button:focus-visible{outline:2px solid #fff;outline-offset:3px}
+button[disabled]{opacity:.5;cursor:default}
+.fine{margin-top:.75rem;font-size:.8125rem;color:#5E5E63}
+.note{margin-top:.7rem;font-size:.9375rem;min-height:1.35em}
+.note.ok{color:#fff}
+.note.bad{color:#FF6B5E}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+@media (max-width:460px){input[type=email],button{flex:1 1 100%}}
+
 .foot{
   position:relative;
   z-index:1;
@@ -153,12 +182,58 @@ h1.status{
   <p class="eyebrow">New PMN+ project</p>
   <h1 class="status">Coming soon</h1>
   <p class="line">Bringing you inside access to the Pacific.</p>
+
+  <div class="capture">
+    <form id="f" novalidate>
+      <label for="email" class="sr">Email address</label>
+      <input id="email" type="email" name="email" placeholder="you@email.com" autocomplete="email" required>
+      <button type="submit" id="btn">Notify me</button>
+    </form>
+    <p class="fine">One email when we go live. Nothing else.</p>
+    <p class="note" id="note" role="status" aria-live="polite"></p>
+  </div>
 </main>
 
 <footer class="foot">
   <span>&copy; <span id="yr"></span> Polynesian Music Network</span>
 </footer>
 
-<script>document.getElementById('yr').textContent=new Date().getFullYear();</script>
+<script>
+document.getElementById('yr').textContent = new Date().getFullYear();
+
+const KLAVIYO_LIST_ID = 'SLSsGL';
+const KLAVIYO_COMPANY_ID = 'T9JJzp';
+
+const form=document.getElementById('f'), email=document.getElementById('email'),
+      btn=document.getElementById('btn'), note=document.getElementById('note');
+const say=(m,k)=>{note.textContent=m;note.className='note '+(k||'')};
+
+form.addEventListener('submit', async e=>{
+  e.preventDefault();
+  const v=email.value.trim();
+  if(!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v)){
+    say('That email address doesn\u2019t look right.','bad'); email.focus(); return;
+  }
+  btn.disabled=true; const label=btn.textContent; btn.textContent='Adding\u2026';
+  try{
+    const body=new URLSearchParams();
+    body.append('g',KLAVIYO_LIST_ID);
+    body.append('email',v);
+    body.append('$fields','email');
+    const res=await fetch('https://manage.kmail-lists.com/subscriptions/subscribe?company_id='+KLAVIYO_COMPANY_ID,{
+      method:'POST',
+      headers:{'Content-Type':'application/x-www-form-urlencoded'},
+      body
+    });
+    if(!res.ok) throw new Error('rejected');
+    form.style.display='none';
+    document.querySelector('.fine').style.display='none';
+    say('You\u2019re on the list.','ok');
+  }catch(err){
+    say('That didn\u2019t save. Try again in a moment.','bad');
+    btn.disabled=false; btn.textContent=label;
+  }
+});
+</script>
 </body>
 </html>

@@ -201,35 +201,45 @@ button[disabled]{opacity:.5;cursor:default}
 <script>
 document.getElementById('yr').textContent = new Date().getFullYear();
 
-const KLAVIYO_LIST_ID = 'T9JJzp';
-const KLAVIYO_COMPANY_ID = 'SLSsGL';
+const KLAVIYO_COMPANY_ID = 'T9JJzp';
+const KLAVIYO_LIST_ID    = 'SLSsGL';
 
-const form=document.getElementById('f'), email=document.getElementById('email'),
-      btn=document.getElementById('btn'), note=document.getElementById('note');
-const say=(m,k)=>{note.textContent=m;note.className='note '+(k||'')};
+const form = document.getElementById('f');
+const email = document.getElementById('email');
+const btn = document.getElementById('btn');
+const note = document.getElementById('note');
+const say = (m,k) => { note.textContent = m; note.className = 'note ' + (k||''); };
 
-form.addEventListener('submit', async e=>{
+form.addEventListener('submit', async (e) => {
   e.preventDefault();
-  const v=email.value.trim();
-  if(!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v)){
+  const v = email.value.trim();
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v)) {
     say('That email address doesn\u2019t look right.','bad'); email.focus(); return;
   }
-  btn.disabled=true; const label=btn.textContent; btn.textContent='Adding\u2026';
-  try{
-    const body=new URLSearchParams();
-    body.append('g',KLAVIYO_LIST_ID);
-    body.append('email',v);
-    body.append('$fields','email');
-    const res=await fetch('https://manage.kmail-lists.com/subscriptions/subscribe?company_id='+KLAVIYO_COMPANY_ID,{
+  btn.disabled = true;
+  const label = btn.textContent;
+  btn.textContent = 'Adding\u2026';
+
+  const payload = { data: { type:'subscription',
+    attributes:{ profile:{ data:{ type:'profile', attributes:{ email:v } } } },
+    relationships:{ list:{ data:{ type:'list', id:KLAVIYO_LIST_ID } } } } };
+
+  try {
+    const res = await fetch('https://a.klaviyo.com/client/subscriptions/?company_id=' + KLAVIYO_COMPANY_ID, {
       method:'POST',
-      headers:{'Content-Type':'application/x-www-form-urlencoded'},
-      body
+      headers:{ 'content-type':'application/json', 'revision':'2026-07-15' },
+      body: JSON.stringify(payload)
     });
-    if(!res.ok) throw new Error('rejected');
-    form.style.display='none';
-    document.querySelector('.fine').style.display='none';
-    say('You\u2019re on the list.','ok');
-  }catch(err){
+    if (res.status === 202 || res.ok) {
+      form.style.display='none';
+      document.querySelector('.fine').style.display='none';
+      say('You\u2019re in. Watch your inbox.','ok');
+    } else {
+      console.error('Klaviyo', res.status, await res.text());
+      throw new Error(res.status);
+    }
+  } catch (err) {
+    console.error(err);
     say('That didn\u2019t save. Try again in a moment.','bad');
     btn.disabled=false; btn.textContent=label;
   }

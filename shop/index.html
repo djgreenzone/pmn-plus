@@ -460,6 +460,30 @@ s.was{color:var(--ink-dim);font-weight:400;margin-left:4px}
 .page-body ul{padding-left:20px;margin:6px 0}
 .page-body .draft-note{border:1px solid rgba(255,214,120,.45);background:rgba(255,214,120,.08);border-radius:12px;padding:10px 12px;font-size:12.5px;color:rgba(255,236,190,.95)}
 
+/* ---------- product cards (NFL-shop style) + urgency ---------- */
+.card .im,.big .im{position:relative}
+.tag{position:absolute;top:8px;right:8px;z-index:1;font-style:normal;background:rgba(17,17,17,.82);color:#fff;font-size:10.5px;font-weight:600;letter-spacing:.02em;padding:4px 8px;border-radius:4px}
+.card .nm,.big .nm{font-weight:400;font-size:12.5px;line-height:1.38;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;color:inherit}
+.card .pr,.big .pr{font-size:17px;font-weight:800;line-height:1.1;margin-top:2px}
+.card .na,.big .na{font-style:normal;font-size:13px;font-weight:700}
+.card .lim,.big .lim{font-size:11.5px;font-weight:600;color:#ff7a7a;display:flex;align-items:center;gap:6px}
+.card .lim::before,.big .lim::before{content:"";width:6px;height:6px;border-radius:50%;background:currentColor;flex:none;animation:pulse 1.8s ease-in-out infinite}
+@keyframes pulse{50%{opacity:.35}}
+.h-light .card .lim{color:#c8102e}
+.h-light .card .nm,.h-light .card .pr,.h-light .card .na{color:#111}
+.big{gap:6px}
+.big .im{margin-bottom:6px}
+.big .nm{font-size:14px;color:var(--ink)}
+.big .pr{font-size:19px}
+.h-sub.urg{margin:-4px 0 0;font-size:13.5px;color:#5f5b53}
+.h-sub.urg b{color:#c8102e}
+.drop-strip{margin:0 -16px;overflow:hidden;background:#c8102e;color:#fff;border-block:1px solid rgba(255,255,255,.18)}
+.ds-track{display:flex;align-items:center;gap:18px;width:max-content;padding:11px 0;animation:marq 38s linear infinite}
+.ds-track span{font-family:var(--display);font-size:19px;letter-spacing:.06em;white-space:nowrap;text-transform:uppercase}
+.ds-track i{width:7px;height:7px;border-radius:50%;background:#fff;opacity:.85;flex:none}
+@keyframes marq{to{transform:translateX(-50%)}}
+@media (prefers-reduced-motion:reduce){.ds-track{animation:none}.card .lim::before,.big .lim::before{animation:none}}
+
 /* ===================== desktop (900px and up) ===================== */
 .desk-nav,.arc-btn,.rail-btn{display:none}
 .rail-wrap{position:relative;min-width:0}
@@ -499,8 +523,13 @@ s.was{color:var(--ink-dim);font-weight:400;margin-left:4px}
   .rail{margin-inline:0;padding:0 0 6px;gap:18px;scroll-snap-type:x mandatory;scroll-padding-inline:0}
   .card{width:228px;scroll-snap-align:start;gap:8px}
   .card .im{height:228px;padding:14px}
-  .card b{font-size:14.5px}
-  .card span{font-size:14px}
+  .card .nm{font-size:14px}
+  .card .pr{font-size:19px}
+  .card .na{font-size:14px}
+  .card .lim{font-size:12.5px}
+  .tag{font-size:12px;padding:5px 10px;top:10px;right:10px}
+  .drop-strip{margin:0}
+  .ds-track span{font-size:22px}
   .rail-btn{display:grid;place-items:center;position:absolute;top:114px;transform:translateY(-50%);z-index:3;width:46px;height:46px;border-radius:50%;background:#fff;color:#111;border:1px solid #e2ded6;box-shadow:0 6px 18px rgba(0,0,0,.18);transition:opacity .2s}
   .rail-btn svg{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
   .rail-btn.prev{left:-18px}.rail-btn.next{right:-18px}
@@ -619,12 +648,14 @@ s.was{color:var(--ink-dim);font-weight:400;margin-left:4px}
     <p class="proto">Scroll for more</p>
    </div>
    <div class="home" id="home">
+    <div class="drop-strip" role="note" aria-label="Exclusive RLWC 2026 drop. Limited supply. Only while stocks last."><div class="ds-track" aria-hidden="true"><span>Exclusive RLWC 2026 drop</span><i></i><span>Limited supply</span><i></i><span>Only while stocks last</span><i></i><span>Exclusive RLWC 2026 drop</span><i></i><span>Limited supply</span><i></i><span>Only while stocks last</span><i></i><span>Exclusive RLWC 2026 drop</span><i></i><span>Limited supply</span><i></i><span>Only while stocks last</span><i></i><span>Exclusive RLWC 2026 drop</span><i></i><span>Limited supply</span><i></i><span>Only while stocks last</span><i></i></div></div>
     <section class="h-sec" aria-labelledby="hTeams">
       <h2 class="h-title" id="hTeams">Shop by team for the 2026 RLWC</h2>
       <div class="teams" id="hTeamsGrid"></div>
     </section>
     <section class="h-sec h-light" aria-labelledby="hNew">
       <div class="h-row"><h2 class="h-title" id="hNew">New in the drop</h2><button class="link" type="button" id="hAll">Shop all</button></div>
+      <p class="h-sub urg"><b>Exclusive drop.</b> Limited supply, only while stocks last. Once it's gone, it's gone.</p>
       <div class="rail" id="hRail"></div>
     </section>
     <section class="h-sec h-light" aria-labelledby="hHats">
@@ -1403,13 +1434,16 @@ $("pTeam").onclick=()=>{const c=PDP.current(),t=BY[c]?BY[c].team:"tonga";documen
     b.innerHTML=`<i class="tbg" aria-hidden="true"></i><div><b>${C[k].name}</b><span>${C[k].products.length} pieces · Shop now</span></div><div class="crests" aria-hidden="true">${crests.length?crests.map(t=>`<img alt="" src="${crestURL(t)}">`).join(""):`<img class="pmn" alt="" src="brand/pmn-plus-logo-white.svg">`}</div>`;
     b.onclick=()=>Coll.open(k);g.append(b)};
   tile("mate-maa-tonga","t-tonga",["tonga"]);tile("toa-samoa","t-samoa",["samoa"]);tile("pmn-plus","t-all",[]);
-  const r=$("hRail");PRODUCTS.forEach(p=>{const b=document.createElement("button");b.className="card";b.type="button";
-    b.innerHTML=`<span class="im"><img loading="lazy" decoding="async" alt="${altFor(p).replace(/"/g,"&quot;")}" src="${heroURL(p.id)}"></span><b>${p.name}</b><span class="num">${money(p.price)}</span>`;
-    b.onclick=()=>PDP.open(p.id,b.querySelector("img"),"home");r.append(b)});
+  // NFL-shop style product card: badge, descriptive title, price, "New Arrival", scarcity line
+  const detail=p=>p.kind==="hat"?(p.id.includes("trucker")?"Mesh Back Trucker, One Size":p.id.includes("hp")?"High Profile, Embroidered, One Size":"Curved Bill, Embroidered, One Size")
+    :p.id.includes("oversized")?"7.5 oz Heavyweight Oversized Fit, S–5XL":"Midweight 100% Cotton, S–5XL";
+  const cardTitle=p=>`${p.kind==="tee"?"Unisex ":""}${p.name} – ${p.colourName}, ${detail(p)}`;
   const card=(p,cls)=>{const b=document.createElement("button");b.className=cls;b.type="button";
-    b.innerHTML=cls==="big"?`<span class="im"><img loading="lazy" decoding="async" alt="${altFor(p).replace(/"/g,"&quot;")}" src="${heroURL(p.id)}"></span><span class="bt"><b>${p.name}</b><span class="num">${money(p.price)}</span></span>`
-      :`<span class="im"><img loading="lazy" decoding="async" alt="${altFor(p).replace(/"/g,"&quot;")}" src="${heroURL(p.id)}"></span><b>${p.name}</b><span class="num">${money(p.price)}</span>`;
+    b.innerHTML=`<span class="im"><i class="tag">Exclusive</i><img loading="lazy" decoding="async" alt="${altFor(p).replace(/"/g,"&quot;")}" src="${heroURL(p.id)}"></span>
+      <b class="nm">${cardTitle(p)}</b><strong class="pr num">${money(p.price)}</strong><em class="na">New Arrival</em><small class="lim">Limited drop · While stocks last</small>`;
+    b.setAttribute("aria-label",`${cardTitle(p)}, ${money(p.price)}, new arrival, limited drop`);
     b.onclick=()=>PDP.open(p.id,b.querySelector("img"),"home");return b};
+  PRODUCTS.forEach(p=>$("hRail").append(card(p,"card")));
   PRODUCTS.filter(p=>p.kind==="hat").forEach(p=>$("hHatRail").append(card(p,"card")));
   PRODUCTS.filter(p=>p.team==="samoa").forEach(p=>$("hSamoaRail").append(card(p,"big")));
   PRODUCTS.filter(p=>p.team==="tonga").forEach(p=>$("hTongaRail").append(card(p,"big")));

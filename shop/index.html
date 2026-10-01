@@ -348,9 +348,14 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--ink);outline-offset
 .team span{font-size:12.5px;color:rgba(244,242,238,.8)}
 .team .crests{display:flex;gap:6px;align-items:center}
 .team .crests img{height:78px;width:auto}
-.story{position:relative;isolation:isolate;overflow:hidden;text-align:center;justify-items:center;padding:40px 18px;border:1px solid var(--line);border-radius:20px;background:#0b0b10}
+.story{position:relative;isolation:isolate;overflow:hidden;margin-inline:-16px;padding:64px 16px;display:grid;place-items:center;
+  background:radial-gradient(60% 70% at 18% 30%,rgba(20,64,168,.55),transparent 70%),radial-gradient(60% 70% at 85% 75%,rgba(143,10,20,.55),transparent 70%),#07080d}
 .story-vid{position:absolute;inset:0;z-index:-2;width:100%;height:100%;object-fit:cover;opacity:.45}
-.story::after{content:"";position:absolute;inset:0;z-index:-1;background:radial-gradient(120% 90% at 50% 50%,rgba(5,6,10,.35),rgba(5,6,10,.8))}
+.story::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(5,6,10,.55),rgba(5,6,10,.15) 35%,rgba(5,6,10,.15) 65%,rgba(5,6,10,.6))}
+.story-glass{display:grid;justify-items:center;gap:14px;text-align:center;width:100%;max-width:720px;padding:36px 22px;border-radius:24px;
+  background:linear-gradient(135deg,rgba(255,255,255,.14),rgba(255,255,255,.04));border:1px solid rgba(255,255,255,.22);
+  backdrop-filter:blur(22px) saturate(150%);-webkit-backdrop-filter:blur(22px) saturate(150%);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.35),inset 0 -1px 0 rgba(255,255,255,.06),0 30px 80px rgba(0,0,0,.45)}
 .story p{margin:0;max-width:44ch;font-size:14.5px;line-height:1.6;color:rgba(244,242,238,.82)}
 .story-logo{height:64px;width:auto}
 .signup p{margin:0;font-size:14px;color:rgba(244,242,238,.8)}
@@ -409,6 +414,9 @@ s.was{color:var(--ink-dim);font-weight:400;margin-left:4px}
 .bump-p{font-size:15px;font-weight:700;white-space:nowrap}
 .tot{display:flex;justify-content:space-between;font-size:16px;font-weight:600}
 .cart-msg:empty{display:none}
+.cart-notify{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px}
+.cart-notify input{height:50px;border-radius:14px;border:1px solid rgba(244,242,238,.3);background:rgba(255,255,255,.05);color:var(--ink);padding:0 14px;font:inherit;font-size:16px;min-width:0}
+.cart-notify .buy-alt{padding:0 18px}
 .offer{position:fixed;left:0;right:0;bottom:0;z-index:55;margin-inline:auto;max-width:480px;background:#111116;border:1px solid rgba(244,242,238,.25);border-bottom:0;border-radius:22px 22px 0 0;padding:22px 16px calc(env(safe-area-inset-bottom,0px) + 16px);display:grid;gap:10px;text-align:center;transform:translateY(105%);transition:transform .35s cubic-bezier(.2,.7,.2,1)}
 .offer.on{transform:none}
 .offer h2{margin:0;font-family:var(--display);font-weight:400;font-size:34px;line-height:1;letter-spacing:.02em}
@@ -425,7 +433,7 @@ s.was{color:var(--ink-dim);font-weight:400;margin-left:4px}
 .ship{display:grid;gap:7px;margin:12px 16px 0;padding:12px 14px;border:1px solid var(--line);border-radius:14px;background:rgba(255,255,255,.04)}
 .ship p{margin:0;font-size:13px;color:var(--ink)}
 .ship p b{font-weight:700}
-.ship .bar{height:6px;border-radius:3px;background:rgba(244,242,238,.15);overflow:hidden}
+.ship .bar{display:block;padding:0;position:static;z-index:auto;height:6px;border-radius:3px;background:rgba(244,242,238,.15);overflow:hidden}
 .ship .bar i{display:block;height:100%;width:0;border-radius:3px;background:var(--ink);transition:width .5s cubic-bezier(.2,.7,.2,1)}
 .ship.done .bar i{background:#5fd38a}
 .ship.done p{color:#9be7a8}
@@ -458,7 +466,7 @@ s.was{color:var(--ink-dim);font-weight:400;margin-left:4px}
   .podium h2{font-size:56px}
   .podium .price{font-size:16px}
   .hero-foot{padding-inline:var(--gut)}
-  .arc-btn{display:grid;place-items:center;position:absolute;z-index:6;top:46%;width:52px;height:52px;border-radius:50%;background:rgba(0,0,0,.35);border:1px solid rgba(244,242,238,.3);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);transition:background .2s,border-color .2s}
+  .arc-btn{display:grid;place-items:center;position:absolute;z-index:6;top:calc(100% - 196px);width:52px;height:52px;border-radius:50%;background:rgba(0,0,0,.35);border:1px solid rgba(244,242,238,.3);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);transition:background .2s,border-color .2s}
   .arc-btn:hover{background:rgba(0,0,0,.6);border-color:var(--ink)}
   .arc-btn svg{width:22px;height:22px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
   .arc-btn.prev{left:var(--gut)}.arc-btn.next{right:var(--gut)}
@@ -467,7 +475,8 @@ s.was{color:var(--ink-dim);font-weight:400;margin-left:4px}
   .home>.h-sec,.home>.foot{padding-inline:var(--gut)}
   .home>.h-sec.h-light,.home>.h-sec.team-sec{margin-inline:0;padding:56px var(--gut) 52px}
   .home>.h-sec.h-light+.h-sec.h-light{margin-top:-80px;padding-top:44px}
-  .home>.h-sec.story{margin-inline:var(--gut);padding:88px 56px}
+  .home>.h-sec.story{margin-inline:0;padding:120px var(--gut)}
+  .story-glass{padding:64px 56px;max-width:860px;border-radius:28px}
   .home .h-sec:first-child{padding-top:48px}
   .h-title{font-size:46px}
   .h-sec{gap:22px}
@@ -482,13 +491,15 @@ s.was{color:var(--ink-dim);font-weight:400;margin-left:4px}
   .rail-btn{display:grid;place-items:center;position:absolute;top:114px;transform:translateY(-50%);z-index:3;width:46px;height:46px;border-radius:50%;background:#fff;color:#111;border:1px solid #e2ded6;box-shadow:0 6px 18px rgba(0,0,0,.18);transition:opacity .2s}
   .rail-btn svg{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
   .rail-btn.prev{left:-18px}.rail-btn.next{right:-18px}
+  .rail-wrap.big-wrap .rail-btn{top:calc((100vw - 2*var(--gut) - 60px)/8.6)}
+  @media (min-width:1320px){.rail-wrap.big-wrap .rail-btn{top:137px}}
   .rail-btn:disabled{opacity:0;pointer-events:none}
-  .big-rail{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:28px 20px;overflow:visible;margin-inline:0;padding:0;scroll-snap-type:none}
-  .big{width:auto;max-width:none;min-width:0;grid-template-columns:minmax(0,1fr)}
+  .big-rail{gap:20px;margin-inline:0;padding:0 0 6px;scroll-padding-inline:0}
+  .big{width:calc((100% - 60px)/4.3);max-width:none;min-width:0;grid-template-columns:minmax(0,1fr)}
   .big .im{min-width:0;box-sizing:border-box;width:100%}
   .big img{width:100%;height:100%}
   .big .im{padding:28px}
-  .big .bt{display:grid;gap:4px;min-width:0}
+  .big .bt{display:grid;grid-template-columns:minmax(0,1fr);gap:4px;min-width:0;white-space:normal}
   .team-sec .h-title{font-size:56px}
   .team-head img{height:68px}
   .story p{font-size:16px;max-width:56ch}
@@ -597,10 +608,12 @@ s.was{color:var(--ink-dim);font-weight:400;margin-left:4px}
     </section>
     <section class="h-sec story" aria-labelledby="hStory">
       <video class="story-vid" id="storyVid" src="/assets/bg.mp4" muted loop playsinline preload="metadata" aria-hidden="true"></video>
+      <div class="story-glass">
       <img class="story-logo" src="brand/pmn-plus-logo-white.svg" alt="" width="64" height="70">
       <h2 class="h-title" id="hStory">Made for the fam</h2>
       <p>PMN+ is a multimedia platform for the Pasifika community: music, breaking news, sports, entertainment, event coverage and more. Like the ocean, it connects us across distance.</p>
       <p>Our mission is to unite Pasifika people worldwide and tell the stories mainstream media overlooks. This apparel carries that pride, from the Mate Ma'a Tonga and Toa Samoa RLWC 2026 range to PMN+ core pieces, printed to order in the USA.</p>
+      </div>
     </section>
     <section class="h-sec signup" aria-labelledby="hSign">
       <h2 class="h-title" id="hSign">10% off your first order</h2>
@@ -612,7 +625,7 @@ s.was{color:var(--ink-dim);font-weight:400;margin-left:4px}
         <input id="suPhone" type="tel" inputmode="tel" autocomplete="tel" placeholder="Mobile (optional) for 20% off">
         <button class="buy" type="submit">Get my code</button>
       </form>
-      <p class="fine" id="suMsg" role="status">New customers only, one code per person, first order. By signing up you agree to get marketing emails (and texts if you add a number) from PMN+. Msg &amp; data rates may apply. Unsubscribe or reply STOP anytime. Prototype: connects to Klaviyo at launch.</p>
+      <p class="fine" id="suMsg" role="status">New customers only, one code per person, first order. By signing up you agree to get marketing emails (and texts if you add a number) from PMN+. Msg &amp; data rates may apply. Unsubscribe or reply STOP anytime.</p>
     </section>
     <footer class="foot">
       <img src="brand/pmn-plus-logo-white.svg" alt="PMN+ Polynesian Music Network Plus" width="48" height="52">
@@ -695,7 +708,6 @@ s.was{color:var(--ink-dim);font-weight:400;margin-left:4px}
           <div class="sec-h"><span class="eyebrow" id="alsoTitle">More from the drop</span></div>
           <div class="rail" id="pAlso"></div>
         </section>
-        <p class="fine">Prototype: checkout not connected yet.</p>
       </div>
     </div>
   </section>
@@ -769,6 +781,7 @@ s.was{color:var(--ink-dim);font-weight:400;margin-left:4px}
     <button class="buy" id="cartGo" type="button">Checkout</button>
     <button class="buy-alt" id="cartAp" type="button">Pay in 4 with Afterpay</button>
     <p class="fine cart-msg" id="cartMsg" role="status"></p>
+    <form class="cart-notify" id="cartNotify" hidden novalidate><label class="sr" for="cnEmail">Email address</label><input id="cnEmail" type="email" inputmode="email" autocomplete="email" placeholder="Email address"><button class="buy-alt" type="submit">Notify me</button></form>
   </footer>
 </aside>
 <section id="page" class="view" hidden aria-labelledby="pageH">
@@ -802,10 +815,9 @@ s.was{color:var(--ink-dim);font-weight:400;margin-left:4px}
   </div>
   <div id="offS3" hidden>
     <h2 id="offDoneH">You're in</h2>
-    <p id="offDoneP">Here's your code. We've emailed it too.</p>
+    <p id="offDoneP">Your offer is saved.</p>
     <div class="off-code num" id="offCode">WELCOME10</div>
     <button class="buy" id="offShop" type="button">Start shopping</button>
-    <p class="fine">Prototype: no email or text was sent; codes come from Klaviyo at launch.</p>
   </div>
   <button class="link" id="offNo" type="button">No thanks</button>
 </aside>
@@ -878,6 +890,14 @@ const specsFor=p=>{const b=blankFor(p);if(p.kind==="hat")return [["One size","Fi
  if(p.id.includes("oversized"))return [["7.5 oz","Heavyweight"],["100%","USA cotton"],["S–5XL","Oversized fit"]];
  return [["5.3 oz","Midweight"],["100%","Cotton"],[`${b.sizes[0]}–${b.sizes.at(-1)}`,"Regular fit"]]};
 
+/* Klaviyo: PMN+ Launch List (same list as the homepage form) */
+const KLAVIYO_COMPANY_ID="T9JJzp",KLAVIYO_LIST_ID="SLSsGL";
+async function klavPost(attrs){const body={data:{type:"subscription",attributes:{profile:{data:{type:"profile",attributes:attrs}}},relationships:{list:{data:{type:"list",id:KLAVIYO_LIST_ID}}}}};
+  const r=await fetch("https://a.klaviyo.com/client/subscriptions/?company_id="+KLAVIYO_COMPANY_ID,{method:"POST",headers:{"content-type":"application/json","revision":"2026-07-15"},body:JSON.stringify(body)});
+  if(!(r.status===202||r.ok))throw new Error("klaviyo "+r.status)}
+async function klav(email,phone,props){const a={email};if(phone)a.phone_number=phone;if(props)a.properties=props;
+  try{await klavPost(a)}catch(e){await klavPost({email})}}
+const usPhone=d=>{d=String(d||"").replace(/\D/g,"");return d.length>=10?"+1"+d.slice(-10):null};
 const reduceMotion=matchMedia("(prefers-reduced-motion: reduce)").matches;
 const conn=navigator.connection||{};
 const lite=!!(conn.saveData||/(^|-)2g$/.test(conn.effectiveType||""));
@@ -1060,31 +1080,31 @@ const altFor=(p,v="front")=>`${p.name} in ${p.colourName.toLowerCase()}, ${v} vi
 const Hero=(()=>{
   const hero=$("hero"),arc=$("arc"),plinth=$("plinth"),crestsEl=$("heroCrests"),bgS=$("bgSamoa"),bgT=$("bgTonga");
   const n=PRODUCTS.length;
-  let pos=0,W=0,H=0,base=0,U=0,SPREAD=0,raf=0,tween=null,settledAt=performance.now(),lastIdx=-1,active=true;
+  let pos=0,W=0,H=0,base=0,U=0,SPREAD=0,DESK=false,STEP=0,LIM=2.2,FADE=1.6,raf=0,tween=null,settledAt=performance.now(),lastIdx=-1,active=true;
   const items=PRODUCTS.map((p,i)=>{const im=new Image();im.className="item";im.alt=altFor(p,REST[p.id]>=150?"back":REST[p.id]?"front left":"front");if(i<3){im.fetchPriority="high"}else{im.loading="eager"}im.draggable=false;im.decoding="async";im.src=heroURL(p.id);arc.append(im);return im});
   const crests=PRODUCTS.map(p=>{const c=new Image();c.className="crest";c.alt="";c.decoding="async";c.src=crestURL(p.team);c.setAttribute("aria-hidden","true");crestsEl.append(c);return c});
   const dots=$("dots");PRODUCTS.forEach(()=>dots.append(document.createElement("i")));
   const sizes=[];
   function measure(){
     const r=arc.getBoundingClientRect();W=r.width;H=r.height;base=H-30;
-    U=Math.min(W*0.76,H*0.74,W>=900?560:430);SPREAD=W>=900?Math.min(W*0.55,640):W*0.55;
+    DESK=W>=900;U=Math.min(W*0.76,H*0.74,DESK?520:430);SPREAD=W*0.55;STEP=Math.min(W*0.205,U*0.78+40);LIM=DESK?3.2:2.2;FADE=DESK?2.55:1.6;
     PRODUCTS.forEach((p,i)=>{const m=META[p.id],w=m.sw/630*U,h=w*m.h/m.w;sizes[i]=[w,h];items[i].style.width=w+"px";items[i].style.height=h+"px"});
     plinth.style.top=base+"px";
   }
   function render(t){
     const idx=((Math.round(pos)%n)+n)%n,frac=pos-Math.round(pos);
     for(let i=0;i<n;i++){
-      const p=wrapOff(i,pos,n),a=Math.max(-2.2,Math.min(2.2,p)),ab=Math.abs(a),[w,h]=sizes[i];
-      const x=W/2+Math.sin(a*0.75)*SPREAD,lift=(1-Math.cos(a*0.75))*H*0.2;
-      const s=1-0.46*Math.min(ab,1)-0.12*Math.max(0,ab-1);
+      const p=wrapOff(i,pos,n),a=Math.max(-LIM,Math.min(LIM,p)),ab=Math.abs(a),[w,h]=sizes[i];
+      const x=DESK?W/2+a*STEP:W/2+Math.sin(a*0.75)*SPREAD,lift=DESK?(1-Math.cos(a*0.55))*H*0.16:(1-Math.cos(a*0.75))*H*0.2;
+      const s=DESK?1-0.34*Math.min(ab,1)-0.13*Math.max(0,ab-1):1-0.46*Math.min(ab,1)-0.12*Math.max(0,ab-1);
       const bob=(reduceMotion||tween||dragging)?0:Math.sin(t/650)*5*Math.max(0,1-ab*2);
       const el=items[i];
       el.style.transform=`translate3d(${x-w/2}px,${base-h-lift+bob}px,0) rotate(${a*5}deg) scale(${s})`;
       const k=Math.min(ab,1);
       el.style.filter=k<0.01?"none":`brightness(${1-0.6*k}) saturate(${1-0.5*k})`;
-      el.style.opacity=ab<1.6?1:Math.max(0,1-(ab-1.6)/0.5);
+      el.style.opacity=ab<FADE?1:Math.max(0,1-(ab-FADE)/0.5);
       el.style.zIndex=Math.round(100-ab*20);
-      el.style.visibility=ab>2.15||el.dataset.hide?"hidden":"visible";
+      el.style.visibility=ab>LIM-0.05||el.dataset.hide?"hidden":"visible";
       // team crest sits behind its product and drifts faster than the product (parallax)
       const co=Math.max(0,1-Math.abs(p)*1.25);
       crests[i].style.visibility=co?"visible":"hidden";
@@ -1125,7 +1145,7 @@ const Hero=(()=>{
   function tap(x,y){
     // hit-test from front to back
     const order=items.map((el,i)=>[i,Math.abs(wrapOff(i,pos,n))]).sort((a,b)=>a[1]-b[1]);
-    for(const[i,d]of order){if(d>1.4)break;const r=items[i].getBoundingClientRect();
+    for(const[i,d]of order){if(d>(DESK?2.4:1.4))break;const r=items[i].getBoundingClientRect();
       if(x>=r.left&&x<=r.right&&y>=r.top&&y<=r.bottom){if(d<0.3)open(i);else goTo(pos+wrapOff(i,pos,n));return}}
     goTo(Math.round(pos));
   }
@@ -1360,9 +1380,10 @@ $("pTeam").onclick=()=>{const c=PDP.current(),t=BY[c]?BY[c].team:"tonga";documen
   document.querySelectorAll("[data-coll]").forEach(b=>b.onclick=()=>Coll.open(b.dataset.coll));
   $("signup").addEventListener("submit",e=>{e.preventDefault();const v=$("suEmail").value.trim(),ok=/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(v);
     const ph=$("suPhone").value.replace(/\D/g,""),phOk=!ph||ph.length===10||(ph.length===11&&ph[0]==="1");
-    $("suMsg").textContent=!ok?"Enter a valid email address, like name@example.com.":!phOk?"Enter a 10-digit US mobile number, or leave it blank for 10% off.":
-      `Thanks. In the live store Klaviyo emails your ${ph?"20%":"10%"} code now (prototype: nothing was sent).`;
-    if(ok&&phOk){$("suEmail").value="";$("suPhone").value=""}});
+    if(!ok||!phOk){$("suMsg").textContent=!ok?"Enter a valid email address, like name@example.com.":"Enter a 10-digit US mobile number, or leave it blank for 10% off.";return}
+    const btn=e.target.querySelector("button");btn.disabled=true;$("suMsg").textContent="Adding you to the list…";
+    klav(v,usPhone(ph),{signup_source:"shop_signup",offer:ph?"20":"10"}).then(()=>{$("suMsg").textContent=`You're on the list. We'll email your ${ph?"20%":"10%"} code before checkout opens.`;$("suEmail").value="";$("suPhone").value=""})
+      .catch(()=>{$("suMsg").textContent="That didn't go through. Please try again in a moment."}).finally(()=>{btn.disabled=false})});
 })();
 /* ---------- cart ---------- */
 const Cart=(()=>{
@@ -1406,8 +1427,14 @@ const Cart=(()=>{
   $("bumpChk").onchange=e=>{bumpOn=e.target.checked;render()};
   function ready(){const miss=cart.filter(i=>i.size===null);if(miss.length){$("cartMsg").textContent=`Choose a size for ${miss.length===1?BY[miss[0].id].name:miss.length+" items"} before checkout.`;
       const s0=$("cartBody").querySelector("select.need");s0&&s0.focus();return false}return true}
-  $("cartGo").onclick=()=>{if(ready())$("cartMsg").textContent="Prototype: at launch this hands your bag to the Fulfill Engine checkout (card, Apple Pay).";};
-  $("cartAp").onclick=()=>{if(ready())$("cartMsg").textContent="Prototype: at launch this opens Afterpay checkout through Shopify.";};
+  const soon=()=>{if(!ready())return;$("cartMsg").textContent="Checkout opens very soon. Leave your email and we'll let you know the moment it's live.";$("cartNotify").hidden=false;$("cnEmail").focus()};
+  $("cartGo").onclick=soon;$("cartAp").onclick=soon;
+  $("cartNotify").addEventListener("submit",e=>{e.preventDefault();const v=$("cnEmail").value.trim();
+    if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(v)){$("cartMsg").textContent="Enter a valid email, like name@example.com.";return}
+    const items=cart.map(i=>`${BY[i.id].name}${i.size&&i.size!=="One size"?" ("+i.size+")":""} x${i.qty}`).join(", ");
+    $("cartMsg").textContent="Saving…";
+    klav(v,null,{signup_source:"shop_checkout_waitlist",bag:items}).then(()=>{$("cartNotify").hidden=true;$("cartMsg").textContent="Thanks! We'll email you as soon as checkout opens."})
+      .catch(()=>{$("cartMsg").textContent="That didn't go through. Please try again in a moment."})});
   function open(sizeFor){last=document.activeElement;render();el.hidden=false;scrim.hidden=false;requestAnimationFrame(()=>{el.classList.add("on");scrim.classList.add("on")});
     $("pSticky").classList.remove("on");
     setTimeout(()=>{const t=sizeFor&&$("cartBody").querySelector("select.need");(t||$("cartX")).focus()},reduceMotion?0:320)}
@@ -1472,10 +1499,13 @@ const Pages=(()=>{let prev=null;
   $("offX").onclick=$("offNo").onclick=hide;
   const step=n=>{["offS1","offS2","offS3"].forEach((id,i)=>$(id).hidden=i!==n-1);$("offNo").hidden=n!==1;o.setAttribute("aria-labelledby",n===3?"offDoneH":"offH");
     const f=n===1?$("offEmail"):n===2?$("offPhone"):$("offShop");setTimeout(()=>f.focus({preventScroll:true}),50)};
-  const done=pct=>{$("offCode").textContent=pct===20?"WELCOME20":"WELCOME10";$("offDoneP").textContent=`${pct}% off your first order. We've emailed the code${pct===20?" and texted it":""} too.`;step(3)};
+  let offEmailV="";
+  const done=pct=>{const ph=pct===20?usPhone($("offPhone").value):null;$("offCode").hidden=true;$("offDoneP").textContent="Saving…";step(3);
+    klav(offEmailV,ph,{signup_source:"shop_popup",offer:String(pct)}).then(()=>{$("offDoneP").textContent=`Your ${pct}% off is saved. We'll email your code before checkout opens.`})
+      .catch(()=>{$("offDoneP").textContent="That didn't go through. Please use the sign-up form at the bottom of the page."})};
   $("offForm1").addEventListener("submit",e=>{e.preventDefault();const v=$("offEmail").value.trim();
     if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(v)){$("offErr1").textContent="Enter a valid email, like name@example.com.";$("offEmail").focus();return}
-    $("offErr1").textContent="";step(2)});
+    $("offErr1").textContent="";offEmailV=v;step(2)});
   $("offForm2").addEventListener("submit",e=>{e.preventDefault();const ph=$("offPhone").value.replace(/\D/g,"");
     if(!(ph.length===10||(ph.length===11&&ph[0]==="1"))){$("offErr2").textContent="Enter a 10-digit US mobile number.";$("offPhone").focus();return}
     $("offErr2").textContent="";done(20)});
@@ -1488,7 +1518,7 @@ $("toLab").onclick=showLab;$("labBack").onclick=showHero;
 Hero.init();
 $("arcPrev").onclick=()=>Hero.step(-1);$("arcNext").onclick=()=>Hero.step(1);
 /* desktop rail arrows: scroll by a page of cards */
-document.querySelectorAll("#hRail,#hHatRail,#pAlso").forEach(r=>{const w=document.createElement("div");w.className="rail-wrap";r.parentNode.insertBefore(w,r);w.append(r);
+document.querySelectorAll("#hRail,#hHatRail,#pAlso,#hSamoaRail,#hTongaRail").forEach(r=>{const w=document.createElement("div");w.className="rail-wrap"+(r.classList.contains("big-rail")?" big-wrap":"");r.parentNode.insertBefore(w,r);w.append(r);
   const mk=(cls,d,label,path)=>{const b=document.createElement("button");b.type="button";b.className="rail-btn "+cls;b.setAttribute("aria-label",label);b.innerHTML=`<svg viewBox="0 0 24 24"><path d="${path}"/></svg>`;b.onclick=()=>r.scrollBy({left:d*r.clientWidth*0.9,behavior:reduceMotion?"auto":"smooth"});w.append(b);return b};
   const p=mk("prev",-1,"Scroll left","M15 5l-7 7 7 7"),n=mk("next",1,"Scroll right","M9 5l7 7-7 7");
   const sync=()=>{p.disabled=r.scrollLeft<4;n.disabled=r.scrollLeft+r.clientWidth>=r.scrollWidth-4};

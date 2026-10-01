@@ -372,6 +372,17 @@ s.was{color:var(--ink-dim);font-weight:400;margin-left:4px}
 .foot nav{display:grid;gap:8px;align-content:start}
 .foot nav b{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-dim);font-weight:600}
 .foot nav button{text-align:left;font-size:13.5px;padding:2px 0;color:rgba(244,242,238,.88)}
+.follow{display:grid;gap:10px}
+.follow b{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-dim);font-weight:600}
+.soc{display:flex;gap:10px}
+.soc a{width:44px;height:44px;border-radius:50%;display:grid;place-items:center;border:1px solid rgba(244,242,238,.25);color:var(--ink);transition:background .2s,border-color .2s}
+.soc a:hover{background:rgba(255,255,255,.1);border-color:var(--ink)}
+.soc svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.8}
+.soc svg .f{fill:currentColor;stroke:none}
+.foot-x{position:relative;z-index:5;margin-top:32px;padding:28px 16px calc(env(safe-area-inset-bottom,0px) + 96px);background:#05060a}
+.coll-scroll>.foot-x{margin-inline:-16px}
+.page-body>.foot-x{margin:40px -16px 0}
+.logo{cursor:pointer}
 .pay{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:6px}
 .pay li{font-size:11.5px;font-weight:600;padding:5px 9px;border:1px solid var(--line);border-radius:6px;color:rgba(244,242,238,.85)}
 
@@ -466,10 +477,12 @@ s.was{color:var(--ink-dim);font-weight:400;margin-left:4px}
   .podium h2{font-size:56px}
   .podium .price{font-size:16px}
   .hero-foot{padding-inline:var(--gut)}
-  .arc-btn{display:grid;place-items:center;position:absolute;z-index:6;top:calc(100% - 196px);width:52px;height:52px;border-radius:50%;background:rgba(0,0,0,.35);border:1px solid rgba(244,242,238,.3);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);transition:background .2s,border-color .2s}
-  .arc-btn:hover{background:rgba(0,0,0,.6);border-color:var(--ink)}
+  .arc-btn{display:grid;place-items:center;position:absolute;z-index:150;width:56px;height:56px;border-radius:50%;background:#f4f2ee;color:#111;border:0;box-shadow:0 10px 30px rgba(0,0,0,.45);transition:transform .2s,background .2s}
+  .arc-btn:hover{background:#fff;transform:scale(1.08)}
+  .arc-btn.prev{animation:nudgeL 1.6s ease-in-out 1.2s 2}.arc-btn.next{animation:nudgeR 1.6s ease-in-out 1.2s 2}
+  @keyframes nudgeL{0%,100%{translate:0}50%{translate:-8px}}@keyframes nudgeR{0%,100%{translate:0}50%{translate:8px}}
   .arc-btn svg{width:22px;height:22px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
-  .arc-btn.prev{left:var(--gut)}.arc-btn.next{right:var(--gut)}
+  .arc-btn svg{stroke-width:2.6}
   /* home */
   .home{padding:8px 0 48px;gap:80px}
   .home>.h-sec,.home>.foot{padding-inline:var(--gut)}
@@ -508,6 +521,11 @@ s.was{color:var(--ink-dim);font-weight:400;margin-left:4px}
   .signup-form{grid-template-columns:minmax(0,1.3fr) minmax(0,1fr) auto;max-width:900px}
   .signup .fine{max-width:90ch}
   .foot-cols{gap:48px}
+  .pdp-scroll>.foot-x{grid-column:1/-1;margin-inline:calc(-1*var(--gut));padding-inline:var(--gut)}
+  .coll-scroll>.foot-x{margin-inline:calc(-1*var(--gut));padding-inline:var(--gut)}
+  .page-body>.foot-x{margin-inline:calc(-1*max(24px,calc(50vw - 380px)));padding-inline:max(24px,calc(50vw - 380px))}
+  .foot{grid-template-columns:auto 1fr auto;align-items:start;column-gap:56px}
+  .foot>.fine,.foot>.pay{grid-column:1/-1}
   @media (hover:hover){
     .card img,.big img,.gcard img{transition:transform .35s cubic-bezier(.2,.7,.2,1)}
     .card:hover img,.big:hover img,.gcard:hover img{transform:scale(1.05)}
@@ -634,6 +652,12 @@ s.was{color:var(--ink-dim);font-weight:400;margin-left:4px}
         <nav aria-label="Help"><b>Help</b><button type="button" data-page="shipping">Shipping</button><button type="button" data-page="returns">Returns &amp; exchanges</button><button type="button" data-page="contact">Contact</button></nav>
         <nav aria-label="Legal"><b>Legal</b><button type="button" data-page="privacy">Privacy policy</button><button type="button" data-page="terms">Terms of service</button></nav>
       </div>
+      <div class="follow"><b>Follow us</b><div class="soc">
+        <a href="https://www.instagram.com/polynesianmusic/" target="_blank" rel="noopener" aria-label="PMN+ on Instagram"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.4" cy="6.6" r="1.1" class="f"/></svg></a>
+        <a href="https://www.facebook.com/p/Polynesian-Music-61554168566749/" target="_blank" rel="noopener" aria-label="PMN+ on Facebook"><svg viewBox="0 0 24 24"><path class="f" d="M13.5 21v-7.4h2.5l.4-2.9h-2.9V8.9c0-.8.3-1.4 1.5-1.4h1.5V4.9c-.3 0-1.2-.1-2.2-.1-2.2 0-3.7 1.3-3.7 3.8v2.1H8.1v2.9h2.5V21h2.9z"/></svg></a>
+        <a href="https://www.tiktok.com/@polynesianmusic" target="_blank" rel="noopener" aria-label="PMN+ on TikTok"><svg viewBox="0 0 24 24"><path class="f" d="M16.6 3c.3 2.2 1.6 3.6 3.8 3.8v2.6c-1.4.1-2.6-.3-3.8-1v6.1c0 3.3-2.5 5.5-5.6 5.5-3.2 0-5.4-2.6-5-5.7.4-2.6 2.6-4.5 5.5-4.3v2.8c-1.4-.3-2.8.5-3 1.9-.2 1.5 1 2.7 2.4 2.6 1.3 0 2.3-1 2.3-2.5V3h3.4z"/></svg></a>
+        <a href="https://www.youtube.com/c/PolynesianMusic" target="_blank" rel="noopener" aria-label="PMN+ on YouTube"><svg viewBox="0 0 24 24"><path class="f" d="M21.6 7.2c-.2-.9-.9-1.6-1.8-1.8C18.2 5 12 5 12 5s-6.2 0-7.8.4c-.9.2-1.6.9-1.8 1.8C2 8.8 2 12 2 12s0 3.2.4 4.8c.2.9.9 1.6 1.8 1.8C5.8 19 12 19 12 19s6.2 0 7.8-.4c.9-.2 1.6-.9 1.8-1.8.4-1.6.4-4.8.4-4.8s0-3.2-.4-4.8z"/><path d="M10 9.2v5.6l4.8-2.8z" fill="#05060a" stroke="none"/></svg></a>
+      </div></div>
       <ul class="pay" aria-label="Payment methods"><li>Visa</li><li>Mastercard</li><li>Amex</li><li>Apple Pay</li><li>Afterpay</li></ul>
       <p class="fine">© 2026 Polynesian Music. PMN+ ships within the USA. Prices in USD.</p>
     </footer>
@@ -646,7 +670,7 @@ s.was{color:var(--ink-dim);font-weight:400;margin-left:4px}
     <header class="bar reveal">
       <button class="icon-btn" id="pdpBack" aria-label="Back to the drop"><svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg></button>
       <img class="logo" src="brand/pmn-plus-logo-white.svg" alt="PMN+ Polynesian Music Network Plus" width="40" height="44">
-      <button class="icon-btn bag" aria-label="Bag"><svg viewBox="0 0 24 24"><path d="M5 8h14l-1 12H6L5 8z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg><span class="bag-count" hidden></span></button>
+      <span class="hdr-r"><nav class="desk-nav" aria-label="Collections"><button type="button" data-coll="toa-samoa">Toa Samoa</button><button type="button" data-coll="mate-maa-tonga">Mate Ma'a Tonga</button></nav><button class="shop-link" type="button" data-coll="pmn-plus">Shop</button><button class="icon-btn bag" aria-label="Bag"><svg viewBox="0 0 24 24"><path d="M5 8h14l-1 12H6L5 8z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg><span class="bag-count" hidden></span></button></span>
     </header>
     <div class="pdp-scroll" id="pdpScroll">
       <div class="pdp-media">
@@ -716,7 +740,7 @@ s.was{color:var(--ink-dim);font-weight:400;margin-left:4px}
     <header class="bar">
       <button class="icon-btn" id="collBack" aria-label="Back to the drop"><svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg></button>
       <img class="logo" src="brand/pmn-plus-logo-white.svg" alt="PMN+ Polynesian Music Network Plus" width="40" height="44">
-      <button class="icon-btn bag" aria-label="Bag"><svg viewBox="0 0 24 24"><path d="M5 8h14l-1 12H6L5 8z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg><span class="bag-count" hidden></span></button>
+      <span class="hdr-r"><nav class="desk-nav" aria-label="Collections"><button type="button" data-coll="toa-samoa">Toa Samoa</button><button type="button" data-coll="mate-maa-tonga">Mate Ma'a Tonga</button></nav><button class="shop-link" type="button" data-coll="pmn-plus">Shop</button><button class="icon-btn bag" aria-label="Bag"><svg viewBox="0 0 24 24"><path d="M5 8h14l-1 12H6L5 8z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg><span class="bag-count" hidden></span></button></span>
     </header>
     <div class="coll-scroll" id="collScroll">
       <nav class="crumbs" aria-label="Breadcrumb"><a href="#" id="crHome">Shop</a><span aria-hidden="true">/</span><span id="crHere" aria-current="page"></span></nav>
@@ -785,7 +809,7 @@ s.was{color:var(--ink-dim);font-weight:400;margin-left:4px}
   </footer>
 </aside>
 <section id="page" class="view" hidden aria-labelledby="pageH">
-  <header class="bar"><button class="icon-btn" id="pageBack" aria-label="Back"><svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg></button><img class="logo" src="brand/pmn-plus-logo-white.svg" alt="PMN+ Polynesian Music Network Plus" width="40" height="44"><span style="width:40px"></span></header>
+  <header class="bar"><button class="icon-btn" id="pageBack" aria-label="Back"><svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg></button><img class="logo" src="brand/pmn-plus-logo-white.svg" alt="PMN+ Polynesian Music Network Plus" width="40" height="44"><span class="hdr-r"><nav class="desk-nav" aria-label="Collections"><button type="button" data-coll="toa-samoa">Toa Samoa</button><button type="button" data-coll="mate-maa-tonga">Mate Ma'a Tonga</button></nav><button class="shop-link" type="button" data-coll="pmn-plus">Shop</button><button class="icon-btn bag" aria-label="Bag"><svg viewBox="0 0 24 24"><path d="M5 8h14l-1 12H6L5 8z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg><span class="bag-count" hidden></span></button></span></header>
   <article class="page-body" id="pageBody"></article>
 </section>
 <aside class="offer" id="offer" role="dialog" aria-labelledby="offH" hidden>
@@ -1080,14 +1104,14 @@ const altFor=(p,v="front")=>`${p.name} in ${p.colourName.toLowerCase()}, ${v} vi
 const Hero=(()=>{
   const hero=$("hero"),arc=$("arc"),plinth=$("plinth"),crestsEl=$("heroCrests"),bgS=$("bgSamoa"),bgT=$("bgTonga");
   const n=PRODUCTS.length;
-  let pos=0,W=0,H=0,base=0,U=0,SPREAD=0,DESK=false,STEP=0,LIM=2.2,FADE=1.6,raf=0,tween=null,settledAt=performance.now(),lastIdx=-1,active=true;
+  let pos=0,W=0,H=0,base=0,U=0,SPREAD=0,DESK=false,STEP=0,LIM=2.2,FADE=1.6,arcL=0,arcT=0,raf=0,tween=null,settledAt=performance.now(),lastIdx=-1,active=true;
   const items=PRODUCTS.map((p,i)=>{const im=new Image();im.className="item";im.alt=altFor(p,REST[p.id]>=150?"back":REST[p.id]?"front left":"front");if(i<3){im.fetchPriority="high"}else{im.loading="eager"}im.draggable=false;im.decoding="async";im.src=heroURL(p.id);arc.append(im);return im});
   const crests=PRODUCTS.map(p=>{const c=new Image();c.className="crest";c.alt="";c.decoding="async";c.src=crestURL(p.team);c.setAttribute("aria-hidden","true");crestsEl.append(c);return c});
   const dots=$("dots");PRODUCTS.forEach(()=>dots.append(document.createElement("i")));
   const sizes=[];
   function measure(){
     const r=arc.getBoundingClientRect();W=r.width;H=r.height;base=H-30;
-    DESK=W>=900;U=Math.min(W*0.76,H*0.74,DESK?520:430);SPREAD=W*0.55;STEP=Math.min(W*0.205,U*0.78+40);LIM=DESK?3.2:2.2;FADE=DESK?2.55:1.6;
+    DESK=W>=900;U=Math.min(W*0.76,H*0.74,DESK?520:430);SPREAD=W*0.55;STEP=Math.min(W*0.148,U*0.5+34);LIM=DESK?4.2:2.2;FADE=DESK?3.55:1.6;arcL=arc.offsetLeft;arcT=arc.offsetTop;
     PRODUCTS.forEach((p,i)=>{const m=META[p.id],w=m.sw/630*U,h=w*m.h/m.w;sizes[i]=[w,h];items[i].style.width=w+"px";items[i].style.height=h+"px"});
     plinth.style.top=base+"px";
   }
@@ -1095,8 +1119,8 @@ const Hero=(()=>{
     const idx=((Math.round(pos)%n)+n)%n,frac=pos-Math.round(pos);
     for(let i=0;i<n;i++){
       const p=wrapOff(i,pos,n),a=Math.max(-LIM,Math.min(LIM,p)),ab=Math.abs(a),[w,h]=sizes[i];
-      const x=DESK?W/2+a*STEP:W/2+Math.sin(a*0.75)*SPREAD,lift=DESK?(1-Math.cos(a*0.55))*H*0.16:(1-Math.cos(a*0.75))*H*0.2;
-      const s=DESK?1-0.34*Math.min(ab,1)-0.13*Math.max(0,ab-1):1-0.46*Math.min(ab,1)-0.12*Math.max(0,ab-1);
+      const x=DESK?W/2+a*STEP:W/2+Math.sin(a*0.75)*SPREAD,lift=DESK?(1-Math.cos(a*0.45))*H*0.14:(1-Math.cos(a*0.75))*H*0.2;
+      const s=DESK?1-0.3*Math.min(ab,1)-0.12*Math.max(0,ab-1):1-0.46*Math.min(ab,1)-0.12*Math.max(0,ab-1);
       const bob=(reduceMotion||tween||dragging)?0:Math.sin(t/650)*5*Math.max(0,1-ab*2);
       const el=items[i];
       el.style.transform=`translate3d(${x-w/2}px,${base-h-lift+bob}px,0) rotate(${a*5}deg) scale(${s})`;
@@ -1118,6 +1142,8 @@ const Hero=(()=>{
     const drift=-(pos*W*0.06)%(W*0.06);
     bgS.style.transform=bgT.style.transform=`translate3d(${drift}px,0,0) scale(1.04)`;
     $("heroLabel").style.opacity=Math.max(0,1-Math.abs(frac)*3.2);
+    if(DESK){const[cw,ch]=sizes[idx],pb=$("arcPrev"),nb=$("arcNext"),half=Math.min(cw*0.5,W*0.2)+18,cy=arcT+base-ch*0.52-28;
+      pb.style.left=Math.max(12,arcL+W/2-half-56)+"px";nb.style.left=Math.min(arcL+W-68,arcL+W/2+half)+"px";pb.style.top=nb.style.top=cy+"px"}
     if(idx!==lastIdx){lastIdx=idx;label(idx)}
     if(!tween&&!dragging&&t-settledAt>900)prefetch(idx);
   }
@@ -1145,7 +1171,7 @@ const Hero=(()=>{
   function tap(x,y){
     // hit-test from front to back
     const order=items.map((el,i)=>[i,Math.abs(wrapOff(i,pos,n))]).sort((a,b)=>a[1]-b[1]);
-    for(const[i,d]of order){if(d>(DESK?2.4:1.4))break;const r=items[i].getBoundingClientRect();
+    for(const[i,d]of order){if(d>(DESK?3.4:1.4))break;const r=items[i].getBoundingClientRect();
       if(x>=r.left&&x<=r.right&&y>=r.top&&y<=r.bottom){if(d<0.3)open(i);else goTo(pos+wrapOff(i,pos,n));return}}
     goTo(Math.round(pos));
   }
@@ -1486,10 +1512,20 @@ terms:{t:"Terms of service",h:`${L}
 <h2>Contact</h2><p>[support email] · Polynesian Music, [business address].</p>`}}})();
 const Pages=(()=>{let prev=null;
   function open(k){const pg=PAGES[k];if(!pg)return;prev=document.activeElement;$("pageBody").innerHTML=`<h1 id="pageH">${pg.t}</h1><p class="upd">Last updated: October 1, 2026</p>${pg.h}`;
-    $("page").hidden=false;$("pageBody").scrollTop=0;document.title=`${pg.t} | PMN+`;$("pageBack").focus()}
+    window.addFoot&&window.addFoot($("pageBody"));$("page").hidden=false;$("pageBody").scrollTop=0;document.title=`${pg.t} | PMN+`;$("pageBack").focus()}
   $("pageBack").onclick=()=>{$("page").hidden=true;document.title=BASE_TITLE;prev&&prev.focus&&prev.focus()};
   document.querySelectorAll("[data-page]").forEach(b=>b.onclick=()=>open(b.dataset.page));
   return{open};
+})();
+/* ---------- one header + footer on every page ---------- */
+(()=>{const tpl=document.querySelector("#home .foot");
+  const goColl=k=>{$("page").hidden=true;$("pSticky").classList.remove("on");Coll.open(k)};
+  const bind=root=>{root.querySelectorAll("[data-coll]").forEach(b=>b.onclick=()=>goColl(b.dataset.coll));root.querySelectorAll("[data-page]").forEach(b=>b.onclick=()=>Pages.open(b.dataset.page))};
+  window.addFoot=host=>{const f=tpl.cloneNode(true);f.classList.add("foot-x");f.querySelectorAll("[id]").forEach(e=>e.removeAttribute("id"));bind(f);host.append(f)};
+  addFoot($("pdpScroll"));addFoot($("collScroll"));
+  bind(document);
+  const goHome=()=>{$("page").hidden=true;if(!$("pdp").hidden)$("pdpBack").click();else if(!$("coll").hidden)$("collBack").click();else $("hero").scrollTo({top:0,behavior:reduceMotion?"auto":"smooth"})};
+  document.querySelectorAll(".bar .logo").forEach(l=>{l.setAttribute("role","link");l.tabIndex=0;l.setAttribute("aria-label","PMN+ shop home");l.onclick=goHome;l.onkeydown=e=>{if(e.key==="Enter")goHome()}});
 })();
 /* ---------- first-order offer: once per visit, home only, after 8 s ---------- */
 (()=>{const o=$("offer");let shown=false;

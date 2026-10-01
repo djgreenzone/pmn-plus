@@ -530,6 +530,14 @@ s.was{color:var(--ink-dim);font-weight:400;margin-left:4px}
 .h-light .h-row .link:hover{background:#111;color:#fff}
 @media (min-width:900px){.h-row .link{height:44px;padding:0 24px;font-size:13px}}
 
+/* solid black menu bar */
+.bar{background:#000;border-bottom:1px solid rgba(255,255,255,.08)}
+#lab .bar{background:none;border:0}
+.ship .bar{border:0}
+
+/* menu in Bebas Neue */
+.desk-nav button,.shop-link{font-family:var(--display)!important;font-weight:400!important;font-size:21px!important;letter-spacing:.06em!important;text-transform:uppercase;line-height:1;padding-top:9px!important;padding-bottom:7px!important}
+
 /* ===================== desktop (900px and up) ===================== */
 .desk-nav,.rail-btn{display:none}
 .arc-btn{display:grid;place-items:center;position:absolute;z-index:150;width:52px;height:52px;border-radius:50%;background:rgba(0,0,0,.18);color:#fff;border:1.5px solid rgba(255,255,255,.85);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);transition:transform .2s,background .2s,border-color .2s}
@@ -674,7 +682,7 @@ s.was{color:var(--ink-dim);font-weight:400;margin-left:4px}
     </div>
     <header class="bar">
       <img class="logo" src="brand/pmn-plus-logo-white.svg" alt="PMN+ Polynesian Music Network Plus" width="40" height="44">
-      <span class="hdr-r"><nav class="desk-nav" aria-label="Collections"><button type="button" data-coll="toa-samoa">Toa Samoa</button><button type="button" data-coll="mate-maa-tonga">Mate Ma'a Tonga</button></nav><button class="shop-link" id="heroShop" type="button">Shop</button><button class="icon-btn bag" aria-label="Bag"><svg viewBox="0 0 24 24"><path d="M5 8h14l-1 12H6L5 8z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg><span class="bag-count" hidden></span></button></span>
+      <span class="hdr-r"><nav class="desk-nav" aria-label="Collections"><button type="button" data-coll="toa-samoa">Toa Samoa</button><button type="button" data-coll="mate-maa-tonga">Mate Ma'a Tonga</button><button type="button" data-coll="pmn-plus" data-f="pmn">PMN+</button></nav><button class="shop-link" id="heroShop" type="button">Shop</button><button class="icon-btn bag" aria-label="Bag"><svg viewBox="0 0 24 24"><path d="M5 8h14l-1 12H6L5 8z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg><span class="bag-count" hidden></span></button></span>
     </header>
     <div class="hero-cta">
       <h1 class="hero-h">It's time to represent your Pacific team</h1>
@@ -724,7 +732,7 @@ s.was{color:var(--ink-dim);font-weight:400;margin-left:4px}
       <div class="big-rail" id="hTongaRail"></div>
     </section>
     <section class="h-sec h-light" aria-labelledby="hPmn">
-      <div class="h-row"><div><span class="eyebrow h-eyebrow">Core pieces &amp; exclusives</span><h2 class="h-title" id="hPmn">PMN+ merch</h2></div><button class="link" type="button" id="hPmnAll">Shop PMN+</button></div>
+      <div class="h-row"><div><span class="eyebrow h-eyebrow">Core pieces &amp; exclusives</span><h2 class="h-title" id="hPmn">PMN+ Apparel</h2></div><button class="link" type="button" id="hPmnAll">Shop PMN+</button></div>
       <div class="rail" id="hPmnRail"></div>
     </section>
     <section class="h-sec story" aria-labelledby="hStory">
@@ -751,7 +759,7 @@ s.was{color:var(--ink-dim);font-weight:400;margin-left:4px}
     <footer class="foot">
       <img src="brand/pmn-plus-logo-white.svg" alt="PMN+ Polynesian Music Network Plus" width="48" height="52">
       <div class="foot-cols">
-        <nav aria-label="Shop"><b>Shop</b><button type="button" data-coll="mate-maa-tonga">Mate Ma'a Tonga</button><button type="button" data-coll="toa-samoa">Toa Samoa</button><button type="button" data-coll="pmn-plus">PMN+</button></nav>
+        <nav aria-label="Shop"><b>Shop</b><button type="button" data-coll="mate-maa-tonga">Mate Ma'a Tonga</button><button type="button" data-coll="toa-samoa">Toa Samoa</button><button type="button" data-coll="pmn-plus" data-f="pmn">PMN+</button><button type="button" data-coll="pmn-plus">Shop all</button></nav>
         <nav aria-label="Help"><b>Help</b><button type="button" data-page="shipping">Shipping</button><button type="button" data-page="returns">Returns &amp; exchanges</button><button type="button" data-page="contact">Contact</button></nav>
         <nav aria-label="Legal"><b>Legal</b><button type="button" data-page="privacy">Privacy policy</button><button type="button" data-page="terms">Terms of service</button></nav>
       </div>
@@ -773,7 +781,7 @@ s.was{color:var(--ink-dim);font-weight:400;margin-left:4px}
     <header class="bar reveal">
       <button class="icon-btn" id="pdpBack" aria-label="Back to the drop"><svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg></button>
       <img class="logo" src="brand/pmn-plus-logo-white.svg" alt="PMN+ Polynesian Music Network Plus" width="40" height="44">
-      <span class="hdr-r"><nav class="desk-nav" aria-label="Collections"><button type="button" data-coll="toa-samoa">Toa Samoa</button><button type="button" data-coll="mate-maa-tonga">Mate Ma'a Tonga</button></nav><button class="shop-link" type="button" data-coll="pmn-plus">Shop</button><button class="icon-btn bag" aria-label="Bag"><svg viewBox="0 0 24 24"><path d="M5 8h14l-1 12H6L5 8z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg><span class="bag-count" hidden></span></button></span>
+      <span class="hdr-r"><nav class="desk-nav" aria-label="Collections"><button type="button" data-coll="toa-samoa">Toa Samoa</button><button type="button" data-coll="mate-maa-tonga">Mate Ma'a Tonga</button><button type="button" data-coll="pmn-plus" data-f="pmn">PMN+</button></nav><button class="shop-link" type="button" data-coll="pmn-plus">Shop</button><button class="icon-btn bag" aria-label="Bag"><svg viewBox="0 0 24 24"><path d="M5 8h14l-1 12H6L5 8z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg><span class="bag-count" hidden></span></button></span>
     </header>
     <div class="pdp-scroll" id="pdpScroll">
       <div class="pdp-media">
@@ -843,7 +851,7 @@ s.was{color:var(--ink-dim);font-weight:400;margin-left:4px}
     <header class="bar">
       <button class="icon-btn" id="collBack" aria-label="Back to the drop"><svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg></button>
       <img class="logo" src="brand/pmn-plus-logo-white.svg" alt="PMN+ Polynesian Music Network Plus" width="40" height="44">
-      <span class="hdr-r"><nav class="desk-nav" aria-label="Collections"><button type="button" data-coll="toa-samoa">Toa Samoa</button><button type="button" data-coll="mate-maa-tonga">Mate Ma'a Tonga</button></nav><button class="shop-link" type="button" data-coll="pmn-plus">Shop</button><button class="icon-btn bag" aria-label="Bag"><svg viewBox="0 0 24 24"><path d="M5 8h14l-1 12H6L5 8z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg><span class="bag-count" hidden></span></button></span>
+      <span class="hdr-r"><nav class="desk-nav" aria-label="Collections"><button type="button" data-coll="toa-samoa">Toa Samoa</button><button type="button" data-coll="mate-maa-tonga">Mate Ma'a Tonga</button><button type="button" data-coll="pmn-plus" data-f="pmn">PMN+</button></nav><button class="shop-link" type="button" data-coll="pmn-plus">Shop</button><button class="icon-btn bag" aria-label="Bag"><svg viewBox="0 0 24 24"><path d="M5 8h14l-1 12H6L5 8z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg><span class="bag-count" hidden></span></button></span>
     </header>
     <div class="coll-scroll" id="collScroll">
       <nav class="crumbs" aria-label="Breadcrumb"><a href="#" id="crHome">Shop</a><span aria-hidden="true">/</span><span id="crHere" aria-current="page"></span></nav>
@@ -912,7 +920,7 @@ s.was{color:var(--ink-dim);font-weight:400;margin-left:4px}
   </footer>
 </aside>
 <section id="page" class="view" hidden aria-labelledby="pageH">
-  <header class="bar"><button class="icon-btn" id="pageBack" aria-label="Back"><svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg></button><img class="logo" src="brand/pmn-plus-logo-white.svg" alt="PMN+ Polynesian Music Network Plus" width="40" height="44"><span class="hdr-r"><nav class="desk-nav" aria-label="Collections"><button type="button" data-coll="toa-samoa">Toa Samoa</button><button type="button" data-coll="mate-maa-tonga">Mate Ma'a Tonga</button></nav><button class="shop-link" type="button" data-coll="pmn-plus">Shop</button><button class="icon-btn bag" aria-label="Bag"><svg viewBox="0 0 24 24"><path d="M5 8h14l-1 12H6L5 8z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg><span class="bag-count" hidden></span></button></span></header>
+  <header class="bar"><button class="icon-btn" id="pageBack" aria-label="Back"><svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg></button><img class="logo" src="brand/pmn-plus-logo-white.svg" alt="PMN+ Polynesian Music Network Plus" width="40" height="44"><span class="hdr-r"><nav class="desk-nav" aria-label="Collections"><button type="button" data-coll="toa-samoa">Toa Samoa</button><button type="button" data-coll="mate-maa-tonga">Mate Ma'a Tonga</button><button type="button" data-coll="pmn-plus" data-f="pmn">PMN+</button></nav><button class="shop-link" type="button" data-coll="pmn-plus">Shop</button><button class="icon-btn bag" aria-label="Bag"><svg viewBox="0 0 24 24"><path d="M5 8h14l-1 12H6L5 8z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg><span class="bag-count" hidden></span></button></span></header>
   <article class="page-body" id="pageBody"></article>
 </section>
 <aside class="offer" id="offer" role="dialog" aria-labelledby="offH" hidden>
@@ -1484,7 +1492,7 @@ const Coll=(()=>{
   Object.entries(SEO.collections).forEach(([k,c])=>{const b=document.createElement("button");b.setAttribute("role","tab");b.textContent=c.name;b.dataset.k=k;b.onclick=()=>show(k);tabs.append(b)});
   $("cFilter").querySelectorAll(".chip").forEach(b=>b.onclick=()=>{filt=b.dataset.f;$("cFilter").querySelectorAll(".chip").forEach(x=>x.setAttribute("aria-pressed",x===b));grid()});
   function grid(){const c=SEO.collections[key],g=$("cGrid");g.innerHTML="";
-    c.products.map(id=>BY[id]).filter(p=>filt==="all"||p.kind===filt).forEach(p=>{const b=document.createElement("button");b.className="gcard";b.dataset.id=p.id;
+    c.products.map(id=>BY[id]).filter(p=>filt==="all"||(filt==="pmn"?p.team==="pmn":p.kind===filt)).forEach(p=>{const b=document.createElement("button");b.className="gcard";b.dataset.id=p.id;
       b.innerHTML=`<span class="im"><img loading="lazy" decoding="async" alt="${altFor(p).replace(/"/g,"&quot;")}" src="${heroURL(p.id)}"></span><b>${p.name}</b><span class="num">${money(p.price)} · or 4 × ${money(p.price/4)}</span>`;
       b.onclick=()=>PDP.open(p.id,b.querySelector("img"),"coll");g.append(b)})}
   function show(k){key=k;const c=SEO.collections[k],team=k==="toa-samoa"?"samoa":k==="mate-maa-tonga"?"tonga":"all";
@@ -1520,7 +1528,7 @@ $("pTeam").onclick=()=>{const c=PDP.current(),t=BY[c]?BY[c].team:"tonga";documen
   PRODUCTS.filter(p=>p.team==="samoa").forEach(p=>$("hSamoaRail").append(card(p,"big")));
   PRODUCTS.filter(p=>p.team==="tonga").forEach(p=>$("hTongaRail").append(card(p,"big")));
   PRODUCTS.filter(p=>p.team==="pmn").forEach(p=>$("hPmnRail").append(card(p,"card")));
-  $("hPmnAll").onclick=()=>Coll.open("pmn-plus");
+  $("hPmnAll").onclick=()=>Coll.open("pmn-plus","pmn");
   $("hHatsAll").onclick=()=>Coll.open("pmn-plus","hat");
   // story video: play only while on screen, never with reduced motion or data saver
   (()=>{const v=$("storyVid");if(!v)return;const save=navigator.connection&&navigator.connection.saveData;
@@ -1528,7 +1536,7 @@ $("pTeam").onclick=()=>{const c=PDP.current(),t=BY[c]?BY[c].team:"tonga";documen
     v.addEventListener("error",()=>v.remove());
     new IntersectionObserver(es=>es.forEach(e=>e.isIntersecting?v.play().catch(()=>{}):v.pause()),{threshold:.15}).observe(v)})();
   $("hAll").onclick=()=>Coll.open("pmn-plus");
-  document.querySelectorAll("[data-coll]").forEach(b=>b.onclick=()=>Coll.open(b.dataset.coll));
+  document.querySelectorAll("[data-coll]").forEach(b=>b.onclick=()=>Coll.open(b.dataset.coll,b.dataset.f));
   $("signup").addEventListener("submit",e=>{e.preventDefault();const v=$("suEmail").value.trim(),ok=/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(v);
     const ph=$("suPhone").value.replace(/\D/g,""),phOk=!ph||ph.length===10||(ph.length===11&&ph[0]==="1");
     if(!ok||!phOk){$("suMsg").textContent=!ok?"Enter a valid email address, like name@example.com.":"Enter a 10-digit US mobile number, or leave it blank for 10% off.";return}
@@ -1644,8 +1652,8 @@ const Pages=(()=>{let prev=null;
 })();
 /* ---------- one header + footer on every page ---------- */
 (()=>{const tpl=document.querySelector("#home .foot");
-  const goColl=k=>{$("page").hidden=true;$("pSticky").classList.remove("on");Coll.open(k)};
-  const bind=root=>{root.querySelectorAll("[data-coll]").forEach(b=>b.onclick=()=>goColl(b.dataset.coll));root.querySelectorAll("[data-page]").forEach(b=>b.onclick=()=>Pages.open(b.dataset.page))};
+  const goColl=(k,f)=>{$("page").hidden=true;$("pSticky").classList.remove("on");Coll.open(k,f)};
+  const bind=root=>{root.querySelectorAll("[data-coll]").forEach(b=>b.onclick=()=>goColl(b.dataset.coll,b.dataset.f));root.querySelectorAll("[data-page]").forEach(b=>b.onclick=()=>Pages.open(b.dataset.page))};
   window.addFoot=host=>{const f=tpl.cloneNode(true);f.classList.add("foot-x");f.querySelectorAll("[id]").forEach(e=>e.removeAttribute("id"));bind(f);host.append(f)};
   addFoot($("pdpScroll"));addFoot($("collScroll"));
   bind(document);

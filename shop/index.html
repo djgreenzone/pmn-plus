@@ -477,12 +477,12 @@ s.was{color:var(--ink-dim);font-weight:400;margin-left:4px}
   .podium h2{font-size:56px}
   .podium .price{font-size:16px}
   .hero-foot{padding-inline:var(--gut)}
-  .arc-btn{display:grid;place-items:center;position:absolute;z-index:150;width:56px;height:56px;border-radius:50%;background:#f4f2ee;color:#111;border:0;box-shadow:0 10px 30px rgba(0,0,0,.45);transition:transform .2s,background .2s}
-  .arc-btn:hover{background:#fff;transform:scale(1.08)}
+  .arc-btn{display:grid;place-items:center;position:absolute;z-index:150;width:52px;height:52px;border-radius:50%;background:rgba(0,0,0,.18);color:#fff;border:1.5px solid rgba(255,255,255,.85);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);transition:transform .2s,background .2s,border-color .2s}
+  .arc-btn:hover{background:rgba(255,255,255,.14);border-color:#fff;transform:scale(1.08)}
   .arc-btn.prev{animation:nudgeL 1.6s ease-in-out 1.2s 2}.arc-btn.next{animation:nudgeR 1.6s ease-in-out 1.2s 2}
   @keyframes nudgeL{0%,100%{translate:0}50%{translate:-8px}}@keyframes nudgeR{0%,100%{translate:0}50%{translate:8px}}
   .arc-btn svg{width:22px;height:22px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
-  .arc-btn svg{stroke-width:2.6}
+  .arc-btn svg{stroke-width:2.2}
   /* home */
   .home{padding:8px 0 48px;gap:80px}
   .home>.h-sec,.home>.foot{padding-inline:var(--gut)}
@@ -538,7 +538,22 @@ s.was{color:var(--ink-dim);font-weight:400;margin-left:4px}
   .dial{max-width:560px;margin-inline:auto}
   .thumbs{justify-content:center;padding-top:14px}
   .thumb{width:72px;height:72px}
-  #pdp .sheet{margin-top:18px;border-radius:24px;padding:30px 28px 34px;gap:18px}
+  #pdp .sheet{margin-top:18px;border-radius:24px;padding:32px 30px 36px;gap:18px;background:#fff;color:#141414;backdrop-filter:none;-webkit-backdrop-filter:none;box-shadow:0 24px 60px rgba(0,0,0,.35);
+    --ink:#141414;--ink-dim:#5f5b53;--night:#ffffff;--line:rgba(0,0,0,.14)}
+  #pdp .sheet .acc p,#pdp .sheet .faq-list p{color:#3d3a34}
+  #pdp .sheet .acc .points{color:#262420}
+  #pdp .sheet .fine{color:#6b675f}
+  #pdp .sheet .buy-alt{background:#fff}
+  #pdp .sheet .faq-list details{border-color:rgba(0,0,0,.14);background:#faf9f6}
+  #pdp .sheet .faq-list details[open]{border-color:rgba(0,0,0,.4);background:#fff}
+  #pdp .sheet .card .im{background:#f3f2ee;border-color:#f3f2ee}
+  #pdp .sheet .sw i{box-shadow:inset 0 0 0 1px rgba(0,0,0,.2)}
+  #pdp .sheet .size:hover{border-color:#141414}
+  #pdp .sheet .deal{background:#141414;color:#fff;box-shadow:0 16px 36px rgba(0,0,0,.28)}
+  #pdp .sheet .deal-h span{color:#6fdc98}
+  #pdp .sheet .pick-l{color:rgba(255,255,255,.72)}
+  #pdp .sheet .deal-f{color:rgba(255,255,255,.62)}
+  #pdp .sheet .tier .badge{background:#17703f}
   #pdp .sheet h1{font-size:54px}
   #pdp .crest{left:34%;top:46%;height:min(62vh,560px)}
   .rail-wrap .rail-btn{top:68px}
@@ -1111,7 +1126,7 @@ const Hero=(()=>{
   const sizes=[];
   function measure(){
     const r=arc.getBoundingClientRect();W=r.width;H=r.height;base=H-30;
-    DESK=W>=900;U=Math.min(W*0.76,H*0.74,DESK?520:430);SPREAD=W*0.55;STEP=Math.min(W*0.148,U*0.5+34);LIM=DESK?4.2:2.2;FADE=DESK?3.55:1.6;arcL=arc.offsetLeft;arcT=arc.offsetTop;
+    DESK=W>=900;U=Math.min(W*0.76,H*0.74,DESK?460:430);SPREAD=W*0.55;STEP=Math.min(W*0.235,U*0.62+96);LIM=DESK?3.2:2.2;FADE=DESK?2.55:1.6;arcL=arc.offsetLeft;arcT=arc.offsetTop;
     PRODUCTS.forEach((p,i)=>{const m=META[p.id],w=m.sw/630*U,h=w*m.h/m.w;sizes[i]=[w,h];items[i].style.width=w+"px";items[i].style.height=h+"px"});
     plinth.style.top=base+"px";
   }
@@ -1142,8 +1157,10 @@ const Hero=(()=>{
     const drift=-(pos*W*0.06)%(W*0.06);
     bgS.style.transform=bgT.style.transform=`translate3d(${drift}px,0,0) scale(1.04)`;
     $("heroLabel").style.opacity=Math.max(0,1-Math.abs(frac)*3.2);
-    if(DESK){const[cw,ch]=sizes[idx],pb=$("arcPrev"),nb=$("arcNext"),half=Math.min(cw*0.5,W*0.2)+18,cy=arcT+base-ch*0.52-28;
-      pb.style.left=Math.max(12,arcL+W/2-half-56)+"px";nb.style.left=Math.min(arcL+W-68,arcL+W/2+half)+"px";pb.style.top=nb.style.top=cy+"px"}
+    if(DESK){// centre each arrow in the gap between the main product and its neighbour (visible art is ~85% of the image box)
+      const[cw,ch]=sizes[idx],L=sizes[(idx-1+n)%n],R=sizes[(idx+1)%n],pb=$("arcPrev"),nb=$("arcNext"),k=0.85,sN=0.7;
+      const gapR=((cw*k)/2+(STEP-(R[0]*k*sN)/2))/2,gapL=((cw*k)/2+(STEP-(L[0]*k*sN)/2))/2,cy=arcT+base-ch*0.5-26;
+      pb.style.left=(arcL+W/2-gapL-26)+"px";nb.style.left=(arcL+W/2+gapR-26)+"px";pb.style.top=nb.style.top=cy+"px"}
     if(idx!==lastIdx){lastIdx=idx;label(idx)}
     if(!tween&&!dragging&&t-settledAt>900)prefetch(idx);
   }
@@ -1171,7 +1188,7 @@ const Hero=(()=>{
   function tap(x,y){
     // hit-test from front to back
     const order=items.map((el,i)=>[i,Math.abs(wrapOff(i,pos,n))]).sort((a,b)=>a[1]-b[1]);
-    for(const[i,d]of order){if(d>(DESK?3.4:1.4))break;const r=items[i].getBoundingClientRect();
+    for(const[i,d]of order){if(d>(DESK?2.4:1.4))break;const r=items[i].getBoundingClientRect();
       if(x>=r.left&&x<=r.right&&y>=r.top&&y<=r.bottom){if(d<0.3)open(i);else goTo(pos+wrapOff(i,pos,n));return}}
     goTo(Math.round(pos));
   }

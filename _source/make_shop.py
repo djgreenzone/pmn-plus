@@ -20,7 +20,7 @@ rep('<title>PMN+ Store Hero</title>','''<!doctype html>
 rep('src="https://polynesianmusicnetwork.com/assets/bg.mp4"','src="/assets/bg.mp4"')
 # video opacity already .45 in the prototype
 rep('<button class="back-link" id="toLab">Spin lab</button>','<button class="back-link" id="toLab" hidden>Spin lab</button>')
-rep('<p class="proto">Prototype · scroll for more</p>','<p class="proto">Scroll for more</p>')
+rep('<p class="proto">Prototype · scroll for more</p>','''<button type="button" class="proto scroll-cue" aria-label="Scroll for more" onclick="document.getElementById('hero').scrollBy({top:innerHeight*.85,behavior:'smooth'})"><svg viewBox="0 0 24 14" aria-hidden="true"><path d="M3 3l9 8 9-8"/></svg><svg viewBox="0 0 24 14" aria-hidden="true"><path d="M3 3l9 8 9-8"/></svg></button>''')
 open(sys.argv[1],'w').write(s)
 
 # ---------- LIVE MODE: real Klaviyo sign-ups, checkout-opens-soon capture, no prototype copy ----------

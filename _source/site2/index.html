@@ -85,7 +85,7 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--ink);outline-offset
   background:radial-gradient(closest-side,rgba(0,0,0,.55),rgba(0,0,0,.18) 55%,transparent),radial-gradient(closest-side,rgba(255,255,255,.22),transparent 80%);pointer-events:none}
 .podium{position:relative;z-index:3;padding:2px 16px 0;text-align:center;display:grid;justify-items:center;gap:3px}
 .podium .tap{display:grid;justify-items:center;gap:3px;padding:4px 8px;border-radius:12px}
-.podium h2{margin:0;font-family:var(--display);font-weight:400;font-size:34px;line-height:.95;letter-spacing:.01em;text-wrap:balance}
+.podium h2{margin:0;font-family:var(--display);font-weight:400;font-size:24px;line-height:.95;letter-spacing:.01em;text-wrap:balance}
 .price{margin:0;font-size:14px;color:var(--ink-dim)}
 .price strong{color:var(--ink);font-weight:700;font-size:16px;margin-right:6px}
 .price b{color:var(--ink);font-weight:700}
@@ -93,6 +93,7 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--ink);outline-offset
 .dots{display:flex;gap:6px;align-items:center}
 .dots i{width:6px;height:6px;border-radius:3px;background:rgba(255,255,255,.35);transition:width .3s,background .3s}
 .dots i.on{width:18px;background:var(--ink)}
+.scroll-cue{display:grid;justify-items:center;margin:0 auto;padding:2px 24px 6px;background:none;border:0;color:#fff;cursor:pointer}.scroll-cue svg{width:28px;height:16px;fill:none;stroke:currentColor;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round;animation:cue 1.6s ease-in-out infinite}.scroll-cue svg+svg{margin-top:-7px;opacity:.5;animation-delay:.18s}@keyframes cue{0%,100%{transform:translateY(0)}50%{transform:translateY(7px)}}@media (prefers-reduced-motion:reduce){.scroll-cue svg{animation:none}}
 .proto{font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-dim);text-align:center;padding:0 16px 2px;position:relative;z-index:3}
 
 /* ---------- Product page ---------- */
@@ -526,8 +527,8 @@ s.was{color:var(--ink-dim);font-weight:400;margin-left:4px}
   .shop-link{border-radius:999px}
   /* hero */
   .stage{min-height:640px}
-  .podium h2{font-size:42px}
-  .podium .price{font-size:16px}
+  .podium h2{font-size:28px}
+  .podium .price{font-size:13px}
   .hero-foot{padding-inline:var(--gut)}
   /* home */
   .home{padding:8px 0 48px;gap:80px}
@@ -1193,16 +1194,16 @@ const HERO_P=PRODUCTS.filter(p=>!p.noHero);
 const Hero=(()=>{const PRODUCTS=HERO_P;
   const hero=$("hero"),arc=$("arc"),plinth=$("plinth"),crestsEl=$("heroCrests"),bgS=$("bgSamoa"),bgT=$("bgTonga");
   const n=PRODUCTS.length;
-  let CS=1.32,CSM=1.18,capS=[],pos=0,W=0,H=0,base=0,U=0,SPREAD=0,DESK=false,STEP=0,STEP2=0,LIM=2.2,FADE=1.6,arcL=0,arcT=0,raf=0,tween=null,settledAt=performance.now(),lastIdx=-1,active=true;
+  let CS=1.75,CSM=1.45,capS=[],pos=0,W=0,H=0,base=0,U=0,SPREAD=0,DESK=false,STEP=0,STEP2=0,LIM=2.2,FADE=1.6,arcL=0,arcT=0,raf=0,tween=null,settledAt=performance.now(),lastIdx=-1,active=true;
   const items=PRODUCTS.map((p,i)=>{const im=new Image();im.className="item";im.alt=altFor(p,REST[p.id]>=150?"back":REST[p.id]?"front left":"front");if(i<3){im.fetchPriority="high"}else{im.loading="eager"}im.draggable=false;im.decoding="async";im.src=heroURL(p.id);arc.append(im);return im});
   const crests=PRODUCTS.map(p=>{const c=new Image();c.className="crest";c.alt="";c.decoding="async";c.src=crestURL(p.team);c.setAttribute("aria-hidden","true");crestsEl.append(c);return c});
   const dots=$("dots");PRODUCTS.forEach(()=>dots.append(document.createElement("i")));
   const sizes=[];
   function measure(){
     const r=arc.getBoundingClientRect();W=r.width;H=r.height;base=H-(W>=900?18:30);
-    DESK=W>=900;U=DESK?Math.min(W*0.4,H*0.9,620):Math.min(W*0.76,H*0.74,430);SPREAD=W*0.55;STEP=Math.min(W*0.3,U*0.86+96);STEP2=STEP*0.62;LIM=DESK?3.2:2.2;FADE=DESK?2.55:1.6;arcL=arc.offsetLeft;arcT=arc.offsetTop;
+    DESK=W>=900;U=DESK?Math.min(W*0.46,H*1.05,760):Math.min(W*0.86,H*0.84,480);SPREAD=W*0.55;STEP=Math.min(W*0.3,U*0.86+96);STEP2=STEP*0.62;LIM=DESK?3.2:2.2;FADE=DESK?2.55:1.6;arcL=arc.offsetLeft;arcT=arc.offsetTop;
     PRODUCTS.forEach((p,i)=>{const m=META[p.id],w=m.sw/630*U,h=w*m.h/m.w;sizes[i]=[w,h];items[i].style.width=w+"px";items[i].style.height=h+"px"});
-    const bb=document.querySelector(".hero-btns"),room=bb?base-(bb.getBoundingClientRect().bottom-r.top)-14:H;
+    const bb=document.querySelector(".hero-btns"),room=bb?base-(bb.getBoundingClientRect().bottom-r.top)-6:H;
     capS=sizes.map(([w,h])=>Math.max(1,Math.min(DESK?CS:CSM,room/h)));
     plinth.style.top=base+"px";
   }

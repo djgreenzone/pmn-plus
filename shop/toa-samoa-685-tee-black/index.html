@@ -636,7 +636,7 @@ s.was{color:var(--ink-dim);font-weight:400;margin-left:4px}
   }
   /* product page: media left (sticky), details right */
   #pdp .pdp-scroll{display:grid;grid-template-columns:minmax(0,1fr) minmax(400px,500px);column-gap:56px;padding:0 var(--gut) 48px;align-items:start}
-  .pdp-media{position:sticky;top:0;padding-top:6px;min-width:0}
+  .pdp-media{align-self:stretch;padding-top:6px;min-width:0}.pdp-media-in{position:sticky;top:0}
   .pdp-stage{height:min(calc(100vh - 260px),760px);min-height:420px}
   .dial{max-width:560px;margin-inline:auto}
   .thumbs{justify-content:center;padding-top:14px}
@@ -802,7 +802,7 @@ s.was{color:var(--ink-dim);font-weight:400;margin-left:4px}
       <span class="hdr-r"><nav class="desk-nav" aria-label="Collections"><button type="button" data-coll="toa-samoa">Toa Samoa</button><button type="button" data-coll="mate-maa-tonga">Mate Ma'a Tonga</button><button type="button" data-coll="pmn-plus" data-f="pmn">PMN+</button></nav><button class="shop-link" type="button" data-coll="pmn-plus">Shop</button><button class="icon-btn bag" aria-label="Bag"><svg viewBox="0 0 24 24"><path d="M5 8h14l-1 12H6L5 8z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg><span class="bag-count" hidden></span></button></span>
     </header>
     <div class="pdp-scroll" id="pdpScroll">
-      <div class="pdp-media">
+      <div class="pdp-media"><div class="pdp-media-in">
       <div class="pdp-stage" id="pdpStage">
         <canvas id="pdpCanvas" aria-label="360 degree product view"></canvas>
         <div class="drag-hint reveal d1" id="dragHint"><svg viewBox="0 0 24 24"><path d="M8 8l-4 4 4 4M16 8l4 4-4 4"/></svg>Drag to spin</div>
@@ -812,7 +812,7 @@ s.was{color:var(--ink-dim);font-weight:400;margin-left:4px}
         <div class="mk" id="dialMk"><span class="deg num" id="dialDeg">0°</span></div>
       </div>
       <div class="thumbs reveal d1" id="pThumbs" role="group" aria-label="Product views"><button class="thumb" type="button"><img loading="lazy" src="hires/toa-685-black/toa-samoa-685-tee-black-back.webp" alt="Toa Samoa 685 Tee in black, back view" width="72" height="72"></button><button class="thumb" type="button"><img loading="lazy" src="hires/toa-685-black/toa-samoa-685-tee-black-front.webp" alt="Toa Samoa 685 Tee in black, front view" width="72" height="72"></button><button class="thumb" type="button"><img loading="lazy" src="hires/toa-685-black/toa-samoa-685-tee-black-right.webp" alt="Toa Samoa 685 Tee in black, right view" width="72" height="72"></button><button class="thumb" type="button"><img loading="lazy" src="hires/toa-685-black/toa-samoa-685-tee-black-front-left.webp" alt="Toa Samoa 685 Tee in black, front left view" width="72" height="72"></button></div>
-      </div>
+      </div></div>
       <div class="sheet reveal d2">
         <div class="title-block">
           <button class="eyebrow team-link" id="pTeam" type="button">Toa Samoa</button>

@@ -50,7 +50,7 @@ def build_home(path):
     # old homepage header styles (superseded by pmn-nav.css)
     h=re.sub(r'\n(?:\.nav \.mark|\.nav nav|\.nav \.bag|@media \(min-width:900px\)\{\.nav nav)[^\n]*','',h)
     h=h.replace('.nav{position:fixed;inset:0 0 auto;z-index:20;display:flex;align-items:center;justify-content:space-between;padding:.85rem clamp(1rem,5vw,2.5rem);background:linear-gradient(180deg,rgba(0,0,0,.75),rgba(0,0,0,0));transition:background .25s}','.nav{position:fixed;inset:0 0 auto;z-index:20}')
-    h=h.replace('<section class="ig" aria-labelledby="igH">','<section class="ig" id="reels" aria-labelledby="igH">')
+    h=h.replace('<section class="ig" id="reels" aria-labelledby="igH">','<section class="ig" aria-labelledby="igH">')
     open(path,'w').write(h)
 
 def copy_assets(root):

@@ -1763,7 +1763,7 @@ const Pages=(()=>{let prev=null;
   addFoot($("pdpScroll"));addFoot($("collScroll"));
   bind(document);
   const goHome=()=>{$("page").hidden=true;if(!$("pdp").hidden)$("pdpBack").click();else if(!$("coll").hidden)$("collBack").click();else $("hero").scrollTo({top:0,behavior:reduceMotion?"auto":"smooth"})};
-  document.querySelectorAll(".bar .logo").forEach(l=>{l.setAttribute("role","link");l.tabIndex=0;l.setAttribute("aria-label","PMN+ shop home");l.onclick=goHome;l.onkeydown=e=>{if(e.key==="Enter")goHome()}});
+  document.querySelectorAll(".bar .logo").forEach(l=>{l.setAttribute("role","link");l.tabIndex=0;l.setAttribute("aria-label","PMN+ home");l.onclick=()=>{location.href="/"};l.onkeydown=e=>{if(e.key==="Enter")location.href="/"}});
 })();
 /* ---------- first-order offer: once per visit, home only, after 8 s ---------- */
 (()=>{const o=$("offer");let shown=false;
@@ -1800,4 +1800,4 @@ document.querySelectorAll("#hRail,#hHatRail,#hPmnRail,#pAlso,#hSamoaRail,#hTonga
 if(location.hash==="#lab")showLab();
 </script>
 
-<script>/* DEEPLINK */addEventListener("load",()=>{const h=decodeURIComponent(location.hash.slice(1));if(["toa-samoa","mate-maa-tonga","pmn-plus"].includes(h)&&typeof Coll!=="undefined")setTimeout(()=>Coll.open(h),60)});</script>
+<script>/* DEEPLINK */addEventListener("load",()=>{const h=decodeURIComponent(location.hash.slice(1));setTimeout(()=>{try{if(["toa-samoa","mate-maa-tonga","pmn-plus"].includes(h))Coll.open(h);else if(h==="pmn")Coll.open("pmn-plus","pmn");else if(["shipping","returns","contact","privacy","terms"].includes(h))Pages.open(h);else if(h==="bag")Cart.open()}catch(e){}},60)});</script>

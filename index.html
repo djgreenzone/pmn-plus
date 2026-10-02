@@ -60,11 +60,15 @@ img{display:block;max-width:100%}
 .nav{position:fixed;inset:0 0 auto;z-index:20;display:flex;align-items:center;justify-content:space-between;padding:.85rem clamp(1rem,5vw,2.5rem);background:linear-gradient(180deg,rgba(0,0,0,.75),rgba(0,0,0,0));transition:background .25s}
 .nav.solid{background:rgba(0,0,0,.92);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
 .nav .mark{width:46px;height:auto}
-.nav nav{display:flex;gap:clamp(1rem,3vw,2rem);align-items:center}
-.nav nav a{font-family:var(--display);font-size:1.25rem;letter-spacing:.06em;text-decoration:none;color:rgba(255,255,255,.85)}
-.nav nav a:hover{color:#fff}
-@media (max-width:560px){.nav nav a.hide-sm{display:none}}
-.nav nav a.pill{color:#000;background:#fff;border-radius:999px;padding:.35rem 1.1rem}
+.nav nav{display:flex;gap:clamp(.25rem,1.2vw,.5rem);align-items:center}
+.nav nav a{font-family:var(--display);font-size:21px;line-height:1;letter-spacing:.06em;text-transform:uppercase;text-decoration:none;color:rgba(255,255,255,.82);padding:9px 12px 7px;border-radius:999px}
+.nav nav a:hover{color:#fff;background:rgba(255,255,255,.08)}
+.nav nav a.desk{display:none}
+@media (min-width:900px){.nav nav a.desk{display:inline-block}}
+.nav nav a.bag{position:relative;width:40px;height:40px;padding:0;display:grid;place-items:center;border-radius:50%;color:#fff}
+.nav .bag svg{width:22px;height:22px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.nav .bag-count{position:absolute;top:3px;right:2px;min-width:16px;height:16px;border-radius:8px;background:#fff;color:#000;font:700 10px/16px var(--font);text-align:center;padding-inline:4px}
+.nav .bag-count[hidden]{display:none}
 
 /* hero */
 .hero{position:relative;min-height:100svh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:6.5rem clamp(1.25rem,5vw,2.5rem) 4rem;gap:clamp(1.1rem,2.6vw,1.6rem);overflow:hidden;isolation:isolate}
@@ -153,20 +157,32 @@ button[disabled]{opacity:.5;cursor:default}
 @media (max-width:900px){.ig .head{grid-template-columns:1fr}}
 
 /* footer */
-.foot{padding:2.5rem clamp(1rem,5vw,2.5rem) 2.25rem;display:flex;flex-direction:column;align-items:center;gap:1.1rem;text-align:center;border-top:1px solid var(--line)}
-.foot .soc{display:flex;flex-wrap:wrap;justify-content:center;gap:.5rem 1.4rem}
-.foot .soc a{font-family:var(--display);font-size:1.2rem;letter-spacing:.06em;text-decoration:none;color:#c9c9cd}
-.foot .soc a:hover{color:#fff}
-.foot small{font-size:.82rem;color:#5E5E63}
+.foot{display:grid;gap:20px;padding:2.5rem clamp(1rem,5vw,2.5rem) 2.25rem;border-top:1px solid var(--line);background:#05060a;text-align:left}
+.foot-logo img{width:56px;height:auto;display:block}
+.foot-cols{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.foot nav,.foot .follow{display:flex;flex-direction:column;align-items:flex-start;gap:2px}
+.foot b{font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--dim);margin-bottom:6px}
+.foot nav a{font-size:13.5px;color:rgba(244,242,238,.88);text-decoration:none;padding:6px 0}
+.foot nav a:hover{color:#fff}
+.foot .soc{display:flex;gap:10px}
+.foot .soc a{width:44px;height:44px;border-radius:50%;border:1px solid rgba(244,242,238,.25);display:grid;place-items:center;color:#fff}
+.foot .soc a:hover{background:rgba(255,255,255,.08)}
+.foot .soc svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.8}.foot .soc .f{fill:currentColor;stroke:none}
+.foot .pay{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:6px}
+.foot .pay li{font-size:11.5px;font-weight:600;padding:5px 9px;border:1px solid var(--line);border-radius:6px;color:rgba(244,242,238,.8)}
+.foot .fine{margin:0;font-size:12px;color:var(--dim)}
+@media (min-width:900px){.foot{grid-template-columns:auto 1fr auto;column-gap:56px;padding-inline:max(2.5rem,calc(50vw - 560px))}.foot>.fine,.foot>.pay{grid-column:1/-1}.foot-cols{gap:48px;max-width:560px}}
 </style>
 </head>
 <body>
 <header class="nav" id="nav">
   <a href="/" aria-label="PMN+ home"><img class="mark" src="/shop/brand/pmn-plus-logo-white.svg" alt="PMN+" width="46" height="46"></a>
   <nav aria-label="Main">
-    <a class="hide-sm" href="#shop">RLWC 2026</a>
-    <a href="https://www.instagram.com/polynesianmusic/" target="_blank" rel="noopener">Instagram</a>
-    <a class="pill" href="/shop">Shop</a>
+    <a class="desk" href="/shop#toa-samoa">Toa Samoa</a>
+    <a class="desk" href="/shop#mate-maa-tonga">Mate Ma'a Tonga</a>
+    <a class="desk" href="/shop#pmn">PMN+</a>
+    <a href="/shop">Shop</a>
+    <a class="bag" href="/shop#bag" aria-label="Bag"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 8h14l-1 12H6L5 8z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg><span class="bag-count" id="bagN" hidden></span></a>
   </nav>
 </header>
 
@@ -256,18 +272,25 @@ button[disabled]{opacity:.5;cursor:default}
 </main>
 
 <footer class="foot">
-  <div class="soc">
-    <a href="/shop">Shop</a>
-    <a href="https://www.instagram.com/polynesianmusic/" target="_blank" rel="noopener">Instagram</a>
-    <a href="https://www.facebook.com/p/Polynesian-Music-61554168566749/" target="_blank" rel="noopener">Facebook</a>
-    <a href="https://www.tiktok.com/@polynesianmusic" target="_blank" rel="noopener">TikTok</a>
-    <a href="https://www.youtube.com/c/PolynesianMusic" target="_blank" rel="noopener">YouTube</a>
+  <a class="foot-logo" href="/" aria-label="PMN+ home"><img src="/shop/brand/pmn-plus-logo-white.svg" alt="PMN+" width="56" height="56" loading="lazy"></a>
+  <div class="foot-cols">
+    <nav aria-label="Shop"><b>Shop</b><a href="/shop#mate-maa-tonga">Mate Ma'a Tonga</a><a href="/shop#toa-samoa">Toa Samoa</a><a href="/shop#pmn">PMN+</a><a href="/shop">Shop all</a></nav>
+    <nav aria-label="Help"><b>Help</b><a href="/shop#shipping">Shipping</a><a href="/shop#returns">Returns</a><a href="/shop#contact">Contact</a></nav>
+    <nav aria-label="Legal"><b>Legal</b><a href="/shop#privacy">Privacy</a><a href="/shop#terms">Terms</a></nav>
   </div>
-  <small>&copy; <span id="yr"></span> Polynesian Music Network</small>
+  <div class="follow"><b>Follow us</b><div class="soc">
+    <a href="https://www.instagram.com/polynesianmusic/" target="_blank" rel="noopener" aria-label="PMN+ on Instagram"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.4" cy="6.6" r="1.1" class="f"/></svg></a>
+        <a href="https://www.facebook.com/p/Polynesian-Music-61554168566749/" target="_blank" rel="noopener" aria-label="PMN+ on Facebook"><svg viewBox="0 0 24 24"><path class="f" d="M13.5 21v-7.4h2.5l.4-2.9h-2.9V8.9c0-.8.3-1.4 1.5-1.4h1.5V4.9c-.3 0-1.2-.1-2.2-.1-2.2 0-3.7 1.3-3.7 3.8v2.1H8.1v2.9h2.5V21h2.9z"/></svg></a>
+        <a href="https://www.tiktok.com/@polynesianmusic" target="_blank" rel="noopener" aria-label="PMN+ on TikTok"><svg viewBox="0 0 24 24"><path class="f" d="M16.6 3c.3 2.2 1.6 3.6 3.8 3.8v2.6c-1.4.1-2.6-.3-3.8-1v6.1c0 3.3-2.5 5.5-5.6 5.5-3.2 0-5.4-2.6-5-5.7.4-2.6 2.6-4.5 5.5-4.3v2.8c-1.4-.3-2.8.5-3 1.9-.2 1.5 1 2.7 2.4 2.6 1.3 0 2.3-1 2.3-2.5V3h3.4z"/></svg></a>
+        <a href="https://www.youtube.com/c/PolynesianMusic" target="_blank" rel="noopener" aria-label="PMN+ on YouTube"><svg viewBox="0 0 24 24"><path class="f" d="M21.6 7.2c-.2-.9-.9-1.6-1.8-1.8C18.2 5 12 5 12 5s-6.2 0-7.8.4c-.9.2-1.6.9-1.8 1.8C2 8.8 2 12 2 12s0 3.2.4 4.8c.2.9.9 1.6 1.8 1.8C5.8 19 12 19 12 19s6.2 0 7.8-.4c.9-.2 1.6-.9 1.8-1.8.4-1.6.4-4.8.4-4.8s0-3.2-.4-4.8z"/><path d="M10 9.2v5.6l4.8-2.8z" fill="#05060a" stroke="none"/></svg></a>
+  </div></div>
+  <ul class="pay" aria-label="Payment methods"><li>Visa</li><li>Mastercard</li><li>Amex</li><li>Apple Pay</li><li>Google Pay</li><li>Shop Pay</li></ul>
+  <p class="fine">&copy; <span id="yr"></span> Polynesian Music. PMN+ ships within the USA. Prices in USD.</p>
 </footer>
 
 <script>
 document.getElementById('yr').textContent=new Date().getFullYear();
+try{const n=JSON.parse(localStorage.getItem('pmn_cart')||'[]').reduce((t,i)=>t+(+i.qty||0),0);const b=document.getElementById('bagN');if(n){b.hidden=false;b.textContent=n}}catch(e){}
 const nav=document.getElementById('nav');
 const onScroll=()=>nav.classList.toggle('solid',scrollY>40);addEventListener('scroll',onScroll,{passive:true});onScroll();
 

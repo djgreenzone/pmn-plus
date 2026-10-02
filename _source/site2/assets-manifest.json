@@ -1,0 +1,1027 @@
+{
+ "brand": {
+  "mate-maa-tonga-pattern-background-red.avif": {
+   "file": "brand/mate-maa-tonga-pattern-background-red.avif",
+   "kb": 88,
+   "alt": "",
+   "size": [
+    1920,
+    1200
+   ]
+  },
+  "mate-maa-tonga-pattern-background-red.webp": {
+   "file": "brand/mate-maa-tonga-pattern-background-red.webp",
+   "kb": 131,
+   "alt": "",
+   "size": [
+    1920,
+    1200
+   ]
+  },
+  "mate-maa-tonga-rugby-league-crest.avif": {
+   "file": "brand/mate-maa-tonga-rugby-league-crest.avif",
+   "kb": 62,
+   "alt": "Mate Ma'a Tonga rugby league crest",
+   "size": [
+    900,
+    1329
+   ]
+  },
+  "mate-maa-tonga-rugby-league-crest.webp": {
+   "file": "brand/mate-maa-tonga-rugby-league-crest.webp",
+   "kb": 141,
+   "alt": "Mate Ma'a Tonga rugby league crest",
+   "size": [
+    900,
+    1329
+   ]
+  },
+  "pmn-plus-logo-black.png": {
+   "file": "brand/pmn-plus-logo-black.png",
+   "kb": 47,
+   "alt": "PMN+ Polynesian Music Network Plus",
+   "size": [
+    512,
+    513
+   ]
+  },
+  "pmn-plus-logo-black.svg": {
+   "file": "brand/pmn-plus-logo-black.svg",
+   "kb": 34,
+   "alt": "PMN+ Polynesian Music Network Plus"
+  },
+  "pmn-plus-logo-white.svg": {
+   "file": "brand/pmn-plus-logo-white.svg",
+   "kb": 34,
+   "alt": "PMN+ Polynesian Music Network Plus"
+  },
+  "toa-samoa-pattern-background-blue.avif": {
+   "file": "brand/toa-samoa-pattern-background-blue.avif",
+   "kb": 40,
+   "alt": "",
+   "size": [
+    1920,
+    1200
+   ]
+  },
+  "toa-samoa-pattern-background-blue.webp": {
+   "file": "brand/toa-samoa-pattern-background-blue.webp",
+   "kb": 56,
+   "alt": "",
+   "size": [
+    1920,
+    1200
+   ]
+  },
+  "toa-samoa-rugby-league-crest.avif": {
+   "file": "brand/toa-samoa-rugby-league-crest.avif",
+   "kb": 56,
+   "alt": "Toa Samoa rugby league crest",
+   "size": [
+    662,
+    710
+   ]
+  },
+  "toa-samoa-rugby-league-crest.webp": {
+   "file": "brand/toa-samoa-rugby-league-crest.webp",
+   "kb": 97,
+   "alt": "Toa Samoa rugby league crest",
+   "size": [
+    662,
+    710
+   ]
+  }
+ },
+ "products": [
+  {
+   "id": "mmt-oversized",
+   "slug": "mate-maa-tonga-crest-oversized-tee-black",
+   "name": "Mate Ma'a Tonga Crest Oversized Tee",
+   "team": "tonga",
+   "colour": "Black",
+   "type": "tee",
+   "spin": {
+    "frames": 90,
+    "degreesPerFrame": 4.0,
+    "sheets": [
+     "frames/mmt-oversized/s0.webp",
+     "frames/mmt-oversized/s1.webp",
+     "frames/mmt-oversized/s2.webp",
+     "frames/mmt-oversized/s3.webp",
+     "frames/mmt-oversized/s4.webp",
+     "frames/mmt-oversized/s5.webp"
+    ],
+    "cols": 5,
+    "frameSize": [
+     524,
+     600
+    ],
+    "kb": 662
+   },
+   "stills": [
+    {
+     "file": "hires/mmt-oversized/mate-maa-tonga-crest-oversized-tee-black-front.webp",
+     "angle": 4,
+     "view": "front",
+     "alt": "Mate Ma'a Tonga Crest Oversized Tee in black, front view",
+     "size": [
+      1186,
+      1359
+     ]
+    },
+    {
+     "file": "hires/mmt-oversized/mate-maa-tonga-crest-oversized-tee-black-back.webp",
+     "angle": 180,
+     "view": "back",
+     "alt": "Mate Ma'a Tonga Crest Oversized Tee in black, back view",
+     "size": [
+      1178,
+      1350
+     ]
+    }
+   ],
+   "price": 55,
+   "currency": "USD"
+  },
+  {
+   "id": "toa-oversized",
+   "slug": "toa-samoa-crest-oversized-tee-black",
+   "name": "Toa Samoa Crest Oversized Tee",
+   "team": "samoa",
+   "colour": "Black",
+   "type": "tee",
+   "spin": {
+    "frames": 90,
+    "degreesPerFrame": 4.0,
+    "sheets": [
+     "frames/toa-oversized/s0.webp",
+     "frames/toa-oversized/s1.webp",
+     "frames/toa-oversized/s2.webp",
+     "frames/toa-oversized/s3.webp",
+     "frames/toa-oversized/s4.webp",
+     "frames/toa-oversized/s5.webp"
+    ],
+    "cols": 5,
+    "frameSize": [
+     524,
+     600
+    ],
+    "kb": 713
+   },
+   "stills": [
+    {
+     "file": "hires/toa-oversized/toa-samoa-crest-oversized-tee-black-front.webp",
+     "angle": 4,
+     "view": "front",
+     "alt": "Toa Samoa Crest Oversized Tee in black, front view",
+     "size": [
+      1186,
+      1359
+     ]
+    },
+    {
+     "file": "hires/toa-oversized/toa-samoa-crest-oversized-tee-black-back.webp",
+     "angle": 172,
+     "view": "back",
+     "alt": "Toa Samoa Crest Oversized Tee in black, back view",
+     "size": [
+      1191,
+      1364
+     ]
+    }
+   ],
+   "price": 55,
+   "currency": "USD"
+  },
+  {
+   "id": "mmt-676-black",
+   "slug": "mate-maa-tonga-676-tee-black",
+   "name": "Mate Ma'a Tonga 676 Tee",
+   "team": "tonga",
+   "colour": "Black",
+   "type": "tee",
+   "spin": {
+    "frames": 72,
+    "degreesPerFrame": 5.0,
+    "sheets": [
+     "frames/mmt-676-black/s0.webp",
+     "frames/mmt-676-black/s1.webp",
+     "frames/mmt-676-black/s2.webp",
+     "frames/mmt-676-black/s3.webp",
+     "frames/mmt-676-black/s4.webp",
+     "frames/mmt-676-black/s5.webp"
+    ],
+    "cols": 4,
+    "frameSize": [
+     460,
+     599
+    ],
+    "kb": 536
+   },
+   "stills": [
+    {
+     "file": "hires/mmt-676-black/mate-maa-tonga-676-tee-black-front.webp",
+     "angle": 0,
+     "view": "front",
+     "alt": "Mate Ma'a Tonga 676 Tee in black, front view",
+     "size": [
+      1050,
+      1368
+     ]
+    },
+    {
+     "file": "hires/mmt-676-black/mate-maa-tonga-676-tee-black-right.webp",
+     "angle": 90,
+     "view": "right",
+     "alt": "Mate Ma'a Tonga 676 Tee in black, right view",
+     "size": [
+      1051,
+      1368
+     ]
+    },
+    {
+     "file": "hires/mmt-676-black/mate-maa-tonga-676-tee-black-back.webp",
+     "angle": 180,
+     "view": "back",
+     "alt": "Mate Ma'a Tonga 676 Tee in black, back view",
+     "size": [
+      1051,
+      1368
+     ]
+    }
+   ],
+   "price": 45,
+   "currency": "USD"
+  },
+  {
+   "id": "toa-685-black",
+   "slug": "toa-samoa-685-tee-black",
+   "name": "Toa Samoa 685 Tee",
+   "team": "samoa",
+   "colour": "Black",
+   "type": "tee",
+   "spin": {
+    "frames": 90,
+    "degreesPerFrame": 4.0,
+    "sheets": [
+     "frames/toa-685-black/s0.webp",
+     "frames/toa-685-black/s1.webp",
+     "frames/toa-685-black/s2.webp",
+     "frames/toa-685-black/s3.webp",
+     "frames/toa-685-black/s4.webp",
+     "frames/toa-685-black/s5.webp"
+    ],
+    "cols": 5,
+    "frameSize": [
+     472,
+     614
+    ],
+    "kb": 576
+   },
+   "stills": [
+    {
+     "file": "hires/toa-685-black/toa-samoa-685-tee-black-front.webp",
+     "angle": 0,
+     "view": "front",
+     "alt": "Toa Samoa 685 Tee in black, front view",
+     "size": [
+      1057,
+      1375
+     ]
+    },
+    {
+     "file": "hires/toa-685-black/toa-samoa-685-tee-black-right.webp",
+     "angle": 88,
+     "view": "right",
+     "alt": "Toa Samoa 685 Tee in black, right view",
+     "size": [
+      1048,
+      1364
+     ]
+    },
+    {
+     "file": "hires/toa-685-black/toa-samoa-685-tee-black-back.webp",
+     "angle": 176,
+     "view": "back",
+     "alt": "Toa Samoa 685 Tee in black, back view",
+     "size": [
+      1060,
+      1378
+     ]
+    },
+    {
+     "file": "hires/toa-685-black/toa-samoa-685-tee-black-front-left.webp",
+     "angle": 316,
+     "view": "front-left",
+     "alt": "Toa Samoa 685 Tee in black, front left view",
+     "size": [
+      1063,
+      1383
+     ]
+    }
+   ],
+   "price": 45,
+   "currency": "USD"
+  },
+  {
+   "id": "mmt-snapback",
+   "slug": "mate-maa-tonga-curved-bill-snapback-red",
+   "name": "Mate Ma'a Tonga Curved Bill Snapback",
+   "team": "tonga",
+   "colour": "Red",
+   "type": "hat",
+   "spin": {
+    "frames": 90,
+    "degreesPerFrame": 4.0,
+    "sheets": [
+     "frames/mmt-snapback/s0.webp",
+     "frames/mmt-snapback/s1.webp",
+     "frames/mmt-snapback/s2.webp",
+     "frames/mmt-snapback/s3.webp",
+     "frames/mmt-snapback/s4.webp",
+     "frames/mmt-snapback/s5.webp"
+    ],
+    "cols": 5,
+    "frameSize": [
+     594,
+     337
+    ],
+    "kb": 962
+   },
+   "stills": [
+    {
+     "file": "hires/mmt-snapback/mate-maa-tonga-curved-bill-snapback-red-front-right.webp",
+     "angle": 32,
+     "view": "front-right",
+     "alt": "Mate Ma'a Tonga Curved Bill Snapback in red, front right view",
+     "size": [
+      1072,
+      608
+     ]
+    },
+    {
+     "file": "hires/mmt-snapback/mate-maa-tonga-curved-bill-snapback-red-right.webp",
+     "angle": 80,
+     "view": "right",
+     "alt": "Mate Ma'a Tonga Curved Bill Snapback in red, right view",
+     "size": [
+      1290,
+      732
+     ]
+    },
+    {
+     "file": "hires/mmt-snapback/mate-maa-tonga-curved-bill-snapback-red-back.webp",
+     "angle": 168,
+     "view": "back",
+     "alt": "Mate Ma'a Tonga Curved Bill Snapback in red, back view",
+     "size": [
+      1611,
+      913
+     ]
+    },
+    {
+     "file": "hires/mmt-snapback/mate-maa-tonga-curved-bill-snapback-red-left.webp",
+     "angle": 280,
+     "view": "left",
+     "alt": "Mate Ma'a Tonga Curved Bill Snapback in red, left view",
+     "size": [
+      1230,
+      698
+     ]
+    },
+    {
+     "file": "hires/mmt-snapback/mate-maa-tonga-curved-bill-snapback-red-front-left.webp",
+     "angle": 308,
+     "view": "front-left",
+     "alt": "Mate Ma'a Tonga Curved Bill Snapback in red, front left view",
+     "size": [
+      1072,
+      608
+     ]
+    },
+    {
+     "file": "hires/mmt-snapback/mate-maa-tonga-curved-bill-snapback-red-front.webp",
+     "angle": 356,
+     "view": "front",
+     "alt": "Mate Ma'a Tonga Curved Bill Snapback in red, front view",
+     "size": [
+      1591,
+      902
+     ]
+    }
+   ],
+   "price": 55,
+   "currency": "USD"
+  },
+  {
+   "id": "toa-snapback",
+   "slug": "toa-samoa-curved-bill-snapback-royal-blue",
+   "name": "Toa Samoa Curved Bill Snapback",
+   "team": "samoa",
+   "colour": "Royal Blue",
+   "type": "hat",
+   "spin": {
+    "frames": 90,
+    "degreesPerFrame": 4.0,
+    "sheets": [
+     "frames/toa-snapback/s0.webp",
+     "frames/toa-snapback/s1.webp",
+     "frames/toa-snapback/s2.webp",
+     "frames/toa-snapback/s3.webp",
+     "frames/toa-snapback/s4.webp",
+     "frames/toa-snapback/s5.webp"
+    ],
+    "cols": 5,
+    "frameSize": [
+     594,
+     337
+    ],
+    "kb": 956
+   },
+   "stills": [
+    {
+     "file": "hires/toa-snapback/toa-samoa-curved-bill-snapback-royal-blue-front.webp",
+     "angle": 4,
+     "view": "front",
+     "alt": "Toa Samoa Curved Bill Snapback in royal blue, front view",
+     "size": [
+      1671,
+      948
+     ]
+    },
+    {
+     "file": "hires/toa-snapback/toa-samoa-curved-bill-snapback-royal-blue-front-right.webp",
+     "angle": 48,
+     "view": "front-right",
+     "alt": "Toa Samoa Curved Bill Snapback in royal blue, front right view",
+     "size": [
+      1086,
+      616
+     ]
+    },
+    {
+     "file": "hires/toa-snapback/toa-samoa-curved-bill-snapback-royal-blue-back.webp",
+     "angle": 176,
+     "view": "back",
+     "alt": "Toa Samoa Curved Bill Snapback in royal blue, back view",
+     "size": [
+      1546,
+      878
+     ]
+    },
+    {
+     "file": "hires/toa-snapback/toa-samoa-curved-bill-snapback-royal-blue-left.webp",
+     "angle": 256,
+     "view": "left",
+     "alt": "Toa Samoa Curved Bill Snapback in royal blue, left view",
+     "size": [
+      1172,
+      665
+     ]
+    },
+    {
+     "file": "hires/toa-snapback/toa-samoa-curved-bill-snapback-royal-blue-front-left.webp",
+     "angle": 312,
+     "view": "front-left",
+     "alt": "Toa Samoa Curved Bill Snapback in royal blue, front left view",
+     "size": [
+      1088,
+      617
+     ]
+    }
+   ],
+   "price": 55,
+   "currency": "USD"
+  },
+  {
+   "id": "mmt-hp-snapback",
+   "slug": "mate-maa-tonga-high-profile-snapback-white-crimson",
+   "name": "Mate Ma'a Tonga High Profile Snapback",
+   "team": "tonga",
+   "colour": "White / Crimson",
+   "type": "hat",
+   "spin": {
+    "frames": 90,
+    "degreesPerFrame": 4.0,
+    "sheets": [
+     "frames/mmt-hp-snapback/s0.webp",
+     "frames/mmt-hp-snapback/s1.webp",
+     "frames/mmt-hp-snapback/s2.webp",
+     "frames/mmt-hp-snapback/s3.webp",
+     "frames/mmt-hp-snapback/s4.webp",
+     "frames/mmt-hp-snapback/s5.webp"
+    ],
+    "cols": 5,
+    "frameSize": [
+     594,
+     337
+    ],
+    "kb": 1143
+   },
+   "stills": [
+    {
+     "file": "hires/mmt-hp-snapback/mate-maa-tonga-high-profile-snapback-white-crimson-front-right.webp",
+     "angle": 44,
+     "view": "front-right",
+     "alt": "Mate Ma'a Tonga High Profile Snapback in white / crimson, front right view",
+     "size": [
+      603,
+      343
+     ]
+    },
+    {
+     "file": "hires/mmt-hp-snapback/mate-maa-tonga-high-profile-snapback-white-crimson-right.webp",
+     "angle": 80,
+     "view": "right",
+     "alt": "Mate Ma'a Tonga High Profile Snapback in white / crimson, right view",
+     "size": [
+      713,
+      405
+     ]
+    },
+    {
+     "file": "hires/mmt-hp-snapback/mate-maa-tonga-high-profile-snapback-white-crimson-front-left.webp",
+     "angle": 308,
+     "view": "front-left",
+     "alt": "Mate Ma'a Tonga High Profile Snapback in white / crimson, front left view",
+     "size": [
+      603,
+      343
+     ]
+    },
+    {
+     "file": "hires/mmt-hp-snapback/mate-maa-tonga-high-profile-snapback-white-crimson-front.webp",
+     "angle": 356,
+     "view": "front",
+     "alt": "Mate Ma'a Tonga High Profile Snapback in white / crimson, front view",
+     "size": [
+      895,
+      507
+     ]
+    }
+   ],
+   "price": 55,
+   "currency": "USD"
+  },
+  {
+   "id": "toa-hp-snapback",
+   "slug": "toa-samoa-high-profile-snapback-navy-white",
+   "name": "Toa Samoa High Profile Snapback",
+   "team": "samoa",
+   "colour": "Navy / White",
+   "type": "hat",
+   "spin": {
+    "frames": 90,
+    "degreesPerFrame": 4.0,
+    "sheets": [
+     "frames/toa-hp-snapback/s0.webp",
+     "frames/toa-hp-snapback/s1.webp",
+     "frames/toa-hp-snapback/s2.webp",
+     "frames/toa-hp-snapback/s3.webp",
+     "frames/toa-hp-snapback/s4.webp",
+     "frames/toa-hp-snapback/s5.webp"
+    ],
+    "cols": 5,
+    "frameSize": [
+     594,
+     337
+    ],
+    "kb": 1137
+   },
+   "stills": [
+    {
+     "file": "hires/toa-hp-snapback/toa-samoa-high-profile-snapback-navy-white-front-right.webp",
+     "angle": 44,
+     "view": "front-right",
+     "alt": "Toa Samoa High Profile Snapback in navy / white, front right view",
+     "size": [
+      603,
+      343
+     ]
+    },
+    {
+     "file": "hires/toa-hp-snapback/toa-samoa-high-profile-snapback-navy-white-right.webp",
+     "angle": 84,
+     "view": "right",
+     "alt": "Toa Samoa High Profile Snapback in navy / white, right view",
+     "size": [
+      731,
+      415
+     ]
+    },
+    {
+     "file": "hires/toa-hp-snapback/toa-samoa-high-profile-snapback-navy-white-left.webp",
+     "angle": 276,
+     "view": "left",
+     "alt": "Toa Samoa High Profile Snapback in navy / white, left view",
+     "size": [
+      728,
+      414
+     ]
+    },
+    {
+     "file": "hires/toa-hp-snapback/toa-samoa-high-profile-snapback-navy-white-front-left.webp",
+     "angle": 308,
+     "view": "front-left",
+     "alt": "Toa Samoa High Profile Snapback in navy / white, front left view",
+     "size": [
+      603,
+      343
+     ]
+    },
+    {
+     "file": "hires/toa-hp-snapback/toa-samoa-high-profile-snapback-navy-white-front.webp",
+     "angle": 356,
+     "view": "front",
+     "alt": "Toa Samoa High Profile Snapback in navy / white, front view",
+     "size": [
+      895,
+      507
+     ]
+    }
+   ],
+   "price": 55,
+   "currency": "USD"
+  },
+  {
+   "id": "mmt-676-tee",
+   "slug": "mate-maa-tonga-676-tee-red",
+   "name": "Mate Ma'a Tonga 676 Tee",
+   "team": "tonga",
+   "colour": "Red",
+   "type": "tee",
+   "spin": {
+    "frames": 90,
+    "degreesPerFrame": 4.0,
+    "sheets": [
+     "frames/mmt-676-tee/s0.webp",
+     "frames/mmt-676-tee/s1.webp",
+     "frames/mmt-676-tee/s2.webp",
+     "frames/mmt-676-tee/s3.webp",
+     "frames/mmt-676-tee/s4.webp",
+     "frames/mmt-676-tee/s5.webp"
+    ],
+    "cols": 5,
+    "frameSize": [
+     472,
+     614
+    ],
+    "kb": 927
+   },
+   "stills": [
+    {
+     "file": "hires/mmt-676-tee/mate-maa-tonga-676-tee-red-front.webp",
+     "angle": 0,
+     "view": "front",
+     "alt": "Mate Ma'a Tonga 676 Tee in red, front view",
+     "size": [
+      1046,
+      1361
+     ]
+    },
+    {
+     "file": "hires/mmt-676-tee/mate-maa-tonga-676-tee-red-right.webp",
+     "angle": 84,
+     "view": "right",
+     "alt": "Mate Ma'a Tonga 676 Tee in red, right view",
+     "size": [
+      1054,
+      1371
+     ]
+    },
+    {
+     "file": "hires/mmt-676-tee/mate-maa-tonga-676-tee-red-back.webp",
+     "angle": 176,
+     "view": "back",
+     "alt": "Mate Ma'a Tonga 676 Tee in red, back view",
+     "size": [
+      1054,
+      1371
+     ]
+    },
+    {
+     "file": "hires/mmt-676-tee/mate-maa-tonga-676-tee-red-front-left.webp",
+     "angle": 332,
+     "view": "front-left",
+     "alt": "Mate Ma'a Tonga 676 Tee in red, front left view",
+     "size": [
+      1050,
+      1366
+     ]
+    }
+   ],
+   "price": 45,
+   "currency": "USD"
+  },
+  {
+   "id": "toa-685-tee",
+   "slug": "toa-samoa-685-tee-royal-blue",
+   "name": "Toa Samoa 685 Tee",
+   "team": "samoa",
+   "colour": "Royal Blue",
+   "type": "tee",
+   "spin": {
+    "frames": 90,
+    "degreesPerFrame": 4.0,
+    "sheets": [
+     "frames/toa-685-tee/s0.webp",
+     "frames/toa-685-tee/s1.webp",
+     "frames/toa-685-tee/s2.webp",
+     "frames/toa-685-tee/s3.webp",
+     "frames/toa-685-tee/s4.webp",
+     "frames/toa-685-tee/s5.webp"
+    ],
+    "cols": 5,
+    "frameSize": [
+     472,
+     614
+    ],
+    "kb": 905
+   },
+   "stills": [
+    {
+     "file": "hires/toa-685-tee/toa-samoa-685-tee-royal-blue-front.webp",
+     "angle": 0,
+     "view": "front",
+     "alt": "Toa Samoa 685 Tee in royal blue, front view",
+     "size": [
+      1046,
+      1361
+     ]
+    },
+    {
+     "file": "hires/toa-685-tee/toa-samoa-685-tee-royal-blue-right.webp",
+     "angle": 84,
+     "view": "right",
+     "alt": "Toa Samoa 685 Tee in royal blue, right view",
+     "size": [
+      1050,
+      1366
+     ]
+    },
+    {
+     "file": "hires/toa-685-tee/toa-samoa-685-tee-royal-blue-back.webp",
+     "angle": 176,
+     "view": "back",
+     "alt": "Toa Samoa 685 Tee in royal blue, back view",
+     "size": [
+      1058,
+      1375
+     ]
+    },
+    {
+     "file": "hires/toa-685-tee/toa-samoa-685-tee-royal-blue-front-left.webp",
+     "angle": 336,
+     "view": "front-left",
+     "alt": "Toa Samoa 685 Tee in royal blue, front left view",
+     "size": [
+      1045,
+      1359
+     ]
+    }
+   ],
+   "price": 45,
+   "currency": "USD"
+  },
+  {
+   "id": "mmt-silver-blackout",
+   "slug": "mate-maa-tonga-silver-blackout-tee-black",
+   "name": "MMT Silver Blackout Tee",
+   "team": "tonga",
+   "colour": "Black / Silver",
+   "type": "tee",
+   "spin": {
+    "frames": 90,
+    "degreesPerFrame": 4.0,
+    "sheets": [
+     "frames/mmt-silver-blackout/s0.webp",
+     "frames/mmt-silver-blackout/s1.webp",
+     "frames/mmt-silver-blackout/s2.webp",
+     "frames/mmt-silver-blackout/s3.webp",
+     "frames/mmt-silver-blackout/s4.webp",
+     "frames/mmt-silver-blackout/s5.webp"
+    ],
+    "cols": 5,
+    "frameSize": [
+     472,
+     614
+    ],
+    "kb": 428
+   },
+   "stills": [
+    {
+     "file": "hires/mmt-silver-blackout/mate-maa-tonga-silver-blackout-tee-black-front.webp",
+     "angle": 0,
+     "view": "front",
+     "alt": "MMT Silver Blackout Tee in black / silver, front view",
+     "size": [
+      1057,
+      1375
+     ]
+    },
+    {
+     "file": "hires/mmt-silver-blackout/mate-maa-tonga-silver-blackout-tee-black-right.webp",
+     "angle": 88,
+     "view": "right",
+     "alt": "MMT Silver Blackout Tee in black / silver, right view",
+     "size": [
+      1062,
+      1382
+     ]
+    },
+    {
+     "file": "hires/mmt-silver-blackout/mate-maa-tonga-silver-blackout-tee-black-back.webp",
+     "angle": 176,
+     "view": "back",
+     "alt": "MMT Silver Blackout Tee in black / silver, back view",
+     "size": [
+      1063,
+      1384
+     ]
+    },
+    {
+     "file": "hires/mmt-silver-blackout/mate-maa-tonga-silver-blackout-tee-black-front-left.webp",
+     "angle": 340,
+     "view": "front-left",
+     "alt": "MMT Silver Blackout Tee in black / silver, front left view",
+     "size": [
+      1056,
+      1374
+     ]
+    }
+   ],
+   "price": 45,
+   "currency": "USD"
+  },
+  {
+   "id": "toa-silver-blackout",
+   "slug": "toa-samoa-silver-blackout-tee-black",
+   "name": "Toa Samoa Silver Blackout Tee",
+   "team": "samoa",
+   "colour": "Black / Silver",
+   "type": "tee",
+   "spin": {
+    "frames": 72,
+    "degreesPerFrame": 5.0,
+    "sheets": [
+     "frames/toa-silver-blackout/s0.webp",
+     "frames/toa-silver-blackout/s1.webp",
+     "frames/toa-silver-blackout/s2.webp",
+     "frames/toa-silver-blackout/s3.webp",
+     "frames/toa-silver-blackout/s4.webp",
+     "frames/toa-silver-blackout/s5.webp"
+    ],
+    "cols": 4,
+    "frameSize": [
+     460,
+     599
+    ],
+    "kb": 420
+   },
+   "stills": [
+    {
+     "file": "hires/toa-silver-blackout/toa-samoa-silver-blackout-tee-black-front.webp",
+     "angle": 0,
+     "view": "front",
+     "alt": "Toa Samoa Silver Blackout Tee in black / silver, front view",
+     "size": [
+      1050,
+      1368
+     ]
+    },
+    {
+     "file": "hires/toa-silver-blackout/toa-samoa-silver-blackout-tee-black-right.webp",
+     "angle": 90,
+     "view": "right",
+     "alt": "Toa Samoa Silver Blackout Tee in black / silver, right view",
+     "size": [
+      1060,
+      1380
+     ]
+    },
+    {
+     "file": "hires/toa-silver-blackout/toa-samoa-silver-blackout-tee-black-back.webp",
+     "angle": 180,
+     "view": "back",
+     "alt": "Toa Samoa Silver Blackout Tee in black / silver, back view",
+     "size": [
+      1055,
+      1374
+     ]
+    }
+   ],
+   "price": 45,
+   "currency": "USD"
+  },
+  {
+   "id": "mmt-trucker",
+   "slug": "mate-maa-tonga-trucker-snapback-black",
+   "name": "Mate Ma'a Tonga Trucker Snapback",
+   "team": "tonga",
+   "colour": "Black",
+   "type": "hat",
+   "spin": {
+    "frames": 90,
+    "degreesPerFrame": 4.0,
+    "sheets": [
+     "frames/mmt-trucker/s0.webp",
+     "frames/mmt-trucker/s1.webp",
+     "frames/mmt-trucker/s2.webp",
+     "frames/mmt-trucker/s3.webp",
+     "frames/mmt-trucker/s4.webp",
+     "frames/mmt-trucker/s5.webp"
+    ],
+    "cols": 5,
+    "frameSize": [
+     628,
+     340
+    ],
+    "kb": 1878
+   },
+   "stills": [
+    {
+     "file": "hires/mmt-trucker/mate-maa-tonga-trucker-snapback-black-front.webp",
+     "angle": 0,
+     "view": "front",
+     "alt": "Mate Ma'a Tonga Trucker Snapback in black, front view",
+     "size": [
+      1837,
+      994
+     ]
+    },
+    {
+     "file": "hires/mmt-trucker/mate-maa-tonga-trucker-snapback-black-front-right.webp",
+     "angle": 44,
+     "view": "front-right",
+     "alt": "Mate Ma'a Tonga Trucker Snapback in black, front right view",
+     "size": [
+      1217,
+      660
+     ]
+    },
+    {
+     "file": "hires/mmt-trucker/mate-maa-tonga-trucker-snapback-black-front-left.webp",
+     "angle": 316,
+     "view": "front-left",
+     "alt": "Mate Ma'a Tonga Trucker Snapback in black, front left view",
+     "size": [
+      1234,
+      668
+     ]
+    }
+   ],
+   "price": 35,
+   "currency": "USD"
+  },
+  {
+   "id": "toa-trucker",
+   "slug": "toa-samoa-trucker-snapback-black",
+   "name": "Toa Samoa Trucker Snapback",
+   "team": "samoa",
+   "colour": "Black",
+   "type": "hat",
+   "spin": {
+    "frames": 90,
+    "degreesPerFrame": 4.0,
+    "sheets": [
+     "frames/toa-trucker/s0.webp",
+     "frames/toa-trucker/s1.webp",
+     "frames/toa-trucker/s2.webp",
+     "frames/toa-trucker/s3.webp",
+     "frames/toa-trucker/s4.webp",
+     "frames/toa-trucker/s5.webp"
+    ],
+    "cols": 5,
+    "frameSize": [
+     628,
+     340
+    ],
+    "kb": 1864
+   },
+   "stills": [
+    {
+     "file": "hires/toa-trucker/toa-samoa-trucker-snapback-black-front.webp",
+     "angle": 4,
+     "view": "front",
+     "alt": "Toa Samoa Trucker Snapback in black, front view",
+     "size": [
+      1861,
+      1007
+     ]
+    },
+    {
+     "file": "hires/toa-trucker/toa-samoa-trucker-snapback-black-front-right.webp",
+     "angle": 44,
+     "view": "front-right",
+     "alt": "Toa Samoa Trucker Snapback in black, front right view",
+     "size": [
+      1233,
+      668
+     ]
+    }
+   ],
+   "price": 35,
+   "currency": "USD"
+  }
+ ]
+}

@@ -79,6 +79,7 @@ const show=r=>{window.pmnInstant=true;try{$("page").hidden=true;$("pSticky").cla
   if(r.k==="p"){if(!$("pdp").hidden&&PDP.current()){if(PDP.current()!==r.key)PDP.swap(r.key)}else{const im=new Image();im.src=heroURL(r.key);PDP.open(r.key,im,"home")}}
   else if(r.k==="c")Coll.open(r.key);
   else{const back=$("hero").hidden;$("pdp").hidden=true;$("coll").hidden=true;if(back)Hero.show();pmnRoute("h")}}catch(e){console.warn("route",e)}finally{window.pmnInstant=false}};
+window.pmnGo=p=>show(parse(p));
 addEventListener("popstate",()=>{mode="none";show(parse(location.pathname));mode="push"});
 const r0=parse(location.pathname);if(r0.k!=="h"){mode="replace";show(r0);mode="push"}
 })();</script>
@@ -134,6 +135,17 @@ for k,c in SD['collections'].items():
     pg=sub1(pg,r'<div class="grid" id="cGrid"></div>',f'<div class="grid" id="cGrid">{cards}</div>')
     os.makedirs(os.path.join(SHOPDIR,k),exist_ok=True)
     open(os.path.join(SHOPDIR,k,'index.html'),'w').write(pg)
+# ---------- search index for the header search ----------
+import unicodedata
+def _norm(t): t=unicodedata.normalize('NFD',t.lower());t=''.join(c for c in t if not unicodedata.combining(c));t=re.sub(r"[’'`]","",t);return re.sub(r'[^a-z0-9+]+',' ',t).strip()
+_idx=[]
+for pid,o in SD['products'].items():
+    syn='tee t-shirt tshirt shirt top' if o['kind']=='tee' else 'hat cap snapback trucker'
+    _idx.append(dict(n=o['h1'],c=o['colour'],t=o['teamName'],k=o['kind'],p=o['price'],s=o['slug'],i='/shop/'+o['images'][0].split('/shop/')[1],so=o['sold'],
+      h=' '+_norm(' '.join([o['h1'],o['colour'],o['teamName'],syn,o.get('keyword',''),'rlwc rugby league world cup 2026' if o['team']!='pmn' else 'pmn+ pmn plus pasifika']))+' '))
+_idx.sort(key=lambda x:x['so'])
+for x in _idx: x['h']=x['h'].strip()
+json.dump(_idx,open(os.path.join(SHOPDIR,'search.json'),'w'),ensure_ascii=False,separators=(',',':'))
 # ---------- sitemap ----------
 open(os.path.join(SHOPDIR,'..','sitemap.xml'),'w').write(open(D_+'site2/seo/sitemap-shop.xml').read())
 print('routes ok:',n_p,'product pages,',len(SD['collections']),'collection pages, sitemap')

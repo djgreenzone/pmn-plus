@@ -118,7 +118,7 @@ rep("""    for(const i of cart){const p=BY[i.id],want=p.kind==="hat"?LOOK[p.team
       if(cart.some(c=>BY[c.id].kind===kind&&BY[c.id].team===p.team))continue;
       const pick=[first,...PRODUCTS.filter(o=>o.team===p.team&&o.kind===kind).map(o=>o.id)].find(buyable);if(pick)return BY[pick]}""")
 # DEEPLINK: /shop#toa-samoa, #mate-maa-tonga, #pmn-plus open that collection
-s=s+'\n<script>/* DEEPLINK */addEventListener("load",()=>{const h=decodeURIComponent(location.hash.slice(1));setTimeout(()=>{try{if(["toa-samoa","mate-maa-tonga","pmn-plus"].includes(h))Coll.open(h);else if(h==="pmn")Coll.open("pmn-plus","pmn");else if(["shipping","returns","contact","privacy","terms"].includes(h))Pages.open(h);else if(h==="bag")Cart.open()}catch(e){}},60)});</script>\n'
+s=s+'\n<script>/* DEEPLINK */window.pmnDeep=h=>{try{$("page").hidden=true;$("pSticky").classList.remove("on");if(["toa-samoa","mate-maa-tonga","pmn-plus"].includes(h))Coll.open(h);else if(h==="pmn")Coll.open("pmn-plus","pmn");else if(h==="tee"||h==="hat")Coll.open("pmn-plus",h);else if(["shipping","returns","contact","privacy","terms"].includes(h))Pages.open(h);else if(h==="bag")Cart.open()}catch(e){}};addEventListener("load",()=>{const h=decodeURIComponent(location.hash.slice(1));if(h)setTimeout(()=>pmnDeep(h),60)});</script>\n'
 # logo goes to the site homepage
 _a='l.setAttribute("aria-label","PMN+ shop home");l.onclick=goHome;l.onkeydown=e=>{if(e.key==="Enter")goHome()}'
 assert s.count(_a)==1
@@ -222,6 +222,15 @@ def _ld(m):
 s,_n=_r.subn(r'<script type="application/ld\+json">(.*?)</script>',_ld,s,flags=_r.S);assert _n==1
 open(sys.argv[1],'w').write(s)
 print('sold out ok')
+
+# ---------- NAV: one header for the whole site (see nav/nav_build.py) ----------
+import importlib.util as _u
+_sp=_u.spec_from_file_location('nav_build',os.path.join(os.path.dirname(os.path.abspath(__file__)),'nav','nav_build.py'));_nb=_u.module_from_spec(_sp);_sp.loader.exec_module(_nb)
+s=_nb.build_shop(open(sys.argv[1]).read());open(sys.argv[1],'w').write(s)
+_root=os.path.dirname(os.path.dirname(os.path.abspath(sys.argv[1])))
+_nb.copy_assets(_root)
+if os.path.exists(os.path.join(_root,'index.html')):_nb.build_home(os.path.join(_root,'index.html'))
+print('nav ok')
 
 # ---------- ROUTES: own URL per product/collection, pre-rendered pages, sitemap (see seo_routes.py) ----------
 exec(open(os.path.join(os.path.dirname(os.path.abspath(__file__)),'seo_routes.py')).read())

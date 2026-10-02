@@ -158,11 +158,11 @@ button[disabled]{opacity:.5;cursor:default}
 
 /* footer */
 .foot{display:grid;gap:20px;padding:2.5rem clamp(1rem,5vw,2.5rem) 2.25rem;border-top:1px solid var(--line);background:#05060a;text-align:left}
-.foot-logo img{width:56px;height:auto;display:block}
+.foot-logo img{width:48px;height:auto;display:block}
 .foot-cols{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
-.foot nav,.foot .follow{display:flex;flex-direction:column;align-items:flex-start;gap:2px}
-.foot b{font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--dim);margin-bottom:6px}
-.foot nav a{font-size:13.5px;color:rgba(244,242,238,.88);text-decoration:none;padding:6px 0}
+.foot nav,.foot .follow{display:grid;gap:8px;align-content:start;justify-items:start}
+.foot b{font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--dim)}
+.foot nav a{font-size:13.5px;color:rgba(244,242,238,.88);text-decoration:none;padding:2px 0}
 .foot nav a:hover{color:#fff}
 .foot .soc{display:flex;gap:10px}
 .foot .soc a{width:44px;height:44px;border-radius:50%;border:1px solid rgba(244,242,238,.25);display:grid;place-items:center;color:#fff}
@@ -171,7 +171,7 @@ button[disabled]{opacity:.5;cursor:default}
 .foot .pay{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:6px}
 .foot .pay li{font-size:11.5px;font-weight:600;padding:5px 9px;border:1px solid var(--line);border-radius:6px;color:rgba(244,242,238,.8)}
 .foot .fine{margin:0;font-size:12px;color:var(--dim)}
-@media (min-width:900px){.foot{grid-template-columns:auto 1fr auto;column-gap:56px;padding-inline:max(2.5rem,calc(50vw - 560px))}.foot>.fine,.foot>.pay{grid-column:1/-1}.foot-cols{gap:48px;max-width:560px}}
+@media (min-width:900px){.foot{grid-template-columns:auto 1fr auto;align-items:start;column-gap:56px;padding-inline:max(2.5rem,calc(50vw - 620px))}.foot>.fine,.foot>.pay{grid-column:1/-1}.foot-cols{gap:48px}}
 </style>
 </head>
 <body>
@@ -272,11 +272,11 @@ button[disabled]{opacity:.5;cursor:default}
 </main>
 
 <footer class="foot">
-  <a class="foot-logo" href="/" aria-label="PMN+ home"><img src="/shop/brand/pmn-plus-logo-white.svg" alt="PMN+" width="56" height="56" loading="lazy"></a>
+  <a class="foot-logo" href="/" aria-label="PMN+ home"><img src="/shop/brand/pmn-plus-logo-white.svg" alt="PMN+" width="48" height="52" loading="lazy"></a>
   <div class="foot-cols">
     <nav aria-label="Shop"><b>Shop</b><a href="/shop#mate-maa-tonga">Mate Ma'a Tonga</a><a href="/shop#toa-samoa">Toa Samoa</a><a href="/shop#pmn">PMN+</a><a href="/shop">Shop all</a></nav>
-    <nav aria-label="Help"><b>Help</b><a href="/shop#shipping">Shipping</a><a href="/shop#returns">Returns</a><a href="/shop#contact">Contact</a></nav>
-    <nav aria-label="Legal"><b>Legal</b><a href="/shop#privacy">Privacy</a><a href="/shop#terms">Terms</a></nav>
+    <nav aria-label="Help"><b>Help</b><a href="/shop#shipping">Shipping</a><a href="/shop#returns">Returns &amp; exchanges</a><a href="/shop#contact">Contact</a></nav>
+    <nav aria-label="Legal"><b>Legal</b><a href="/shop#privacy">Privacy policy</a><a href="/shop#terms">Terms of service</a></nav>
   </div>
   <div class="follow"><b>Follow us</b><div class="soc">
     <a href="https://www.instagram.com/polynesianmusic/" target="_blank" rel="noopener" aria-label="PMN+ on Instagram"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.4" cy="6.6" r="1.1" class="f"/></svg></a>

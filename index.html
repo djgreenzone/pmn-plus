@@ -35,7 +35,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 
 <script type="application/ld+json">
-{"@context": "https://schema.org", "@graph": [{"@type": "Organization", "@id": "https://www.polynesianmusicnetwork.com/#org", "name": "PMN+", "alternateName": ["Polynesian Music Network", "Polynesian Music Network Plus"], "legalName": "Polynesian Music", "url": "https://www.polynesianmusicnetwork.com/", "logo": "https://www.polynesianmusicnetwork.com/assets/pmn-logo.png", "description": "Pasifika music, tradition, sports, trends and culture from across the Pacific.", "sameAs": ["https://www.instagram.com/polynesianmusic/", "https://www.facebook.com/p/Polynesian-Music-61554168566749/", "https://www.tiktok.com/@polynesianmusic", "https://www.youtube.com/c/PolynesianMusic"]}, {"@type": "WebSite", "@id": "https://www.polynesianmusicnetwork.com/#website", "name": "PMN+", "alternateName": "Polynesian Music Network", "url": "https://www.polynesianmusicnetwork.com/", "publisher": {"@id": "https://www.polynesianmusicnetwork.com/#org"}, "inLanguage": "en"}]}
+{"@context": "https://schema.org", "@graph": [{"@type": "Organization", "@id": "https://www.polynesianmusicnetwork.com/#org", "name": "PMN+", "alternateName": ["Polynesian Music Network", "Polynesian Music Network Plus"], "legalName": "Polynesian Music", "url": "https://www.polynesianmusicnetwork.com/", "logo": "https://www.polynesianmusicnetwork.com/assets/pmn-logo.png", "description": "Pasifika music, tradition, sports, trends and culture from across the Pacific.", "sameAs": ["https://www.instagram.com/polynesianmusicnetwork/", "https://www.facebook.com/p/Polynesian-Music-61554168566749/", "https://www.tiktok.com/@polynesianmusic", "https://www.youtube.com/c/PolynesianMusic"]}, {"@type": "WebSite", "@id": "https://www.polynesianmusicnetwork.com/#website", "name": "PMN+", "alternateName": "Polynesian Music Network", "url": "https://www.polynesianmusicnetwork.com/", "publisher": {"@id": "https://www.polynesianmusicnetwork.com/#org"}, "inLanguage": "en"}]}
 </script>
 
 <style>
@@ -74,7 +74,7 @@ img{display:block;max-width:100%}
 @media (prefers-reduced-motion:reduce){.hero .bgv video{display:none}}
 .hero .logo{width:clamp(110px,16vw,170px);height:auto}
 .hero h1{font-family:var(--display);font-weight:400;text-transform:uppercase;font-size:clamp(3rem,9.5vw,7.6rem);line-height:.86;letter-spacing:.01em;max-width:13ch;text-wrap:balance}
-.hero h1 span{display:block;background:linear-gradient(90deg,#5d8dff 0%,#fff 45%,#fff 55%,#ff5468 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero h1 span{display:block}
 .hero .line{max-width:34ch;color:#c9c9cd;font-size:clamp(1.05rem,1rem + .4vw,1.3rem);text-wrap:balance}
 .capture{width:100%;max-width:27rem;margin-top:.35rem}
 form{display:flex;gap:.5rem;flex-wrap:wrap;justify-content:center}
@@ -127,17 +127,30 @@ button[disabled]{opacity:.5;cursor:default}
 .ig .btn{background:#050507;color:#fff}
 .ig .btn.ghost{background:transparent;color:#050507;box-shadow:inset 0 0 0 1.5px rgba(5,5,7,.4)}
 .ig .btn.ghost:hover{box-shadow:inset 0 0 0 1.5px #050507}
-.handle{display:flex;align-items:center;gap:.9rem;margin-top:.9rem}
-.handle img{width:58px;height:58px;border-radius:50%;background:#050507;padding:9px}
-.handle b{display:block;font-family:var(--display);font-weight:400;font-size:1.6rem;letter-spacing:.03em;line-height:1}
+.handle{display:flex;align-items:center;gap:.9rem;margin-top:.9rem;min-width:0}.handle>div{min-width:0}
+.handle img{flex:none;width:58px;height:58px;border-radius:50%;background:#050507;padding:9px}
+.handle b{display:block;font-family:var(--display);font-weight:400;font-size:clamp(1.15rem,5.2vw,1.6rem);letter-spacing:.02em;line-height:1;overflow-wrap:anywhere}
 .handle span{font-size:.92rem;color:#5f5f66}
-.grid{display:grid;grid-template-columns:repeat(6,1fr);gap:clamp(.4rem,1vw,.75rem)}
-.grid a{position:relative;display:block;border-radius:14px;overflow:hidden;aspect-ratio:4/5;background:#ddd}
-.grid img{width:100%;height:100%;object-fit:cover;transition:transform .5s cubic-bezier(.2,.7,.2,1)}
-.grid a::after{content:'';position:absolute;inset:0;background:rgba(0,0,0,0);transition:background .25s}
-.grid a:hover img{transform:scale(1.05)}
-.grid a:hover::after{background:rgba(0,0,0,.18)}
-@media (max-width:900px){.ig .head{grid-template-columns:1fr}.grid{grid-template-columns:repeat(3,1fr)}}
+.reels{display:grid;grid-auto-flow:column;grid-auto-columns:calc((100% - 5*clamp(.5rem,1vw,.85rem))/6);gap:clamp(.5rem,1vw,.85rem);overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;padding-bottom:4px}
+.reels::-webkit-scrollbar{display:none}
+.reel{position:relative;display:block;aspect-ratio:9/16;border-radius:16px;overflow:hidden;background:#1a1a1f;scroll-snap-align:start;text-decoration:none;color:#fff;isolation:isolate}
+.reel img,.reel video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2}
+.reel video{opacity:0;transition:opacity .3s}
+.reel.playing video{opacity:1}
+.reel::after{content:'';position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(0,0,0,.35) 0%,transparent 22%,transparent 55%,rgba(0,0,0,.78) 100%)}
+.reel .ri{position:absolute;top:.7rem;right:.7rem;width:22px;height:22px;fill:none;stroke:#fff;stroke-width:1.8;filter:drop-shadow(0 1px 3px rgba(0,0,0,.5))}
+.reel .play{position:absolute;left:50%;top:50%;width:54px;height:54px;margin:-27px 0 0 -27px;border-radius:50%;background:rgba(255,255,255,.22);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);display:grid;place-items:center;transition:opacity .25s,transform .25s}
+.reel .play svg{width:20px;height:20px;fill:#fff;margin-left:3px}
+.reel.playing .play{opacity:0;transform:scale(.85)}
+.reel .cap{position:absolute;left:.8rem;right:.8rem;bottom:.75rem;font-size:.8rem;line-height:1.35;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;text-shadow:0 1px 4px rgba(0,0,0,.6)}
+.reel.sk{background:linear-gradient(100deg,#e4e1db 30%,#efede9 50%,#e4e1db 70%);background-size:200% 100%;animation:sk 1.2s linear infinite}
+.reel.sk::after{display:none}
+@keyframes sk{to{background-position:-200% 0}}
+@media (prefers-reduced-motion:reduce){.reel.sk{animation:none}}
+.reels-empty{display:none;padding:2.5rem 1rem;text-align:center;color:#5f5f66;border:1.5px dashed rgba(5,5,7,.18);border-radius:16px}
+@media (max-width:900px){.reels{grid-auto-columns:calc((100% - 2*.6rem)/2.6)}}
+@media (max-width:520px){.reels{grid-auto-columns:62%;margin-right:calc(-1*clamp(1rem,5vw,2.5rem))}}
+@media (max-width:900px){.ig .head{grid-template-columns:1fr}}
 
 /* footer */
 .foot{padding:2.5rem clamp(1rem,5vw,2.5rem) 2.25rem;display:flex;flex-direction:column;align-items:center;gap:1.1rem;text-align:center;border-top:1px solid var(--line)}
@@ -152,7 +165,7 @@ button[disabled]{opacity:.5;cursor:default}
   <a href="/" aria-label="PMN+ home"><img class="mark" src="/shop/brand/pmn-plus-logo-white.svg" alt="PMN+" width="46" height="46"></a>
   <nav aria-label="Main">
     <a class="hide-sm" href="#shop">RLWC 2026</a>
-    <a href="https://www.instagram.com/polynesianmusic/" target="_blank" rel="noopener">Instagram</a>
+    <a href="https://www.instagram.com/polynesianmusicnetwork/" target="_blank" rel="noopener">Instagram</a>
     <a class="pill" href="/shop">Shop</a>
   </nav>
 </header>
@@ -222,26 +235,22 @@ button[disabled]{opacity:.5;cursor:default}
   <div class="wrap">
     <div class="head">
       <div>
-        <p class="eyebrow">PMN+ on Instagram</p>
+        <p class="eyebrow">Latest reels &middot; PMN+ on Instagram</p>
         <h2 id="igH">Inside access<br>to the Pacific</h2>
       </div>
       <div>
         <p>Drops, interviews, game day and culture, first. Follow PMN+ and stay with the aiga.</p>
-        <div class="handle"><img src="/shop/brand/pmn-plus-logo-white.svg" alt=""><div><b>@polynesianmusic</b><span>Polynesian Music Network</span></div></div>
+        <div class="handle"><img src="/shop/brand/pmn-plus-logo-white.svg" alt=""><div><b id="igUser">@polynesianmusicnetwork</b><span>Polynesian Music Network</span></div></div>
         <div class="acts">
-          <a class="btn" href="https://www.instagram.com/polynesianmusic/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".6" fill="currentColor"/></svg>Follow on Instagram</a>
+          <a class="btn" href="https://www.instagram.com/polynesianmusicnetwork/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".6" fill="currentColor"/></svg>Follow on Instagram</a>
           <a class="btn ghost" href="/shop">Shop PMN+</a>
         </div>
       </div>
     </div>
-    <div class="grid">
-      <a href="https://www.instagram.com/polynesianmusic/" target="_blank" rel="noopener" aria-label="PMN+ on Instagram"><img src="/assets/ig/pmn-plus-instagram-1.webp" alt="PMN+ RLWC 2026 merch post 1" loading="lazy" width="540" height="675"></a>
-      <a href="https://www.instagram.com/polynesianmusic/" target="_blank" rel="noopener" aria-label="PMN+ on Instagram"><img src="/assets/ig/pmn-plus-instagram-2.webp" alt="PMN+ RLWC 2026 merch post 2" loading="lazy" width="540" height="675"></a>
-      <a href="https://www.instagram.com/polynesianmusic/" target="_blank" rel="noopener" aria-label="PMN+ on Instagram"><img src="/assets/ig/pmn-plus-instagram-3.webp" alt="PMN+ RLWC 2026 merch post 3" loading="lazy" width="540" height="675"></a>
-      <a href="https://www.instagram.com/polynesianmusic/" target="_blank" rel="noopener" aria-label="PMN+ on Instagram"><img src="/assets/ig/pmn-plus-instagram-4.webp" alt="PMN+ RLWC 2026 merch post 4" loading="lazy" width="540" height="675"></a>
-      <a href="https://www.instagram.com/polynesianmusic/" target="_blank" rel="noopener" aria-label="PMN+ on Instagram"><img src="/assets/ig/pmn-plus-instagram-5.webp" alt="PMN+ RLWC 2026 merch post 5" loading="lazy" width="540" height="675"></a>
-      <a href="https://www.instagram.com/polynesianmusic/" target="_blank" rel="noopener" aria-label="PMN+ on Instagram"><img src="/assets/ig/pmn-plus-instagram-6.webp" alt="PMN+ RLWC 2026 merch post 6" loading="lazy" width="540" height="675"></a>
+    <div class="reels" id="reels" aria-label="Latest PMN+ reels on Instagram">
+      <span class="reel sk"></span><span class="reel sk"></span><span class="reel sk"></span><span class="reel sk"></span><span class="reel sk"></span><span class="reel sk"></span>
     </div>
+    <p class="reels-empty" id="reelsEmpty">New reels are on the way. <a href="https://www.instagram.com/polynesianmusicnetwork/" target="_blank" rel="noopener">Watch on Instagram</a></p>
   </div>
 </section>
 </main>
@@ -249,7 +258,7 @@ button[disabled]{opacity:.5;cursor:default}
 <footer class="foot">
   <div class="soc">
     <a href="/shop">Shop</a>
-    <a href="https://www.instagram.com/polynesianmusic/" target="_blank" rel="noopener">Instagram</a>
+    <a href="https://www.instagram.com/polynesianmusicnetwork/" target="_blank" rel="noopener">Instagram</a>
     <a href="https://www.facebook.com/p/Polynesian-Music-61554168566749/" target="_blank" rel="noopener">Facebook</a>
     <a href="https://www.tiktok.com/@polynesianmusic" target="_blank" rel="noopener">TikTok</a>
     <a href="https://www.youtube.com/c/PolynesianMusic" target="_blank" rel="noopener">YouTube</a>
@@ -280,6 +289,29 @@ form.addEventListener('submit',async e=>{
     document.getElementById('success').classList.add('on');
   }catch(err){console.error(err);say('That didn\u2019t save. Try again in a moment.','bad');btn.disabled=false;btn.textContent=label}
 });
+
+/* Instagram Reels widget: /api/reels (Vercel function) */
+(async()=>{
+  const box=document.getElementById('reels'),empty=document.getElementById('reelsEmpty');
+  const esc=t=>String(t||'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+  const icon='<svg class="ri" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><path d="M3 8.5h18M9 3l3 5.5M15 3l3 5.5"/><path d="M10 12v5l4.5-2.5z" fill="#fff" stroke="none"/></svg>';
+  try{
+    const r=await fetch('/api/reels?limit=8');const d=await r.json();
+    if(!d.reels||!d.reels.length)throw new Error(d.error||'no reels');
+    if(d.username){const u=document.getElementById('igUser');if(u)u.textContent='@'+d.username}
+    box.innerHTML=d.reels.map(x=>`<a class="reel" href="${esc(x.url)}" target="_blank" rel="noopener" aria-label="Watch reel on Instagram${x.caption?': '+esc(x.caption.slice(0,60)):''}">
+      ${x.thumb?`<img src="${esc(x.thumb)}" alt="" loading="lazy" referrerpolicy="no-referrer">`:''}
+      ${x.video?`<video muted loop playsinline preload="none" data-src="${esc(x.video)}"></video>`:''}
+      ${icon}<span class="play"><svg viewBox="0 0 24 24"><path d="M7 4v16l13-8z"/></svg></span>
+      ${x.caption?`<span class="cap">${esc(x.caption)}</span>`:''}</a>`).join('');
+    const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches,hover=matchMedia('(hover:hover)').matches;
+    box.querySelectorAll('.reel').forEach(a=>{const v=a.querySelector('video');if(!v||reduce)return;
+      const play=()=>{if(!v.src)v.src=v.dataset.src;v.play().then(()=>a.classList.add('playing')).catch(()=>{})};
+      const stop=()=>{v.pause();a.classList.remove('playing')};
+      if(hover){a.addEventListener('mouseenter',play);a.addEventListener('mouseleave',stop);a.addEventListener('focus',play);a.addEventListener('blur',stop)}
+      else{new IntersectionObserver(es=>es.forEach(e=>e.intersectionRatio>.8?play():stop()),{threshold:[0,.8]}).observe(a)}});
+  }catch(e){console.warn('reels',e);box.style.display='none';empty.style.display='block'}
+})();
 </script>
 </body>
 </html>

@@ -67,8 +67,10 @@ img{display:block;max-width:100%}
 .hero .bgv::after{content:'';position:absolute;inset:0;background:radial-gradient(80% 60% at 50% 45%,rgba(0,0,0,.25),rgba(0,0,0,.8)),linear-gradient(180deg,rgba(0,0,0,.5),transparent 30%,transparent 65%,#000)}
 @media (prefers-reduced-motion:reduce){.hero .bgv video{display:none}}
 .hero .logo{width:clamp(110px,16vw,170px);height:auto}
-.hero h1{font-family:var(--display);font-weight:400;text-transform:uppercase;font-size:clamp(3rem,9.5vw,7.6rem);line-height:.86;letter-spacing:.01em;max-width:13ch;text-wrap:balance}
-.hero h1 span{display:block}
+.hero h1{font-family:var(--display);font-weight:400;text-transform:uppercase;font-size:min(9.6vw,8.5rem);line-height:.9;letter-spacing:.01em}
+.hero h1 span{display:block;white-space:nowrap}
+@media (min-width:900px){.hero{padding-top:calc(125px + 2.5rem)}}
+.hero .logo{margin-top:.5rem}
 .hero .line{max-width:34ch;color:#c9c9cd;font-size:clamp(1.05rem,1rem + .4vw,1.3rem);text-wrap:balance}
 .capture{width:100%;max-width:27rem;margin-top:.35rem}
 form{display:flex;gap:.5rem;flex-wrap:wrap;justify-content:center}
@@ -125,7 +127,8 @@ button[disabled]{opacity:.5;cursor:default}
 .handle img{flex:none;width:58px;height:58px;border-radius:50%;background:#050507;padding:9px}
 .handle b{display:block;font-family:var(--display);font-weight:400;font-size:clamp(1.15rem,5.2vw,1.6rem);letter-spacing:.02em;line-height:1;overflow-wrap:anywhere}
 .handle span{font-size:.92rem;color:#5f5f66}
-.reels{display:grid;grid-auto-flow:column;grid-auto-columns:calc((100% - 5*clamp(.5rem,1vw,.85rem))/6);gap:clamp(.5rem,1vw,.85rem);overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;padding-bottom:4px}
+.reels-wrap{position:relative}
+.reels{display:grid;grid-auto-flow:column;grid-auto-columns:calc((100% - 3*clamp(.6rem,1.2vw,1rem))/4);gap:clamp(.6rem,1.2vw,1rem);scroll-behavior:smooth;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;padding-bottom:4px}
 .reels::-webkit-scrollbar{display:none}
 .reel{position:relative;display:block;aspect-ratio:9/16;border-radius:16px;overflow:hidden;background:#1a1a1f;scroll-snap-align:start;text-decoration:none;color:#fff;isolation:isolate}
 .reel img,.reel video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2}
@@ -142,8 +145,14 @@ button[disabled]{opacity:.5;cursor:default}
 @keyframes sk{to{background-position:-200% 0}}
 @media (prefers-reduced-motion:reduce){.reel.sk{animation:none}}
 .reels-empty{display:none;padding:2.5rem 1rem;text-align:center;color:#5f5f66;border:1.5px dashed rgba(5,5,7,.18);border-radius:16px}
-@media (max-width:900px){.reels{grid-auto-columns:calc((100% - 2*.6rem)/2.6)}}
-@media (max-width:520px){.reels{grid-auto-columns:62%;margin-right:calc(-1*clamp(1rem,5vw,2.5rem))}}
+@media (max-width:900px){.reels{grid-auto-columns:calc((100% - 2*.6rem)/2.3)}}
+.reel-nav{position:absolute;top:50%;z-index:3;width:52px;height:52px;margin-top:-26px;border-radius:50%;border:0;background:#fff;color:#050507;display:grid;place-items:center;cursor:pointer;box-shadow:0 8px 24px rgba(0,0,0,.25);transition:transform .15s}
+.reel-nav:hover{transform:scale(1.06)}
+.reel-nav svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.reel-nav.prev{left:-20px}.reel-nav.next{right:-20px}
+.reel-nav[hidden]{display:none}
+@media (max-width:900px){.reel-nav{width:44px;height:44px;margin-top:-22px}.reel-nav.prev{left:6px}.reel-nav.next{right:6px}}
+@media (max-width:520px){.reels{grid-auto-columns:78%;margin-right:calc(-1*clamp(1rem,5vw,2.5rem))}}
 @media (max-width:900px){.ig .head{grid-template-columns:1fr}}
 
 /* footer */
@@ -175,7 +184,7 @@ button[disabled]{opacity:.5;cursor:default}
   </div>
   <img class="logo" src="/assets/pmn-logo.png" alt="PMN+ Polynesian Music Network">
   <p class="eyebrow">Polynesian Music Network</p>
-  <h1 id="h1">Welcome to the biggest <span>Pasifika-driven platform</span></h1>
+  <h1 id="h1"><span>Welcome to the biggest</span> <span>Pasifika-driven platform</span></h1>
   <p class="line">Music, tradition, sports, trends and culture from all across the Pacific Islands.</p>
 
   <div class="capture">
@@ -245,8 +254,12 @@ button[disabled]{opacity:.5;cursor:default}
         </div>
       </div>
     </div>
+    <div class="reels-wrap">
+    <button type="button" class="reel-nav prev" id="reelPrev" aria-label="Previous reels" hidden><svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg></button>
     <div class="reels" id="reels" aria-label="Latest PMN+ reels on Instagram">
-      <span class="reel sk"></span><span class="reel sk"></span><span class="reel sk"></span><span class="reel sk"></span><span class="reel sk"></span><span class="reel sk"></span>
+      <span class="reel sk"></span><span class="reel sk"></span><span class="reel sk"></span><span class="reel sk"></span>
+    </div>
+    <button type="button" class="reel-nav next" id="reelNext" aria-label="More reels" hidden><svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></button>
     </div>
     <p class="reels-empty" id="reelsEmpty">New reels are on the way. <a href="https://www.instagram.com/polynesianmusic/" target="_blank" rel="noopener">Watch on Instagram</a></p>
   </div>
@@ -301,7 +314,7 @@ form.addEventListener('submit',async e=>{
   const esc=t=>String(t||'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
   const icon='<svg class="ri" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><path d="M3 8.5h18M9 3l3 5.5M15 3l3 5.5"/><path d="M10 12v5l4.5-2.5z" fill="#fff" stroke="none"/></svg>';
   try{
-    const r=await fetch('/api/reels?limit=8');const d=await r.json();
+    const r=await fetch('/api/reels?limit=12');const d=await r.json();
     if(!d.reels||!d.reels.length)throw new Error(d.error||'no reels');
     if(d.username){const u=document.getElementById('igUser');if(u)u.textContent='@'+d.username}
     box.innerHTML=d.reels.map(x=>`<a class="reel" href="${esc(x.url)}" target="_blank" rel="noopener" aria-label="Watch reel on Instagram${x.caption?': '+esc(x.caption.slice(0,60)):''}">
@@ -315,6 +328,18 @@ form.addEventListener('submit',async e=>{
       const stop=()=>{v.pause();a.classList.remove('playing')};
       if(hover){a.addEventListener('mouseenter',play);a.addEventListener('mouseleave',stop);a.addEventListener('focus',play);a.addEventListener('blur',stop)}
       else{new IntersectionObserver(es=>es.forEach(e=>e.intersectionRatio>.8?play():stop()),{threshold:[0,.8]}).observe(a)}});
+    /* revolving carousel: arrows wrap from the last reel back to the first, auto-advances when idle */
+    const prev=document.getElementById('reelPrev'),next=document.getElementById('reelNext');
+    const step=()=>{const c=box.querySelector('.reel');return c?c.getBoundingClientRect().width+parseFloat(getComputedStyle(box).columnGap||0):box.clientWidth};
+    const atEnd=()=>box.scrollLeft+box.clientWidth>=box.scrollWidth-4,atStart=()=>box.scrollLeft<=4;
+    const go=d=>{if(d>0&&atEnd())box.scrollTo({left:0});else if(d<0&&atStart())box.scrollTo({left:box.scrollWidth});else box.scrollBy({left:d*step()})};
+    const fits=()=>{const f=box.scrollWidth>box.clientWidth+4;prev.hidden=next.hidden=!f;return f};
+    prev.onclick=()=>{go(-1);hold()};next.onclick=()=>{go(1);hold()};fits();addEventListener('resize',fits);
+    let paused=false,seen=false,until=0;const hold=()=>{until=Date.now()+8000};
+    const area=box.parentElement;['mouseenter','focusin','touchstart'].forEach(ev=>area.addEventListener(ev,()=>paused=true,{passive:true}));
+    ['mouseleave','focusout','touchend'].forEach(ev=>area.addEventListener(ev,()=>{paused=false;hold()},{passive:true}));
+    new IntersectionObserver(es=>es.forEach(e=>seen=e.isIntersecting),{threshold:.4}).observe(box);
+    if(!reduce)setInterval(()=>{if(seen&&!paused&&Date.now()>until&&!document.hidden&&fits())go(1)},4500);
   }catch(e){console.warn('reels',e);box.style.display='none';empty.style.display='block'}
 })();
 </script>

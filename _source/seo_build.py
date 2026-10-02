@@ -4,6 +4,14 @@ C=json.load(open('seo_content.json')); D=C['domain']; POL=C['policy']
 s=open('site2/index.html').read()
 a=s.index('const META=')+len('const META='); b=s.index('};\nfor(const m of Object.values(META))')+1
 META=json.loads(s[a:b])
+HIDE=json.loads(re.search(r'HIDE=(\[[^\]]*\])',open('make_shop.py').read()).group(1))
+SOLD=set(json.loads(re.search(r'SOLD=new Set\((\[[^\]]*\])\)',open('shopify_layer.js').read()).group(1)))
+REST={k:int(v) for k,v in re.findall(r'"([a-z0-9-]+)":(\d+)',re.search(r'const REST=\{([^}]*)\}',s).group(1))}
+def hero_angle(pid):
+    h=META[pid].get('hi') or {};r=REST.get(pid,0)
+    for a in h:
+        if abs(((int(a)-r)%360+540)%360-180)<=8: return a
+    return None
 prods=[dict(id=m[0],name=m[1].replace('\u2011','-').replace('MMT ','Mate Ma\'a Tonga '),price=int(m[2]),kind=m[3],team=m[4],colour=m[5].replace(' / ','/')) for m in re.findall(r'\{id:"([^"]+)",name:"([^"]+)",short:"[^"]*",price:(\d+),kind:"(\w+)",team:"(\w+)"[^}]*?colourName:"([^"]+)"',s)]
 TEAM={'samoa':'Toa Samoa','tonga':"Mate Ma'a Tonga",'pmn':'PMN+'}
 COLL={'samoa':'toa-samoa','tonga':'mate-maa-tonga','pmn':'pmn-plus'}
@@ -15,14 +23,19 @@ GROUP={'mmt-676-tee':'mate-maa-tonga-676-tee','mmt-676-black':'mate-maa-tonga-67
 def trim(t,n):
     return t if len(t)<=n else t[:n-1].rsplit(' ',1)[0].rstrip(',.;:')+'…'
 out={'domain':D,'policy':POL,'sharedFaq':C['sharedFaq'],'collections':{},'products':{}}
-org={"@type":"Organization","@id":D+"/#org","name":"PMN+","alternateName":"Polynesian Music Network Plus","url":D,"logo":D+"/brand/pmn-plus-logo-black.png","legalName":"Polynesian Music"}
+org={"@type":"Organization","@id":D+"/#org","name":"PMN+","alternateName":"Polynesian Music Network Plus","url":D,"logo":D+"/shop/brand/pmn-plus-logo-black.png","legalName":"Polynesian Music"}
 ret={"@type":"MerchantReturnPolicy","applicableCountry":"US","returnPolicyCategory":"https://schema.org/MerchantReturnFiniteReturnWindow","merchantReturnDays":POL['returnDays'],"returnMethod":"https://schema.org/ReturnByMail","returnFees":"https://schema.org/ReturnFeesCustomerResponsibility"}
+prods=[p for p in prods if p['id'] not in HIDE]
+ship={"@type":"OfferShippingDetails","shippingRate":{"@type":"MonetaryAmount","value":"8.00","currency":"USD"},"shippingDestination":{"@type":"DefinedRegion","addressCountry":"US"},"deliveryTime":{"@type":"ShippingDeliveryTime","handlingTime":{"@type":"QuantitativeValue","minValue":2,"maxValue":4,"unitCode":"DAY"},"transitTime":{"@type":"QuantitativeValue","minValue":3,"maxValue":7,"unitCode":"DAY"}}}
 for p in prods:
     sc=C['products'][p['id']]; m=META[p['id']]; slug=m['seo']; url=f"{D}/shop/{slug}"
-    imgs=[f"{D}/hires/{p['id']}/{n}.webp" for a_,n in sorted(m['hi'].items(),key=lambda x:((int(x[0])+180)%360))]
+    ha=hero_angle(p['id']);order=sorted(m['hi'].items(),key=lambda x:(x[0]!=ha,int(x[0])))
+    imgs=[f"{D}/shop/hires/{p['id']}/{n}.webp" for a_,n in order]
+    og=f"{D}/shop/og/{slug}.jpg"
     if not imgs and m.get('src')=='shopify photo': imgs=['https://cdn.shopify.com/s/files/1/0814/5030/3687/files/7c0c7b35-e27f-4a48-9b05-c0ef2d0a4375-481207-front-ecru-zoom.png']
-    title=f"{p['name']} – {p['colour']} | PMN+"
-    if len(title)>60: title=f"{p['name']} – {p['colour']}"
+    nc=f"{p['name']} – {p['colour']}"
+    cands=([nc+" | RLWC 2026 | PMN+"] if p['team']!='pmn' else [nc+" | Pasifika Apparel"])+[nc+" | PMN+",nc]
+    title=next(t for t in cands if len(t)<=60)
     tail=f"${p['price']} · Ships across the USA."
     meta=sc["m"]+" "+tail
     faq=[{"q":q,"a":a_} for q,a_ in sc['faq']+C['sharedFaq']]
@@ -30,12 +43,12 @@ for p in prods:
           "category":"Apparel & Accessories > "+("Clothing Accessories > Hats" if p['kind']=='hat' else "Clothing > Shirts & Tops"),
           "image":imgs,"description":" ".join(sc['d']),"url":url,
           "audience":{"@type":"PeopleAudience","suggestedGender":"unisex"},
-          "offers":{"@type":"Offer","url":url,"price":f"{p['price']}.00","priceCurrency":"USD","availability":"https://schema.org/InStock","itemCondition":"https://schema.org/NewCondition","seller":{"@id":D+"/#org"},"hasMerchantReturnPolicy":ret}}
+          "offers":{"@type":"Offer","url":url,"price":f"{p['price']}.00","priceCurrency":"USD","availability":"https://schema.org/"+("OutOfStock" if p['id'] in SOLD else "InStock"),"itemCondition":"https://schema.org/NewCondition","seller":{"@id":D+"/#org"},"hasMerchantReturnPolicy":ret,"shippingDetails":ship}}
     if p['id'] in GROUP: prod["isVariantOf"]={"@type":"ProductGroup","productGroupID":GROUP[p['id']],"variesBy":["https://schema.org/color","https://schema.org/size"]}
     crumbs={"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Shop","item":D+"/shop"},{"@type":"ListItem","position":2,"name":TEAM[p['team']],"item":f"{D}/shop/{COLL[p['team']]}"},{"@type":"ListItem","position":3,"name":p['name'],"item":url}]}
     faqld={"@type":"FAQPage","mainEntity":[{"@type":"Question","name":f['q'],"acceptedAnswer":{"@type":"Answer","text":f['a']}} for f in faq]}
     out['products'][p['id']]=dict(slug=slug,url=url,title=title,meta=meta,h1=p['name'],colour=p['colour'],price=p['price'],team=p['team'],keyword=sc['kw'],
-        description=sc['d'],faq=faq,sizes=sizes(p),images=imgs,jsonld={"@context":"https://schema.org","@graph":[org,prod,crumbs,faqld]})
+        description=sc['d'],faq=faq,sizes=sizes(p),images=imgs,og=og,sold=p['id'] in SOLD,kind=p['kind'],teamName=TEAM[p['team']],alt=[f"{p['name']} in {p['colour'].lower()}, {n.rsplit('-',1)[-1] if not n.endswith(('front-left','front-right','back-left','back-right')) else ' '.join(n.split('-')[-2:])} view" for a_,n in order],jsonld={"@context":"https://schema.org","@graph":[org,prod,crumbs,faqld]})
 for k,c in C['collections'].items():
     members=[p['id'] for p in prods if k=='pmn-plus' or COLL[p['team']]==k]
     out['collections'][k]=dict(c,url=f"{D}/shop/{k}",products=members,jsonld={"@context":"https://schema.org","@type":"CollectionPage","name":c['name'],"url":f"{D}/shop/{k}","description":c['meta'],
@@ -53,14 +66,16 @@ for p in prods:
     for z in o['sizes']:
         sid=f"{o['slug']}-{z.lower().replace(' ','-')}"
         rows.append('\t'.join([sid,grp,trim(f"{p['name']} – {p['colour']}"+("" if z=='One size' else f" – {z}"),150)," ".join(o['description']),
-          o['url']+("" if z=='One size' else f"?size={z}"),o['images'][0],",".join(o['images'][1:10]),'in_stock',f"{p['price']}.00 USD",'PMN+','new',gpc,
+          o['url']+("" if z=='One size' else f"?size={z}"),o['images'][0],",".join(o['images'][1:10]),'out_of_stock' if p['id'] in SOLD else 'in_stock',f"{p['price']}.00 USD",'PMN+','new',gpc,
           f"{TEAM[p['team']]} > {'Hats' if p['kind']=='hat' else 'Tees'}",'unisex','adult',p['colour'],z,'US',mat,'US','RLWC 2026' if p['team'] in ('samoa','tonga') else 'PMN+']))
 open('site2/seo/merchant-center-feed.tsv','w').write('\n'.join(rows)+'\n')
 # ---- sitemap with images ----
 u=['<?xml version="1.0" encoding="UTF-8"?>','<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">']
-for k,c in out['collections'].items(): u.append(f"  <url><loc>{c['url']}</loc><lastmod>2026-10-01</lastmod></url>")
+u.append(f"  <url><loc>{D}/</loc><lastmod>2026-10-02</lastmod></url>")
+u.append(f"  <url><loc>{D}/shop</loc><lastmod>2026-10-02</lastmod><image:image><image:loc>{D}/shop/pmn-plus-shop-og-rlwc-2026-toa-samoa-mate-maa-tonga.jpg</image:loc></image:image></url>")
+for k,c in out['collections'].items(): u.append(f"  <url><loc>{c['url']}</loc><lastmod>2026-10-02</lastmod></url>")
 for pid,o in out['products'].items():
-    u.append(f"  <url><loc>{o['url']}</loc><lastmod>2026-10-01</lastmod>"+"".join(f"<image:image><image:loc>{html.escape(i)}</image:loc></image:image>" for i in o['images'])+"</url>")
+    u.append(f"  <url><loc>{o['url']}</loc><lastmod>2026-10-02</lastmod>"+"".join(f"<image:image><image:loc>{html.escape(i)}</image:loc></image:image>" for i in [o['og']]+o['images'])+"</url>")
 u.append('</urlset>')
 open('site2/seo/sitemap-shop.xml','w').write('\n'.join(u)+'\n')
 print(len(rows)-1,'feed rows')

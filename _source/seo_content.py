@@ -2,7 +2,7 @@
 Shipping, returns and care are typical print-to-order defaults, marked TO CONFIRM with JQF."""
 import json
 
-DOMAIN = "https://polynesianmusicnetwork.com"
+DOMAIN = "https://www.polynesianmusicnetwork.com"
 
 # --- policy defaults (TO CONFIRM with JQF) ---
 POLICY = {

@@ -222,3 +222,6 @@ def _ld(m):
 s,_n=_r.subn(r'<script type="application/ld\+json">(.*?)</script>',_ld,s,flags=_r.S);assert _n==1
 open(sys.argv[1],'w').write(s)
 print('sold out ok')
+
+# ---------- ROUTES: own URL per product/collection, pre-rendered pages, sitemap (see seo_routes.py) ----------
+exec(open(os.path.join(os.path.dirname(os.path.abspath(__file__)),'seo_routes.py')).read())

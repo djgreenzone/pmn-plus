@@ -191,7 +191,7 @@ button[disabled]{opacity:.5;cursor:default}
     <div class="success" id="success" role="status" aria-live="polite">
       <div class="tick">&#10003;</div>
       <p class="big">You&rsquo;re in!</p>
-      <p class="sub">Welcome to the <b>aiga</b>. Your 10% code is on its way to your inbox.</p>
+      <p class="sub">Welcome to the <b>aiga</b>. <b>WELCOME10</b> is saved to your bag and comes off at checkout. <a href="/shop" style="color:inherit;text-decoration:underline">Shop now</a></p>
     </div>
   </div>
   <a class="cue" href="#shop">Scroll</a>
@@ -284,7 +284,7 @@ form.addEventListener('submit',async e=>{
   btn.disabled=true;const label=btn.textContent;btn.textContent='Adding\u2026';
   try{
     try{await sub({email:v,properties:{signup_source:'home_signup',offer:'10'}})}catch(_){await sub({email:v})}
-    try{localStorage.setItem('pmn_email',v)}catch(_){}
+    try{localStorage.setItem('pmn_email',v);localStorage.setItem('pmn_code','WELCOME10')}catch(_){}
     form.style.display='none';document.querySelector('.fine').style.display='none';note.textContent='';
     document.getElementById('success').classList.add('on');
   }catch(err){console.error(err);say('That didn\u2019t save. Try again in a moment.','bad');btn.disabled=false;btn.textContent=label}

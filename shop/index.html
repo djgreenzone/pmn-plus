@@ -1063,8 +1063,9 @@ const SHOPIFY_MAP={
   "toa-685-black":["toa-samoa-685-tee-shirt","Black"],"toa-685-tee":["toa-samoa-685-tee-shirt","Bright Royal"],
   "mmt-silver-blackout":["mmt-silver-blackout-tee","Black"],"toa-silver-blackout":["toa-samoa-silver-blackout-tee","Black"],
   "mmt-trucker":["tonga-trucker-snapback",null],"toa-trucker":["samoa-trucker-snapback",null],
-  "pmn-tee":["pmn-classic-tee","Black"],"pmn-trucker":["pmn-retro-trucker-hat-blk",null],"pmn-dad-hat":["pmn-classic-dad-hat-khaki",null]
-  /* add when published: mmt-snapback, toa-snapback, mmt-hp-snapback, toa-hp-snapback */
+  "pmn-tee":["pmn-classic-tee","Black"],"pmn-trucker":["pmn-retro-trucker-hat-blk",null],"pmn-dad-hat":["pmn-classic-dad-hat-khaki",null],
+  "mmt-hp-snapback":["toa-samoa-snapback-red-wht",null],"toa-hp-snapback":["toa-samoa-snapback-nvy-wht",null]
+  /* add when published: mmt-snapback, toa-snapback (curved bill) */
 };
 const SHOPIFY_BUMP_HANDLE="sticker-pack";
 const VAR={};let shopifyOK=false;
@@ -1593,7 +1594,7 @@ $("pTeam").onclick=()=>{const c=PDP.current(),t=BY[c]?BY[c].team:"tonga";documen
     const ph=$("suPhone").value.replace(/\D/g,""),phOk=!ph||ph.length===10||(ph.length===11&&ph[0]==="1");
     if(!ok||!phOk){$("suMsg").textContent=!ok?"Enter a valid email address, like name@example.com.":"Enter a 10-digit US mobile number, or leave it blank for 10% off.";return}
     const btn=e.target.querySelector("button");btn.disabled=true;$("suMsg").textContent="Adding you to the list…";
-    klav(v,usPhone(ph),{signup_source:"shop_signup",offer:ph?"20":"10"}).then(()=>{$("suMsg").textContent=`You're on the list. Watch your inbox for your ${ph?"20%":"10%"} code.`;$("suEmail").value="";$("suPhone").value=""})
+    klav(v,usPhone(ph),{signup_source:"shop_signup",offer:ph?"20":"10"}).then(()=>{const _c=ph?"WELCOME20":"WELCOME10";try{localStorage.setItem("pmn_code",_c)}catch(e){}if(window.pmnSetCode)pmnSetCode(_c);$("suMsg").textContent=`You're in. ${_c} is saved to your bag and comes off at checkout.`;$("suEmail").value="";$("suPhone").value=""})
       .catch(()=>{$("suMsg").textContent="That didn't go through. Please try again in a moment."}).finally(()=>{btn.disabled=false})});
 })();
 /* ---------- cart ---------- */
@@ -1676,6 +1677,7 @@ const Cart=(()=>{
       else m.textContent=`${c} isn't valid for this bag.`}
     catch(err){m.textContent="Couldn't check that code. Try again."}});
   $("codeRm").onclick=()=>{code="";store.set(CODE_KEY,null);showCode()};
+  window.pmnSetCode=c=>{code=c;store.set(CODE_KEY,c);showCode()};
   showCode();
   /* back from checkout: if the Shopify cart became an order, clear the bag */
   (async()=>{const id=store.get(SCART_KEY);if(!id)return;await shopifyReady;if(!shopifyOK)return;
@@ -1764,7 +1766,7 @@ const Pages=(()=>{let prev=null;
     const f=n===1?$("offEmail"):n===2?$("offPhone"):$("offShop");setTimeout(()=>f.focus({preventScroll:true}),50)};
   let offEmailV="";
   const done=pct=>{const ph=pct===20?usPhone($("offPhone").value):null;$("offCode").hidden=true;$("offDoneP").textContent="Saving…";step(3);
-    klav(offEmailV,ph,{signup_source:"shop_popup",offer:String(pct)}).then(()=>{$("offDoneP").textContent=`Your ${pct}% off is saved. Watch your inbox for your code.`})
+    klav(offEmailV,ph,{signup_source:"shop_popup",offer:String(pct)}).then(()=>{const _c=pct===20?"WELCOME20":"WELCOME10";try{localStorage.setItem("pmn_code",_c)}catch(e){}if(window.pmnSetCode)pmnSetCode(_c);$("offCode").textContent=_c;$("offCode").hidden=false;$("offDoneP").textContent=`${pct}% off is saved to your bag. It comes off automatically at checkout.`})
       .catch(()=>{$("offDoneP").textContent="That didn't go through. Please use the sign-up form at the bottom of the page."})};
   $("offForm1").addEventListener("submit",e=>{e.preventDefault();const v=$("offEmail").value.trim();
     if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(v)){$("offErr1").textContent="Enter a valid email, like name@example.com.";$("offEmail").focus();return}

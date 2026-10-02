@@ -453,7 +453,7 @@ s.was{color:var(--ink-dim);font-weight:400;margin-left:4px}
 .ctrust{display:flex;align-items:flex-start;justify-content:center;gap:6px;margin:0;font-size:11.5px;line-height:1.45;color:var(--ink-dim);text-align:center}
 .ctrust b{color:var(--ink);font-weight:600}.ctrust svg{flex:none;width:13px;height:13px;margin-top:2px;fill:none;stroke:currentColor;stroke-width:2}
 .buy.busy,.buy-alt.busy{opacity:.75;cursor:progress}.buy:disabled,.buy-alt:disabled{cursor:progress}
-.gcard .im{position:relative}.size.so{opacity:.35;text-decoration:line-through;cursor:not-allowed}
+.gcard .im{position:relative}.sold{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);z-index:2;font-style:normal;white-space:nowrap;background:#fff;color:#C8102E;border:2px solid #C8102E;font-family:var(--display);font-size:clamp(18px,2.4vw,26px);letter-spacing:.06em;text-transform:uppercase;line-height:1;padding:.42em .8em .36em;border-radius:6px;box-shadow:0 6px 18px rgba(0,0,0,.18);pointer-events:none}.im:has(.sold) img{opacity:.55;filter:grayscale(.35)}.hero-sold{z-index:150;opacity:0;font-size:clamp(22px,3vw,40px)}#hlPrice.so{color:#ff4d5e}.size.so{opacity:.35;text-decoration:line-through;cursor:not-allowed}
 .cart-notify{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px}
 .cart-notify input{height:50px;border-radius:14px;border:1px solid rgba(244,242,238,.3);background:rgba(255,255,255,.05);color:var(--ink);padding:0 14px;font:inherit;font-size:16px;min-width:0}
 .cart-notify .buy-alt{padding:0 18px}
@@ -514,8 +514,8 @@ s.was{color:var(--ink-dim);font-weight:400;margin-left:4px}
 @media (prefers-reduced-motion:reduce){.ds-track{animation:none}.card .lim::before,.big .lim::before{animation:none}}
 
 /* ---------- hero headline + team CTAs ---------- */
-.hero-cta{position:relative;z-index:4;text-align:center;padding:2px 16px 0;display:grid;justify-items:center;gap:8px}
-.hero-h{margin:0;font-family:var(--display);font-weight:400;font-size:clamp(26px,7.4vw,40px);line-height:.95;letter-spacing:.02em;text-transform:uppercase;text-wrap:balance;text-shadow:0 2px 18px rgba(0,0,0,.6)}
+.hero-cta{position:relative;z-index:4;text-align:center;padding:16px 16px 0;display:grid;justify-items:center;gap:10px}
+.hero-h{margin:0;font-family:var(--display);font-weight:400;font-size:clamp(32px,9vw,48px);line-height:.95;letter-spacing:.02em;text-transform:uppercase;text-wrap:balance;text-shadow:0 2px 18px rgba(0,0,0,.6)}
 .hero-sub{margin:0;max-width:40ch;font-size:12.5px;line-height:1.4;color:rgba(244,242,238,.85)}
 .hero-btns{display:flex;gap:6px;flex-wrap:nowrap;justify-content:center;margin-top:4px}
 .hb{height:36px;padding:0 12px;white-space:nowrap;border-radius:999px;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;border:1.5px solid rgba(255,255,255,.85);color:#fff;transition:background .2s,transform .2s}
@@ -524,8 +524,8 @@ s.was{color:var(--ink-dim);font-weight:400;margin-left:4px}
 
 @media (min-width:900px){
   .hero-cta{gap:12px;padding-top:6px}
-  .hero-h{font-size:clamp(38px,3.3vw,52px)}
-  .hero-cta{gap:6px;padding-top:0}
+  .hero-h{font-size:clamp(58px,4.8vw,84px)}
+  .hero-cta{gap:10px;padding-top:34px}
   .hero-foot{padding-top:6px;padding-bottom:8px}
   .stage .proto{padding-bottom:6px}
   .hero-sub{font-size:16px}
@@ -703,6 +703,7 @@ s.was{color:var(--ink-dim);font-weight:400;margin-left:4px}
     </div>
     <button class="arc-btn prev" id="arcPrev" type="button" aria-label="Previous product"><svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg></button>
     <button class="arc-btn next" id="arcNext" type="button" aria-label="Next product"><svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></button>
+    <i class="sold hero-sold" id="heroSold" aria-hidden="true">Sold out</i>
     <div class="podium">
       <button class="tap" id="heroLabel" aria-label="Open product">
         <span class="eyebrow" id="hlTeam">Toa Samoa</span>
@@ -1329,10 +1330,11 @@ const Hero=(()=>{const PRODUCTS=HERO_P;
       const gapR=((cw*k*capS[idx])/2+(STEP-(R[0]*k*sN)/2))/2,gapL=((cw*k*capS[idx])/2+(STEP-(L[0]*k*sN)/2))/2,cy=arcT+base-ch*0.5-26;
       pb.style.left=(arcL+W/2-gapL-26)+"px";nb.style.left=(arcL+W/2+gapR-26)+"px";pb.style.top=nb.style.top=cy+"px"}
     else{const[cw,ch]=sizes[idx],pb=$("arcPrev"),nb=$("arcNext"),cy=arcT+base-ch*0.5-20;pb.style.left=(arcL+8)+"px";nb.style.left=(arcL+W-48)+"px";pb.style.top=nb.style.top=cy+"px"}
+    {const hs=$("heroSold");if(SOLD.has(PRODUCTS[idx].id)){const ch=sizes[idx][1];hs.style.left=(arcL+W/2)+"px";hs.style.top=(arcT+base-ch*(capS[idx]||1)*0.5)+"px";hs.style.opacity=Math.max(0,1-Math.abs(frac)*3.2)}else hs.style.opacity=0}
     if(idx!==lastIdx){lastIdx=idx;label(idx)}
     if(!tween&&!dragging&&t-settledAt>900)prefetch(idx);
   }
-  function label(i){const p=PRODUCTS[i];$("hlTeam").textContent=teamName(p);$("hlName").textContent=p.name;$("hlPrice").textContent=SOLD.has(p.id)?"Sold out":money(p.price);
+  function label(i){const p=PRODUCTS[i];$("hlTeam").textContent=teamName(p);$("hlName").textContent=p.name;$("hlPrice").textContent=SOLD.has(p.id)?"Sold out":money(p.price);$("hlPrice").classList.toggle("so",SOLD.has(p.id));
     $("heroCount").textContent=String(i+1).padStart(2,"0")+" / "+String(n).padStart(2,"0");
     [...dots.children].forEach((d,k)=>d.classList.toggle("on",k===i));$("heroLabel").setAttribute("aria-label",`Open ${p.name}`)}
   let prefetched=new Set();
@@ -1551,7 +1553,7 @@ const Coll=(()=>{
   $("cFilter").querySelectorAll(".chip").forEach(b=>b.onclick=()=>{filt=b.dataset.f;$("cFilter").querySelectorAll(".chip").forEach(x=>x.setAttribute("aria-pressed",x===b));grid()});
   function grid(){const c=SEO.collections[key],g=$("cGrid");g.innerHTML="";
     c.products.map(id=>BY[id]).filter(p=>filt==="all"||(filt==="pmn"?p.team==="pmn":p.kind===filt)).forEach(p=>{const b=document.createElement("button");b.className="gcard";b.dataset.id=p.id;
-      b.innerHTML=`<span class="im">${SOLD.has(p.id)?'<i class="tag">Sold out</i>':""}<img loading="lazy" decoding="async" alt="${altFor(p).replace(/"/g,"&quot;")}" src="${heroURL(p.id)}"></span><b>${p.name}</b><span class="num">${SOLD.has(p.id)?"Sold out":money(p.price)}</span>`;
+      b.innerHTML=`<span class="im">${SOLD.has(p.id)?'<i class="sold">Sold out</i>':""}<img loading="lazy" decoding="async" alt="${altFor(p).replace(/"/g,"&quot;")}" src="${heroURL(p.id)}"></span><b>${p.name}</b><span class="num">${SOLD.has(p.id)?"Sold out":money(p.price)}</span>`;
       b.onclick=()=>PDP.open(p.id,b.querySelector("img"),"coll");g.append(b)})}
   function show(k){key=k;const c=SEO.collections[k],team=k==="toa-samoa"?"samoa":k==="mate-maa-tonga"?"tonga":"all";
     el.dataset.team=team;$("collH").textContent=c.name;$("cIntro").textContent=c.intro;$("crHere").textContent=c.name;
@@ -1577,7 +1579,7 @@ $("pTeam").onclick=()=>{const c=PDP.current(),t=BY[c]?BY[c].team:"tonga";documen
   const isLimited=p=>p.team!=="pmn"||!!p.limited;
   const cardTitle=p=>`${p.kind==="tee"?"Unisex ":""}${p.name} – ${p.colourName}, ${detail(p)}`;
   const card=(p,cls)=>{const b=document.createElement("button");b.className=cls;b.type="button";b.dataset.pid=p.id;
-    b.innerHTML=`<span class="im">${SOLD.has(p.id)?'<i class="tag">Sold out</i>':isLimited(p)?'<i class="tag">Exclusive</i>':""}<img loading="lazy" decoding="async" alt="${altFor(p).replace(/"/g,"&quot;")}" src="${heroURL(p.id)}"></span>
+    b.innerHTML=`<span class="im">${SOLD.has(p.id)?'<i class="sold">Sold out</i>':isLimited(p)?'<i class="tag">Exclusive</i>':""}<img loading="lazy" decoding="async" alt="${altFor(p).replace(/"/g,"&quot;")}" src="${heroURL(p.id)}"></span>
       <b class="nm">${cardTitle(p)}</b><strong class="pr num">${money(p.price)}</strong><em class="na">New Arrival</em>${isLimited(p)?'<small class="lim">Limited drop · While stocks last</small>':""}`;
     b.setAttribute("aria-label",`${cardTitle(p)}, ${money(p.price)}, new arrival${isLimited(p)?", limited drop":""}`);
     b.onclick=()=>PDP.open(p.id,b.querySelector("img"),"home");return b};

@@ -22,7 +22,7 @@ def header(back_id=None,back_label="Back",bag="button",extra=""):
       f'<div class="pn-r"><form class="pn-search" role="search" action="/shop"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg>'
       f'<input type="search" name="q" placeholder="Search tees, hats, teams…" aria-label="Search the shop" autocomplete="off" role="combobox" aria-expanded="false" aria-autocomplete="list"><div class="pn-res" role="listbox" hidden></div></form>'
       f'<button type="button" class="pn-ic pn-sbtn" aria-label="Search">{I_SEARCH}</button>'
-      f'<a class="pn-ic pn-acct" href="{ACCOUNT}" aria-label="Account: sign in or create an account">{I_USER}</a>{bagel}</div></div>'
+      f'{bagel}</div></div>'  # account icon: add back when PMN+ accounts are built
       f'<nav class="pn-cats" aria-label="Shop categories">{cats}</nav>{extra}</div>')
 
 def build_shop(s):

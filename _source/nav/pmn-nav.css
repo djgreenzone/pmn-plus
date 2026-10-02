@@ -55,6 +55,7 @@
 .pn-scrim[hidden],.pn-drawer[hidden]{display:none}
 .pn-drawer a{color:#fff;text-decoration:none}
 .pn-dh{display:flex;align-items:center;justify-content:space-between;padding:calc(env(safe-area-inset-top,0px) + 14px) 12px 14px 22px;border-bottom:1px solid rgba(255,255,255,.12)}
+.pn-dtitle{font-family:"Bebas Neue",Impact,sans-serif;font-weight:400;font-size:24px;letter-spacing:.06em}
 .pn-dh a{font-weight:700;font-size:17px;display:flex;align-items:center;gap:8px}
 .pn-dh a svg,.pn-dl svg{width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
 .pn-db{flex:1;overflow-y:auto;overscroll-behavior:contain;padding:6px 0 18px}

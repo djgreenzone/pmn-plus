@@ -33,7 +33,7 @@
 .pn-res .pn-all{display:block;text-align:center;padding:12px;font:600 13px/1 system-ui,sans-serif;letter-spacing:.04em;text-transform:uppercase;color:#fff}
 /* category row */
 .pn-cats{display:none;justify-content:center;gap:clamp(18px,2.6vw,40px);height:48px;align-items:center;border-top:1px solid rgba(255,255,255,.08);padding:0 16px}
-.pn-cats a,.pn-cats button{font-family:"Bebas Neue",Impact,sans-serif!important;font-weight:400!important;font-size:21px;letter-spacing:.06em;line-height:1;text-transform:uppercase;color:rgba(255,255,255,.86);padding:6px 2px 3px;border-bottom:2px solid transparent;background:none;border-top:0;border-left:0;border-right:0;cursor:pointer;white-space:nowrap}
+.pn-cats a,.pn-cats button{font-family:"Bebas Neue",Impact,sans-serif!important;font-weight:400!important;font-size:17px;letter-spacing:.09em;line-height:1;text-transform:uppercase;color:rgba(255,255,255,.8);padding:6px 2px 3px;border-bottom:2px solid transparent;background:none;border-top:0;border-left:0;border-right:0;cursor:pointer;white-space:nowrap}
 .pn-cats a:hover,.pn-cats a[aria-current="page"]{color:#fff;border-bottom-color:#fff}
 @media (min-width:900px){
   .pn{--pn-h:76px}

@@ -635,6 +635,19 @@ s.was{color:var(--ink-dim);font-weight:400;margin-left:4px}
 }
 
 @media (prefers-reduced-motion:reduce){*{transition-duration:.01ms!important;animation-duration:.01ms!important}}
+
+/* hero label: one slim line beside the dots, product gets the space */
+.hero-foot{display:grid;grid-template-columns:1fr auto 1fr;grid-template-areas:"dots name count";align-items:center;column-gap:16px;padding:2px 16px 0}
+.hero-foot .dots{grid-area:dots}
+.hero-foot #heroCount{grid-area:count;justify-self:end;width:auto}
+.hero-foot .podium{grid-area:name;padding:0;min-width:0}
+.podium .tap{display:flex;align-items:baseline;justify-content:center;flex-wrap:wrap;gap:4px 10px;padding:4px 10px}
+#hlTeam{display:none}
+.podium h2{font-size:17px!important;letter-spacing:.08em;line-height:1.1}
+.podium .price{font-size:12px!important;margin:0}
+.scroll-cue{padding-top:0!important;padding-bottom:4px!important}
+@media (max-width:899px){.hero-foot{grid-template-columns:1fr 1fr;grid-template-areas:"name name" "dots count";row-gap:6px}}
+@media (min-width:900px){.hero-foot{padding-inline:var(--gut)}}
 </style>
 
 <div id="app">
@@ -660,15 +673,15 @@ s.was{color:var(--ink-dim);font-weight:400;margin-left:4px}
     </div>
     <button class="arc-btn prev" id="arcPrev" type="button" aria-label="Previous product"><svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg></button>
     <button class="arc-btn next" id="arcNext" type="button" aria-label="Next product"><svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></button>
-    <div class="podium">
-      <button class="tap" id="heroLabel" aria-label="Open product">
-        <span class="eyebrow" id="hlTeam">Toa Samoa</span>
-        <h2 id="hlName">Toa Samoa Snapback</h2>
-        <p class="price"><strong id="hlPrice">$38.00</strong></p>
-      </button>
-    </div>
     <div class="hero-foot">
       <div class="dots" id="dots" aria-hidden="true"></div>
+    <div class="podium">
+        <button class="tap" id="heroLabel" aria-label="Open product">
+          <span class="eyebrow" id="hlTeam">Toa Samoa</span>
+          <h2 id="hlName">Toa Samoa Snapback</h2>
+          <p class="price"><strong id="hlPrice">$38.00</strong></p>
+        </button>
+      </div>
       <span class="eyebrow num" id="heroCount">01 / 09</span>
       <button class="back-link" id="toLab">Spin lab</button>
     </div>

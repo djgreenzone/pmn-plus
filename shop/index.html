@@ -1662,9 +1662,11 @@ const Cart=(()=>{
     if(miss.length){busy(false,`${miss.join(", ")} ${miss.length>1?"aren't":"isn't"} available to order yet. Remove ${miss.length>1?"them":"it"} to check out.`);return}
     try{const d=await sf(CART_Q,{i:cartInput(code?[code]:[])});const r=d.cartCreate;
       if(r.userErrors&&r.userErrors.length)throw new Error(r.userErrors[0].message);
-      store.set(SCART_KEY,r.cart.id);location.href=r.cart.checkoutUrl}
+      store.set(SCART_KEY,r.cart.id);setTimeout(()=>busy(false,""),8000);location.href=r.cart.checkoutUrl}
     catch(err){console.warn("checkout",err);busy(false,"Checkout didn't load. Please try again in a moment.")}}
   $("cartGo").onclick=checkout;
+  /* coming back from checkout (Back button / bfcache): unlock the button */
+  addEventListener("pageshow",()=>busy(false,""));busy(false,"");
   /* discount code: validated against Shopify, applied at checkout */
   function showCode(){const has=!!code;$("codeForm").hidden=has;$("codeOn").hidden=!has;$("codeTag").textContent=code}
   $("codeToggle").onclick=()=>{const f=$("codeBox");f.hidden=!f.hidden;$("codeToggle").setAttribute("aria-expanded",!f.hidden);if(!f.hidden)$("codeIn").focus()};

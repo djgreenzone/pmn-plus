@@ -6,6 +6,7 @@
 <meta name="theme-color" content="#05060a">
 <meta name="robots" content="noindex,nofollow">
 <base href="/shop/">
+<link rel="preconnect" href="https://polynesianmusicnetwork.myshopify.com" crossorigin>
 <link rel="icon" href="/assets/favicon.png">
 <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
 <title>Shop PMN+ | RLWC 2026 Toa Samoa &amp; Mate Ma'a Tonga Merch</title>
@@ -445,6 +446,16 @@ s.was{color:var(--ink-dim);font-weight:400;margin-left:4px}
 .bump-p{font-size:15px;font-weight:700;white-space:nowrap}
 .tot{display:flex;justify-content:space-between;font-size:16px;font-weight:600}
 .cart-msg:empty{display:none}
+.dr-foot{gap:7px}.code{display:grid;gap:6px}.code-t{justify-self:start;font-size:13px;font-weight:600;text-decoration:underline;text-underline-offset:3px;color:var(--ink-dim)}
+.code-f{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px;margin-top:2px}
+.code-f input{height:46px;border-radius:12px;border:1px solid rgba(244,242,238,.3);background:rgba(255,255,255,.05);color:var(--ink);padding:0 14px;font:inherit;font-size:16px;letter-spacing:.06em;text-transform:uppercase;min-width:0}
+.code-f .buy-alt{height:46px;padding:0 18px}#codeMsg:empty{display:none}
+.code-on{display:flex;justify-content:space-between;align-items:center;margin:0;padding:10px 12px;border-radius:12px;background:rgba(95,211,138,.12);color:#9be7a8;font-size:13px}
+.code-on button{font-size:13px;font-weight:600;text-decoration:underline;color:var(--ink-dim)}
+.ctrust{display:flex;align-items:flex-start;justify-content:center;gap:6px;margin:0;font-size:11.5px;line-height:1.45;color:var(--ink-dim);text-align:center}
+.ctrust b{color:var(--ink);font-weight:600}.ctrust svg{flex:none;width:13px;height:13px;margin-top:2px;fill:none;stroke:currentColor;stroke-width:2}
+.buy.busy,.buy-alt.busy{opacity:.75;cursor:progress}.buy:disabled,.buy-alt:disabled{cursor:progress}
+.size.so{opacity:.35;text-decoration:line-through;cursor:not-allowed}
 .cart-notify{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px}
 .cart-notify input{height:50px;border-radius:14px;border:1px solid rgba(244,242,238,.3);background:rgba(255,255,255,.05);color:var(--ink);padding:0 14px;font:inherit;font-size:16px;min-width:0}
 .cart-notify .buy-alt{padding:0 18px}
@@ -776,7 +787,7 @@ s.was{color:var(--ink-dim);font-weight:400;margin-left:4px}
   </section>
 
   <section id="pdp" class="view entering" hidden aria-label="Product">
-    <div class="promo reveal">Free US shipping over $100 · Pay in 4</div>
+    <div class="promo reveal">Game Day Set: save $10 on a tee + hat · Pay in 4</div>
     <div class="pdp-bg" aria-hidden="true"><div class="bg bg-tonga"></div><div class="bg bg-samoa"></div><img class="crest" id="pdpCrest" alt="" src="brand/toa-samoa-rugby-league-crest.webp"><div class="light"></div><div class="vig"></div></div>
     <header class="bar reveal">
       <button class="icon-btn" id="pdpBack" aria-label="Back to the drop"><svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg></button>
@@ -801,7 +812,7 @@ s.was{color:var(--ink-dim);font-weight:400;margin-left:4px}
           <h1 id="pName">Toa Samoa Snapback</h1>
           <div class="price-row"><strong class="num" id="pPrice">$55.00</strong><span class="afterpay" id="pAfter"></span></div>
           <p class="facts" id="pFacts"></p>
-          <p class="pdp-ship"><b>Free US shipping</b> on orders over $100</p>
+          <p class="pdp-ship"><b>Game Day Set:</b> save $10 when you pair any tee with a hat</p>
         </div>
         <div class="opt"><div class="opt-h"><span class="eyebrow">Colour</span><span id="pColour"></span></div><div class="swatches" id="pSwatches" role="group" aria-label="Colour"></div></div>
         <div class="opt"><div class="opt-h"><span class="eyebrow">Size <span class="size-note" id="pSizeNote"></span></span><button class="link" id="pGuideBtn" type="button">Size guide</button></div><div class="sizes" id="pSizes" role="group" aria-label="Size"></div></div>
@@ -910,12 +921,17 @@ s.was{color:var(--ink-dim);font-weight:400;margin-left:4px}
     <label class="bump" id="bump"><input type="checkbox" id="bumpChk"><span class="bump-t"><b id="bumpT"></b><span id="bumpC"></span></span><span class="bump-p num" id="bumpP"></span></label>
     <div class="tot disc add" id="bumpLine" hidden><span id="bumpLineT"></span><strong class="num" id="bumpLineV"></strong></div>
     <div class="tot disc" id="cartDisc" hidden><span>Game Day Set savings</span><strong class="num" id="cartDiscV"></strong></div>
+    <div class="code"><button type="button" class="code-t" id="codeToggle" aria-expanded="false" aria-controls="codeBox">Have a discount code?</button>
+      <div id="codeBox" hidden><form id="codeForm" class="code-f" novalidate><label class="sr" for="codeIn">Discount code</label><input id="codeIn" autocomplete="off" autocapitalize="characters" spellcheck="false" placeholder="Discount code"><button class="buy-alt" type="submit">Apply</button></form>
+      <p class="fine" id="codeMsg" role="status"></p></div>
+      <p class="code-on" id="codeOn" hidden><span>Code <b id="codeTag"></b> applies at checkout</span><button type="button" id="codeRm">Remove</button></p></div>
     <div class="tot"><span>Subtotal</span><strong class="num" id="cartSub"></strong></div>
     <p class="fine" id="shipFine">Shipping and tax calculated at checkout. Ships within the USA.</p>
     <p class="afterpay" id="cartAfter"></p>
     <button class="buy" id="cartGo" type="button">Checkout</button>
     <button class="buy-alt" id="cartAp" type="button">Pay in 4 with Afterpay</button>
     <p class="fine cart-msg" id="cartMsg" role="status"></p>
+    <p class="ctrust"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="10" width="14" height="10" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg><span><b>Secure checkout</b> · Visa · Mastercard · Amex · Apple Pay · Google Pay · Shop Pay · Afterpay</span></p>
     <form class="cart-notify" id="cartNotify" hidden novalidate><label class="sr" for="cnEmail">Email address</label><input id="cnEmail" type="email" inputmode="email" autocomplete="email" placeholder="Email address"><button class="buy-alt" type="submit">Notify me</button></form>
   </footer>
 </aside>
@@ -1042,7 +1058,7 @@ const KLAVIYO_COMPANY_ID="T9JJzp",KLAVIYO_LIST_ID="SLSsGL";
 async function klavPost(attrs){const body={data:{type:"subscription",attributes:{profile:{data:{type:"profile",attributes:attrs}}},relationships:{list:{data:{type:"list",id:KLAVIYO_LIST_ID}}}}};
   const r=await fetch("https://a.klaviyo.com/client/subscriptions/?company_id="+KLAVIYO_COMPANY_ID,{method:"POST",headers:{"content-type":"application/json","revision":"2026-07-15"},body:JSON.stringify(body)});
   if(!(r.status===202||r.ok))throw new Error("klaviyo "+r.status)}
-async function klav(email,phone,props){const a={email};if(phone)a.phone_number=phone;if(props)a.properties=props;
+async function klav(email,phone,props){try{localStorage.setItem("pmn_email",email)}catch(e){}const a={email};if(phone)a.phone_number=phone;if(props)a.properties=props;
   try{await klavPost(a)}catch(e){await klavPost({email})}}
 const usPhone=d=>{d=String(d||"").replace(/\D/g,"");return d.length>=10?"+1"+d.slice(-10):null};
 /* Shopify Storefront API (public token: read-only + cart, safe in the browser). Shopify wins on price. */
@@ -1249,7 +1265,7 @@ const money=v=>"$"+v.toFixed(2);
 const afterpay=v=>`or 4 payments of <b>${money(v/4)}</b> with Afterpay`;
 const teamName=p=>p.team==="pmn"?"PMN+":p.team==="samoa"?"Toa Samoa":"Mate Ma'a Tonga";
 const wrapOff=(i,pos,n)=>{let d=((i-pos)%n+n)%n;if(d>n/2)d-=n;return d};
-let bag=0;const cart=[];const BUNDLE_OFF=10;const FREE_SHIP=100;
+let bag=0;const cart=[];try{(JSON.parse(localStorage.getItem("pmn_cart")||"[]")||[]).forEach(i=>{if(BY[i.id]&&i.qty>0)cart.push({id:i.id,size:i.size??null,qty:Math.min(10,i.qty|0)})})}catch(e){}const BUNDLE_OFF=10;const FREE_SHIP=100;
 /* Checkout bump: one checkbox above checkout (Brunson order-form bump). PLACEHOLDER: pick a preset once the item and price are confirmed. */
 const BUMPS={
   protect:{title:"Yes, protect my order",copy:"Lost, stolen or damaged in transit? We reprint and reship it free. One tap, no claim forms.",price:4.5,line:"Order protection"},
@@ -1257,7 +1273,7 @@ const BUMPS={
 };
 const BUMP=BUMPS.stickers;let bumpOn=false;
 function toast(msg){const t=$("toast");t.textContent=msg;t.classList.add("on");clearTimeout(toast.t);toast.t=setTimeout(()=>t.classList.remove("on"),2600)}
-function setBag(){bag=cart.reduce((n,i)=>n+i.qty,0);document.querySelectorAll(".bag-count").forEach(b=>{b.hidden=!bag;b.textContent=bag});document.querySelectorAll(".bag").forEach(b=>b.setAttribute("aria-label",`Bag, ${bag} item${bag===1?"":"s"}`))}
+function setBag(){try{localStorage.setItem("pmn_cart",JSON.stringify(cart))}catch(e){}bag=cart.reduce((n,i)=>n+i.qty,0);document.querySelectorAll(".bag-count").forEach(b=>{b.hidden=!bag;b.textContent=bag});document.querySelectorAll(".bag").forEach(b=>b.setAttribute("aria-label",`Bag, ${bag} item${bag===1?"":"s"}`))}
 
 const CREST={samoa:"brand/toa-samoa-rugby-league-crest",tonga:"brand/mate-maa-tonga-rugby-league-crest"};
 const avifOK=(()=>{try{return document.createElement("canvas").toDataURL("image/avif").startsWith("data:image/avif")}catch(e){return false}})();
@@ -1389,7 +1405,7 @@ const PDP=(()=>{
     const det=$("pDetails");det.hidden=!bl.fabric;
     if(bl.fabric){$("pFabric").textContent=`${bl.label}. ${bl.fabric}. Same price in every size.`;
       $("pChart").innerHTML=`<tr><th>Size</th>${list.map(z=>`<th>${z}</th>`).join("")}</tr><tr><th>Chest</th>${list.map(z=>`<td>${(bl.chart==="shaka"?SHAKA_CHART:FWJ_CHART)[z][0]}</td>`).join("")}</tr><tr><th>Length</th>${list.map(z=>`<td>${(bl.chart==="shaka"?SHAKA_CHART:FWJ_CHART)[z][1]}</td>`).join("")}</tr>`}
-    list.forEach(s=>{const b=document.createElement("button");b.className="size";b.textContent=s;b.setAttribute("aria-pressed",s===size);
+    list.forEach(s=>{const b=document.createElement("button");b.className="size";b.textContent=s;{const vv=typeof VAR!=="undefined"&&VAR[p.id]&&VAR[p.id][s];if(vv&&!vv.ok){b.disabled=true;b.classList.add("so");b.setAttribute("aria-label",s+", sold out")}}b.setAttribute("aria-pressed",s===size);
       b.onclick=()=>{size=s;sz.querySelectorAll(".size").forEach(x=>x.setAttribute("aria-pressed",x===b));cta()};sz.append(b)});
     if(p.kind==="tee"&&!size)sz.style.gridTemplateColumns="";
     extras(p);cta();
@@ -1599,8 +1615,10 @@ const Cart=(()=>{
   const sets=()=>{let t=0,h=0;cart.forEach(i=>{if(BY[i.id].kind==="hat")h+=i.qty;else t+=i.qty});return Math.min(t,h)};
   const sub=()=>gross()-sets()*BUNDLE_OFF+(bumpOn&&cart.length?BUMP.price:0);
   function upsell(){
-    for(const i of cart){const p=BY[i.id],want=p.kind==="hat"?LOOK[p.team].tee:LOOK[p.team].hat;
-      if(!cart.some(c=>BY[c.id].kind===BY[want].kind&&BY[c.id].team===p.team))return BY[want]}
+    const buyable=id=>!shopifyOK||!!VAR[id];
+    for(const i of cart){const p=BY[i.id],kind=p.kind==="hat"?"tee":"hat",first=kind==="tee"?LOOK[p.team].tee:LOOK[p.team].hat;
+      if(cart.some(c=>BY[c.id].kind===kind&&BY[c.id].team===p.team))continue;
+      const pick=[first,...PRODUCTS.filter(o=>o.team===p.team&&o.kind===kind).map(o=>o.id)].find(buyable);if(pick)return BY[pick]}
     return null}
   function render(){
     const body=$("cartBody");body.innerHTML="";$("cartN").textContent=bag?`(${bag})`:"";$("cartMsg").textContent="";
@@ -1623,7 +1641,8 @@ const Cart=(()=>{
       d.querySelector("button").onclick=()=>add(u.id,u.kind==="hat"?"One size":null,1);body.append(d)}
     $("bump").hidden=!BUMP.variant;if(!BUMP.variant)bumpOn=false;$("bumpT").textContent=BUMP.title;$("bumpC").textContent=BUMP.copy;$("bumpP").textContent=`+${money(BUMP.price)}`;
     $("bumpChk").checked=bumpOn;$("bump").classList.toggle("on",bumpOn);$("bumpLine").hidden=!bumpOn;$("bumpLineT").textContent=BUMP.line;$("bumpLineV").textContent=money(BUMP.price);
-    {const t0=sub(),left=Math.max(0,FREE_SHIP-t0),pct=Math.min(100,t0/FREE_SHIP*100);
+    $("ship").hidden=true;$("shipFine").textContent="Shipping and tax calculated at checkout. Ships within the USA.";
+    if(0){const t0=sub(),left=Math.max(0,FREE_SHIP-t0),pct=Math.min(100,t0/FREE_SHIP*100);
      $("ship").hidden=false;$("ship").classList.toggle("done",!left);$("shipFill").style.width=pct+"%";$("shipBar").setAttribute("aria-valuenow",Math.round(pct));
      $("shipTxt").innerHTML=left?`You're <b class="num">${money(left)}</b> away from free shipping`:`You've unlocked <b>free US shipping</b>`;
      $("shipFine").textContent=left?"Shipping and tax calculated at checkout. Ships within the USA.":"Free US shipping applied. Tax calculated at checkout."}
@@ -1633,20 +1652,46 @@ const Cart=(()=>{
   function ready(){const miss=cart.filter(i=>i.size===null);if(miss.length){$("cartMsg").textContent=`Choose a size for ${miss.length===1?BY[miss[0].id].name:miss.length+" items"} before checkout.`;
       const s0=$("cartBody").querySelector("select.need");s0&&s0.focus();return false}return true}
   const soon=()=>{if(!ready())return;$("cartMsg").textContent="Checkout opens very soon. Leave your email and we'll let you know the moment it's live.";$("cartNotify").hidden=false;$("cnEmail").focus()};
-  async function checkout(){if(!ready())return;const btns=[$("cartGo"),$("cartAp")];
-    $("cartMsg").textContent="Loading secure checkout…";await shopifyReady;
-    if(!shopifyOK)return soon();
-    const lines=[],miss=[];
-    cart.forEach(i=>{const v=VAR[i.id]&&VAR[i.id][i.size||"One size"];if(v&&v.ok)lines.push({merchandiseId:v.id,quantity:i.qty});else miss.push(BY[i.id].name+(i.size&&i.size!=="One size"?` (${i.size})`:""))});
-    if(miss.length){$("cartMsg").textContent=`${miss.join(", ")} ${miss.length>1?"aren't":"isn't"} available to order yet. Remove ${miss.length>1?"them":"it"} to check out.`;return}
-    if(bumpOn&&BUMP.variant)lines.push({merchandiseId:BUMP.variant,quantity:1});
-    btns.forEach(b=>b.disabled=true);
-    try{const d=await sf(`mutation($i:CartInput!){cartCreate(input:$i){cart{checkoutUrl} userErrors{message}}}`,
-        {i:{lines,buyerIdentity:{countryCode:"US"},attributes:[{key:"source",value:"pmn-shop"}]}});
-      const u=d.cartCreate.userErrors;if(u&&u.length)throw new Error(u[0].message);
-      location.href=d.cartCreate.cart.checkoutUrl}
-    catch(e){console.warn("checkout",e);btns.forEach(b=>b.disabled=false);$("cartMsg").textContent="Checkout didn't load. Please try again in a moment."}}
+  /* ---- Shopify checkout: build the cart (lines, code, email), open hosted checkout ---- */
+  const CODE_KEY="pmn_code",SCART_KEY="pmn_scart";
+  const store={get:k=>{try{return localStorage.getItem(k)}catch(e){return null}},set:(k,v)=>{try{v==null?localStorage.removeItem(k):localStorage.setItem(k,v)}catch(e){}}};
+  let code=store.get(CODE_KEY)||"";
+  const lineFor=i=>{const v=VAR[i.id]&&VAR[i.id][i.size||"One size"];return v&&v.ok?{merchandiseId:v.id,quantity:i.qty}:null};
+  function cartInput(codes){const lines=cart.map(lineFor).filter(Boolean);if(bumpOn&&BUMP.variant)lines.push({merchandiseId:BUMP.variant,quantity:1});
+    const bi={countryCode:"US"},em=store.get("pmn_email");if(em)bi.email=em;
+    return{lines,discountCodes:codes,buyerIdentity:bi,attributes:[{key:"source",value:"pmn-shop"}]}}
+  const CART_Q=`mutation($i:CartInput!){cartCreate(input:$i){cart{id checkoutUrl discountCodes{code applicable}} userErrors{message}}}`;
+  function busy(on,label){[$("cartGo"),$("cartAp")].forEach(b=>{b.disabled=on;b.classList.toggle("busy",on&&b===busyBtn)});if(label)$("cartMsg").textContent=label}
+  let busyBtn=null;
+  async function checkout(e){if(!ready())return;busyBtn=e&&e.currentTarget||$("cartGo");
+    busy(true,"Opening secure checkout…");await shopifyReady;
+    if(!shopifyOK){busy(false,"");return soon()}
+    const miss=cart.filter(i=>!lineFor(i)).map(i=>BY[i.id].name+(i.size&&i.size!=="One size"?` (${i.size})`:""));
+    if(miss.length){busy(false,`${miss.join(", ")} ${miss.length>1?"aren't":"isn't"} available to order yet. Remove ${miss.length>1?"them":"it"} to check out.`);return}
+    try{const d=await sf(CART_Q,{i:cartInput(code?[code]:[])});const r=d.cartCreate;
+      if(r.userErrors&&r.userErrors.length)throw new Error(r.userErrors[0].message);
+      store.set(SCART_KEY,r.cart.id);location.href=r.cart.checkoutUrl}
+    catch(err){console.warn("checkout",err);busy(false,"Checkout didn't load. Please try again in a moment.")}}
   $("cartGo").onclick=checkout;$("cartAp").onclick=checkout;
+  /* discount code: validated against Shopify, applied at checkout */
+  function showCode(){const has=!!code;$("codeForm").hidden=has;$("codeOn").hidden=!has;$("codeTag").textContent=code}
+  $("codeToggle").onclick=()=>{const f=$("codeBox");f.hidden=!f.hidden;$("codeToggle").setAttribute("aria-expanded",!f.hidden);if(!f.hidden)$("codeIn").focus()};
+  $("codeForm").addEventListener("submit",async ev=>{ev.preventDefault();const c=$("codeIn").value.trim().toUpperCase();const m=$("codeMsg");
+    if(!c){m.textContent="Enter a code.";return}
+    m.textContent="Checking…";await shopifyReady;
+    if(!shopifyOK){m.textContent="Codes can't be checked right now. Enter it at checkout.";return}
+    try{const inp=cartInput([c]);if(!inp.lines.length){m.textContent="Add something to your bag first.";return}
+      const d=await sf(CART_Q,{i:inp}),dc=(d.cartCreate.cart&&d.cartCreate.cart.discountCodes||[]).find(x=>x.code.toUpperCase()===c);
+      if(dc&&dc.applicable){code=c;store.set(CODE_KEY,c);m.textContent="";$("codeIn").value="";showCode();toast(`${c} added. Your savings show at checkout.`)}
+      else m.textContent=`${c} isn't valid for this bag.`}
+    catch(err){m.textContent="Couldn't check that code. Try again."}});
+  $("codeRm").onclick=()=>{code="";store.set(CODE_KEY,null);showCode()};
+  showCode();
+  /* back from checkout: if the Shopify cart became an order, clear the bag */
+  (async()=>{const id=store.get(SCART_KEY);if(!id)return;await shopifyReady;if(!shopifyOK)return;
+    try{const d=await sf(`query($id:ID!){cart(id:$id){id}}`,{id});
+      if(!d.cart){store.set(SCART_KEY,null);store.set(CODE_KEY,null);code="";showCode();cart.splice(0,cart.length);bumpOn=false;setBag();render();
+        toast("Thanks for your order! Your confirmation is on its way by email.")}}catch(e){}})();
   $("cartNotify").addEventListener("submit",e=>{e.preventDefault();const v=$("cnEmail").value.trim();
     if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(v)){$("cartMsg").textContent="Enter a valid email, like name@example.com.";return}
     const items=cart.map(i=>`${BY[i.id].name}${i.size&&i.size!=="One size"?" ("+i.size+")":""} x${i.qty}`).join(", ");
@@ -1660,6 +1705,7 @@ const Cart=(()=>{
   $("cartX").onclick=close;scrim.onclick=close;
   addEventListener("keydown",e=>{if(e.key==="Escape"&&!el.hidden)close()});
   document.querySelectorAll(".bag").forEach(b=>b.onclick=()=>open());
+  setBag();
   return{add,open,close};
 })();
 /* ---------- policy pages (drafts: confirm with JQF, Fulfill Engine and a lawyer) ---------- */
@@ -1668,7 +1714,7 @@ return{
 shipping:{t:"Shipping",h:`${N}
 <h2>Where we ship</h2><p>All 50 US states, including Hawaii and Alaska, plus APO/FPO addresses [to confirm]. We don't ship outside the USA yet.</p>
 <h2>How long it takes</h2><ul><li>Printing: ${P.production}. Every piece is printed to order.</li><li>Shipping: ${P.shipping} once it leaves the printer.</li><li>Total: ${P.total}. Drop weeks can add 1–2 days.</li></ul>
-<h2>Shipping cost</h2><p>Free US shipping on orders over $100 (after discounts, before tax). Orders under $100: [flat rate, to confirm]. The exact cost shows at checkout before you pay.</p>
+<h2>Shipping cost</h2><p>Shipping is calculated at checkout from your address and order. The exact cost shows at checkout before you pay.</p>
 <h2>Tracking</h2><p>You'll get an email with a tracking link when your order ships.</p>
 <h2>Lost or damaged parcels</h2><p>If tracking shows delivered but you don't have it, or it arrives damaged, email [support email] within 30 days with your order number and we'll sort it out.</p>`},
 returns:{t:"Returns & exchanges",h:`${N}

@@ -171,6 +171,17 @@ button[disabled]{opacity:.5;cursor:default}
 .foot .pay li{font-size:11.5px;font-weight:600;padding:5px 9px;border:1px solid var(--line);border-radius:6px;color:rgba(244,242,238,.8)}
 .foot .fine{margin:0;font-size:12px;color:var(--dim)}
 @media (min-width:900px){.foot{grid-template-columns:auto 1fr auto;align-items:start;column-gap:56px;padding-inline:max(2.5rem,calc(50vw - 620px))}.foot>.fine,.foot>.pay{grid-column:1/-1}.foot-cols{gap:48px}}
+
+/* success card + scroll cue spacing (premium pass) */
+.hero{padding-bottom:calc(4rem + 64px)}
+.success{gap:0;width:100%;max-width:25rem;padding:2.2rem 2rem 2rem}
+.success .tick{width:44px;height:44px;margin-bottom:1.1rem;background:rgba(61,220,132,.08)}
+.success .big{font-size:2.9rem;letter-spacing:.015em;margin-bottom:.7rem}
+.success .sub{font-size:1rem;line-height:1.55;max-width:30ch;text-wrap:balance;margin:0 0 1.25rem}
+.success .code{font-family:var(--display);font-size:1.7rem;line-height:1;letter-spacing:.16em;color:#fff;padding:.7rem 1.4rem .6rem;border:1.5px dashed rgba(255,255,255,.4);border-radius:12px;margin-bottom:1.35rem}
+.success .go{display:inline-flex;align-items:center;justify-content:center;height:48px;min-width:11rem;padding:0 2rem;border-radius:999px;background:#fff;color:#000;font-family:var(--display);font-size:1.2rem;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;transition:opacity .15s,transform .1s}
+.success .go:hover{opacity:.88}.success .go:active{transform:translateY(1px)}
+.success .go:focus-visible{outline:2px solid #fff;outline-offset:3px}
 </style>
 <link rel="stylesheet" href="/assets/pmn-nav.css">
 </head>
@@ -196,9 +207,11 @@ button[disabled]{opacity:.5;cursor:default}
     <p class="fine">Get 10% off your first order, plus first access to drops, interviews and giveaways.</p>
     <p class="note" id="note" role="status" aria-live="polite"></p>
     <div class="success" id="success" role="status" aria-live="polite">
-      <div class="tick">&#10003;</div>
-      <p class="big">You&rsquo;re in!</p>
-      <p class="sub">Welcome to the <b>aiga</b>. <b>WELCOME10</b> is saved to your bag and comes off at checkout. <a href="/shop" style="color:inherit;text-decoration:underline">Shop now</a></p>
+      <div class="tick" aria-hidden="true"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></div>
+      <p class="big">You&rsquo;re in</p>
+      <p class="sub">Welcome to the <b>aiga</b>. Your 10% off code is saved to your bag and comes off at checkout.</p>
+      <div class="code" aria-label="Your code: WELCOME10">WELCOME10</div>
+      <a class="go" href="/shop">Shop now</a>
     </div>
   </div>
   <a class="cue" href="#shop">Scroll</a>

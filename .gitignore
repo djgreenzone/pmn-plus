@@ -1,3 +1,4 @@
 .vercel
 _source/account_pkg.tgz
 __pycache__/
+.env*

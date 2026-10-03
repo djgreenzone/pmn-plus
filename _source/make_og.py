@@ -38,7 +38,7 @@ for pid,o in d['products'].items():
     if team in CREST:
         c=Image.open(SHOP+CREST[team]).convert('RGBA');c=c.resize((round(c.width*96/c.height),96),Image.LANCZOS);bg.alpha_composite(c,(X,64));ty=196
     else:
-        dr.text((X,64),'PMN+',font=F(84),fill=(255,255,255));ty=190
+        sl0=Image.open(SHOP+'brand/pmn-plus-shop-logo-white.png').convert('RGBA');sl0=sl0.resize((round(sl0.width*96/sl0.height),96),Image.LANCZOS);bg.alpha_composite(sl0,(X,64));ty=196
     dr.text((X,ty),o['teamName'].upper()+('  ·  RLWC 2026' if team!='pmn' else '  ·  PASIFIKA APPAREL'),font=F(30),fill=(255,255,255,190))
     f=F(88);lines=wrap(dr,o['h1'].upper(),f,520)
     if len(lines)>2:f=F(70);lines=wrap(dr,o['h1'].upper(),f,520)
@@ -46,6 +46,11 @@ for pid,o in d['products'].items():
     for l in lines: dr.text((X,yy),l,font=f,fill=(255,255,255));yy+=int(f.size*.92)
     dr.text((X,yy+10),o['colour'].upper(),font=F(34),fill=(255,255,255,200))
     foot='SOLD OUT' if o.get('sold') else 'SHIPS ACROSS THE USA'
-    dr.text((X,H-64-30),'POLYNESIANMUSICNETWORK.COM/SHOP  ·  '+foot,font=F(30),fill=(255,255,255,170))
+    if team in CREST:
+        sl=Image.open(SHOP+'brand/pmn-plus-shop-logo-white.png').convert('RGBA');sl=sl.resize((round(sl.width*50/sl.height),50),Image.LANCZOS)
+        bg.alpha_composite(sl,(X,H-64-50))
+        dr.text((X+sl.width+18,H-64-25),'·  '+foot,font=F(30),fill=(255,255,255,170),anchor='lm')
+    else:
+        dr.text((X,H-64-30),'POLYNESIANMUSICNETWORK.COM/SHOP  ·  '+foot,font=F(30),fill=(255,255,255,170))
     bg.convert('RGB').save(SHOP+f"og/{o['slug']}.jpg",quality=86,optimize=True,progressive=True)
     print(o['slug'])

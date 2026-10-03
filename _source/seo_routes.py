@@ -130,7 +130,7 @@ for k,c in SD['collections'].items():
     ld={"@context":"https://schema.org","@graph":[{kk:vv for kk,vv in c['jsonld'].items() if kk!='@context'},crumbs]}
     for it,pid in zip(ld['@graph'][0]['mainEntity']['itemListElement'],c['products']): it['name']=SD['products'][pid]['h1']
     pg=head(BASE,c['title'],c['meta'],url,OG0,"Toa Samoa and Mate Ma'a Tonga tees and snapbacks from PMN+",ld)
-    pg=sub1(pg,r'<h1 id="collH"></h1><p id="cIntro"></p>',f'<h1 id="collH">{E(c["name"])}</h1><p id="cIntro">{E(c["intro"])}</p>')
+    pg=sub1(pg,r'<h1 id="collH" class="sr"></h1><p id="cIntro" class="sr"></p>',f'<h1 id="collH" class="sr">{E(c["name"])}</h1><p id="cIntro" class="sr">{E(c["intro"])}</p>')
     cards=''.join(f'<a class="gcard" href="/shop/{SD["products"][pid]["slug"]}"><span class="im"><img loading="lazy" src="{SD["products"][pid]["images"][0].split("/shop/")[1]}" alt="{E(SD["products"][pid]["alt"][0])}"></span><b>{E(SD["products"][pid]["h1"])}</b><span class="num">{"Sold out" if SD["products"][pid]["sold"] else "$"+str(SD["products"][pid]["price"])+".00"}</span></a>' for pid in c['products'])
     pg=sub1(pg,r'<div class="grid" id="cGrid"></div>',f'<div class="grid" id="cGrid">{cards}</div>')
     os.makedirs(os.path.join(SHOPDIR,k),exist_ok=True)

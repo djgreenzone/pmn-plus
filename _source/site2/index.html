@@ -834,7 +834,7 @@ s.was{color:var(--ink-dim);font-weight:400;margin-left:4px}
     </header>
     <div class="coll-scroll" id="collScroll">
       <nav class="crumbs" aria-label="Breadcrumb"><a href="#" id="crHome">Shop</a><span aria-hidden="true">/</span><span id="crHere" aria-current="page"></span></nav>
-      <div class="coll-head"><img class="coll-crest" id="cCrest" alt=""><h1 id="collH"></h1><p id="cIntro"></p></div>
+      <div class="coll-head"><img class="coll-crest" id="cCrest" alt=""><h1 id="collH" class="sr"></h1><p id="cIntro" class="sr"></p></div>
       <div class="tabs" role="tablist" aria-label="Collections" id="cTabs"></div>
       <div class="chips" role="group" aria-label="Filter" id="cFilter"><button class="chip" data-f="all" aria-pressed="true">All</button><button class="chip" data-f="tee" aria-pressed="false">Tees</button><button class="chip" data-f="hat" aria-pressed="false">Hats</button></div>
       <div class="grid" id="cGrid"></div>
@@ -1478,7 +1478,7 @@ const Coll=(()=>{
       b.onclick=()=>PDP.open(p.id,b.querySelector("img"),"coll");g.append(b)})}
   function show(k){key=k;const c=SEO.collections[k],team=k==="toa-samoa"?"samoa":k==="mate-maa-tonga"?"tonga":"all";
     el.dataset.team=team;$("collH").textContent=c.name;$("cIntro").textContent=c.intro;$("crHere").textContent=c.name;
-    $("cCrest").hidden=false;$("cCrest").src=team==="all"?"brand/pmn-plus-logo-white.svg":crestURL(team);
+    $("cCrest").hidden=false;$("cCrest").src=team==="all"?"brand/pmn-plus-logo-white.svg":crestURL(team);$("cCrest").alt=c.name+(team==="all"?" logo":" crest");
     tabs.querySelectorAll("button").forEach(b=>b.setAttribute("aria-selected",b.dataset.k===k));
     document.title=c.title;grid();$("collScroll").scrollTop=0}
   function open(k,f){Hero.stop();$("hero").hidden=true;$("pdp").hidden=true;el.hidden=false;filt=f||"all";$("cFilter").querySelectorAll(".chip").forEach(x=>x.setAttribute("aria-pressed",x.dataset.f===filt));show(k||key)}

@@ -71,9 +71,13 @@ for p in prods:
 open('site2/seo/merchant-center-feed.tsv','w').write('\n'.join(rows)+'\n')
 # ---- sitemap with images ----
 u=['<?xml version="1.0" encoding="UTF-8"?>','<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">']
-u.append(f"  <url><loc>{D}/</loc><lastmod>2026-10-02</lastmod></url>")
+u.append(f"  <url><loc>{D}/</loc><lastmod>2026-10-02</lastmod><image:image><image:loc>{D}/assets/pmn-plus-og-music-culture-tradition-sports.jpg</image:loc></image:image></url>")
 u.append(f"  <url><loc>{D}/shop</loc><lastmod>2026-10-02</lastmod><image:image><image:loc>{D}/shop/pmn-plus-shop-og-rlwc-2026-toa-samoa-mate-maa-tonga.jpg</image:loc></image:image></url>")
-for k,c in out['collections'].items(): u.append(f"  <url><loc>{c['url']}</loc><lastmod>2026-10-02</lastmod></url>")
+CIMG={'toa-samoa':['shop/brand/toa-samoa-rugby-league-crest.webp'],'mate-maa-tonga':['shop/brand/mate-maa-tonga-rugby-league-crest.webp']}   # collection page images
+for k,c in out['collections'].items():
+    slug=c['url'].rstrip('/').rsplit('/',1)[-1]
+    imgs=[f"{D}/{x}" for x in CIMG.get(slug,[])]+[f"{D}/shop/pmn-plus-shop-og-rlwc-2026-toa-samoa-mate-maa-tonga.jpg"]
+    u.append(f"  <url><loc>{c['url']}</loc><lastmod>2026-10-02</lastmod>"+"".join(f"<image:image><image:loc>{i}</image:loc></image:image>" for i in imgs)+"</url>")
 for pid,o in out['products'].items():
     u.append(f"  <url><loc>{o['url']}</loc><lastmod>2026-10-02</lastmod>"+"".join(f"<image:image><image:loc>{html.escape(i)}</image:loc></image:image>" for i in [o['og']]+o['images'])+"</url>")
 u.append(f"  <url><loc>{D}/privacy-policy</loc><lastmod>2026-10-02</lastmod></url>")

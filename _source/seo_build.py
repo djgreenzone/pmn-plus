@@ -36,8 +36,12 @@ for p in prods:
     nc=f"{p['name']} – {p['colour']}"
     cands=([nc+" | RLWC 2026 | PMN+"] if p['team']!='pmn' else [nc+" | Pasifika Apparel"])+[nc+" | PMN+",nc]
     title=next(t for t in cands if len(t)<=60)
-    tail=f"${p['price']} · Ships across the USA."
-    meta=sc["m"]+" "+tail
+    tails=[f"${p['price']}" + (" · RLWC 2026" if p['team']!='pmn' else "") + ". Printed to order and shipped across the USA by PMN+, the Pasifika media platform.",
+           f"${p['price']}. Printed to order and shipped across the USA by PMN+, the Pasifika media platform.",
+           f"${p['price']}. Printed to order and shipped across the USA by PMN+.",
+           f"${p['price']}. Printed to order and shipped across the USA.",
+           f"${p['price']} · Ships across the USA."]
+    meta=next(sc["m"]+" "+t for t in tails if len(sc["m"]+" "+t)<=155)
     faq=[{"q":q,"a":a_} for q,a_ in sc['faq']+C['sharedFaq']]
     prod={"@type":"Product","@id":url+"#product","name":f"{p['name']} – {p['colour']}","sku":slug,"brand":{"@type":"Brand","name":"PMN+"},"color":p['colour'],
           "category":"Apparel & Accessories > "+("Clothing Accessories > Hats" if p['kind']=='hat' else "Clothing > Shirts & Tops"),
@@ -50,7 +54,7 @@ for p in prods:
     out['products'][p['id']]=dict(slug=slug,url=url,title=title,meta=meta,h1=p['name'],colour=p['colour'],price=p['price'],team=p['team'],keyword=sc['kw'],
         description=sc['d'],faq=faq,sizes=sizes(p),images=imgs,og=og,sold=p['id'] in SOLD,kind=p['kind'],teamName=TEAM[p['team']],alt=[f"{p['name']} in {p['colour'].lower()}, {n.rsplit('-',1)[-1] if not n.endswith(('front-left','front-right','back-left','back-right')) else ' '.join(n.split('-')[-2:])} view" for a_,n in order],jsonld={"@context":"https://schema.org","@graph":[org,prod,crumbs,faqld]})
 for k,c in C['collections'].items():
-    members=[p['id'] for p in prods if k=='pmn-plus' or COLL[p['team']]==k]
+    members=[p['id'] for p in prods if COLL[p['team']]==k]
     out['collections'][k]=dict(c,url=f"{D}/shop/{k}",products=members,jsonld={"@context":"https://schema.org","@type":"CollectionPage","name":c['name'],"url":f"{D}/shop/{k}","description":c['meta'],
         "mainEntity":{"@type":"ItemList","itemListElement":[{"@type":"ListItem","position":i+1,"url":out['products'][pid]['url']} for i,pid in enumerate(members)]}})
 os.makedirs('site2/seo',exist_ok=True)

@@ -143,9 +143,9 @@ COLLECTIONS = {
  "toa-samoa": dict(name="Toa Samoa", title="Toa Samoa Merch: 685 Tees, Snapbacks & Hats | PMN+",
    meta="Shop Toa Samoa merch for Rugby League World Cup 2026: 685 tees, oversized crest tees, snapbacks and trucker hats. Ships across the USA.",
    intro="Rep Toa Samoa blue for Rugby League World Cup 2026. The Toa Samoa collection brings the 685 back print, the Est. 1986 crest and Samoan patches to heavyweight tees, snapbacks and truckers, printed to order and shipped across the USA."),
- "pmn-plus": dict(name="PMN+", title="PMN+ Merch: Pasifika Tees, Snapbacks & Hats",
-   meta="Shop PMN+ apparel: PMN+ core tees and truckers plus Mate Ma'a Tonga and Toa Samoa RLWC 2026 gear from the Pasifika media platform. Ships across the USA.",
-   intro="PMN+ is a multimedia platform for the Pasifika community: music, news, sports and culture, shared worldwide. Our apparel carries that same pride, from the Mate Ma'a Tonga and Toa Samoa RLWC 2026 range to PMN+ core pieces, printed to order and shipped across the USA."),
+ "pmn-plus": dict(name="PMN+", title="PMN+ Apparel: Logo Tee, Trucker & Dad Hat | PMN+ Shop",
+   meta="Shop PMN+ apparel from the Pasifika media platform: the PMN+ Logo Tee, Trucker Hat and Classic Dad Hat. Printed to order and shipped across the USA.",
+   intro="PMN+ is a multimedia platform for the Pasifika community: music, news, sports and culture, shared worldwide. PMN+ apparel carries that same pride on everyday pieces, from the Logo Tee to the Trucker and Classic Dad Hat, printed to order and shipped across the USA."),
 }
 
 if __name__ == "__main__":

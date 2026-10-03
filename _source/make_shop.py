@@ -130,7 +130,7 @@ print('checkout ux ok')
 s=open(sys.argv[1]).read()
 D="https://www.polynesianmusicnetwork.com"
 T="Shop PMN+ | RLWC 2026 Toa Samoa &amp; Mate Ma'a Tonga Merch"
-DS="It's time to represent your Pacific team. Toa Samoa and Mate Ma'a Tonga tees, snapbacks and truckers for RLWC 2026, plus PMN+ core pieces. Ships across the USA."
+DS="Represent your Pacific team: Toa Samoa and Mate Ma'a Tonga tees, snapbacks and truckers for RLWC 2026, plus PMN+ core pieces. Ships across the USA."
 IMG=D+"/shop/pmn-plus-shop-og-rlwc-2026-toa-samoa-mate-maa-tonga.jpg"
 ALT="Toa Samoa and Mate Ma'a Tonga tees and snapbacks on blue and red pattern backgrounds: It's time to represent your Pacific team"
 og=f"""<link rel="canonical" href="{D}/shop">

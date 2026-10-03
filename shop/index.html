@@ -775,14 +775,14 @@ s.was{color:var(--ink-dim);font-weight:400;margin-left:4px}
         <input id="suPhone" type="tel" inputmode="tel" autocomplete="tel" placeholder="Mobile (optional) for 20% off">
         <button class="buy" type="submit">Get my code</button>
       </form>
-      <p class="fine" id="suMsg" role="status">New customers only, one code per person, first order. By signing up you agree to get marketing emails from PMN+. If you add your number, you agree to get recurring automated marketing texts from PMN+ at that number. Consent isn't a condition of purchase. Msg frequency varies. Msg &amp; data rates may apply. Reply HELP for help, STOP to cancel. See our <a href="/sms-terms">SMS Terms</a> and <a href="/privacy-policy">Privacy Policy</a>.</p>
+      <p class="fine" id="suMsg" role="status">New customers only, one code per person, first order. By signing up you agree to get marketing emails from PMN+. If you add your number, you agree to get recurring automated marketing texts from PMN+ at that number. Consent isn't a condition of purchase. Msg frequency varies. Msg &amp; data rates may apply. Reply HELP for help, STOP to cancel. See our <a href="/terms#sms">SMS Terms</a> and <a href="/privacy-policy">Privacy Policy</a>.</p>
     </section>
     <footer class="foot">
       <img src="brand/pmn-plus-logo-white.svg" alt="PMN+ Polynesian Music Network Plus" width="48" height="52">
       <div class="foot-cols">
         <nav aria-label="Shop"><b>Shop</b><button type="button" data-coll="mate-maa-tonga">Mate Ma'a Tonga</button><button type="button" data-coll="toa-samoa">Toa Samoa</button><button type="button" data-coll="pmn-plus" data-f="pmn">PMN+</button><button type="button" data-coll="pmn-plus">Shop all</button></nav>
         <nav aria-label="Help"><b>Help</b><button type="button" data-page="shipping">Shipping</button><button type="button" data-page="returns">Returns &amp; exchanges</button><button type="button" data-page="contact">Contact</button></nav>
-        <nav aria-label="Legal"><b>Legal</b><a href="/privacy-policy">Privacy policy</a><a href="/sms-terms">SMS terms</a><button type="button" data-page="terms">Terms of service</button></nav>
+        <nav aria-label="Legal"><b>Legal</b><a href="/privacy-policy">Privacy policy</a><a href="/terms#sms">SMS terms</a><a href="/terms">Terms of service</a></nav>
       </div>
       <div class="follow"><b>Follow us</b><div class="soc">
         <a href="https://www.instagram.com/polynesianmusic/" target="_blank" rel="noopener" aria-label="PMN+ on Instagram"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.4" cy="6.6" r="1.1" class="f"/></svg></a>
@@ -961,7 +961,7 @@ s.was{color:var(--ink-dim);font-weight:400;margin-left:4px}
       <button class="buy" type="submit">Get 20% off</button>
     </form>
     <button class="link" id="offSkip" type="button">No thanks, keep 10%</button>
-    <p class="fine">By adding your number you agree to get recurring automated marketing texts from PMN+ at that number. Consent isn't a condition of purchase. Msg frequency varies. Msg &amp; data rates may apply. Reply HELP for help, STOP to cancel. See our <a href="/sms-terms">SMS Terms</a> and <a href="/privacy-policy">Privacy Policy</a>.</p>
+    <p class="fine">By adding your number you agree to get recurring automated marketing texts from PMN+ at that number. Consent isn't a condition of purchase. Msg frequency varies. Msg &amp; data rates may apply. Reply HELP for help, STOP to cancel. See our <a href="/terms#sms">SMS Terms</a> and <a href="/privacy-policy">Privacy Policy</a>.</p>
   </div>
   <div id="offS3" hidden>
     <h2 id="offDoneH">You're in</h2>
@@ -1756,7 +1756,7 @@ terms:{t:"Terms of service",h:`${L}
 <h2>Governing law</h2><p>These terms are governed by the laws of [state], USA.</p>
 <h2>Contact</h2><p>[support email] · Polynesian Music, [business address].</p>`}}})();
 const Pages=(()=>{let prev=null;
-  function open(k){if(k==="privacy"){location.href="/privacy-policy";return}const pg=PAGES[k];if(!pg)return;prev=document.activeElement;$("pageBody").innerHTML=`<h1 id="pageH">${pg.t}</h1><p class="upd">Last updated: October 1, 2026</p>${pg.h}`;
+  function open(k){if(k==="privacy"){location.href="/privacy-policy";return}if(k==="terms"){location.href="/terms";return}const pg=PAGES[k];if(!pg)return;prev=document.activeElement;$("pageBody").innerHTML=`<h1 id="pageH">${pg.t}</h1><p class="upd">Last updated: October 1, 2026</p>${pg.h}`;
     window.addFoot&&window.addFoot($("pageBody"));$("page").hidden=false;$("pageBody").scrollTop=0;document.title=`${pg.t} | PMN+`;$("pageBack").focus()}
   $("pageBack").onclick=()=>{$("page").hidden=true;if(window.pmnRoute)pmnRoute.refresh();else document.title=BASE_TITLE;prev&&prev.focus&&prev.focus()};
   document.querySelectorAll("[data-page]").forEach(b=>b.onclick=()=>open(b.dataset.page));

@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Your PMN+ Account</title>
+<meta name="description" content="Sign in to PMN+ to track orders, keep your welcome code and get first access to drops.">
+<meta name="robots" content="noindex,follow">
+<link rel="canonical" href="https://www.polynesianmusicnetwork.com/account">
+<meta name="theme-color" content="#000000">
+<link rel="icon" type="image/png" href="/assets/favicon.png">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>html{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;font-synthesis:none}
+:root{--bg:#000;--ink:#fff;--dim:#8A8A8E;--line:#242426;--card:#0d0e12;--field:#15161a;--red:#C8102E;--ok:#3DDC84;
+  --font:'Instrument Sans',system-ui,-apple-system,sans-serif;--display:'Bebas Neue','Instrument Sans',system-ui,sans-serif}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--ink);font-family:var(--font);line-height:1.5;min-height:100svh;display:flex;flex-direction:column}
+a{color:inherit}img{display:block;max-width:100%}
+[hidden]{display:none!important}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+.nav{position:sticky;top:0;z-index:20}
+main{flex:1;width:min(1180px,100% - 2*clamp(1rem,5vw,2.5rem));margin:clamp(1.5rem,4vw,3rem) auto clamp(3rem,6vw,5rem)}
+.disp{font-family:var(--display);font-weight:400;text-transform:uppercase;letter-spacing:.01em;line-height:.92}
+.eyebrow{font-family:var(--display);font-size:1.05rem;letter-spacing:.18em;text-transform:uppercase;color:var(--dim)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.6rem;width:100%;height:54px;border:0;border-radius:999px;cursor:pointer;
+  font-family:var(--display);font-size:1.3rem;letter-spacing:.08em;text-transform:uppercase;text-decoration:none;color:#000;background:#fff;transition:opacity .15s,transform .1s}
+.btn:hover{opacity:.88}.btn:active{transform:translateY(1px)}.btn[disabled]{opacity:.5;cursor:default}
+.btn.red{background:var(--red);color:#fff}
+.btn.ghost{background:transparent;color:#fff;box-shadow:inset 0 0 0 1.5px rgba(255,255,255,.4)}
+.btn.ghost:hover{box-shadow:inset 0 0 0 1.5px #fff;opacity:1}
+.btn svg{width:20px;height:20px}
+.btn.sm{height:42px;font-size:1.1rem;width:auto;padding:0 1.4rem}
+:focus-visible{outline:2px solid #fff;outline-offset:3px}
+.field{display:grid;gap:.4rem}
+.field label{font-size:.8rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:#b9b9be}
+.field input{width:100%;height:54px;padding:0 1.1rem;font:500 1rem var(--font);color:#fff;background:var(--field);border:1px solid rgba(255,255,255,.16);border-radius:12px;transition:border-color .15s}
+.field input:focus{outline:none;border-color:#fff}
+.field input::placeholder{color:#6f6f75}
+.msg{min-height:1.4em;font-size:.9rem;color:#ff6b7d}
+.msg.ok{color:var(--ok)}
+.fine{font-size:.8rem;color:var(--dim)}
+.fine a{color:#d6d6da}
+.link{background:none;border:0;color:#fff;text-decoration:underline;text-underline-offset:3px;font:600 .9rem var(--font);cursor:pointer;padding:0}
+/* ---------- sign in ---------- */
+.auth{display:grid;grid-template-columns:1.05fr .95fr;border-radius:24px;overflow:hidden;border:1px solid var(--line);min-height:600px}
+.brand{position:relative;isolation:isolate;padding:clamp(2rem,4vw,3.5rem);display:flex;flex-direction:column;justify-content:space-between;gap:2rem;background:#120306}
+.brand::before{content:"";position:absolute;inset:0;z-index:-2;background:url(/shop/brand/mate-maa-tonga-pattern-background-red.webp) center/cover;opacity:.55}
+.brand::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(160deg,rgba(0,0,0,.25),rgba(0,0,0,.85) 70%)}
+.brand .mk{width:64px}
+.brand h1{font-size:clamp(3rem,6vw,5.2rem)}
+.brand ul{list-style:none;display:grid;gap:.9rem}
+.brand li{display:grid;grid-template-columns:34px 1fr;gap:.8rem;align-items:start;font-size:1rem;color:#e8e8ea}
+.brand li b{display:block;font-family:var(--display);font-weight:400;font-size:1.35rem;letter-spacing:.05em;color:#fff;line-height:1}
+.brand li svg{width:34px;height:34px;padding:7px;border-radius:50%;background:rgba(255,255,255,.12);stroke:#fff;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.panel{background:var(--card);padding:clamp(2rem,4vw,3.5rem);display:flex;flex-direction:column;justify-content:center;gap:1.4rem}
+.panel h2{font-size:clamp(2.2rem,4vw,3rem)}
+.panel p.sub{color:#b9b9be;margin-top:-.6rem}
+.or{display:flex;align-items:center;gap:.8rem;color:var(--dim);font-size:.85rem}
+.or::before,.or::after{content:"";flex:1;height:1px;background:var(--line)}
+.code input{letter-spacing:.5em;font-size:1.5rem;font-weight:600;text-align:center}
+.row{display:flex;justify-content:space-between;align-items:center;gap:1rem;flex-wrap:wrap}
+.chk{display:flex;gap:.6rem;align-items:flex-start;font-size:.9rem;color:#d6d6da;cursor:pointer}
+.chk input{width:18px;height:18px;margin-top:2px;accent-color:var(--red)}
+/* ---------- account ---------- */
+.acct-h{display:flex;justify-content:space-between;align-items:flex-end;gap:1.5rem;flex-wrap:wrap;padding-bottom:1.5rem;border-bottom:1px solid var(--line);margin-bottom:2rem}
+.acct-h h1{font-size:clamp(2.8rem,6vw,4.6rem)}
+.acct-h p{color:#b9b9be}
+.grid{display:grid;grid-template-columns:minmax(0,1fr) 360px;gap:2rem;align-items:start}
+.card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:1.5rem}
+.card h2{font-size:1.9rem;margin-bottom:1rem}
+.side{display:grid;gap:1.25rem}
+.code-card{background:linear-gradient(135deg,#2a0409,#0d0e12 70%);border-color:rgba(200,16,46,.45)}
+.code-card .cd{font-family:var(--display);font-size:2.6rem;letter-spacing:.08em;line-height:1;margin:.3rem 0 .4rem}
+.orders{display:grid;gap:1rem}
+.order{border:1px solid var(--line);border-radius:14px;padding:1.1rem;display:grid;gap:.9rem;background:#08090c}
+.order-top{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;align-items:baseline}
+.order-top b{font-family:var(--display);font-weight:400;font-size:1.5rem;letter-spacing:.04em}
+.order-top span{color:var(--dim);font-size:.9rem}
+.pills{display:flex;gap:.4rem;flex-wrap:wrap}
+.pill{font-size:.72rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:.3rem .6rem;border-radius:999px;background:rgba(255,255,255,.1);color:#e8e8ea}
+.pill.go{background:rgba(61,220,132,.15);color:var(--ok)}.pill.wait{background:rgba(255,196,0,.14);color:#ffcf4d}.pill.no{background:rgba(255,77,94,.15);color:#ff6b7d}
+.items{display:flex;gap:.6rem;flex-wrap:wrap}
+.items figure{display:grid;grid-template-columns:56px 1fr;gap:.6rem;align-items:center;min-width:0;flex:1 1 220px}
+.items img{width:56px;height:56px;object-fit:contain;background:#f3f2ee;border-radius:10px;padding:4px}
+.items figcaption{font-size:.88rem;line-height:1.3}
+.items small{display:block;color:var(--dim)}
+.order-f{display:flex;justify-content:space-between;align-items:center;gap:1rem;flex-wrap:wrap;padding-top:.8rem;border-top:1px solid var(--line)}
+.order-f .tot{font-weight:600}
+.order-f .acts{display:flex;gap:.5rem;flex-wrap:wrap}
+.empty{text-align:center;padding:2.5rem 1rem;display:grid;gap:1rem;justify-items:center;color:#b9b9be}
+.empty .btn{width:auto;padding:0 1.6rem}
+.sk{height:120px;border-radius:14px;background:linear-gradient(100deg,#111216 30%,#1a1b20 50%,#111216 70%);background-size:200% 100%;animation:sk 1.2s linear infinite}
+@keyframes sk{to{background-position:-200% 0}}
+.form{display:grid;gap:1rem}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:.8rem}
+.soon{max-width:620px;margin:3rem auto;text-align:center;display:grid;gap:1.2rem;justify-items:center}
+.soon h1{font-size:clamp(3rem,7vw,5rem)}
+.soon p{color:#b9b9be}
+.soon .btn{width:auto;padding:0 2rem}
+.spin{width:28px;height:28px;border-radius:50%;border:3px solid rgba(255,255,255,.2);border-top-color:#fff;animation:sp .8s linear infinite;margin:4rem auto}
+@keyframes sp{to{transform:rotate(360deg)}}
+@media (max-width:900px){
+  .auth{grid-template-columns:1fr;min-height:0}
+  .brand{gap:1.5rem}.brand ul{display:none}
+  .grid{grid-template-columns:1fr}
+}
+@media (prefers-reduced-motion:reduce){.sk,.spin{animation:none}}
+.foot{display:grid;gap:20px;padding:2.5rem clamp(1rem,5vw,2.5rem) 2.25rem;border-top:1px solid var(--line);background:#05060a;text-align:left}
+.foot-logo img{width:48px;height:auto;display:block}
+.foot-cols{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.foot nav,.foot .follow{display:grid;gap:8px;align-content:start;justify-items:start}
+.foot b{font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--dim)}
+.foot nav a{font-size:13.5px;color:rgba(244,242,238,.88);text-decoration:none;padding:2px 0}
+.foot nav a:hover{color:#fff}
+.foot .soc{display:flex;gap:10px}
+.foot .soc a{width:44px;height:44px;border-radius:50%;border:1px solid rgba(244,242,238,.25);display:grid;place-items:center;color:#fff}
+.foot .soc a:hover{background:rgba(255,255,255,.08)}
+.foot .soc svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.8}.foot .soc .f{fill:currentColor;stroke:none}
+.foot .pay{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:6px}
+.foot .pay li{font-size:11.5px;font-weight:600;padding:5px 9px;border:1px solid var(--line);border-radius:6px;color:rgba(244,242,238,.8)}
+.foot .fine{margin:0;font-size:12px;color:var(--dim)}
+@media (min-width:900px){.foot{grid-template-columns:auto 1fr auto;align-items:start;column-gap:56px;padding-inline:max(2.5rem,calc(50vw - 620px))}.foot>.fine,.foot>.pay{grid-column:1/-1}.foot-cols{gap:48px}}
+</style>
+<link rel="stylesheet" href="/assets/pmn-nav.css">
+</head>
+<body>
+<header class="nav pn-bar" id="nav"><div class="pn"><div class="pn-row"><div class="pn-l"><button type="button" class="pn-ic pn-menu" aria-label="Open menu" aria-expanded="false" aria-controls="pnDrawer"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button></div><a class="pn-logo" href="/" aria-label="PMN+ home"><img class="logo" src="/shop/brand/pmn-plus-logo-white.svg" alt="PMN+ Polynesian Music Network Plus" width="48" height="52"></a><div class="pn-r"><form class="pn-search" role="search" action="/shop"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg><input type="search" name="q" placeholder="Search tees, hats, teams…" aria-label="Search the shop" autocomplete="off" role="combobox" aria-expanded="false" aria-autocomplete="list"><div class="pn-res" role="listbox" hidden></div></form><button type="button" class="pn-ic pn-sbtn" aria-label="Search"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg></button><a class="pn-ic pn-acct" href="/account" aria-label="Your PMN+ account" hidden><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6"/></svg></a><a class="pn-ic bag" href="/shop#bag" aria-label="Bag"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 8h14l-1 12H6L5 8z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg><span class="bag-count" id="bagN" hidden></span></a></div></div><nav class="pn-cats" aria-label="Shop categories"><a href="/shop">Shop all</a><a href="/shop/toa-samoa">Toa Samoa</a><a href="/shop/mate-maa-tonga">Mate Ma'a Tonga</a><a href="/shop#pmn">PMN+</a><a href="/shop#tee">Tees</a><a href="/shop#hat">Hats</a></nav></div></header>
+<main id="main">
+  <div class="spin" id="vLoad" role="status" aria-label="Loading"></div>
+
+  <!-- accounts not switched on yet -->
+  <section class="soon" id="vSoon" hidden>
+    <p class="eyebrow">PMN+ account</p>
+    <h1 class="disp">Accounts are coming soon</h1>
+    <p>Track orders, keep your welcome code and get first access to drops. In the meantime, every order confirmation email has a link to track your order.</p>
+    <a class="btn" href="/shop">Shop the drop</a>
+  </section>
+
+  <!-- sign in / create account -->
+  <section class="auth" id="vAuth" hidden>
+    <div class="brand">
+      <img class="mk" src="/shop/brand/pmn-plus-logo-white.svg" alt="PMN+" width="64" height="70">
+      <h1 class="disp">Your PMN+<br>account</h1>
+      <ul>
+        <li><svg viewBox="0 0 24 24"><path d="M3 7h13v10H3z"/><path d="M16 10h3l2 3v4h-5"/><circle cx="7" cy="18" r="1.8"/><circle cx="17.5" cy="18" r="1.8"/></svg><span><b>Track every order</b>Status and tracking for everything you buy, in one place.</span></li>
+        <li><svg viewBox="0 0 24 24"><path d="M20 12v8H4v-8M2 7h20v5H2zM12 20V7M12 7H8a2 2 0 1 1 2-3l2 3 2-3a2 2 0 1 1 2 3h-4"/></svg><span><b>Keep your welcome code</b>Your discount is saved to your account and applied at checkout.</span></li>
+        <li><svg viewBox="0 0 24 24"><path d="M13 2L4 14h7l-1 8 9-12h-7z"/></svg><span><b>First access to drops</b>Members hear about new team gear before anyone else.</span></li>
+        <li><svg viewBox="0 0 24 24"><path d="M12 21s-7-4.5-9.3-9A5.3 5.3 0 0 1 12 6.2 5.3 5.3 0 0 1 21.3 12C19 16.5 12 21 12 21z"/></svg><span><b>Save what you love</b>Keep the gear, reels and stories you want to come back to.</span></li>
+      </ul>
+    </div>
+    <div class="panel">
+      <form class="form" id="fEmail" novalidate>
+        <h2 class="disp">Sign in or join</h2>
+        <p class="sub">Enter your email and we'll send you a 6-digit code. No password needed.</p>
+        <div class="field"><label for="aEmail">Email</label><input id="aEmail" type="email" autocomplete="email" inputmode="email" placeholder="you@email.com" required></div>
+        <label class="chk"><input type="checkbox" id="aNews" checked><span>Email me about new drops, giveaways and PMN+ news. Unsubscribe anytime.</span></label>
+        <button class="btn red" type="submit" id="aGo">Send my code</button>
+        <p class="msg" id="aMsg" role="status" aria-live="polite"></p>
+        <div id="aGoogleWrap" hidden>
+          <p class="or">or</p>
+          <button class="btn ghost" type="button" id="aGoogle"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#EA4335" d="M12 10.2v3.9h5.4c-.2 1.3-1.6 3.8-5.4 3.8-3.2 0-5.9-2.7-5.9-6s2.7-6 5.9-6c1.9 0 3.1.8 3.8 1.4l2.6-2.5C16.8 3.3 14.6 2.3 12 2.3 6.6 2.3 2.3 6.6 2.3 12s4.3 9.7 9.7 9.7c5.6 0 9.3-3.9 9.3-9.5 0-.6-.1-1.1-.2-1.6H12z"/></svg>Continue with Google</button>
+        </div>
+        <p class="fine">By continuing you agree to the <a href="/shop#terms">Terms</a> and <a href="/shop#privacy">Privacy policy</a>.</p>
+      </form>
+      <form class="form" id="fCode" novalidate hidden>
+        <h2 class="disp">Check your email</h2>
+        <p class="sub">We sent a code to <b id="cEmail"></b>. Enter it below, or tap the sign-in link in the email.</p>
+        <div class="field code"><label for="cCode">6-digit code</label><input id="cCode" inputmode="numeric" autocomplete="one-time-code" pattern="[0-9]*" maxlength="10" placeholder="••••••" required></div>
+        <button class="btn red" type="submit" id="cGo">Sign in</button>
+        <p class="msg" id="cMsg" role="status" aria-live="polite"></p>
+        <div class="row"><button class="link" type="button" id="cBack">Use a different email</button><button class="link" type="button" id="cResend">Resend code</button></div>
+      </form>
+    </div>
+  </section>
+
+  <!-- signed in -->
+  <section id="vAcct" hidden>
+    <div class="acct-h">
+      <div><p class="eyebrow">PMN+ account</p><h1 class="disp" id="hello">Welcome back</h1><p id="who"></p></div>
+      <button class="btn ghost sm" type="button" id="out">Sign out</button>
+    </div>
+    <div class="grid">
+      <div class="card"><h2 class="disp">Your orders</h2><div class="orders" id="orders"><div class="sk"></div><div class="sk"></div></div></div>
+      <div class="side">
+        <div class="card code-card" id="codeCard" hidden><p class="eyebrow">Your welcome code</p><p class="cd" id="codeVal"></p><p class="fine">Saved to your bag. It comes off automatically at checkout.</p></div>
+        <form class="card form" id="fProfile" novalidate>
+          <h2 class="disp">Profile</h2>
+          <div class="two"><div class="field"><label for="pFirst">First name</label><input id="pFirst" autocomplete="given-name"></div><div class="field"><label for="pLast">Last name</label><input id="pLast" autocomplete="family-name"></div></div>
+          <div class="field"><label for="pEmail">Email</label><input id="pEmail" type="email" disabled></div>
+          <label class="chk"><input type="checkbox" id="pNews"><span>Email me about new drops and PMN+ news</span></label>
+          <button class="btn sm" type="submit" id="pSave">Save</button>
+          <p class="msg" id="pMsg" role="status" aria-live="polite"></p>
+        </form>
+        <div class="card"><h2 class="disp">Need help?</h2><p class="fine" style="font-size:.9rem">Questions about an order, sizing or returns? <a href="/shop#contact">Contact us</a> · <a href="/shop#returns">Returns &amp; exchanges</a></p></div>
+      </div>
+    </div>
+  </section>
+</main>
+<footer class="foot">
+  <a class="foot-logo" href="/" aria-label="PMN+ home"><img src="/shop/brand/pmn-plus-logo-white.svg" alt="PMN+" width="48" height="52" loading="lazy"></a>
+  <div class="foot-cols">
+    <nav aria-label="Shop"><b>Shop</b><a href="/shop/mate-maa-tonga">Mate Ma'a Tonga</a><a href="/shop/toa-samoa">Toa Samoa</a><a href="/shop#pmn">PMN+</a><a href="/shop">Shop all</a></nav>
+    <nav aria-label="Help"><b>Help</b><a href="/shop#shipping">Shipping</a><a href="/shop#returns">Returns &amp; exchanges</a><a href="/shop#contact">Contact</a></nav>
+    <nav aria-label="Legal"><b>Legal</b><a href="/shop#privacy">Privacy policy</a><a href="/shop#terms">Terms of service</a></nav>
+  </div>
+  <div class="follow"><b>Follow us</b><div class="soc">
+    <a href="https://www.instagram.com/polynesianmusic/" target="_blank" rel="noopener" aria-label="PMN+ on Instagram"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.4" cy="6.6" r="1.1" class="f"/></svg></a>
+        <a href="https://www.facebook.com/p/Polynesian-Music-61554168566749/" target="_blank" rel="noopener" aria-label="PMN+ on Facebook"><svg viewBox="0 0 24 24"><path class="f" d="M13.5 21v-7.4h2.5l.4-2.9h-2.9V8.9c0-.8.3-1.4 1.5-1.4h1.5V4.9c-.3 0-1.2-.1-2.2-.1-2.2 0-3.7 1.3-3.7 3.8v2.1H8.1v2.9h2.5V21h2.9z"/></svg></a>
+        <a href="https://www.tiktok.com/@polynesianmusic" target="_blank" rel="noopener" aria-label="PMN+ on TikTok"><svg viewBox="0 0 24 24"><path class="f" d="M16.6 3c.3 2.2 1.6 3.6 3.8 3.8v2.6c-1.4.1-2.6-.3-3.8-1v6.1c0 3.3-2.5 5.5-5.6 5.5-3.2 0-5.4-2.6-5-5.7.4-2.6 2.6-4.5 5.5-4.3v2.8c-1.4-.3-2.8.5-3 1.9-.2 1.5 1 2.7 2.4 2.6 1.3 0 2.3-1 2.3-2.5V3h3.4z"/></svg></a>
+        <a href="https://www.youtube.com/c/PolynesianMusic" target="_blank" rel="noopener" aria-label="PMN+ on YouTube"><svg viewBox="0 0 24 24"><path class="f" d="M21.6 7.2c-.2-.9-.9-1.6-1.8-1.8C18.2 5 12 5 12 5s-6.2 0-7.8.4c-.9.2-1.6.9-1.8 1.8C2 8.8 2 12 2 12s0 3.2.4 4.8c.2.9.9 1.6 1.8 1.8C5.8 19 12 19 12 19s6.2 0 7.8-.4c.9-.2 1.6-.9 1.8-1.8.4-1.6.4-4.8.4-4.8s0-3.2-.4-4.8z"/><path d="M10 9.2v5.6l4.8-2.8z" fill="#05060a" stroke="none"/></svg></a>
+  </div></div>
+  <ul class="pay" aria-label="Payment methods"><li>Visa</li><li>Mastercard</li><li>Amex</li><li>Apple Pay</li><li>Google Pay</li><li>Shop Pay</li></ul>
+  <p class="fine">&copy; <span id="yr"></span> Polynesian Music. PMN+ ships within the USA. Prices in USD.</p>
+</footer>
+<script src="/assets/pmn-config.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+<script>
+(()=>{
+const $=id=>document.getElementById(id);
+const C=window.PMN_CONFIG||{};
+const views=["vLoad","vSoon","vAuth","vAcct"],show=v=>views.forEach(x=>$(x).hidden=x!==v);
+const store={get:k=>{try{return localStorage.getItem(k)}catch(e){return null}},set:(k,v)=>{try{v==null?localStorage.removeItem(k):localStorage.setItem(k,v)}catch(e){}}};
+const esc=t=>String(t??"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+if(!(C.supabaseUrl&&C.supabaseAnonKey&&window.supabase)){show("vSoon");return}
+const sb=window.supabase.createClient(C.supabaseUrl,C.supabaseAnonKey,{auth:{persistSession:true,autoRefreshToken:true,detectSessionInUrl:true,flowType:"pkce"}});
+const back=location.origin+"/account";
+let email="",user=null,session=null;
+
+/* ---------- sign in ---------- */
+if(C.google){$("aGoogleWrap").hidden=false;$("aGoogle").onclick=()=>sb.auth.signInWithOAuth({provider:"google",options:{redirectTo:back}})}
+const friendly=e=>{const m=String(e&&e.message||e||"");if(/rate|seconds|too many/i.test(m))return"Too many tries. Wait a minute, then try again.";
+  if(/expired|invalid|token/i.test(m))return"That code didn't work. Check it, or send a new one.";return"Something went wrong. Please try again."};
+async function sendCode(){const {error}=await sb.auth.signInWithOtp({email,options:{shouldCreateUser:true,emailRedirectTo:back,data:{marketing_opt_in:$("aNews").checked}}});if(error)throw error}
+$("fEmail").addEventListener("submit",async e=>{e.preventDefault();const v=$("aEmail").value.trim().toLowerCase();
+  if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(v)){$("aMsg").textContent="Enter a valid email, like name@example.com.";$("aEmail").focus();return}
+  email=v;$("aGo").disabled=true;$("aMsg").textContent="";
+  try{await sendCode();$("cEmail").textContent=email;$("fEmail").hidden=true;$("fCode").hidden=false;$("cCode").value="";$("cCode").focus()}
+  catch(err){$("aMsg").textContent=friendly(err)}finally{$("aGo").disabled=false}});
+$("fCode").addEventListener("submit",async e=>{e.preventDefault();const t=$("cCode").value.replace(/\D/g,"");
+  if(t.length<6){$("cMsg").textContent="Enter the 6-digit code from the email.";return}
+  $("cGo").disabled=true;$("cMsg").className="msg";$("cMsg").textContent="Checking…";
+  const {error}=await sb.auth.verifyOtp({email,token:t,type:"email"});$("cGo").disabled=false;
+  if(error){$("cMsg").textContent=friendly(error);return}$("cMsg").textContent=""});
+$("cCode").addEventListener("input",()=>{const t=$("cCode").value.replace(/\D/g,"");$("cCode").value=t;if(t.length===6)$("fCode").requestSubmit()});
+$("cBack").onclick=()=>{$("fCode").hidden=true;$("fEmail").hidden=false;$("aEmail").focus()};
+$("cResend").onclick=async()=>{$("cMsg").className="msg";try{await sendCode();$("cMsg").className="msg ok";$("cMsg").textContent="New code sent."}catch(err){$("cMsg").textContent=friendly(err)}};
+
+/* ---------- account ---------- */
+const api=(path,opts={})=>fetch(path,{...opts,headers:{...(opts.headers||{}),Authorization:"Bearer "+session.access_token}});
+const fmtDate=d=>new Date(d).toLocaleDateString("en-US",{month:"short",day:"numeric",year:"numeric"});
+const money=(a,c)=>new Intl.NumberFormat("en-US",{style:"currency",currency:c||"USD"}).format(+a);
+const nice=s=>String(s||"").replace(/_/g," ").toLowerCase().replace(/^\w/,c=>c.toUpperCase());
+function pill(o){if(o.cancelled)return'<span class="pill no">Cancelled</span>';
+  const f=o.fulfillment||"",cls=/FULFILLED|DELIVERED/.test(f)&&!/UN|PARTIAL/.test(f)?"go":/PARTIAL|IN_PROGRESS|SCHEDULED|ON_HOLD|UNFULFILLED|OPEN/.test(f)?"wait":"";
+  const label=/UNFULFILLED|OPEN/.test(f)?"Being printed":f==="FULFILLED"?"Shipped":nice(f);return`<span class="pill ${cls}">${esc(label)}</span>`}
+function renderOrders(d){const box=$("orders");
+  if(!d||!d.orders||!d.orders.length){box.innerHTML=`<div class="empty"><p>${d&&d.soon?"Order history is being switched on. Your order emails have a tracking link in the meantime.":"No orders yet. When you order with "+esc(user.email)+", it shows up here."}</p><a class="btn sm" href="/shop">Shop the drop</a></div>`;return}
+  box.innerHTML=d.orders.map(o=>`<article class="order"><div class="order-top"><b>Order ${esc(o.name)}</b><span>${fmtDate(o.date)}</span></div>
+    <div class="pills">${pill(o)}${o.payment&&o.payment!=="PAID"?`<span class="pill">${esc(nice(o.payment))}</span>`:""}</div>
+    <div class="items">${o.items.map(i=>`<figure>${i.image?`<img src="${esc(i.image)}" alt="" loading="lazy">`:"<span></span>"}<figcaption>${esc(i.title)}<small>${[i.variant,"Qty "+i.qty].filter(Boolean).map(esc).join(" · ")}</small></figcaption></figure>`).join("")}</div>
+    <div class="order-f"><span class="tot">${money(o.total,o.currency)}</span><span class="acts">${o.tracking.filter(t=>t.url).slice(0,1).map(t=>`<a class="btn sm red" href="${esc(t.url)}" target="_blank" rel="noopener">Track package</a>`).join("")}${o.url?`<a class="btn sm ghost" href="${esc(o.url)}" target="_blank" rel="noopener">View order</a>`:""}</span></div></article>`).join("")}
+async function loadAccount(s){session=s;user=s.user;show("vAcct");
+  store.set("pmn_email",user.email);   // checkout pre-fills with this
+  $("pEmail").value=user.email;$("who").textContent=user.email;
+  const c=store.get("pmn_code");$("codeCard").hidden=!c;if(c)$("codeVal").textContent=c;
+  const {data:p}=await sb.from("profiles").select("first_name,last_name,marketing_opt_in").eq("id",user.id).maybeSingle();
+  if(p){$("pFirst").value=p.first_name||"";$("pLast").value=p.last_name||"";$("pNews").checked=p.marketing_opt_in!==false;
+    $("hello").textContent=p.first_name?`Welcome back, ${p.first_name}`:"Welcome to PMN+"}else $("hello").textContent="Welcome to PMN+";
+  try{const l=await api("/api/account/link",{method:"POST"});
+    if(l.status===503){renderOrders({soon:true});return}
+    const r=await api("/api/account/orders");renderOrders(r.ok?await r.json():null)}catch(e){renderOrders({soon:true})}}
+$("fProfile").addEventListener("submit",async e=>{e.preventDefault();$("pSave").disabled=true;$("pMsg").className="msg";
+  const patch={first_name:$("pFirst").value.trim()||null,last_name:$("pLast").value.trim()||null,marketing_opt_in:$("pNews").checked};
+  const {error}=await sb.from("profiles").update(patch).eq("id",user.id);$("pSave").disabled=false;
+  if(error){$("pMsg").textContent="Couldn't save. Please try again.";return}
+  $("pMsg").className="msg ok";$("pMsg").textContent="Saved.";if(patch.first_name)$("hello").textContent=`Welcome back, ${patch.first_name}`});
+$("out").onclick=async()=>{await sb.auth.signOut();store.set("pmn_email",null);session=user=null;$("fCode").hidden=true;$("fEmail").hidden=false;show("vAuth")};
+
+/* ---------- start ---------- */
+let started=false;
+sb.auth.onAuthStateChange((ev,s)=>{if(s&&(ev==="SIGNED_IN"||ev==="INITIAL_SESSION")){if(!user||user.id!==s.user.id)loadAccount(s);else session=s}else if(!s&&ev!=="TOKEN_REFRESHED"){show("vAuth")}started=true});
+setTimeout(()=>{if(!started)show("vAuth")},4000);
+})();
+</script>
+<script src="/assets/pmn-nav.js"></script>
+<script>document.getElementById('yr').textContent=new Date().getFullYear()</script>
+</body>
+</html>

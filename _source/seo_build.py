@@ -76,6 +76,7 @@ u.append(f"  <url><loc>{D}/shop</loc><lastmod>2026-10-02</lastmod><image:image><
 for k,c in out['collections'].items(): u.append(f"  <url><loc>{c['url']}</loc><lastmod>2026-10-02</lastmod></url>")
 for pid,o in out['products'].items():
     u.append(f"  <url><loc>{o['url']}</loc><lastmod>2026-10-02</lastmod>"+"".join(f"<image:image><image:loc>{html.escape(i)}</image:loc></image:image>" for i in [o['og']]+o['images'])+"</url>")
+u.append(f"  <url><loc>{D}/privacy-policy</loc><lastmod>2026-10-02</lastmod></url>")
 u.append('</urlset>')
 open('site2/seo/sitemap-shop.xml','w').write('\n'.join(u)+'\n')
 print(len(rows)-1,'feed rows')

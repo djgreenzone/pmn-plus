@@ -1129,6 +1129,16 @@ function klReviews(p){
   st.innerHTML=`<div class="klaviyo-star-rating-widget" data-id="${pid}" data-product-title="${esc(p.name)}" data-product-type="${t}"></div>`;
   box.innerHTML=`<div id="klaviyo-reviews-all" data-id="${pid}"></div>`;
 }
+/* Review-request deep link from Klaviyo email: /shop/?review=<Shopify product ID>
+   opens that product, expands the Reviews panel and scrolls to it. */
+addEventListener("load",()=>setTimeout(()=>{try{
+  const q=new URLSearchParams(location.search).get("review");if(!q)return;
+  const id=Object.keys(SHOPIFY_MAP).find(k=>String(KL_PID[SHOPIFY_MAP[k][0]])===q);if(!id)return;
+  if($("pdp").hidden||PDP.current()!==id){const im=new Image();im.src=heroURL(id);PDP.open(id,im,"home")}
+  const go=()=>{const d=document.getElementById("pRevAcc");if(!d)return;d.open=true;d.scrollIntoView({behavior:"smooth",block:"start"});
+    const w=document.querySelector("#pRevBox button, #pRevBox [class*='write' i]");if(w&&/write/i.test(w.textContent||""))w.click()};
+  setTimeout(go,900);setTimeout(go,2500);
+}catch(e){console.warn("review link",e)}},300));
 const reduceMotion=matchMedia("(prefers-reduced-motion: reduce)").matches;
 const conn=navigator.connection||{};
 const lite=!!(conn.saveData||/(^|-)2g$/.test(conn.effectiveType||""));

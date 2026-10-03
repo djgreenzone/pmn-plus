@@ -2,6 +2,7 @@
    Built from _source/nav, copied to /assets by make_shop.py */
 (()=>{
 const LIVE=!!(window.PMN_CONFIG&&window.PMN_CONFIG.accountsLive);
+const INI=(()=>{try{return (localStorage.getItem("pmn_initials")||"").replace(/[^A-Za-z0-9]/g,"").slice(0,2).toUpperCase()}catch(e){return ""}})();   // set by /account when signed in
 const IG="https://www.instagram.com/polynesianmusic/";
 const ic={
   chev:'<svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg>',
@@ -30,7 +31,7 @@ let drawer,scrim,lastFocus=null;
 function buildDrawer(){
   scrim=document.createElement("div");scrim.className="pn-scrim";scrim.hidden=true;
   drawer=document.createElement("nav");drawer.className="pn-drawer";drawer.id="pnDrawer";drawer.hidden=true;drawer.setAttribute("aria-label","Menu");
-  drawer.innerHTML=`<div class="pn-dh">${LIVE?`<a href="/account">Sign in / My account ${ic.chev}</a>`:`<b class="pn-dtitle">Menu</b>`}<button type="button" class="pn-ic pn-dx" aria-label="Close menu">${ic.x}</button></div>
+  drawer.innerHTML=`<div class="pn-dh">${LIVE?`<a href="/account">${INI?"My account":"Sign in / Join"} ${ic.chev}</a>`:`<b class="pn-dtitle">Menu</b>`}<button type="button" class="pn-ic pn-dx" aria-label="Close menu">${ic.x}</button></div>
   <div class="pn-db"><ul class="pn-dl">${LINKS.map(([t,h])=>`<li><a href="${h}"><span>${esc(t)}</span>${ic.chev}</a></li>`).join("")}</ul>
   <div class="pn-dsec"><b>Featured</b><div class="pn-feat" id="pnFeat"></div></div>
   <div class="pn-dsec"><b>Help</b><div class="pn-help"><a href="/shop#shipping">Shipping</a><a href="/shop#returns">Returns &amp; exchanges</a><a href="/shop#contact">Contact</a></div></div></div>
@@ -86,7 +87,7 @@ document.querySelectorAll(".pn").forEach(root=>{
     const u=new URL(a.href);if(u.pathname===location.pathname&&!u.hash&&u.pathname!=="/shop")a.setAttribute("aria-current","page")});
 });
 bagCount();addEventListener("storage",bagCount);
-if(LIVE)document.querySelectorAll(".pn-acct").forEach(a=>{a.hidden=false;if(location.pathname.startsWith("/account"))a.setAttribute("aria-current","page")});
+if(LIVE)document.querySelectorAll(".pn-acct").forEach(a=>{a.hidden=false;if(INI){a.innerHTML=`<span class="pn-av">${INI}</span>`;a.setAttribute("aria-label","Your PMN+ account")}else a.setAttribute("aria-label","Sign in or join PMN+");if(location.pathname.startsWith("/account"))a.setAttribute("aria-current","page")});
 addEventListener("keydown",e=>{if(e.key==="/"&&!/input|textarea|select/i.test(document.activeElement.tagName)){const i=[...document.querySelectorAll(".pn-search input")].find(x=>x.offsetParent);if(i){e.preventDefault();i.focus()}}});
 })();
 

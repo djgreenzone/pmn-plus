@@ -36,7 +36,7 @@ main{flex:1;width:min(1180px,100% - 2*clamp(1rem,5vw,2.5rem));margin:clamp(1.5re
 :focus-visible{outline:2px solid #fff;outline-offset:3px}
 .field{display:grid;gap:.4rem}
 .field label{font-size:.8rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:#b9b9be}
-.field select{appearance:none;background-image:linear-gradient(45deg,transparent 50%,#b9b9be 50%),linear-gradient(135deg,#b9b9be 50%,transparent 50%);background-position:calc(100% - 20px) 50%,calc(100% - 15px) 50%;background-size:5px 5px;background-repeat:no-repeat;padding-right:2.2rem!important;text-overflow:ellipsis}
+.field select{appearance:none;background-image:linear-gradient(45deg,transparent 50%,#b9b9be 50%),linear-gradient(135deg,#b9b9be 50%,transparent 50%);background-position:calc(100% - 20px) 50%,calc(100% - 15px) 50%;background-size:5px 5px;background-repeat:no-repeat;padding-right:2.4rem!important}
 .field input,.field select{width:100%;height:54px;padding:0 1.1rem;font:500 1rem var(--font);color:#fff;background:var(--field);border:1px solid rgba(255,255,255,.16);border-radius:12px;transition:border-color .15s}
 .field input:focus,.field select:focus{outline:none;border-color:#fff}
 .field input::placeholder{color:#6f6f75}
@@ -65,18 +65,65 @@ main{flex:1;width:min(1180px,100% - 2*clamp(1rem,5vw,2.5rem));margin:clamp(1.5re
 .row{display:flex;justify-content:space-between;align-items:center;gap:1rem;flex-wrap:wrap}
 .chk{display:flex;gap:.6rem;align-items:flex-start;font-size:.9rem;color:#d6d6da;cursor:pointer}
 .chk input{width:18px;height:18px;margin-top:2px;accent-color:var(--red)}
-/* ---------- account ---------- */
-.acct-h{display:flex;justify-content:space-between;align-items:flex-end;gap:1.5rem;flex-wrap:wrap;padding-bottom:1.5rem;border-bottom:1px solid var(--line);margin-bottom:2rem}
-.acct-h h1{font-size:clamp(2.8rem,6vw,4.6rem)}
-.acct-h p{color:#b9b9be}
-.grid{display:grid;grid-template-columns:minmax(0,1fr) 360px;gap:2rem;align-items:start}
+/* ---------- account dashboard ---------- */
+.dash{display:grid;grid-template-columns:248px minmax(0,1fr);gap:clamp(1.5rem,3vw,3rem);align-items:start}
+.snav{position:sticky;top:150px;display:grid;gap:1.5rem}
+.me{display:flex;align-items:center;gap:.85rem}
+.av{flex:none;width:48px;height:48px;border-radius:50%;display:grid;place-items:center;background:var(--red);color:#fff;font-family:var(--display);font-size:1.45rem;letter-spacing:.04em;line-height:1}
+.me b{display:block;font-weight:600;font-size:1rem;line-height:1.25;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:170px}
+.me small{display:block;color:var(--dim);font-size:.8rem;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:170px}
+.tabs{display:grid;gap:.25rem}
+.tab{display:flex;align-items:center;gap:.75rem;height:44px;padding:0 .9rem;border-radius:12px;color:#b9b9be;text-decoration:none;font-weight:500;font-size:.95rem;transition:background .15s,color .15s}
+.tab svg{width:19px;height:19px;flex:none;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.tab:hover{color:#fff;background:rgba(255,255,255,.05)}
+.tab[aria-current="page"]{color:#fff;background:var(--field);box-shadow:inset 3px 0 0 var(--red)}
+.tab .ct{margin-left:auto;font-size:.75rem;color:var(--dim)}
+.snav .out{background:none;border:0;cursor:pointer;justify-content:flex-start;width:100%;font:500 .95rem var(--font)}
+.snav hr{border:0;border-top:1px solid var(--line)}
+.pane{display:grid;gap:1.25rem;animation:fade .25s ease}
+@keyframes fade{from{opacity:0;transform:translateY(4px)}}
+.ph{display:grid;gap:.35rem;margin-bottom:.5rem}
+.ph h1{font-size:clamp(2.6rem,5vw,4rem)}
+.ph p{color:#b9b9be}
+.badge{display:inline-flex;align-items:center;gap:.4rem;width:max-content;font-size:.72rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:.35rem .7rem;border-radius:999px;background:rgba(200,16,46,.16);color:#ff8a98}
+.badge i{width:6px;height:6px;border-radius:50%;background:currentColor}
 .card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:1.5rem}
-.card h2{font-size:1.9rem;margin-bottom:1rem}
-.side{display:grid;gap:1.25rem}
+.card h2{font-size:1.75rem;line-height:1;margin-bottom:1rem}
+.card .hd{display:flex;justify-content:space-between;align-items:baseline;gap:1rem;margin-bottom:1rem}
+.card .hd h2{margin:0}
+.card .hd a{font-size:.88rem;color:#d6d6da;text-underline-offset:3px}
+.cols{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1.25rem;align-items:start}
+.stack{display:grid;gap:1.25rem}
+.setup{display:grid;grid-template-columns:1fr auto;gap:1rem 1.5rem;align-items:center;background:linear-gradient(120deg,#16171c,#0d0e12)}
+.setup h2{margin:0 0 .3rem}
+.setup p{color:#b9b9be;font-size:.92rem}
+.bar{grid-column:1/-1;height:6px;border-radius:99px;background:#24252a;overflow:hidden}
+.bar i{display:block;height:100%;background:var(--red);border-radius:99px;transition:width .4s ease}
+.steps{grid-column:1/-1;display:flex;flex-wrap:wrap;gap:.5rem 1.25rem;list-style:none;font-size:.85rem;color:var(--dim)}
+.steps li{display:flex;align-items:center;gap:.45rem}
+.steps li::before{content:"";width:16px;height:16px;border-radius:50%;border:1.5px solid #4a4b52}
+.steps li.ok{color:#e8e8ea}
+.steps li.ok::before{border-color:var(--ok);background:var(--ok) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='3.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 12.5l4 4 8-9'/%3E%3C/svg%3E") center/11px no-repeat}
 .code-card{background:linear-gradient(135deg,#2a0409,#0d0e12 70%);border-color:rgba(200,16,46,.45)}
-.code-card .cd{font-family:var(--display);font-size:2.6rem;letter-spacing:.08em;line-height:1;margin:.3rem 0 .4rem}
+.code-card .cd{font-family:var(--display);font-size:2.8rem;letter-spacing:.08em;line-height:1;margin:.5rem 0 .6rem}
+.perks{list-style:none;display:grid;gap:.9rem}
+.perks li{display:grid;grid-template-columns:36px 1fr;gap:.75rem;align-items:start;font-size:.9rem;color:#b9b9be;line-height:1.4}
+.perks svg{width:36px;height:36px;padding:8px;border-radius:10px;background:rgba(200,16,46,.14);stroke:#ff8a98;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.perks b{display:block;color:#fff;font-weight:600}
+.teams{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.9rem}
+.tm{position:relative;isolation:isolate;overflow:hidden;display:grid;align-content:end;justify-items:start;gap:.2rem;min-height:170px;padding:1rem;border-radius:14px;text-decoration:none;color:#fff;border:1px solid var(--line);transition:transform .2s,border-color .2s}
+.tm::before{content:"";position:absolute;inset:0;z-index:-2;background:var(--bgimg) center/cover;opacity:.5}
+.tm::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,transparent 20%,rgba(0,0,0,.85))}
+.tm img{position:absolute;top:1rem;right:1rem;width:58px;height:58px;object-fit:contain}
+.tm b{font-family:var(--display);font-weight:400;font-size:1.6rem;letter-spacing:.03em;line-height:1}
+.tm small{color:#d6d6da;font-size:.8rem}
+.tm:hover{transform:translateY(-2px);border-color:rgba(255,255,255,.35)}
+.tm.mine{border-color:var(--red);box-shadow:0 0 0 1px var(--red)}
+.tm.mine::after{background:linear-gradient(180deg,transparent 10%,rgba(0,0,0,.8))}
+.t-samoa{--bgimg:url(/shop/brand/toa-samoa-pattern-background-blue.webp);background:#0b1b5e}
+.t-tonga{--bgimg:url(/shop/brand/mate-maa-tonga-pattern-background-red.webp);background:#5e0710}
+.t-pmn{--bgimg:none;background:#141416}
 .orders{display:grid;gap:1rem}
-.perks{list-style:none;display:grid;gap:.8rem}.perks li{padding-left:1.4rem;position:relative;font-size:.92rem;color:#b9b9be}.perks li::before{content:"";position:absolute;left:0;top:.45em;width:8px;height:8px;border-radius:50%;background:var(--red)}.perks b{display:block;color:#fff;font-weight:600}
 .order{border:1px solid var(--line);border-radius:14px;padding:1.1rem;display:grid;gap:.9rem;background:#08090c}
 .order-top{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;align-items:baseline}
 .order-top b{font-family:var(--display);font-weight:400;font-size:1.5rem;letter-spacing:.04em}
@@ -92,12 +139,41 @@ main{flex:1;width:min(1180px,100% - 2*clamp(1rem,5vw,2.5rem));margin:clamp(1.5re
 .order-f{display:flex;justify-content:space-between;align-items:center;gap:1rem;flex-wrap:wrap;padding-top:.8rem;border-top:1px solid var(--line)}
 .order-f .tot{font-weight:600}
 .order-f .acts{display:flex;gap:.5rem;flex-wrap:wrap}
-.empty{text-align:center;padding:2.5rem 1rem;display:grid;gap:1rem;justify-items:center;color:#b9b9be}
-.empty .btn{width:auto;padding:0 1.6rem}
+.empty{display:grid;gap:1.25rem}
+.empty p{color:#b9b9be}
 .sk{height:120px;border-radius:14px;background:linear-gradient(100deg,#111216 30%,#1a1b20 50%,#111216 70%);background-size:200% 100%;animation:sk 1.2s linear infinite}
 @keyframes sk{to{background-position:-200% 0}}
-.form{display:grid;gap:1rem}
+.form{display:grid;gap:1.1rem}
 .two{display:grid;grid-template-columns:1fr 1fr;gap:.8rem;align-items:end}
+.lbl{font-size:.8rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:#b9b9be}
+.chips{display:flex;flex-wrap:wrap;gap:.5rem}
+.chip{height:40px;padding:0 1rem;border-radius:999px;border:1px solid rgba(255,255,255,.18);background:transparent;color:#e8e8ea;font:500 .9rem var(--font);cursor:pointer;transition:background .15s,border-color .15s,color .15s}
+.chip:hover{border-color:#fff}
+.chip[aria-pressed="true"]{background:#fff;color:#000;border-color:#fff}
+.pick{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:.7rem}
+.pk{position:relative;display:grid;justify-items:center;align-content:center;gap:.55rem;min-height:132px;padding:1rem .6rem;border-radius:14px;border:1.5px solid var(--line);background:var(--field);color:#fff;cursor:pointer;font:600 .88rem var(--font);text-align:center;transition:border-color .15s,background .15s}
+.pk img{width:56px;height:56px;object-fit:contain}
+.pk .gl{width:56px;height:56px;display:grid;place-items:center;font-family:var(--display);font-size:1.6rem;border-radius:50%;background:#24252a}
+.pk:hover{border-color:rgba(255,255,255,.4)}
+.pk[aria-pressed="true"]{border-color:var(--red);background:rgba(200,16,46,.12)}
+.pk[aria-pressed="true"]::after{content:"";position:absolute;top:.6rem;right:.6rem;width:18px;height:18px;border-radius:50%;background:var(--red) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23fff' stroke-width='3.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 12.5l4 4 8-9'/%3E%3C/svg%3E") center/11px no-repeat}
+.row-end{display:flex;justify-content:flex-end;gap:.75rem;padding-top:.5rem;border-top:1px solid var(--line)}
+.row-end .btn{width:auto;padding:0 1.8rem}
+.sw{display:flex;justify-content:space-between;align-items:center;gap:1.5rem;padding:1rem 0;border-bottom:1px solid var(--line)}
+.sw:last-of-type{border-bottom:0}
+.sw b{display:block;font-weight:600}
+.sw span{color:#b9b9be;font-size:.88rem}
+.tg{position:relative;flex:none;width:50px;height:30px}
+.tg input{position:absolute;inset:0;opacity:0;cursor:pointer;z-index:1}
+.tg i{position:absolute;inset:0;border-radius:99px;background:#34353b;transition:background .2s}
+.tg i::after{content:"";position:absolute;top:3px;left:3px;width:24px;height:24px;border-radius:50%;background:#fff;transition:transform .2s}
+.tg input:checked+i{background:var(--ok)}
+.tg input:checked+i::after{transform:translateX(20px)}
+.tg input:focus-visible+i{outline:2px solid #fff;outline-offset:3px}
+.toast{visibility:hidden;opacity:0;position:fixed;left:50%;bottom:calc(1.5rem + env(safe-area-inset-bottom));z-index:60;transform:translate(-50%,150%);display:flex;align-items:center;gap:.6rem;padding:.8rem 1.2rem;border-radius:999px;background:#fff;color:#000;font-weight:600;font-size:.92rem;box-shadow:0 10px 40px rgba(0,0,0,.5);transition:transform .3s cubic-bezier(.2,.8,.2,1),opacity .2s,visibility .3s}
+.toast.on{visibility:visible;opacity:1;transform:translate(-50%,0)}
+.toast.bad{background:#ff6b7d}
+.toast svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round}
 .soon{max-width:620px;margin:3rem auto;text-align:center;display:grid;gap:1.2rem;justify-items:center}
 .soon h1{font-size:clamp(3rem,7vw,5rem)}
 .soon p{color:#b9b9be}
@@ -107,9 +183,30 @@ main{flex:1;width:min(1180px,100% - 2*clamp(1rem,5vw,2.5rem));margin:clamp(1.5re
 @media (max-width:900px){
   .auth{grid-template-columns:1fr;min-height:0}
   .brand{gap:1.5rem}.brand ul{display:none}
-  .grid{grid-template-columns:1fr}
+  .dash{grid-template-columns:1fr;gap:1.25rem}
+  .snav{position:sticky;top:var(--navh,64px);z-index:5;gap:0;margin:0 calc(-1*clamp(1rem,5vw,2.5rem));padding:0 clamp(1rem,5vw,2.5rem);background:rgba(0,0,0,.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+  .snav .me,.snav hr,.snav .out,.snav .help{display:none}
+  .tabs{display:flex;gap:0;overflow-x:auto;scrollbar-width:none}
+  .tabs::-webkit-scrollbar{display:none}
+  .tab{flex:none;height:52px;border-radius:0;padding:0 .75rem;font-size:.92rem;background:none!important;box-shadow:none!important;border-bottom:2px solid transparent}
+  .tab svg,.tab .ct{display:none}
+  .tab[aria-current="page"]{border-bottom-color:var(--red)}
+  .cols{grid-template-columns:1fr}
+  .teams{grid-template-columns:1fr 1fr}
+  .teams .tm:first-child{grid-column:1/-1}
+  .pick{grid-template-columns:1fr 1fr}
+  .setup{grid-template-columns:1fr}
+  .setup .btn{width:100%}
+  .mout{display:flex!important}
+  .row-end .btn{width:100%}
+  .tm{min-height:150px}
+  .tm img{width:44px;height:44px;top:.8rem;right:.8rem}
+  .tm b{font-size:1.35rem}
+  .tabs{margin:0 -.75rem}
 }
-@media (prefers-reduced-motion:reduce){.sk,.spin{animation:none}}
+.mout{display:none;justify-content:center;margin-top:.5rem}
+.mout .btn{width:auto;padding:0 1.6rem}
+@media (prefers-reduced-motion:reduce){.sk,.spin,.pane{animation:none}.toast,.tm,.bar i{transition:none}}
 {{FOOTCSS}}
 </style>
 </head>
@@ -133,7 +230,7 @@ main{flex:1;width:min(1180px,100% - 2*clamp(1rem,5vw,2.5rem));margin:clamp(1.5re
       <h1 class="disp">Your PMN+<br>account</h1>
       <ul>
         <li><svg viewBox="0 0 24 24"><path d="M3 7h13v10H3z"/><path d="M16 10h3l2 3v4h-5"/><circle cx="7" cy="18" r="1.8"/><circle cx="17.5" cy="18" r="1.8"/></svg><span><b>Track every order</b>Status and tracking for everything you buy, in one place.</span></li>
-        <li><svg viewBox="0 0 24 24"><path d="M20 12v8H4v-8M2 7h20v5H2zM12 20V7M12 7H8a2 2 0 1 1 2-3l2 3 2-3a2 2 0 1 1 2 3h-4"/></svg><span><b>Keep your welcome code</b>Your discount is saved to your account and applied at checkout.</span></li>
+        <li><svg viewBox="0 0 24 24"><path d="M20 12v8H4v-8M2 7h20v5H2zM12 20V7M12 7H8a2 2 0 1 1 2-3l2 3 2-3a2 2 0 1 1 2 3h-4"/></svg><span><b>A free gift in every order</b>A surprise from the PMN+ vault. What&rsquo;s inside changes with each drop.</span></li>
         <li><svg viewBox="0 0 24 24"><path d="M13 2L4 14h7l-1 8 9-12h-7z"/></svg><span><b>First access to drops</b>Members hear about new team gear before anyone else.</span></li>
         <li><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="3.6"/><path d="M4.5 20.5c1.2-3.6 4.2-5.6 7.5-5.6s6.3 2 7.5 5.6"/></svg><span><b>Made for you</b>Tell us your team and where you rep from, and we&rsquo;ll tailor drops to you.</span></li>
       </ul>
@@ -165,31 +262,77 @@ main{flex:1;width:min(1180px,100% - 2*clamp(1rem,5vw,2.5rem));margin:clamp(1.5re
   </section>
 
   <!-- signed in -->
-  <section id="vAcct" hidden>
-    <div class="acct-h">
-      <div><p class="eyebrow">PMN+ account</p><h1 class="disp" id="hello">Welcome back</h1><p id="who"></p></div>
-      <button class="btn ghost sm" type="button" id="out">Sign out</button>
-    </div>
-    <div class="grid">
-      <div class="card"><h2 class="disp">Your orders</h2><div class="orders" id="orders"><div class="sk"></div><div class="sk"></div></div></div>
-      <div class="side">
-        <div class="card code-card" id="codeCard" hidden><p class="eyebrow">Your welcome code</p><p class="cd" id="codeVal"></p><p class="fine">Saved to your bag. It comes off automatically at checkout.</p></div>
-        <div class="card perk-card"><p class="eyebrow">PMN+ member</p><h2 class="disp">Your perks</h2>
-          <ul class="perks"><li><b>First access to drops</b>Members hear about new team gear before anyone else.</li><li id="perkGift" hidden><b>Free gift with your order</b><span id="perkGiftTxt"></span></li><li><b>Order tracking</b>Every order you place with this email shows up here.</li></ul></div>
-        <form class="card form" id="fProfile" novalidate>
-          <h2 class="disp">Profile</h2>
+  <section class="dash" id="vAcct" hidden>
+    <aside class="snav" aria-label="Account">
+      <div class="me"><span class="av" id="av" aria-hidden="true">P</span><div><b id="meName">PMN+ member</b><small id="who"></small></div></div>
+      <nav class="tabs" role="tablist">
+        <a class="tab" href="#overview" data-tab="overview"><svg viewBox="0 0 24 24"><path d="M4 11l8-7 8 7v9H4z"/><path d="M10 20v-5h4v5"/></svg>Overview</a>
+        <a class="tab" href="#orders" data-tab="orders"><svg viewBox="0 0 24 24"><path d="M5 8h14l-1 12H6z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg>Orders<span class="ct" id="ordCt"></span></a>
+        <a class="tab" href="#profile" data-tab="profile"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="3.6"/><path d="M4.5 20.5c1.2-3.6 4.2-5.6 7.5-5.6s6.3 2 7.5 5.6"/></svg>Profile</a>
+        <a class="tab" href="#preferences" data-tab="preferences"><svg viewBox="0 0 24 24"><path d="M4 6h16v12H4z"/><path d="M4 7l8 6 8-6"/></svg>Preferences</a>
+      </nav>
+      <hr>
+      <a class="tab help" href="/shop#contact"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M9.5 9.5a2.5 2.5 0 1 1 3.5 2.3c-.6.3-1 .8-1 1.5v.7M12 17h.01"/></svg>Help</a>
+      <button class="tab out" type="button" id="out"><svg viewBox="0 0 24 24"><path d="M15 4h4v16h-4M10 8l-4 4 4 4M6 12h10"/></svg>Sign out</button>
+    </aside>
+
+    <div>
+      <!-- overview -->
+      <div class="pane" data-pane="overview">
+        <header class="ph"><span class="badge"><i></i><span id="since">PMN+ member</span></span><h1 class="disp" id="hello">Welcome to PMN+</h1><p>Your orders, perks and preferences in one place.</p></header>
+        <div class="card setup" id="setup" hidden>
+          <div><h2 class="disp">Finish your profile</h2><p id="setupTxt">Tell us your team and where you rep from so we can tailor drops to you.</p></div>
+          <a class="btn sm red" href="#profile">Finish profile</a>
+          <div class="bar"><i id="setupBar" style="width:0"></i></div>
+          <ul class="steps" id="steps"></ul>
+        </div>
+        <div class="cols">
+          <div class="card" id="ovOrder"><div class="hd"><h2 class="disp">Latest order</h2><a href="#orders">All orders</a></div><div id="ovOrderBody"><div class="sk"></div></div></div>
+          <div class="stack">
+          <div class="card code-card" id="codeCard" hidden><p class="eyebrow">Your welcome code</p><p class="cd" id="codeVal"></p><p class="fine">Saved to your bag. It comes off automatically at checkout.</p></div>
+          <div class="card" id="perksCard"><h2 class="disp">Your perks</h2>
+            <ul class="perks">
+              <li><svg viewBox="0 0 24 24"><path d="M13 2L4 14h7l-1 8 9-12h-7z"/></svg><span><b>First access to drops</b>You hear about new team gear before anyone else.</span></li>
+              <li id="perkGift" hidden><svg viewBox="0 0 24 24"><path d="M20 12v8H4v-8M2 7h20v5H2zM12 20V7M12 7H8a2 2 0 1 1 2-3l2 3 2-3a2 2 0 1 1 2 3h-4"/></svg><span><b>Free gift with your order</b><span id="perkGiftTxt"></span></span></li>
+              <li><svg viewBox="0 0 24 24"><path d="M3 7h13v10H3z"/><path d="M16 10h3l2 3v4h-5"/><circle cx="7" cy="18" r="1.8"/><circle cx="17.5" cy="18" r="1.8"/></svg><span><b>Order tracking</b>Every order with this email shows up here.</span></li>
+            </ul>
+          </div>
+          </div>
+        </div>
+        <div class="card"><div class="hd"><h2 class="disp" id="teamsH">Shop by team</h2><a href="/shop">Shop all</a></div><div class="teams" id="teams"></div></div>
+      </div>
+
+      <!-- orders -->
+      <div class="pane" data-pane="orders" hidden>
+        <header class="ph"><h1 class="disp">Orders</h1><p>Status and tracking for everything you&rsquo;ve bought with <span class="em"></span>.</p></header>
+        <div class="card"><div class="orders" id="orders"><div class="sk"></div><div class="sk"></div></div></div>
+      </div>
+
+      <!-- profile -->
+      <form class="pane" data-pane="profile" id="fProfile" novalidate hidden>
+        <header class="ph"><h1 class="disp">Profile</h1><p>We use this to tailor drops and news to you. We never share it.</p></header>
+        <div class="card form">
           <div class="two"><div class="field"><label for="pFirst">First name</label><input id="pFirst" autocomplete="given-name"></div><div class="field"><label for="pLast">Last name</label><input id="pLast" autocomplete="family-name"></div></div>
           <div class="field"><label for="pEmail">Email</label><input id="pEmail" type="email" disabled></div>
-          <div class="two"><div class="field"><label for="pCountry">Country</label><select id="pCountry" autocomplete="country-name"><option value="">Choose</option><option>United States</option><option>New Zealand</option><option>Australia</option><option>Samoa</option><option>American Samoa</option><option>Tonga</option><option>Fiji</option><option>Cook Islands</option><option>Hawaiʻi</option><option>Other</option></select></div>
-          <div class="field"><label for="pTeam">Team</label><select id="pTeam"><option value="">Choose</option><option value="toa-samoa">Toa Samoa</option><option value="mate-maa-tonga">Mate Maʻa Tonga</option><option value="both">Both</option><option value="other">Another team</option></select></div></div>
-          <label class="chk"><input type="checkbox" id="pNews"><span>Email me about new drops and PMN+ news</span></label>
-          <button class="btn sm" type="submit" id="pSave">Save</button>
-          <p class="msg" id="pMsg" role="status" aria-live="polite"></p>
-        </form>
-        <div class="card"><h2 class="disp">Need help?</h2><p class="fine" style="font-size:.9rem">Questions about an order, sizing or returns? <a href="/shop#contact">Contact us</a> · <a href="/shop#returns">Returns &amp; exchanges</a></p></div>
+        </div>
+        <div class="card form"><span class="lbl" id="teamL">Your team</span><div class="pick" id="pTeam" role="group" aria-labelledby="teamL"></div></div>
+        <div class="card form"><span class="lbl" id="ctyL">Where you rep from</span><div class="chips" id="pCountry" role="group" aria-labelledby="ctyL"></div></div>
+        <div class="row-end"><button class="btn red" type="submit" id="pSave">Save changes</button></div>
+      </form>
+
+      <!-- preferences -->
+      <div class="pane" data-pane="preferences" hidden>
+        <header class="ph"><h1 class="disp">Preferences</h1><p>Choose what we send you.</p></header>
+        <div class="card">
+          <div class="sw"><div><b>Drops and PMN+ news</b><span>New team gear, giveaways and first access. About 2&ndash;4 emails a month.</span></div><label class="tg"><input type="checkbox" id="pNews" aria-label="Email me about drops and PMN+ news"><i></i></label></div>
+          <div class="sw"><div><b>Order emails</b><span>Receipts, shipping and tracking. Always on for your orders.</span></div><label class="tg"><input type="checkbox" checked disabled aria-label="Order emails (always on)"><i></i></label></div>
+        </div>
+        <div class="card"><h2 class="disp">Your data</h2><p class="fine" style="font-size:.9rem">Want a copy of your data or your account deleted? <a href="/shop#contact">Contact us</a> and we&rsquo;ll handle it. Read our <a href="/privacy-policy">Privacy policy</a>.</p></div>
       </div>
+      <div class="mout"><button class="btn ghost sm" type="button" id="out2">Sign out</button></div>
     </div>
   </section>
+  <div class="toast" id="toast" role="status" aria-live="polite"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span id="toastTxt">Saved</span></div>
 </main>
 {{FOOTER}}
 <script src="/assets/pmn-config.js"></script>
@@ -248,36 +391,91 @@ const api=(path,opts={})=>fetch(path,{...opts,headers:{...(opts.headers||{}),Aut
 const fmtDate=d=>new Date(d).toLocaleDateString("en-US",{month:"short",day:"numeric",year:"numeric"});
 const money=(a,c)=>new Intl.NumberFormat("en-US",{style:"currency",currency:c||"USD"}).format(+a);
 const nice=s=>String(s||"").replace(/_/g," ").toLowerCase().replace(/^\w/,c=>c.toUpperCase());
+const TEAMS=[{v:"toa-samoa",n:"Toa Samoa",cls:"t-samoa",img:"/shop/brand/toa-samoa-rugby-league-crest.webp",url:"/shop/toa-samoa"},
+  {v:"mate-maa-tonga",n:"Mate Maʻa Tonga",cls:"t-tonga",img:"/shop/brand/mate-maa-tonga-rugby-league-crest.webp",url:"/shop/mate-maa-tonga"},
+  {v:"pmn",n:"PMN+",cls:"t-pmn",img:"/shop/brand/pmn-plus-logo-white.svg",url:"/shop/pmn-plus"}];
+const PICK=[TEAMS[0],TEAMS[1],{v:"both",n:"Both",gl:"2"},{v:"other",n:"Another team",gl:"+"}];
+const COUNTRIES=["United States","New Zealand","Australia","Samoa","American Samoa","Tonga","Fiji","Cook Islands","Hawaiʻi","Other"];
+let prof={},sel={team:"",country:""},toastT;
+function toast(m,bad){$("toastTxt").textContent=m;$("toast").classList.toggle("bad",!!bad);$("toast").classList.add("on");clearTimeout(toastT);toastT=setTimeout(()=>$("toast").classList.remove("on"),2600)}
+
+/* tabs: #overview #orders #profile #preferences */
+const PANES=["overview","orders","profile","preferences"];
+function go(name,focus){if(!PANES.includes(name))name="overview";
+  document.querySelectorAll("[data-pane]").forEach(p=>p.hidden=p.dataset.pane!==name);
+  document.querySelectorAll(".tab[data-tab]").forEach(t=>{const on=t.dataset.tab===name;on?t.setAttribute("aria-current","page"):t.removeAttribute("aria-current");if(on&&focus)t.scrollIntoView({block:"nearest",inline:"center"})});
+  if(focus&&$("vAcct").getBoundingClientRect().top<0)window.scrollTo({top:Math.max(0,$("vAcct").offsetTop-90),behavior:"smooth"})}
+addEventListener("hashchange",()=>{if(user)go(location.hash.slice(1),true)});
+
 function pill(o){if(o.cancelled)return'<span class="pill no">Cancelled</span>';
   const f=o.fulfillment||"",cls=/FULFILLED|DELIVERED/.test(f)&&!/UN|PARTIAL/.test(f)?"go":/PARTIAL|IN_PROGRESS|SCHEDULED|ON_HOLD|UNFULFILLED|OPEN/.test(f)?"wait":"";
   const label=/UNFULFILLED|OPEN/.test(f)?"Being printed":f==="FULFILLED"?"Shipped":nice(f);return`<span class="pill ${cls}">${esc(label)}</span>`}
-function renderOrders(d){const box=$("orders");
-  if(!d||!d.orders||!d.orders.length){box.innerHTML=`<div class="empty"><p>${d&&d.soon?"Order history is being switched on. Your order emails have a tracking link in the meantime.":"No orders yet. When you order with "+esc(user.email)+", it shows up here."}</p><a class="btn sm" href="/shop">Shop the drop</a></div>`;return}
-  box.innerHTML=d.orders.map(o=>`<article class="order"><div class="order-top"><b>Order ${esc(o.name)}</b><span>${fmtDate(o.date)}</span></div>
+const orderHTML=o=>`<article class="order"><div class="order-top"><b>Order ${esc(o.name)}</b><span>${fmtDate(o.date)}</span></div>
     <div class="pills">${pill(o)}${o.payment&&o.payment!=="PAID"?`<span class="pill">${esc(nice(o.payment))}</span>`:""}</div>
     <div class="items">${o.items.map(i=>`<figure>${i.image?`<img src="${esc(i.image)}" alt="" loading="lazy">`:"<span></span>"}<figcaption>${esc(i.title)}<small>${[i.variant,"Qty "+i.qty].filter(Boolean).map(esc).join(" · ")}</small></figcaption></figure>`).join("")}</div>
-    <div class="order-f"><span class="tot">${money(o.total,o.currency)}</span><span class="acts">${o.tracking.filter(t=>t.url).slice(0,1).map(t=>`<a class="btn sm red" href="${esc(t.url)}" target="_blank" rel="noopener">Track package</a>`).join("")}${o.url?`<a class="btn sm ghost" href="${esc(o.url)}" target="_blank" rel="noopener">View order</a>`:""}</span></div></article>`).join("")}
-async function loadAccount(s){session=s;user=s.user;show("vAcct");
+    <div class="order-f"><span class="tot">${money(o.total,o.currency)}</span><span class="acts">${o.tracking.filter(t=>t.url).slice(0,1).map(t=>`<a class="btn sm red" href="${esc(t.url)}" target="_blank" rel="noopener">Track package</a>`).join("")}${o.url?`<a class="btn sm ghost" href="${esc(o.url)}" target="_blank" rel="noopener">View order</a>`:""}</span></div></article>`;
+function renderOrders(d){
+  const none=!d||!d.orders||!d.orders.length;
+  const msg=d&&d.soon?"Order history is switching on. Your order emails have a tracking link in the meantime."
+    :`No orders yet. Anything you buy with ${esc(user.email)} shows up here, guest checkouts included.`;
+  $("ordCt").textContent=none?"":d.orders.length;
+  $("orders").innerHTML=none?`<div class="empty"><p>${msg}</p><a class="btn sm" href="/shop" style="width:max-content;padding:0 1.6rem">Shop the drop</a></div>`:d.orders.map(orderHTML).join("");
+  $("ovOrderBody").innerHTML=none?`<div class="empty"><p>${d&&d.soon?msg:"Your first order will show up here with live tracking."}</p><a class="btn sm" href="/shop" style="width:max-content;padding:0 1.6rem">Shop the drop</a></div>`:orderHTML(d.orders[0])}
+
+function renderTeams(){const mine=prof.favourite_team;
+  const list=[...TEAMS].sort((a,b)=>(b.v===mine)-(a.v===mine));
+  $("teamsH").textContent=TEAMS.some(t=>t.v===mine)?"Your team's gear":"Shop by team";
+  $("teams").innerHTML=list.map(t=>`<a class="tm ${t.cls}${t.v===mine?" mine":""}" href="${t.url}"><img src="${t.img}" alt="" loading="lazy"><b>${esc(t.n)}</b><small>${t.v===mine?"Your team · ":""}Shop the collection</small></a>`).join("")}
+
+function renderPickers(){
+  $("pTeam").innerHTML=PICK.map(t=>`<button type="button" class="pk" data-v="${t.v}" aria-pressed="${sel.team===t.v}">${t.img?`<img src="${t.img}" alt="">`:`<span class="gl">${t.gl}</span>`}${esc(t.n)}</button>`).join("");
+  $("pCountry").innerHTML=COUNTRIES.map(c=>`<button type="button" class="chip" data-v="${esc(c)}" aria-pressed="${sel.country===c}">${esc(c)}</button>`).join("")}
+$("pTeam").addEventListener("click",e=>{const b=e.target.closest(".pk");if(!b)return;sel.team=sel.team===b.dataset.v?"":b.dataset.v;renderPickers()});
+$("pCountry").addEventListener("click",e=>{const b=e.target.closest(".chip");if(!b)return;sel.country=sel.country===b.dataset.v?"":b.dataset.v;renderPickers()});
+
+function renderHeader(){const f=prof.first_name,l=prof.last_name;
+  const ini=((f||user.email)[0]+(l?l[0]:"")).toUpperCase();
+  $("av").textContent=ini;store.set("pmn_initials",ini);
+  document.querySelectorAll(".pn-acct").forEach(a=>{a.innerHTML=`<span class="pn-av">${esc(ini)}</span>`;a.setAttribute("aria-label","Your PMN+ account")});
+  $("meName").textContent=f?[f,l].filter(Boolean).join(" "):"PMN+ member";
+  $("hello").textContent=f?`Welcome back, ${f}`:"Welcome to PMN+";
+  const since=prof.created_at?new Date(prof.created_at).toLocaleDateString("en-US",{month:"short",year:"numeric"}):"";
+  $("since").textContent=`PMN+ member${since?" since "+since:""}`;
+  const steps=[["Name",!!f],["Your team",!!prof.favourite_team],["Where you rep from",!!prof.country]];
+  const done=steps.filter(s=>s[1]).length;
+  $("setup").hidden=done===steps.length;
+  $("setupBar").style.width=Math.round(done/steps.length*100)+"%";
+  $("setupTxt").textContent=`${done} of ${steps.length} done. Tell us your team and where you rep from so we can tailor drops to you.`;
+  $("steps").innerHTML=steps.map(([n,ok])=>`<li class="${ok?"ok":""}">${n}</li>`).join("");
+  renderTeams()}
+
+async function loadAccount(s){session=s;user=s.user;show("vAcct");go(location.hash.slice(1));
   store.set("pmn_email",user.email);   // checkout pre-fills with this
-  $("pEmail").value=user.email;$("who").textContent=user.email;
-  const {data:p}=await sb.from("profiles").select("first_name,last_name,country,favourite_team,marketing_opt_in,tier").eq("id",user.id).maybeSingle();
+  $("pEmail").value=user.email;$("who").textContent=user.email;document.querySelectorAll(".em").forEach(x=>x.textContent=user.email);
+  const {data:p}=await sb.from("profiles").select("first_name,last_name,country,favourite_team,marketing_opt_in,tier,created_at").eq("id",user.id).maybeSingle();
+  prof=p||{};
   if(C.memberGift){$("perkGift").hidden=false;$("perkGiftTxt").textContent=C.memberGift}
   await klSync(p);
-  if(p){$("pFirst").value=p.first_name||"";$("pLast").value=p.last_name||"";$("pNews").checked=p.marketing_opt_in!==false;
-    $("pCountry").value=p.country||"";$("pTeam").value=p.favourite_team||"";
-    $("hello").textContent=p.first_name?`Welcome back, ${p.first_name}`:"Welcome to PMN+"}else $("hello").textContent="Welcome to PMN+";
+  $("pFirst").value=prof.first_name||"";$("pLast").value=prof.last_name||"";$("pNews").checked=prof.marketing_opt_in!==false;
+  sel={team:prof.favourite_team||"",country:prof.country||""};renderPickers();renderHeader();
   const c=store.get("pmn_code");$("codeCard").hidden=!c;if(c)$("codeVal").textContent=c;
   try{const l=await api("/api/account/link",{method:"POST"});
     if(l.status===503){renderOrders({soon:true});return}
     const r=await api("/api/account/orders");renderOrders(r.ok?await r.json():null)}catch(e){renderOrders({soon:true})}}
-$("fProfile").addEventListener("submit",async e=>{e.preventDefault();$("pSave").disabled=true;$("pMsg").className="msg";
-  const patch={first_name:$("pFirst").value.trim()||null,last_name:$("pLast").value.trim()||null,country:$("pCountry").value||null,favourite_team:$("pTeam").value||null,marketing_opt_in:$("pNews").checked};
-  const {error}=await sb.from("profiles").update(patch).eq("id",user.id);$("pSave").disabled=false;
-  if(error){$("pMsg").textContent="Couldn't save. Please try again.";return}
-  $("pMsg").className="msg ok";$("pMsg").textContent="Saved.";
-  klIdentify(patch);if(patch.marketing_opt_in&&store.get("pmn_kl_acct_"+user.id)!=="1"){store.set("pmn_optin","1");store.set("pmn_kl_acct_"+user.id,null);klSync(patch)}if(patch.first_name)$("hello").textContent=`Welcome back, ${patch.first_name}`});
-$("out").onclick=async()=>{await sb.auth.signOut();store.set("pmn_email",null);session=user=null;$("fCode").hidden=true;$("fEmail").hidden=false;show("vAuth")};
 
+async function saveProfile(patch,okMsg){
+  const {error}=await sb.from("profiles").update(patch).eq("id",user.id);
+  if(error){toast("Couldn't save. Please try again.",true);return false}
+  Object.assign(prof,patch);renderHeader();klIdentify(prof);toast(okMsg||"Saved");return true}
+$("fProfile").addEventListener("submit",async e=>{e.preventDefault();$("pSave").disabled=true;
+  const ok=await saveProfile({first_name:$("pFirst").value.trim()||null,last_name:$("pLast").value.trim()||null,country:sel.country||null,favourite_team:sel.team||null},"Profile saved");
+  $("pSave").disabled=false;if(ok&&$("setup").hidden)setTimeout(()=>{location.hash="overview"},700)});
+$("pNews").addEventListener("change",async()=>{const on=$("pNews").checked;
+  const ok=await saveProfile({marketing_opt_in:on},on?"You're on the list":"Drop emails turned off");
+  if(!ok){$("pNews").checked=!on;return}
+  if(on&&store.get("pmn_kl_acct_"+user.id)!=="1"){store.set("pmn_optin","1");store.set("pmn_kl_acct_"+user.id,null);klSync(prof)}});
+const signOut=async()=>{await sb.auth.signOut();store.set("pmn_email",null);store.set("pmn_initials",null);session=user=null;prof={};history.replaceState(null,"",location.pathname);$("fCode").hidden=true;$("fEmail").hidden=false;show("vAuth")};
+$("out").onclick=signOut;$("out2").onclick=signOut;
 /* ---------- start ---------- */
 let started=false;
 sb.auth.onAuthStateChange((ev,s)=>{if(s&&(ev==="SIGNED_IN"||ev==="INITIAL_SESSION")){if(!user||user.id!==s.user.id)loadAccount(s);else session=s}else if(!s&&ev!=="TOKEN_REFRESHED"){show("vAuth")}started=true});

@@ -78,3 +78,6 @@
 html.pn-lock,html.pn-lock body{overflow:hidden}
 @media (prefers-reduced-motion:reduce){.pn-drawer,.pn-scrim{transition:none}}
 .pn-ic[hidden]{display:none}
+
+.pn-av{width:32px;height:32px;border-radius:50%;display:grid;place-items:center;background:#C8102E;color:#fff;font-family:"Bebas Neue",system-ui,sans-serif;font-size:15px;letter-spacing:.04em;line-height:1;padding-top:1px}
+.pn-acct[aria-current="page"] .pn-av{box-shadow:0 0 0 2px #000,0 0 0 3.5px #fff}

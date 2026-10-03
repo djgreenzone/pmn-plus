@@ -4,6 +4,6 @@ window.PMN_CONFIG={
   supabaseAnonKey:"sb_publishable__o1QyHHm3--jPJ2iz61m8A_ssXrOmWk",   // Supabase publishable key (safe to be public)
   google:false,          // true once Google sign-in is switched on in Supabase
   apple:false,           // true once Apple sign-in is switched on in Supabase
-  memberGift:"",         // e.g. "A free PMN+ sticker pack with every order." Shows on the account page once the Shopify gift is set up
-  accountsLive:false     // true shows the account icon in the header
+  memberGift:"A surprise from the PMN+ vault in every order. What\u2019s inside changes with each drop.",
+  accountsLive:true      // shows the account icon in the header
 };

@@ -141,7 +141,13 @@ Storage.prototype.setItem=function(k,v){set.apply(this,arguments);try{
    IDs live in /assets/pmn-config.js (analytics:{ga4,meta,tiktok,clarity}); a blank ID loads nothing.
    Shop events: view_item, add_to_cart, begin_checkout. Purchases are sent by the Shopify checkout pixel. */
 (()=>{
-const C=(window.PMN_CONFIG&&window.PMN_CONFIG.analytics)||{},q=[];
+const C=Object.assign({},(window.PMN_CONFIG&&window.PMN_CONFIG.analytics)||{}),q=[];
+/* "Do not sell or share": Global Privacy Control or the opt-out on /privacy-policy turns off ad pixels (Meta, TikTok) */
+const optedOut=()=>{try{return navigator.globalPrivacyControl===true||localStorage.getItem("pmn_ads_optout")==="1"}catch(e){return navigator.globalPrivacyControl===true}};
+if(optedOut()){C.meta="";C.tiktok=""}
+window.pmnAdsOptOut=on=>{try{on?localStorage.setItem("pmn_ads_optout","1"):localStorage.removeItem("pmn_ads_optout")}catch(e){}
+  if(on){try{window.fbq&&fbq("consent","revoke")}catch(e){}try{window.ttq&&ttq.disableCookie()}catch(e){}}};
+window.pmnAdsOptedOut=optedOut;
 const load=src=>{const s=document.createElement("script");s.async=true;s.src=src;document.head.appendChild(s)};
 if(C.ga4){window.dataLayer=window.dataLayer||[];window.gtag=function(){dataLayer.push(arguments)};gtag("js",new Date());gtag("config",C.ga4);load("https://www.googletagmanager.com/gtag/js?id="+C.ga4)}
 if(C.meta){!function(f,b,e,v,n){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version="2.0";n.queue=[]}(window,document);

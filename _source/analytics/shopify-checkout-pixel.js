@@ -2,7 +2,7 @@
    Sends checkout steps and purchases to GA4, Meta and TikTok. Fill in the same IDs as /assets/pmn-config.js.
    The site passes the visitor's GA client ID and Meta browser ID into the cart (attributes), so the purchase
    joins up with the visit that started on polynesianmusicnetwork.com. Not committed to the site (Vercel ignores _source). */
-const IDS = { ga4: "G-KEQ8HPTH9W", meta: "", tiktok: "" };
+const IDS = { ga4: "G-KEQ8HPTH9W", meta: "1983591485663494", tiktok: "" };
 
 const load = src => { const s = document.createElement("script"); s.async = true; s.src = src; document.head.appendChild(s); };
 const attr = (c, k) => ((c && c.attributes) || []).find(a => a.key === k)?.value || "";

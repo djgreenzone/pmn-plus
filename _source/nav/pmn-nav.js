@@ -34,7 +34,7 @@ function buildDrawer(){
   drawer.innerHTML=`<div class="pn-dh">${LIVE?`<a href="/account">${INI?"My account":"Sign in / Join"} ${ic.chev}</a>`:`<b class="pn-dtitle">Menu</b>`}<button type="button" class="pn-ic pn-dx" aria-label="Close menu">${ic.x}</button></div>
   <div class="pn-db"><ul class="pn-dl">${LINKS.map(([t,h])=>`<li><a href="${h}"><span>${esc(t)}</span>${ic.chev}</a></li>`).join("")}</ul>
   <div class="pn-dsec"><b>Featured</b><div class="pn-feat" id="pnFeat"></div></div>
-  <div class="pn-dsec"><b>Help</b><div class="pn-help"><a href="/shop#shipping">Shipping</a><a href="/shop#returns">Returns &amp; exchanges</a><a href="/shop#contact">Contact</a></div></div></div>
+  <div class="pn-dsec"><b>Help</b><div class="pn-help"><a href="/about">About PMN+</a><a href="/shop#shipping">Shipping</a><a href="/shop#returns">Returns &amp; exchanges</a><a href="/shop#contact">Contact</a></div></div></div>
   <div class="pn-dt"><a href="/shop" class="${onShop()?"on":""}">${ic.bag}Shop</a><a href="/" class="${location.pathname==="/"?"on":""}">${ic.home}Home</a><a href="${IG}" target="_blank" rel="noopener">${ic.play}Watch</a></div>`;
   document.body.append(scrim,drawer);
   scrim.onclick=closeDrawer;drawer.querySelector(".pn-dx").onclick=closeDrawer;

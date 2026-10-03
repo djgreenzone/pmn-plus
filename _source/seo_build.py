@@ -82,7 +82,7 @@ for k,c in out['collections'].items():
     u.append(f"  <url><loc>{c['url']}</loc><lastmod>2026-10-02</lastmod>"+"".join(f"<image:image><image:loc>{i}</image:loc></image:image>" for i in imgs)+"</url>")
 for pid,o in out['products'].items():
     u.append(f"  <url><loc>{o['url']}</loc><lastmod>2026-10-02</lastmod>"+"".join(f"<image:image><image:loc>{html.escape(i)}</image:loc></image:image>" for i in [o['og']]+o['images'])+"</url>")
-u.append(f"  <url><loc>{D}/about</loc><lastmod>2026-10-03</lastmod><image:image><image:loc>{D}/assets/pmn-plus-og-music-culture-tradition-sports.jpg</image:loc></image:image></url>")
+u.append(f"  <url><loc>{D}/about</loc><lastmod>2026-10-03</lastmod><image:image><image:loc>{D}/assets/about/pmn-plus-about-og.jpg</image:loc></image:image><image:image><image:loc>{D}/assets/about/pmn-plus-reporter-rugby-league-las-vegas-allegiant-stadium.webp</image:loc></image:image><image:image><image:loc>{D}/assets/about/pmn-plus-photographer-hsbc-la-sevens.webp</image:loc></image:image><image:image><image:loc>{D}/assets/about/pmn-plus-locker-room-interview.webp</image:loc></image:image><image:image><image:loc>{D}/assets/about/pmn-plus-photographer-rugby-league-las-vegas-sideline.webp</image:loc></image:image><image:image><image:loc>{D}/assets/about/pmn-plus-photographer-pasifika-music-festival.webp</image:loc></image:image><image:image><image:loc>{D}/assets/about/pmn-plus-instagram-polynesianmusic-iphone.webp</image:loc></image:image></url>")
 u.append(f"  <url><loc>{D}/privacy-policy</loc><lastmod>2026-10-02</lastmod></url>")
 u.append(f"  <url><loc>{D}/terms</loc><lastmod>2026-10-02</lastmod></url>")
 u.append('</urlset>')

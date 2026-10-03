@@ -153,7 +153,7 @@ main{flex:1;width:min(1180px,100% - 2*clamp(1rem,5vw,2.5rem));margin:clamp(1.5re
 .story-b p+p{margin-top:1rem}
 /* ocean */
 .ocean{background:linear-gradient(135deg,#061433,#000 60%);border-block:1px solid var(--line)}
-.ocean blockquote{font-size:clamp(2.2rem,5.2vw,4rem);max-width:20ch;margin:0 0 1.6rem;color:#fff}
+.ocean-t blockquote{font-size:clamp(2.2rem,5.2vw,4rem);max-width:20ch;margin:0 0 1.6rem;color:#fff}
 .ocean p{max-width:62ch}
 /* mission */
 .mission{display:grid;grid-template-columns:1fr 1fr;gap:clamp(1rem,2vw,1.5rem)}
@@ -229,6 +229,43 @@ figcaption{margin-top:.7rem;font-size:.8rem;font-weight:600;letter-spacing:.12em
   .g2 img,.g3 img{aspect-ratio:1/1}
 }
 @media (max-width:420px){.stats{grid-template-columns:1fr 1fr}.stats div:last-child{grid-column:1/-1}}
+/* ocean + reel */
+.ocean-in{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:clamp(2rem,5vw,5rem);align-items:center}
+.reel{margin:0;justify-self:end;width:min(100%,400px)}
+.reel-frame{border-radius:20px;overflow:hidden;background:#111;min-height:420px}
+.reel-frame .instagram-media{margin:0!important;min-width:0!important;max-width:100%!important;width:100%!important;border-radius:0!important;box-shadow:none!important}
+.reel-frame>blockquote>a{display:grid;place-items:center;min-height:420px;padding:2rem;color:#fff;text-align:center;font:600 1rem var(--font);text-transform:none}
+/* cover band */
+.cover-band{position:relative;isolation:isolate;overflow:hidden}
+.cover-band::before{content:"";position:absolute;inset:0;z-index:-1;background:url(/assets/about/siapo-pattern-white.webp) center/cover;background:image-set(url(/assets/about/siapo-pattern-white.avif) type("image/avif"),url(/assets/about/siapo-pattern-white.webp) type("image/webp")) center/cover;opacity:.1}
+.cover-band .cover{padding-top:0!important}
+.cover-band{padding-block:clamp(3.5rem,8vw,6.5rem)}
+.cover-logo{width:clamp(64px,7vw,96px);height:auto;margin-top:clamp(1.4rem,3vw,2.2rem)}
+/* gallery life */
+.gi{cursor:zoom-in;position:relative}
+.gi picture{overflow:hidden;border-radius:20px}
+.gi img{transition:transform 1.2s cubic-bezier(.2,.7,.2,1),filter .6s}
+.gi:hover img,.gi:focus-visible img{transform:scale(1.06)}
+.gi figcaption{transition:color .3s}
+.gi:hover figcaption{color:#fff}
+.gi:focus-visible{outline:none}.gi:focus-visible picture{outline:2px solid #fff;outline-offset:3px}
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .9s ease,transform .9s cubic-bezier(.2,.7,.2,1)}
+.reveal.in{opacity:1;transform:none}
+.reveal.in img{animation:kb 14s ease-out both}
+@keyframes kb{from{transform:scale(1.12)}to{transform:scale(1)}}
+.gi:hover img{animation:none}
+/* lightbox */
+.lb{border:0;padding:0;background:transparent;max-width:100vw;max-height:100vh;width:100vw;height:100svh}
+.lb::backdrop{background:rgba(0,0,0,.92)}
+.lb[open]{display:grid;place-items:center}
+.lb figure{margin:0;display:grid;gap:.8rem;justify-items:center;max-width:min(92vw,1400px)}
+.lb img{max-width:100%;max-height:82svh;width:auto;height:auto;border-radius:12px}
+.lb figcaption{color:#d6d6da}
+.lb-x,.lb-n{position:fixed;border:0;background:rgba(255,255,255,.1);color:#fff;width:48px;height:48px;border-radius:50%;font-size:1.8rem;line-height:1;cursor:pointer}
+.lb-x{top:16px;right:16px}.lb-p{left:16px;top:50%}.lb-nx{right:16px;top:50%}
+.lb-x:hover,.lb-n:hover{background:rgba(255,255,255,.2)}
+@media (max-width:900px){.ocean-in{grid-template-columns:1fr}.reel{justify-self:center}}
+@media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}.reveal.in img{animation:none}.gi img{transition:none}.gi:hover img{transform:none}}
 @media (prefers-reduced-motion:reduce){.hero-v{display:none}.hero{background:url(/assets/about/pmn-plus-photographer-pasifika-music-festival.webp) center/cover}}
 </style>
 </head>
@@ -252,24 +289,32 @@ figcaption{margin-top:.7rem;font-size:.8rem;font-weight:600;letter-spacing:.12em
     <p>So we grew with it. <b>PMN+</b> keeps the name our community knows and adds the plus for everything beyond the music. Today our team is on the ground at the biggest games, concerts and community events, bringing you inside access to the Pacific.</p>
     </div>
   </div>
-  <figure class="story-img"><picture class=""><source type="image/avif" srcset="/assets/about/pmn-plus-reporter-rugby-league-las-vegas-allegiant-stadium-700.avif 700w, /assets/about/pmn-plus-reporter-rugby-league-las-vegas-allegiant-stadium.avif 1200w" sizes="(max-width:900px) 100vw, 40vw"><source type="image/webp" srcset="/assets/about/pmn-plus-reporter-rugby-league-las-vegas-allegiant-stadium-700.webp 700w, /assets/about/pmn-plus-reporter-rugby-league-las-vegas-allegiant-stadium.webp 1200w" sizes="(max-width:900px) 100vw, 40vw"><img src="/assets/about/pmn-plus-reporter-rugby-league-las-vegas-allegiant-stadium.webp" width="1200" height="1727" alt="PMN+ reporter presenting to camera with a PMN+ microphone above the field at Allegiant Stadium, Las Vegas" loading="lazy" decoding="async"></picture><figcaption>Live from Allegiant Stadium, Las Vegas</figcaption></figure>
+  <figure class="story-img"><picture class=""><source type="image/avif" srcset="/assets/about/pmn-plus-reporter-rugby-league-las-vegas-allegiant-stadium-700.avif 700w, /assets/about/pmn-plus-reporter-rugby-league-las-vegas-allegiant-stadium.avif 1200w" sizes="(max-width:900px) 100vw, 40vw"><source type="image/webp" srcset="/assets/about/pmn-plus-reporter-rugby-league-las-vegas-allegiant-stadium-700.webp 700w, /assets/about/pmn-plus-reporter-rugby-league-las-vegas-allegiant-stadium.webp 1200w" sizes="(max-width:900px) 100vw, 40vw"><img src="/assets/about/pmn-plus-reporter-rugby-league-las-vegas-allegiant-stadium.webp" width="1200" height="1727" alt="PMN+ reporter Keilani Mayo presenting to camera with a PMN+ microphone above the field at Allegiant Stadium, Las Vegas" loading="lazy" decoding="async"></picture><figcaption>Live from Allegiant Stadium, Las Vegas · Keilani Mayo</figcaption></figure>
 </section>
 
 <section class="ocean">
   <div class="wrap ocean-in">
-    <p class="eyebrow">Why we do it</p>
-    <blockquote class="disp">Like the ocean, social media connects us. It closes the distance between islands, cities and generations.</blockquote>
-    <p>Our people live everywhere, from Apia and Nukuʻalofa to Auckland, Sydney, Salt Lake City and Los Angeles. Mainstream media too often overlooks our stories. PMN+ puts them front and centre, so wherever you are, home is never far.</p>
+    <div class="ocean-t">
+      <p class="eyebrow">Why we do it</p>
+      <blockquote class="disp">Like the ocean, social media connects us. It closes the distance between islands, cities and generations.</blockquote>
+      <p>Our people live everywhere, from Apia and Nukuʻalofa to Auckland, Sydney, Salt Lake City and Los Angeles. Mainstream media too often overlooks our stories. PMN+ puts them front and centre, so wherever you are, home is never far.</p>
+    </div>
+    <figure class="reel">
+      <div class="reel-frame">
+        <blockquote class="instagram-media" data-instgrm-captioned data-instgrm-permalink="https://www.instagram.com/reel/DajkwKAO-me/?utm_source=ig_embed&amp;utm_campaign=loading" data-instgrm-version="14"><a href="https://www.instagram.com/reel/DajkwKAO-me/" target="_blank" rel="noopener">Watch our interview with Dwayne "The Rock" Johnson on Instagram</a></blockquote>
+      </div>
+      <figcaption>PMN+ sits down with Dwayne "The Rock" Johnson</figcaption>
+    </figure>
   </div>
 </section>
 
 <section class="ground wrap" aria-labelledby="groundH">
   <div class="ground-h"><p class="eyebrow">On the ground</p><h2 class="disp" id="groundH">Where our people are, we are</h2></div>
   <div class="gal">
-    <figure class="g1"><picture class=""><source type="image/avif" srcset="/assets/about/pmn-plus-photographer-hsbc-la-sevens-800.avif 800w, /assets/about/pmn-plus-photographer-hsbc-la-sevens.avif 1392w" sizes="(max-width:700px) 100vw, 66vw"><source type="image/webp" srcset="/assets/about/pmn-plus-photographer-hsbc-la-sevens-800.webp 800w, /assets/about/pmn-plus-photographer-hsbc-la-sevens.webp 1392w" sizes="(max-width:700px) 100vw, 66vw"><img src="/assets/about/pmn-plus-photographer-hsbc-la-sevens.webp" width="1392" height="765" alt="PMN+ photographer shooting from the sideline at the HSBC LA Sevens" loading="lazy" decoding="async"></picture><figcaption>HSBC LA Sevens</figcaption></figure>
-    <figure class="g2"><picture class=""><source type="image/avif" srcset="/assets/about/pmn-plus-locker-room-interview-700.avif 700w, /assets/about/pmn-plus-locker-room-interview.avif 1200w" sizes="(max-width:700px) 100vw, 33vw"><source type="image/webp" srcset="/assets/about/pmn-plus-locker-room-interview-700.webp 700w, /assets/about/pmn-plus-locker-room-interview.webp 1200w" sizes="(max-width:700px) 100vw, 33vw"><img src="/assets/about/pmn-plus-locker-room-interview.webp" width="1200" height="1200" alt="PMN+ team filming a post-game interview with a player in a stadium locker-room corridor" loading="lazy" decoding="async"></picture><figcaption>Locker-room interviews</figcaption></figure>
-    <figure class="g3"><picture class=""><source type="image/avif" srcset="/assets/about/pmn-plus-photographer-rugby-league-las-vegas-sideline-800.avif 800w, /assets/about/pmn-plus-photographer-rugby-league-las-vegas-sideline.avif 1242w" sizes="(max-width:700px) 100vw, 50vw"><source type="image/webp" srcset="/assets/about/pmn-plus-photographer-rugby-league-las-vegas-sideline-800.webp 800w, /assets/about/pmn-plus-photographer-rugby-league-las-vegas-sideline.webp 1242w" sizes="(max-width:700px) 100vw, 50vw"><img src="/assets/about/pmn-plus-photographer-rugby-league-las-vegas-sideline.webp" width="1242" height="857" alt="PMN+ photographer on the sideline at Rugby League Las Vegas" loading="lazy" decoding="async"></picture><figcaption>Rugby League Las Vegas</figcaption></figure>
-    <figure class="g4"><picture class=""><source type="image/avif" srcset="/assets/about/pmn-plus-photographer-pasifika-music-festival-800.avif 800w, /assets/about/pmn-plus-photographer-pasifika-music-festival.avif 1600w" sizes="(max-width:700px) 100vw, 50vw"><source type="image/webp" srcset="/assets/about/pmn-plus-photographer-pasifika-music-festival-800.webp 800w, /assets/about/pmn-plus-photographer-pasifika-music-festival.webp 1600w" sizes="(max-width:700px) 100vw, 50vw"><img src="/assets/about/pmn-plus-photographer-pasifika-music-festival.webp" width="1600" height="900" alt="PMN+ photographer capturing a live performance from the front of stage at a music festival" loading="lazy" decoding="async"></picture><figcaption>Front of stage at the festivals</figcaption></figure>
+    <figure class="g1 gi reveal" tabindex="0" role="button" aria-label="View photo larger"><picture class=""><source type="image/avif" srcset="/assets/about/pmn-plus-photographer-hsbc-la-sevens-800.avif 800w, /assets/about/pmn-plus-photographer-hsbc-la-sevens.avif 1392w" sizes="(max-width:700px) 100vw, 66vw"><source type="image/webp" srcset="/assets/about/pmn-plus-photographer-hsbc-la-sevens-800.webp 800w, /assets/about/pmn-plus-photographer-hsbc-la-sevens.webp 1392w" sizes="(max-width:700px) 100vw, 66vw"><img src="/assets/about/pmn-plus-photographer-hsbc-la-sevens.webp" width="1392" height="765" alt="PMN+ photographer shooting from the sideline at the HSBC LA Sevens" loading="lazy" decoding="async"></picture><figcaption>HSBC LA Sevens</figcaption></figure>
+    <figure class="g2 gi reveal" tabindex="0" role="button" aria-label="View photo larger"><picture class=""><source type="image/avif" srcset="/assets/about/pmn-plus-locker-room-interview-700.avif 700w, /assets/about/pmn-plus-locker-room-interview.avif 1200w" sizes="(max-width:700px) 100vw, 33vw"><source type="image/webp" srcset="/assets/about/pmn-plus-locker-room-interview-700.webp 700w, /assets/about/pmn-plus-locker-room-interview.webp 1200w" sizes="(max-width:700px) 100vw, 33vw"><img src="/assets/about/pmn-plus-locker-room-interview.webp" width="1200" height="1200" alt="PMN+ team filming a post-game interview with a player in a stadium locker-room corridor" loading="lazy" decoding="async"></picture><figcaption>Locker-room interviews</figcaption></figure>
+    <figure class="g3 gi reveal" tabindex="0" role="button" aria-label="View photo larger"><picture class=""><source type="image/avif" srcset="/assets/about/pmn-plus-photographer-rugby-league-las-vegas-sideline-800.avif 800w, /assets/about/pmn-plus-photographer-rugby-league-las-vegas-sideline.avif 1242w" sizes="(max-width:700px) 100vw, 50vw"><source type="image/webp" srcset="/assets/about/pmn-plus-photographer-rugby-league-las-vegas-sideline-800.webp 800w, /assets/about/pmn-plus-photographer-rugby-league-las-vegas-sideline.webp 1242w" sizes="(max-width:700px) 100vw, 50vw"><img src="/assets/about/pmn-plus-photographer-rugby-league-las-vegas-sideline.webp" width="1242" height="857" alt="PMN+ photographer on the sideline at Rugby League Las Vegas" loading="lazy" decoding="async"></picture><figcaption>Rugby League Las Vegas</figcaption></figure>
+    <figure class="g4 gi reveal" tabindex="0" role="button" aria-label="View photo larger"><picture class=""><source type="image/avif" srcset="/assets/about/pmn-plus-photographer-pasifika-music-festival-800.avif 800w, /assets/about/pmn-plus-photographer-pasifika-music-festival.avif 1600w" sizes="(max-width:700px) 100vw, 50vw"><source type="image/webp" srcset="/assets/about/pmn-plus-photographer-pasifika-music-festival-800.webp 800w, /assets/about/pmn-plus-photographer-pasifika-music-festival.webp 1600w" sizes="(max-width:700px) 100vw, 50vw"><img src="/assets/about/pmn-plus-photographer-pasifika-music-festival.webp" width="1600" height="900" alt="PMN+ photographer capturing a live performance from the front of stage at a music festival" loading="lazy" decoding="async"></picture><figcaption>Front of stage at the festivals</figcaption></figure>
   </div>
 </section>
 
@@ -284,8 +329,9 @@ figcaption{margin-top:.7rem;font-size:.8rem;font-weight:600;letter-spacing:.12em
   </div>
 </section>
 
-<section class="cover wrap">
-  <div class="story-h"><p class="eyebrow">What we cover</p><h2 class="disp">Everything that moves us</h2></div>
+<section class="cover-band">
+<div class="cover wrap">
+  <div class="story-h"><p class="eyebrow">What we cover</p><h2 class="disp">Everything that moves us</h2><img class="cover-logo" src="/shop/brand/pmn-plus-logo-white.svg" alt="PMN+" width="96" height="104" loading="lazy"></div>
   <ul class="pillars">
     <li><b>Music</b><span>New releases, artists and the songs that raised us.</span></li>
     <li><b>Culture</b><span>Polynesian and Pacific traditions, language and pride.</span></li>
@@ -297,6 +343,7 @@ figcaption{margin-top:.7rem;font-size:.8rem;font-weight:600;letter-spacing:.12em
     <li><b>Breaking news</b><span>What is happening at home and in the diaspora, as it happens.</span></li>
     <li><b>Events</b><span>On the ground at the games, concerts and festivals.</span></li>
   </ul>
+</div>
 </section>
 
 <section class="rep">
@@ -331,6 +378,8 @@ figcaption{margin-top:.7rem;font-size:.8rem;font-weight:600;letter-spacing:.12em
   </div>
 </section>
 
+
+<dialog class="lb" id="lb" aria-label="Photo viewer"><button type="button" class="lb-x" aria-label="Close">&times;</button><button type="button" class="lb-n lb-p" aria-label="Previous photo">&#8249;</button><figure><img alt=""><figcaption></figcaption></figure><button type="button" class="lb-n lb-nx" aria-label="Next photo">&#8250;</button></dialog>
 </main>
 <footer class="foot">
   <a class="foot-logo" href="/" aria-label="PMN+ home"><img src="/shop/brand/pmn-plus-logo-white.svg" alt="PMN+" width="48" height="52" loading="lazy"></a>
@@ -350,6 +399,19 @@ figcaption{margin-top:.7rem;font-size:.8rem;font-weight:600;letter-spacing:.12em
 </footer>
 <script src="/assets/pmn-config.js"></script>
 <script src="/assets/pmn-nav.js"></script>
+<script>
+(()=>{const gs=[...document.querySelectorAll('.gi')];
+ if('IntersectionObserver' in window){const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.2});
+  gs.forEach((g,i)=>{g.style.transitionDelay=(i%2)*120+'ms';io.observe(g)})}else gs.forEach(g=>g.classList.add('in'));
+ const lb=document.getElementById('lb');if(!lb||!lb.showModal)return;const im=lb.querySelector('img'),cap=lb.querySelector('figcaption');let k=0;
+ const show=i=>{k=(i+gs.length)%gs.length;const s=gs[k].querySelector('img');im.src=s.currentSrc||s.src;im.alt=s.alt;cap.textContent=gs[k].querySelector('figcaption').textContent};
+ gs.forEach((g,i)=>{const o=()=>{show(i);lb.showModal()};g.addEventListener('click',o);g.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();o()}})});
+ lb.querySelector('.lb-x').onclick=()=>lb.close();lb.querySelector('.lb-p').onclick=()=>show(k-1);lb.querySelector('.lb-nx').onclick=()=>show(k+1);
+ lb.addEventListener('click',e=>{if(e.target===lb)lb.close()});lb.addEventListener('keydown',e=>{if(e.key==='ArrowLeft')show(k-1);if(e.key==='ArrowRight')show(k+1)});
+ let x0=null;lb.addEventListener('touchstart',e=>x0=e.touches[0].clientX,{passive:true});lb.addEventListener('touchend',e=>{if(x0===null)return;const d=e.changedTouches[0].clientX-x0;if(Math.abs(d)>40)show(k+(d<0?1:-1));x0=null});
+})();
+</script>
+<script async src="https://www.instagram.com/embed.js"></script>
 <script>document.getElementById('yr').textContent=new Date().getFullYear()</script>
 </body>
 </html>

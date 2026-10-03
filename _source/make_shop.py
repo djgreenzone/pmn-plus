@@ -228,6 +228,8 @@ s,_n=_r.subn(r'<script type="application/ld\+json">(.*?)</script>',_ld,s,flags=_
 open(sys.argv[1],'w').write(s)
 print('sold out ok')
 
+exec(open(os.path.join(os.path.dirname(os.path.abspath(__file__)),'rev_add.py')).read())
+
 # ---------- NAV: one header for the whole site (see nav/nav_build.py) ----------
 import importlib.util as _u
 _sp=_u.spec_from_file_location('nav_build',os.path.join(os.path.dirname(os.path.abspath(__file__)),'nav','nav_build.py'));_nb=_u.module_from_spec(_sp);_sp.loader.exec_module(_nb)

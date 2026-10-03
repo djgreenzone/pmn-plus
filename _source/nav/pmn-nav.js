@@ -89,3 +89,47 @@ bagCount();addEventListener("storage",bagCount);
 if(LIVE)document.querySelectorAll(".pn-acct").forEach(a=>{a.hidden=false;if(location.pathname.startsWith("/account"))a.setAttribute("aria-current","page")});
 addEventListener("keydown",e=>{if(e.key==="/"&&!/input|textarea|select/i.test(document.activeElement.tagName)){const i=[...document.querySelectorAll(".pn-search input")].find(x=>x.offsetParent);if(i){e.preventDefault();i.focus()}}});
 })();
+
+/* ---------- Klaviyo onsite tracking (Viewed Product, Added to Cart, identify) ----------
+   Our shop is a custom site, so Klaviyo can't see browsing on its own. This loads klaviyo.js
+   and sends the events the Browse Abandonment and Added to Cart flows run on. */
+(()=>{
+const KL_ID="T9JJzp",ORIGIN="https://www.polynesianmusicnetwork.com";
+if(!window.klaviyo){window._klOnsite=window._klOnsite||[];
+  window.klaviyo={push:function(){window._klOnsite.push.apply(window._klOnsite,arguments)}};}
+const s=document.createElement("script");s.async=true;s.src="https://static.klaviyo.com/onsite/js/klaviyo.js?company_id="+KL_ID;document.head.appendChild(s);
+const kl=(...a)=>{try{window.klaviyo.push(a)}catch(e){}};
+const abs=u=>!u?"":/^https?:/.test(u)?u:ORIGIN+(u[0]==="/"?"":"/")+u;
+const get=k=>{try{return localStorage.getItem(k)}catch(e){return null}};
+const em=get("pmn_email");if(em)kl("identify",{email:em});
+
+let cat=null;const loadCat=()=>cat?Promise.resolve(cat):fetch("/shop/search.json").then(r=>r.json()).then(j=>cat=j).catch(()=>cat=[]);
+const item=p=>({ProductName:p.n+(p.c?" – "+p.c:""),ProductID:p.s,SKU:p.s,Categories:[p.t,p.k].filter(Boolean),
+  ImageURL:abs(p.i),URL:ORIGIN+"/shop/"+p.s,Brand:"PMN+",Price:p.p});
+
+/* Viewed Product: product pages and in-app product opens */
+let lastView="";
+function view(){const m=location.pathname.match(/^\/shop\/([a-z0-9-]+)\/?$/);if(!m)return;const slug=m[1];
+  loadCat().then(c=>{const p=c.find(x=>x.s===slug);if(!p||slug===lastView)return;lastView=slug;
+    const it=item(p);kl("track","Viewed Product",it);kl("trackViewedItem",{Title:it.ProductName,ItemId:it.ProductID,Categories:it.Categories,ImageUrl:it.ImageURL,Url:it.URL,Metadata:{Brand:"PMN+",Price:it.Price}})})}
+["pushState","replaceState"].forEach(f=>{const o=history[f];history[f]=function(){const r=o.apply(this,arguments);setTimeout(view,0);return r}});
+addEventListener("popstate",view);view();
+
+/* Added to Cart + identify: watch what the shop saves to the bag and the sign-up email */
+const qty=a=>{const m={};(a||[]).forEach(i=>{const k=i.id+"|"+(i.size??"");m[k]=(m[k]||0)+(+i.qty||0)});return m};
+let before=qty((()=>{try{return JSON.parse(get("pmn_cart")||"[]")}catch(e){return[]}})());
+const set=Storage.prototype.setItem;
+Storage.prototype.setItem=function(k,v){set.apply(this,arguments);try{
+  if(k==="pmn_email"&&v)kl("identify",{email:v});
+  if(k!=="pmn_cart")return;const cart=JSON.parse(v||"[]"),now=qty(cart),prev=before;before=now;
+  const added=Object.keys(now).filter(x=>now[x]>(prev[x]||0));if(!added.length)return;
+  const by=typeof BY!=="undefined"?BY:{};
+  loadCat().then(c=>{const find=id=>{const b=by[id];if(!b)return null;return c.find(x=>x.n===b.name&&(!b.colourName||x.c===b.colourName))||c.find(x=>x.n===b.name)};
+    const lines=cart.map(i=>{const p=find(i.id),b=by[i.id]||{};return{ProductName:p?item(p).ProductName:(b.name||i.id),ProductID:p?p.s:i.id,Size:i.size||"",Quantity:+i.qty||1,
+      ItemPrice:b.price||(p&&p.p)||0,RowTotal:(b.price||(p&&p.p)||0)*(+i.qty||1),ImageURL:p?abs(p.i):"",ProductURL:p?ORIGIN+"/shop/"+p.s:ORIGIN+"/shop"}});
+    added.forEach(key=>{const id=key.split("|")[0],size=key.split("|")[1],p=find(id),b=by[id]||{},it=p?item(p):{ProductName:b.name||id,ProductID:id,ImageURL:"",URL:ORIGIN+"/shop",Price:b.price||0};
+      kl("track","Added to Cart",{$value:lines.reduce((n,l)=>n+l.RowTotal,0),AddedItemProductName:it.ProductName,AddedItemProductID:it.ProductID,AddedItemSize:size,
+        AddedItemImageURL:it.ImageURL,AddedItemURL:it.URL,AddedItemPrice:it.Price,AddedItemQuantity:now[key]-(prev[key]||0),
+        ItemNames:lines.map(l=>l.ProductName),CheckoutURL:ORIGIN+"/shop#bag",Items:lines})})})
+}catch(e){}};
+})();

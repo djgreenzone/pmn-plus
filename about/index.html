@@ -237,7 +237,7 @@ figcaption{margin-top:.7rem;font-size:.8rem;font-weight:600;letter-spacing:.12em
 .reel-frame>blockquote>a{display:grid;place-items:center;min-height:420px;padding:2rem;color:#fff;text-align:center;font:600 1rem var(--font);text-transform:none}
 /* cover band */
 .cover-band{position:relative;isolation:isolate;overflow:hidden}
-.cover-band::before{content:"";position:absolute;inset:-25% 0;z-index:-1;will-change:transform;transform:translate3d(0,var(--py,0px),0);background:url(/assets/about/siapo-pattern-white.webp) center/cover;background:image-set(url(/assets/about/siapo-pattern-white.avif) type("image/avif"),url(/assets/about/siapo-pattern-white.webp) type("image/webp")) center/cover;opacity:.1}
+.cover-band::before{content:"";position:absolute;inset:-60% 0;z-index:-1;will-change:transform;transform:translate3d(0,var(--py,0px),0);background:url(/assets/about/siapo-pattern-white.webp) center/cover;background:image-set(url(/assets/about/siapo-pattern-white.avif) type("image/avif"),url(/assets/about/siapo-pattern-white.webp) type("image/webp")) center/cover;opacity:.1}
 .cover-band .cover{padding-top:0!important}
 .cover-band{padding-block:clamp(3.5rem,8vw,6.5rem)}
 .cover-logo{width:clamp(64px,7vw,96px);height:auto;margin-top:clamp(1.4rem,3vw,2.2rem)}
@@ -413,7 +413,7 @@ figcaption{margin-top:.7rem;font-size:.8rem;font-weight:600;letter-spacing:.12em
 </script>
 <script>
 (()=>{const b=document.querySelector('.cover-band');if(!b||matchMedia('(prefers-reduced-motion:reduce)').matches)return;let on=false,t=0;
- const f=()=>{t=0;const r=b.getBoundingClientRect(),vh=innerHeight;const p=(r.top+r.height/2-vh/2)/(vh+r.height);b.style.setProperty('--py',(p*-0.35*r.height).toFixed(1)+'px')};
+ const f=()=>{t=0;const r=b.getBoundingClientRect(),vh=innerHeight;const p=(r.top+r.height/2-vh/2)/(vh+r.height);b.style.setProperty('--py',(p*-0.9*r.height).toFixed(1)+'px')};
  const q=()=>{if(on&&!t)t=requestAnimationFrame(f)};
  new IntersectionObserver(e=>{on=e[0].isIntersecting;q()}).observe(b);addEventListener('scroll',q,{passive:true});addEventListener('resize',q);
 })();

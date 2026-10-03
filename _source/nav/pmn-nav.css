@@ -77,3 +77,4 @@
 .pn-dt svg{width:24px;height:24px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
 html.pn-lock,html.pn-lock body{overflow:hidden}
 @media (prefers-reduced-motion:reduce){.pn-drawer,.pn-scrim{transition:none}}
+.pn-ic[hidden]{display:none}

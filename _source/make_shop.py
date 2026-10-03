@@ -231,6 +231,10 @@ _root=os.path.dirname(os.path.dirname(os.path.abspath(sys.argv[1])))
 _nb.copy_assets(_root)
 if os.path.exists(os.path.join(_root,'index.html')):_nb.build_home(os.path.join(_root,'index.html'))
 print('nav ok')
+# ---------- ACCOUNT: /account page, server functions, public config (see account/build.py) ----------
+if os.path.exists(os.path.join(_root,'index.html')):
+    _sp2=_u.spec_from_file_location('account_build',os.path.join(os.path.dirname(os.path.abspath(__file__)),'account','build.py'));_ab=_u.module_from_spec(_sp2);_sp2.loader.exec_module(_ab)
+    _ab.build(_root,_nb);print('account ok')
 
 # ---------- ROUTES: own URL per product/collection, pre-rendered pages, sitemap (see seo_routes.py) ----------
 exec(open(os.path.join(os.path.dirname(os.path.abspath(__file__)),'seo_routes.py')).read())

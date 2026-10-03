@@ -3,7 +3,6 @@
 # - copies pmn-nav.css / pmn-nav.js to /assets
 import os, re, shutil
 NAVDIR=os.path.dirname(os.path.abspath(__file__))
-ACCOUNT="https://shopify.com/81450303687/account"
 SV=lambda d:f'<svg viewBox="0 0 24 24" aria-hidden="true">{d}</svg>'
 I_MENU=SV('<path d="M4 7h16M4 12h16M4 17h16"/>')
 I_SEARCH=SV('<circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/>')
@@ -22,7 +21,7 @@ def header(back_id=None,back_label="Back",bag="button",extra=""):
       f'<div class="pn-r"><form class="pn-search" role="search" action="/shop"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg>'
       f'<input type="search" name="q" placeholder="Search tees, hats, teams…" aria-label="Search the shop" autocomplete="off" role="combobox" aria-expanded="false" aria-autocomplete="list"><div class="pn-res" role="listbox" hidden></div></form>'
       f'<button type="button" class="pn-ic pn-sbtn" aria-label="Search">{I_SEARCH}</button>'
-      f'{bagel}</div></div>'  # account icon: add back when PMN+ accounts are built
+      f'<a class="pn-ic pn-acct" href="/account" aria-label="Your PMN+ account" hidden>{I_USER}</a>{bagel}</div></div>'  # shown when PMN_CONFIG.accountsLive
       f'<nav class="pn-cats" aria-label="Shop categories">{cats}</nav>{extra}</div>')
 
 def build_shop(s):
@@ -38,7 +37,7 @@ def build_shop(s):
     s=''.join(out)+s[pos:]
     i=s.index('<style>');s=s[:i]+'<link rel="stylesheet" href="/assets/pmn-nav.css">\n'+s[i:]
     a='<script>\n/* ---------- Product data';assert s.count(a)==1
-    s=s.replace(a,'<script src="/assets/pmn-nav.js"></script>\n'+a)
+    s=s.replace(a,'<script src="/assets/pmn-config.js"></script>\n<script src="/assets/pmn-nav.js"></script>\n'+a)
     return s
 
 def build_home(path):
@@ -47,6 +46,7 @@ def build_home(path):
     h=h[:i]+'<header class="nav pn-bar" id="nav">'+header(bag="link")+'</header>'+h[j:]
     if '/assets/pmn-nav.css' not in h: h=h.replace('</head>','<link rel="stylesheet" href="/assets/pmn-nav.css">\n</head>',1)
     if '/assets/pmn-nav.js' not in h: h=h.replace('</body>','<script src="/assets/pmn-nav.js"></script>\n</body>',1)
+    if '/assets/pmn-config.js' not in h: h=h.replace('<script src="/assets/pmn-nav.js"></script>','<script src="/assets/pmn-config.js"></script>\n<script src="/assets/pmn-nav.js"></script>',1)
     # old homepage header styles (superseded by pmn-nav.css)
     h=re.sub(r'\n(?:\.nav \.mark|\.nav nav|\.nav \.bag|@media \(min-width:900px\)\{\.nav nav)[^\n]*','',h)
     h=h.replace('.nav{position:fixed;inset:0 0 auto;z-index:20;display:flex;align-items:center;justify-content:space-between;padding:.85rem clamp(1rem,5vw,2.5rem);background:linear-gradient(180deg,rgba(0,0,0,.75),rgba(0,0,0,0));transition:background .25s}','.nav{position:fixed;inset:0 0 auto;z-index:20}')

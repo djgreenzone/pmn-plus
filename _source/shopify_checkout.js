@@ -5,12 +5,14 @@
   const lineFor=i=>{const v=VAR[i.id]&&VAR[i.id][i.size||"One size"];return v&&v.ok?{merchandiseId:v.id,quantity:i.qty}:null};
   function cartInput(codes){const lines=cart.map(lineFor).filter(Boolean);if(bumpOn&&BUMP.variant)lines.push({merchandiseId:BUMP.variant,quantity:1});
     const bi={countryCode:"US"},em=store.get("pmn_email");if(em)bi.email=em;
-    return{lines,discountCodes:codes,buyerIdentity:bi,attributes:[{key:"source",value:"pmn-shop"}]}}
+    const at=[{key:"source",value:"pmn-shop"}].concat(window.pmnAttribution?window.pmnAttribution():[]);
+    return{lines,discountCodes:codes,buyerIdentity:bi,attributes:at}}
   const CART_Q=`mutation($i:CartInput!){cartCreate(input:$i){cart{id checkoutUrl discountCodes{code applicable}} userErrors{message}}}`;
   function busy(on,label){[$("cartGo")].forEach(b=>{b.disabled=on;b.classList.toggle("busy",on&&b===busyBtn)});if(label)$("cartMsg").textContent=label}
   let busyBtn=null;
   async function checkout(e){if(!ready())return;busyBtn=e&&e.currentTarget||$("cartGo");
     busy(true,"Opening secure checkout…");await shopifyReady;
+    try{const its=cart.map(i=>({id:i.id,name:(BY[i.id]||{}).name||i.id,price:(BY[i.id]||{}).price||0,size:i.size||"",qty:+i.qty||1}));window.pmnTrack&&window.pmnTrack("begin_checkout",{value:its.reduce((n,i)=>n+i.price*i.qty,0),items:its})}catch(e){}
     if(!shopifyOK){busy(false,"");return soon()}
     const miss=cart.filter(i=>!lineFor(i)).map(i=>BY[i.id].name+(i.size&&i.size!=="One size"?` (${i.size})`:""));
     if(miss.length){busy(false,`${miss.join(", ")} ${miss.length>1?"aren't":"isn't"} available to order yet. Remove ${miss.length>1?"them":"it"} to check out.`);return}

@@ -455,7 +455,7 @@ s.was{color:var(--ink-dim);font-weight:400;margin-left:4px}
 .ctrust{display:flex;align-items:flex-start;justify-content:center;gap:6px;margin:0;font-size:11.5px;line-height:1.45;color:var(--ink-dim);text-align:center}
 .ctrust b{color:var(--ink);font-weight:600}.ctrust svg{flex:none;width:13px;height:13px;margin-top:2px;fill:none;stroke:currentColor;stroke-width:2}
 .buy.busy,.buy-alt.busy{opacity:.75;cursor:progress}.buy:disabled,.buy-alt:disabled{cursor:progress}
-.gcard .im{position:relative}.sold{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);z-index:2;font-style:normal;white-space:nowrap;background:#fff;color:#C8102E;border:2px solid #C8102E;font-family:var(--display);font-size:clamp(18px,2.4vw,26px);letter-spacing:.06em;text-transform:uppercase;line-height:1;padding:.42em .8em .36em;border-radius:6px;box-shadow:0 6px 18px rgba(0,0,0,.18);pointer-events:none}.im:has(.sold) img{opacity:.55;filter:grayscale(.35)}.im .sold{background:#C8102E;color:#fff;border-color:#C8102E;border-radius:999px;padding:.45em 1.1em .38em;box-shadow:0 6px 18px rgba(0,0,0,.25)}.hero-sold{z-index:150;opacity:0;font-size:clamp(13px,1.35vw,19px);background:#C8102E;color:#fff;border-color:#C8102E;border-radius:999px;padding:.45em 1.2em .38em;box-shadow:0 8px 24px rgba(0,0,0,.45)}#hlPrice.so{color:#ff4d5e}:where(a.card,a.big,a.gcard,a.team){box-sizing:border-box;padding:1px 6px;color:inherit;text-decoration:none;-webkit-tap-highlight-color:transparent}.size.so{opacity:.35;text-decoration:line-through;cursor:not-allowed}
+.gcard .im{position:relative}.sold{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);z-index:2;font-style:normal;white-space:nowrap;background:#fff;color:#C8102E;border:2px solid #C8102E;font-family:var(--display);font-size:clamp(18px,2.4vw,26px);letter-spacing:.06em;text-transform:uppercase;line-height:1;padding:.42em .8em .36em;border-radius:6px;box-shadow:0 6px 18px rgba(0,0,0,.18);pointer-events:none}.im:has(.sold) img{opacity:.55;filter:grayscale(.35)}.im .sold{background:#C8102E;color:#fff;border-color:#C8102E;border-radius:999px;padding:.45em 1.1em .38em;box-shadow:0 6px 18px rgba(0,0,0,.25)}.hero-sold{z-index:150;opacity:0;font-size:clamp(13px,1.35vw,19px);background:#C8102E;color:#fff;border-color:#C8102E;border-radius:999px;padding:.45em 1.2em .38em;box-shadow:0 8px 24px rgba(0,0,0,.45)}#hlPrice.so{color:#ff4d5e}.buy-row:has(.bis:not([hidden])) .qty{display:none}.buy-row:has(.bis:not([hidden])){grid-template-columns:1fr}.bis{display:grid;gap:8px;margin-top:4px;min-width:0}.bis-h{margin:0;font-weight:600}.bis-row{display:flex;gap:8px}.bis input{flex:1;min-width:0;height:52px;border-radius:14px;border:1px solid var(--line);background:transparent;color:var(--ink);padding:0 14px;font:inherit}.bis-go{flex:none;height:52px;padding:0 20px;border-radius:14px;background:var(--ink);color:var(--night);font-family:var(--display);font-size:20px;letter-spacing:.04em}.bis-msg{margin:0;min-height:1.2em;font-size:13px}.bis-msg.ok{color:#1a8f4c}.bis-fine{margin:0;font-size:12px;opacity:.65}:where(a.card,a.big,a.gcard,a.team){box-sizing:border-box;padding:1px 6px;color:inherit;text-decoration:none;-webkit-tap-highlight-color:transparent}.size.so{opacity:.35;text-decoration:line-through;cursor:not-allowed}
 .cart-notify{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px}
 .cart-notify input{height:50px;border-radius:14px;border:1px solid rgba(244,242,238,.3);background:rgba(255,255,255,.05);color:var(--ink);padding:0 14px;font:inherit;font-size:16px;min-width:0}
 .cart-notify .buy-alt{padding:0 18px}
@@ -839,6 +839,7 @@ s.was{color:var(--ink-dim);font-weight:400;margin-left:4px}
         <div class="buy-row">
           <div class="qty" role="group" aria-label="Quantity"><button type="button" id="qMinus" aria-label="Decrease quantity">−</button><span class="num" id="qVal" aria-live="polite">1</span><button type="button" id="qPlus" aria-label="Increase quantity">+</button></div>
           <button class="buy" id="pBuy">Add to bag</button>
+          <form class="bis" id="pBis" hidden novalidate><p class="bis-h">Back soon. Get an email the moment it restocks.</p><div class="bis-row"><label class="sr" for="bisEmail">Email address</label><input id="bisEmail" type="email" inputmode="email" autocomplete="email" placeholder="Email address" required><button class="bis-go" type="submit">Notify me</button></div><p class="bis-msg" id="bisMsg" role="status"></p><p class="bis-fine">We&#39;ll also send PMN+ drop news. Unsubscribe anytime.</p></form>
         </div>
         <ul class="trust">
           <li><svg viewBox="0 0 24 24"><path d="M3 7h11v9H3zM14 10h4l3 3v3h-7"/><circle cx="7" cy="17.5" r="1.6"/><circle cx="17" cy="17.5" r="1.6"/></svg><span><b>Ships in the USA</b>Printed and fulfilled by JQF</span></li>
@@ -1096,6 +1097,18 @@ const shopifyReady=(async()=>{try{
   shopifyOK=true;
   if(changed)document.querySelectorAll("[data-pid]").forEach(el=>{const p=BY[el.dataset.pid],pr=el.querySelector(".pr");if(p&&pr)pr.textContent=money(p.price)});
 }catch(e){console.warn("Shopify",e)}})();
+/* back-in-stock requests -> Klaviyo list "PMN+ Back in Stock Requests" (X4re4C) */
+document.addEventListener("submit",async e=>{const f=e.target;if(f.id!=="pBis")return;e.preventDefault();
+  const em=(f.querySelector("#bisEmail").value||"").trim(),m=f.querySelector("#bisMsg");m.className="bis-msg";
+  if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(em)){m.textContent="Enter a valid email address.";return}
+  const slug=(location.pathname.match(/^\/shop\/([a-z0-9-]+)/)||[])[1]||f.dataset.id;
+  try{const body={data:{type:"subscription",attributes:{custom_source:"Back in stock: "+f.dataset.name,profile:{data:{type:"profile",attributes:{email:em,properties:{bis_last_product:f.dataset.name,bis_last_slug:slug}}}}},relationships:{list:{data:{type:"list",id:"X4re4C"}}}}};
+    const r=await fetch("https://a.klaviyo.com/client/subscriptions/?company_id="+KLAVIYO_COMPANY_ID,{method:"POST",headers:{"content-type":"application/json","revision":"2026-07-15"},body:JSON.stringify(body)});
+    if(!(r.status===202||r.ok))throw new Error(r.status);
+    try{localStorage.setItem("pmn_email",em)}catch(_){}
+    try{window.klaviyo&&window.klaviyo.push(["track","Requested Back in Stock",{ProductName:f.dataset.name,ProductID:slug,URL:location.origin+"/shop/"+slug}])}catch(_){}
+    m.classList.add("ok");m.textContent="You're on the list. We'll email you when it's back.";f.querySelector("#bisEmail").value=""}
+  catch(err){m.textContent="That didn't go through. Please try again."}});
 const reduceMotion=matchMedia("(prefers-reduced-motion: reduce)").matches;
 const conn=navigator.connection||{};
 const lite=!!(conn.saveData||/(^|-)2g$/.test(conn.effectiveType||""));
@@ -1477,7 +1490,7 @@ const PDP=(()=>{
     $("pBuy").textContent=set?`Add set · ${money(t)}`:"Add to bag";$("stBuy").textContent=set?"Add set":"Add to bag";
     $("stPrice").innerHTML=set?`Set ${money(unit)} <s class="was">${money(unit+BUNDLE_OFF)}</s>`:money(p.price);
     $("stName").textContent=set?`${p.short||p.name} + ${c.short||c.name}`:p.name;
-    const so=SOLD.has(p.id);$("pBuy").disabled=$("stBuy").disabled=so;$("pDeal").hidden=so;if(so){$("pBuy").textContent=$("stBuy").textContent="Sold out";$("stPrice").textContent="Sold out"}}
+    const so=SOLD.has(p.id);$("pBuy").disabled=$("stBuy").disabled=so;$("pDeal").hidden=so;$("pBis").hidden=!so;$("pBuy").hidden=so;$("pBis").dataset.id=p.id;$("pBis").dataset.name=p.name;if(so){$("pBuy").textContent=$("stBuy").textContent="Sold out";$("stPrice").textContent="Sold out"}}
   $("tierOne").onclick=()=>{tier="one";syncDeal()};
   $("tierSet").onclick=()=>{tier="set";syncDeal()};
   $("qMinus").onclick=()=>setQty(qty-1);$("qPlus").onclick=()=>setQty(qty+1);
@@ -1664,12 +1677,14 @@ const Cart=(()=>{
   const lineFor=i=>{const v=VAR[i.id]&&VAR[i.id][i.size||"One size"];return v&&v.ok?{merchandiseId:v.id,quantity:i.qty}:null};
   function cartInput(codes){const lines=cart.map(lineFor).filter(Boolean);if(bumpOn&&BUMP.variant)lines.push({merchandiseId:BUMP.variant,quantity:1});
     const bi={countryCode:"US"},em=store.get("pmn_email");if(em)bi.email=em;
-    return{lines,discountCodes:codes,buyerIdentity:bi,attributes:[{key:"source",value:"pmn-shop"}]}}
+    const at=[{key:"source",value:"pmn-shop"}].concat(window.pmnAttribution?window.pmnAttribution():[]);
+    return{lines,discountCodes:codes,buyerIdentity:bi,attributes:at}}
   const CART_Q=`mutation($i:CartInput!){cartCreate(input:$i){cart{id checkoutUrl discountCodes{code applicable}} userErrors{message}}}`;
   function busy(on,label){[$("cartGo")].forEach(b=>{b.disabled=on;b.classList.toggle("busy",on&&b===busyBtn)});if(label)$("cartMsg").textContent=label}
   let busyBtn=null;
   async function checkout(e){if(!ready())return;busyBtn=e&&e.currentTarget||$("cartGo");
     busy(true,"Opening secure checkout…");await shopifyReady;
+    try{const its=cart.map(i=>({id:i.id,name:(BY[i.id]||{}).name||i.id,price:(BY[i.id]||{}).price||0,size:i.size||"",qty:+i.qty||1}));window.pmnTrack&&window.pmnTrack("begin_checkout",{value:its.reduce((n,i)=>n+i.price*i.qty,0),items:its})}catch(e){}
     if(!shopifyOK){busy(false,"");return soon()}
     const miss=cart.filter(i=>!lineFor(i)).map(i=>BY[i.id].name+(i.size&&i.size!=="One size"?` (${i.size})`:""));
     if(miss.length){busy(false,`${miss.join(", ")} ${miss.length>1?"aren't":"isn't"} available to order yet. Remove ${miss.length>1?"them":"it"} to check out.`);return}

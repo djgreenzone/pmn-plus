@@ -52,6 +52,9 @@ main{flex:1;width:min(1180px,100% - 2*clamp(1rem,5vw,2.5rem));margin:clamp(1.5re
 .brand::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(160deg,rgba(0,0,0,.25),rgba(0,0,0,.85) 70%)}
 .brand .mk{width:64px}
 .brand h1{font-size:clamp(3rem,6vw,5.2rem)}
+.brand .hl{display:grid;gap:.8rem}
+.brand .kick{color:#fff;opacity:.75}
+.brand h1 span{display:block;font-size:.5em;line-height:1;margin-top:.35em;color:#f1d7db}
 .brand ul{list-style:none;display:grid;gap:.9rem}
 .brand li{display:grid;grid-template-columns:34px 1fr;gap:.8rem;align-items:start;font-size:1rem;color:#e8e8ea}
 .brand li b{display:block;font-family:var(--display);font-weight:400;font-size:1.35rem;letter-spacing:.05em;color:#fff;line-height:1}
@@ -249,7 +252,7 @@ main{flex:1;width:min(1180px,100% - 2*clamp(1rem,5vw,2.5rem));margin:clamp(1.5re
   <section class="auth" id="vAuth" hidden>
     <div class="brand">
       <img class="mk" src="/shop/brand/pmn-plus-logo-white.svg" alt="PMN+" width="64" height="70">
-      <h1 class="disp">Your PMN+<br>account</h1>
+      <div class="hl"><p class="eyebrow kick">Free to join</p><h1 class="disp">Join the fam.<br><span>Get a free gift in every order.</span></h1></div>
       <ul>
         <li><svg viewBox="0 0 24 24"><path d="M3 7h13v10H3z"/><path d="M16 10h3l2 3v4h-5"/><circle cx="7" cy="18" r="1.8"/><circle cx="17.5" cy="18" r="1.8"/></svg><span><b>Track every order</b>Status and tracking for everything you buy, in one place.</span></li>
         <li><svg viewBox="0 0 24 24"><path d="M20 12v8H4v-8M2 7h20v5H2zM12 20V7M12 7H8a2 2 0 1 1 2-3l2 3 2-3a2 2 0 1 1 2 3h-4"/></svg><span><b>A free gift in every order</b>A surprise from the PMN+ vault. What&rsquo;s inside changes with each drop.</span></li>

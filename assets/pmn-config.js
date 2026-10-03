@@ -6,5 +6,5 @@ window.PMN_CONFIG={
   apple:false,           // true once Apple sign-in is switched on in Supabase
   memberGift:"A surprise from the PMN+ vault in every order. What\u2019s inside changes with each drop.",
   accountsLive:true,      // shows the account icon in the header
-  analytics:{ga4:"G-KEQ8HPTH9W", meta:"1983591485663494", tiktok:"", clarity:""}  // GA4 G-…, Meta Pixel ID, TikTok Pixel ID, Clarity project ID; blank = off
+  analytics:{ga4:"G-KEQ8HPTH9W", meta:"1983591485663494", tiktok:"", clarity:"ys5h8s9j8m"}  // GA4 G-…, Meta Pixel ID, TikTok Pixel ID, Clarity project ID; blank = off
 };

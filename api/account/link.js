@@ -5,6 +5,8 @@ const { send, env, currentUser, ensureProfile, updateProfile, shopify } = requir
 
 const FIND = `query($q:String!){customers(first:1,query:$q){nodes{id firstName lastName}}}`;
 const CREATE = `mutation($input:CustomerInput!){customerCreate(input:$input){customer{id firstName lastName} userErrors{field message}}}`;
+const TAG = `mutation($id:ID!,$tags:[String!]!){tagsAdd(id:$id,tags:$tags){userErrors{field message}}}`;
+const MEMBER_TAG = 'pmn-member';   // Shopify segment for member perks (early access, free gift)
 
 module.exports = async (req, res) => {
   if (req.method !== 'POST') return send(res, 405, { error: 'POST only' });
@@ -15,23 +17,26 @@ module.exports = async (req, res) => {
     if (!user) return send(res, 401, { error: 'Not signed in' });
     if (!user.email_confirmed_at && !user.confirmed_at) return send(res, 403, { error: 'Email not verified' });
     let p = await ensureProfile(e, user);
-    if (p && p.shopify_customer_id) return send(res, 200, { linked: true, created: false, customerId: p.shopify_customer_id });
+    if (p && p.shopify_customer_id) return send(res, 200, { linked: true, created: false, customerId: p.shopify_customer_id, tier: p.tier });
 
     const email = String(user.email).toLowerCase();
     const found = (await shopify(e, FIND, { q: `email:"${email.replace(/"/g, '')}"` })).customers.nodes[0];
     let customer = found, created = false;
     if (!customer) {
-      const input = { email, firstName: (p && p.first_name) || undefined, lastName: (p && p.last_name) || undefined, tags: ['pmn-account'] };
+      const input = { email, firstName: (p && p.first_name) || undefined, lastName: (p && p.last_name) || undefined, tags: [MEMBER_TAG] };
       if (!p || p.marketing_opt_in) input.emailMarketingConsent = { marketingState: 'SUBSCRIBED', marketingOptInLevel: 'SINGLE_OPT_IN' };
       const r = (await shopify(e, CREATE, { input })).customerCreate;
       if (r.userErrors && r.userErrors.length) throw new Error(r.userErrors.map(x => x.message).join('; '));
       customer = r.customer; created = true;
+    } else {
+      const t = (await shopify(e, TAG, { id: customer.id, tags: [MEMBER_TAG] })).tagsAdd;
+      if (t.userErrors && t.userErrors.length) console.error('account/link tag', t.userErrors);
     }
     const patch = { shopify_customer_id: customer.id };
     if (p && !p.first_name && customer.firstName) patch.first_name = customer.firstName;
     if (p && !p.last_name && customer.lastName) patch.last_name = customer.lastName;
     await updateProfile(e, user.id, patch);
-    return send(res, 200, { linked: true, created, customerId: customer.id });
+    return send(res, 200, { linked: true, created, customerId: customer.id, tier: (p && p.tier) || 'member' });
   } catch (err) {
     console.error('account/link', err);
     return send(res, 502, { error: 'Could not link your account right now' });

@@ -36,8 +36,9 @@ main{flex:1;width:min(1180px,100% - 2*clamp(1rem,5vw,2.5rem));margin:clamp(1.5re
 :focus-visible{outline:2px solid #fff;outline-offset:3px}
 .field{display:grid;gap:.4rem}
 .field label{font-size:.8rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:#b9b9be}
-.field input{width:100%;height:54px;padding:0 1.1rem;font:500 1rem var(--font);color:#fff;background:var(--field);border:1px solid rgba(255,255,255,.16);border-radius:12px;transition:border-color .15s}
-.field input:focus{outline:none;border-color:#fff}
+.field select{appearance:none;background-image:linear-gradient(45deg,transparent 50%,#b9b9be 50%),linear-gradient(135deg,#b9b9be 50%,transparent 50%);background-position:calc(100% - 20px) 50%,calc(100% - 15px) 50%;background-size:5px 5px;background-repeat:no-repeat;padding-right:2.2rem!important;text-overflow:ellipsis}
+.field input,.field select{width:100%;height:54px;padding:0 1.1rem;font:500 1rem var(--font);color:#fff;background:var(--field);border:1px solid rgba(255,255,255,.16);border-radius:12px;transition:border-color .15s}
+.field input:focus,.field select:focus{outline:none;border-color:#fff}
 .field input::placeholder{color:#6f6f75}
 .msg{min-height:1.4em;font-size:.9rem;color:#ff6b7d}
 .msg.ok{color:var(--ok)}
@@ -75,6 +76,7 @@ main{flex:1;width:min(1180px,100% - 2*clamp(1rem,5vw,2.5rem));margin:clamp(1.5re
 .code-card{background:linear-gradient(135deg,#2a0409,#0d0e12 70%);border-color:rgba(200,16,46,.45)}
 .code-card .cd{font-family:var(--display);font-size:2.6rem;letter-spacing:.08em;line-height:1;margin:.3rem 0 .4rem}
 .orders{display:grid;gap:1rem}
+.perks{list-style:none;display:grid;gap:.8rem}.perks li{padding-left:1.4rem;position:relative;font-size:.92rem;color:#b9b9be}.perks li::before{content:"";position:absolute;left:0;top:.45em;width:8px;height:8px;border-radius:50%;background:var(--red)}.perks b{display:block;color:#fff;font-weight:600}
 .order{border:1px solid var(--line);border-radius:14px;padding:1.1rem;display:grid;gap:.9rem;background:#08090c}
 .order-top{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;align-items:baseline}
 .order-top b{font-family:var(--display);font-weight:400;font-size:1.5rem;letter-spacing:.04em}
@@ -95,7 +97,7 @@ main{flex:1;width:min(1180px,100% - 2*clamp(1rem,5vw,2.5rem));margin:clamp(1.5re
 .sk{height:120px;border-radius:14px;background:linear-gradient(100deg,#111216 30%,#1a1b20 50%,#111216 70%);background-size:200% 100%;animation:sk 1.2s linear infinite}
 @keyframes sk{to{background-position:-200% 0}}
 .form{display:grid;gap:1rem}
-.two{display:grid;grid-template-columns:1fr 1fr;gap:.8rem}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:.8rem;align-items:end}
 .soon{max-width:620px;margin:3rem auto;text-align:center;display:grid;gap:1.2rem;justify-items:center}
 .soon h1{font-size:clamp(3rem,7vw,5rem)}
 .soon p{color:#b9b9be}
@@ -148,7 +150,7 @@ main{flex:1;width:min(1180px,100% - 2*clamp(1rem,5vw,2.5rem));margin:clamp(1.5re
         <li><svg viewBox="0 0 24 24"><path d="M3 7h13v10H3z"/><path d="M16 10h3l2 3v4h-5"/><circle cx="7" cy="18" r="1.8"/><circle cx="17.5" cy="18" r="1.8"/></svg><span><b>Track every order</b>Status and tracking for everything you buy, in one place.</span></li>
         <li><svg viewBox="0 0 24 24"><path d="M20 12v8H4v-8M2 7h20v5H2zM12 20V7M12 7H8a2 2 0 1 1 2-3l2 3 2-3a2 2 0 1 1 2 3h-4"/></svg><span><b>Keep your welcome code</b>Your discount is saved to your account and applied at checkout.</span></li>
         <li><svg viewBox="0 0 24 24"><path d="M13 2L4 14h7l-1 8 9-12h-7z"/></svg><span><b>First access to drops</b>Members hear about new team gear before anyone else.</span></li>
-        <li><svg viewBox="0 0 24 24"><path d="M12 21s-7-4.5-9.3-9A5.3 5.3 0 0 1 12 6.2 5.3 5.3 0 0 1 21.3 12C19 16.5 12 21 12 21z"/></svg><span><b>Save what you love</b>Keep the gear, reels and stories you want to come back to.</span></li>
+        <li><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="3.6"/><path d="M4.5 20.5c1.2-3.6 4.2-5.6 7.5-5.6s6.3 2 7.5 5.6"/></svg><span><b>Made for you</b>Tell us your team and where you rep from, and we&rsquo;ll tailor drops to you.</span></li>
       </ul>
     </div>
     <div class="panel">
@@ -159,11 +161,12 @@ main{flex:1;width:min(1180px,100% - 2*clamp(1rem,5vw,2.5rem));margin:clamp(1.5re
         <label class="chk"><input type="checkbox" id="aNews" checked><span>Email me about new drops, giveaways and PMN+ news. Unsubscribe anytime.</span></label>
         <button class="btn red" type="submit" id="aGo">Send my code</button>
         <p class="msg" id="aMsg" role="status" aria-live="polite"></p>
-        <div id="aGoogleWrap" hidden>
+        <div id="aSocial" class="form" hidden>
           <p class="or">or</p>
-          <button class="btn ghost" type="button" id="aGoogle"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#EA4335" d="M12 10.2v3.9h5.4c-.2 1.3-1.6 3.8-5.4 3.8-3.2 0-5.9-2.7-5.9-6s2.7-6 5.9-6c1.9 0 3.1.8 3.8 1.4l2.6-2.5C16.8 3.3 14.6 2.3 12 2.3 6.6 2.3 2.3 6.6 2.3 12s4.3 9.7 9.7 9.7c5.6 0 9.3-3.9 9.3-9.5 0-.6-.1-1.1-.2-1.6H12z"/></svg>Continue with Google</button>
+          <button class="btn ghost" type="button" id="aApple" hidden><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#fff" d="M16.4 12.6c0-2.4 2-3.6 2.1-3.7-1.1-1.7-2.9-1.9-3.5-1.9-1.5-.2-2.9.9-3.7.9-.8 0-1.9-.9-3.2-.8-1.6 0-3.2 1-4 2.5-1.7 3-.4 7.4 1.2 9.8.8 1.2 1.8 2.5 3 2.4 1.2 0 1.7-.8 3.1-.8 1.5 0 1.9.8 3.2.8 1.3 0 2.2-1.2 3-2.4.9-1.4 1.3-2.7 1.3-2.8 0 0-2.5-1-2.5-4zM14 5.4c.7-.8 1.1-1.9 1-3-1 0-2.1.6-2.8 1.4-.6.7-1.2 1.8-1 2.9 1 .1 2.1-.5 2.8-1.3z"/></svg>Continue with Apple</button>
+          <button class="btn ghost" type="button" id="aGoogle" hidden><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#EA4335" d="M12 10.2v3.9h5.4c-.2 1.3-1.6 3.8-5.4 3.8-3.2 0-5.9-2.7-5.9-6s2.7-6 5.9-6c1.9 0 3.1.8 3.8 1.4l2.6-2.5C16.8 3.3 14.6 2.3 12 2.3 6.6 2.3 2.3 6.6 2.3 12s4.3 9.7 9.7 9.7c5.6 0 9.3-3.9 9.3-9.5 0-.6-.1-1.1-.2-1.6H12z"/></svg>Continue with Google</button>
         </div>
-        <p class="fine">By continuing you agree to the <a href="/terms">Terms</a> and <a href="/privacy-policy">Privacy policy</a><a href="/terms#sms">SMS terms</a>.</p>
+        <p class="fine">By continuing you agree to the <a href="/terms">Terms</a> and <a href="/privacy-policy">Privacy policy</a>.</p>
       </form>
       <form class="form" id="fCode" novalidate hidden>
         <h2 class="disp">Check your email</h2>
@@ -186,10 +189,14 @@ main{flex:1;width:min(1180px,100% - 2*clamp(1rem,5vw,2.5rem));margin:clamp(1.5re
       <div class="card"><h2 class="disp">Your orders</h2><div class="orders" id="orders"><div class="sk"></div><div class="sk"></div></div></div>
       <div class="side">
         <div class="card code-card" id="codeCard" hidden><p class="eyebrow">Your welcome code</p><p class="cd" id="codeVal"></p><p class="fine">Saved to your bag. It comes off automatically at checkout.</p></div>
+        <div class="card perk-card"><p class="eyebrow">PMN+ member</p><h2 class="disp">Your perks</h2>
+          <ul class="perks"><li><b>First access to drops</b>Members hear about new team gear before anyone else.</li><li id="perkGift" hidden><b>Free gift with your order</b><span id="perkGiftTxt"></span></li><li><b>Order tracking</b>Every order you place with this email shows up here.</li></ul></div>
         <form class="card form" id="fProfile" novalidate>
           <h2 class="disp">Profile</h2>
           <div class="two"><div class="field"><label for="pFirst">First name</label><input id="pFirst" autocomplete="given-name"></div><div class="field"><label for="pLast">Last name</label><input id="pLast" autocomplete="family-name"></div></div>
           <div class="field"><label for="pEmail">Email</label><input id="pEmail" type="email" disabled></div>
+          <div class="two"><div class="field"><label for="pCountry">Country</label><select id="pCountry" autocomplete="country-name"><option value="">Choose</option><option>United States</option><option>New Zealand</option><option>Australia</option><option>Samoa</option><option>American Samoa</option><option>Tonga</option><option>Fiji</option><option>Cook Islands</option><option>Hawaiʻi</option><option>Other</option></select></div>
+          <div class="field"><label for="pTeam">Team</label><select id="pTeam"><option value="">Choose</option><option value="toa-samoa">Toa Samoa</option><option value="mate-maa-tonga">Mate Maʻa Tonga</option><option value="both">Both</option><option value="other">Another team</option></select></div></div>
           <label class="chk"><input type="checkbox" id="pNews"><span>Email me about new drops and PMN+ news</span></label>
           <button class="btn sm" type="submit" id="pSave">Save</button>
           <p class="msg" id="pMsg" role="status" aria-live="polite"></p>
@@ -230,10 +237,12 @@ const back=location.origin+"/account";
 let email="",user=null,session=null;
 
 /* ---------- sign in ---------- */
-if(C.google){$("aGoogleWrap").hidden=false;$("aGoogle").onclick=()=>sb.auth.signInWithOAuth({provider:"google",options:{redirectTo:back}})}
+const social=p=>{store.set("pmn_optin",$("aNews").checked?"1":"0");sb.auth.signInWithOAuth({provider:p,options:{redirectTo:back}})};
+if(C.google||C.apple){$("aSocial").hidden=false;$("aGoogle").hidden=!C.google;$("aApple").hidden=!C.apple;
+  $("aGoogle").onclick=()=>social("google");$("aApple").onclick=()=>social("apple")}
 const friendly=e=>{const m=String(e&&e.message||e||"");if(/rate|seconds|too many/i.test(m))return"Too many tries. Wait a minute, then try again.";
   if(/expired|invalid|token/i.test(m))return"That code didn't work. Check it, or send a new one.";return"Something went wrong. Please try again."};
-async function sendCode(){const {error}=await sb.auth.signInWithOtp({email,options:{shouldCreateUser:true,emailRedirectTo:back,data:{marketing_opt_in:$("aNews").checked}}});if(error)throw error}
+async function sendCode(){store.set("pmn_optin",$("aNews").checked?"1":"0");const {error}=await sb.auth.signInWithOtp({email,options:{shouldCreateUser:true,emailRedirectTo:back,data:{marketing_opt_in:$("aNews").checked,signup_source:"account"}}});if(error)throw error}
 $("fEmail").addEventListener("submit",async e=>{e.preventDefault();const v=$("aEmail").value.trim().toLowerCase();
   if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(v)){$("aMsg").textContent="Enter a valid email, like name@example.com.";$("aEmail").focus();return}
   email=v;$("aGo").disabled=true;$("aMsg").textContent="";
@@ -247,6 +256,22 @@ $("fCode").addEventListener("submit",async e=>{e.preventDefault();const t=$("cCo
 $("cCode").addEventListener("input",()=>{const t=$("cCode").value.replace(/\D/g,"");$("cCode").value=t;if(t.length===6)$("fCode").requestSubmit()});
 $("cBack").onclick=()=>{$("fCode").hidden=true;$("fEmail").hidden=false;$("aEmail").focus()};
 $("cResend").onclick=async()=>{$("cMsg").className="msg";try{await sendCode();$("cMsg").className="msg ok";$("cMsg").textContent="New code sent."}catch(err){$("cMsg").textContent=friendly(err)}};
+
+/* ---------- Klaviyo: account holders join the PMN+ newsletter (list Sggasa), marked pmn_account ---------- */
+const KL_CO="T9JJzp",KL_LIST="Sggasa";
+const kl=(...a)=>{try{window.klaviyo&&window.klaviyo.push(a)}catch(e){}};
+const klProps=p=>({pmn_account:true,pmn_member_tier:(p&&p.tier)||"member",signup_source:"account",
+  ...(p&&p.country?{pmn_country:p.country}:{}),...(p&&p.favourite_team?{pmn_team:p.favourite_team}:{})});
+async function klSubscribe(p){
+  const attrs={email:user.email,...(p&&p.first_name?{first_name:p.first_name}:{}),...(p&&p.last_name?{last_name:p.last_name}:{}),properties:klProps(p)};
+  const r=await fetch("https://a.klaviyo.com/client/subscriptions/?company_id="+KL_CO,{method:"POST",headers:{"content-type":"application/json",revision:"2026-07-15"},
+    body:JSON.stringify({data:{type:"subscription",attributes:{custom_source:"PMN+ Account",profile:{data:{type:"profile",attributes:attrs}}},relationships:{list:{data:{type:"list",id:KL_LIST}}}}})});
+  if(!(r.status===202||r.ok))throw new Error("klaviyo "+r.status)}
+function klIdentify(p){kl("identify",{email:user.email,...(p&&p.first_name?{first_name:p.first_name}:{}),...(p&&p.last_name?{last_name:p.last_name}:{}),...klProps(p)})}
+async function klSync(p){klIdentify(p);
+  const key="pmn_kl_acct_"+user.id;if(store.get(key))return;
+  if(p&&p.marketing_opt_in!==false&&store.get("pmn_optin")!=="0"){try{await klSubscribe(p);store.set(key,"1");if(!store.get("pmn_code"))store.set("pmn_code","WELCOME10")}catch(e){console.warn(e)}}
+  else store.set(key,"0")}
 
 /* ---------- account ---------- */
 const api=(path,opts={})=>fetch(path,{...opts,headers:{...(opts.headers||{}),Authorization:"Bearer "+session.access_token}});
@@ -265,18 +290,22 @@ function renderOrders(d){const box=$("orders");
 async function loadAccount(s){session=s;user=s.user;show("vAcct");
   store.set("pmn_email",user.email);   // checkout pre-fills with this
   $("pEmail").value=user.email;$("who").textContent=user.email;
-  const c=store.get("pmn_code");$("codeCard").hidden=!c;if(c)$("codeVal").textContent=c;
-  const {data:p}=await sb.from("profiles").select("first_name,last_name,marketing_opt_in").eq("id",user.id).maybeSingle();
+  const {data:p}=await sb.from("profiles").select("first_name,last_name,country,favourite_team,marketing_opt_in,tier").eq("id",user.id).maybeSingle();
+  if(C.memberGift){$("perkGift").hidden=false;$("perkGiftTxt").textContent=C.memberGift}
+  await klSync(p);
   if(p){$("pFirst").value=p.first_name||"";$("pLast").value=p.last_name||"";$("pNews").checked=p.marketing_opt_in!==false;
+    $("pCountry").value=p.country||"";$("pTeam").value=p.favourite_team||"";
     $("hello").textContent=p.first_name?`Welcome back, ${p.first_name}`:"Welcome to PMN+"}else $("hello").textContent="Welcome to PMN+";
+  const c=store.get("pmn_code");$("codeCard").hidden=!c;if(c)$("codeVal").textContent=c;
   try{const l=await api("/api/account/link",{method:"POST"});
     if(l.status===503){renderOrders({soon:true});return}
     const r=await api("/api/account/orders");renderOrders(r.ok?await r.json():null)}catch(e){renderOrders({soon:true})}}
 $("fProfile").addEventListener("submit",async e=>{e.preventDefault();$("pSave").disabled=true;$("pMsg").className="msg";
-  const patch={first_name:$("pFirst").value.trim()||null,last_name:$("pLast").value.trim()||null,marketing_opt_in:$("pNews").checked};
+  const patch={first_name:$("pFirst").value.trim()||null,last_name:$("pLast").value.trim()||null,country:$("pCountry").value||null,favourite_team:$("pTeam").value||null,marketing_opt_in:$("pNews").checked};
   const {error}=await sb.from("profiles").update(patch).eq("id",user.id);$("pSave").disabled=false;
   if(error){$("pMsg").textContent="Couldn't save. Please try again.";return}
-  $("pMsg").className="msg ok";$("pMsg").textContent="Saved.";if(patch.first_name)$("hello").textContent=`Welcome back, ${patch.first_name}`});
+  $("pMsg").className="msg ok";$("pMsg").textContent="Saved.";
+  klIdentify(patch);if(patch.marketing_opt_in&&store.get("pmn_kl_acct_"+user.id)!=="1"){store.set("pmn_optin","1");store.set("pmn_kl_acct_"+user.id,null);klSync(patch)}if(patch.first_name)$("hello").textContent=`Welcome back, ${patch.first_name}`});
 $("out").onclick=async()=>{await sb.auth.signOut();store.set("pmn_email",null);session=user=null;$("fCode").hidden=true;$("fEmail").hidden=false;show("vAuth")};
 
 /* ---------- start ---------- */

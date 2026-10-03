@@ -1,6 +1,9 @@
 // Shared helpers for /api/account/* (files starting with "_" are not public routes on Vercel).
 // Secrets come only from Vercel environment variables:
-//   SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY, SHOPIFY_ADMIN_TOKEN (and optionally SHOPIFY_STORE)
+//   SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY
+//   Shopify, either: SHOPIFY_CLIENT_ID + SHOPIFY_CLIENT_SECRET (Dev Dashboard app, recommended)
+//                or: SHOPIFY_ADMIN_TOKEN (older admin-created custom app)
+//   optionally SHOPIFY_STORE (defaults to polynesianmusicnetwork.myshopify.com)
 const SHOP = process.env.SHOPIFY_STORE || 'polynesianmusicnetwork.myshopify.com';
 const API = '2025-07';
 
@@ -12,9 +15,29 @@ function send(res, status, body) {
 }
 
 function env() {
-  const e = { url: process.env.SUPABASE_URL, service: process.env.SUPABASE_SERVICE_ROLE_KEY, shopify: process.env.SHOPIFY_ADMIN_TOKEN };
-  const missing = Object.entries({ SUPABASE_URL: e.url, SUPABASE_SERVICE_ROLE_KEY: e.service, SHOPIFY_ADMIN_TOKEN: e.shopify }).filter(([, v]) => !v).map(([k]) => k);
+  const P = process.env;
+  const e = { url: P.SUPABASE_URL, service: P.SUPABASE_SERVICE_ROLE_KEY, shopify: P.SHOPIFY_ADMIN_TOKEN,
+    clientId: P.SHOPIFY_CLIENT_ID, clientSecret: P.SHOPIFY_CLIENT_SECRET };
+  const missing = Object.entries({ SUPABASE_URL: e.url, SUPABASE_SERVICE_ROLE_KEY: e.service }).filter(([, v]) => !v).map(([k]) => k);
+  if (!e.shopify && !(e.clientId && e.clientSecret)) missing.push('SHOPIFY_CLIENT_ID + SHOPIFY_CLIENT_SECRET');
   return { ...e, missing, url: (e.url || '').replace(/\/+$/, '') };
+}
+
+// Dev Dashboard apps get a 24-hour Admin API token from their client ID + secret (client credentials grant).
+// Cached per warm function instance and refreshed an hour before it expires.
+let tok = { value: null, until: 0 };
+async function adminToken(e) {
+  if (e.shopify) return e.shopify;
+  if (tok.value && Date.now() < tok.until) return tok.value;
+  const r = await fetch(`https://${SHOP}/admin/oauth/access_token`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+    body: new URLSearchParams({ client_id: e.clientId, client_secret: e.clientSecret, grant_type: 'client_credentials' }),
+  });
+  const j = await r.json().catch(() => ({}));
+  if (!r.ok || !j.access_token) throw new Error('shopify token: ' + r.status + ' ' + JSON.stringify(j).slice(0, 200));
+  tok = { value: j.access_token, until: Date.now() + Math.max(60, (j.expires_in || 86399) - 3600) * 1000 };
+  return tok.value;
 }
 
 // The signed-in person, checked with Supabase (never trusted from the browser).
@@ -58,7 +81,7 @@ async function ensureProfile(e, user) {
 async function shopify(e, query, variables) {
   const r = await fetch(`https://${SHOP}/admin/api/${API}/graphql.json`, {
     method: 'POST',
-    headers: { 'Content-Type': 'application/json', 'X-Shopify-Access-Token': e.shopify },
+    headers: { 'Content-Type': 'application/json', 'X-Shopify-Access-Token': await adminToken(e) },
     body: JSON.stringify({ query, variables }),
   });
   const j = await r.json();

@@ -56,7 +56,7 @@ for k,c in C['collections'].items():
 os.makedirs('site2/seo',exist_ok=True)
 json.dump(out,open('site2/seo/seo-data.json','w'),ensure_ascii=False,indent=1)
 # ---- Merchant Center feed (one row per size) ----
-cols=['id','item_group_id','title','description','link','image_link','additional_image_link','availability','price','brand','condition','google_product_category','product_type','gender','age_group','color','size','size_system','material','shipping(country)','custom_label_0']
+cols=['id','item_group_id','title','description','link','image_link','additional_image_link','availability','price','brand','condition','google_product_category','product_type','gender','age_group','color','size','size_system','material','shipping(country)','custom_label_0','identifier_exists']
 rows=['\t'.join(cols)]
 for p in prods:
     o=out['products'][p['id']]; grp=GROUP.get(p['id'],o['slug'])
@@ -67,8 +67,10 @@ for p in prods:
         sid=f"{o['slug']}-{z.lower().replace(' ','-')}"
         rows.append('\t'.join([sid,grp,trim(f"{p['name']} – {p['colour']}"+("" if z=='One size' else f" – {z}"),150)," ".join(o['description']),
           o['url']+("" if z=='One size' else f"?size={z}"),o['images'][0],",".join(o['images'][1:10]),'out_of_stock' if p['id'] in SOLD else 'in_stock',f"{p['price']}.00 USD",'PMN+','new',gpc,
-          f"{TEAM[p['team']]} > {'Hats' if p['kind']=='hat' else 'Tees'}",'unisex','adult',p['colour'],z,'US',mat,'US','RLWC 2026' if p['team'] in ('samoa','tonga') else 'PMN+']))
-open('site2/seo/merchant-center-feed.tsv','w').write('\n'.join(rows)+'\n')
+          f"{TEAM[p['team']]} > {'Hats' if p['kind']=='hat' else 'Tees'}",'unisex','adult',p['colour'],z,'US',mat,'US','RLWC 2026' if p['team'] in ('samoa','tonga') else 'PMN+','no']))  # own designs: no GTIN/MPN
+feed='\n'.join(rows)+'\n'
+open('site2/seo/merchant-center-feed.tsv','w').write(feed)
+open('../merchant-center-feed.txt','w').write(feed)  # public URL for Merchant Center scheduled fetch
 # ---- sitemap with images ----
 u=['<?xml version="1.0" encoding="UTF-8"?>','<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">']
 u.append(f"  <url><loc>{D}/</loc><lastmod>2026-10-02</lastmod><image:image><image:loc>{D}/assets/pmn-plus-og-music-culture-tradition-sports.jpg</image:loc></image:image></url>")

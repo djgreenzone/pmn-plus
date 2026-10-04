@@ -89,6 +89,8 @@ for pid,o in out['products'].items():
 u.append(f"  <url><loc>{D}/about</loc><lastmod>2026-10-03</lastmod><image:image><image:loc>{D}/assets/about/pmn-plus-about-og.jpg</image:loc></image:image><image:image><image:loc>{D}/assets/about/pmn-plus-reporter-rugby-league-las-vegas-allegiant-stadium.webp</image:loc></image:image><image:image><image:loc>{D}/assets/about/pmn-plus-photographer-hsbc-la-sevens.webp</image:loc></image:image><image:image><image:loc>{D}/assets/about/pmn-plus-locker-room-interview.webp</image:loc></image:image><image:image><image:loc>{D}/assets/about/pmn-plus-photographer-rugby-league-las-vegas-sideline.webp</image:loc></image:image><image:image><image:loc>{D}/assets/about/pmn-plus-photographer-pasifika-music-festival.webp</image:loc></image:image><image:image><image:loc>{D}/assets/about/pmn-plus-instagram-polynesianmusic-iphone.webp</image:loc></image:image></url>")
 u.append(f"  <url><loc>{D}/privacy-policy</loc><lastmod>2026-10-02</lastmod></url>")
 u.append(f"  <url><loc>{D}/terms</loc><lastmod>2026-10-02</lastmod></url>")
+u.append(f"  <url><loc>{D}/shipping</loc><lastmod>2026-10-03</lastmod></url>")
+u.append(f"  <url><loc>{D}/returns</loc><lastmod>2026-10-03</lastmod></url>")
 u.append('</urlset>')
 open('site2/seo/sitemap-shop.xml','w').write('\n'.join(u)+'\n')
 print(len(rows)-1,'feed rows')

@@ -10,8 +10,8 @@ POLICY = {
     "shipping": "3–7 business days",
     "total": "about 5–11 business days",
     "returnDays": 0,
-    "returns": ("Every PMN+ piece is printed to order, just for you, so all sales are final. "
-                "If your item arrives misprinted, damaged or wrong, email a photo within 14 days of delivery and we'll replace it free."),
+    "returns": ("Every PMN+ piece is made to order, just for you, so all sales are final: no returns or exchanges for size, colour or change of mind. "
+                "If your item arrives damaged, misprinted or incorrect, email photos within 7 days of delivery and we'll review it and make it right."),
     "care": "Machine wash cold, inside out, with similar colours. Tumble dry low or hang dry. Do not iron directly on the print. Do not dry clean.",
 }
 

@@ -717,6 +717,8 @@ s.was{color:var(--ink-dim);font-weight:400;margin-left:4px}
 .im.flip .alt{position:absolute;inset:0;width:100%;height:100%;box-sizing:border-box;padding:inherit;object-fit:contain;opacity:0;transition:opacity .25s ease;pointer-events:none}
 @media (hover:hover){a:hover>.im.flip .alt,button:hover>.im.flip .alt,a:focus-visible>.im.flip .alt{opacity:1}a:hover>.im.flip>img:not(.alt){opacity:0}}
 .im.flip>img:not(.alt){transition:opacity .25s ease,transform .35s cubic-bezier(.2,.7,.2,1)}
+
+.card .szl,.big .szl,.gcard .szl,.szl{font-size:12px;color:#6b675f;letter-spacing:.01em;font-weight:500}#coll .gcard .szl{color:var(--ink-dim)}.team-sec .szl{color:inherit;opacity:.75}
 </style>
 
 <div id="app">
@@ -1660,9 +1662,10 @@ const nearKey=(id,t)=>{const h=(META[id]&&META[id].hi)||{};let best=null,d=999;O
 const flipCard=(b,p)=>{const im=b.querySelector(".im"),img=im&&im.querySelector("img");if(!img||im.querySelector(".alt"))return;
   const r=REST[p.id]||0,f=p.kind==="tee"?nearKey(p.id,0):nearKey(p.id,r),k=p.kind==="tee"?nearKey(p.id,180):nearKey(p.id,360-r);if(f==null||k==null||f===k)return;img.src=hiURL(p.id,f);
   const a=new Image();a.className="alt";a.loading="lazy";a.decoding="async";a.alt="";a.setAttribute("aria-hidden","true");a.src=hiURL(p.id,k);im.append(a);im.classList.add("flip")};
+const sizeRange=p=>{let z=[];try{z=(blankFor(p)||{}).sizes||[]}catch(e){}if(!z.length)z=(SEO.products[p.id]&&SEO.products[p.id].sizes)||[];return p.kind!=="tee"||z.length<2?"One size":`Sizes ${z[0]}–${z[z.length-1]}`};
 const decorate=(b,p)=>{if(!p||b.dataset.dec)return;b.dataset.dec=1;flipCard(b,p);const im=b.querySelector(".im");
   if(BADGE[p.id]&&im&&!im.querySelector(".tag,.sold"))im.insertAdjacentHTML("afterbegin",`<i class="tag best">${BADGE[p.id]}</i>`);
-  const nm=b.querySelector(".nm")||b.querySelector("b");if(nm&&!b.querySelector(".cline"))nm.insertAdjacentHTML("afterend",`<span class="cline">${dotsHTML(p)}<small>${p.colourName}</small></span>`)};
+  const nm=b.querySelector(".nm")||b.querySelector("b");if(nm&&!b.querySelector(".cline"))nm.insertAdjacentHTML("afterend",`<span class="cline">${dotsHTML(p)}<small>${p.colourName}</small></span><span class="szl">${sizeRange(p)}</span>`)};
 const sortList=(l,m)=>{const r=l.slice();if(m==="lo")r.sort((a,b)=>a.price-b.price);else if(m==="hi")r.sort((a,b)=>b.price-a.price);else if(m==="best")r.sort((a,b)=>{const x=BEST.indexOf(a.id),y=BEST.indexOf(b.id);return (x<0?99:x)-(y<0?99:y)});return r};
 const Coll=(()=>{
   const el=$("coll");let key="mate-maa-tonga",filt="all";

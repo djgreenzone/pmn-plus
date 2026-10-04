@@ -241,7 +241,7 @@
     "https://www.polynesianmusicnetwork.com/shop/hires/mmt-oversized/mate-maa-tonga-crest-oversized-tee-black-back.webp"
    ],
    "og": "https://www.polynesianmusicnetwork.com/shop/og/mate-maa-tonga-crest-oversized-tee-black.jpg",
-   "sold": true,
+   "sold": false,
    "kind": "tee",
    "teamName": "Mate Ma'a Tonga",
    "alt": [
@@ -286,7 +286,7 @@
        "url": "https://www.polynesianmusicnetwork.com/shop/mate-maa-tonga-crest-oversized-tee-black",
        "price": "60.00",
        "priceCurrency": "USD",
-       "availability": "https://schema.org/OutOfStock",
+       "availability": "https://schema.org/InStock",
        "itemCondition": "https://schema.org/NewCondition",
        "seller": {
         "@id": "https://www.polynesianmusicnetwork.com/#org"
@@ -459,7 +459,7 @@
     "https://www.polynesianmusicnetwork.com/shop/hires/toa-oversized/toa-samoa-crest-oversized-tee-black-back.webp"
    ],
    "og": "https://www.polynesianmusicnetwork.com/shop/og/toa-samoa-crest-oversized-tee-black.jpg",
-   "sold": true,
+   "sold": false,
    "kind": "tee",
    "teamName": "Toa Samoa",
    "alt": [
@@ -504,7 +504,7 @@
        "url": "https://www.polynesianmusicnetwork.com/shop/toa-samoa-crest-oversized-tee-black",
        "price": "60.00",
        "priceCurrency": "USD",
-       "availability": "https://schema.org/OutOfStock",
+       "availability": "https://schema.org/InStock",
        "itemCondition": "https://schema.org/NewCondition",
        "seller": {
         "@id": "https://www.polynesianmusicnetwork.com/#org"

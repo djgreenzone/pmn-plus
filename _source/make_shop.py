@@ -216,10 +216,11 @@ rep('.size.so{','.buy-row:has(.bis:not([hidden])) .qty{display:none}.buy-row:has
 rep('const reduceMotion=',open(os.path.join(os.path.dirname(os.path.abspath(__file__)),'bis.js')).read()+'const reduceMotion=')
 # structured data: out of stock
 import json as _j, re as _r
+_OVS_SOLD=bool(_r.search(r'SOLD=new Set\(\["', open(os.path.join(os.path.dirname(os.path.abspath(__file__)),'shopify_layer.js')).read()))
 def _ld(m):
     d=_j.loads(m.group(1))
     for x in d['@graph']:
-        if x.get('@type')=='Product' and 'crest-oversized-tee' in x.get('@id',''):
+        if x.get('@type')=='Product' and 'crest-oversized-tee' in x.get('@id','') and _OVS_SOLD:
             o=x.get('offers');
             for oo in (o if isinstance(o,list) else [o]):
                 if isinstance(oo,dict):oo['availability']='https://schema.org/OutOfStock'

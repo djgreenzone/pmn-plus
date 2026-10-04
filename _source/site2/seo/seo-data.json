@@ -2820,7 +2820,8 @@
    ],
    "images": [
     "https://www.polynesianmusicnetwork.com/shop/hires/toa-trucker/toa-samoa-trucker-snapback-black-front-right.webp",
-    "https://www.polynesianmusicnetwork.com/shop/hires/toa-trucker/toa-samoa-trucker-snapback-black-front.webp"
+    "https://www.polynesianmusicnetwork.com/shop/hires/toa-trucker/toa-samoa-trucker-snapback-black-front.webp",
+    "https://www.polynesianmusicnetwork.com/shop/hires/toa-trucker/toa-samoa-trucker-snapback-black-front-left.webp"
    ],
    "og": "https://www.polynesianmusicnetwork.com/shop/og/toa-samoa-trucker-snapback-black.jpg",
    "sold": false,
@@ -2828,7 +2829,8 @@
    "teamName": "Toa Samoa",
    "alt": [
     "Toa Samoa Trucker Snapback in black, front right view",
-    "Toa Samoa Trucker Snapback in black, front view"
+    "Toa Samoa Trucker Snapback in black, front view",
+    "Toa Samoa Trucker Snapback in black, front left view"
    ],
    "jsonld": {
     "@context": "https://schema.org",
@@ -2855,7 +2857,8 @@
       "category": "Apparel & Accessories > Clothing Accessories > Hats",
       "image": [
        "https://www.polynesianmusicnetwork.com/shop/hires/toa-trucker/toa-samoa-trucker-snapback-black-front-right.webp",
-       "https://www.polynesianmusicnetwork.com/shop/hires/toa-trucker/toa-samoa-trucker-snapback-black-front.webp"
+       "https://www.polynesianmusicnetwork.com/shop/hires/toa-trucker/toa-samoa-trucker-snapback-black-front.webp",
+       "https://www.polynesianmusicnetwork.com/shop/hires/toa-trucker/toa-samoa-trucker-snapback-black-front-left.webp"
       ],
       "description": "A black mesh-back trucker with an arched Toa Samoa 2026 print and the crest on the front panel. Curved bill, breathable mesh side and back panels and an adjustable snap closure. One size fits most.",
       "url": "https://www.polynesianmusicnetwork.com/shop/toa-samoa-trucker-snapback-black",

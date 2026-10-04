@@ -252,6 +252,48 @@ main{flex:1;width:min(1180px,100% - 2*clamp(1rem,5vw,2.5rem));margin:clamp(1.5re
 .mout{display:none;justify-content:center;margin-top:.5rem}
 .mout .btn{width:auto;padding:0 1.6rem}
 @media (prefers-reduced-motion:reduce){.sk,.spin,.pane{animation:none}.toast,.tm,.bar i{transition:none}}
+/* ---- account home ---- */
+.ph .badge{margin-top:.2rem}
+.qn{display:flex;gap:.5rem;overflow-x:auto;scrollbar-width:none;padding:.1rem 0 .3rem}.qn::-webkit-scrollbar{display:none}
+.qn a{flex:none;display:inline-flex;align-items:center;gap:.5rem;height:42px;padding:0 1rem;border-radius:999px;border:1px solid rgba(255,255,255,.18);background:var(--field);color:#fff;text-decoration:none;font-weight:600;font-size:.9rem;transition:border-color .15s,background .15s}
+.qn a:hover{border-color:#fff}.qn svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
+.sec .hd{margin-bottom:.9rem}
+.hs{display:flex;gap:.8rem;overflow-x:auto;scroll-snap-type:x proximity;padding:2px 2px .5rem;margin:0 -2px;scrollbar-width:thin;scrollbar-color:#3a3b40 transparent}
+.hs>*{scroll-snap-align:start;flex:none}
+.oc{display:grid;grid-template-rows:auto 1fr;width:220px;border:1px solid var(--line);border-radius:14px;background:#08090c;text-decoration:none;color:inherit;overflow:hidden}
+.oc:hover{border-color:rgba(255,255,255,.35)}
+.oc .im{height:140px;background:#f3f2ee;padding:10px;position:relative;overflow:hidden}.oc .im img{width:100%;height:100%;object-fit:contain}
+.oc .im i{position:absolute;top:8px;left:8px;min-width:22px;height:22px;padding:0 6px;border-radius:999px;background:#000;color:#fff;font-style:normal;font-size:.75rem;font-weight:700;display:grid;place-items:center}
+.oc .tx{display:grid;gap:.2rem;padding:.75rem .85rem .85rem;align-content:start}.oc b{font-size:1rem;line-height:1.2}.oc b.go{color:var(--ok)}.oc b.bad{color:#ff6b7d}
+.oc span{color:#c4c4c9;font-size:.85rem;line-height:1.3;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}.oc small{color:#a6a6ac;font-size:.78rem;margin-top:.15rem}
+.sk.oc{height:230px;border:0}
+.pc{width:150px;display:grid;gap:.5rem;text-decoration:none;color:inherit;align-content:start}
+.pc .im{height:150px;border-radius:12px;background:#fff;padding:8px;border:1px solid var(--line);transition:border-color .15s;position:relative;overflow:hidden}.pc:hover .im{border-color:rgba(255,255,255,.5)}.pc .im img{width:100%;height:100%;object-fit:contain}
+.pc b{font-size:.88rem;font-weight:600;line-height:1.25;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.pc small{color:#a6a6ac;font-size:.8rem}.pc .pr{color:#fff;font-weight:600;font-size:.9rem}
+.pc .btn.sm{height:36px;font-size:.95rem;padding:0 .5rem;width:100%;white-space:nowrap;letter-spacing:.05em}
+.pc .tag{position:absolute;left:8px;top:8px;font-size:.68rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:.25rem .5rem;border-radius:999px;background:#000;color:#fff}
+.sav{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.8rem}
+.sav .sv{display:grid;gap:.2rem;padding:1rem;border-radius:14px;background:var(--field);border:1px solid var(--line)}
+.sav .sv b{font-family:var(--display);font-weight:400;font-size:2.2rem;line-height:1;letter-spacing:.02em;color:var(--ok)}.sav .sv b.w{color:#fff}
+.sav .sv span{color:#c4c4c9;font-size:.88rem}.sav .sv a{color:#fff;font-size:.85rem}
+.fix{display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;margin-bottom:.9rem;padding:.9rem 1rem;border-radius:14px;background:linear-gradient(120deg,#16171c,#0d0e12);border:1px solid var(--line)}
+.fix b{display:block;font-family:var(--display);font-weight:400;font-size:1.5rem;letter-spacing:.03em;line-height:1}.fix span{color:#c4c4c9;font-size:.88rem}.fix .cd{font-family:var(--display);font-size:1.6rem;color:var(--ok);letter-spacing:.04em}
+.reels .rc{position:relative;width:150px;height:230px;border-radius:12px;overflow:hidden;background:#111;text-decoration:none;color:#fff;display:block}
+.reels .rc img{width:100%;height:100%;object-fit:cover}.reels .rc .cap{position:absolute;left:0;right:0;bottom:0;padding:1.6rem .6rem .6rem;font-size:.75rem;line-height:1.3;background:linear-gradient(transparent,rgba(0,0,0,.85));display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.reels .rc .tag{position:absolute;left:8px;top:8px;font-size:.68rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:.25rem .5rem;border-radius:999px;background:rgba(0,0,0,.7);color:#fff}
+.reels .rc .pl{position:absolute;right:8px;top:8px;width:26px;height:26px;border-radius:50%;background:rgba(0,0,0,.6);display:grid;place-items:center}.reels .rc .pl svg{width:14px;height:14px;fill:#fff}
+.sk.rc{border:0}
+.revs{display:grid;gap:.8rem}
+.rv{display:grid;grid-template-columns:56px 1fr;gap:.9rem;padding:.9rem;border:1px solid var(--line);border-radius:14px;background:#08090c}
+.rv img{width:56px;height:56px;object-fit:contain;background:#fff;border-radius:10px;padding:4px}
+.rv .st{color:#ffcf4d;letter-spacing:.1em;font-size:.9rem}.rv b{display:block;font-size:.95rem}.rv p{color:#c4c4c9;font-size:.9rem;line-height:1.45;margin:.2rem 0 0}.rv small{color:#a6a6ac;font-size:.8rem}
+.rv .pend{font-size:.7rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#ffcf4d;margin-left:.5rem}
+.ask{width:170px;display:grid;gap:.5rem;align-content:start}.ask .im{height:120px;border-radius:12px;background:#fff;padding:8px;border:1px solid var(--line);overflow:hidden}.ask .im img{width:100%;height:100%;object-fit:contain}
+.ask b{font-size:.86rem;line-height:1.25}.ask .stars{display:flex;gap:.2rem}.ask .stars a{font-size:1.25rem;color:#4a4b52;text-decoration:none;line-height:1}.ask .stars a:hover,.ask .stars a:hover~a{color:#4a4b52}.ask .stars:hover a{color:#ffcf4d}.ask .stars a:hover~a{color:#4a4b52!important}
+.hlp{list-style:none;display:grid;gap:.2rem}.hlp li{display:grid;gap:.1rem;padding:.7rem 0;border-bottom:1px solid var(--line)}.hlp li:last-child{border:0}.hlp a{font-weight:600;text-decoration:none;color:#fff}.hlp a:hover{text-decoration:underline;text-underline-offset:3px}.hlp span{color:#a6a6ac;font-size:.85rem}
+.empty-row{color:#b9b9be;font-size:.92rem;display:flex;gap:1rem;align-items:center;flex-wrap:wrap}.empty-row .btn.sm{width:auto}
+@media (max-width:900px){.sav{grid-template-columns:1fr 1fr}.sav .sv:first-child{grid-column:1/-1}.oc{width:200px}.pc{width:136px}.pc .im{height:136px}.reels .rc{width:130px;height:200px}}
 .foot{display:grid;gap:20px;padding:2.5rem clamp(1rem,5vw,2.5rem) 2.25rem;border-top:1px solid var(--line);background:#05060a;text-align:left}
 .foot-logo img{width:48px;height:auto;display:block}
 .foot-cols{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
@@ -340,29 +382,62 @@ main{flex:1;width:min(1180px,100% - 2*clamp(1rem,5vw,2.5rem));margin:clamp(1.5re
     </aside>
 
     <div>
-      <!-- overview -->
+      <!-- overview: Amazon-style account home -->
       <div class="pane" data-pane="overview">
-        <header class="ph"><span class="badge"><i></i><span id="since">PMN+ member</span></span><h1 class="disp" id="hello">Welcome to PMN+</h1><p>Your orders, perks and preferences in one place.</p></header>
+        <header class="ph"><h1 class="disp" id="hello">Welcome to PMN+</h1><span class="badge"><i></i><span id="since">PMN+ member</span></span></header>
+        <nav class="qn" aria-label="Quick links">
+          <a href="#orders"><svg viewBox="0 0 24 24"><path d="M5 8h14l-1 12H6z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg>Your orders</a>
+          <a href="#buyagain"><svg viewBox="0 0 24 24"><path d="M4 12a8 8 0 0 1 14-5.3M20 12a8 8 0 0 1-14 5.3"/><path d="M18 3v4h-4M6 21v-4h4"/></svg>Buy again</a>
+          <a href="#saved"><svg viewBox="0 0 24 24"><path d="M12 20.5s-7.5-4.6-9.2-9.3C1.6 7.9 3.8 4.5 7.2 4.5c2 0 3.6 1.1 4.8 2.8 1.2-1.7 2.8-2.8 4.8-2.8 3.4 0 5.6 3.4 4.4 6.7-1.7 4.7-9.2 9.3-9.2 9.3z"/></svg>Saved</a>
+          <a href="#reviews"><svg viewBox="0 0 24 24"><path d="M12 3l2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1L3.2 9.5l6.1-.9z"/></svg>Your reviews</a>
+          <a href="#profile"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="3.6"/><path d="M4.5 20.5c1.2-3.6 4.2-5.6 7.5-5.6s6.3 2 7.5 5.6"/></svg>Profile</a>
+          <a href="#preferences"><svg viewBox="0 0 24 24"><path d="M4 6h16v12H4z"/><path d="M4 7l8 6 8-6"/></svg>Preferences</a>
+          <a href="#help"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M9.5 9.5a2.5 2.5 0 1 1 3.5 2.3c-.6.3-1 .8-1 1.5v.7M12 17h.01"/></svg>Help</a>
+        </nav>
         <div class="card setup" id="setup" hidden>
           <div><h2 class="disp">Finish your profile</h2><p id="setupTxt">Tell us your team and where you rep from so we can tailor drops to you.</p></div>
           <a class="btn sm red" href="#profile">Finish profile</a>
           <div class="bar"><i id="setupBar" style="width:0"></i></div>
           <ul class="steps" id="steps"></ul>
         </div>
+
+        <section class="card sec" id="ovOrder"><div class="hd"><h2 class="disp">Your orders</h2><a href="#orders">See all</a></div><div class="hs" id="ovOrderBody"><div class="sk oc"></div></div></section>
+
+        <section class="card sec" id="sec-savings"><div class="hd"><h2 class="disp">Your savings</h2></div><div class="sav" id="savings"></div></section>
+
+        <section class="card sec" id="sec-buyagain"><div class="hd"><h2 class="disp">Buy again</h2></div><div class="hs" id="buyAgainRow"></div></section>
+
+        <section class="card sec" id="sec-keep" hidden><div class="hd"><h2 class="disp">Keep shopping for</h2><a href="/shop/all">Shop all</a></div><div class="hs" id="keepRow"></div></section>
+
+        <section class="card sec" id="sec-team"><div class="hd"><h2 class="disp" id="teamsH">Shop by team</h2><a href="/shop/all">Shop all</a></div><div class="fix" id="fixture" hidden></div><div class="teams" id="teams"></div></section>
+
+        <section class="card sec" id="sec-content"><div class="hd"><h2 class="disp" id="contentH">Latest from PMN+</h2><a href="https://www.instagram.com/polynesianmusicnetwork/" target="_blank" rel="noopener">Instagram</a></div><div class="hs reels" id="contentRow"><div class="sk rc"></div></div></section>
+
+        <section class="card sec" id="sec-saved"><div class="hd"><h2 class="disp">Your interests</h2><a href="#saved">See saved</a></div><div class="hs" id="savedRow"></div></section>
+
+        <section class="card sec" id="sec-reviews"><div class="hd"><h2 class="disp">Your reviews</h2></div><div id="reviewAsk" class="hs" hidden></div><div id="reviewList" class="revs"></div></section>
+
         <div class="cols">
-          <div class="card" id="ovOrder"><div class="hd"><h2 class="disp">Latest order</h2><a href="#orders">All orders</a></div><div id="ovOrderBody"><div class="sk"></div></div></div>
           <div class="stack">
-          <div class="card code-card" id="codeCard" hidden><p class="eyebrow">Your welcome code</p><p class="cd" id="codeVal"></p><p class="fine">Saved to your bag. It comes off automatically at checkout.</p></div>
-          <div class="card" id="perksCard"><h2 class="disp">Your perks</h2>
+          <div class="card code-card" id="codeCard" hidden><p class="eyebrow">Your welcome code</p><p class="cd" id="codeVal"></p><p class="fine">Saved to your bag. It comes off automatically at checkout. Can't be combined with other discount codes.</p></div>
+          <div class="card" id="perksCard"><h2 class="disp">Member perks</h2>
             <ul class="perks">
               <li><svg viewBox="0 0 24 24"><path d="M13 2L4 14h7l-1 8 9-12h-7z"/></svg><span><b>First access to drops</b>You hear about new team gear before anyone else.</span></li>
               <li id="perkGift" hidden><svg viewBox="0 0 24 24"><path d="M20 12v8H4v-8M2 7h20v5H2zM12 20V7M12 7H8a2 2 0 1 1 2-3l2 3 2-3a2 2 0 1 1 2 3h-4"/></svg><span><b>Free gift with your order</b><span id="perkGiftTxt"></span></span></li>
-              <li><svg viewBox="0 0 24 24"><path d="M3 7h13v10H3z"/><path d="M16 10h3l2 3v4h-5"/><circle cx="7" cy="18" r="1.8"/><circle cx="17.5" cy="18" r="1.8"/></svg><span><b>Order tracking</b>Every order with this email shows up here.</span></li>
+              <li><svg viewBox="0 0 24 24"><path d="M4 7h16v4H4zM6 11v8h12v-8M12 7v12"/></svg><span><b>Buy 3 tees, get 1 free</b>Mix any designs. The 4th tee comes off in your bag.</span></li>
+              <li><svg viewBox="0 0 24 24"><path d="M3 7h13v10H3z"/><path d="M16 10h3l2 3v4h-5"/><circle cx="7" cy="18" r="1.8"/><circle cx="17.5" cy="18" r="1.8"/></svg><span><b>Order tracking</b>Every order with this email shows up here, UPS tracking included.</span></li>
             </ul>
           </div>
           </div>
+          <div class="card" id="sec-help"><h2 class="disp">Need help?</h2>
+            <ul class="hlp">
+              <li><a href="#orders">Track an order</a><span>Live status for every order</span></li>
+              <li><a href="/shipping">Shipping &amp; delivery</a><span>2–4 days to print, 3–7 days with UPS</span></li>
+              <li><a href="/returns">Returns &amp; exchanges</a><span>Damaged or wrong item? 7 days from delivery</span></li>
+              <li><a href="/contact">Contact us</a><span>info@islandcitymediagroup.com</span></li>
+            </ul>
+          </div>
         </div>
-        <div class="card"><div class="hd"><h2 class="disp" id="teamsH">Shop by team</h2><a href="/shop/all">Shop all</a></div><div class="teams" id="teams"></div></div>
       </div>
 
       <!-- orders -->
@@ -490,7 +565,8 @@ const PANES=["overview","orders","order","saved","profile","preferences"];
 const escS=v=>String(v||"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
 function renderSaved(){const S=window.pmnSaved;if(!S)return;const a=S.all().filter(x=>x.kind==="product"),el=$("savedList");$("savCt").textContent=a.length||"";if(!el)return;
   el.innerHTML=a.length?a.map(x=>`<div class="svi"><a class="svim" href="${escS(x.url||"/shop")}"><img src="${escS(String(x.image||"").replace(/^(https?:\/\/[^/]+)?\/hires\//,"$1/shop/hires/"))}" alt="" loading="lazy"></a><div class="svtx"><a href="${escS(x.url||"/shop")}"><b>${escS(x.title)}</b></a><a class="btn sm" href="${escS(x.url||"/shop")}">View</a></div><button type="button" class="sv-btn on" data-save-ref="${escS(x.ref)}" data-save-kind="product" data-save-title="${escS(x.title)}" aria-label="Remove ${escS(x.title)}">${window.PMN_HEART||"&#9825;"}</button></div>`).join(""):`<div class="svempty"><p>Nothing saved yet. Tap the heart on any product to keep it here.</p><a class="btn sm red" href="/shop">Shop the drop</a></div>`}
-function go(name,focus){let arg=null;if(name&&name.startsWith("order/")){arg=decodeURIComponent(name.slice(6));name="order"}if(!PANES.includes(name))name="overview";if(name==="order")renderOrderDetail(arg);
+function go(name,focus){let arg=null,sec=null;if(name&&name.startsWith("order/")){arg=decodeURIComponent(name.slice(6));name="order"}if(!PANES.includes(name)){sec=$("sec-"+name);name="overview"}if(name==="order")renderOrderDetail(arg);
+  if(sec){setTimeout(()=>sec.scrollIntoView({block:"start",behavior:"smooth"}),50)}
   document.querySelectorAll("[data-pane]").forEach(p=>p.hidden=p.dataset.pane!==name);
   document.querySelectorAll(".tab[data-tab]").forEach(t=>{const on=t.dataset.tab===name;on?t.setAttribute("aria-current","page"):t.removeAttribute("aria-current");if(on&&focus)t.scrollIntoView({block:"nearest",inline:"center"})});
   if(focus&&$("vAcct").getBoundingClientRect().top<0)window.scrollTo({top:Math.max(0,$("vAcct").offsetTop-90),behavior:"smooth"})}
@@ -572,13 +648,81 @@ function renderOrders(d){
     :`No orders yet. Anything you buy with ${esc(user.email)} shows up here, guest checkouts included.`;
   $("ordCt").textContent=none?"":d.orders.length;
   $("orders").innerHTML=none?`<div class="empty"><p>${msg}</p><a class="btn sm" href="/shop" style="width:max-content;padding:0 1.6rem">Shop the drop</a></div>`:d.orders.map(orderHTML).join("");
-  $("ovOrderBody").innerHTML=none?`<div class="empty"><p>${d&&d.soon?msg:"Your first order will show up here with live tracking."}</p><a class="btn sm" href="/shop" style="width:max-content;padding:0 1.6rem">Shop the drop</a></div>`:orderHTML(d.orders[0])}
+  $("ovOrderBody").innerHTML=none?`<div class="empty-row"><p>${d&&d.soon?msg:"Your first order will show up here with live tracking."}</p><a class="btn sm" href="/shop">Shop the drop</a></div>`:d.orders.slice(0,8).map(o=>{const h=headline(o),img=o.items.find(i=>i.image),n=o.items.reduce((a,i)=>a+i.qty,0);
+    return`<a class="oc" href="#order/${encodeURIComponent(o.name)}"><span class="im">${img?`<img src="${esc(img.image)}" alt="" loading="lazy">`:""}${n>1?`<i>${n}</i>`:""}</span><span class="tx"><b class="${h.c||""}">${esc(h.h)}</b><span>${esc(o.items.map(i=>i.title).join(", "))}</span><small>Order ${esc(o.name)} · ${fmtShort(o.date)}</small></span></a>`}).join("");
+  renderHome()}
 
 function renderTeams(){const mine=prof.favourite_team;
   const list=[...TEAMS].sort((a,b)=>(b.v===mine)-(a.v===mine));
   $("teamsH").textContent=TEAMS.some(t=>t.v===mine)?"Your team's gear":"Shop by team";
   $("teams").innerHTML=list.map(t=>`<a class="tm ${t.cls}${t.v===mine?" mine":""}" href="${t.url}"><img src="${t.img}" alt="" loading="lazy"><b>${esc(t.n)}</b><small>${t.v===mine?"Your team · ":""}Shop the collection</small></a>`).join("")}
 
+/* ---------- account home: savings, buy again, keep shopping for, content, interests, reviews ---------- */
+let CAT=null,AFF=[],WATCHED=[],REELS=null,REVIEWS=null;
+const catLoad=()=>CAT?Promise.resolve(CAT):fetch("/shop/search.json").then(r=>r.json()).then(j=>CAT=j).catch(()=>CAT=[]);
+const byId=id=>(CAT||[]).find(x=>x.id===id),bySlug=sl=>(CAT||[]).find(x=>x.s===sl),byRef=r=>byId(r)||bySlug(r);
+const pimg=x=>String(x.i||x.image||"");
+const KL_PID={"mmt-samoa-crest-oversized-tee":15382958342343,"toa-samoa-crest-oversized-tee":15382957359303,"mmt-676-tee-shirt":15382959227079,"mmt-676-tee":15382961225927,"toa-samoa-685-tee-shirt":15382961651911,"mmt-silver-blackout-tee":15382961914055,"toa-samoa-silver-blackout-tee":15382962143431,"tonga-trucker-snapback":15382965911751,"samoa-trucker-snapback":15382966141127,"pmn-classic-tee":15382962929863,"pmn-retro-trucker-hat-blk":15382967091399,"pmn-classic-dad-hat-khaki":15382966862023,"toa-samoa-snapback-red-wht":15382968565959,"toa-samoa-snapback-nvy-wht":15382983803079};
+const HANDLE={"mmt-oversized":"mmt-samoa-crest-oversized-tee","toa-oversized":"toa-samoa-crest-oversized-tee","mmt-676-black":"mmt-676-tee-shirt","mmt-676-tee":"mmt-676-tee","toa-685-black":"toa-samoa-685-tee-shirt","toa-685-tee":"toa-samoa-685-tee-shirt","mmt-silver-blackout":"mmt-silver-blackout-tee","toa-silver-blackout":"toa-samoa-silver-blackout-tee","mmt-trucker":"tonga-trucker-snapback","toa-trucker":"samoa-trucker-snapback","pmn-tee":"pmn-classic-tee","pmn-trucker":"pmn-retro-trucker-hat-blk","pmn-dad-hat":"pmn-classic-dad-hat-khaki","mmt-hp-snapback":"toa-samoa-snapback-red-wht","toa-hp-snapback":"toa-samoa-snapback-nvy-wht"};
+const FIXTURES={"toa-samoa":[["2026-10-16","France"],["2026-10-24","Papua New Guinea"],["2026-11-01","Tonga"]],"mate-maa-tonga":[["2026-10-17","England"],["2026-10-23","Lebanon"],["2026-11-01","Samoa"]]};
+/* line item -> site product id (colour-aware) */
+const lineId=it=>{let id=SITE_ID(it.title);if(!id)return null;const col=String(it.variant||"").split("/")[0].trim();
+  if(id==="toa-685-black"&&/ROYAL/i.test(col))id="toa-685-tee";if(id==="mmt-676-black"&&/RED/i.test(col))id="mmt-676-tee";return id};
+const bought=()=>{const m=new Map();ORDERS.forEach(o=>o.items.forEach(it=>{const id=lineId(it);if(!id)return;const r=m.get(id)||{id,qty:0,last:o.date,title:it.title,image:it.image,size:null};
+  r.qty+=it.qty;if(o.date>r.last)r.last=o.date;const sz=String(it.variant||"").split("/").pop().trim();if(sz&&!/one size|osfa/i.test(sz))r.size=sz;m.set(id,r)}));return[...m.values()].sort((a,b)=>b.last.localeCompare(a.last))};
+const addBag=(id,size,qty=1)=>{try{const cart=JSON.parse(localStorage.getItem("pmn_cart")||"[]");const row=cart.find(c=>c.id===id&&c.size===size);
+  if(row)row.qty=Math.min(10,row.qty+qty);else cart.push({id,size,qty});localStorage.setItem("pmn_cart",JSON.stringify(cart));
+  try{window.pmnLog&&pmnLog("add_to_cart",{ref:id,title:(byId(id)||{}).n||id,url:"/shop/"+((byId(id)||{}).s||""),meta:{size,qty,from:"account"}})}catch(e){}}catch(e){}};
+const pcard=(x,extra,btn)=>`<a class="pc" href="/shop/${esc(x.s)}"${btn?'':''}><span class="im">${extra&&extra.tag?`<span class="tag">${esc(extra.tag)}</span>`:""}<img src="${esc(pimg(x))}" alt="" loading="lazy"></span><b>${esc(x.n)}</b>${extra&&extra.sub?`<small>${esc(extra.sub)}</small>`:""}<span class="pr">$${x.p}</span>${btn?`<button type="button" class="btn sm" data-bag="${esc(x.id)}" data-size="${esc(btn.size||"")}">${esc(btn.label||"Add to bag")}</button>`:""}</a>`;
+function renderSavings(){const el=$("savings");if(!el)return;const disc=ORDERS.reduce((n,o)=>n+(+o.discount||0),0),n=ORDERS.length;
+  const tees=ORDERS.reduce((a,o)=>a+o.items.filter(i=>/TEE/i.test(i.title)).reduce((b,i)=>b+i.qty,0),0),free=ORDERS.reduce((a,o)=>a+o.items.filter(i=>/TEE/i.test(i.title)&&!+i.price).reduce((b,i)=>b+i.qty,0),0);
+  const code=store.get("pmn_code");
+  el.innerHTML=`<div class="sv"><b class="${disc?"":"w"}">${money(disc,"USD")}</b><span>${n?`saved across ${n} order${n>1?"s":""}`:"saved so far. Your welcome code is waiting in your bag."}</span></div>
+    <div class="sv"><b class="w">${free}</b><span>free tee${free===1?"":"s"} claimed · ${(need=>need===0?"max free tees claimed":need===1?"your next tee is free":`${need} more tees to your next free one`)(tees>=8?0:4-tees%4)}</span><a href="/shop/all">Buy 3 tees, get 1 free</a></div>
+    <div class="sv"><b class="w">${code?esc(code):"Gift"}</b><span>${code?"off your next order, already in your bag":"A free gift from the PMN+ vault with every order"}</span><a href="#help">Member perks</a></div>`}
+function renderBuyAgain(){const el=$("buyAgainRow"),b=bought();$("sec-buyagain").hidden=false;
+  if(!b.length){el.innerHTML=`<div class="empty-row"><p>Everything you've bought shows up here, ready to reorder in a tap.</p><a class="btn sm" href="/shop">Shop the drop</a></div>`;return}
+  const cards=b.map(r=>{const x=byId(r.id);if(!x)return"";return pcard(x,{sub:r.size?`Last time: ${r.size}`:"",tag:r.qty>1?`×${r.qty}`:""},{size:r.size||(x.k==="hat"?"One size":""),label:"Buy again"})}).filter(Boolean);
+  /* goes with it: same team, not bought yet */
+  const teams=new Set(b.map(r=>(byId(r.id)||{}).t).filter(Boolean)),have=new Set(b.map(r=>r.id));
+  const goes=(CAT||[]).filter(x=>teams.has(x.t)&&!have.has(x.id)&&!x.so).slice(0,4).map(x=>pcard(x,{tag:"Goes with it"}));
+  el.innerHTML=cards.join("")+goes.join("")}
+function renderKeep(){const el=$("keepRow"),have=new Set(bought().map(r=>r.id)),sv=new Set((window.pmnSaved?window.pmnSaved.all():[]).map(x=>String(x.ref)));
+  const rows=AFF.map(a=>Object.assign({x:byRef(a.ref)},a)).filter(a=>a.x&&!have.has(a.x.id)&&!a.x.so);
+  const seen=new Set(),out=[];rows.forEach(a=>{if(seen.has(a.x.id))return;seen.add(a.x.id);out.push(a)});
+  $("sec-keep").hidden=!out.length;if(!out.length)return;
+  el.innerHTML=out.slice(0,12).map(a=>pcard(a.x,{sub:a.carts?"Was in your bag":a.views>1?`Viewed ${a.views} times`:"Viewed recently",tag:sv.has(a.x.id)?"Saved":""},{size:a.x.k==="hat"?"One size":"",label:a.x.k==="hat"?"Add to bag":"Pick a size"})).join("")}
+function renderFixture(){const el=$("fixture"),t=prof.favourite_team,fx=FIXTURES[t];if(!fx){el.hidden=true;return}
+  const now=new Date(),nx=fx.find(([d])=>new Date(d+"T23:59:59")>now);if(!nx){el.hidden=true;return}
+  const name=(TEAMS.find(x=>x.v===t)||{}).n,days=Math.ceil((new Date(nx[0]+"T12:00:00")-now)/864e5);
+  el.hidden=false;el.innerHTML=`<div><b>${esc(name)} vs ${esc(nx[1])}</b><span>${new Date(nx[0]+"T12:00:00").toLocaleDateString("en-US",{weekday:"long",month:"long",day:"numeric"})} · RLWC 2026</span></div><span class="cd">${days<=0?"Game day":days===1?"Tomorrow":"in "+days+" days"}</span>`}
+function renderContent(){const el=$("contentRow");const w=[],seen=new Set();WATCHED.forEach(e=>{if(!e.ref||seen.has(e.ref))return;seen.add(e.ref);w.push(e)});
+  const rc=(x,tag)=>`<a class="rc" href="${esc(x.url)}" target="_blank" rel="noopener" data-content-ref="${esc(x.id||x.ref)}" data-content-kind="reel" data-content-title="${esc(x.caption||x.title||"")}" data-content-image="${esc(x.thumb||x.image||"")}">${(x.thumb||x.image)?`<img src="${esc(x.thumb||x.image)}" alt="" loading="lazy" referrerpolicy="no-referrer">`:""}${tag?`<span class="tag">${tag}</span>`:""}<span class="pl"><svg viewBox="0 0 24 24"><path d="M7 4v16l13-8z"/></svg></span>${(x.caption||x.title)?`<span class="cap">${esc(x.caption||x.title)}</span>`:""}</a>`;
+  const fresh=(REELS||[]).filter(r=>!seen.has(String(r.id)));
+  $("contentH").textContent=w.length?"Watch again & new from PMN+":"Latest from PMN+";
+  const html=w.slice(0,6).map(x=>rc(x,"Watched")).join("")+fresh.map(x=>rc(x,"")).join("");
+  el.innerHTML=html||(REELS===null?'<div class="sk rc"></div>':`<div class="empty-row"><p>New reels land here as we post them.</p><a class="btn sm" href="https://www.instagram.com/polynesianmusicnetwork/" target="_blank" rel="noopener">Follow on Instagram</a></div>`)}
+function renderInterests(){const el=$("savedRow");if(!el)return;const a=(window.pmnSaved?window.pmnSaved.all():[]).filter(x=>x.kind==="product");
+  if(!a.length){el.innerHTML=`<div class="empty-row"><p>Tap the heart on any product and it shows up here, on every device you sign in on.</p><a class="btn sm" href="/shop/all">Browse the shop</a></div>`;return}
+  el.innerHTML=a.slice(0,12).map(x=>{const c=byId(String(x.ref));return c?pcard(c,{tag:"Saved"},{size:c.k==="hat"?"One size":"",label:c.k==="hat"?"Add to bag":"Pick a size"}):`<a class="pc" href="${esc(x.url||"/shop")}"><span class="im"><img src="${esc(String(x.image||"").replace(/^(https?:\/\/[^/]+)?\/hires\//,"$1/shop/hires/"))}" alt=""></span><b>${esc(x.title)}</b></a>`}).join("")}
+function renderReviews(){const ask=$("reviewAsk"),list=$("reviewList");
+  const done=new Set((REVIEWS||[]).map(r=>String(r.product.id)));
+  /* delivered items not yet reviewed -> star prompt (deep link opens the product's review form) */
+  const prompts=[];const seen=new Set();ORDERS.filter(o=>o.steps&&o.steps.delivered).forEach(o=>o.items.forEach(it=>{const id=lineId(it),pid=id&&KL_PID[HANDLE[id]];if(!pid||done.has(String(pid))||seen.has(pid))return;seen.add(pid);prompts.push({pid,it,x:byId(id)})}));
+  ask.hidden=!prompts.length;ask.innerHTML=prompts.slice(0,6).map(p=>`<div class="ask"><span class="im"><img src="${esc((p.x&&pimg(p.x))||p.it.image||"")}" alt=""></span><b>${esc(p.x?p.x.n:p.it.title)}</b><span class="stars" aria-label="Rate ${esc(p.x?p.x.n:p.it.title)}">${[1,2,3,4,5].map(n=>`<a href="/shop/?review=${p.pid}&rating=${n}" aria-label="${n} star${n>1?"s":""}">★</a>`).join("")}</span></div>`).join("");
+  if(REVIEWS===null){list.innerHTML='<div class="sk" style="height:80px"></div>';return}
+  if(!REVIEWS.length){list.innerHTML=`<div class="empty-row"><p>${prompts.length?"Rate your gear above — it takes 10 seconds and helps the next fan pick a size.":"Reviews you write show up here. After your first delivery we'll ask what you think."}</p></div>`;return}
+  list.innerHTML=REVIEWS.map(r=>`<div class="rv">${r.product.image?`<img src="${esc(r.product.image)}" alt="">`:"<span></span>"}<div><span class="st">${"★".repeat(r.rating||0)}${"☆".repeat(5-(r.rating||0))}</span>${r.status&&r.status!=="published"&&r.status!=="featured"?`<span class="pend">${esc(r.status)}</span>`:""}<b>${esc(r.title||r.product.name)}</b>${r.content?`<p>${esc(r.content)}</p>`:""}<small>${esc(r.product.name)} · ${fmtDate(r.created)}</small></div></div>`).join("")}
+function renderHome(){if(!CAT)return;try{renderSavings();renderBuyAgain();renderKeep();renderInterests();renderReviews();renderContent();renderFixture()}catch(e){console.warn(e)}}
+document.addEventListener("click",e=>{const b=e.target.closest&&e.target.closest("[data-bag]");if(!b)return;e.preventDefault();const id=b.dataset.bag,x=byId(id);
+  if(x&&x.k!=="hat"&&!b.dataset.size){location.href="/shop/"+x.s;return}addBag(id,b.dataset.size||"One size",1);b.textContent="Added ✓";setTimeout(()=>{location.href="/shop#bag"},350)});
+async function loadHome(){catLoad().then(renderHome);
+  fetch("/api/reels?limit=12").then(r=>r.json()).then(d=>{REELS=d.reels||[]}).catch(()=>{REELS=[]}).then(()=>renderHome());
+  try{await (window.pmnClaimEvents?window.pmnClaimEvents():0)}catch(e){}
+  try{const [a,w]=await Promise.all([sb.rpc("my_product_affinity",{p_days:90,p_limit:24}),sb.from("events").select("ref,title,image,url,created_at").eq("user_id",user.id).eq("name","view_content").order("created_at",{ascending:false}).limit(30)]);
+    AFF=a.data||[];WATCHED=w.data||[]}catch(e){}
+  renderHome();
+  try{const r=await api("/api/account/reviews");const j=r.ok?await r.json():{reviews:[]};REVIEWS=j.reviews||[]}catch(e){REVIEWS=[]}renderHome()}
 function renderPickers(){
   $("pTeam").innerHTML=PICK.map(t=>`<button type="button" class="pk" data-v="${t.v}" aria-pressed="${sel.team===t.v}">${t.img?`<img src="${t.img}" alt="">`:`<span class="gl">${t.gl}</span>`}${esc(t.n)}</button>`).join("");
   $("pCountry").innerHTML=COUNTRIES.map(c=>`<button type="button" class="chip" data-v="${esc(c)}" aria-pressed="${sel.country===c}">${esc(c)}</button>`).join("")}
@@ -599,10 +743,10 @@ function renderHeader(){const f=prof.first_name,l=prof.last_name;
   $("setupBar").style.width=Math.round(done/steps.length*100)+"%";
   $("setupTxt").textContent=`${done} of ${steps.length} done. Tell us your team and where you rep from so we can tailor drops to you.`;
   $("steps").innerHTML=steps.map(([n,ok])=>`<li class="${ok?"ok":""}">${n}</li>`).join("");
-  renderTeams()}
+  renderTeams();renderFixture()}
 
 async function loadAccount(s){session=s;user=s.user;show("vAcct");go(location.hash.slice(1));
-  setTimeout(()=>{try{renderSaved();window.pmnSaved&&(window.pmnSaved.onChange(renderSaved),window.pmnSaved.sync().then(renderSaved))}catch(e){}},0)
+  setTimeout(()=>{try{renderSaved();window.pmnSaved&&(window.pmnSaved.onChange(()=>{renderSaved();renderInterests();renderKeep()}),window.pmnSaved.sync().then(renderSaved))}catch(e){}},0);loadHome();
   store.set("pmn_email",user.email);   // checkout pre-fills with this
   $("pEmail").value=user.email;$("who").textContent=user.email;document.querySelectorAll(".em").forEach(x=>x.textContent=user.email);
   const {data:p}=await sb.from("profiles").select("first_name,last_name,country,favourite_team,marketing_opt_in,tier,created_at").eq("id",user.id).maybeSingle();

@@ -14,7 +14,7 @@ def build(root, nb):
     s=open(out).read()
     if 'id="yr"' in s and "getElementById('yr')" not in s:
         s=s.replace('</body>',"<script>document.getElementById('yr').textContent=new Date().getFullYear()</script>\n</body>",1);open(out,'w').write(s)
-    for rel in ('api/_account.js','api/account/link.js','api/account/orders.js'):
+    for rel in ('api/_account.js','api/account/link.js','api/account/orders.js','api/account/reviews.js'):
         dst=os.path.join(root,rel);os.makedirs(os.path.dirname(dst),exist_ok=True);shutil.copyfile(os.path.join(HERE,rel),dst)
     cfg=os.path.join(root,'assets','pmn-config.js')
     if not os.path.exists(cfg):

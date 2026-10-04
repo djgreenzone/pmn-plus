@@ -143,7 +143,7 @@ def _norm(t): t=unicodedata.normalize('NFD',t.lower());t=''.join(c for c in t if
 _idx=[]
 for pid,o in SD['products'].items():
     syn='tee t-shirt tshirt shirt top' if o['kind']=='tee' else 'hat cap snapback trucker'
-    _idx.append(dict(n=o['h1'],c=o['colour'],t=o['teamName'],k=o['kind'],p=o['price'],s=o['slug'],i='/shop/'+o['images'][0].split('/shop/')[1],so=o['sold'],
+    _idx.append(dict(id=pid,n=o['h1'],c=o['colour'],t=o['teamName'],k=o['kind'],p=o['price'],s=o['slug'],i='/shop/'+o['images'][0].split('/shop/')[1],so=o['sold'],
       h=' '+_norm(' '.join([o['h1'],o['colour'],o['teamName'],syn,o.get('keyword',''),'rlwc rugby league world cup 2026' if o['team']!='pmn' else 'pmn+ pmn plus pasifika']))+' '))
 _idx.sort(key=lambda x:x['so'])
 for x in _idx: x['h']=x['h'].strip()

@@ -227,3 +227,38 @@ const TXT=C.offerText||"Buy 3 tees, get 1 free",LINK=C.offerLink||"/shop#tee",CT
 const add=()=>document.querySelectorAll("header .pn").forEach(pn=>{if(pn.querySelector(".pn-offer"))return;const a=document.createElement("a");a.className="pn-offer";a.href=LINK;
   const FINE=C.offerFine||"";a.title=TXT+". Free tee: any standard tee in S–2XL. Max 2 per order. Can't be combined with discount codes.";a.innerHTML=`<b>${TXT}</b><span aria-hidden="true">·</span><u>${CTA}</u>${FINE?`<small class="pn-offer-fine">${FINE}</small>`:""}`;a.addEventListener("click",()=>{try{window.pmnTrack&&pmnTrack("select_promotion",{promotion_name:TXT})}catch(e){}});pn.prepend(a)});
 if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",add);else add();})();
+
+/* ---------- Behaviour log -> Supabase public.events. Every pmnTrack event, page view and content view, signed out (anon id) or in; the account page stitches anon history to the member on sign-in. ---------- */
+(()=>{
+const C=window.PMN_CONFIG||{},SB=C.supabaseUrl,AK=C.supabaseAnonKey;if(!SB||!AK)return;
+const g=(s,k)=>{try{return s.getItem(k)}catch(e){return null}},p=(s,k,v)=>{try{s.setItem(k,v)}catch(e){}};
+const uid=()=>(crypto.randomUUID?crypto.randomUUID():Date.now().toString(36)+Math.random().toString(36).slice(2));
+let aid=g(localStorage,"pmn_aid");if(!aid){aid=uid();p(localStorage,"pmn_aid",aid)}
+let sid=g(sessionStorage,"pmn_sid");if(!sid){sid=uid();p(sessionStorage,"pmn_sid",sid)}
+const auth=()=>{try{const ref=SB.split("//")[1].split(".")[0];const s=JSON.parse(g(localStorage,"sb-"+ref+"-auth-token")||"null");
+  return s&&s.access_token&&(s.expires_at||0)*1000>Date.now()+30000?{t:s.access_token,u:s.user&&s.user.id}:null}catch(e){return null}};
+const ctx=()=>{const q=new URLSearchParams(location.search),o={path:location.pathname,device:innerWidth<760?"mobile":innerWidth<1100?"tablet":"desktop"};
+  ["utm_source","utm_medium","utm_campaign"].forEach(k=>{if(q.get(k))o[k]=q.get(k)});const l=g(sessionStorage,"pmn_land");if(l)o.landing=l;return o};
+let q=[],t=null;
+function flush(){if(!q.length)return;const rows=q.splice(0,50),a=auth();
+  fetch(SB+"/rest/v1/events",{method:"POST",keepalive:true,headers:{apikey:AK,Authorization:"Bearer "+(a?a.t:AK),"Content-Type":"application/json",Prefer:"return=minimal"},
+    body:JSON.stringify(rows.map(r=>Object.assign({anon_id:aid,session_id:sid,user_id:a?a.u:null},r)))}).catch(()=>{});
+  if(q.length)flush()}
+const log=window.pmnLog=(name,d={})=>{try{q.push({name,ref:d.ref==null?null:String(d.ref),title:d.title||"",image:d.image||"",url:d.url||"",value:d.value==null?null:+d.value,
+  meta:Object.assign(ctx(),d.meta||{})});clearTimeout(t);t=setTimeout(flush,1500)}catch(e){}};
+addEventListener("pagehide",flush);document.addEventListener("visibilitychange",()=>{if(document.visibilityState==="hidden")flush()});
+/* mirror every analytics event */
+const orig=window.pmnTrack;window.pmnTrack=(name,d={})=>{try{orig&&orig(name,d)}catch(e){}
+  try{const it=(d.items||[])[0]||{};log(name,{ref:it.id||d.item_id||d.promotion_name||null,title:it.name||"",value:d.value,url:it.id&&/^[a-z0-9-]+$/.test(it.id)?"/shop/"+it.id:"",
+    meta:Object.assign({},it.size?{size:it.size}:{},it.qty?{qty:it.qty}:{},it.price?{price:it.price}:{},it.category?{team:it.category}:{},d.content_type?{content_type:d.content_type}:{})})}catch(e){}};
+/* page views: first paint + SPA route changes */
+let last="";const pv=()=>{const k=location.pathname;if(k===last)return;last=k;log("page_view",{ref:k,title:document.title,url:k,meta:{referrer:document.referrer||""}})};
+["pushState","replaceState"].forEach(f=>{const o=history[f];history[f]=function(){const r=o.apply(this,arguments);setTimeout(pv,0);return r}});addEventListener("popstate",pv);pv();
+/* content: any link with data-content-ref (reels, articles) */
+document.addEventListener("click",e=>{const a=e.target.closest&&e.target.closest("[data-content-ref]");if(!a)return;
+  log("view_content",{ref:a.dataset.contentRef,title:a.dataset.contentTitle||"",image:a.dataset.contentImage||"",url:a.href||"",meta:{content_type:a.dataset.contentKind||"reel"}})},true);
+/* signed-in visitor: attach anon history to the account once per browser */
+window.pmnClaimEvents=async()=>{const a=auth();if(!a)return 0;const k="pmn_claimed_"+a.u;if(g(localStorage,k))return 0;
+  const r=await fetch(SB+"/rest/v1/rpc/claim_events",{method:"POST",headers:{apikey:AK,Authorization:"Bearer "+a.t,"Content-Type":"application/json"},body:JSON.stringify({p_anon:aid})}).catch(()=>null);
+  if(r&&r.ok)p(localStorage,k,"1");return r&&r.ok?await r.json().catch(()=>0):0};
+})();

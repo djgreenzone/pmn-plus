@@ -63,3 +63,48 @@ grant update (first_name, last_name, country, favourite_team, marketing_opt_in) 
 revoke all on public.saved_items from anon, authenticated;
 grant select, insert, delete on public.saved_items to authenticated;
 revoke execute on function public.handle_new_user() from public, anon, authenticated;
+
+-- ---------- behaviour tracking (applied 2026-10-04 as migration events_tracking) ----------
+-- Every page view, product view, size pick, bag add, save, checkout start and content view,
+-- written from the browser (anon key) with a per-browser anon_id; claim_events() stitches it to the member on sign-in.
+create table if not exists public.events (
+  id bigint generated always as identity primary key,
+  user_id uuid references auth.users(id) on delete cascade,
+  anon_id text not null,
+  session_id text,
+  name text not null,          -- page_view, view_item, view_collection, select_size, view_size_guide, add_to_cart, add_to_wishlist, bundle_add, select_promotion, begin_checkout, view_content, select_content
+  ref text,                    -- product slug / site id, collection key, path, reel id
+  title text, image text, url text,
+  value numeric,
+  meta jsonb not null default '{}'::jsonb,   -- size, qty, price, team, device, path, landing, utm_*, referrer, content_type
+  created_at timestamptz not null default now()
+);
+create index if not exists events_user_idx on public.events(user_id, created_at desc);
+create index if not exists events_anon_idx on public.events(anon_id, created_at desc);
+create index if not exists events_name_ref_idx on public.events(name, ref);
+alter table public.events enable row level security;
+create policy "events insert" on public.events for insert to anon, authenticated with check (user_id is null or user_id = auth.uid());
+create policy "events read own" on public.events for select to authenticated using (user_id = auth.uid());
+create or replace function public.claim_events(p_anon text) returns integer
+language plpgsql security definer set search_path = public as $$
+declare n integer;
+begin
+  if auth.uid() is null then return 0; end if;
+  update public.events set user_id = auth.uid() where anon_id = p_anon and user_id is null;
+  get diagnostics n = row_count; return n;
+end $$;
+revoke all on function public.claim_events(text) from public;
+grant execute on function public.claim_events(text) to authenticated;
+-- "Keep shopping for": products this member looked at / put in the bag, newest first
+create or replace function public.my_product_affinity(p_days integer default 90, p_limit integer default 24)
+returns table(ref text, title text, image text, url text, views integer, carts integer, last_at timestamptz)
+language sql security invoker stable as $$
+  select ref, max(title) filter (where title<>''), max(image) filter (where image<>''), max(url) filter (where url<>''),
+         count(*) filter (where name in ('view_item','select_size','view_size_guide'))::int,
+         count(*) filter (where name='add_to_cart')::int, max(created_at)
+  from public.events
+  where user_id = auth.uid() and ref is not null and name in ('view_item','select_size','view_size_guide','add_to_cart')
+    and created_at > now() - make_interval(days => p_days)
+  group by ref order by max(created_at) desc limit p_limit
+$$;
+grant execute on function public.my_product_affinity(integer,integer) to authenticated;

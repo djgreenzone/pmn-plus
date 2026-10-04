@@ -1731,7 +1731,7 @@ const Coll=(()=>{
     const L=sortList(c.products.map(id=>BY[id]).filter(p=>p&&(filt==="all"||(filt==="pmn"?p.team==="pmn":p.kind===filt))),$("cSort").value);$("cCount").textContent=L.length+(L.length===1?" piece":" pieces");L.forEach(p=>{const b=document.createElement("a");b.className="gcard";b.href=pmnURL(p.id);b.dataset.id=p.id;
       b.innerHTML=`<span class="im">${SOLD.has(p.id)?'<i class="sold">Sold out</i>':""}<img loading="lazy" decoding="async" alt="${altFor(p).replace(/"/g,"&quot;")}" src="${heroURL(p.id)}"></span><b>${p.name}</b><span class="num">${SOLD.has(p.id)?"Sold out":money(p.price)}</span>`;
       pmnNav(b,()=>PDP.open(p.id,b.querySelector("img"),"coll"));g.append(b)})}
-  function show(k){key=k;const c=SEO.collections[k],team=k==="toa-samoa"?"samoa":k==="mate-maa-tonga"?"tonga":"all";if(k!==key||!$("cSort").dataset.t){$("cSort").value=k==="all"?"best":"feat";$("cSort").dataset.t=1}
+  function show(k){key=k;try{window.pmnLog&&pmnLog("view_collection",{ref:k,title:(SEO.collections[k]||{}).name||k,url:"/shop/"+k,meta:{filter:filt}})}catch(e){}const c=SEO.collections[k],team=k==="toa-samoa"?"samoa":k==="mate-maa-tonga"?"tonga":"all";if(k!==key||!$("cSort").dataset.t){$("cSort").value=k==="all"?"best":"feat";$("cSort").dataset.t=1}
     el.dataset.team=team;$("collH").textContent=c.name;$("cIntro").textContent=c.intro;$("crHere").textContent=c.name;
     $("cCrest").hidden=false;$("cCrest").src=team==="all"?"brand/pmn-plus-logo-white.svg":crestURL(team);$("cCrest").alt=c.name+(team==="all"?" logo":" crest");
     tabs.querySelectorAll("button").forEach(b=>b.setAttribute("aria-selected",b.dataset.k===k));

@@ -405,7 +405,7 @@ form.addEventListener('submit',async e=>{
     const r=await fetch('/api/reels?limit=12');const d=await r.json();
     if(!d.reels||!d.reels.length)throw new Error(d.error||'no reels');
     if(d.username){const u=document.getElementById('igUser');if(u)u.textContent='@'+d.username}
-    box.innerHTML=d.reels.map(x=>`<a class="reel" href="${esc(x.url)}" target="_blank" rel="noopener" aria-label="Watch reel on Instagram${x.caption?': '+esc(x.caption.slice(0,60)):''}">
+    box.innerHTML=d.reels.map(x=>`<a class="reel" href="${esc(x.url)}" target="_blank" rel="noopener" data-content-ref="${esc(x.id)}" data-content-kind="reel" data-content-title="${esc(x.caption||'')}" data-content-image="${esc(x.thumb||'')}" aria-label="Watch reel on Instagram${x.caption?': '+esc(x.caption.slice(0,60)):''}">
       ${x.thumb?`<img src="${esc(x.thumb)}" alt="" loading="lazy" referrerpolicy="no-referrer">`:''}
       ${x.video?`<video muted loop playsinline preload="none" data-src="${esc(x.video)}"></video>`:''}
       ${icon}<span class="play"><svg viewBox="0 0 24 24"><path d="M7 4v16l13-8z"/></svg></span>

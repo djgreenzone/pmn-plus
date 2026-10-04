@@ -1217,9 +1217,13 @@
    "keyword": "Tonga snapback white",
    "description": [
     "A two-tone high-profile snapback with a white crown and crimson brim. The front reads Est. 1986 Mate Ma'a Tonga with the crest; the left side carries a Pasifika Polynesian Music patch, the right side PMN+ and the Tonga flag.",
-    "Embroidered on all four sides, with a high-profile structured crown, flat brim and an adjustable snap closure."
+    "Four embroideries: front, back, left and right. 6-panel high-profile structured crown in a wool-look acrylic/polyester, retro flat bill and an adjustable plastic snap closure. OSFA (one size fits all)."
    ],
    "faq": [
+    {
+     "q": "Will it fit me?",
+     "a": "It's OSFA with an adjustable snap strap, which fits most adult heads."
+    },
     {
      "q": "How do I keep the white crown clean?",
      "a": "Spot clean with cold water, mild soap and a soft brush, then air dry. Don't machine wash or tumble dry a structured cap."
@@ -1293,7 +1297,7 @@
        "https://www.polynesianmusicnetwork.com/shop/hires/mmt-hp-snapback/mate-maa-tonga-high-profile-snapback-white-crimson-front-left.webp",
        "https://www.polynesianmusicnetwork.com/shop/hires/mmt-hp-snapback/mate-maa-tonga-high-profile-snapback-white-crimson-front.webp"
       ],
-      "description": "A two-tone high-profile snapback with a white crown and crimson brim. The front reads Est. 1986 Mate Ma'a Tonga with the crest; the left side carries a Pasifika Polynesian Music patch, the right side PMN+ and the Tonga flag. Embroidered on all four sides, with a high-profile structured crown, flat brim and an adjustable snap closure.",
+      "description": "A two-tone high-profile snapback with a white crown and crimson brim. The front reads Est. 1986 Mate Ma'a Tonga with the crest; the left side carries a Pasifika Polynesian Music patch, the right side PMN+ and the Tonga flag. Four embroideries: front, back, left and right. 6-panel high-profile structured crown in a wool-look acrylic/polyester, retro flat bill and an adjustable plastic snap closure. OSFA (one size fits all).",
       "url": "https://www.polynesianmusicnetwork.com/shop/mate-maa-tonga-high-profile-snapback-white-crimson",
       "audience": {
        "@type": "PeopleAudience",
@@ -1371,6 +1375,14 @@
       "mainEntity": [
        {
         "@type": "Question",
+        "name": "Will it fit me?",
+        "acceptedAnswer": {
+         "@type": "Answer",
+         "text": "It's OSFA with an adjustable snap strap, which fits most adult heads."
+        }
+       },
+       {
+        "@type": "Question",
         "name": "How do I keep the white crown clean?",
         "acceptedAnswer": {
          "@type": "Answer",
@@ -1434,9 +1446,13 @@
    "keyword": "Samoa snapback white",
    "description": [
     "A two-tone high-profile snapback with a white crown and navy brim. The front reads Est. 1986 Toa Samoa with the crest; the left side carries a Pasifika Polynesian Music patch, the right side PMN+ and the Samoa flag.",
-    "Embroidered on all four sides, with a high-profile structured crown, flat brim and an adjustable snap closure."
+    "Four embroideries: front, back, left and right. 6-panel high-profile structured crown in a wool-look acrylic/polyester, retro flat bill and an adjustable plastic snap closure. OSFA (one size fits all)."
    ],
    "faq": [
+    {
+     "q": "Will it fit me?",
+     "a": "It's OSFA with an adjustable snap strap, which fits most adult heads."
+    },
     {
      "q": "How do I keep the white crown clean?",
      "a": "Spot clean with cold water, mild soap and a soft brush, then air dry. Don't machine wash or tumble dry a structured cap."
@@ -1513,7 +1529,7 @@
        "https://www.polynesianmusicnetwork.com/shop/hires/toa-hp-snapback/toa-samoa-high-profile-snapback-navy-white-front-left.webp",
        "https://www.polynesianmusicnetwork.com/shop/hires/toa-hp-snapback/toa-samoa-high-profile-snapback-navy-white-front.webp"
       ],
-      "description": "A two-tone high-profile snapback with a white crown and navy brim. The front reads Est. 1986 Toa Samoa with the crest; the left side carries a Pasifika Polynesian Music patch, the right side PMN+ and the Samoa flag. Embroidered on all four sides, with a high-profile structured crown, flat brim and an adjustable snap closure.",
+      "description": "A two-tone high-profile snapback with a white crown and navy brim. The front reads Est. 1986 Toa Samoa with the crest; the left side carries a Pasifika Polynesian Music patch, the right side PMN+ and the Samoa flag. Four embroideries: front, back, left and right. 6-panel high-profile structured crown in a wool-look acrylic/polyester, retro flat bill and an adjustable plastic snap closure. OSFA (one size fits all).",
       "url": "https://www.polynesianmusicnetwork.com/shop/toa-samoa-high-profile-snapback-navy-white",
       "audience": {
        "@type": "PeopleAudience",
@@ -1589,6 +1605,14 @@
      {
       "@type": "FAQPage",
       "mainEntity": [
+       {
+        "@type": "Question",
+        "name": "Will it fit me?",
+        "acceptedAnswer": {
+         "@type": "Answer",
+         "text": "It's OSFA with an adjustable snap strap, which fits most adult heads."
+        }
+       },
        {
         "@type": "Question",
         "name": "How do I keep the white crown clean?",
@@ -2561,20 +2585,20 @@
    "slug": "mate-maa-tonga-trucker-snapback-black",
    "url": "https://www.polynesianmusicnetwork.com/shop/mate-maa-tonga-trucker-snapback-black",
    "title": "Mate Ma'a Tonga Trucker Snapback – Black | RLWC 2026 | PMN+",
-   "meta": "Black mesh-back Tonga trucker hat with an arched Mate Ma'a Tonga 2026 print and crest. $35. Printed to order and shipped across the USA by PMN+.",
+   "meta": "Black mesh-back Tonga trucker hat with an arched Mate Ma'a Tonga 2026 DTF print and crest. $35. Printed to order and shipped across the USA by PMN+.",
    "h1": "Mate Ma'a Tonga Trucker Snapback",
    "colour": "Black",
    "price": 35,
    "team": "tonga",
    "keyword": "Tonga trucker hat",
    "description": [
-    "A black mesh-back trucker with an arched Mate Ma'a Tonga 2026 print and the crest on the front panel.",
-    "Curved bill, breathable mesh side and back panels and an adjustable snap closure. OSFA (one size fits all)."
+    "A black mesh-back trucker with an arched Mate Ma'a Tonga 2026 design and the crest on the front panel, applied as a DTF (direct-to-film) transfer for a sharp, full-colour finish.",
+    "5-panel mid-profile structured trucker: a 60/40 cotton-polyester front panel, breathable 100% polyester mesh side and back panels, a cotton sweatband, a pre-curved bill and an adjustable plastic snap closure. OSFA (one size fits all)."
    ],
    "faq": [
     {
      "q": "Will it fit me?",
-     "a": "It's one size with an adjustable snap strap, which fits most adult heads."
+     "a": "It's OSFA with an adjustable snap strap, which fits most adult heads."
     },
     {
      "q": "When will my order arrive?",
@@ -2642,7 +2666,7 @@
        "https://www.polynesianmusicnetwork.com/shop/hires/mmt-trucker/mate-maa-tonga-trucker-snapback-black-front.webp",
        "https://www.polynesianmusicnetwork.com/shop/hires/mmt-trucker/mate-maa-tonga-trucker-snapback-black-front-left.webp"
       ],
-      "description": "A black mesh-back trucker with an arched Mate Ma'a Tonga 2026 print and the crest on the front panel. Curved bill, breathable mesh side and back panels and an adjustable snap closure. OSFA (one size fits all).",
+      "description": "A black mesh-back trucker with an arched Mate Ma'a Tonga 2026 design and the crest on the front panel, applied as a DTF (direct-to-film) transfer for a sharp, full-colour finish. 5-panel mid-profile structured trucker: a 60/40 cotton-polyester front panel, breathable 100% polyester mesh side and back panels, a cotton sweatband, a pre-curved bill and an adjustable plastic snap closure. OSFA (one size fits all).",
       "url": "https://www.polynesianmusicnetwork.com/shop/mate-maa-tonga-trucker-snapback-black",
       "audience": {
        "@type": "PeopleAudience",
@@ -2723,7 +2747,7 @@
         "name": "Will it fit me?",
         "acceptedAnswer": {
          "@type": "Answer",
-         "text": "It's one size with an adjustable snap strap, which fits most adult heads."
+         "text": "It's OSFA with an adjustable snap strap, which fits most adult heads."
         }
        },
        {
@@ -2775,20 +2799,20 @@
    "slug": "toa-samoa-trucker-snapback-black",
    "url": "https://www.polynesianmusicnetwork.com/shop/toa-samoa-trucker-snapback-black",
    "title": "Toa Samoa Trucker Snapback – Black | RLWC 2026 | PMN+",
-   "meta": "Black mesh-back Samoa trucker hat with an arched Toa Samoa 2026 print and crest. $35. Printed to order and shipped across the USA by PMN+.",
+   "meta": "Black mesh-back Samoa trucker hat with an arched Toa Samoa 2026 DTF print and crest. $35. Printed to order and shipped across the USA by PMN+.",
    "h1": "Toa Samoa Trucker Snapback",
    "colour": "Black",
    "price": 35,
    "team": "samoa",
    "keyword": "Samoa trucker hat",
    "description": [
-    "A black mesh-back trucker with an arched Toa Samoa 2026 print and the crest on the front panel.",
-    "Curved bill, breathable mesh side and back panels and an adjustable snap closure. OSFA (one size fits all)."
+    "A black mesh-back trucker with an arched Toa Samoa 2026 design and the crest on the front panel, applied as a DTF (direct-to-film) transfer for a sharp, full-colour finish.",
+    "5-panel mid-profile structured trucker: a 60/40 cotton-polyester front panel, breathable 100% polyester mesh side and back panels, a cotton sweatband, a pre-curved bill and an adjustable plastic snap closure. OSFA (one size fits all)."
    ],
    "faq": [
     {
      "q": "Will it fit me?",
-     "a": "It's one size with an adjustable snap strap, which fits most adult heads."
+     "a": "It's OSFA with an adjustable snap strap, which fits most adult heads."
     },
     {
      "q": "When will my order arrive?",
@@ -2856,7 +2880,7 @@
        "https://www.polynesianmusicnetwork.com/shop/hires/toa-trucker/toa-samoa-trucker-snapback-black-front.webp",
        "https://www.polynesianmusicnetwork.com/shop/hires/toa-trucker/toa-samoa-trucker-snapback-black-front-left.webp"
       ],
-      "description": "A black mesh-back trucker with an arched Toa Samoa 2026 print and the crest on the front panel. Curved bill, breathable mesh side and back panels and an adjustable snap closure. OSFA (one size fits all).",
+      "description": "A black mesh-back trucker with an arched Toa Samoa 2026 design and the crest on the front panel, applied as a DTF (direct-to-film) transfer for a sharp, full-colour finish. 5-panel mid-profile structured trucker: a 60/40 cotton-polyester front panel, breathable 100% polyester mesh side and back panels, a cotton sweatband, a pre-curved bill and an adjustable plastic snap closure. OSFA (one size fits all).",
       "url": "https://www.polynesianmusicnetwork.com/shop/toa-samoa-trucker-snapback-black",
       "audience": {
        "@type": "PeopleAudience",
@@ -2937,7 +2961,7 @@
         "name": "Will it fit me?",
         "acceptedAnswer": {
          "@type": "Answer",
-         "text": "It's one size with an adjustable snap strap, which fits most adult heads."
+         "text": "It's OSFA with an adjustable snap strap, which fits most adult heads."
         }
        },
        {
@@ -3207,20 +3231,20 @@
    "slug": "pmn-plus-trucker-hat-black",
    "url": "https://www.polynesianmusicnetwork.com/shop/pmn-plus-trucker-hat-black",
    "title": "PMN+ Trucker Hat – Black | Pasifika Apparel",
-   "meta": "Black mesh-back PMN+ trucker hat with the circle logo on the front panel. OSFA, snap closure. $35. Printed to order and shipped across the USA by PMN+.",
+   "meta": "Black mesh-back PMN+ trucker hat with the circle logo embroidered on the front panel. OSFA, snap closure. $35. Printed to order and shipped across the USA.",
    "h1": "PMN+ Trucker Hat",
    "colour": "Black",
    "price": 35,
    "team": "pmn",
    "keyword": "PMN+ trucker hat",
    "description": [
-    "The PMN+ core trucker in black, with the PMN+ circle logo on the front panel.",
-    "Curved bill, breathable mesh side and back panels and an adjustable snap closure. OSFA (one size fits all)."
+    "The PMN+ core trucker in black, with the PMN+ circle logo embroidered on the front panel.",
+    "5-panel mid-profile structured trucker: a 60/40 cotton-polyester front panel, breathable 100% polyester mesh side and back panels, a cotton sweatband, a pre-curved bill and an adjustable plastic snap closure. OSFA (one size fits all)."
    ],
    "faq": [
     {
      "q": "Will it fit me?",
-     "a": "It's one size with an adjustable snap strap, which fits most adult heads."
+     "a": "It's OSFA with an adjustable snap strap, which fits most adult heads."
     },
     {
      "q": "When will my order arrive?",
@@ -3288,7 +3312,7 @@
        "https://www.polynesianmusicnetwork.com/shop/hires/pmn-trucker/pmn-plus-trucker-hat-black-front-left.webp",
        "https://www.polynesianmusicnetwork.com/shop/hires/pmn-trucker/pmn-plus-trucker-hat-black-front.webp"
       ],
-      "description": "The PMN+ core trucker in black, with the PMN+ circle logo on the front panel. Curved bill, breathable mesh side and back panels and an adjustable snap closure. OSFA (one size fits all).",
+      "description": "The PMN+ core trucker in black, with the PMN+ circle logo embroidered on the front panel. 5-panel mid-profile structured trucker: a 60/40 cotton-polyester front panel, breathable 100% polyester mesh side and back panels, a cotton sweatband, a pre-curved bill and an adjustable plastic snap closure. OSFA (one size fits all).",
       "url": "https://www.polynesianmusicnetwork.com/shop/pmn-plus-trucker-hat-black",
       "audience": {
        "@type": "PeopleAudience",
@@ -3369,7 +3393,7 @@
         "name": "Will it fit me?",
         "acceptedAnswer": {
          "@type": "Answer",
-         "text": "It's one size with an adjustable snap strap, which fits most adult heads."
+         "text": "It's OSFA with an adjustable snap strap, which fits most adult heads."
         }
        },
        {
@@ -3429,12 +3453,12 @@
    "keyword": "PMN+ dad hat",
    "description": [
     "The PMN+ Classic Dad Hat in khaki, with the PMN+ circle logo embroidered in white on the front panel. An exclusive run, available only while stocks last.",
-    "100% cotton, unstructured low-profile crown, curved bill and an adjustable strap with a metal buckle. OSFA (one size fits all)."
+    "6-panel low-profile relaxed crown in 100% brushed cotton, with a cotton sweatband, ventilation eyelets, a pre-curved stitched bill and an adjustable strap with a brass buckle. OSFA (one size fits all)."
    ],
    "faq": [
     {
      "q": "Will it fit me?",
-     "a": "It's one size with an adjustable strap and metal buckle, which fits most adult heads."
+     "a": "It's OSFA with an adjustable strap and brass buckle, which fits most adult heads."
     },
     {
      "q": "Will it be restocked?",
@@ -3515,7 +3539,7 @@
        "https://www.polynesianmusicnetwork.com/shop/hires/pmn-dad-hat/pmn-plus-classic-dad-hat-khaki-left.webp",
        "https://www.polynesianmusicnetwork.com/shop/hires/pmn-dad-hat/pmn-plus-classic-dad-hat-khaki-front-left.webp"
       ],
-      "description": "The PMN+ Classic Dad Hat in khaki, with the PMN+ circle logo embroidered in white on the front panel. An exclusive run, available only while stocks last. 100% cotton, unstructured low-profile crown, curved bill and an adjustable strap with a metal buckle. OSFA (one size fits all).",
+      "description": "The PMN+ Classic Dad Hat in khaki, with the PMN+ circle logo embroidered in white on the front panel. An exclusive run, available only while stocks last. 6-panel low-profile relaxed crown in 100% brushed cotton, with a cotton sweatband, ventilation eyelets, a pre-curved stitched bill and an adjustable strap with a brass buckle. OSFA (one size fits all).",
       "url": "https://www.polynesianmusicnetwork.com/shop/pmn-plus-classic-dad-hat-khaki",
       "audience": {
        "@type": "PeopleAudience",
@@ -3596,7 +3620,7 @@
         "name": "Will it fit me?",
         "acceptedAnswer": {
          "@type": "Answer",
-         "text": "It's one size with an adjustable strap and metal buckle, which fits most adult heads."
+         "text": "It's OSFA with an adjustable strap and brass buckle, which fits most adult heads."
         }
        },
        {

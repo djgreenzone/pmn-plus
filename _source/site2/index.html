@@ -720,6 +720,18 @@ s.was{color:var(--ink-dim);font-weight:400;margin-left:4px}
       <div class="chips h-chips" role="group" aria-label="Filter products" id="hChips"><button class="chip" type="button" data-f="all" aria-pressed="true">All</button><button class="chip" type="button" data-f="tee" aria-pressed="false">Tees</button><button class="chip" type="button" data-f="hat" aria-pressed="false">Hats</button><button class="chip" type="button" data-f="tonga" aria-pressed="false">Mate Ma'a Tonga</button><button class="chip" type="button" data-f="samoa" aria-pressed="false">Toa Samoa</button><button class="chip" type="button" data-f="pmn" aria-pressed="false">PMN+</button></div>
       <div class="grid h-grid" id="hGridEl"></div>
     </section>
+    <section class="h-sec team-sec t-samoa" aria-labelledby="hSamoa">
+      <div class="h-row"><div class="team-head"><img src="brand/toa-samoa-rugby-league-crest.webp" alt="" id="hSamoaCrest"><div><span class="eyebrow h-eyebrow">685 · RLWC 2026</span><h2 class="h-title" id="hSamoa">Toa Samoa</h2></div></div><button class="link" type="button" data-coll="toa-samoa">Shop all</button></div>
+      <div class="big-rail" id="hSamoaRail"></div>
+    </section>
+    <section class="h-sec team-sec t-tonga" aria-labelledby="hTonga">
+      <div class="h-row"><div class="team-head"><img src="brand/mate-maa-tonga-rugby-league-crest.webp" alt="" id="hTongaCrest"><div><span class="eyebrow h-eyebrow">676 · RLWC 2026</span><h2 class="h-title" id="hTonga">Mate Ma'a Tonga</h2></div></div><button class="link" type="button" data-coll="mate-maa-tonga">Shop all</button></div>
+      <div class="big-rail" id="hTongaRail"></div>
+    </section>
+    <section class="h-sec h-light" aria-labelledby="hHats">
+      <div class="h-row"><div><span class="eyebrow h-eyebrow">Snapbacks, truckers &amp; more</span><h2 class="h-title" id="hHats">Crown the fit</h2></div><button class="link" type="button" id="hHatsAll">Shop hats</button></div>
+      <div class="rail" id="hHatRail"></div>
+    </section>
     <section class="h-sec repit" aria-labelledby="hRep">
       <div class="h-row"><div><span class="eyebrow h-eyebrow">@polynesianmusic</span><h2 class="h-title" id="hRep">Rep it with the fam</h2></div><a class="link" href="https://www.instagram.com/polynesianmusic/" target="_blank" rel="noopener">Follow us</a></div>
       <p class="h-sub">From the stands to the stage, PMN+ is there. Tag <b>@polynesianmusic</b> in your fit and you could be next.</p>
@@ -1533,6 +1545,10 @@ $("pTeam").onclick=()=>{const c=PDP.current(),t=BY[c]?BY[c].team:"tonga";documen
   const hgrid=()=>{hg.innerHTML="";const L=PRODUCTS.filter(p=>hf==="all"||p.kind===hf||p.team===hf);L.forEach(p=>hg.append(card(p,"gcard hcard")));$("hGridN").textContent=L.length+(L.length===1?" piece":" pieces")};
   hc.querySelectorAll(".chip").forEach(b=>b.onclick=()=>{hf=b.dataset.f;hc.querySelectorAll(".chip").forEach(x=>x.setAttribute("aria-pressed",x===b));hgrid()});
   hgrid();
+  PRODUCTS.filter(p=>p.team==="samoa").forEach(p=>$("hSamoaRail").append(card(p,"big")));
+  PRODUCTS.filter(p=>p.team==="tonga").forEach(p=>$("hTongaRail").append(card(p,"big")));
+  PRODUCTS.filter(p=>p.kind==="hat").forEach(p=>$("hHatRail").append(card(p,"card")));
+  $("hHatsAll").onclick=()=>Coll.open("all","hat");
   $("hSort").onclick=()=>Coll.open("all",["tee","hat","pmn"].includes(hf)?hf:"all");
   // story video: play only while on screen, never with reduced motion or data saver
   (()=>{const v=$("storyVid");if(!v)return;const save=navigator.connection&&navigator.connection.saveData;

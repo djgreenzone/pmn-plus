@@ -229,6 +229,7 @@ open(sys.argv[1],'w').write(s)
 print('sold out ok')
 
 exec(open(os.path.join(os.path.dirname(os.path.abspath(__file__)),'rev_add.py')).read())
+exec(open(os.path.join(os.path.dirname(os.path.abspath(__file__)),'saved_add.py')).read())
 
 # ---------- NAV: one header for the whole site (see nav/nav_build.py) ----------
 import importlib.util as _u

@@ -171,3 +171,52 @@ window.pmnAttribution=()=>{const ck=n=>(document.cookie.match("(?:^|; )"+n+"=([^
   return[["_ga_client_id",ga],["_fbp",ck("_fbp")],["_fbc",ck("_fbc")],["_ttp",ck("_ttp")],["_landing",(()=>{try{return sessionStorage.getItem("pmn_land")||""}catch(e){return""}})()]].filter(a=>a[1]).map(([key,value])=>({key,value}))};
 try{if(!sessionStorage.getItem("pmn_land"))sessionStorage.setItem("pmn_land",location.pathname+location.search)}catch(e){}
 })();
+
+/* ---------- Saved items (heart). Works signed out (this browser) and syncs to the PMN+ account (Supabase saved_items) when signed in. ---------- */
+(()=>{
+const KEY="pmn_saved",C=window.PMN_CONFIG||{},SB=C.supabaseUrl,AK=C.supabaseAnonKey;
+const rd=()=>{try{return JSON.parse(localStorage.getItem(KEY)||"[]")}catch(e){return[]}};
+const wr=a=>{try{localStorage.setItem(KEY,JSON.stringify(a))}catch(e){}};
+const tok=()=>{try{if(!SB)return null;const ref=SB.split("//")[1].split(".")[0];const s=JSON.parse(localStorage.getItem("sb-"+ref+"-auth-token")||"null");
+  return s&&s.access_token&&(s.expires_at||0)*1000>Date.now()+30000?s.access_token:null}catch(e){return null}};
+const api=(path,opt={})=>{const t=tok();if(!t)return Promise.resolve(null);
+  return fetch(SB+"/rest/v1/"+path,Object.assign({},opt,{headers:Object.assign({apikey:AK,Authorization:"Bearer "+t,"Content-Type":"application/json"},opt.headers||{})})).then(r=>r.ok?(r.status===204?[]:r.json().catch(()=>[])):null).catch(()=>null)};
+const k=(kind,ref)=>kind+":"+ref;
+const subs=[];const emit=()=>{const a=rd();subs.forEach(f=>{try{f(a)}catch(e){}});paint()};
+const S=window.pmnSaved={
+  all:rd,
+  has:(ref,kind="product")=>rd().some(x=>k(x.kind,x.ref)===k(kind,ref)),
+  toggle(item){item=Object.assign({kind:"product"},item);const a=rd(),i=a.findIndex(x=>k(x.kind,x.ref)===k(item.kind,item.ref));let on;
+    if(i>=0){a.splice(i,1);on=false;api(`saved_items?kind=eq.${encodeURIComponent(item.kind)}&ref=eq.${encodeURIComponent(item.ref)}`,{method:"DELETE"})}
+    else{const it={kind:item.kind,ref:String(item.ref),title:item.title||"",image:item.image||"",url:item.url||"",t:Date.now()};a.unshift(it);on=true;
+      api("saved_items?on_conflict=user_id,kind,ref",{method:"POST",headers:{Prefer:"resolution=ignore-duplicates,return=minimal"},body:JSON.stringify([{kind:it.kind,ref:it.ref,title:it.title,image:it.image,url:it.url}])});
+      try{window.pmnTrack&&window.pmnTrack("add_to_wishlist",{items:[{id:it.ref,name:it.title}]})}catch(e){}}
+    wr(a);emit();return on},
+  remove(ref,kind="product"){if(S.has(ref,kind))S.toggle({ref,kind})},
+  onChange(f){subs.push(f)},
+  /* merge this browser's saves with the account: called by /account after sign-in */
+  async sync(){const srv=await api("saved_items?select=kind,ref,title,image,url,created_at&order=created_at.desc");if(!srv)return rd();
+    const loc=rd(),have=new Set(srv.map(x=>k(x.kind,x.ref)));const up=loc.filter(x=>!have.has(k(x.kind,x.ref)));
+    if(up.length)await api("saved_items?on_conflict=user_id,kind,ref",{method:"POST",headers:{Prefer:"resolution=ignore-duplicates,return=minimal"},body:JSON.stringify(up.map(x=>({kind:x.kind,ref:x.ref,title:x.title,image:x.image,url:x.url})))});
+    const m=new Map();[...srv.map(x=>Object.assign({t:Date.parse(x.created_at)||0},x)),...loc].forEach(x=>{const kk=k(x.kind,x.ref);if(!m.has(kk))m.set(kk,x)});
+    const out=[...m.values()].sort((a,b)=>(b.t||0)-(a.t||0));wr(out);emit();return out}
+};
+/* header heart: shows once something is saved */
+const HEART='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20.5s-7.5-4.6-9.2-9.3C1.6 7.9 3.8 4.5 7.2 4.5c2 0 3.6 1.1 4.8 2.8 1.2-1.7 2.8-2.8 4.8-2.8 3.4 0 5.6 3.4 4.4 6.7-1.7 4.7-9.2 9.3-9.2 9.3z"/></svg>';
+window.PMN_HEART=HEART;
+function paint(){const n=rd().filter(x=>x.kind==="product").length;
+  document.querySelectorAll(".pn-r").forEach(r=>{let a=r.querySelector(".pn-saved");
+    if(!a){a=document.createElement("a");a.className="pn-ic pn-saved";a.href="/account#saved";a.innerHTML=HEART+'<span class="pn-sn"></span>';const ac=r.querySelector(".pn-acct");r.insertBefore(a,ac||r.lastChild)}
+    a.hidden=!n;a.setAttribute("aria-label",`Saved items (${n})`);a.querySelector(".pn-sn").textContent=n>9?"9+":n||""});
+  document.querySelectorAll("[data-save-ref]").forEach(b=>{const on=S.has(b.dataset.saveRef,b.dataset.saveKind||"product");b.classList.toggle("on",on);b.setAttribute("aria-pressed",on);b.setAttribute("aria-label",(on?"Remove from saved: ":"Save: ")+(b.dataset.saveTitle||"item"))})}
+/* any element with data-save-ref becomes a save toggle (works inside product-card buttons too) */
+document.addEventListener("click",e=>{const b=e.target.closest&&e.target.closest("[data-save-ref]");if(!b)return;e.preventDefault();e.stopPropagation();
+  const on=S.toggle({kind:b.dataset.saveKind||"product",ref:b.dataset.saveRef,title:b.dataset.saveTitle,image:b.dataset.saveImage,url:b.dataset.saveUrl});
+  b.classList.remove("pop");void b.offsetWidth;b.classList.add("pop");
+  const t=document.getElementById("pnSaveToast")||Object.assign(document.createElement("div"),{id:"pnSaveToast",className:"pn-stoast"});t.setAttribute("role","status");document.body.appendChild(t);
+  t.innerHTML=on?`Saved. <a href="/account#saved">View saved</a>`:"Removed from saved.";t.classList.add("on");clearTimeout(t._h);t._h=setTimeout(()=>t.classList.remove("on"),2600)},true);
+document.addEventListener("keydown",e=>{if((e.key==="Enter"||e.key===" ")&&e.target.matches&&e.target.matches("span[data-save-ref]")){e.preventDefault();e.target.click()}},true);
+addEventListener("storage",e=>{if(e.key===KEY)emit()});
+if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",paint);else paint();
+window.pmnSavedPaint=paint;
+})();

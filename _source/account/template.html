@@ -218,6 +218,7 @@ main{flex:1;width:min(1180px,100% - 2*clamp(1rem,5vw,2.5rem));margin:clamp(1.5re
 .mout .btn{width:auto;padding:0 1.6rem}
 @media (prefers-reduced-motion:reduce){.sk,.spin,.pane{animation:none}.toast,.tm,.bar i{transition:none}}
 {{FOOTCSS}}
+.svgrid{display:grid;gap:12px}.svi{display:grid;grid-template-columns:72px 1fr auto;gap:14px;align-items:center;padding:10px;border:1px solid var(--line);border-radius:14px}.svim{display:block;width:72px;height:72px;border-radius:10px;background:#fff;overflow:hidden}.svim img{width:100%;height:100%;object-fit:contain}.svtx{display:grid;gap:8px;justify-items:start;min-width:0}.svtx b{font-size:15px;line-height:1.3}.svempty{display:grid;gap:12px;justify-items:start}.svempty p{margin:0;color:var(--dim)}.svnote{margin:0 0 14px;padding:10px 14px;border-radius:12px;background:#15161a;border:1px solid var(--line);font-size:14px}@media(min-width:760px){.svgrid{grid-template-columns:1fr 1fr}}
 </style>
 </head>
 <body>
@@ -247,6 +248,7 @@ main{flex:1;width:min(1180px,100% - 2*clamp(1rem,5vw,2.5rem));margin:clamp(1.5re
     </div>
     <div class="panel">
       <form class="form" id="fEmail" novalidate>
+        <p class="svnote" id="svNote" hidden></p>
         <h2 class="disp">Sign in or join</h2>
         <p class="sub">Enter your email and we'll send you a 6-digit code. No password needed.</p>
         <div class="field"><label for="aEmail">Email</label><input id="aEmail" type="email" autocomplete="email" inputmode="email" placeholder="you@email.com" required></div>
@@ -278,6 +280,7 @@ main{flex:1;width:min(1180px,100% - 2*clamp(1rem,5vw,2.5rem));margin:clamp(1.5re
       <nav class="tabs" role="tablist">
         <a class="tab" href="#overview" data-tab="overview"><svg viewBox="0 0 24 24"><path d="M4 11l8-7 8 7v9H4z"/><path d="M10 20v-5h4v5"/></svg>Overview</a>
         <a class="tab" href="#orders" data-tab="orders"><svg viewBox="0 0 24 24"><path d="M5 8h14l-1 12H6z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg>Orders<span class="ct" id="ordCt"></span></a>
+        <a class="tab" href="#saved" data-tab="saved"><svg viewBox="0 0 24 24"><path d="M12 20.5s-7.5-4.6-9.2-9.3C1.6 7.9 3.8 4.5 7.2 4.5c2 0 3.6 1.1 4.8 2.8 1.2-1.7 2.8-2.8 4.8-2.8 3.4 0 5.6 3.4 4.4 6.7-1.7 4.7-9.2 9.3-9.2 9.3z"/></svg>Saved<span class="ct" id="savCt"></span></a>
         <a class="tab" href="#profile" data-tab="profile"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="3.6"/><path d="M4.5 20.5c1.2-3.6 4.2-5.6 7.5-5.6s6.3 2 7.5 5.6"/></svg>Profile</a>
         <a class="tab" href="#preferences" data-tab="preferences"><svg viewBox="0 0 24 24"><path d="M4 6h16v12H4z"/><path d="M4 7l8 6 8-6"/></svg>Preferences</a>
       </nav>
@@ -313,6 +316,10 @@ main{flex:1;width:min(1180px,100% - 2*clamp(1rem,5vw,2.5rem));margin:clamp(1.5re
       </div>
 
       <!-- orders -->
+      <div class="pane" data-pane="saved" hidden>
+        <header class="ph"><h1 class="disp">Saved</h1><p>The gear you've hearted. Saved on every device you sign in on.</p></header>
+        <div class="card"><div class="svgrid" id="savedList"></div></div>
+      </div>
       <div class="pane" data-pane="orders" hidden>
         <header class="ph"><h1 class="disp">Orders</h1><p>Status and tracking for everything you&rsquo;ve bought with <span class="em"></span>.</p></header>
         <div class="card"><div class="orders" id="orders"><div class="sk"></div><div class="sk"></div></div></div>
@@ -410,7 +417,10 @@ let prof={},sel={team:"",country:""},toastT;
 function toast(m,bad){$("toastTxt").textContent=m;$("toast").classList.toggle("bad",!!bad);$("toast").classList.add("on");clearTimeout(toastT);toastT=setTimeout(()=>$("toast").classList.remove("on"),2600)}
 
 /* tabs: #overview #orders #profile #preferences */
-const PANES=["overview","orders","profile","preferences"];
+const PANES=["overview","orders","saved","profile","preferences"];
+const escS=v=>String(v||"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+function renderSaved(){const S=window.pmnSaved;if(!S)return;const a=S.all().filter(x=>x.kind==="product"),el=$("savedList");$("savCt").textContent=a.length||"";if(!el)return;
+  el.innerHTML=a.length?a.map(x=>`<div class="svi"><a class="svim" href="${escS(x.url||"/shop")}"><img src="${escS(x.image)}" alt="" loading="lazy"></a><div class="svtx"><a href="${escS(x.url||"/shop")}"><b>${escS(x.title)}</b></a><a class="btn sm" href="${escS(x.url||"/shop")}">View</a></div><button type="button" class="sv-btn on" data-save-ref="${escS(x.ref)}" data-save-kind="product" data-save-title="${escS(x.title)}" aria-label="Remove ${escS(x.title)}">${window.PMN_HEART||"&#9825;"}</button></div>`).join(""):`<div class="svempty"><p>Nothing saved yet. Tap the heart on any product to keep it here.</p><a class="btn sm red" href="/shop">Shop the drop</a></div>`}
 function go(name,focus){if(!PANES.includes(name))name="overview";
   document.querySelectorAll("[data-pane]").forEach(p=>p.hidden=p.dataset.pane!==name);
   document.querySelectorAll(".tab[data-tab]").forEach(t=>{const on=t.dataset.tab===name;on?t.setAttribute("aria-current","page"):t.removeAttribute("aria-current");if(on&&focus)t.scrollIntoView({block:"nearest",inline:"center"})});
@@ -460,6 +470,7 @@ function renderHeader(){const f=prof.first_name,l=prof.last_name;
   renderTeams()}
 
 async function loadAccount(s){session=s;user=s.user;show("vAcct");go(location.hash.slice(1));
+  setTimeout(()=>{try{renderSaved();window.pmnSaved&&(window.pmnSaved.onChange(renderSaved),window.pmnSaved.sync().then(renderSaved))}catch(e){}},0)
   store.set("pmn_email",user.email);   // checkout pre-fills with this
   $("pEmail").value=user.email;$("who").textContent=user.email;document.querySelectorAll(".em").forEach(x=>x.textContent=user.email);
   const {data:p}=await sb.from("profiles").select("first_name,last_name,country,favourite_team,marketing_opt_in,tier,created_at").eq("id",user.id).maybeSingle();
@@ -490,6 +501,7 @@ $("out").onclick=signOut;$("out2").onclick=signOut;
 let started=false;
 sb.auth.onAuthStateChange((ev,s)=>{if(s&&(ev==="SIGNED_IN"||ev==="INITIAL_SESSION")){if(!user||user.id!==s.user.id)loadAccount(s);else session=s}else if(!s&&ev!=="TOKEN_REFRESHED"){show("vAuth")}started=true});
 setTimeout(()=>{if(!started)show("vAuth")},4000);
+try{const n=JSON.parse(localStorage.getItem("pmn_saved")||"[]").filter(x=>x.kind==="product").length;if(n){$("svNote").hidden=false;$("svNote").textContent=`You have ${n} saved item${n>1?"s":""} on this device. Sign in to keep ${n>1?"them":"it"} on every device.`}}catch(e){}
 })();
 </script>
 </body>

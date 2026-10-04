@@ -92,7 +92,7 @@ rep('  return{add,open,close};','  setBag();\n  return{add,open,close};')
 # remember the shopper's email from sign-ups so checkout is prefilled
 rep('async function klav(email,phone,props){','async function klav(email,phone,props){try{localStorage.setItem("pmn_email",email)}catch(e){}')
 # sold-out sizes from Shopify
-rep('b.className="size";b.textContent=s;','b.className="size";b.textContent=s;{const vv=typeof VAR!=="undefined"&&VAR[p.id]&&VAR[p.id][s];if((vv&&!vv.ok)||(typeof shopifyOK!=="undefined"&&shopifyOK&&VAR[p.id]&&!vv)){b.disabled=true;b.classList.add("so");b.setAttribute("aria-label",s+", sold out")}}')
+rep('b.className="size";b.textContent=s==="One size"?"OSFA":s;','b.className="size";b.textContent=s==="One size"?"OSFA":s;{const vv=typeof VAR!=="undefined"&&VAR[p.id]&&VAR[p.id][s];if((vv&&!vv.ok)||(typeof shopifyOK!=="undefined"&&shopifyOK&&VAR[p.id]&&!vv)){b.disabled=true;b.classList.add("so");b.setAttribute("aria-label",s+", sold out")}}')
 # drawer markup: code field + trust row
 rep('''    <p class="fine cart-msg" id="cartMsg" role="status"></p>''','''    <p class="fine cart-msg" id="cartMsg" role="status"></p>
     <p class="ctrust"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="10" width="14" height="10" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg><span><b>Secure checkout</b> · Visa · Mastercard · Amex · Apple Pay · Google Pay · Shop Pay</span></p>''')

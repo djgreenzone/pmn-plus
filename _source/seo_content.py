@@ -105,25 +105,25 @@ P = {
    m="Khaki PMN+ Classic Dad Hat with the PMN+ circle logo embroidered in white. Exclusive, while stocks last.",
    kw="PMN+ dad hat",
    d=["The PMN+ Classic Dad Hat in khaki, with the PMN+ circle logo embroidered in white on the front panel. An exclusive run, available only while stocks last.",
-      "100% cotton, unstructured low-profile crown, curved bill and an adjustable strap with a metal buckle. One size fits most."],
+      "100% cotton, unstructured low-profile crown, curved bill and an adjustable strap with a metal buckle. OSFA (one size fits all)."],
    faq=[("Will it fit me?","It's one size with an adjustable strap and metal buckle, which fits most adult heads."),("Will it be restocked?","It's an exclusive run, so once it sells out it may not come back.")]),
  "pmn-trucker": dict(
-   m="Black mesh-back PMN+ trucker hat with the circle logo on the front panel. One size, snap closure.",
+   m="Black mesh-back PMN+ trucker hat with the circle logo on the front panel. OSFA, snap closure.",
    kw="PMN+ trucker hat",
    d=["The PMN+ core trucker in black, with the PMN+ circle logo on the front panel.",
-      "Curved bill, breathable mesh side and back panels and an adjustable snap closure. One size fits most."],
+      "Curved bill, breathable mesh side and back panels and an adjustable snap closure. OSFA (one size fits all)."],
    faq=[("Will it fit me?","It's one size with an adjustable snap strap, which fits most adult heads.")]),
  "mmt-trucker": dict(
    m="Black mesh-back Tonga trucker hat with an arched Mate Ma'a Tonga 2026 print and crest.",
    kw="Tonga trucker hat",
    d=["A black mesh-back trucker with an arched Mate Ma'a Tonga 2026 print and the crest on the front panel.",
-      "Curved bill, breathable mesh side and back panels and an adjustable snap closure. One size fits most."],
+      "Curved bill, breathable mesh side and back panels and an adjustable snap closure. OSFA (one size fits all)."],
    faq=[("Will it fit me?","It's one size with an adjustable snap strap, which fits most adult heads.")]),
  "toa-trucker": dict(
    m="Black mesh-back Samoa trucker hat with an arched Toa Samoa 2026 print and crest.",
    kw="Samoa trucker hat",
    d=["A black mesh-back trucker with an arched Toa Samoa 2026 print and the crest on the front panel.",
-      "Curved bill, breathable mesh side and back panels and an adjustable snap closure. One size fits most."],
+      "Curved bill, breathable mesh side and back panels and an adjustable snap closure. OSFA (one size fits all)."],
    faq=[("Will it fit me?","It's one size with an adjustable snap strap, which fits most adult heads.")]),
 }
 

@@ -1,5 +1,5 @@
 """PMN+ store SEO content. One table; names swap here when the lookbook names arrive.
-Shipping, returns and care are typical print-to-order defaults, marked TO CONFIRM with JQF."""
+Shipping, returns and care copy for the PMN+ Shop."""
 import json
 
 DOMAIN = "https://www.polynesianmusicnetwork.com"
@@ -9,10 +9,9 @@ POLICY = {
     "production": "2–4 business days",
     "shipping": "3–7 business days",
     "total": "about 5–11 business days",
-    "returnDays": 30,
-    "returns": ("Wrong size? Exchange unworn, unwashed items within 30 days of delivery. "
-                "Misprinted, damaged or wrong items are replaced free: email a photo within 30 days. "
-                "Every piece is printed to order, so returns for change of mind are store credit, and the customer pays return postage."),
+    "returnDays": 0,
+    "returns": ("Every PMN+ piece is printed to order, just for you, so all sales are final. "
+                "If your item arrives misprinted, damaged or wrong, email a photo within 14 days of delivery and we'll replace it free."),
     "care": "Machine wash cold, inside out, with similar colours. Tumble dry low or hang dry. Do not iron directly on the print. Do not dry clean.",
 }
 
@@ -132,7 +131,7 @@ SHARED_FAQ = [
  ("When will my order arrive?", f"Each piece is printed to order. Printing takes {POLICY['production']}, then shipping takes {POLICY['shipping']} within the USA, so {POLICY['total']} in total. You'll get a tracking link by email when it ships."),
  ("Do you ship outside the USA?", "Not yet. We ship to all 50 US states, including Hawaii and Alaska. We're working on New Zealand and Australia."),
  ("What payment methods do you take?", "Visa, Mastercard, Amex, Apple Pay, Google Pay and Shop Pay at secure checkout."),
- ("What's your return and exchange policy?", POLICY["returns"]),
+ ("What's your return policy?", POLICY["returns"]),
  ("How do I wash it?", POLICY["care"]),
 ]
 

@@ -24,7 +24,7 @@ def trim(t,n):
     return t if len(t)<=n else t[:n-1].rsplit(' ',1)[0].rstrip(',.;:')+'…'
 out={'domain':D,'policy':POL,'sharedFaq':C['sharedFaq'],'collections':{},'products':{}}
 org={"@type":"Organization","@id":D+"/#org","name":"PMN+","alternateName":"Polynesian Music Network Plus","url":D,"logo":D+"/shop/brand/pmn-plus-logo-black.png","legalName":"Polynesian Music"}
-ret={"@type":"MerchantReturnPolicy","applicableCountry":"US","returnPolicyCategory":"https://schema.org/MerchantReturnFiniteReturnWindow","merchantReturnDays":POL['returnDays'],"returnMethod":"https://schema.org/ReturnByMail","returnFees":"https://schema.org/ReturnFeesCustomerResponsibility"}
+ret={"@type":"MerchantReturnPolicy","applicableCountry":"US","returnPolicyCategory":"https://schema.org/MerchantReturnNotPermitted"}
 prods=[p for p in prods if p['id'] not in HIDE]
 ship={"@type":"OfferShippingDetails","shippingRate":{"@type":"MonetaryAmount","value":"8.00","currency":"USD"},"shippingDestination":{"@type":"DefinedRegion","addressCountry":"US"},"deliveryTime":{"@type":"ShippingDeliveryTime","handlingTime":{"@type":"QuantitativeValue","minValue":2,"maxValue":4,"unitCode":"DAY"},"transitTime":{"@type":"QuantitativeValue","minValue":3,"maxValue":7,"unitCode":"DAY"}}}
 for p in prods:

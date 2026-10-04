@@ -4,8 +4,8 @@
   "production": "2–4 business days",
   "shipping": "3–7 business days",
   "total": "about 5–11 business days",
-  "returnDays": 30,
-  "returns": "Wrong size? Exchange unworn, unwashed items within 30 days of delivery. Misprinted, damaged or wrong items are replaced free: email a photo within 30 days. Every piece is printed to order, so returns for change of mind are store credit, and the customer pays return postage.",
+  "returnDays": 0,
+  "returns": "Every PMN+ piece is printed to order, just for you, so all sales are final. If your item arrives misprinted, damaged or wrong, email a photo within 14 days of delivery and we'll replace it free.",
   "care": "Machine wash cold, inside out, with similar colours. Tumble dry low or hang dry. Do not iron directly on the print. Do not dry clean."
  },
  "sharedFaq": [
@@ -22,8 +22,8 @@
    "Visa, Mastercard, Amex, Apple Pay, Google Pay and Shop Pay at secure checkout."
   ],
   [
-   "What's your return and exchange policy?",
-   "Wrong size? Exchange unworn, unwashed items within 30 days of delivery. Misprinted, damaged or wrong items are replaced free: email a photo within 30 days. Every piece is printed to order, so returns for change of mind are store credit, and the customer pays return postage."
+   "What's your return policy?",
+   "Every PMN+ piece is printed to order, just for you, so all sales are final. If your item arrives misprinted, damaged or wrong, email a photo within 14 days of delivery and we'll replace it free."
   ],
   [
    "How do I wash it?",
@@ -218,8 +218,8 @@
      "a": "Visa, Mastercard, Amex, Apple Pay, Google Pay and Shop Pay at secure checkout."
     },
     {
-     "q": "What's your return and exchange policy?",
-     "a": "Wrong size? Exchange unworn, unwashed items within 30 days of delivery. Misprinted, damaged or wrong items are replaced free: email a photo within 30 days. Every piece is printed to order, so returns for change of mind are store credit, and the customer pays return postage."
+     "q": "What's your return policy?",
+     "a": "Every PMN+ piece is printed to order, just for you, so all sales are final. If your item arrives misprinted, damaged or wrong, email a photo within 14 days of delivery and we'll replace it free."
     },
     {
      "q": "How do I wash it?",
@@ -294,10 +294,7 @@
        "hasMerchantReturnPolicy": {
         "@type": "MerchantReturnPolicy",
         "applicableCountry": "US",
-        "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
-        "merchantReturnDays": 30,
-        "returnMethod": "https://schema.org/ReturnByMail",
-        "returnFees": "https://schema.org/ReturnFeesCustomerResponsibility"
+        "returnPolicyCategory": "https://schema.org/MerchantReturnNotPermitted"
        },
        "shippingDetails": {
         "@type": "OfferShippingDetails",
@@ -388,10 +385,10 @@
        },
        {
         "@type": "Question",
-        "name": "What's your return and exchange policy?",
+        "name": "What's your return policy?",
         "acceptedAnswer": {
          "@type": "Answer",
-         "text": "Wrong size? Exchange unworn, unwashed items within 30 days of delivery. Misprinted, damaged or wrong items are replaced free: email a photo within 30 days. Every piece is printed to order, so returns for change of mind are store credit, and the customer pays return postage."
+         "text": "Every PMN+ piece is printed to order, just for you, so all sales are final. If your item arrives misprinted, damaged or wrong, email a photo within 14 days of delivery and we'll replace it free."
         }
        },
        {
@@ -439,8 +436,8 @@
      "a": "Visa, Mastercard, Amex, Apple Pay, Google Pay and Shop Pay at secure checkout."
     },
     {
-     "q": "What's your return and exchange policy?",
-     "a": "Wrong size? Exchange unworn, unwashed items within 30 days of delivery. Misprinted, damaged or wrong items are replaced free: email a photo within 30 days. Every piece is printed to order, so returns for change of mind are store credit, and the customer pays return postage."
+     "q": "What's your return policy?",
+     "a": "Every PMN+ piece is printed to order, just for you, so all sales are final. If your item arrives misprinted, damaged or wrong, email a photo within 14 days of delivery and we'll replace it free."
     },
     {
      "q": "How do I wash it?",
@@ -515,10 +512,7 @@
        "hasMerchantReturnPolicy": {
         "@type": "MerchantReturnPolicy",
         "applicableCountry": "US",
-        "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
-        "merchantReturnDays": 30,
-        "returnMethod": "https://schema.org/ReturnByMail",
-        "returnFees": "https://schema.org/ReturnFeesCustomerResponsibility"
+        "returnPolicyCategory": "https://schema.org/MerchantReturnNotPermitted"
        },
        "shippingDetails": {
         "@type": "OfferShippingDetails",
@@ -609,10 +603,10 @@
        },
        {
         "@type": "Question",
-        "name": "What's your return and exchange policy?",
+        "name": "What's your return policy?",
         "acceptedAnswer": {
          "@type": "Answer",
-         "text": "Wrong size? Exchange unworn, unwashed items within 30 days of delivery. Misprinted, damaged or wrong items are replaced free: email a photo within 30 days. Every piece is printed to order, so returns for change of mind are store credit, and the customer pays return postage."
+         "text": "Every PMN+ piece is printed to order, just for you, so all sales are final. If your item arrives misprinted, damaged or wrong, email a photo within 14 days of delivery and we'll replace it free."
         }
        },
        {
@@ -660,8 +654,8 @@
      "a": "Visa, Mastercard, Amex, Apple Pay, Google Pay and Shop Pay at secure checkout."
     },
     {
-     "q": "What's your return and exchange policy?",
-     "a": "Wrong size? Exchange unworn, unwashed items within 30 days of delivery. Misprinted, damaged or wrong items are replaced free: email a photo within 30 days. Every piece is printed to order, so returns for change of mind are store credit, and the customer pays return postage."
+     "q": "What's your return policy?",
+     "a": "Every PMN+ piece is printed to order, just for you, so all sales are final. If your item arrives misprinted, damaged or wrong, email a photo within 14 days of delivery and we'll replace it free."
     },
     {
      "q": "How do I wash it?",
@@ -739,10 +733,7 @@
        "hasMerchantReturnPolicy": {
         "@type": "MerchantReturnPolicy",
         "applicableCountry": "US",
-        "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
-        "merchantReturnDays": 30,
-        "returnMethod": "https://schema.org/ReturnByMail",
-        "returnFees": "https://schema.org/ReturnFeesCustomerResponsibility"
+        "returnPolicyCategory": "https://schema.org/MerchantReturnNotPermitted"
        },
        "shippingDetails": {
         "@type": "OfferShippingDetails",
@@ -841,10 +832,10 @@
        },
        {
         "@type": "Question",
-        "name": "What's your return and exchange policy?",
+        "name": "What's your return policy?",
         "acceptedAnswer": {
          "@type": "Answer",
-         "text": "Wrong size? Exchange unworn, unwashed items within 30 days of delivery. Misprinted, damaged or wrong items are replaced free: email a photo within 30 days. Every piece is printed to order, so returns for change of mind are store credit, and the customer pays return postage."
+         "text": "Every PMN+ piece is printed to order, just for you, so all sales are final. If your item arrives misprinted, damaged or wrong, email a photo within 14 days of delivery and we'll replace it free."
         }
        },
        {
@@ -892,8 +883,8 @@
      "a": "Visa, Mastercard, Amex, Apple Pay, Google Pay and Shop Pay at secure checkout."
     },
     {
-     "q": "What's your return and exchange policy?",
-     "a": "Wrong size? Exchange unworn, unwashed items within 30 days of delivery. Misprinted, damaged or wrong items are replaced free: email a photo within 30 days. Every piece is printed to order, so returns for change of mind are store credit, and the customer pays return postage."
+     "q": "What's your return policy?",
+     "a": "Every PMN+ piece is printed to order, just for you, so all sales are final. If your item arrives misprinted, damaged or wrong, email a photo within 14 days of delivery and we'll replace it free."
     },
     {
      "q": "How do I wash it?",
@@ -974,10 +965,7 @@
        "hasMerchantReturnPolicy": {
         "@type": "MerchantReturnPolicy",
         "applicableCountry": "US",
-        "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
-        "merchantReturnDays": 30,
-        "returnMethod": "https://schema.org/ReturnByMail",
-        "returnFees": "https://schema.org/ReturnFeesCustomerResponsibility"
+        "returnPolicyCategory": "https://schema.org/MerchantReturnNotPermitted"
        },
        "shippingDetails": {
         "@type": "OfferShippingDetails",
@@ -1076,10 +1064,10 @@
        },
        {
         "@type": "Question",
-        "name": "What's your return and exchange policy?",
+        "name": "What's your return policy?",
         "acceptedAnswer": {
          "@type": "Answer",
-         "text": "Wrong size? Exchange unworn, unwashed items within 30 days of delivery. Misprinted, damaged or wrong items are replaced free: email a photo within 30 days. Every piece is printed to order, so returns for change of mind are store credit, and the customer pays return postage."
+         "text": "Every PMN+ piece is printed to order, just for you, so all sales are final. If your item arrives misprinted, damaged or wrong, email a photo within 14 days of delivery and we'll replace it free."
         }
        },
        {
@@ -1127,8 +1115,8 @@
      "a": "Visa, Mastercard, Amex, Apple Pay, Google Pay and Shop Pay at secure checkout."
     },
     {
-     "q": "What's your return and exchange policy?",
-     "a": "Wrong size? Exchange unworn, unwashed items within 30 days of delivery. Misprinted, damaged or wrong items are replaced free: email a photo within 30 days. Every piece is printed to order, so returns for change of mind are store credit, and the customer pays return postage."
+     "q": "What's your return policy?",
+     "a": "Every PMN+ piece is printed to order, just for you, so all sales are final. If your item arrives misprinted, damaged or wrong, email a photo within 14 days of delivery and we'll replace it free."
     },
     {
      "q": "How do I wash it?",
@@ -1202,10 +1190,7 @@
        "hasMerchantReturnPolicy": {
         "@type": "MerchantReturnPolicy",
         "applicableCountry": "US",
-        "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
-        "merchantReturnDays": 30,
-        "returnMethod": "https://schema.org/ReturnByMail",
-        "returnFees": "https://schema.org/ReturnFeesCustomerResponsibility"
+        "returnPolicyCategory": "https://schema.org/MerchantReturnNotPermitted"
        },
        "shippingDetails": {
         "@type": "OfferShippingDetails",
@@ -1296,10 +1281,10 @@
        },
        {
         "@type": "Question",
-        "name": "What's your return and exchange policy?",
+        "name": "What's your return policy?",
         "acceptedAnswer": {
          "@type": "Answer",
-         "text": "Wrong size? Exchange unworn, unwashed items within 30 days of delivery. Misprinted, damaged or wrong items are replaced free: email a photo within 30 days. Every piece is printed to order, so returns for change of mind are store credit, and the customer pays return postage."
+         "text": "Every PMN+ piece is printed to order, just for you, so all sales are final. If your item arrives misprinted, damaged or wrong, email a photo within 14 days of delivery and we'll replace it free."
         }
        },
        {
@@ -1347,8 +1332,8 @@
      "a": "Visa, Mastercard, Amex, Apple Pay, Google Pay and Shop Pay at secure checkout."
     },
     {
-     "q": "What's your return and exchange policy?",
-     "a": "Wrong size? Exchange unworn, unwashed items within 30 days of delivery. Misprinted, damaged or wrong items are replaced free: email a photo within 30 days. Every piece is printed to order, so returns for change of mind are store credit, and the customer pays return postage."
+     "q": "What's your return policy?",
+     "a": "Every PMN+ piece is printed to order, just for you, so all sales are final. If your item arrives misprinted, damaged or wrong, email a photo within 14 days of delivery and we'll replace it free."
     },
     {
      "q": "How do I wash it?",
@@ -1425,10 +1410,7 @@
        "hasMerchantReturnPolicy": {
         "@type": "MerchantReturnPolicy",
         "applicableCountry": "US",
-        "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
-        "merchantReturnDays": 30,
-        "returnMethod": "https://schema.org/ReturnByMail",
-        "returnFees": "https://schema.org/ReturnFeesCustomerResponsibility"
+        "returnPolicyCategory": "https://schema.org/MerchantReturnNotPermitted"
        },
        "shippingDetails": {
         "@type": "OfferShippingDetails",
@@ -1519,10 +1501,10 @@
        },
        {
         "@type": "Question",
-        "name": "What's your return and exchange policy?",
+        "name": "What's your return policy?",
         "acceptedAnswer": {
          "@type": "Answer",
-         "text": "Wrong size? Exchange unworn, unwashed items within 30 days of delivery. Misprinted, damaged or wrong items are replaced free: email a photo within 30 days. Every piece is printed to order, so returns for change of mind are store credit, and the customer pays return postage."
+         "text": "Every PMN+ piece is printed to order, just for you, so all sales are final. If your item arrives misprinted, damaged or wrong, email a photo within 14 days of delivery and we'll replace it free."
         }
        },
        {
@@ -1570,8 +1552,8 @@
      "a": "Visa, Mastercard, Amex, Apple Pay, Google Pay and Shop Pay at secure checkout."
     },
     {
-     "q": "What's your return and exchange policy?",
-     "a": "Wrong size? Exchange unworn, unwashed items within 30 days of delivery. Misprinted, damaged or wrong items are replaced free: email a photo within 30 days. Every piece is printed to order, so returns for change of mind are store credit, and the customer pays return postage."
+     "q": "What's your return policy?",
+     "a": "Every PMN+ piece is printed to order, just for you, so all sales are final. If your item arrives misprinted, damaged or wrong, email a photo within 14 days of delivery and we'll replace it free."
     },
     {
      "q": "How do I wash it?",
@@ -1652,10 +1634,7 @@
        "hasMerchantReturnPolicy": {
         "@type": "MerchantReturnPolicy",
         "applicableCountry": "US",
-        "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
-        "merchantReturnDays": 30,
-        "returnMethod": "https://schema.org/ReturnByMail",
-        "returnFees": "https://schema.org/ReturnFeesCustomerResponsibility"
+        "returnPolicyCategory": "https://schema.org/MerchantReturnNotPermitted"
        },
        "shippingDetails": {
         "@type": "OfferShippingDetails",
@@ -1754,10 +1733,10 @@
        },
        {
         "@type": "Question",
-        "name": "What's your return and exchange policy?",
+        "name": "What's your return policy?",
         "acceptedAnswer": {
          "@type": "Answer",
-         "text": "Wrong size? Exchange unworn, unwashed items within 30 days of delivery. Misprinted, damaged or wrong items are replaced free: email a photo within 30 days. Every piece is printed to order, so returns for change of mind are store credit, and the customer pays return postage."
+         "text": "Every PMN+ piece is printed to order, just for you, so all sales are final. If your item arrives misprinted, damaged or wrong, email a photo within 14 days of delivery and we'll replace it free."
         }
        },
        {
@@ -1805,8 +1784,8 @@
      "a": "Visa, Mastercard, Amex, Apple Pay, Google Pay and Shop Pay at secure checkout."
     },
     {
-     "q": "What's your return and exchange policy?",
-     "a": "Wrong size? Exchange unworn, unwashed items within 30 days of delivery. Misprinted, damaged or wrong items are replaced free: email a photo within 30 days. Every piece is printed to order, so returns for change of mind are store credit, and the customer pays return postage."
+     "q": "What's your return policy?",
+     "a": "Every PMN+ piece is printed to order, just for you, so all sales are final. If your item arrives misprinted, damaged or wrong, email a photo within 14 days of delivery and we'll replace it free."
     },
     {
      "q": "How do I wash it?",
@@ -1887,10 +1866,7 @@
        "hasMerchantReturnPolicy": {
         "@type": "MerchantReturnPolicy",
         "applicableCountry": "US",
-        "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
-        "merchantReturnDays": 30,
-        "returnMethod": "https://schema.org/ReturnByMail",
-        "returnFees": "https://schema.org/ReturnFeesCustomerResponsibility"
+        "returnPolicyCategory": "https://schema.org/MerchantReturnNotPermitted"
        },
        "shippingDetails": {
         "@type": "OfferShippingDetails",
@@ -1989,10 +1965,10 @@
        },
        {
         "@type": "Question",
-        "name": "What's your return and exchange policy?",
+        "name": "What's your return policy?",
         "acceptedAnswer": {
          "@type": "Answer",
-         "text": "Wrong size? Exchange unworn, unwashed items within 30 days of delivery. Misprinted, damaged or wrong items are replaced free: email a photo within 30 days. Every piece is printed to order, so returns for change of mind are store credit, and the customer pays return postage."
+         "text": "Every PMN+ piece is printed to order, just for you, so all sales are final. If your item arrives misprinted, damaged or wrong, email a photo within 14 days of delivery and we'll replace it free."
         }
        },
        {
@@ -2040,8 +2016,8 @@
      "a": "Visa, Mastercard, Amex, Apple Pay, Google Pay and Shop Pay at secure checkout."
     },
     {
-     "q": "What's your return and exchange policy?",
-     "a": "Wrong size? Exchange unworn, unwashed items within 30 days of delivery. Misprinted, damaged or wrong items are replaced free: email a photo within 30 days. Every piece is printed to order, so returns for change of mind are store credit, and the customer pays return postage."
+     "q": "What's your return policy?",
+     "a": "Every PMN+ piece is printed to order, just for you, so all sales are final. If your item arrives misprinted, damaged or wrong, email a photo within 14 days of delivery and we'll replace it free."
     },
     {
      "q": "How do I wash it?",
@@ -2122,10 +2098,7 @@
        "hasMerchantReturnPolicy": {
         "@type": "MerchantReturnPolicy",
         "applicableCountry": "US",
-        "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
-        "merchantReturnDays": 30,
-        "returnMethod": "https://schema.org/ReturnByMail",
-        "returnFees": "https://schema.org/ReturnFeesCustomerResponsibility"
+        "returnPolicyCategory": "https://schema.org/MerchantReturnNotPermitted"
        },
        "shippingDetails": {
         "@type": "OfferShippingDetails",
@@ -2216,10 +2189,10 @@
        },
        {
         "@type": "Question",
-        "name": "What's your return and exchange policy?",
+        "name": "What's your return policy?",
         "acceptedAnswer": {
          "@type": "Answer",
-         "text": "Wrong size? Exchange unworn, unwashed items within 30 days of delivery. Misprinted, damaged or wrong items are replaced free: email a photo within 30 days. Every piece is printed to order, so returns for change of mind are store credit, and the customer pays return postage."
+         "text": "Every PMN+ piece is printed to order, just for you, so all sales are final. If your item arrives misprinted, damaged or wrong, email a photo within 14 days of delivery and we'll replace it free."
         }
        },
        {
@@ -2267,8 +2240,8 @@
      "a": "Visa, Mastercard, Amex, Apple Pay, Google Pay and Shop Pay at secure checkout."
     },
     {
-     "q": "What's your return and exchange policy?",
-     "a": "Wrong size? Exchange unworn, unwashed items within 30 days of delivery. Misprinted, damaged or wrong items are replaced free: email a photo within 30 days. Every piece is printed to order, so returns for change of mind are store credit, and the customer pays return postage."
+     "q": "What's your return policy?",
+     "a": "Every PMN+ piece is printed to order, just for you, so all sales are final. If your item arrives misprinted, damaged or wrong, email a photo within 14 days of delivery and we'll replace it free."
     },
     {
      "q": "How do I wash it?",
@@ -2346,10 +2319,7 @@
        "hasMerchantReturnPolicy": {
         "@type": "MerchantReturnPolicy",
         "applicableCountry": "US",
-        "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
-        "merchantReturnDays": 30,
-        "returnMethod": "https://schema.org/ReturnByMail",
-        "returnFees": "https://schema.org/ReturnFeesCustomerResponsibility"
+        "returnPolicyCategory": "https://schema.org/MerchantReturnNotPermitted"
        },
        "shippingDetails": {
         "@type": "OfferShippingDetails",
@@ -2440,10 +2410,10 @@
        },
        {
         "@type": "Question",
-        "name": "What's your return and exchange policy?",
+        "name": "What's your return policy?",
         "acceptedAnswer": {
          "@type": "Answer",
-         "text": "Wrong size? Exchange unworn, unwashed items within 30 days of delivery. Misprinted, damaged or wrong items are replaced free: email a photo within 30 days. Every piece is printed to order, so returns for change of mind are store credit, and the customer pays return postage."
+         "text": "Every PMN+ piece is printed to order, just for you, so all sales are final. If your item arrives misprinted, damaged or wrong, email a photo within 14 days of delivery and we'll replace it free."
         }
        },
        {
@@ -2491,8 +2461,8 @@
      "a": "Visa, Mastercard, Amex, Apple Pay, Google Pay and Shop Pay at secure checkout."
     },
     {
-     "q": "What's your return and exchange policy?",
-     "a": "Wrong size? Exchange unworn, unwashed items within 30 days of delivery. Misprinted, damaged or wrong items are replaced free: email a photo within 30 days. Every piece is printed to order, so returns for change of mind are store credit, and the customer pays return postage."
+     "q": "What's your return policy?",
+     "a": "Every PMN+ piece is printed to order, just for you, so all sales are final. If your item arrives misprinted, damaged or wrong, email a photo within 14 days of delivery and we'll replace it free."
     },
     {
      "q": "How do I wash it?",
@@ -2563,10 +2533,7 @@
        "hasMerchantReturnPolicy": {
         "@type": "MerchantReturnPolicy",
         "applicableCountry": "US",
-        "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
-        "merchantReturnDays": 30,
-        "returnMethod": "https://schema.org/ReturnByMail",
-        "returnFees": "https://schema.org/ReturnFeesCustomerResponsibility"
+        "returnPolicyCategory": "https://schema.org/MerchantReturnNotPermitted"
        },
        "shippingDetails": {
         "@type": "OfferShippingDetails",
@@ -2657,10 +2624,10 @@
        },
        {
         "@type": "Question",
-        "name": "What's your return and exchange policy?",
+        "name": "What's your return policy?",
         "acceptedAnswer": {
          "@type": "Answer",
-         "text": "Wrong size? Exchange unworn, unwashed items within 30 days of delivery. Misprinted, damaged or wrong items are replaced free: email a photo within 30 days. Every piece is printed to order, so returns for change of mind are store credit, and the customer pays return postage."
+         "text": "Every PMN+ piece is printed to order, just for you, so all sales are final. If your item arrives misprinted, damaged or wrong, email a photo within 14 days of delivery and we'll replace it free."
         }
        },
        {
@@ -2708,8 +2675,8 @@
      "a": "Visa, Mastercard, Amex, Apple Pay, Google Pay and Shop Pay at secure checkout."
     },
     {
-     "q": "What's your return and exchange policy?",
-     "a": "Wrong size? Exchange unworn, unwashed items within 30 days of delivery. Misprinted, damaged or wrong items are replaced free: email a photo within 30 days. Every piece is printed to order, so returns for change of mind are store credit, and the customer pays return postage."
+     "q": "What's your return policy?",
+     "a": "Every PMN+ piece is printed to order, just for you, so all sales are final. If your item arrives misprinted, damaged or wrong, email a photo within 14 days of delivery and we'll replace it free."
     },
     {
      "q": "How do I wash it?",
@@ -2777,10 +2744,7 @@
        "hasMerchantReturnPolicy": {
         "@type": "MerchantReturnPolicy",
         "applicableCountry": "US",
-        "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
-        "merchantReturnDays": 30,
-        "returnMethod": "https://schema.org/ReturnByMail",
-        "returnFees": "https://schema.org/ReturnFeesCustomerResponsibility"
+        "returnPolicyCategory": "https://schema.org/MerchantReturnNotPermitted"
        },
        "shippingDetails": {
         "@type": "OfferShippingDetails",
@@ -2871,10 +2835,10 @@
        },
        {
         "@type": "Question",
-        "name": "What's your return and exchange policy?",
+        "name": "What's your return policy?",
         "acceptedAnswer": {
          "@type": "Answer",
-         "text": "Wrong size? Exchange unworn, unwashed items within 30 days of delivery. Misprinted, damaged or wrong items are replaced free: email a photo within 30 days. Every piece is printed to order, so returns for change of mind are store credit, and the customer pays return postage."
+         "text": "Every PMN+ piece is printed to order, just for you, so all sales are final. If your item arrives misprinted, damaged or wrong, email a photo within 14 days of delivery and we'll replace it free."
         }
        },
        {
@@ -2922,8 +2886,8 @@
      "a": "Visa, Mastercard, Amex, Apple Pay, Google Pay and Shop Pay at secure checkout."
     },
     {
-     "q": "What's your return and exchange policy?",
-     "a": "Wrong size? Exchange unworn, unwashed items within 30 days of delivery. Misprinted, damaged or wrong items are replaced free: email a photo within 30 days. Every piece is printed to order, so returns for change of mind are store credit, and the customer pays return postage."
+     "q": "What's your return policy?",
+     "a": "Every PMN+ piece is printed to order, just for you, so all sales are final. If your item arrives misprinted, damaged or wrong, email a photo within 14 days of delivery and we'll replace it free."
     },
     {
      "q": "How do I wash it?",
@@ -2998,10 +2962,7 @@
        "hasMerchantReturnPolicy": {
         "@type": "MerchantReturnPolicy",
         "applicableCountry": "US",
-        "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
-        "merchantReturnDays": 30,
-        "returnMethod": "https://schema.org/ReturnByMail",
-        "returnFees": "https://schema.org/ReturnFeesCustomerResponsibility"
+        "returnPolicyCategory": "https://schema.org/MerchantReturnNotPermitted"
        },
        "shippingDetails": {
         "@type": "OfferShippingDetails",
@@ -3092,10 +3053,10 @@
        },
        {
         "@type": "Question",
-        "name": "What's your return and exchange policy?",
+        "name": "What's your return policy?",
         "acceptedAnswer": {
          "@type": "Answer",
-         "text": "Wrong size? Exchange unworn, unwashed items within 30 days of delivery. Misprinted, damaged or wrong items are replaced free: email a photo within 30 days. Every piece is printed to order, so returns for change of mind are store credit, and the customer pays return postage."
+         "text": "Every PMN+ piece is printed to order, just for you, so all sales are final. If your item arrives misprinted, damaged or wrong, email a photo within 14 days of delivery and we'll replace it free."
         }
        },
        {
@@ -3143,8 +3104,8 @@
      "a": "Visa, Mastercard, Amex, Apple Pay, Google Pay and Shop Pay at secure checkout."
     },
     {
-     "q": "What's your return and exchange policy?",
-     "a": "Wrong size? Exchange unworn, unwashed items within 30 days of delivery. Misprinted, damaged or wrong items are replaced free: email a photo within 30 days. Every piece is printed to order, so returns for change of mind are store credit, and the customer pays return postage."
+     "q": "What's your return policy?",
+     "a": "Every PMN+ piece is printed to order, just for you, so all sales are final. If your item arrives misprinted, damaged or wrong, email a photo within 14 days of delivery and we'll replace it free."
     },
     {
      "q": "How do I wash it?",
@@ -3215,10 +3176,7 @@
        "hasMerchantReturnPolicy": {
         "@type": "MerchantReturnPolicy",
         "applicableCountry": "US",
-        "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
-        "merchantReturnDays": 30,
-        "returnMethod": "https://schema.org/ReturnByMail",
-        "returnFees": "https://schema.org/ReturnFeesCustomerResponsibility"
+        "returnPolicyCategory": "https://schema.org/MerchantReturnNotPermitted"
        },
        "shippingDetails": {
         "@type": "OfferShippingDetails",
@@ -3309,10 +3267,10 @@
        },
        {
         "@type": "Question",
-        "name": "What's your return and exchange policy?",
+        "name": "What's your return policy?",
         "acceptedAnswer": {
          "@type": "Answer",
-         "text": "Wrong size? Exchange unworn, unwashed items within 30 days of delivery. Misprinted, damaged or wrong items are replaced free: email a photo within 30 days. Every piece is printed to order, so returns for change of mind are store credit, and the customer pays return postage."
+         "text": "Every PMN+ piece is printed to order, just for you, so all sales are final. If your item arrives misprinted, damaged or wrong, email a photo within 14 days of delivery and we'll replace it free."
         }
        },
        {
@@ -3364,8 +3322,8 @@
      "a": "Visa, Mastercard, Amex, Apple Pay, Google Pay and Shop Pay at secure checkout."
     },
     {
-     "q": "What's your return and exchange policy?",
-     "a": "Wrong size? Exchange unworn, unwashed items within 30 days of delivery. Misprinted, damaged or wrong items are replaced free: email a photo within 30 days. Every piece is printed to order, so returns for change of mind are store credit, and the customer pays return postage."
+     "q": "What's your return policy?",
+     "a": "Every PMN+ piece is printed to order, just for you, so all sales are final. If your item arrives misprinted, damaged or wrong, email a photo within 14 days of delivery and we'll replace it free."
     },
     {
      "q": "How do I wash it?",
@@ -3451,10 +3409,7 @@
        "hasMerchantReturnPolicy": {
         "@type": "MerchantReturnPolicy",
         "applicableCountry": "US",
-        "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
-        "merchantReturnDays": 30,
-        "returnMethod": "https://schema.org/ReturnByMail",
-        "returnFees": "https://schema.org/ReturnFeesCustomerResponsibility"
+        "returnPolicyCategory": "https://schema.org/MerchantReturnNotPermitted"
        },
        "shippingDetails": {
         "@type": "OfferShippingDetails",
@@ -3553,10 +3508,10 @@
        },
        {
         "@type": "Question",
-        "name": "What's your return and exchange policy?",
+        "name": "What's your return policy?",
         "acceptedAnswer": {
          "@type": "Answer",
-         "text": "Wrong size? Exchange unworn, unwashed items within 30 days of delivery. Misprinted, damaged or wrong items are replaced free: email a photo within 30 days. Every piece is printed to order, so returns for change of mind are store credit, and the customer pays return postage."
+         "text": "Every PMN+ piece is printed to order, just for you, so all sales are final. If your item arrives misprinted, damaged or wrong, email a photo within 14 days of delivery and we'll replace it free."
         }
        },
        {

@@ -24,7 +24,7 @@
   /* coming back from checkout (Back button / bfcache): unlock the button */
   addEventListener("pageshow",()=>busy(false,""));busy(false,"");
   /* discount code: validated against Shopify, applied at checkout */
-  function showCode(){const has=!!code;$("codeForm").hidden=has;$("codeOn").hidden=!has;$("codeTag").textContent=code}
+  function showCode(){const has=!!code;$("codeForm").hidden=has;$("codeOn").hidden=!has;$("codeTag").textContent=code;window.pmnCodeNote&&pmnCodeNote()}
   $("codeToggle").onclick=()=>{const f=$("codeBox");f.hidden=!f.hidden;$("codeToggle").setAttribute("aria-expanded",!f.hidden);if(!f.hidden)$("codeIn").focus()};
   $("codeForm").addEventListener("submit",async ev=>{ev.preventDefault();const c=$("codeIn").value.trim().toUpperCase();const m=$("codeMsg");
     if(!c){m.textContent="Enter a code.";return}

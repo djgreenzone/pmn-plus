@@ -734,6 +734,25 @@ s.was{color:var(--ink-dim);font-weight:400;margin-left:4px}
 .bx .bar{height:6px;border-radius:99px;background:rgba(255,255,255,.12);overflow:hidden}.bx .bar i{display:block;height:100%;width:0;background:#C8102E;border-radius:inherit;transition:width .35s ease}
 .bx.done .bar i{background:#3DDC84}.bx small{font-size:11.5px;color:var(--ink-dim)}
 .promo{display:none!important}
+.bx{margin:12px 16px 0;min-width:0}
+.seg{display:grid;gap:4px}.seg i{height:22px;border-radius:6px;background:transparent;box-shadow:inset 0 0 0 1.5px rgba(61,220,132,.55);font-style:normal;font-size:9.5px;font-weight:800;letter-spacing:.08em;display:grid;place-items:center;color:#3DDC84;transition:background .25s,box-shadow .25s}
+.seg i.f,.seg i.got{background:#3DDC84;box-shadow:none;color:#08240f}
+.bx.done{border-color:rgba(61,220,132,.45)}
+.code-warn{margin:0;font-size:12px;line-height:1.4;color:#f3c76b}.code-warn[hidden]{display:none}
+#pStars.zero{display:none}
+.title-block{position:relative}.title-block #pSave{position:absolute;top:0;right:0}#pName{padding-right:56px}.p-namerow:has(#pStars.zero){margin:0;padding:0;min-height:0;height:0;border:0}
+#pSwatches[hidden]{display:none}#pPromo[hidden]{display:none}.pdp-ship b{color:#17703f}#pdp .sheet .pdp-ship b{color:#17703f}
+.deal,#pdp .sheet .deal{background:#fff;color:#15130f;box-shadow:none;border:1.5px solid #d8d0c2;border-radius:16px;padding:10px 12px;gap:10px;transition:border-color .15s,background .15s}
+.deal.on,#pdp .sheet .deal.on{border-color:#17703f;background:#f3faf5}
+.deal .tier,.deal .tier[aria-checked="true"]{grid-template-columns:22px auto minmax(0,1fr) auto;border:0;box-shadow:none;background:none;padding:0;cursor:pointer}
+.deal .ck{width:22px;height:22px;border-radius:7px;border:2px solid #9b9488;background:#fff;display:grid;place-items:center}
+.deal .tier[aria-checked="true"] .ck{background:#17703f;border-color:#17703f}
+.deal .tier[aria-checked="true"] .ck::after{content:"";width:6px;height:11px;border:solid #fff;border-width:0 2.5px 2.5px 0;transform:translateY(-1px) rotate(45deg)}
+.deal .tt b{font-size:14px}.deal .tpr b{font-size:15px;color:#17703f}
+#pdp .sheet .pick-l,.deal .pick-l{color:#5d574d}
+.mto{margin:10px 0 0}.mto summary{list-style:none;cursor:pointer;font-size:12px;line-height:1.5;color:var(--ink-dim)}.mto summary::-webkit-details-marker{display:none}
+.mto .mto-more{text-decoration:underline;text-underline-offset:2px;color:var(--ink)}.mto[open] .mto-more{display:none}.mto p{margin:4px 0 0;font-size:12px;line-height:1.5;color:var(--ink-dim)}
+@media (min-width:900px){#pSticky{display:none!important}}
 </style>
 
 <div id="app">
@@ -866,30 +885,25 @@ s.was{color:var(--ink-dim);font-weight:400;margin-left:4px}
           <div class="p-namerow"><div id="pStars" class="p-stars"></div><button type="button" class="sv-btn" id="pSave" aria-pressed="false" aria-label="Save"></button></div>
           <div class="price-row"><strong class="num" id="pPrice">$55.00</strong></div>
           <p class="facts" id="pFacts"></p>
-          <p class="pdp-ship"><b>Game Day Set:</b> save $10 when you pair any tee with a hat</p>
+          <p class="pdp-ship" id="pPromo"></p>
         </div>
         <div class="opt"><div class="opt-h"><span class="eyebrow">Colour</span><span id="pColour"></span></div><div class="swatches" id="pSwatches" role="group" aria-label="Colour"></div></div>
         <div class="opt"><div class="opt-h"><span class="eyebrow">Size <span class="size-note" id="pSizeNote"></span></span><button class="link" id="pGuideBtn" type="button">Size guide</button></div><div class="sizes" id="pSizes" role="group" aria-label="Size"></div></div>
-        <section class="deal" id="pDeal" aria-labelledby="dealH">
-          <div class="deal-h"><b id="dealH">Bundle &amp; save</b><span id="dealSub">Save $10 on a tee + hat</span></div>
-          <div class="tiers" role="radiogroup" aria-labelledby="dealH">
-            <button type="button" role="radio" class="tier" id="tierOne"><i class="rd"></i><span class="pics"><img id="t1Img" alt=""></span><span class="tt"><b id="t1Name"></b><span id="t1Sub"></span></span><span class="tpr"><b class="num" id="t1Price"></b></span></button>
-            <button type="button" role="radio" class="tier set" id="tierSet"><span class="badge">Best value</span><i class="rd"></i><span class="pics"><img id="t2ImgA" alt=""><i aria-hidden="true">+</i><img id="t2ImgB" alt=""></span><span class="tt"><b>Game Day Set</b><span id="t2Sub"></span><span class="save" id="t2Save">You save $10</span></span><span class="tpr"><b class="num" id="t2Price"></b><s class="num" id="t2Was"></s></span></button>
-          </div>
+        <section class="deal" id="pDeal" aria-label="Bundle and save">
+          <button type="button" role="checkbox" class="tier" id="tierSet" aria-checked="false"><i class="ck" aria-hidden="true"></i><span class="pics"><img id="t2ImgB" alt=""></span><span class="tt"><b id="dealH">Add a hat, save $10</b><span id="t2Sub"></span></span><span class="tpr"><b class="num" id="t2Price"></b><s class="num" id="t2Was"></s></span></button>
           <div class="pick" id="dealPick" hidden>
             <span class="pick-l" id="pickL">Choose your hat</span>
             <div class="cmp" id="dealCmp" role="group"></div>
             <span class="pick-l" id="cszL" hidden>Tee size</span>
             <div class="csz" id="dealCsz" role="group" aria-label="Tee size" hidden></div>
           </div>
-          <p class="deal-f">Discount applies automatically in your bag</p>
         </section>
         <div class="buy-row">
           <div class="qty" role="group" aria-label="Quantity"><button type="button" id="qMinus" aria-label="Decrease quantity">−</button><span class="num" id="qVal" aria-live="polite">1</span><button type="button" id="qPlus" aria-label="Increase quantity">+</button></div>
           <button class="buy" id="pBuy">Add to bag</button>
           <form class="bis" id="pBis" hidden novalidate><p class="bis-h">Back soon. Get an email the moment it restocks.</p><div class="bis-row"><label class="sr" for="bisEmail">Email address</label><input id="bisEmail" type="email" inputmode="email" autocomplete="email" placeholder="Email address" required><button class="bis-go" type="submit">Notify me</button></div><p class="bis-msg" id="bisMsg" role="status"></p><p class="bis-fine">We&#39;ll also send PMN+ drop news. Unsubscribe anytime.</p></form>
         </div>
-        <p class="mto"><b>Made to order:</b> This product is produced specifically for you. Please verify your size and order details before checkout. Returns or exchanges are not accepted for incorrect size selection or change of mind. Defective or incorrect items will be reviewed and, when approved, corrected. <button type="button" class="link" data-page="returns">Return policy</button></p>
+        <details class="mto"><summary><b>Made to order:</b> This product is produced specifically for you. Please verify your size and order details before checkout. <span class="mto-more">More</span></summary><p>Returns or exchanges are not accepted for incorrect size selection or change of mind. Defective or incorrect items will be reviewed and, when approved, corrected. <button type="button" class="link" data-page="returns">Return policy</button></p></details>
         <ul class="trust">
           <li><svg viewBox="0 0 24 24"><path d="M3 7h11v9H3zM14 10h4l3 3v3h-7"/><circle cx="7" cy="17.5" r="1.6"/><circle cx="17" cy="17.5" r="1.6"/></svg><span><b>Ships in the USA</b>Printed and fulfilled by JQF</span></li>
           <li><svg viewBox="0 0 24 24"><rect x="4" y="10" width="16" height="10" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg><span><b>Secure checkout</b>Card, Apple Pay or Shop Pay</span></li>
@@ -967,7 +981,7 @@ s.was{color:var(--ink-dim);font-weight:400;margin-left:4px}
 <div class="scrim" id="scrim" hidden></div>
 <aside class="drawer" id="cart" role="dialog" aria-modal="true" aria-labelledby="cartH" hidden>
   <header class="dr-h"><h2 id="cartH">Your bag <span class="num" id="cartN"></span></h2><button class="icon-btn" id="cartX" aria-label="Close bag"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button></header>
-  <div class="bx" id="bx" hidden><p id="bxTxt"></p><div class="bar" role="progressbar" aria-label="Progress to a free tee" aria-valuemin="0" aria-valuemax="100" id="bxBar"><i id="bxFill"></i></div><small id="bxFine">Free tee: any non-oversized tee, S–2XL. Max 2 free per order. Can't be combined with other offers or discount codes.</small></div>
+  <div class="bx" id="bx" hidden><p id="bxTxt"></p><div class="seg" id="bxSeg" role="img"></div><small id="bxFine">Free tee = any standard tee in S–2XL (not oversized). Max 2 free per order. Can't be combined with discount codes.</small></div>
   <div class="ship" id="ship" hidden><p id="shipTxt"></p><div class="bar" role="progressbar" aria-label="Progress to free shipping" aria-valuemin="0" aria-valuemax="100" id="shipBar"><i id="shipFill"></i></div></div>
   <div class="dr-body" id="cartBody"></div>
   <footer class="dr-foot" id="cartFoot">
@@ -1176,6 +1190,7 @@ function klReviews(p){
   if(st.dataset.pid==String(pid))return;st.dataset.pid=pid;
   const t=(p.kind==="hat"||/hat|snapback|trucker/i.test(p.name))?"Hats":"T-Shirts";
   const esc=v=>String(v).replace(/&/g,"&amp;").replace(/"/g,"&quot;");
+  if(!st._mo){st._mo=new MutationObserver(()=>st.classList.toggle("zero",/(^|\D)0\s*reviews?/i.test(st.textContent)||!st.textContent.trim()));st._mo.observe(st,{childList:true,subtree:true,characterData:true})}
   st.innerHTML=`<div class="klaviyo-star-rating-widget" data-id="${pid}" data-product-title="${esc(p.name)}" data-product-type="${t}"></div>`;
   box.innerHTML=`<div id="klaviyo-reviews-all" data-id="${pid}"></div>`;
 }
@@ -1518,7 +1533,7 @@ const PDP=(()=>{
     $("pTeam").textContent=teamName(p);$("pName").textContent=p.name;try{klReviews(p)}catch(e){}try{svPdp(p)}catch(e){}$("pPrice").textContent=money(p.price);
     const opts=p.opts.map(o=>BY[o]);
     $("pColour").textContent=`${p.colourName} · ${teamName(p)}`;
-    const sw=$("pSwatches");sw.innerHTML="";
+    const sw=$("pSwatches");sw.innerHTML="";sw.hidden=opts.length<2;$("pPromo").innerHTML=p.kind==="tee"?`<b>Buy 3 tees, get 1 free</b> · mix any designs`:"";$("pPromo").hidden=p.kind!=="tee";
     opts.forEach(o=>{const b=document.createElement("button");b.className="sw";b.style.setProperty("--c",o.swatch);b.setAttribute("aria-pressed",o.id===p.id);
       b.innerHTML=`<i></i>${o.team===p.team?o.colourName:(o.team==="samoa"?"Samoa":"Tonga")}`;b.setAttribute("aria-label",`${o.colourName}, ${teamName(o)} version`);b.onclick=()=>o.id!==cur&&swap(o.id);sw.append(b)});
     const sz=$("pSizes");sz.innerHTML="";
@@ -1567,23 +1582,23 @@ const PDP=(()=>{
   function needSize(){$("pSizes").classList.remove("nudge");void $("pSizes").offsetWidth;$("pSizes").classList.add("nudge");$("pBuy").textContent="Pick a size";$("pSizes").scrollIntoView({block:"center",behavior:reduceMotion?"auto":"smooth"})}
   function setQty(n){qty=Math.max(1,Math.min(10,n));$("qVal").textContent=qty;cta()}
   // ---- bundle & save: tier choice + companion ----
-  let tier="set",comp=null,compSize=null;
+  let tier="one",comp=null,compSize=null;
   const compsFor=p=>{const want=p.kind==="hat"?"tee":"hat";return PRODUCTS.filter(o=>o.team===p.team&&o.kind===want&&!SOLD.has(o.id))};
   function renderDeal(p){
     const want=p.kind==="hat"?"tee":"hat",list=compsFor(p);
     if(!comp||!list.some(o=>o.id===comp))comp=LOOK[p.team][want];
-    $("t1Img").src=heroURL(p.id);$("t1Name").textContent=p.kind==="hat"?"Just the hat":"Just the tee";$("t1Sub").textContent=p.short||p.name;$("t1Price").textContent=money(p.price);
-    $("t2ImgA").src=heroURL(p.id);$("pickL").textContent=want==="hat"?"Choose your hat":"Choose your tee";
+    $("dealH").textContent=want==="hat"?"Add a hat, save $10":"Add a tee, save $10";
+    $("pickL").textContent=want==="hat"?"Choose your hat":"Choose your tee";
     const cm=$("dealCmp");cm.innerHTML="";cm.setAttribute("aria-label",$("pickL").textContent);
     list.forEach(o=>{const b=document.createElement("button");b.type="button";b.dataset.id=o.id;
-      b.innerHTML=`<img loading="lazy" alt="" src="${heroURL(o.id)}"><b>${(o.short||o.name).replace(/-/g,"‑")}</b><span class="num">${money(o.price)}</span>`;
-      b.setAttribute("aria-label",`${o.name}, ${money(o.price)}`);b.onclick=()=>{comp=o.id;compSize=null;syncDeal()};cm.append(b)});
+      b.innerHTML=`<img loading="lazy" alt="" src="${heroURL(o.id)}"><b>${(o.short||o.name).replace(/-/g,"‑")}</b><span class="num">${money(o.price-BUNDLE_OFF)}</span>`;
+      b.setAttribute("aria-label",`${o.name}, ${money(o.price-BUNDLE_OFF)} in the set`);b.onclick=()=>{comp=o.id;compSize=null;syncDeal()};cm.append(b)});
     syncDeal()}
   function syncDeal(){
-    const p=BY[cur],c=BY[comp];
-    $("tierOne").setAttribute("aria-checked",tier==="one");$("tierSet").setAttribute("aria-checked",tier==="set");$("dealPick").hidden=tier!=="set";
-    $("t2ImgB").src=heroURL(c.id);$("t2Sub").textContent=`${p.short||p.name} + ${c.short||c.name}`;
-    $("t2Price").textContent=money(p.price+c.price-BUNDLE_OFF);$("t2Was").textContent=money(p.price+c.price);
+    const p=BY[cur],c=BY[comp],on=tier==="set";
+    $("tierSet").setAttribute("aria-checked",on);$("pDeal").classList.toggle("on",on);$("dealPick").hidden=!on||$("dealCmp").children.length<2&&c.kind!=="tee";
+    $("t2ImgB").src=heroURL(c.id);$("t2Sub").textContent=c.short||c.name;
+    $("t2Price").textContent=money(c.price-BUNDLE_OFF);$("t2Was").textContent=money(c.price);
     $("dealCmp").querySelectorAll("button").forEach(b=>b.setAttribute("aria-pressed",b.dataset.id===comp));
     const needs=c.kind==="tee",sz=$("dealCsz");$("cszL").hidden=sz.hidden=!needs;sz.innerHTML="";
     if(needs){const l=blankFor(c).sizes;if(!l.includes(compSize))compSize=null;
@@ -1591,17 +1606,16 @@ const PDP=(()=>{
     cta()}
   function cta(){
     const p=BY[cur];if(!p)return;const c=BY[comp],set=tier==="set"&&!!c,unit=set?p.price+c.price-BUNDLE_OFF:p.price,t=unit*qty;
-    $("pBuy").textContent=set?`Add set · ${money(t)}`:"Add to bag";$("stBuy").textContent=set?"Add set":"Add to bag";
-    $("stPrice").innerHTML=set?`Set ${money(unit)} <s class="was">${money(unit+BUNDLE_OFF)}</s>`:money(p.price);
+    $("pBuy").textContent=`${set?"Add both":"Add to bag"} · ${money(t)}`;$("stBuy").textContent=set?"Add both":"Add to bag";
+    $("stPrice").innerHTML=set?`${money(unit)} <s class="was">${money(unit+BUNDLE_OFF)}</s>`:money(p.price);
     $("stName").textContent=set?`${p.short||p.name} + ${c.short||c.name}`:p.name;
     const so=SOLD.has(p.id);$("pBuy").disabled=$("stBuy").disabled=so;$("pDeal").hidden=so;$("pBis").hidden=!so;$("pBuy").hidden=so;$("pBis").dataset.id=p.id;$("pBis").dataset.name=p.name;if(so){$("pBuy").textContent=$("stBuy").textContent="Sold out";$("stPrice").textContent="Sold out"}}
-  $("tierOne").onclick=()=>{tier="one";syncDeal()};
-  $("tierSet").onclick=()=>{tier="set";syncDeal()};
+  $("tierSet").onclick=()=>{tier=tier==="set"?"one":"set";syncDeal()};
   $("qMinus").onclick=()=>setQty(qty-1);$("qPlus").onclick=()=>setQty(qty+1);
   $("pGuideBtn").onclick=()=>{const d=$("pDetails");d.open=true;d.scrollIntoView({block:"start",behavior:reduceMotion?"auto":"smooth"})};
   $("stBuy").onclick=()=>$("pBuy").click();
   // sticky add-to-bag once the main button scrolls away
-  const io=new IntersectionObserver(es=>es.forEach(e=>$("pSticky").classList.toggle("on",!e.isIntersecting&&!pdp.hidden)),{root:$("pdpScroll"),threshold:0});
+  const io=new IntersectionObserver(es=>es.forEach(e=>$("pSticky").classList.toggle("on",!e.isIntersecting&&e.boundingClientRect.bottom<(e.rootBounds?e.rootBounds.top:0)+4&&!pdp.hidden)),{root:$("pdpScroll"),threshold:0});
   io.observe($("pBuy"));
   $("pBuy").onclick=()=>{if(!size){needSize();return}
     if(tier==="set"){const c=BY[comp];
@@ -1770,7 +1784,7 @@ const Cart=(()=>{
     return null}
   function render(){
     const body=$("cartBody");body.innerHTML="";$("cartN").textContent=bag?`(${bag})`:"";$("cartMsg").textContent="";
-    $("cartFoot").hidden=!cart.length;$("ship").hidden=!cart.length;
+    $("cartFoot").hidden=!cart.length;$("ship").hidden=!cart.length;$("bx").hidden=true;
     if(!cart.length){body.innerHTML=`<div class="empty"><p>Your bag is empty.</p><button class="buy-alt" type="button" id="cartShop" style="padding:0 20px">Shop the drop</button></div>`;
       $("cartShop").onclick=()=>{close();Coll.open("pmn-plus")};return}
     cart.forEach((it,ix)=>{const p=BY[it.id],row=document.createElement("div");row.className="line";
@@ -1784,7 +1798,7 @@ const Cart=(()=>{
       row.querySelector(".rm").onclick=()=>{cart.splice(cart.indexOf(it),1);setBag();render()};
       const sel=row.querySelector("select");if(sel)sel.onchange=()=>{const dup=find(it.id,sel.value);if(dup&&dup!==it){dup.qty+=it.qty;cart.splice(cart.indexOf(it),1)}else it.size=sel.value||null;setBag();render()};
       body.append(row)});
-    const u=upsell();
+    const u=bx().apps?null:upsell();
     if(u){const d=document.createElement("div");d.className="upsell";d.innerHTML=`<img alt="" src="${heroURL(u.id)}"><div><span>Make it a Game Day Set · save $10</span><b>${u.name}</b><span class="num">${money(u.price)}</span></div><button type="button">Add</button>`;
       d.querySelector("button").onclick=()=>add(u.id,u.kind==="hat"?"One size":null,1);body.append(d)}
     $("bump").hidden=!BUMP.variant;if(!BUMP.variant)bumpOn=false;$("bumpT").textContent=BUMP.title;$("bumpC").textContent=BUMP.copy;$("bumpP").textContent=`+${money(BUMP.price)}`;
@@ -1795,13 +1809,17 @@ const Cart=(()=>{
      $("shipTxt").innerHTML=left?`You're <b class="num">${money(left)}</b> away from free shipping`:`You've unlocked <b>free US shipping</b>`;
      $("shipFine").textContent=left?"Shipping and tax calculated at checkout. Ships within the USA.":"Free US shipping applied. Tax calculated at checkout."}
     const t=sub(),B=best();$("cartDisc").hidden=!B.v;$("cartDisc").querySelector("span").textContent=B.l;$("cartDiscV").textContent=`−${money(B.v)}`;$("cartSub").textContent=money(t);
-    {const x=bx(),box=$("bx");box.hidden=!x.T;if(x.T){let msg,pct;
-      if(x.apps>=2){msg=`<b>2 free tees unlocked.</b> That's the max per order.`;pct=100}
-      else if(x.apps===1){const n=8-x.T;msg=n>0?`<b>1 free tee unlocked.</b> Add <b>${n}</b> more tee${n>1?"s":""} for a 2nd free tee.`:`<b>1 free tee unlocked.</b> Add a standard tee in S–2XL for a 2nd free tee.`;pct=Math.min(100,(x.T-4)/4*100)}
-      else if(x.T<4){const n=4-x.T;msg=`Add <b>${n}</b> more tee${n>1?"s":""} and your 4th tee is <b>free</b>.`;pct=x.T/4*100}
-      else{msg=`Almost there: your free tee must be a standard tee (not oversized) in S–2XL.`;pct=90}
-      $("bxTxt").innerHTML=msg;$("bxFill").style.width=pct+"%";$("bxBar").setAttribute("aria-valuenow",Math.round(pct));box.classList.toggle("done",x.apps>=2||(x.apps===1&&pct>=100))}}
+    {const x=bx(),box=$("bx");box.hidden=!x.T;if(x.T){let msg;const T=x.T,slots=T>=4?8:4;
+      if(x.apps>=2)msg=`<b>2 free tees unlocked 🎉</b> That's the max per order.`;
+      else if(x.apps===1)msg=T===7?`<b>1 free tee unlocked 🎉</b> Your 8th tee is free too. Add one more to claim it.`:T<8?`<b>1 free tee unlocked 🎉</b> Add ${8-T} more tee${8-T>1?"s":""} for a 2nd free one.`:`<b>1 free tee unlocked 🎉</b> Make one more a standard tee in S–2XL for a 2nd free one.`;
+      else if(T===3)msg=`<b>Your 4th tee is free.</b> Add one more tee to claim it.`;else if(T<4)msg=`<b>${T} of 4 tees.</b> Add ${4-T} more and the 4th one is <b>free</b>.`;
+      else msg=`<b>Almost there.</b> Your free tee must be a standard tee (not oversized) in S–2XL.`;
+      let h="";for(let i=1;i<=slots;i++){const fr=i%4===0,f=i<=T,got=fr&&(i/4<=x.apps||T>=i-1);h+=`<i class="${f?"f ":""}${fr?"fr ":""}${got?"got":""}">${fr?"FREE":""}</i>`}
+      $("bxTxt").innerHTML=msg;$("bxSeg").innerHTML=h;$("bxSeg").style.gridTemplateColumns=`repeat(${slots},1fr)`;$("bxSeg").setAttribute("aria-label",`${Math.min(T,slots)} of ${slots} tees, ${x.apps} free`);box.classList.toggle("done",x.apps>0)}
+    window.pmnCodeNote&&pmnCodeNote()}
   }
+  window.pmnCodeNote=()=>{const on=$("codeOn");if(!on)return;let w=$("codeWarn");if(!w){w=document.createElement("p");w.id="codeWarn";w.className="code-warn";on.after(w)}
+    w.hidden=on.hidden||!bx().apps;w.textContent="Discount codes can't be combined with Buy 3, get 1 free. At checkout you get whichever saves you more."};
   $("bumpChk").onchange=e=>{bumpOn=e.target.checked;render()};
   function ready(){const miss=cart.filter(i=>i.size===null);if(miss.length){$("cartMsg").textContent=`Choose a size for ${miss.length===1?BY[miss[0].id].name:miss.length+" items"} before checkout.`;
       const s0=$("cartBody").querySelector("select.need");s0&&s0.focus();return false}return true}
@@ -1832,7 +1850,7 @@ const Cart=(()=>{
   /* coming back from checkout (Back button / bfcache): unlock the button */
   addEventListener("pageshow",()=>busy(false,""));busy(false,"");
   /* discount code: validated against Shopify, applied at checkout */
-  function showCode(){const has=!!code;$("codeForm").hidden=has;$("codeOn").hidden=!has;$("codeTag").textContent=code}
+  function showCode(){const has=!!code;$("codeForm").hidden=has;$("codeOn").hidden=!has;$("codeTag").textContent=code;window.pmnCodeNote&&pmnCodeNote()}
   $("codeToggle").onclick=()=>{const f=$("codeBox");f.hidden=!f.hidden;$("codeToggle").setAttribute("aria-expanded",!f.hidden);if(!f.hidden)$("codeIn").focus()};
   $("codeForm").addEventListener("submit",async ev=>{ev.preventDefault();const c=$("codeIn").value.trim().toUpperCase();const m=$("codeMsg");
     if(!c){m.textContent="Enter a code.";return}

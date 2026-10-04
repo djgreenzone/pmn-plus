@@ -13,6 +13,7 @@ function klReviews(p){
   if(st.dataset.pid==String(pid))return;st.dataset.pid=pid;
   const t=(p.kind==="hat"||/hat|snapback|trucker/i.test(p.name))?"Hats":"T-Shirts";
   const esc=v=>String(v).replace(/&/g,"&amp;").replace(/"/g,"&quot;");
+  if(!st._mo){st._mo=new MutationObserver(()=>st.classList.toggle("zero",/(^|\D)0\s*reviews?/i.test(st.textContent)||!st.textContent.trim()));st._mo.observe(st,{childList:true,subtree:true,characterData:true})}
   st.innerHTML=`<div class="klaviyo-star-rating-widget" data-id="${pid}" data-product-title="${esc(p.name)}" data-product-type="${t}"></div>`;
   box.innerHTML=`<div id="klaviyo-reviews-all" data-id="${pid}"></div>`;
 }

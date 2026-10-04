@@ -102,9 +102,9 @@ P = {
       "Regular fit, from S to 5XL at one price."],
    faq=[("Is this part of the RLWC drop?","It's a PMN+ Apparel piece you can wear to every Samoa game.")]),
  "pmn-dad-hat": dict(
-   m="Khaki PMN+ Classic Dad Hat with the embroidered Community · Culture · Connection seal. Exclusive, while stocks last.",
+   m="Khaki PMN+ Classic Dad Hat with the PMN+ circle logo embroidered in white. Exclusive, while stocks last.",
    kw="PMN+ dad hat",
-   d=["The PMN+ Classic Dad Hat in khaki, with the PMN+ Community · Culture · Connection seal embroidered in white on the front. An exclusive run, available only while stocks last.",
+   d=["The PMN+ Classic Dad Hat in khaki, with the PMN+ circle logo embroidered in white on the front panel. An exclusive run, available only while stocks last.",
       "100% cotton, unstructured low-profile crown, curved bill and an adjustable strap with a metal buckle. One size fits most."],
    faq=[("Will it fit me?","It's one size with an adjustable strap and metal buckle, which fits most adult heads."),("Will it be restocked?","It's an exclusive run, so once it sells out it may not come back.")]),
  "pmn-trucker": dict(

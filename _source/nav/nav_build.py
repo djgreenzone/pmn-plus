@@ -9,7 +9,7 @@ I_SEARCH=SV('<circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/>')
 I_USER=SV('<circle cx="12" cy="8" r="4"/><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6"/>')
 I_BAG=SV('<path d="M5 8h14l-1 12H6L5 8z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/>')
 I_BACK='<svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg>'
-CATS=[("Shop all","/shop/all"),("Toa Samoa","/shop/toa-samoa"),("Mate Ma'a Tonga","/shop/mate-maa-tonga"),("PMN+","/shop#pmn"),("Tees","/shop#tee"),("Hats","/shop#hat")]
+CATS=[("Shop","/shop"),("Toa Samoa","/shop/toa-samoa"),("Mate Ma'a Tonga","/shop/mate-maa-tonga"),("PMN+","/shop#pmn"),("Tees","/shop#tee"),("Hats","/shop#hat")]
 def header(back_id=None,back_label="Back",bag="button",extra="",shop=False):
     back=f'<button type="button" class="pn-ic icon-btn" id="{back_id}" aria-label="{back_label}">{I_BACK}</button>' if back_id else ''
     bagel=(f'<button type="button" class="pn-ic icon-btn bag" aria-label="Bag">{I_BAG}<span class="bag-count" hidden></span></button>' if bag=="button"

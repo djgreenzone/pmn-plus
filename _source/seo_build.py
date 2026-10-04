@@ -54,7 +54,7 @@ for p in prods:
     out['products'][p['id']]=dict(slug=slug,url=url,title=title,meta=meta,h1=p['name'],colour=p['colour'],price=p['price'],team=p['team'],keyword=sc['kw'],
         description=sc['d'],faq=faq,sizes=sizes(p),images=imgs,og=og,sold=p['id'] in SOLD,kind=p['kind'],teamName=TEAM[p['team']],alt=[f"{p['name']} in {p['colour'].lower()}, {n.rsplit('-',1)[-1] if not n.endswith(('front-left','front-right','back-left','back-right')) else ' '.join(n.split('-')[-2:])} view" for a_,n in order],jsonld={"@context":"https://schema.org","@graph":[org,prod,crumbs,faqld]})
 for k,c in C['collections'].items():
-    members=[p['id'] for p in prods if COLL[p['team']]==k]
+    members=[p['id'] for p in prods] if k=='all' else [p['id'] for p in prods if COLL[p['team']]==k]
     out['collections'][k]=dict(c,url=f"{D}/shop/{k}",products=members,jsonld={"@context":"https://schema.org","@type":"CollectionPage","name":c['name'],"url":f"{D}/shop/{k}","description":c['meta'],
         "mainEntity":{"@type":"ItemList","itemListElement":[{"@type":"ListItem","position":i+1,"url":out['products'][pid]['url']} for i,pid in enumerate(members)]}})
 os.makedirs('site2/seo',exist_ok=True)

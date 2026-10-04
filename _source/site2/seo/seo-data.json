@@ -31,6 +31,118 @@
   ]
  ],
  "collections": {
+  "all": {
+   "name": "Shop all",
+   "tab": "All",
+   "title": "Shop All PMN+ Merch: Toa Samoa & Mate Ma'a Tonga Tees, Hats | PMN+",
+   "meta": "Shop every PMN+ piece: Toa Samoa and Mate Ma'a Tonga RLWC 2026 tees, oversized crest tees, snapbacks, truckers and PMN+ apparel. Ships across the USA.",
+   "intro": "Every piece in the PMN+ shop in one place: the Toa Samoa and Mate Ma'a Tonga Rugby League World Cup 2026 range, from 685 and 676 tees and oversized crest tees to snapbacks and truckers, plus PMN+ core apparel. Printed to order and shipped across the USA.",
+   "url": "https://www.polynesianmusicnetwork.com/shop/all",
+   "products": [
+    "mmt-oversized",
+    "toa-oversized",
+    "mmt-676-black",
+    "toa-685-black",
+    "mmt-hp-snapback",
+    "toa-hp-snapback",
+    "mmt-676-tee",
+    "toa-685-tee",
+    "mmt-silver-blackout",
+    "toa-silver-blackout",
+    "mmt-trucker",
+    "toa-trucker",
+    "pmn-tee",
+    "pmn-trucker",
+    "pmn-dad-hat"
+   ],
+   "jsonld": {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "name": "Shop all",
+    "url": "https://www.polynesianmusicnetwork.com/shop/all",
+    "description": "Shop every PMN+ piece: Toa Samoa and Mate Ma'a Tonga RLWC 2026 tees, oversized crest tees, snapbacks, truckers and PMN+ apparel. Ships across the USA.",
+    "mainEntity": {
+     "@type": "ItemList",
+     "itemListElement": [
+      {
+       "@type": "ListItem",
+       "position": 1,
+       "url": "https://www.polynesianmusicnetwork.com/shop/mate-maa-tonga-crest-oversized-tee-black"
+      },
+      {
+       "@type": "ListItem",
+       "position": 2,
+       "url": "https://www.polynesianmusicnetwork.com/shop/toa-samoa-crest-oversized-tee-black"
+      },
+      {
+       "@type": "ListItem",
+       "position": 3,
+       "url": "https://www.polynesianmusicnetwork.com/shop/mate-maa-tonga-676-tee-black"
+      },
+      {
+       "@type": "ListItem",
+       "position": 4,
+       "url": "https://www.polynesianmusicnetwork.com/shop/toa-samoa-685-tee-black"
+      },
+      {
+       "@type": "ListItem",
+       "position": 5,
+       "url": "https://www.polynesianmusicnetwork.com/shop/mate-maa-tonga-high-profile-snapback-white-crimson"
+      },
+      {
+       "@type": "ListItem",
+       "position": 6,
+       "url": "https://www.polynesianmusicnetwork.com/shop/toa-samoa-high-profile-snapback-navy-white"
+      },
+      {
+       "@type": "ListItem",
+       "position": 7,
+       "url": "https://www.polynesianmusicnetwork.com/shop/mate-maa-tonga-676-tee-red"
+      },
+      {
+       "@type": "ListItem",
+       "position": 8,
+       "url": "https://www.polynesianmusicnetwork.com/shop/toa-samoa-685-tee-royal-blue"
+      },
+      {
+       "@type": "ListItem",
+       "position": 9,
+       "url": "https://www.polynesianmusicnetwork.com/shop/mate-maa-tonga-silver-blackout-tee-black"
+      },
+      {
+       "@type": "ListItem",
+       "position": 10,
+       "url": "https://www.polynesianmusicnetwork.com/shop/toa-samoa-silver-blackout-tee-black"
+      },
+      {
+       "@type": "ListItem",
+       "position": 11,
+       "url": "https://www.polynesianmusicnetwork.com/shop/mate-maa-tonga-trucker-snapback-black"
+      },
+      {
+       "@type": "ListItem",
+       "position": 12,
+       "url": "https://www.polynesianmusicnetwork.com/shop/toa-samoa-trucker-snapback-black"
+      },
+      {
+       "@type": "ListItem",
+       "position": 13,
+       "url": "https://www.polynesianmusicnetwork.com/shop/pmn-plus-logo-tee-black"
+      },
+      {
+       "@type": "ListItem",
+       "position": 14,
+       "url": "https://www.polynesianmusicnetwork.com/shop/pmn-plus-trucker-hat-black"
+      },
+      {
+       "@type": "ListItem",
+       "position": 15,
+       "url": "https://www.polynesianmusicnetwork.com/shop/pmn-plus-classic-dad-hat-khaki"
+      }
+     ]
+    }
+   }
+  },
   "mate-maa-tonga": {
    "name": "Mate Ma'a Tonga",
    "title": "Mate Ma'a Tonga Merch: 676 Tees, Snapbacks & Hats | PMN+",

@@ -136,6 +136,9 @@ SHARED_FAQ = [
 ]
 
 COLLECTIONS = {
+ "all": dict(name="Shop all", tab="All", title="Shop All PMN+ Merch: Toa Samoa & Mate Ma'a Tonga Tees, Hats | PMN+",
+   meta="Shop every PMN+ piece: Toa Samoa and Mate Ma'a Tonga RLWC 2026 tees, oversized crest tees, snapbacks, truckers and PMN+ apparel. Ships across the USA.",
+   intro="Every piece in the PMN+ shop in one place: the Toa Samoa and Mate Ma'a Tonga Rugby League World Cup 2026 range, from 685 and 676 tees and oversized crest tees to snapbacks and truckers, plus PMN+ core apparel. Printed to order and shipped across the USA."),
  "mate-maa-tonga": dict(name="Mate Ma'a Tonga", title="Mate Ma'a Tonga Merch: 676 Tees, Snapbacks & Hats | PMN+",
    meta="Shop Mate Ma'a Tonga merch for Rugby League World Cup 2026: 676 tees, oversized crest tees, snapbacks and trucker hats. Ships across the USA.",
    intro="Rep Tongan red for Rugby League World Cup 2026. The Mate Ma'a Tonga collection brings the 676 back print, the Est. 1986 crest and Tongan patches to heavyweight tees, snapbacks and truckers, printed to order and shipped across the USA."),

@@ -118,7 +118,7 @@ rep("""    for(const i of cart){const p=BY[i.id],want=p.kind==="hat"?LOOK[p.team
       if(cart.some(c=>BY[c.id].kind===kind&&BY[c.id].team===p.team))continue;
       const pick=[first,...PRODUCTS.filter(o=>o.team===p.team&&o.kind===kind).map(o=>o.id)].find(buyable);if(pick)return BY[pick]}""")
 # DEEPLINK: /shop#toa-samoa, #mate-maa-tonga, #pmn-plus open that collection
-s=s+'\n<script>/* DEEPLINK */window.pmnDeep=h=>{try{$("page").hidden=true;$("pSticky").classList.remove("on");if(["toa-samoa","mate-maa-tonga","pmn-plus"].includes(h))Coll.open(h);else if(h==="pmn")Coll.open("pmn-plus","pmn");else if(h==="tee"||h==="hat")Coll.open("pmn-plus",h);else if(["shipping","returns","contact","privacy","terms"].includes(h))Pages.open(h);else if(h==="bag")Cart.open()}catch(e){}};addEventListener("load",()=>{const h=decodeURIComponent(location.hash.slice(1));if(h)setTimeout(()=>pmnDeep(h),60)});</script>\n'
+s=s+'\n<script>/* DEEPLINK */window.pmnDeep=h=>{try{$("page").hidden=true;$("pSticky").classList.remove("on");if(["all","toa-samoa","mate-maa-tonga","pmn-plus"].includes(h))Coll.open(h);else if(h==="pmn")Coll.open("pmn-plus","pmn");else if(h==="tee"||h==="hat")Coll.open("all",h);else if(["shipping","returns","contact","privacy","terms"].includes(h))Pages.open(h);else if(h==="bag")Cart.open()}catch(e){}};addEventListener("load",()=>{const h=decodeURIComponent(location.hash.slice(1));if(h)setTimeout(()=>pmnDeep(h),60)});</script>\n'
 # logo goes to the site homepage
 _a='l.setAttribute("aria-label","PMN+ shop home");l.onclick=goHome;l.onkeydown=e=>{if(e.key==="Enter")goHome()}'
 assert s.count(_a)==1

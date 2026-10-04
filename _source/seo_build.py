@@ -91,6 +91,7 @@ u.append(f"  <url><loc>{D}/privacy-policy</loc><lastmod>2026-10-02</lastmod></ur
 u.append(f"  <url><loc>{D}/terms</loc><lastmod>2026-10-02</lastmod></url>")
 u.append(f"  <url><loc>{D}/shipping</loc><lastmod>2026-10-03</lastmod></url>")
 u.append(f"  <url><loc>{D}/returns</loc><lastmod>2026-10-03</lastmod></url>")
+u.append(f"  <url><loc>{D}/contact</loc><lastmod>2026-10-03</lastmod></url>")
 u.append('</urlset>')
 open('site2/seo/sitemap-shop.xml','w').write('\n'.join(u)+'\n')
 print(len(rows)-1,'feed rows')

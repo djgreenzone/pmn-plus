@@ -711,6 +711,12 @@ s.was{color:var(--ink-dim);font-weight:400;margin-left:4px}
 .repit .rep-rail::-webkit-scrollbar{display:none}
 .repit .rep-rail img{flex:none;height:220px;width:auto;border-radius:14px;object-fit:cover;scroll-snap-align:start;background:#141416}
 @media (min-width:900px){.h-grid{grid-template-columns:repeat(4,minmax(0,1fr));gap:32px 20px}.repit .rep-rail{margin-inline:0;padding:0}.repit .rep-rail img{height:300px}}
+
+/* front on cards, back on hover (mouse devices only) */
+.im.flip{position:relative}
+.im.flip .alt{position:absolute;inset:0;width:100%;height:100%;box-sizing:border-box;padding:inherit;object-fit:contain;opacity:0;transition:opacity .25s ease;pointer-events:none}
+@media (hover:hover){a:hover>.im.flip .alt,button:hover>.im.flip .alt,a:focus-visible>.im.flip .alt{opacity:1}a:hover>.im.flip>img:not(.alt){opacity:0}}
+.im.flip>img:not(.alt){transition:opacity .25s ease,transform .35s cubic-bezier(.2,.7,.2,1)}
 </style>
 
 <div id="app">
@@ -1633,7 +1639,12 @@ const BEST=["toa-oversized","mmt-oversized","toa-hp-snapback","mmt-hp-snapback",
 const BADGE={"toa-oversized":"Best seller"};
 const sibs=p=>PRODUCTS.filter(o=>o.name===p.name&&o.team===p.team&&o.kind===p.kind);
 const dotsHTML=p=>{const g=sibs(p);return g.length>1?`<span class="cdots" aria-label="${g.length} colours">${g.map(o=>`<i style="--c:${o.swatch}" class="${o.id===p.id?"on":""}" title="${o.colourName}"></i>`).join("")}</span>`:""};
-const decorate=(b,p)=>{if(!p||b.dataset.dec)return;b.dataset.dec=1;const im=b.querySelector(".im");
+/* tees: show the front on cards, the back on hover */
+const nearKey=(id,t)=>{const h=(META[id]&&META[id].hi)||{};let best=null,d=999;Object.keys(h).forEach(a=>{const x=Math.abs((((+a-t)%360)+540)%360-180);if(x<d){d=x;best=a}});return d<=30?best:null};
+const flipCard=(b,p)=>{if(p.kind!=="tee")return;const im=b.querySelector(".im"),img=im&&im.querySelector("img");if(!img||im.querySelector(".alt"))return;
+  const f=nearKey(p.id,0),k=nearKey(p.id,180);if(f==null||k==null)return;img.src=hiURL(p.id,f);
+  const a=new Image();a.className="alt";a.loading="lazy";a.decoding="async";a.alt="";a.setAttribute("aria-hidden","true");a.src=hiURL(p.id,k);im.append(a);im.classList.add("flip")};
+const decorate=(b,p)=>{if(!p||b.dataset.dec)return;b.dataset.dec=1;flipCard(b,p);const im=b.querySelector(".im");
   if(BADGE[p.id]&&im&&!im.querySelector(".tag,.sold"))im.insertAdjacentHTML("afterbegin",`<i class="tag best">${BADGE[p.id]}</i>`);
   const nm=b.querySelector(".nm")||b.querySelector("b");if(nm&&!b.querySelector(".cline"))nm.insertAdjacentHTML("afterend",`<span class="cline">${dotsHTML(p)}<small>${p.colourName}</small></span>`)};
 const sortList=(l,m)=>{const r=l.slice();if(m==="lo")r.sort((a,b)=>a.price-b.price);else if(m==="hi")r.sort((a,b)=>b.price-a.price);else if(m==="best")r.sort((a,b)=>{const x=BEST.indexOf(a.id),y=BEST.indexOf(b.id);return (x<0?99:x)-(y<0?99:y)});return r};

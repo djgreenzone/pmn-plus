@@ -765,6 +765,11 @@
       },
       "isVariantOf": {
        "@type": "ProductGroup",
+       "name": "Mate Ma'a Tonga 676 Tee",
+       "brand": {
+        "@type": "Brand",
+        "name": "PMN+"
+       },
        "productGroupID": "mate-maa-tonga-676-tee",
        "variesBy": [
         "https://schema.org/color",
@@ -997,6 +1002,11 @@
       },
       "isVariantOf": {
        "@type": "ProductGroup",
+       "name": "Toa Samoa 685 Tee",
+       "brand": {
+        "@type": "Brand",
+        "name": "PMN+"
+       },
        "productGroupID": "toa-samoa-685-tee",
        "variesBy": [
         "https://schema.org/color",
@@ -1666,6 +1676,11 @@
       },
       "isVariantOf": {
        "@type": "ProductGroup",
+       "name": "Mate Ma'a Tonga 676 Tee",
+       "brand": {
+        "@type": "Brand",
+        "name": "PMN+"
+       },
        "productGroupID": "mate-maa-tonga-676-tee",
        "variesBy": [
         "https://schema.org/color",
@@ -1898,6 +1913,11 @@
       },
       "isVariantOf": {
        "@type": "ProductGroup",
+       "name": "Toa Samoa 685 Tee",
+       "brand": {
+        "@type": "Brand",
+        "name": "PMN+"
+       },
        "productGroupID": "toa-samoa-685-tee",
        "variesBy": [
         "https://schema.org/color",

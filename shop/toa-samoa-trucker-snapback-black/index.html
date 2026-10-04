@@ -1148,7 +1148,7 @@ addEventListener("load",()=>setTimeout(()=>{try{
 }catch(e){console.warn("review link",e)}},300));
 /* Saved items in the shop: heart on every product card + on the product page (uses window.pmnSaved from pmn-nav.js) */
 function svAttrs(el,p){el.dataset.saveRef=p.id;el.dataset.saveKind="product";el.dataset.saveTitle=p.name+(p.colourName?" – "+p.colourName:"");
-  el.dataset.saveImage=new URL(heroURL(p.id),location.href).href;el.dataset.saveUrl=(typeof pmnURL==="function"?pmnURL(p.id):"/shop")}
+  el.dataset.saveImage=location.origin+"/shop/"+String(heroURL(p.id)).replace(/^(\.\/|\/)?(shop\/)?/,"");el.dataset.saveUrl=(typeof pmnURL==="function"?pmnURL(p.id):"/shop")}
 function svDecorate(){document.querySelectorAll("button[data-id] .im, a[data-id] .im").forEach(im=>{if(im.querySelector(".sv-btn"))return;
   const card=im.closest("[data-id]"),p=BY[card.dataset.id];if(!p)return;const s=document.createElement("span");s.className="sv-btn";s.setAttribute("role","button");s.tabIndex=0;
   s.innerHTML=window.PMN_HEART||"&#9825;";svAttrs(s,p);im.style.position="relative";im.appendChild(s)});window.pmnSavedPaint&&window.pmnSavedPaint()}

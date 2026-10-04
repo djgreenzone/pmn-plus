@@ -129,11 +129,12 @@ Storage.prototype.setItem=function(k,v){set.apply(this,arguments);try{
   loadCat().then(c=>{const find=id=>{const b=by[id];if(!b)return null;return c.find(x=>x.n===b.name&&(!b.colourName||x.c===b.colourName))||c.find(x=>x.n===b.name)};
     const lines=cart.map(i=>{const p=find(i.id),b=by[i.id]||{};return{ProductName:p?item(p).ProductName:(b.name||i.id),ProductID:p?p.s:i.id,Size:i.size||"",Quantity:+i.qty||1,
       ItemPrice:b.price||(p&&p.p)||0,RowTotal:(b.price||(p&&p.p)||0)*(+i.qty||1),ImageURL:p?abs(p.i):"",ProductURL:p?ORIGIN+"/shop/"+p.s:ORIGIN+"/shop"}});
+    const tc=cart.reduce((n,i)=>n+((by[i.id]||{}).kind==="tee"?(+i.qty||1):0),0);
     added.forEach(key=>{const id=key.split("|")[0],size=key.split("|")[1],p=find(id),b=by[id]||{},it=p?item(p):{ProductName:b.name||id,ProductID:id,ImageURL:"",URL:ORIGIN+"/shop",Price:b.price||0};
       emit("add_to_cart",{value:it.Price*(now[key]-(prev[key]||0)),items:[{id:it.ProductID,name:it.ProductName,price:it.Price,category:p?p.t:"",size,qty:now[key]-(prev[key]||0)}]});
       kl("track","Added to Cart",{$value:lines.reduce((n,l)=>n+l.RowTotal,0),AddedItemProductName:it.ProductName,AddedItemProductID:it.ProductID,AddedItemSize:size,
         AddedItemImageURL:it.ImageURL,AddedItemURL:it.URL,AddedItemPrice:it.Price,AddedItemQuantity:now[key]-(prev[key]||0),
-        ItemNames:lines.map(l=>l.ProductName),CheckoutURL:ORIGIN+"/shop#bag",Items:lines})})})
+        ItemNames:lines.map(l=>l.ProductName),CheckoutURL:ORIGIN+"/shop#bag",Items:lines,TeeCount:tc,FreeTees:Math.min(2,Math.floor(tc/4)),TeesToFree:tc>=8?0:4-tc%4})})})
 }catch(e){}};
 })();
 
@@ -224,5 +225,5 @@ window.pmnSavedPaint=paint;
 (()=>{const C=window.PMN_CONFIG||{};if(C.offerBar===false)return;
 const TXT=C.offerText||"Buy 3 tees, get 1 free",LINK=C.offerLink||"/shop#tee",CTA=C.offerCta||"Shop tees";
 const add=()=>document.querySelectorAll("header .pn").forEach(pn=>{if(pn.querySelector(".pn-offer"))return;const a=document.createElement("a");a.className="pn-offer";a.href=LINK;
-  const FINE=C.offerFine||"Can't be combined with other offers or codes";a.title=TXT+". "+FINE+".";a.innerHTML=`<b>${TXT}</b><span aria-hidden="true">·</span><u>${CTA}</u>${FINE?`<small class="pn-offer-fine">${FINE}</small>`:""}`;a.addEventListener("click",()=>{try{window.pmnTrack&&pmnTrack("select_promotion",{promotion_name:TXT})}catch(e){}});pn.prepend(a)});
+  const FINE=C.offerFine||"";a.title=TXT+". Free tee: any standard tee in S–2XL. Max 2 per order. Can't be combined with discount codes.";a.innerHTML=`<b>${TXT}</b><span aria-hidden="true">·</span><u>${CTA}</u>${FINE?`<small class="pn-offer-fine">${FINE}</small>`:""}`;a.addEventListener("click",()=>{try{window.pmnTrack&&pmnTrack("select_promotion",{promotion_name:TXT})}catch(e){}});pn.prepend(a)});
 if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",add);else add();})();

@@ -732,6 +732,14 @@ s.was{color:var(--ink-dim);font-weight:400;margin-left:4px}
 .bx.done{border-color:rgba(61,220,132,.45)}
 .code-warn{margin:0;font-size:12px;line-height:1.4;color:#f3c76b}.code-warn[hidden]{display:none}
 #pStars.zero{display:none}
+.bnpl{margin:4px 0 0;font-size:13px;color:var(--ink-dim)}.bnpl b{color:var(--ink);font-weight:600}.bnpl[hidden],.eta[hidden],.fit-tip[hidden]{display:none}
+.fit-tip{margin:8px 0 0;font-size:12.5px;color:var(--ink-dim)}
+.eta{display:flex;gap:8px;align-items:flex-start;margin:10px 0 0;font-size:13px;line-height:1.45;color:var(--ink-dim)}.eta b{color:var(--ink);font-weight:600}
+.eta svg{flex:none;width:18px;height:18px;fill:none;stroke:#3DDC84;stroke-width:1.8;margin-top:1px}
+.proof{display:flex;align-items:center;gap:12px;margin:14px 0 0;padding:10px 12px;border:1px solid var(--line);border-radius:14px;text-decoration:none;color:inherit}
+.proof-ims{display:flex;flex:none}.proof-ims img{width:34px;height:34px;border-radius:50%;object-fit:cover;border:2px solid var(--bg,#000);margin-left:-10px}.proof-ims img:first-child{margin-left:0}
+.proof span:last-child{display:grid;font-size:12px;line-height:1.35;color:var(--ink-dim)}.proof b{color:var(--ink);font-size:13.5px;font-weight:600}
+#pdp .sheet .proof{border-color:rgba(0,0,0,.14)}#pdp .sheet .proof-ims img{border-color:#fff}
 .title-block{position:relative}.title-block #pSave{position:absolute;top:0;right:0}#pName{padding-right:56px}.p-namerow:has(#pStars.zero){margin:0;padding:0;min-height:0;height:0;border:0}
 #pSwatches[hidden]{display:none}#pPromo[hidden]{display:none}.pdp-ship b{color:#17703f}#pdp .sheet .pdp-ship b{color:#17703f}
 .deal,#pdp .sheet .deal{background:#fff;color:#15130f;box-shadow:none;border:1.5px solid #d8d0c2;border-radius:16px;padding:10px 12px;gap:10px;transition:border-color .15s,background .15s}
@@ -876,11 +884,12 @@ s.was{color:var(--ink-dim);font-weight:400;margin-left:4px}
           <h2 id="pName">Toa Samoa Snapback</h2>
           <div class="p-namerow"><div id="pStars" class="p-stars"></div><button type="button" class="sv-btn" id="pSave" aria-pressed="false" aria-label="Save"></button></div>
           <div class="price-row"><strong class="num" id="pPrice">$55.00</strong></div>
+          <p class="bnpl" id="pBnpl" hidden></p>
           <p class="facts" id="pFacts"></p>
           <p class="pdp-ship" id="pPromo"></p>
         </div>
         <div class="opt"><div class="opt-h"><span class="eyebrow">Colour</span><span id="pColour"></span></div><div class="swatches" id="pSwatches" role="group" aria-label="Colour"></div></div>
-        <div class="opt"><div class="opt-h"><span class="eyebrow">Size <span class="size-note" id="pSizeNote"></span></span><button class="link" id="pGuideBtn" type="button">Size guide</button></div><div class="sizes" id="pSizes" role="group" aria-label="Size"></div></div>
+        <div class="opt"><div class="opt-h"><span class="eyebrow">Size <span class="size-note" id="pSizeNote"></span></span><button class="link" id="pGuideBtn" type="button">Size guide</button></div><div class="sizes" id="pSizes" role="group" aria-label="Size"></div><p class="fit-tip" id="pFit" hidden></p></div>
         <section class="deal" id="pDeal" aria-label="Bundle and save">
           <button type="button" role="checkbox" class="tier" id="tierSet" aria-checked="false"><i class="ck" aria-hidden="true"></i><span class="pics"><img id="t2ImgB" alt=""></span><span class="tt"><b id="dealH">Add a hat, save $10</b><span id="t2Sub"></span></span><span class="tpr"><b class="num" id="t2Price"></b><s class="num" id="t2Was"></s></span></button>
           <div class="pick" id="dealPick" hidden>
@@ -895,7 +904,9 @@ s.was{color:var(--ink-dim);font-weight:400;margin-left:4px}
           <button class="buy" id="pBuy">Add to bag</button>
           <form class="bis" id="pBis" hidden novalidate><p class="bis-h">Back soon. Get an email the moment it restocks.</p><div class="bis-row"><label class="sr" for="bisEmail">Email address</label><input id="bisEmail" type="email" inputmode="email" autocomplete="email" placeholder="Email address" required><button class="bis-go" type="submit">Notify me</button></div><p class="bis-msg" id="bisMsg" role="status"></p><p class="bis-fine">We&#39;ll also send PMN+ drop news. Unsubscribe anytime.</p></form>
         </div>
+        <p class="eta" id="pEta" hidden></p>
         <details class="mto"><summary><b>Made to order:</b> This product is produced specifically for you. Please verify your size and order details before checkout. <span class="mto-more">More</span></summary><p>Returns or exchanges are not accepted for incorrect size selection or change of mind. Defective or incorrect items will be reviewed and, when approved, corrected. <button type="button" class="link" data-page="returns">Return policy</button></p></details>
+        <a class="proof" href="https://www.instagram.com/polynesianmusic/" target="_blank" rel="noopener"><span class="proof-ims"><img loading="lazy" alt="" src="/assets/home/pmn-plus-toa-samoa-fans-up-the-toa-signs-360h.webp"><img loading="lazy" alt="" src="/assets/home/pmn-plus-concert-crowd-tonga-flag-360h.webp"><img loading="lazy" alt="" src="/assets/home/pmn-plus-singer-draped-in-tonga-flag-360h.webp"><img loading="lazy" alt="" src="/assets/home/pmn-plus-hsbc-svns-los-angeles-samoa-flags-360h.webp"></span><span><b>197K+ fam on Instagram</b>Repped in the stands, at the shows, on the field · @polynesianmusic</span></a>
         <ul class="trust">
           <li><svg viewBox="0 0 24 24"><path d="M3 7h11v9H3zM14 10h4l3 3v3h-7"/><circle cx="7" cy="17.5" r="1.6"/><circle cx="17" cy="17.5" r="1.6"/></svg><span><b>Ships in the USA</b>Printed and fulfilled by JQF</span></li>
           <li><svg viewBox="0 0 24 24"><rect x="4" y="10" width="16" height="10" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg><span><b>Secure checkout</b>Card, Apple Pay or Shop Pay</span></li>
@@ -1114,6 +1125,15 @@ const specsFor=p=>{const b=blankFor(p);if(p.id==="toa-cream-tee")return [["S–5
  if(p.id.includes("oversized"))return [["7.5 oz","Heavyweight"],["100%","USA cotton"],["S–5XL","Oversized fit"]];
  return [["5.3 oz","Midweight"],["100%","Cotton"],[`${b.sizes[0]}–${b.sizes.at(-1)}`,"Regular fit"]]};
 
+/* delivery estimate + next game day (RLWC 2026, local match dates) */
+const FIXTURES={samoa:[["2026-10-16","Toa Samoa vs France"],["2026-10-24","Toa Samoa vs PNG"],["2026-11-01","Samoa vs Tonga"]],
+  tonga:[["2026-10-17","Tonga vs England"],["2026-10-23","Tonga vs Lebanon"],["2026-11-01","Tonga vs Samoa"]]};
+FIXTURES.pmn=[...FIXTURES.samoa,...FIXTURES.tonga].sort((a,b)=>a[0]<b[0]?-1:1);
+const ETA=(()=>{const add=(d,n)=>{d=new Date(d);while(n>0){d.setDate(d.getDate()+1);const w=d.getDay();if(w&&w<6)n--}return d};
+  const f=d=>d.toLocaleDateString("en-US",{month:"short",day:"numeric"});
+  return team=>{const now=new Date(),lo=add(now,5),hi=add(now,11),range=lo.getMonth()===hi.getMonth()?`${f(lo)}–${hi.getDate()}`:`${f(lo)}–${f(hi)}`;
+    const fx=(FIXTURES[team]||FIXTURES.pmn).find(([d])=>new Date(d+"T00:00:00")>hi);
+    return{range,by:f(hi),game:fx?{name:fx[1],date:f(new Date(fx[0]+"T00:00:00"))}:null}}})();
 /* Klaviyo: PMN+ Launch List (same list as the homepage form) */
 const KLAVIYO_COMPANY_ID="T9JJzp",KLAVIYO_LIST_ID="SLSsGL";
 async function klavPost(attrs){const body={data:{type:"subscription",attributes:{profile:{data:{type:"profile",attributes:attrs}}},relationships:{list:{data:{type:"list",id:KLAVIYO_LIST_ID}}}}};
@@ -1536,7 +1556,7 @@ const PDP=(()=>{
     if(bl.fabric){$("pFabric").textContent=`${bl.label}. ${bl.fabric}. Same price in every size.`;
       $("pChart").innerHTML=`<tr><th>Size</th>${list.map(z=>`<th>${z}</th>`).join("")}</tr><tr><th>Chest</th>${list.map(z=>`<td>${(bl.chart==="shaka"?SHAKA_CHART:FWJ_CHART)[z][0]}</td>`).join("")}</tr><tr><th>Length</th>${list.map(z=>`<td>${(bl.chart==="shaka"?SHAKA_CHART:FWJ_CHART)[z][1]}</td>`).join("")}</tr>`}
     list.forEach(s=>{const b=document.createElement("button");b.className="size";b.textContent=s;{const vv=typeof VAR!=="undefined"&&VAR[p.id]&&VAR[p.id][s];if((vv&&!vv.ok)||SOLD.has(p.id)){b.disabled=true;b.classList.add("so");b.setAttribute("aria-label",s+", sold out")}}b.setAttribute("aria-pressed",s===size);
-      b.onclick=()=>{size=s;sz.querySelectorAll(".size").forEach(x=>x.setAttribute("aria-pressed",x===b));cta()};sz.append(b)});
+      b.onclick=()=>{size=s;sz.querySelectorAll(".size").forEach(x=>x.setAttribute("aria-pressed",x===b));cta();intent("select_size","Selected Size",{Size:s})};sz.append(b)});
     if(p.kind==="tee"&&!size)sz.style.gridTemplateColumns="";
     extras(p);cta();
   }
@@ -1553,6 +1573,9 @@ const PDP=(()=>{
     $("pPoints").innerHTML=c.points.map(t=>`<li>${t}</li>`).join("");
     $("pFacts").textContent=specsFor(p).map(([a,b])=>`${a} ${b.toLowerCase().replace("usa","USA")}`).join(" · ");
         $("pGuideBtn").hidden=p.kind==="hat";
+    {const ft=$("pFit");ft.hidden=p.kind!=="tee";ft.textContent=p.id.includes("oversized")?"Cut boxy and oversized. Take your usual size for the oversized look.":"Fits true to size. Between sizes? Size up for a relaxed fit."}
+    {const e=ETA(p.team==="samoa"||p.team==="tonga"?p.team:"pmn"),el=$("pEta");el.hidden=false;
+      el.innerHTML=`<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 7h11v9H3zM14 10h4l3 3v3h-7"/><circle cx="7" cy="17.5" r="1.6"/><circle cx="17" cy="17.5" r="1.6"/></svg><span>Order today, arrives <b>${e.range}</b>${e.game?` · in time for <b>${e.game.name}</b> (${e.game.date})`:""}</span>`}
     // thumbnails: 360 spin + every sharp still
     const th=$("pThumbs");th.innerHTML="";
     const t0=document.createElement("button");t0.className="thumb t360";t0.textContent="360°";t0.setAttribute("aria-label","Spin all the way round");t0.onclick=()=>spinOnce();th.append(t0);
@@ -1598,13 +1621,16 @@ const PDP=(()=>{
     cta()}
   function cta(){
     const p=BY[cur];if(!p)return;const c=BY[comp],set=tier==="set"&&!!c,unit=set?p.price+c.price-BUNDLE_OFF:p.price,t=unit*qty;
-    $("pBuy").textContent=`${set?"Add both":"Add to bag"} · ${money(t)}`;$("stBuy").textContent=set?"Add both":"Add to bag";
+    $("pBuy").textContent=`${set?"Add both":"Add to bag"} · ${money(t)}`;
+    {const bn=$("pBnpl");bn.hidden=(window.PMN_CONFIG||{}).afterpay===false;bn.innerHTML=`or 4 interest-free payments of <b>${money(unit/4)}</b> with <b>Afterpay</b>`}$("stBuy").textContent=set?"Add both":"Add to bag";
     $("stPrice").innerHTML=set?`${money(unit)} <s class="was">${money(unit+BUNDLE_OFF)}</s>`:money(p.price);
     $("stName").textContent=set?`${p.short||p.name} + ${c.short||c.name}`:p.name;
     const so=SOLD.has(p.id);$("pBuy").disabled=$("stBuy").disabled=so;$("pDeal").hidden=so;$("pBis").hidden=!so;$("pBuy").hidden=so;$("pBis").dataset.id=p.id;$("pBis").dataset.name=p.name;if(so){$("pBuy").textContent=$("stBuy").textContent="Sold out";$("stPrice").textContent="Sold out"}}
-  $("tierSet").onclick=()=>{tier=tier==="set"?"one":"set";syncDeal()};
+  const intent=(ga,kl,x={})=>{try{const p=BY[cur];if(!p)return;const d=Object.assign({ProductName:p.name,ProductID:p.id,Price:p.price},x);
+    window.pmnTrack&&pmnTrack(ga,{value:p.price,items:[{id:p.id,name:p.name,price:p.price,size:x.Size||""}]});window.klaviyo&&klaviyo.push(["track",kl,d])}catch(e){}};
+  $("tierSet").onclick=()=>{tier=tier==="set"?"one":"set";syncDeal();if(tier==="set")intent("bundle_add","Ticked Game Day Set",{Companion:comp})};
   $("qMinus").onclick=()=>setQty(qty-1);$("qPlus").onclick=()=>setQty(qty+1);
-  $("pGuideBtn").onclick=()=>{const d=$("pDetails");d.open=true;d.scrollIntoView({block:"start",behavior:reduceMotion?"auto":"smooth"})};
+  $("pGuideBtn").onclick=()=>{intent("view_size_guide","Viewed Size Guide");const d=$("pDetails");d.open=true;d.scrollIntoView({block:"start",behavior:reduceMotion?"auto":"smooth"})};
   $("stBuy").onclick=()=>$("pBuy").click();
   // sticky add-to-bag once the main button scrolls away
   const io=new IntersectionObserver(es=>es.forEach(e=>$("pSticky").classList.toggle("on",!e.isIntersecting&&e.boundingClientRect.bottom<(e.rootBounds?e.rootBounds.top:0)+4&&!pdp.hidden)),{root:$("pdpScroll"),threshold:0});
@@ -1764,8 +1790,8 @@ const Cart=(()=>{
   const sets=()=>{let t=0,h=0;cart.forEach(i=>{if(BY[i.id].kind==="hat")h+=i.qty;else t+=i.qty});return Math.min(t,h)};
   /* Buy 3 tees, get 1 free (Shopify automatic discount; max 2 free; free tee = non-oversized S–2XL; doesn't stack with the Game Day Set) */
   const FREE_SZ=["S","M","L","XL","2XL"];
-  const bx=()=>{let T=0;const el=[];cart.forEach(i=>{const p=BY[i.id];if(p.kind!=="tee")return;T+=i.qty;if(!p.id.includes("oversized")&&(i.size===null||FREE_SZ.includes(i.size)))for(let k=0;k<i.qty;k++)el.push(p.price)});
-    el.sort((a,b)=>a-b);const apps=Math.min(2,Math.floor(T/4),el.length);return{T,E:el.length,apps,save:el.slice(0,apps).reduce((a,b)=>a+b,0)}};
+  const bx=()=>{let T=0,tg=0;const el=[];cart.forEach(i=>{const p=BY[i.id];if(p.kind!=="tee")return;T+=i.qty;tg+=p.price*i.qty;if(!p.id.includes("oversized")&&(i.size===null||FREE_SZ.includes(i.size)))for(let k=0;k<i.qty;k++)el.push(p.price)});
+    el.sort((a,b)=>a-b);const apps=Math.min(2,Math.floor(T/4),el.length);return{T,tg,E:el.length,apps,save:el.slice(0,apps).reduce((a,b)=>a+b,0)}};
   const best=()=>{const b=bx().save,g=sets()*BUNDLE_OFF;return b>=g&&b>0?{v:b,l:"Buy 3, get 1 free"}:{v:g,l:"Game Day Set savings"}};
   const sub=()=>gross()-best().v+(bumpOn&&cart.length?BUMP.price:0);
   function upsell(){
@@ -1795,15 +1821,16 @@ const Cart=(()=>{
       d.querySelector("button").onclick=()=>add(u.id,u.kind==="hat"?"One size":null,1);body.append(d)}
     $("bump").hidden=!BUMP.variant;if(!BUMP.variant)bumpOn=false;$("bumpT").textContent=BUMP.title;$("bumpC").textContent=BUMP.copy;$("bumpP").textContent=`+${money(BUMP.price)}`;
     $("bumpChk").checked=bumpOn;$("bump").classList.toggle("on",bumpOn);$("bumpLine").hidden=!bumpOn;$("bumpLineT").textContent=BUMP.line;$("bumpLineV").textContent=money(BUMP.price);
-    $("ship").hidden=true;$("shipFine").textContent="Shipping and tax calculated at checkout. Ships within the USA.";
+    $("ship").hidden=true;$("shipFine").textContent=`Order today, arrives ${ETA("pmn").range}. Shipping and tax calculated at checkout.`;
     if(0){const t0=sub(),left=Math.max(0,FREE_SHIP-t0),pct=Math.min(100,t0/FREE_SHIP*100);
      $("ship").hidden=false;$("ship").classList.toggle("done",!left);$("shipFill").style.width=pct+"%";$("shipBar").setAttribute("aria-valuenow",Math.round(pct));
      $("shipTxt").innerHTML=left?`You're <b class="num">${money(left)}</b> away from free shipping`:`You've unlocked <b>free US shipping</b>`;
      $("shipFine").textContent=left?"Shipping and tax calculated at checkout. Ships within the USA.":"Free US shipping applied. Tax calculated at checkout."}
     const t=sub(),B=best();$("cartDisc").hidden=!B.v;$("cartDisc").querySelector("span").textContent=B.l;$("cartDiscV").textContent=`−${money(B.v)}`;$("cartSub").textContent=money(t);
     {const x=bx(),box=$("bx");box.hidden=!x.T;if(x.T){let msg;const T=x.T,slots=T>=4?8:4;
-      if(x.apps>=2)msg=`<b>2 free tees unlocked 🎉</b> That's the max per order.`;
-      else if(x.apps===1)msg=T===7?`<b>1 free tee unlocked 🎉</b> Your 8th tee is free too. Add one more to claim it.`:T<8?`<b>1 free tee unlocked 🎉</b> Add ${8-T} more tee${8-T>1?"s":""} for a 2nd free one.`:`<b>1 free tee unlocked 🎉</b> Make one more a standard tee in S–2XL for a 2nd free one.`;
+      const avg=x.apps?` Your tees now work out to <b>${money((x.tg-x.save)/T)}</b> each.`:"";
+      if(x.apps>=2)msg=`<b>2 free tees unlocked 🎉</b> That's the max per order.${avg}`;
+      else if(x.apps===1)msg=T===7?`<b>1 free tee unlocked 🎉</b> Your 8th tee is free too. Add one more to claim it.`:T<8?`<b>1 free tee unlocked 🎉</b>${avg} Add ${8-T} more for a 2nd free one.`:`<b>1 free tee unlocked 🎉</b> Make one more a standard tee in S–2XL for a 2nd free one.`;
       else if(T===3)msg=`<b>Your 4th tee is free.</b> Add one more tee to claim it.`;else if(T<4)msg=`<b>${T} of 4 tees.</b> Add ${4-T} more and the 4th one is <b>free</b>.`;
       else msg=`<b>Almost there.</b> Your free tee must be a standard tee (not oversized) in S–2XL.`;
       let h="";for(let i=1;i<=slots;i++){const fr=i%4===0,f=i<=T,got=fr&&(i/4<=x.apps||T>=i-1);h+=`<i class="${f?"f ":""}${fr?"fr ":""}${got?"got":""}">${fr?"FREE":""}</i>`}
@@ -1938,6 +1965,7 @@ const Pages=(()=>{let prev=null;
   const hide=()=>{o.classList.remove("on");setTimeout(()=>o.hidden=true,reduceMotion?0:350)};
   const fire=function t(){if(shown)return;if(!homeVisible()){setTimeout(t,4000);return}shown=true;o.hidden=false;requestAnimationFrame(()=>o.classList.add("on"))};setTimeout(fire,25000);
   {const hv=$("hero");const sc=()=>{if(shown){hv.removeEventListener("scroll",sc);return}if(hv.scrollTop>(hv.scrollHeight-hv.clientHeight)*.5){hv.removeEventListener("scroll",sc);fire()}};hv.addEventListener("scroll",sc,{passive:true})}
+  if(matchMedia("(pointer:fine)").matches)document.addEventListener("mouseout",e=>{if(shown||e.relatedTarget||e.clientY>0||!$("cart").hidden)return;shown=true;o.hidden=false;requestAnimationFrame(()=>o.classList.add("on"))});
   $("offX").onclick=$("offNo").onclick=hide;
   const step=n=>{["offS1","offS2","offS3"].forEach((id,i)=>$(id).hidden=i!==n-1);$("offNo").hidden=n!==1;o.setAttribute("aria-labelledby",n===3?"offDoneH":"offH");
     const f=n===1?$("offEmail"):n===2?$("offPhone"):$("offShop");setTimeout(()=>f.focus({preventScroll:true}),50)};

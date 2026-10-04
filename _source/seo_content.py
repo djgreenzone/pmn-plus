@@ -21,13 +21,13 @@ P = {
    m="Heavyweight oversized Mate Ma'a Tonga tee with the Est. 1986 crest print and a PMN+ tapa band.",
    kw="Mate Ma'a Tonga oversized tee",
    d=["A heavyweight oversized tee for Mate Ma'a Tonga fans. The front carries the Mate Ma'a Tonga Est. 1986 crest print in red and white; a PMN+ tapa band runs across the upper back.",
-      "Cut from 7.5 oz 100% USA cotton with a relaxed body and dropped shoulder, it holds its shape wash after wash. Made for Rugby League World Cup 2026 and every Tonga game after it."],
+      "Cut from 8.2 oz 100% ring-spun cotton with a boxy body and dropped shoulders, it holds its shape wash after wash. Made for Rugby League World Cup 2026 and every Tonga game after it."],
    faq=[("How does the oversized fit run?","It's cut roomy with a dropped shoulder. Take your normal size for the relaxed oversized look, or one size down for a closer fit. Compare with the size guide: chest is measured armpit to armpit.")]),
  "toa-oversized": dict(
    m="Heavyweight oversized Toa Samoa tee with the Est. 1986 crest print and a PMN+ tapa band.",
    kw="Toa Samoa oversized tee",
    d=["A heavyweight oversized tee for Toa Samoa fans. The front carries the Toa Samoa Est. 1986 crest print; a PMN+ tapa band runs across the upper back.",
-      "Cut from 7.5 oz 100% USA cotton with a relaxed body and dropped shoulder. Built for Rugby League World Cup 2026 and every Samoa game after it."],
+      "Cut from 8.2 oz 100% ring-spun cotton with a boxy body and dropped shoulders. Built for Rugby League World Cup 2026 and every Samoa game after it."],
    faq=[("How does the oversized fit run?","It's cut roomy with a dropped shoulder. Take your normal size for the relaxed oversized look, or one size down for a closer fit.")]),
  "mmt-676-black": dict(
    m="Black Tonga 676 shirt with a large MATE MA'A TONGA 676 back print. S–5XL, 100% cotton.",
@@ -39,7 +39,7 @@ P = {
    m="Red Tonga 676 shirt with a large MATE MA'A TONGA 676 back print. 100% cotton tee.",
    kw="Tonga 676 shirt red",
    d=["The 676 tee in Tonga red. A large MATE MA'A TONGA 676 print fills the back, with a Six·Seven·Six badge on the chest and a PMN+ badge on the sleeve.",
-      "676 is Tonga's international calling code, worn as a mark of home. Printed on a 5.3 oz 100% cotton midweight tee with a regular fit, S to 5XL."],
+      "676 is Tonga's international calling code, worn as a mark of home. Printed on a 5.3 oz 100% cotton midweight tee with a regular fit, S to 3XL."],
    faq=[("What does 676 mean?","676 is Tonga's international dialling code. Tongans around the world use it as shorthand for home and for representing Tonga.")]),
  "toa-685-black": dict(
    m="Black Samoa 685 shirt with a large TOA SAMOA 685 back print. S–5XL, 100% cotton.",
@@ -51,7 +51,7 @@ P = {
    m="Royal blue Samoa 685 shirt with a large TOA SAMOA 685 back print. 100% cotton tee.",
    kw="Samoa 685 shirt blue",
    d=["The 685 tee in royal blue. A large TOA SAMOA 685 print in white fills the back, with a Six·Eight·Five badge on the chest and a PMN+ badge on the sleeve.",
-      "685 is Samoa's international calling code, worn as a mark of home. Printed on a 5.3 oz 100% cotton midweight tee with a regular fit, S to 5XL."],
+      "685 is Samoa's international calling code, worn as a mark of home. Printed on a 5.3 oz 100% cotton midweight tee with a regular fit, S to 3XL."],
    faq=[("What does 685 mean?","685 is Samoa's international dialling code. Samoans around the world use it as shorthand for home and for representing Samoa.")]),
  "mmt-snapback": dict(
    m="Red Mate Ma'a Tonga curved-bill snapback with script and crest, Mafana! patch and Tonga flag.",

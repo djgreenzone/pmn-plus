@@ -17,8 +17,8 @@ TEAM={'samoa':'Toa Samoa','tonga':"Mate Ma'a Tonga",'pmn':'PMN+'}
 COLL={'samoa':'toa-samoa','tonga':'mate-maa-tonga','pmn':'pmn-plus'}
 def sizes(p):
     if p['kind']=='hat': return ['One size']
-    if 'oversized' in p['id']: return ['S','M','L','XL','2XL','3XL','4XL','5XL']
-    return ['S','M','L','XL','2XL','3XL','4XL','5XL']
+    if 'oversized' in p['id'] or p['colour'].startswith('Black'): return ['S','M','L','XL','2XL','3XL','4XL','5XL']
+    return ['S','M','L','XL','2XL','3XL']
 GROUP={'mmt-676-tee':'mate-maa-tonga-676-tee','mmt-676-black':'mate-maa-tonga-676-tee','toa-685-tee':'toa-samoa-685-tee','toa-685-black':'toa-samoa-685-tee'}
 def trim(t,n):
     return t if len(t)<=n else t[:n-1].rsplit(' ',1)[0].rstrip(',.;:')+'…'

@@ -92,7 +92,7 @@ rep('  return{add,open,close};','  setBag();\n  return{add,open,close};')
 # remember the shopper's email from sign-ups so checkout is prefilled
 rep('async function klav(email,phone,props){','async function klav(email,phone,props){try{localStorage.setItem("pmn_email",email)}catch(e){}')
 # sold-out sizes from Shopify
-rep('b.className="size";b.textContent=s;','b.className="size";b.textContent=s;{const vv=typeof VAR!=="undefined"&&VAR[p.id]&&VAR[p.id][s];if(vv&&!vv.ok){b.disabled=true;b.classList.add("so");b.setAttribute("aria-label",s+", sold out")}}')
+rep('b.className="size";b.textContent=s;','b.className="size";b.textContent=s;{const vv=typeof VAR!=="undefined"&&VAR[p.id]&&VAR[p.id][s];if((vv&&!vv.ok)||(typeof shopifyOK!=="undefined"&&shopifyOK&&VAR[p.id]&&!vv)){b.disabled=true;b.classList.add("so");b.setAttribute("aria-label",s+", sold out")}}')
 # drawer markup: code field + trust row
 rep('''    <p class="fine cart-msg" id="cartMsg" role="status"></p>''','''    <p class="fine cart-msg" id="cartMsg" role="status"></p>
     <p class="ctrust"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="10" width="14" height="10" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg><span><b>Secure checkout</b> · Visa · Mastercard · Amex · Apple Pay · Google Pay · Shop Pay</span></p>''')
@@ -198,7 +198,7 @@ s=open(sys.argv[1]).read()
 def rep(a,b,n=1):
     global s
     assert s.count(a)==n,(a[:70],s.count(a));s=s.replace(a,b)
-rep('if(vv&&!vv.ok){b.disabled=true;','if((vv&&!vv.ok)||SOLD.has(p.id)){b.disabled=true;')
+rep('if((vv&&!vv.ok)||(typeof shopifyOK!=="undefined"&&shopifyOK&&VAR[p.id]&&!vv)){b.disabled=true;','if((vv&&!vv.ok)||(typeof shopifyOK!=="undefined"&&shopifyOK&&VAR[p.id]&&!vv)||SOLD.has(p.id)){b.disabled=true;')
 rep('return PRODUCTS.filter(o=>o.team===p.team&&o.kind===want)}','return PRODUCTS.filter(o=>o.team===p.team&&o.kind===want&&!SOLD.has(o.id))}')
 rep('$("stName").textContent=set?`${p.short||p.name} + ${c.short||c.name}`:p.name}',
     '$("stName").textContent=set?`${p.short||p.name} + ${c.short||c.name}`:p.name;\n    const so=SOLD.has(p.id);$("pBuy").disabled=$("stBuy").disabled=so;$("pDeal").hidden=so;if(so){$("pBuy").textContent=$("stBuy").textContent="Sold out";$("stPrice").textContent="Sold out"}}')

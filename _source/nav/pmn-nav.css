@@ -101,3 +101,10 @@ html.pn-lock,html.pn-lock body{overflow:hidden}
 .im .sv-btn svg{stroke-width:2;stroke:currentColor}
 .im .sv-btn.on{color:#C8102E!important}
 .im .sv-btn:hover{transform:scale(1.06)}
+/* offer bar above the menu */
+.pn-offer{display:flex;justify-content:center;align-items:center;gap:8px;min-height:32px;padding:calc(env(safe-area-inset-top,0px) + 6px) 12px 6px;background:#000;color:#fff;text-decoration:none;font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;border-bottom:1px solid rgba(255,255,255,.12)}
+.pn-offer b{font-weight:700}.pn-offer span{opacity:.5}.pn-offer u{text-underline-offset:3px;font-weight:600}
+.pn-offer:hover u{text-decoration-thickness:2px}
+.pn-offer~.pn-row{padding-top:0}
+.pn-offer-fine{font-size:10px;letter-spacing:.04em;text-transform:none;opacity:.6;margin-left:6px}
+@media (max-width:640px){.pn-offer-fine{display:none}}

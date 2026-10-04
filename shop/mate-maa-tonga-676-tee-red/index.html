@@ -726,6 +726,13 @@ s.was{color:var(--ink-dim);font-weight:400;margin-left:4px}
 .im.flip>img:not(.alt){transition:opacity .25s ease,transform .35s cubic-bezier(.2,.7,.2,1)}
 
 .card .szl,.big .szl,.gcard .szl,.szl{font-size:12px;color:#6b675f;letter-spacing:.01em;font-weight:500}#coll .gcard .szl{color:var(--ink-dim)}.team-sec .szl{color:inherit;opacity:.75}
+
+/* buy 3 get 1 progress in the bag */
+.bx{margin:0 0 10px;padding:12px 14px;border:1px solid var(--line);border-radius:14px;background:rgba(255,255,255,.04);display:grid;gap:8px}
+.bx p{margin:0;font-size:13.5px;line-height:1.4}.bx b{font-weight:700}
+.bx .bar{height:6px;border-radius:99px;background:rgba(255,255,255,.12);overflow:hidden}.bx .bar i{display:block;height:100%;width:0;background:#C8102E;border-radius:inherit;transition:width .35s ease}
+.bx.done .bar i{background:#3DDC84}.bx small{font-size:11.5px;color:var(--ink-dim)}
+.promo{display:none!important}
 </style>
 
 <div id="app">
@@ -958,6 +965,7 @@ s.was{color:var(--ink-dim);font-weight:400;margin-left:4px}
 <div class="scrim" id="scrim" hidden></div>
 <aside class="drawer" id="cart" role="dialog" aria-modal="true" aria-labelledby="cartH" hidden>
   <header class="dr-h"><h2 id="cartH">Your bag <span class="num" id="cartN"></span></h2><button class="icon-btn" id="cartX" aria-label="Close bag"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button></header>
+  <div class="bx" id="bx" hidden><p id="bxTxt"></p><div class="bar" role="progressbar" aria-label="Progress to a free tee" aria-valuemin="0" aria-valuemax="100" id="bxBar"><i id="bxFill"></i></div><small id="bxFine">Free tee: any non-oversized tee, S–2XL. Max 2 free per order. Can't be combined with other offers or discount codes.</small></div>
   <div class="ship" id="ship" hidden><p id="shipTxt"></p><div class="bar" role="progressbar" aria-label="Progress to free shipping" aria-valuemin="0" aria-valuemax="100" id="shipBar"><i id="shipFill"></i></div></div>
   <div class="dr-body" id="cartBody"></div>
   <footer class="dr-foot" id="cartFoot">
@@ -1010,6 +1018,7 @@ s.was{color:var(--ink-dim);font-weight:400;margin-left:4px}
     <p id="offDoneP">Your offer is saved.</p>
     <div class="off-code num" id="offCode">WELCOME10</div>
     <button class="buy" id="offShop" type="button">Start shopping</button>
+    <p class="fine">One code per order. Can't be combined with Buy 3 tees, get 1 free.</p>
   </div>
   <button class="link" id="offNo" type="button">No thanks</button>
 </aside>
@@ -1745,7 +1754,12 @@ const Cart=(()=>{
   function add(id,size,q=1){const ex=find(id,size);if(ex)ex.qty=Math.min(10,ex.qty+q);else cart.push({id,size,qty:q});setBag();render()}
   const gross=()=>cart.reduce((n,i)=>n+BY[i.id].price*i.qty,0);
   const sets=()=>{let t=0,h=0;cart.forEach(i=>{if(BY[i.id].kind==="hat")h+=i.qty;else t+=i.qty});return Math.min(t,h)};
-  const sub=()=>gross()-sets()*BUNDLE_OFF+(bumpOn&&cart.length?BUMP.price:0);
+  /* Buy 3 tees, get 1 free (Shopify automatic discount; max 2 free; free tee = non-oversized S–2XL; doesn't stack with the Game Day Set) */
+  const FREE_SZ=["S","M","L","XL","2XL"];
+  const bx=()=>{let T=0;const el=[];cart.forEach(i=>{const p=BY[i.id];if(p.kind!=="tee")return;T+=i.qty;if(!p.id.includes("oversized")&&(i.size===null||FREE_SZ.includes(i.size)))for(let k=0;k<i.qty;k++)el.push(p.price)});
+    el.sort((a,b)=>a-b);const apps=Math.min(2,Math.floor(T/4),el.length);return{T,E:el.length,apps,save:el.slice(0,apps).reduce((a,b)=>a+b,0)}};
+  const best=()=>{const b=bx().save,g=sets()*BUNDLE_OFF;return b>=g&&b>0?{v:b,l:"Buy 3, get 1 free"}:{v:g,l:"Game Day Set savings"}};
+  const sub=()=>gross()-best().v+(bumpOn&&cart.length?BUMP.price:0);
   function upsell(){
     const buyable=id=>!shopifyOK||!!VAR[id];
     for(const i of cart){const p=BY[i.id],kind=p.kind==="hat"?"tee":"hat",first=kind==="tee"?LOOK[p.team].tee:LOOK[p.team].hat;
@@ -1778,7 +1792,13 @@ const Cart=(()=>{
      $("ship").hidden=false;$("ship").classList.toggle("done",!left);$("shipFill").style.width=pct+"%";$("shipBar").setAttribute("aria-valuenow",Math.round(pct));
      $("shipTxt").innerHTML=left?`You're <b class="num">${money(left)}</b> away from free shipping`:`You've unlocked <b>free US shipping</b>`;
      $("shipFine").textContent=left?"Shipping and tax calculated at checkout. Ships within the USA.":"Free US shipping applied. Tax calculated at checkout."}
-    const t=sub(),n=sets();$("cartDisc").hidden=!n;$("cartDiscV").textContent=`−${money(n*BUNDLE_OFF)}`;$("cartSub").textContent=money(t);
+    const t=sub(),B=best();$("cartDisc").hidden=!B.v;$("cartDisc").querySelector("span").textContent=B.l;$("cartDiscV").textContent=`−${money(B.v)}`;$("cartSub").textContent=money(t);
+    {const x=bx(),box=$("bx");box.hidden=!x.T;if(x.T){let msg,pct;
+      if(x.apps>=2){msg=`<b>2 free tees unlocked.</b> That's the max per order.`;pct=100}
+      else if(x.apps===1){const n=8-x.T;msg=n>0?`<b>1 free tee unlocked.</b> Add <b>${n}</b> more tee${n>1?"s":""} for a 2nd free tee.`:`<b>1 free tee unlocked.</b> Add a standard tee in S–2XL for a 2nd free tee.`;pct=Math.min(100,(x.T-4)/4*100)}
+      else if(x.T<4){const n=4-x.T;msg=`Add <b>${n}</b> more tee${n>1?"s":""} and your 4th tee is <b>free</b>.`;pct=x.T/4*100}
+      else{msg=`Almost there: your free tee must be a standard tee (not oversized) in S–2XL.`;pct=90}
+      $("bxTxt").innerHTML=msg;$("bxFill").style.width=pct+"%";$("bxBar").setAttribute("aria-valuenow",Math.round(pct));box.classList.toggle("done",x.apps>=2||(x.apps===1&&pct>=100))}}
   }
   $("bumpChk").onchange=e=>{bumpOn=e.target.checked;render()};
   function ready(){const miss=cart.filter(i=>i.size===null);if(miss.length){$("cartMsg").textContent=`Choose a size for ${miss.length===1?BY[miss[0].id].name:miss.length+" items"} before checkout.`;

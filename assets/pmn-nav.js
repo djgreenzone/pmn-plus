@@ -220,3 +220,9 @@ addEventListener("storage",e=>{if(e.key===KEY)emit()});
 if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",paint);else paint();
 window.pmnSavedPaint=paint;
 })();
+/* ---------- offer bar above the menu (all pages). Turn off with PMN_CONFIG.offerBar=false ---------- */
+(()=>{const C=window.PMN_CONFIG||{};if(C.offerBar===false)return;
+const TXT=C.offerText||"Buy 3 tees, get 1 free",LINK=C.offerLink||"/shop#tee",CTA=C.offerCta||"Shop tees";
+const add=()=>document.querySelectorAll("header .pn").forEach(pn=>{if(pn.querySelector(".pn-offer"))return;const a=document.createElement("a");a.className="pn-offer";a.href=LINK;
+  const FINE=C.offerFine||"Can't be combined with other offers or codes";a.title=TXT+". "+FINE+".";a.innerHTML=`<b>${TXT}</b><span aria-hidden="true">·</span><u>${CTA}</u>${FINE?`<small class="pn-offer-fine">${FINE}</small>`:""}`;a.addEventListener("click",()=>{try{window.pmnTrack&&pmnTrack("select_promotion",{promotion_name:TXT})}catch(e){}});pn.prepend(a)});
+if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",add);else add();})();

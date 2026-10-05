@@ -39,7 +39,7 @@ P = {
    m="Red Tonga 676 shirt with a large MATE MA'A TONGA 676 back print. 100% cotton tee.",
    kw="Tonga 676 shirt red",
    d=["The 676 tee in Tonga red. A large MATE MA'A TONGA 676 print fills the back, with a Six·Seven·Six badge on the chest and a PMN+ badge on the sleeve.",
-      "676 is Tonga's international calling code, worn as a mark of home. Printed on a 5.3 oz 100% cotton midweight tee with a regular fit, S to 3XL."],
+      "676 is Tonga's international calling code, worn as a mark of home. Printed on a 5.3 oz 100% cotton midweight tee with a regular fit, L to 3XL."],
    faq=[("What does 676 mean?","676 is Tonga's international dialling code. Tongans around the world use it as shorthand for home and for representing Tonga.")]),
  "toa-685-black": dict(
    m="Black Samoa 685 shirt with a large TOA SAMOA 685 back print. S–5XL, 100% cotton.",
@@ -51,7 +51,7 @@ P = {
    m="Royal blue Samoa 685 shirt with a large TOA SAMOA 685 back print. 100% cotton tee.",
    kw="Samoa 685 shirt blue",
    d=["The 685 tee in royal blue. A large TOA SAMOA 685 print in white fills the back, with a Six·Eight·Five badge on the chest and a PMN+ badge on the sleeve.",
-      "685 is Samoa's international calling code, worn as a mark of home. Printed on a 5.3 oz 100% cotton midweight tee with a regular fit, S to 3XL."],
+      "685 is Samoa's international calling code, worn as a mark of home. Printed on a 5.3 oz 100% cotton midweight tee with a regular fit, L to 3XL."],
    faq=[("What does 685 mean?","685 is Samoa's international dialling code. Samoans around the world use it as shorthand for home and for representing Samoa.")]),
  "mmt-snapback": dict(
    m="Red Mate Ma'a Tonga curved-bill snapback with script and crest, Mafana! patch and Tonga flag.",

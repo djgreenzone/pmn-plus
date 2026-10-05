@@ -406,9 +406,10 @@ main{flex:1;width:min(1180px,100% - 2*clamp(1rem,5vw,2.5rem));margin:clamp(1.5re
 
         <div class="cols">
           <div class="stack">
-          <div class="card code-card" id="codeCard" hidden><p class="eyebrow">Your welcome code</p><p class="cd" id="codeVal"></p><p class="fine">Saved to your bag. It comes off automatically at checkout. Can't be combined with other discount codes.</p></div>
+          <div class="card code-card" id="codeCard"><p class="eyebrow" id="codeEye">Your member code</p><p class="cd" id="codeVal">MEMBER10</p><p class="fine" id="codeFine">10% off every order, for as long as you're a member. Saved to your bag; it comes off automatically at checkout. One code per order.</p></div>
           <div class="card" id="perksCard"><h2 class="disp">Member perks</h2>
             <ul class="perks">
+              <li><svg viewBox="0 0 24 24"><path d="M20 7L9 18l-5-5"/><path d="M7 7l1.5 1.5M16.5 15.5L18 17"/></svg><span><b>10% off every order</b>Code MEMBER10, members only, no limit.</span></li>
               <li><svg viewBox="0 0 24 24"><path d="M13 2L4 14h7l-1 8 9-12h-7z"/></svg><span><b>First access to drops</b>You hear about new team gear before anyone else.</span></li>
               <li id="perkGift" hidden><svg viewBox="0 0 24 24"><path d="M20 12v8H4v-8M2 7h20v5H2zM12 20V7M12 7H8a2 2 0 1 1 2-3l2 3 2-3a2 2 0 1 1 2 3h-4"/></svg><span><b>Free gift with your order</b><span id="perkGiftTxt"></span></span></li>
               <li><svg viewBox="0 0 24 24"><path d="M4 7h16v4H4zM6 11v8h12v-8M12 7v12"/></svg><span><b>Buy 3 tees, get 1 free</b>Mix any designs. The 4th tee comes off in your bag.</span></li>
@@ -615,7 +616,7 @@ function renderOrderDetail(name){const el=$("orderDetail");const o=ORDERS.find(x
     </div></div>`;
   $("buyAgain").onclick=()=>buyAgain(o)}
 function renderOrders(d){
-  const none=!d||!d.orders||!d.orders.length;ORDERS=none?[]:d.orders;if(location.hash.startsWith("#order/"))renderOrderDetail(decodeURIComponent(location.hash.slice(7)));
+  const none=!d||!d.orders||!d.orders.length;ORDERS=none?[]:d.orders;renderCode();if(location.hash.startsWith("#order/"))renderOrderDetail(decodeURIComponent(location.hash.slice(7)));
   const msg=d&&d.soon?"Order history is switching on. Your order emails have a tracking link in the meantime."
     :`No orders yet. Anything you buy with ${esc(user.email)} shows up here, guest checkouts included.`;
   $("ordCt").textContent=none?"":d.orders.length;
@@ -646,12 +647,19 @@ const addBag=(id,size,qty=1)=>{try{const cart=JSON.parse(localStorage.getItem("p
   if(row)row.qty=Math.min(10,row.qty+qty);else cart.push({id,size,qty});localStorage.setItem("pmn_cart",JSON.stringify(cart));
   try{window.pmnLog&&pmnLog("add_to_cart",{ref:id,title:(byId(id)||{}).n||id,url:"/shop/"+((byId(id)||{}).s||""),meta:{size,qty,from:"account"}})}catch(e){}}catch(e){}};
 const pcard=(x,extra,btn)=>`<a class="pc" href="/shop/${esc(x.s)}"${btn?'':''}><span class="im">${extra&&extra.tag?`<span class="tag">${esc(extra.tag)}</span>`:""}<img src="${esc(pimg(x))}" alt="" loading="lazy"></span><b>${esc(x.n)}</b>${extra&&extra.sub?`<small>${esc(extra.sub)}</small>`:""}<span class="pr">$${x.p}</span>${btn?`<button type="button" class="btn sm" data-bag="${esc(x.id)}" data-size="${esc(btn.size||"")}">${esc(btn.label||"Add to bag")}</button>`:""}</a>`;
+const MEMBER_CODE="MEMBER10";
+const welcomeUsed=()=>ORDERS.some(o=>!o.cancelled&&(o.codes||[]).some(c=>/^WELCOME/i.test(c)));
+function renderCode(){let c=store.get("pmn_code")||"";const used=welcomeUsed();
+  if(!c||(/^WELCOME/i.test(c)&&used))c=MEMBER_CODE;if(/^WELCOME/i.test(c)||c===MEMBER_CODE)store.set("pmn_code",c);
+  const w=/^WELCOME/i.test(c);$("codeEye").textContent=w?"Your welcome code":"Your member code";$("codeVal").textContent=c;
+  $("codeFine").textContent=w?`${c.replace(/\D/g,"")}% off your first order, one time only. After that your member code MEMBER10 takes over: 10% off every order. Saved to your bag; one code per order.`
+    :"10% off every order, for as long as you're a member. Saved to your bag; it comes off automatically at checkout. One code per order."}
 function renderSavings(){const el=$("savings");if(!el)return;const disc=ORDERS.reduce((n,o)=>n+(+o.discount||0),0),n=ORDERS.length;
   const tees=ORDERS.reduce((a,o)=>a+o.items.filter(i=>/TEE/i.test(i.title)).reduce((b,i)=>b+i.qty,0),0),free=ORDERS.reduce((a,o)=>a+o.items.filter(i=>/TEE/i.test(i.title)&&!+i.price).reduce((b,i)=>b+i.qty,0),0);
   const code=store.get("pmn_code");
   el.innerHTML=`<div class="sv"><b class="${disc?"":"w"}">${money(disc,"USD")}</b><span>${n?`saved across ${n} order${n>1?"s":""}`:"saved so far. Your welcome code is waiting in your bag."}</span></div>
     <div class="sv"><b class="w">${free}</b><span>free tee${free===1?"":"s"} claimed · ${(need=>need===0?"max free tees claimed":need===1?"your next tee is free":`${need} more tees to your next free one`)(tees>=8?0:4-tees%4)}</span><a href="/shop/all">Buy 3 tees, get 1 free</a></div>
-    <div class="sv"><b class="w">${code?esc(code):"Gift"}</b><span>${code?"off your next order, already in your bag":"A free gift from the PMN+ vault with every order"}</span><a href="#help">Member perks</a></div>`}
+    <div class="sv"><b class="w">${esc(code||MEMBER_CODE)}</b><span>${/^WELCOME/i.test(code||"")?code.replace(/\D/g,"")+"% off your first order, then MEMBER10 on every order after":"10% off every order, members only · already in your bag"}</span><a href="#help">Member perks</a></div>`}
 function renderBuyAgain(){const el=$("buyAgainRow"),b=bought();$("sec-buyagain").hidden=false;
   if(!b.length){el.innerHTML=`<div class="empty-row"><p>Everything you've bought shows up here, ready to reorder in a tap.</p><a class="btn sm" href="/shop">Shop the drop</a></div>`;return}
   const cards=b.map(r=>{const x=byId(r.id);if(!x)return"";return pcard(x,{sub:r.size?`Last time: ${r.size}`:"",tag:r.qty>1?`×${r.qty}`:""},{size:r.size||(x.k==="hat"?"One size":""),label:"Buy again"})}).filter(Boolean);
@@ -727,7 +735,7 @@ async function loadAccount(s){session=s;user=s.user;show("vAcct");go(location.ha
   await klSync(p);
   $("pFirst").value=prof.first_name||"";$("pLast").value=prof.last_name||"";$("pNews").checked=prof.marketing_opt_in!==false;
   sel={team:prof.favourite_team||"",country:prof.country||""};renderPickers();renderHeader();
-  const c=store.get("pmn_code");$("codeCard").hidden=!c;if(c)$("codeVal").textContent=c;
+  renderCode();
   try{const l=await api("/api/account/link",{method:"POST"});
     if(l.status===503){renderOrders({soon:true});return}
     const r=await api("/api/account/orders");renderOrders(r.ok?await r.json():null)}catch(e){renderOrders({soon:true})}}

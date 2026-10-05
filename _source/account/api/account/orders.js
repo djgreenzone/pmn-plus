@@ -5,7 +5,7 @@ const { send, env, currentUser, getProfile, shopify } = require('../_account');
 const Q = `query($id:ID!){customer(id:$id){
   firstName numberOfOrders
   orders(first:20,sortKey:PROCESSED_AT,reverse:true){nodes{
-    id name processedAt cancelledAt closedAt
+    id name processedAt cancelledAt closedAt discountCodes
     displayFinancialStatus displayFulfillmentStatus
     totalPriceSet{shopMoney{amount currencyCode}}
     subtotalPriceSet{shopMoney{amount}}
@@ -51,7 +51,7 @@ module.exports = async (req, res) => {
       const problem = disp.find(x => /FAILURE|ATTEMPTED_DELIVERY|NOT_DELIVERED/.test(x)) || null;
       const m = s => s && s.shopMoney ? +s.shopMoney.amount : 0;
       return {
-        name: o.name, date: o.processedAt, cancelled: !!o.cancelledAt,
+        name: o.name, date: o.processedAt, cancelled: !!o.cancelledAt, codes: o.discountCodes || [],
         payment: o.displayFinancialStatus, fulfillment: o.displayFulfillmentStatus,
         total: o.totalPriceSet.shopMoney.amount, currency: o.totalPriceSet.shopMoney.currencyCode,
         subtotal: m(o.subtotalPriceSet), shipping: m(o.totalShippingPriceSet), tax: m(o.totalTaxSet), discount: m(o.totalDiscountsSet), refunded: m(o.totalRefundedSet),

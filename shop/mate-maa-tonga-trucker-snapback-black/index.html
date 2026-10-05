@@ -168,6 +168,8 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--ink);outline-offset
 .sizes{display:flex;flex-wrap:wrap;gap:8px}
 .size{height:46px;min-width:64px;padding:0 14px;border:1px solid var(--line);border-radius:12px;font-weight:600;font-size:14px}
 .size[aria-pressed="true"]{background:var(--ink);color:var(--night);border-color:var(--ink)}
+.size.na{color:#a9a59d;border-color:#dcd9d2;cursor:not-allowed;background:linear-gradient(to top right,transparent calc(50% - .75px),#cfcbc3 calc(50% - .75px),#cfcbc3 calc(50% + .75px),transparent calc(50% + .75px))}
+.size.na:hover,.size.na:focus{border-color:#dcd9d2!important;outline:none}
 .sizes.nudge{animation:nudge .35s}
 @keyframes nudge{25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
 .buy{height:56px;border-radius:16px;background:var(--ink);color:var(--night);font-family:var(--display);font-size:24px;letter-spacing:.04em}
@@ -1596,8 +1598,14 @@ const PDP=(()=>{
     const det=$("pDetails");det.hidden=!bl.fabric;
     if(bl.fabric){$("pFabric").textContent=`${bl.label}. ${bl.fabric}. Same price in every size.`;$("pFabric").hidden=false;
       $("pChart").innerHTML=`<tr><th>Size</th>${list.map(z=>`<th>${z}</th>`).join("")}</tr><tr><th>Chest</th>${list.map(z=>`<td>${(bl.chart==="heavy"?HEAVY_CHART:FWJ_CHART)[z][0]}</td>`).join("")}</tr><tr><th>Length</th>${list.map(z=>`<td>${(bl.chart==="heavy"?HEAVY_CHART:FWJ_CHART)[z][1]}</td>`).join("")}</tr>`}
+    /* colour tees: show the full S–5XL ladder, crossing out sizes this colour isn't made in */
+    const ladder=p.kind==="tee"&&bl===BLANK.fwjColour?BLANK.fwjCore.sizes:list;
+    ladder.filter(s=>!list.includes(s)).length&&ladder.forEach(s=>{if(list.includes(s))return;const b=document.createElement("button");b.className="size na";b.type="button";b.textContent=s;
+      b.setAttribute("aria-disabled","true");b.title=`${s} isn't available in ${p.colourName}. Black comes in S–5XL.`;b.setAttribute("aria-label",`${s}, not available in ${p.colourName}`);
+      b.onclick=()=>{const n=$("pFit");n.textContent=`${p.colourName} is made in ${list[0]}–${list.at(-1)}. Need ${s}? The black version comes in S–5XL.`;n.hidden=false};b.dataset.na=s;sz.append(b)});
     list.forEach(s=>{const b=document.createElement("button");b.className="size";b.textContent=s==="One size"?"OSFA":s;{const vv=typeof VAR!=="undefined"&&VAR[p.id]&&VAR[p.id][s];if((vv&&!vv.ok)||(typeof shopifyOK!=="undefined"&&shopifyOK&&VAR[p.id]&&!vv)||SOLD.has(p.id)){b.disabled=true;b.classList.add("so");b.setAttribute("aria-label",s+", sold out")}}b.setAttribute("aria-pressed",s===size);
       b.onclick=()=>{size=s;sz.querySelectorAll(".size").forEach(x=>x.setAttribute("aria-pressed",x===b));cta();intent("select_size","Selected Size",{Size:s})};sz.append(b)});
+    if(ladder!==list){const ord=[...sz.children].sort((x,y)=>ladder.indexOf(x.dataset.na||x.textContent)-ladder.indexOf(y.dataset.na||y.textContent));ord.forEach(x=>sz.append(x))}
     if(p.kind==="tee"&&!size)sz.style.gridTemplateColumns="";
     extras(p);cta();
   }

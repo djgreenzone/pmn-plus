@@ -134,6 +134,7 @@ main{flex:1;width:min(1180px,100% - 2*clamp(1rem,5vw,2.5rem));margin:clamp(1.5re
 .foot .pay{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:6px}
 .foot .pay li{font-size:11.5px;font-weight:600;padding:5px 9px;border:1px solid var(--line);border-radius:6px;color:rgba(244,242,238,.8)}
 .foot .fine{margin:0;font-size:12px;color:var(--dim)}
+.foot .fbot{display:flex;justify-content:space-between;align-items:center;gap:12px 20px;flex-wrap:wrap}.foot .pow{display:inline-flex;align-items:center;gap:6px;height:30px;padding:0 12px;border-radius:999px;border:1px solid rgba(244,242,238,.22);color:rgba(244,242,238,.75);font-size:11.5px;letter-spacing:.02em;text-decoration:none;white-space:nowrap;transition:border-color .15s,color .15s}.foot .pow b{font-weight:700;color:#fff}.foot .pow:hover{border-color:#fff;color:#fff}.foot .pow::before{content:"";width:6px;height:6px;border-radius:50%;background:#C8102E}
 @media (min-width:900px){.foot{grid-template-columns:auto 1fr auto;align-items:start;column-gap:56px;padding-inline:max(2.5rem,calc(50vw - 620px))}.foot>.fine,.foot>.pay{grid-column:1/-1}.foot-cols{gap:48px}}
 </style>
 <link rel="stylesheet" href="/assets/pmn-nav.css">
@@ -291,7 +292,7 @@ b.onclick=function(){var on=window.pmnAdsOptedOut&&window.pmnAdsOptedOut();if(na
         <a href="https://www.youtube.com/c/PolynesianMusic" target="_blank" rel="noopener" aria-label="PMN+ on YouTube"><svg viewBox="0 0 24 24"><path class="f" d="M21.6 7.2c-.2-.9-.9-1.6-1.8-1.8C18.2 5 12 5 12 5s-6.2 0-7.8.4c-.9.2-1.6.9-1.8 1.8C2 8.8 2 12 2 12s0 3.2.4 4.8c.2.9.9 1.6 1.8 1.8C5.8 19 12 19 12 19s6.2 0 7.8-.4c.9-.2 1.6-.9 1.8-1.8.4-1.6.4-4.8.4-4.8s0-3.2-.4-4.8z"/><path d="M10 9.2v5.6l4.8-2.8z" fill="#05060a" stroke="none"/></svg></a>
   </div></div>
   <ul class="pay" aria-label="Payment methods"><li>Visa</li><li>Mastercard</li><li>Amex</li><li>Apple Pay</li><li>Google Pay</li><li>Shop Pay</li></ul>
-  <p class="fine">&copy; <span id="yr"></span> Polynesian Music. PMN+ ships within the USA. Prices in USD.</p>
+  <div class="fbot"><p class="fine">&copy; <span id="yr"></span> Polynesian Music. PMN+ ships within the USA. Prices in USD.</p><a class="pow" href="https://icmcreative.com" target="_blank" rel="noopener">Powered by <b>ICM Creative</b></a></div>
 </footer>
 <script src="/assets/pmn-config.js"></script>
 <script src="/assets/pmn-nav.js"></script>

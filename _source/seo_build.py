@@ -76,7 +76,7 @@ feed='\n'.join(rows)+'\n'
 open('site2/seo/merchant-center-feed.tsv','w').write(feed)
 open('../merchant-center-feed.txt','w').write(feed)  # public URL for Merchant Center scheduled fetch
 # ---- sitemap with images ----
-u=['<?xml version="1.0" encoding="UTF-8"?>','<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">']
+u=['<?xml version="1.0" encoding="UTF-8"?>','<?xml-stylesheet type="text/xsl" href="/sitemap.xsl"?>','<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">']
 u.append(f"  <url><loc>{D}/</loc><lastmod>2026-10-02</lastmod><image:image><image:loc>{D}/assets/pmn-plus-og-music-culture-tradition-sports.jpg</image:loc></image:image></url>")
 u.append(f"  <url><loc>{D}/shop</loc><lastmod>2026-10-02</lastmod><image:image><image:loc>{D}/shop/pmn-plus-shop-og-rlwc-2026-toa-samoa-mate-maa-tonga.jpg</image:loc></image:image></url>")
 CIMG={'toa-samoa':['shop/brand/toa-samoa-rugby-league-crest.webp'],'mate-maa-tonga':['shop/brand/mate-maa-tonga-rugby-league-crest.webp']}   # collection page images

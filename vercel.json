@@ -1,0 +1,17 @@
+{
+  "trailingSlash": false,
+  "redirects": [
+    { "source": "/:path*", "has": [{ "type": "host", "value": "polynesianmusicnetwork.com" }], "destination": "https://www.polynesianmusicnetwork.com/:path*", "permanent": true },
+    { "source": "/about-us", "destination": "/about", "permanent": true },
+    { "source": "/about-us/", "destination": "/about", "permanent": true },
+    { "source": "/contact-us", "destination": "/contact", "permanent": true },
+    { "source": "/contact-us/", "destination": "/contact", "permanent": true },
+    { "source": "/privacy-policy/", "destination": "/privacy-policy", "permanent": true },
+    { "source": "/terms-of-service", "destination": "/terms", "permanent": true },
+    { "source": "/terms-of-service/", "destination": "/terms", "permanent": true },
+    { "source": "/store", "destination": "/shop", "permanent": true },
+    { "source": "/store/:path*", "destination": "/shop", "permanent": true },
+    { "source": "/merch", "destination": "/shop", "permanent": true },
+    { "source": "/merch/:path*", "destination": "/shop", "permanent": true }
+  ]
+}

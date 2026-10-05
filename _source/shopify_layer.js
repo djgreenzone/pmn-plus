@@ -4,7 +4,11 @@ const SHOPIFY={domain:"polynesianmusicnetwork.myshopify.com",token:"ac4ace2c0dde
 const SHOPIFY_MAP={
   "mmt-oversized":["mmt-samoa-crest-oversized-tee","Black"],"toa-oversized":["toa-samoa-crest-oversized-tee","Black"],
   "mmt-676-black":["mmt-676-tee-shirt","Black"],"mmt-676-tee":["mmt-676-tee","Red"],
-  "toa-685-black":["toa-samoa-685-tee-shirt","Black"],"toa-685-tee":["toa-samoa-685-tee-shirt","Bright Royal"],
+  "toa-685-black":["toa-samoa-685-tee-shirt","Black"],
+  "mmt-rlwc26-black":["mmt-rlwc-26-tee","Black"],"mmt-rlwc26-red":["mmt-rlwc-26-tee","Red"],
+  "toa-rlwc26-black":["toa-samoa-rlwc-26-tee","Black"],"toa-rlwc26-royal":["toa-samoa-rlwc-26-tee","Bright Royal"],
+  "mmt-player-black":["mmt-player-tee-blk","Black"],"mmt-player-red":["mmt-player-tee-red","Red"],
+  "toa-player-black":["toa-samoa-player-tee","Black"],"toa-player-royal":["toa-samoa-player-tee","Bright Royal"],"toa-685-tee":["toa-samoa-685-tee-shirt","Bright Royal"],
   "mmt-silver-blackout":["mmt-silver-blackout-tee","Black"],"toa-silver-blackout":["toa-samoa-silver-blackout-tee","Black"],
   "mmt-trucker":["tonga-trucker-snapback",null],"toa-trucker":["samoa-trucker-snapback",null],
   "pmn-tee":["pmn-classic-tee","Black"],"pmn-trucker":["pmn-retro-trucker-hat-blk",null],"pmn-dad-hat":["pmn-classic-dad-hat-khaki",null],

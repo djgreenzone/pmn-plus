@@ -41,12 +41,20 @@
    "products": [
     "mmt-oversized",
     "toa-oversized",
+    "mmt-rlwc26-black",
+    "toa-rlwc26-black",
+    "mmt-player-black",
+    "toa-player-black",
     "mmt-676-black",
     "toa-685-black",
     "mmt-hp-snapback",
     "toa-hp-snapback",
     "mmt-676-tee",
     "toa-685-tee",
+    "mmt-rlwc26-red",
+    "toa-rlwc26-royal",
+    "mmt-player-red",
+    "toa-player-royal",
     "mmt-silver-blackout",
     "toa-silver-blackout",
     "mmt-trucker",
@@ -77,66 +85,106 @@
       {
        "@type": "ListItem",
        "position": 3,
-       "url": "https://www.polynesianmusicnetwork.com/shop/mate-maa-tonga-676-tee-black"
+       "url": "https://www.polynesianmusicnetwork.com/shop/mate-maa-tonga-rlwc26-tee-black"
       },
       {
        "@type": "ListItem",
        "position": 4,
-       "url": "https://www.polynesianmusicnetwork.com/shop/toa-samoa-685-tee-black"
+       "url": "https://www.polynesianmusicnetwork.com/shop/toa-samoa-rlwc26-tee-black"
       },
       {
        "@type": "ListItem",
        "position": 5,
-       "url": "https://www.polynesianmusicnetwork.com/shop/mate-maa-tonga-high-profile-snapback-white-crimson"
+       "url": "https://www.polynesianmusicnetwork.com/shop/mate-maa-tonga-player-tee-black"
       },
       {
        "@type": "ListItem",
        "position": 6,
-       "url": "https://www.polynesianmusicnetwork.com/shop/toa-samoa-high-profile-snapback-navy-white"
+       "url": "https://www.polynesianmusicnetwork.com/shop/toa-samoa-player-tee-black"
       },
       {
        "@type": "ListItem",
        "position": 7,
-       "url": "https://www.polynesianmusicnetwork.com/shop/mate-maa-tonga-676-tee-red"
+       "url": "https://www.polynesianmusicnetwork.com/shop/mate-maa-tonga-676-tee-black"
       },
       {
        "@type": "ListItem",
        "position": 8,
-       "url": "https://www.polynesianmusicnetwork.com/shop/toa-samoa-685-tee-royal-blue"
+       "url": "https://www.polynesianmusicnetwork.com/shop/toa-samoa-685-tee-black"
       },
       {
        "@type": "ListItem",
        "position": 9,
-       "url": "https://www.polynesianmusicnetwork.com/shop/mate-maa-tonga-silver-blackout-tee-black"
+       "url": "https://www.polynesianmusicnetwork.com/shop/mate-maa-tonga-high-profile-snapback-white-crimson"
       },
       {
        "@type": "ListItem",
        "position": 10,
-       "url": "https://www.polynesianmusicnetwork.com/shop/toa-samoa-silver-blackout-tee-black"
+       "url": "https://www.polynesianmusicnetwork.com/shop/toa-samoa-high-profile-snapback-navy-white"
       },
       {
        "@type": "ListItem",
        "position": 11,
-       "url": "https://www.polynesianmusicnetwork.com/shop/mate-maa-tonga-trucker-snapback-black"
+       "url": "https://www.polynesianmusicnetwork.com/shop/mate-maa-tonga-676-tee-red"
       },
       {
        "@type": "ListItem",
        "position": 12,
-       "url": "https://www.polynesianmusicnetwork.com/shop/toa-samoa-trucker-snapback-black"
+       "url": "https://www.polynesianmusicnetwork.com/shop/toa-samoa-685-tee-royal-blue"
       },
       {
        "@type": "ListItem",
        "position": 13,
-       "url": "https://www.polynesianmusicnetwork.com/shop/pmn-plus-logo-tee-black"
+       "url": "https://www.polynesianmusicnetwork.com/shop/mate-maa-tonga-rlwc26-tee-red"
       },
       {
        "@type": "ListItem",
        "position": 14,
-       "url": "https://www.polynesianmusicnetwork.com/shop/pmn-plus-trucker-hat-black"
+       "url": "https://www.polynesianmusicnetwork.com/shop/toa-samoa-rlwc26-tee-royal-blue"
       },
       {
        "@type": "ListItem",
        "position": 15,
+       "url": "https://www.polynesianmusicnetwork.com/shop/mate-maa-tonga-player-tee-red"
+      },
+      {
+       "@type": "ListItem",
+       "position": 16,
+       "url": "https://www.polynesianmusicnetwork.com/shop/toa-samoa-player-tee-royal-blue"
+      },
+      {
+       "@type": "ListItem",
+       "position": 17,
+       "url": "https://www.polynesianmusicnetwork.com/shop/mate-maa-tonga-silver-blackout-tee-black"
+      },
+      {
+       "@type": "ListItem",
+       "position": 18,
+       "url": "https://www.polynesianmusicnetwork.com/shop/toa-samoa-silver-blackout-tee-black"
+      },
+      {
+       "@type": "ListItem",
+       "position": 19,
+       "url": "https://www.polynesianmusicnetwork.com/shop/mate-maa-tonga-trucker-snapback-black"
+      },
+      {
+       "@type": "ListItem",
+       "position": 20,
+       "url": "https://www.polynesianmusicnetwork.com/shop/toa-samoa-trucker-snapback-black"
+      },
+      {
+       "@type": "ListItem",
+       "position": 21,
+       "url": "https://www.polynesianmusicnetwork.com/shop/pmn-plus-logo-tee-black"
+      },
+      {
+       "@type": "ListItem",
+       "position": 22,
+       "url": "https://www.polynesianmusicnetwork.com/shop/pmn-plus-trucker-hat-black"
+      },
+      {
+       "@type": "ListItem",
+       "position": 23,
        "url": "https://www.polynesianmusicnetwork.com/shop/pmn-plus-classic-dad-hat-khaki"
       }
      ]
@@ -151,9 +199,13 @@
    "url": "https://www.polynesianmusicnetwork.com/shop/mate-maa-tonga",
    "products": [
     "mmt-oversized",
+    "mmt-rlwc26-black",
+    "mmt-player-black",
     "mmt-676-black",
     "mmt-hp-snapback",
     "mmt-676-tee",
+    "mmt-rlwc26-red",
+    "mmt-player-red",
     "mmt-silver-blackout",
     "mmt-trucker"
    ],
@@ -174,26 +226,46 @@
       {
        "@type": "ListItem",
        "position": 2,
-       "url": "https://www.polynesianmusicnetwork.com/shop/mate-maa-tonga-676-tee-black"
+       "url": "https://www.polynesianmusicnetwork.com/shop/mate-maa-tonga-rlwc26-tee-black"
       },
       {
        "@type": "ListItem",
        "position": 3,
-       "url": "https://www.polynesianmusicnetwork.com/shop/mate-maa-tonga-high-profile-snapback-white-crimson"
+       "url": "https://www.polynesianmusicnetwork.com/shop/mate-maa-tonga-player-tee-black"
       },
       {
        "@type": "ListItem",
        "position": 4,
-       "url": "https://www.polynesianmusicnetwork.com/shop/mate-maa-tonga-676-tee-red"
+       "url": "https://www.polynesianmusicnetwork.com/shop/mate-maa-tonga-676-tee-black"
       },
       {
        "@type": "ListItem",
        "position": 5,
-       "url": "https://www.polynesianmusicnetwork.com/shop/mate-maa-tonga-silver-blackout-tee-black"
+       "url": "https://www.polynesianmusicnetwork.com/shop/mate-maa-tonga-high-profile-snapback-white-crimson"
       },
       {
        "@type": "ListItem",
        "position": 6,
+       "url": "https://www.polynesianmusicnetwork.com/shop/mate-maa-tonga-676-tee-red"
+      },
+      {
+       "@type": "ListItem",
+       "position": 7,
+       "url": "https://www.polynesianmusicnetwork.com/shop/mate-maa-tonga-rlwc26-tee-red"
+      },
+      {
+       "@type": "ListItem",
+       "position": 8,
+       "url": "https://www.polynesianmusicnetwork.com/shop/mate-maa-tonga-player-tee-red"
+      },
+      {
+       "@type": "ListItem",
+       "position": 9,
+       "url": "https://www.polynesianmusicnetwork.com/shop/mate-maa-tonga-silver-blackout-tee-black"
+      },
+      {
+       "@type": "ListItem",
+       "position": 10,
        "url": "https://www.polynesianmusicnetwork.com/shop/mate-maa-tonga-trucker-snapback-black"
       }
      ]
@@ -208,9 +280,13 @@
    "url": "https://www.polynesianmusicnetwork.com/shop/toa-samoa",
    "products": [
     "toa-oversized",
+    "toa-rlwc26-black",
+    "toa-player-black",
     "toa-685-black",
     "toa-hp-snapback",
     "toa-685-tee",
+    "toa-rlwc26-royal",
+    "toa-player-royal",
     "toa-silver-blackout",
     "toa-trucker"
    ],
@@ -231,26 +307,46 @@
       {
        "@type": "ListItem",
        "position": 2,
-       "url": "https://www.polynesianmusicnetwork.com/shop/toa-samoa-685-tee-black"
+       "url": "https://www.polynesianmusicnetwork.com/shop/toa-samoa-rlwc26-tee-black"
       },
       {
        "@type": "ListItem",
        "position": 3,
-       "url": "https://www.polynesianmusicnetwork.com/shop/toa-samoa-high-profile-snapback-navy-white"
+       "url": "https://www.polynesianmusicnetwork.com/shop/toa-samoa-player-tee-black"
       },
       {
        "@type": "ListItem",
        "position": 4,
-       "url": "https://www.polynesianmusicnetwork.com/shop/toa-samoa-685-tee-royal-blue"
+       "url": "https://www.polynesianmusicnetwork.com/shop/toa-samoa-685-tee-black"
       },
       {
        "@type": "ListItem",
        "position": 5,
-       "url": "https://www.polynesianmusicnetwork.com/shop/toa-samoa-silver-blackout-tee-black"
+       "url": "https://www.polynesianmusicnetwork.com/shop/toa-samoa-high-profile-snapback-navy-white"
       },
       {
        "@type": "ListItem",
        "position": 6,
+       "url": "https://www.polynesianmusicnetwork.com/shop/toa-samoa-685-tee-royal-blue"
+      },
+      {
+       "@type": "ListItem",
+       "position": 7,
+       "url": "https://www.polynesianmusicnetwork.com/shop/toa-samoa-rlwc26-tee-royal-blue"
+      },
+      {
+       "@type": "ListItem",
+       "position": 8,
+       "url": "https://www.polynesianmusicnetwork.com/shop/toa-samoa-player-tee-royal-blue"
+      },
+      {
+       "@type": "ListItem",
+       "position": 9,
+       "url": "https://www.polynesianmusicnetwork.com/shop/toa-samoa-silver-blackout-tee-black"
+      },
+      {
+       "@type": "ListItem",
+       "position": 10,
        "url": "https://www.polynesianmusicnetwork.com/shop/toa-samoa-trucker-snapback-black"
       }
      ]
@@ -687,6 +783,966 @@
         "acceptedAnswer": {
          "@type": "Answer",
          "text": "It's cut roomy with a dropped shoulder. Take your normal size for the relaxed oversized look, or one size down for a closer fit."
+        }
+       },
+       {
+        "@type": "Question",
+        "name": "When will my order arrive?",
+        "acceptedAnswer": {
+         "@type": "Answer",
+         "text": "Each piece is printed to order. Printing takes 2–4 business days, then shipping takes 3–7 business days within the USA, so about 5–11 business days in total. You'll get a tracking link by email when it ships."
+        }
+       },
+       {
+        "@type": "Question",
+        "name": "Do you ship outside the USA?",
+        "acceptedAnswer": {
+         "@type": "Answer",
+         "text": "Not yet. We ship to all 50 US states, including Hawaii and Alaska. We're working on New Zealand and Australia."
+        }
+       },
+       {
+        "@type": "Question",
+        "name": "What payment methods do you take?",
+        "acceptedAnswer": {
+         "@type": "Answer",
+         "text": "Visa, Mastercard, Amex, Apple Pay, Google Pay and Shop Pay at secure checkout."
+        }
+       },
+       {
+        "@type": "Question",
+        "name": "What's your return policy?",
+        "acceptedAnswer": {
+         "@type": "Answer",
+         "text": "Every PMN+ piece is made to order, just for you, so all sales are final: no returns or exchanges for size, colour or change of mind. If your item arrives damaged, misprinted or incorrect, email photos within 7 days of delivery and we'll review it and make it right."
+        }
+       },
+       {
+        "@type": "Question",
+        "name": "How do I wash it?",
+        "acceptedAnswer": {
+         "@type": "Answer",
+         "text": "Machine wash cold, inside out, with similar colours. Tumble dry low or hang dry. Do not iron directly on the print. Do not dry clean."
+        }
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "mmt-rlwc26-black": {
+   "slug": "mate-maa-tonga-rlwc26-tee-black",
+   "url": "https://www.polynesianmusicnetwork.com/shop/mate-maa-tonga-rlwc26-tee-black",
+   "title": "Mate Ma'a Tonga RLWC26 Tee – Black | RLWC 2026 | PMN+",
+   "meta": "Black Mate Ma'a Tonga RLWC 2026 shirt with an arched 1986 crest back print and Tonga script chest logo. S–5XL, 100% cotton. $45 · Ships across the USA.",
+   "h1": "Mate Ma'a Tonga RLWC26 Tee",
+   "colour": "Black",
+   "price": 45,
+   "team": "tonga",
+   "keyword": "Mate Ma'a Tonga World Cup 2026 shirt",
+   "description": [
+    "The RLWC26 tee in black. The back carries an arched MATE MA'A over the Tonga crest, 19 and 86 either side, Tonga in script and a Rugby League World Cup 2026 line. A small crest and Mate Ma'a Tonga script sit on the left chest, with a PMN+ badge on the sleeve.",
+    "A supporter tee for Rugby League World Cup 2026. Printed on a 5.3 oz 100% cotton midweight tee with a regular fit, from S to 5XL at one price."
+   ],
+   "faq": [
+    {
+     "q": "Is this an official team shirt?",
+     "a": "No. It's an independent PMN+ supporter tee, made to rep Mate Ma'a Tonga through the Rugby League World Cup 2026."
+    },
+    {
+     "q": "When will my order arrive?",
+     "a": "Each piece is printed to order. Printing takes 2–4 business days, then shipping takes 3–7 business days within the USA, so about 5–11 business days in total. You'll get a tracking link by email when it ships."
+    },
+    {
+     "q": "Do you ship outside the USA?",
+     "a": "Not yet. We ship to all 50 US states, including Hawaii and Alaska. We're working on New Zealand and Australia."
+    },
+    {
+     "q": "What payment methods do you take?",
+     "a": "Visa, Mastercard, Amex, Apple Pay, Google Pay and Shop Pay at secure checkout."
+    },
+    {
+     "q": "What's your return policy?",
+     "a": "Every PMN+ piece is made to order, just for you, so all sales are final: no returns or exchanges for size, colour or change of mind. If your item arrives damaged, misprinted or incorrect, email photos within 7 days of delivery and we'll review it and make it right."
+    },
+    {
+     "q": "How do I wash it?",
+     "a": "Machine wash cold, inside out, with similar colours. Tumble dry low or hang dry. Do not iron directly on the print. Do not dry clean."
+    }
+   ],
+   "sizes": [
+    "S",
+    "M",
+    "L",
+    "XL",
+    "2XL",
+    "3XL",
+    "4XL",
+    "5XL"
+   ],
+   "images": [
+    "https://www.polynesianmusicnetwork.com/shop/hires/mmt-rlwc26-black/mate-maa-tonga-rlwc26-tee-black-back.webp",
+    "https://www.polynesianmusicnetwork.com/shop/hires/mmt-rlwc26-black/mate-maa-tonga-rlwc26-tee-black-front.webp",
+    "https://www.polynesianmusicnetwork.com/shop/hires/mmt-rlwc26-black/mate-maa-tonga-rlwc26-tee-black-front-right.webp",
+    "https://www.polynesianmusicnetwork.com/shop/hires/mmt-rlwc26-black/mate-maa-tonga-rlwc26-tee-black-right.webp",
+    "https://www.polynesianmusicnetwork.com/shop/hires/mmt-rlwc26-black/mate-maa-tonga-rlwc26-tee-black-front-left.webp"
+   ],
+   "og": "https://www.polynesianmusicnetwork.com/shop/og/mate-maa-tonga-rlwc26-tee-black.jpg",
+   "sold": false,
+   "kind": "tee",
+   "teamName": "Mate Ma'a Tonga",
+   "alt": [
+    "Mate Ma'a Tonga RLWC26 Tee in black, back view",
+    "Mate Ma'a Tonga RLWC26 Tee in black, front view",
+    "Mate Ma'a Tonga RLWC26 Tee in black, front right view",
+    "Mate Ma'a Tonga RLWC26 Tee in black, right view",
+    "Mate Ma'a Tonga RLWC26 Tee in black, front left view"
+   ],
+   "jsonld": {
+    "@context": "https://schema.org",
+    "@graph": [
+     {
+      "@type": "Organization",
+      "@id": "https://www.polynesianmusicnetwork.com/#org",
+      "name": "PMN+",
+      "alternateName": "Polynesian Music Network Plus",
+      "url": "https://www.polynesianmusicnetwork.com",
+      "logo": "https://www.polynesianmusicnetwork.com/shop/brand/pmn-plus-logo-black.png",
+      "legalName": "Polynesian Music"
+     },
+     {
+      "@type": "Product",
+      "@id": "https://www.polynesianmusicnetwork.com/shop/mate-maa-tonga-rlwc26-tee-black#product",
+      "name": "Mate Ma'a Tonga RLWC26 Tee – Black",
+      "sku": "mate-maa-tonga-rlwc26-tee-black",
+      "brand": {
+       "@type": "Brand",
+       "name": "PMN+"
+      },
+      "color": "Black",
+      "category": "Apparel & Accessories > Clothing > Shirts & Tops",
+      "image": [
+       "https://www.polynesianmusicnetwork.com/shop/hires/mmt-rlwc26-black/mate-maa-tonga-rlwc26-tee-black-back.webp",
+       "https://www.polynesianmusicnetwork.com/shop/hires/mmt-rlwc26-black/mate-maa-tonga-rlwc26-tee-black-front.webp",
+       "https://www.polynesianmusicnetwork.com/shop/hires/mmt-rlwc26-black/mate-maa-tonga-rlwc26-tee-black-front-right.webp",
+       "https://www.polynesianmusicnetwork.com/shop/hires/mmt-rlwc26-black/mate-maa-tonga-rlwc26-tee-black-right.webp",
+       "https://www.polynesianmusicnetwork.com/shop/hires/mmt-rlwc26-black/mate-maa-tonga-rlwc26-tee-black-front-left.webp"
+      ],
+      "description": "The RLWC26 tee in black. The back carries an arched MATE MA'A over the Tonga crest, 19 and 86 either side, Tonga in script and a Rugby League World Cup 2026 line. A small crest and Mate Ma'a Tonga script sit on the left chest, with a PMN+ badge on the sleeve. A supporter tee for Rugby League World Cup 2026. Printed on a 5.3 oz 100% cotton midweight tee with a regular fit, from S to 5XL at one price.",
+      "url": "https://www.polynesianmusicnetwork.com/shop/mate-maa-tonga-rlwc26-tee-black",
+      "audience": {
+       "@type": "PeopleAudience",
+       "suggestedGender": "unisex"
+      },
+      "offers": {
+       "@type": "Offer",
+       "url": "https://www.polynesianmusicnetwork.com/shop/mate-maa-tonga-rlwc26-tee-black",
+       "price": "45.00",
+       "priceCurrency": "USD",
+       "availability": "https://schema.org/InStock",
+       "itemCondition": "https://schema.org/NewCondition",
+       "seller": {
+        "@id": "https://www.polynesianmusicnetwork.com/#org"
+       },
+       "hasMerchantReturnPolicy": {
+        "@type": "MerchantReturnPolicy",
+        "applicableCountry": "US",
+        "returnPolicyCategory": "https://schema.org/MerchantReturnNotPermitted"
+       },
+       "shippingDetails": {
+        "@type": "OfferShippingDetails",
+        "shippingRate": {
+         "@type": "MonetaryAmount",
+         "value": "8.00",
+         "currency": "USD"
+        },
+        "shippingDestination": {
+         "@type": "DefinedRegion",
+         "addressCountry": "US"
+        },
+        "deliveryTime": {
+         "@type": "ShippingDeliveryTime",
+         "handlingTime": {
+          "@type": "QuantitativeValue",
+          "minValue": 2,
+          "maxValue": 4,
+          "unitCode": "DAY"
+         },
+         "transitTime": {
+          "@type": "QuantitativeValue",
+          "minValue": 3,
+          "maxValue": 7,
+          "unitCode": "DAY"
+         }
+        }
+       }
+      },
+      "isVariantOf": {
+       "@type": "ProductGroup",
+       "name": "Mate Ma'a Tonga RLWC26 Tee",
+       "brand": {
+        "@type": "Brand",
+        "name": "PMN+"
+       },
+       "productGroupID": "mate-maa-tonga-rlwc26-tee",
+       "variesBy": [
+        "https://schema.org/color",
+        "https://schema.org/size"
+       ]
+      }
+     },
+     {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+       {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Shop",
+        "item": "https://www.polynesianmusicnetwork.com/shop"
+       },
+       {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Mate Ma'a Tonga",
+        "item": "https://www.polynesianmusicnetwork.com/shop/mate-maa-tonga"
+       },
+       {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Mate Ma'a Tonga RLWC26 Tee",
+        "item": "https://www.polynesianmusicnetwork.com/shop/mate-maa-tonga-rlwc26-tee-black"
+       }
+      ]
+     },
+     {
+      "@type": "FAQPage",
+      "mainEntity": [
+       {
+        "@type": "Question",
+        "name": "Is this an official team shirt?",
+        "acceptedAnswer": {
+         "@type": "Answer",
+         "text": "No. It's an independent PMN+ supporter tee, made to rep Mate Ma'a Tonga through the Rugby League World Cup 2026."
+        }
+       },
+       {
+        "@type": "Question",
+        "name": "When will my order arrive?",
+        "acceptedAnswer": {
+         "@type": "Answer",
+         "text": "Each piece is printed to order. Printing takes 2–4 business days, then shipping takes 3–7 business days within the USA, so about 5–11 business days in total. You'll get a tracking link by email when it ships."
+        }
+       },
+       {
+        "@type": "Question",
+        "name": "Do you ship outside the USA?",
+        "acceptedAnswer": {
+         "@type": "Answer",
+         "text": "Not yet. We ship to all 50 US states, including Hawaii and Alaska. We're working on New Zealand and Australia."
+        }
+       },
+       {
+        "@type": "Question",
+        "name": "What payment methods do you take?",
+        "acceptedAnswer": {
+         "@type": "Answer",
+         "text": "Visa, Mastercard, Amex, Apple Pay, Google Pay and Shop Pay at secure checkout."
+        }
+       },
+       {
+        "@type": "Question",
+        "name": "What's your return policy?",
+        "acceptedAnswer": {
+         "@type": "Answer",
+         "text": "Every PMN+ piece is made to order, just for you, so all sales are final: no returns or exchanges for size, colour or change of mind. If your item arrives damaged, misprinted or incorrect, email photos within 7 days of delivery and we'll review it and make it right."
+        }
+       },
+       {
+        "@type": "Question",
+        "name": "How do I wash it?",
+        "acceptedAnswer": {
+         "@type": "Answer",
+         "text": "Machine wash cold, inside out, with similar colours. Tumble dry low or hang dry. Do not iron directly on the print. Do not dry clean."
+        }
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "toa-rlwc26-black": {
+   "slug": "toa-samoa-rlwc26-tee-black",
+   "url": "https://www.polynesianmusicnetwork.com/shop/toa-samoa-rlwc26-tee-black",
+   "title": "Toa Samoa RLWC26 Tee – Black | RLWC 2026 | PMN+",
+   "meta": "Black Toa Samoa RLWC 2026 shirt with an arched TOA 1986 crest back print and Samoa script chest logo. S–5XL, 100% cotton. $45 · Ships across the USA.",
+   "h1": "Toa Samoa RLWC26 Tee",
+   "colour": "Black",
+   "price": 45,
+   "team": "samoa",
+   "keyword": "Toa Samoa World Cup 2026 shirt",
+   "description": [
+    "The RLWC26 tee in black. The back carries an arched TOA over the Samoa crest, 19 and 86 either side, Samoa in script and a Rugby League World Cup 2026 line. A small crest and Toa Samoa script sit on the left chest, with a PMN+ badge on the sleeve.",
+    "A supporter tee for Rugby League World Cup 2026. Printed on a 5.3 oz 100% cotton midweight tee with a regular fit, from S to 5XL at one price."
+   ],
+   "faq": [
+    {
+     "q": "Is this an official team shirt?",
+     "a": "No. It's an independent PMN+ supporter tee, made to rep Toa Samoa through the Rugby League World Cup 2026."
+    },
+    {
+     "q": "When will my order arrive?",
+     "a": "Each piece is printed to order. Printing takes 2–4 business days, then shipping takes 3–7 business days within the USA, so about 5–11 business days in total. You'll get a tracking link by email when it ships."
+    },
+    {
+     "q": "Do you ship outside the USA?",
+     "a": "Not yet. We ship to all 50 US states, including Hawaii and Alaska. We're working on New Zealand and Australia."
+    },
+    {
+     "q": "What payment methods do you take?",
+     "a": "Visa, Mastercard, Amex, Apple Pay, Google Pay and Shop Pay at secure checkout."
+    },
+    {
+     "q": "What's your return policy?",
+     "a": "Every PMN+ piece is made to order, just for you, so all sales are final: no returns or exchanges for size, colour or change of mind. If your item arrives damaged, misprinted or incorrect, email photos within 7 days of delivery and we'll review it and make it right."
+    },
+    {
+     "q": "How do I wash it?",
+     "a": "Machine wash cold, inside out, with similar colours. Tumble dry low or hang dry. Do not iron directly on the print. Do not dry clean."
+    }
+   ],
+   "sizes": [
+    "S",
+    "M",
+    "L",
+    "XL",
+    "2XL",
+    "3XL",
+    "4XL",
+    "5XL"
+   ],
+   "images": [
+    "https://www.polynesianmusicnetwork.com/shop/hires/toa-rlwc26-black/toa-samoa-rlwc26-tee-black-back.webp",
+    "https://www.polynesianmusicnetwork.com/shop/hires/toa-rlwc26-black/toa-samoa-rlwc26-tee-black-front.webp",
+    "https://www.polynesianmusicnetwork.com/shop/hires/toa-rlwc26-black/toa-samoa-rlwc26-tee-black-front-right.webp",
+    "https://www.polynesianmusicnetwork.com/shop/hires/toa-rlwc26-black/toa-samoa-rlwc26-tee-black-right.webp",
+    "https://www.polynesianmusicnetwork.com/shop/hires/toa-rlwc26-black/toa-samoa-rlwc26-tee-black-front-left.webp"
+   ],
+   "og": "https://www.polynesianmusicnetwork.com/shop/og/toa-samoa-rlwc26-tee-black.jpg",
+   "sold": false,
+   "kind": "tee",
+   "teamName": "Toa Samoa",
+   "alt": [
+    "Toa Samoa RLWC26 Tee in black, back view",
+    "Toa Samoa RLWC26 Tee in black, front view",
+    "Toa Samoa RLWC26 Tee in black, front right view",
+    "Toa Samoa RLWC26 Tee in black, right view",
+    "Toa Samoa RLWC26 Tee in black, front left view"
+   ],
+   "jsonld": {
+    "@context": "https://schema.org",
+    "@graph": [
+     {
+      "@type": "Organization",
+      "@id": "https://www.polynesianmusicnetwork.com/#org",
+      "name": "PMN+",
+      "alternateName": "Polynesian Music Network Plus",
+      "url": "https://www.polynesianmusicnetwork.com",
+      "logo": "https://www.polynesianmusicnetwork.com/shop/brand/pmn-plus-logo-black.png",
+      "legalName": "Polynesian Music"
+     },
+     {
+      "@type": "Product",
+      "@id": "https://www.polynesianmusicnetwork.com/shop/toa-samoa-rlwc26-tee-black#product",
+      "name": "Toa Samoa RLWC26 Tee – Black",
+      "sku": "toa-samoa-rlwc26-tee-black",
+      "brand": {
+       "@type": "Brand",
+       "name": "PMN+"
+      },
+      "color": "Black",
+      "category": "Apparel & Accessories > Clothing > Shirts & Tops",
+      "image": [
+       "https://www.polynesianmusicnetwork.com/shop/hires/toa-rlwc26-black/toa-samoa-rlwc26-tee-black-back.webp",
+       "https://www.polynesianmusicnetwork.com/shop/hires/toa-rlwc26-black/toa-samoa-rlwc26-tee-black-front.webp",
+       "https://www.polynesianmusicnetwork.com/shop/hires/toa-rlwc26-black/toa-samoa-rlwc26-tee-black-front-right.webp",
+       "https://www.polynesianmusicnetwork.com/shop/hires/toa-rlwc26-black/toa-samoa-rlwc26-tee-black-right.webp",
+       "https://www.polynesianmusicnetwork.com/shop/hires/toa-rlwc26-black/toa-samoa-rlwc26-tee-black-front-left.webp"
+      ],
+      "description": "The RLWC26 tee in black. The back carries an arched TOA over the Samoa crest, 19 and 86 either side, Samoa in script and a Rugby League World Cup 2026 line. A small crest and Toa Samoa script sit on the left chest, with a PMN+ badge on the sleeve. A supporter tee for Rugby League World Cup 2026. Printed on a 5.3 oz 100% cotton midweight tee with a regular fit, from S to 5XL at one price.",
+      "url": "https://www.polynesianmusicnetwork.com/shop/toa-samoa-rlwc26-tee-black",
+      "audience": {
+       "@type": "PeopleAudience",
+       "suggestedGender": "unisex"
+      },
+      "offers": {
+       "@type": "Offer",
+       "url": "https://www.polynesianmusicnetwork.com/shop/toa-samoa-rlwc26-tee-black",
+       "price": "45.00",
+       "priceCurrency": "USD",
+       "availability": "https://schema.org/InStock",
+       "itemCondition": "https://schema.org/NewCondition",
+       "seller": {
+        "@id": "https://www.polynesianmusicnetwork.com/#org"
+       },
+       "hasMerchantReturnPolicy": {
+        "@type": "MerchantReturnPolicy",
+        "applicableCountry": "US",
+        "returnPolicyCategory": "https://schema.org/MerchantReturnNotPermitted"
+       },
+       "shippingDetails": {
+        "@type": "OfferShippingDetails",
+        "shippingRate": {
+         "@type": "MonetaryAmount",
+         "value": "8.00",
+         "currency": "USD"
+        },
+        "shippingDestination": {
+         "@type": "DefinedRegion",
+         "addressCountry": "US"
+        },
+        "deliveryTime": {
+         "@type": "ShippingDeliveryTime",
+         "handlingTime": {
+          "@type": "QuantitativeValue",
+          "minValue": 2,
+          "maxValue": 4,
+          "unitCode": "DAY"
+         },
+         "transitTime": {
+          "@type": "QuantitativeValue",
+          "minValue": 3,
+          "maxValue": 7,
+          "unitCode": "DAY"
+         }
+        }
+       }
+      },
+      "isVariantOf": {
+       "@type": "ProductGroup",
+       "name": "Toa Samoa RLWC26 Tee",
+       "brand": {
+        "@type": "Brand",
+        "name": "PMN+"
+       },
+       "productGroupID": "toa-samoa-rlwc26-tee",
+       "variesBy": [
+        "https://schema.org/color",
+        "https://schema.org/size"
+       ]
+      }
+     },
+     {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+       {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Shop",
+        "item": "https://www.polynesianmusicnetwork.com/shop"
+       },
+       {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Toa Samoa",
+        "item": "https://www.polynesianmusicnetwork.com/shop/toa-samoa"
+       },
+       {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Toa Samoa RLWC26 Tee",
+        "item": "https://www.polynesianmusicnetwork.com/shop/toa-samoa-rlwc26-tee-black"
+       }
+      ]
+     },
+     {
+      "@type": "FAQPage",
+      "mainEntity": [
+       {
+        "@type": "Question",
+        "name": "Is this an official team shirt?",
+        "acceptedAnswer": {
+         "@type": "Answer",
+         "text": "No. It's an independent PMN+ supporter tee, made to rep Toa Samoa through the Rugby League World Cup 2026."
+        }
+       },
+       {
+        "@type": "Question",
+        "name": "When will my order arrive?",
+        "acceptedAnswer": {
+         "@type": "Answer",
+         "text": "Each piece is printed to order. Printing takes 2–4 business days, then shipping takes 3–7 business days within the USA, so about 5–11 business days in total. You'll get a tracking link by email when it ships."
+        }
+       },
+       {
+        "@type": "Question",
+        "name": "Do you ship outside the USA?",
+        "acceptedAnswer": {
+         "@type": "Answer",
+         "text": "Not yet. We ship to all 50 US states, including Hawaii and Alaska. We're working on New Zealand and Australia."
+        }
+       },
+       {
+        "@type": "Question",
+        "name": "What payment methods do you take?",
+        "acceptedAnswer": {
+         "@type": "Answer",
+         "text": "Visa, Mastercard, Amex, Apple Pay, Google Pay and Shop Pay at secure checkout."
+        }
+       },
+       {
+        "@type": "Question",
+        "name": "What's your return policy?",
+        "acceptedAnswer": {
+         "@type": "Answer",
+         "text": "Every PMN+ piece is made to order, just for you, so all sales are final: no returns or exchanges for size, colour or change of mind. If your item arrives damaged, misprinted or incorrect, email photos within 7 days of delivery and we'll review it and make it right."
+        }
+       },
+       {
+        "@type": "Question",
+        "name": "How do I wash it?",
+        "acceptedAnswer": {
+         "@type": "Answer",
+         "text": "Machine wash cold, inside out, with similar colours. Tumble dry low or hang dry. Do not iron directly on the print. Do not dry clean."
+        }
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "mmt-player-black": {
+   "slug": "mate-maa-tonga-player-tee-black",
+   "url": "https://www.polynesianmusicnetwork.com/shop/mate-maa-tonga-player-tee-black",
+   "title": "Mate Ma'a Tonga Player Tee – Black | RLWC 2026 | PMN+",
+   "meta": "Black Mate Ma'a Tonga player tee: MATE MA'A TONGA 676 crest front in red, jersey-style TONGA 00 back. S–5XL, 100% cotton. $45 · Ships across the USA.",
+   "h1": "Mate Ma'a Tonga Player Tee",
+   "colour": "Black",
+   "price": 45,
+   "team": "tonga",
+   "keyword": "Tonga rugby league jersey tee",
+   "description": [
+    "A jersey-style supporter tee in black with red prints. The front reads Six·Seven·Six over MATE MA'A TONGA and Rugby League, with the Tonga crest and 676 below. The back carries TONGA with the crest in the O and big 00 numbers, plus a PMN+ badge on the sleeve.",
+    "Printed on a 5.3 oz 100% cotton midweight tee with a regular fit, from S to 5XL at one price."
+   ],
+   "faq": [
+    {
+     "q": "Can I get my own name or number?",
+     "a": "Not yet. Every Player Tee carries the 00 number shown. Join the PMN+ list to hear first if custom names and numbers launch."
+    },
+    {
+     "q": "When will my order arrive?",
+     "a": "Each piece is printed to order. Printing takes 2–4 business days, then shipping takes 3–7 business days within the USA, so about 5–11 business days in total. You'll get a tracking link by email when it ships."
+    },
+    {
+     "q": "Do you ship outside the USA?",
+     "a": "Not yet. We ship to all 50 US states, including Hawaii and Alaska. We're working on New Zealand and Australia."
+    },
+    {
+     "q": "What payment methods do you take?",
+     "a": "Visa, Mastercard, Amex, Apple Pay, Google Pay and Shop Pay at secure checkout."
+    },
+    {
+     "q": "What's your return policy?",
+     "a": "Every PMN+ piece is made to order, just for you, so all sales are final: no returns or exchanges for size, colour or change of mind. If your item arrives damaged, misprinted or incorrect, email photos within 7 days of delivery and we'll review it and make it right."
+    },
+    {
+     "q": "How do I wash it?",
+     "a": "Machine wash cold, inside out, with similar colours. Tumble dry low or hang dry. Do not iron directly on the print. Do not dry clean."
+    }
+   ],
+   "sizes": [
+    "S",
+    "M",
+    "L",
+    "XL",
+    "2XL",
+    "3XL",
+    "4XL",
+    "5XL"
+   ],
+   "images": [
+    "https://www.polynesianmusicnetwork.com/shop/hires/mmt-player-black/mate-maa-tonga-player-tee-black-front.webp",
+    "https://www.polynesianmusicnetwork.com/shop/hires/mmt-player-black/mate-maa-tonga-player-tee-black-front-right.webp",
+    "https://www.polynesianmusicnetwork.com/shop/hires/mmt-player-black/mate-maa-tonga-player-tee-black-right.webp",
+    "https://www.polynesianmusicnetwork.com/shop/hires/mmt-player-black/mate-maa-tonga-player-tee-black-back.webp",
+    "https://www.polynesianmusicnetwork.com/shop/hires/mmt-player-black/mate-maa-tonga-player-tee-black-front-left.webp"
+   ],
+   "og": "https://www.polynesianmusicnetwork.com/shop/og/mate-maa-tonga-player-tee-black.jpg",
+   "sold": false,
+   "kind": "tee",
+   "teamName": "Mate Ma'a Tonga",
+   "alt": [
+    "Mate Ma'a Tonga Player Tee in black, front view",
+    "Mate Ma'a Tonga Player Tee in black, front right view",
+    "Mate Ma'a Tonga Player Tee in black, right view",
+    "Mate Ma'a Tonga Player Tee in black, back view",
+    "Mate Ma'a Tonga Player Tee in black, front left view"
+   ],
+   "jsonld": {
+    "@context": "https://schema.org",
+    "@graph": [
+     {
+      "@type": "Organization",
+      "@id": "https://www.polynesianmusicnetwork.com/#org",
+      "name": "PMN+",
+      "alternateName": "Polynesian Music Network Plus",
+      "url": "https://www.polynesianmusicnetwork.com",
+      "logo": "https://www.polynesianmusicnetwork.com/shop/brand/pmn-plus-logo-black.png",
+      "legalName": "Polynesian Music"
+     },
+     {
+      "@type": "Product",
+      "@id": "https://www.polynesianmusicnetwork.com/shop/mate-maa-tonga-player-tee-black#product",
+      "name": "Mate Ma'a Tonga Player Tee – Black",
+      "sku": "mate-maa-tonga-player-tee-black",
+      "brand": {
+       "@type": "Brand",
+       "name": "PMN+"
+      },
+      "color": "Black",
+      "category": "Apparel & Accessories > Clothing > Shirts & Tops",
+      "image": [
+       "https://www.polynesianmusicnetwork.com/shop/hires/mmt-player-black/mate-maa-tonga-player-tee-black-front.webp",
+       "https://www.polynesianmusicnetwork.com/shop/hires/mmt-player-black/mate-maa-tonga-player-tee-black-front-right.webp",
+       "https://www.polynesianmusicnetwork.com/shop/hires/mmt-player-black/mate-maa-tonga-player-tee-black-right.webp",
+       "https://www.polynesianmusicnetwork.com/shop/hires/mmt-player-black/mate-maa-tonga-player-tee-black-back.webp",
+       "https://www.polynesianmusicnetwork.com/shop/hires/mmt-player-black/mate-maa-tonga-player-tee-black-front-left.webp"
+      ],
+      "description": "A jersey-style supporter tee in black with red prints. The front reads Six·Seven·Six over MATE MA'A TONGA and Rugby League, with the Tonga crest and 676 below. The back carries TONGA with the crest in the O and big 00 numbers, plus a PMN+ badge on the sleeve. Printed on a 5.3 oz 100% cotton midweight tee with a regular fit, from S to 5XL at one price.",
+      "url": "https://www.polynesianmusicnetwork.com/shop/mate-maa-tonga-player-tee-black",
+      "audience": {
+       "@type": "PeopleAudience",
+       "suggestedGender": "unisex"
+      },
+      "offers": {
+       "@type": "Offer",
+       "url": "https://www.polynesianmusicnetwork.com/shop/mate-maa-tonga-player-tee-black",
+       "price": "45.00",
+       "priceCurrency": "USD",
+       "availability": "https://schema.org/InStock",
+       "itemCondition": "https://schema.org/NewCondition",
+       "seller": {
+        "@id": "https://www.polynesianmusicnetwork.com/#org"
+       },
+       "hasMerchantReturnPolicy": {
+        "@type": "MerchantReturnPolicy",
+        "applicableCountry": "US",
+        "returnPolicyCategory": "https://schema.org/MerchantReturnNotPermitted"
+       },
+       "shippingDetails": {
+        "@type": "OfferShippingDetails",
+        "shippingRate": {
+         "@type": "MonetaryAmount",
+         "value": "8.00",
+         "currency": "USD"
+        },
+        "shippingDestination": {
+         "@type": "DefinedRegion",
+         "addressCountry": "US"
+        },
+        "deliveryTime": {
+         "@type": "ShippingDeliveryTime",
+         "handlingTime": {
+          "@type": "QuantitativeValue",
+          "minValue": 2,
+          "maxValue": 4,
+          "unitCode": "DAY"
+         },
+         "transitTime": {
+          "@type": "QuantitativeValue",
+          "minValue": 3,
+          "maxValue": 7,
+          "unitCode": "DAY"
+         }
+        }
+       }
+      },
+      "isVariantOf": {
+       "@type": "ProductGroup",
+       "name": "Mate Ma'a Tonga Player Tee",
+       "brand": {
+        "@type": "Brand",
+        "name": "PMN+"
+       },
+       "productGroupID": "mate-maa-tonga-player-tee",
+       "variesBy": [
+        "https://schema.org/color",
+        "https://schema.org/size"
+       ]
+      }
+     },
+     {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+       {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Shop",
+        "item": "https://www.polynesianmusicnetwork.com/shop"
+       },
+       {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Mate Ma'a Tonga",
+        "item": "https://www.polynesianmusicnetwork.com/shop/mate-maa-tonga"
+       },
+       {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Mate Ma'a Tonga Player Tee",
+        "item": "https://www.polynesianmusicnetwork.com/shop/mate-maa-tonga-player-tee-black"
+       }
+      ]
+     },
+     {
+      "@type": "FAQPage",
+      "mainEntity": [
+       {
+        "@type": "Question",
+        "name": "Can I get my own name or number?",
+        "acceptedAnswer": {
+         "@type": "Answer",
+         "text": "Not yet. Every Player Tee carries the 00 number shown. Join the PMN+ list to hear first if custom names and numbers launch."
+        }
+       },
+       {
+        "@type": "Question",
+        "name": "When will my order arrive?",
+        "acceptedAnswer": {
+         "@type": "Answer",
+         "text": "Each piece is printed to order. Printing takes 2–4 business days, then shipping takes 3–7 business days within the USA, so about 5–11 business days in total. You'll get a tracking link by email when it ships."
+        }
+       },
+       {
+        "@type": "Question",
+        "name": "Do you ship outside the USA?",
+        "acceptedAnswer": {
+         "@type": "Answer",
+         "text": "Not yet. We ship to all 50 US states, including Hawaii and Alaska. We're working on New Zealand and Australia."
+        }
+       },
+       {
+        "@type": "Question",
+        "name": "What payment methods do you take?",
+        "acceptedAnswer": {
+         "@type": "Answer",
+         "text": "Visa, Mastercard, Amex, Apple Pay, Google Pay and Shop Pay at secure checkout."
+        }
+       },
+       {
+        "@type": "Question",
+        "name": "What's your return policy?",
+        "acceptedAnswer": {
+         "@type": "Answer",
+         "text": "Every PMN+ piece is made to order, just for you, so all sales are final: no returns or exchanges for size, colour or change of mind. If your item arrives damaged, misprinted or incorrect, email photos within 7 days of delivery and we'll review it and make it right."
+        }
+       },
+       {
+        "@type": "Question",
+        "name": "How do I wash it?",
+        "acceptedAnswer": {
+         "@type": "Answer",
+         "text": "Machine wash cold, inside out, with similar colours. Tumble dry low or hang dry. Do not iron directly on the print. Do not dry clean."
+        }
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "toa-player-black": {
+   "slug": "toa-samoa-player-tee-black",
+   "url": "https://www.polynesianmusicnetwork.com/shop/toa-samoa-player-tee-black",
+   "title": "Toa Samoa Player Tee – Black | RLWC 2026 | PMN+",
+   "meta": "Black Toa Samoa player tee: TOA SAMOA 685 crest front, jersey-style SAMOA 00 back. S–5XL, 100% cotton. $45. Printed to order and shipped across the USA.",
+   "h1": "Toa Samoa Player Tee",
+   "colour": "Black",
+   "price": 45,
+   "team": "samoa",
+   "keyword": "Samoa rugby league jersey tee",
+   "description": [
+    "A jersey-style supporter tee in black. The front reads Six·Eight·Five over TOA SAMOA and Rugby League, with the Samoa crest and 685 below. The back carries SAMOA with the crest in the O and big white 00 numbers outlined in red, plus a PMN+ badge on the sleeve.",
+    "Printed on a 5.3 oz 100% cotton midweight tee with a regular fit, from S to 5XL at one price."
+   ],
+   "faq": [
+    {
+     "q": "Can I get my own name or number?",
+     "a": "Not yet. Every Player Tee carries the 00 number shown. Join the PMN+ list to hear first if custom names and numbers launch."
+    },
+    {
+     "q": "When will my order arrive?",
+     "a": "Each piece is printed to order. Printing takes 2–4 business days, then shipping takes 3–7 business days within the USA, so about 5–11 business days in total. You'll get a tracking link by email when it ships."
+    },
+    {
+     "q": "Do you ship outside the USA?",
+     "a": "Not yet. We ship to all 50 US states, including Hawaii and Alaska. We're working on New Zealand and Australia."
+    },
+    {
+     "q": "What payment methods do you take?",
+     "a": "Visa, Mastercard, Amex, Apple Pay, Google Pay and Shop Pay at secure checkout."
+    },
+    {
+     "q": "What's your return policy?",
+     "a": "Every PMN+ piece is made to order, just for you, so all sales are final: no returns or exchanges for size, colour or change of mind. If your item arrives damaged, misprinted or incorrect, email photos within 7 days of delivery and we'll review it and make it right."
+    },
+    {
+     "q": "How do I wash it?",
+     "a": "Machine wash cold, inside out, with similar colours. Tumble dry low or hang dry. Do not iron directly on the print. Do not dry clean."
+    }
+   ],
+   "sizes": [
+    "S",
+    "M",
+    "L",
+    "XL",
+    "2XL",
+    "3XL",
+    "4XL",
+    "5XL"
+   ],
+   "images": [
+    "https://www.polynesianmusicnetwork.com/shop/hires/toa-player-black/toa-samoa-player-tee-black-front.webp",
+    "https://www.polynesianmusicnetwork.com/shop/hires/toa-player-black/toa-samoa-player-tee-black-front-right.webp",
+    "https://www.polynesianmusicnetwork.com/shop/hires/toa-player-black/toa-samoa-player-tee-black-right.webp",
+    "https://www.polynesianmusicnetwork.com/shop/hires/toa-player-black/toa-samoa-player-tee-black-back.webp",
+    "https://www.polynesianmusicnetwork.com/shop/hires/toa-player-black/toa-samoa-player-tee-black-front-left.webp"
+   ],
+   "og": "https://www.polynesianmusicnetwork.com/shop/og/toa-samoa-player-tee-black.jpg",
+   "sold": false,
+   "kind": "tee",
+   "teamName": "Toa Samoa",
+   "alt": [
+    "Toa Samoa Player Tee in black, front view",
+    "Toa Samoa Player Tee in black, front right view",
+    "Toa Samoa Player Tee in black, right view",
+    "Toa Samoa Player Tee in black, back view",
+    "Toa Samoa Player Tee in black, front left view"
+   ],
+   "jsonld": {
+    "@context": "https://schema.org",
+    "@graph": [
+     {
+      "@type": "Organization",
+      "@id": "https://www.polynesianmusicnetwork.com/#org",
+      "name": "PMN+",
+      "alternateName": "Polynesian Music Network Plus",
+      "url": "https://www.polynesianmusicnetwork.com",
+      "logo": "https://www.polynesianmusicnetwork.com/shop/brand/pmn-plus-logo-black.png",
+      "legalName": "Polynesian Music"
+     },
+     {
+      "@type": "Product",
+      "@id": "https://www.polynesianmusicnetwork.com/shop/toa-samoa-player-tee-black#product",
+      "name": "Toa Samoa Player Tee – Black",
+      "sku": "toa-samoa-player-tee-black",
+      "brand": {
+       "@type": "Brand",
+       "name": "PMN+"
+      },
+      "color": "Black",
+      "category": "Apparel & Accessories > Clothing > Shirts & Tops",
+      "image": [
+       "https://www.polynesianmusicnetwork.com/shop/hires/toa-player-black/toa-samoa-player-tee-black-front.webp",
+       "https://www.polynesianmusicnetwork.com/shop/hires/toa-player-black/toa-samoa-player-tee-black-front-right.webp",
+       "https://www.polynesianmusicnetwork.com/shop/hires/toa-player-black/toa-samoa-player-tee-black-right.webp",
+       "https://www.polynesianmusicnetwork.com/shop/hires/toa-player-black/toa-samoa-player-tee-black-back.webp",
+       "https://www.polynesianmusicnetwork.com/shop/hires/toa-player-black/toa-samoa-player-tee-black-front-left.webp"
+      ],
+      "description": "A jersey-style supporter tee in black. The front reads Six·Eight·Five over TOA SAMOA and Rugby League, with the Samoa crest and 685 below. The back carries SAMOA with the crest in the O and big white 00 numbers outlined in red, plus a PMN+ badge on the sleeve. Printed on a 5.3 oz 100% cotton midweight tee with a regular fit, from S to 5XL at one price.",
+      "url": "https://www.polynesianmusicnetwork.com/shop/toa-samoa-player-tee-black",
+      "audience": {
+       "@type": "PeopleAudience",
+       "suggestedGender": "unisex"
+      },
+      "offers": {
+       "@type": "Offer",
+       "url": "https://www.polynesianmusicnetwork.com/shop/toa-samoa-player-tee-black",
+       "price": "45.00",
+       "priceCurrency": "USD",
+       "availability": "https://schema.org/InStock",
+       "itemCondition": "https://schema.org/NewCondition",
+       "seller": {
+        "@id": "https://www.polynesianmusicnetwork.com/#org"
+       },
+       "hasMerchantReturnPolicy": {
+        "@type": "MerchantReturnPolicy",
+        "applicableCountry": "US",
+        "returnPolicyCategory": "https://schema.org/MerchantReturnNotPermitted"
+       },
+       "shippingDetails": {
+        "@type": "OfferShippingDetails",
+        "shippingRate": {
+         "@type": "MonetaryAmount",
+         "value": "8.00",
+         "currency": "USD"
+        },
+        "shippingDestination": {
+         "@type": "DefinedRegion",
+         "addressCountry": "US"
+        },
+        "deliveryTime": {
+         "@type": "ShippingDeliveryTime",
+         "handlingTime": {
+          "@type": "QuantitativeValue",
+          "minValue": 2,
+          "maxValue": 4,
+          "unitCode": "DAY"
+         },
+         "transitTime": {
+          "@type": "QuantitativeValue",
+          "minValue": 3,
+          "maxValue": 7,
+          "unitCode": "DAY"
+         }
+        }
+       }
+      },
+      "isVariantOf": {
+       "@type": "ProductGroup",
+       "name": "Toa Samoa Player Tee",
+       "brand": {
+        "@type": "Brand",
+        "name": "PMN+"
+       },
+       "productGroupID": "toa-samoa-player-tee",
+       "variesBy": [
+        "https://schema.org/color",
+        "https://schema.org/size"
+       ]
+      }
+     },
+     {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+       {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Shop",
+        "item": "https://www.polynesianmusicnetwork.com/shop"
+       },
+       {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Toa Samoa",
+        "item": "https://www.polynesianmusicnetwork.com/shop/toa-samoa"
+       },
+       {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Toa Samoa Player Tee",
+        "item": "https://www.polynesianmusicnetwork.com/shop/toa-samoa-player-tee-black"
+       }
+      ]
+     },
+     {
+      "@type": "FAQPage",
+      "mainEntity": [
+       {
+        "@type": "Question",
+        "name": "Can I get my own name or number?",
+        "acceptedAnswer": {
+         "@type": "Answer",
+         "text": "Not yet. Every Player Tee carries the 00 number shown. Join the PMN+ list to hear first if custom names and numbers launch."
         }
        },
        {
@@ -1670,7 +2726,7 @@
    "slug": "mate-maa-tonga-676-tee-red",
    "url": "https://www.polynesianmusicnetwork.com/shop/mate-maa-tonga-676-tee-red",
    "title": "Mate Ma'a Tonga 676 Tee – Red | RLWC 2026 | PMN+",
-   "meta": "Red Tonga 676 shirt with a large MATE MA'A TONGA 676 back print. 100% cotton tee. $45. Printed to order and shipped across the USA by PMN+.",
+   "meta": "Red Tonga 676 shirt with a large MATE MA'A TONGA 676 back print. L–3XL, 100% cotton. $45. Printed to order and shipped across the USA by PMN+.",
    "h1": "Mate Ma'a Tonga 676 Tee",
    "colour": "Red",
    "price": 45,
@@ -1903,7 +2959,7 @@
    "slug": "toa-samoa-685-tee-royal-blue",
    "url": "https://www.polynesianmusicnetwork.com/shop/toa-samoa-685-tee-royal-blue",
    "title": "Toa Samoa 685 Tee – Royal Blue | RLWC 2026 | PMN+",
-   "meta": "Royal blue Samoa 685 shirt with a large TOA SAMOA 685 back print. 100% cotton tee. $45. Printed to order and shipped across the USA by PMN+.",
+   "meta": "Royal blue Samoa 685 shirt with a large TOA SAMOA 685 back print. L–3XL, 100% cotton. $45. Printed to order and shipped across the USA by PMN+.",
    "h1": "Toa Samoa 685 Tee",
    "colour": "Royal Blue",
    "price": 45,
@@ -2085,6 +3141,950 @@
         "acceptedAnswer": {
          "@type": "Answer",
          "text": "685 is Samoa's international dialling code. Samoans around the world use it as shorthand for home and for representing Samoa."
+        }
+       },
+       {
+        "@type": "Question",
+        "name": "When will my order arrive?",
+        "acceptedAnswer": {
+         "@type": "Answer",
+         "text": "Each piece is printed to order. Printing takes 2–4 business days, then shipping takes 3–7 business days within the USA, so about 5–11 business days in total. You'll get a tracking link by email when it ships."
+        }
+       },
+       {
+        "@type": "Question",
+        "name": "Do you ship outside the USA?",
+        "acceptedAnswer": {
+         "@type": "Answer",
+         "text": "Not yet. We ship to all 50 US states, including Hawaii and Alaska. We're working on New Zealand and Australia."
+        }
+       },
+       {
+        "@type": "Question",
+        "name": "What payment methods do you take?",
+        "acceptedAnswer": {
+         "@type": "Answer",
+         "text": "Visa, Mastercard, Amex, Apple Pay, Google Pay and Shop Pay at secure checkout."
+        }
+       },
+       {
+        "@type": "Question",
+        "name": "What's your return policy?",
+        "acceptedAnswer": {
+         "@type": "Answer",
+         "text": "Every PMN+ piece is made to order, just for you, so all sales are final: no returns or exchanges for size, colour or change of mind. If your item arrives damaged, misprinted or incorrect, email photos within 7 days of delivery and we'll review it and make it right."
+        }
+       },
+       {
+        "@type": "Question",
+        "name": "How do I wash it?",
+        "acceptedAnswer": {
+         "@type": "Answer",
+         "text": "Machine wash cold, inside out, with similar colours. Tumble dry low or hang dry. Do not iron directly on the print. Do not dry clean."
+        }
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "mmt-rlwc26-red": {
+   "slug": "mate-maa-tonga-rlwc26-tee-red",
+   "url": "https://www.polynesianmusicnetwork.com/shop/mate-maa-tonga-rlwc26-tee-red",
+   "title": "Mate Ma'a Tonga RLWC26 Tee – Red | RLWC 2026 | PMN+",
+   "meta": "Red Mate Ma'a Tonga RLWC 2026 shirt with an arched 1986 crest back print and Tonga script chest logo. L–3XL, 100% cotton. $45 · Ships across the USA.",
+   "h1": "Mate Ma'a Tonga RLWC26 Tee",
+   "colour": "Red",
+   "price": 45,
+   "team": "tonga",
+   "keyword": "Mate Ma'a Tonga World Cup 2026 shirt red",
+   "description": [
+    "The RLWC26 tee in Tonga red. The back carries an arched MATE MA'A over the Tonga crest, 19 and 86 either side, Tonga in script and a Rugby League World Cup 2026 line, all in white. A small crest and Mate Ma'a Tonga script sit on the left chest, with a PMN+ badge on the sleeve.",
+    "A supporter tee for Rugby League World Cup 2026. Printed on a 5.3 oz 100% cotton midweight tee with a regular fit, L to 3XL."
+   ],
+   "faq": [
+    {
+     "q": "Is this an official team shirt?",
+     "a": "No. It's an independent PMN+ supporter tee, made to rep Mate Ma'a Tonga through the Rugby League World Cup 2026."
+    },
+    {
+     "q": "When will my order arrive?",
+     "a": "Each piece is printed to order. Printing takes 2–4 business days, then shipping takes 3–7 business days within the USA, so about 5–11 business days in total. You'll get a tracking link by email when it ships."
+    },
+    {
+     "q": "Do you ship outside the USA?",
+     "a": "Not yet. We ship to all 50 US states, including Hawaii and Alaska. We're working on New Zealand and Australia."
+    },
+    {
+     "q": "What payment methods do you take?",
+     "a": "Visa, Mastercard, Amex, Apple Pay, Google Pay and Shop Pay at secure checkout."
+    },
+    {
+     "q": "What's your return policy?",
+     "a": "Every PMN+ piece is made to order, just for you, so all sales are final: no returns or exchanges for size, colour or change of mind. If your item arrives damaged, misprinted or incorrect, email photos within 7 days of delivery and we'll review it and make it right."
+    },
+    {
+     "q": "How do I wash it?",
+     "a": "Machine wash cold, inside out, with similar colours. Tumble dry low or hang dry. Do not iron directly on the print. Do not dry clean."
+    }
+   ],
+   "sizes": [
+    "L",
+    "XL",
+    "2XL",
+    "3XL"
+   ],
+   "images": [
+    "https://www.polynesianmusicnetwork.com/shop/hires/mmt-rlwc26-red/mate-maa-tonga-rlwc26-tee-red-back.webp",
+    "https://www.polynesianmusicnetwork.com/shop/hires/mmt-rlwc26-red/mate-maa-tonga-rlwc26-tee-red-front.webp",
+    "https://www.polynesianmusicnetwork.com/shop/hires/mmt-rlwc26-red/mate-maa-tonga-rlwc26-tee-red-front-right.webp",
+    "https://www.polynesianmusicnetwork.com/shop/hires/mmt-rlwc26-red/mate-maa-tonga-rlwc26-tee-red-right.webp",
+    "https://www.polynesianmusicnetwork.com/shop/hires/mmt-rlwc26-red/mate-maa-tonga-rlwc26-tee-red-front-left.webp"
+   ],
+   "og": "https://www.polynesianmusicnetwork.com/shop/og/mate-maa-tonga-rlwc26-tee-red.jpg",
+   "sold": false,
+   "kind": "tee",
+   "teamName": "Mate Ma'a Tonga",
+   "alt": [
+    "Mate Ma'a Tonga RLWC26 Tee in red, back view",
+    "Mate Ma'a Tonga RLWC26 Tee in red, front view",
+    "Mate Ma'a Tonga RLWC26 Tee in red, front right view",
+    "Mate Ma'a Tonga RLWC26 Tee in red, right view",
+    "Mate Ma'a Tonga RLWC26 Tee in red, front left view"
+   ],
+   "jsonld": {
+    "@context": "https://schema.org",
+    "@graph": [
+     {
+      "@type": "Organization",
+      "@id": "https://www.polynesianmusicnetwork.com/#org",
+      "name": "PMN+",
+      "alternateName": "Polynesian Music Network Plus",
+      "url": "https://www.polynesianmusicnetwork.com",
+      "logo": "https://www.polynesianmusicnetwork.com/shop/brand/pmn-plus-logo-black.png",
+      "legalName": "Polynesian Music"
+     },
+     {
+      "@type": "Product",
+      "@id": "https://www.polynesianmusicnetwork.com/shop/mate-maa-tonga-rlwc26-tee-red#product",
+      "name": "Mate Ma'a Tonga RLWC26 Tee – Red",
+      "sku": "mate-maa-tonga-rlwc26-tee-red",
+      "brand": {
+       "@type": "Brand",
+       "name": "PMN+"
+      },
+      "color": "Red",
+      "category": "Apparel & Accessories > Clothing > Shirts & Tops",
+      "image": [
+       "https://www.polynesianmusicnetwork.com/shop/hires/mmt-rlwc26-red/mate-maa-tonga-rlwc26-tee-red-back.webp",
+       "https://www.polynesianmusicnetwork.com/shop/hires/mmt-rlwc26-red/mate-maa-tonga-rlwc26-tee-red-front.webp",
+       "https://www.polynesianmusicnetwork.com/shop/hires/mmt-rlwc26-red/mate-maa-tonga-rlwc26-tee-red-front-right.webp",
+       "https://www.polynesianmusicnetwork.com/shop/hires/mmt-rlwc26-red/mate-maa-tonga-rlwc26-tee-red-right.webp",
+       "https://www.polynesianmusicnetwork.com/shop/hires/mmt-rlwc26-red/mate-maa-tonga-rlwc26-tee-red-front-left.webp"
+      ],
+      "description": "The RLWC26 tee in Tonga red. The back carries an arched MATE MA'A over the Tonga crest, 19 and 86 either side, Tonga in script and a Rugby League World Cup 2026 line, all in white. A small crest and Mate Ma'a Tonga script sit on the left chest, with a PMN+ badge on the sleeve. A supporter tee for Rugby League World Cup 2026. Printed on a 5.3 oz 100% cotton midweight tee with a regular fit, L to 3XL.",
+      "url": "https://www.polynesianmusicnetwork.com/shop/mate-maa-tonga-rlwc26-tee-red",
+      "audience": {
+       "@type": "PeopleAudience",
+       "suggestedGender": "unisex"
+      },
+      "offers": {
+       "@type": "Offer",
+       "url": "https://www.polynesianmusicnetwork.com/shop/mate-maa-tonga-rlwc26-tee-red",
+       "price": "45.00",
+       "priceCurrency": "USD",
+       "availability": "https://schema.org/InStock",
+       "itemCondition": "https://schema.org/NewCondition",
+       "seller": {
+        "@id": "https://www.polynesianmusicnetwork.com/#org"
+       },
+       "hasMerchantReturnPolicy": {
+        "@type": "MerchantReturnPolicy",
+        "applicableCountry": "US",
+        "returnPolicyCategory": "https://schema.org/MerchantReturnNotPermitted"
+       },
+       "shippingDetails": {
+        "@type": "OfferShippingDetails",
+        "shippingRate": {
+         "@type": "MonetaryAmount",
+         "value": "8.00",
+         "currency": "USD"
+        },
+        "shippingDestination": {
+         "@type": "DefinedRegion",
+         "addressCountry": "US"
+        },
+        "deliveryTime": {
+         "@type": "ShippingDeliveryTime",
+         "handlingTime": {
+          "@type": "QuantitativeValue",
+          "minValue": 2,
+          "maxValue": 4,
+          "unitCode": "DAY"
+         },
+         "transitTime": {
+          "@type": "QuantitativeValue",
+          "minValue": 3,
+          "maxValue": 7,
+          "unitCode": "DAY"
+         }
+        }
+       }
+      },
+      "isVariantOf": {
+       "@type": "ProductGroup",
+       "name": "Mate Ma'a Tonga RLWC26 Tee",
+       "brand": {
+        "@type": "Brand",
+        "name": "PMN+"
+       },
+       "productGroupID": "mate-maa-tonga-rlwc26-tee",
+       "variesBy": [
+        "https://schema.org/color",
+        "https://schema.org/size"
+       ]
+      }
+     },
+     {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+       {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Shop",
+        "item": "https://www.polynesianmusicnetwork.com/shop"
+       },
+       {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Mate Ma'a Tonga",
+        "item": "https://www.polynesianmusicnetwork.com/shop/mate-maa-tonga"
+       },
+       {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Mate Ma'a Tonga RLWC26 Tee",
+        "item": "https://www.polynesianmusicnetwork.com/shop/mate-maa-tonga-rlwc26-tee-red"
+       }
+      ]
+     },
+     {
+      "@type": "FAQPage",
+      "mainEntity": [
+       {
+        "@type": "Question",
+        "name": "Is this an official team shirt?",
+        "acceptedAnswer": {
+         "@type": "Answer",
+         "text": "No. It's an independent PMN+ supporter tee, made to rep Mate Ma'a Tonga through the Rugby League World Cup 2026."
+        }
+       },
+       {
+        "@type": "Question",
+        "name": "When will my order arrive?",
+        "acceptedAnswer": {
+         "@type": "Answer",
+         "text": "Each piece is printed to order. Printing takes 2–4 business days, then shipping takes 3–7 business days within the USA, so about 5–11 business days in total. You'll get a tracking link by email when it ships."
+        }
+       },
+       {
+        "@type": "Question",
+        "name": "Do you ship outside the USA?",
+        "acceptedAnswer": {
+         "@type": "Answer",
+         "text": "Not yet. We ship to all 50 US states, including Hawaii and Alaska. We're working on New Zealand and Australia."
+        }
+       },
+       {
+        "@type": "Question",
+        "name": "What payment methods do you take?",
+        "acceptedAnswer": {
+         "@type": "Answer",
+         "text": "Visa, Mastercard, Amex, Apple Pay, Google Pay and Shop Pay at secure checkout."
+        }
+       },
+       {
+        "@type": "Question",
+        "name": "What's your return policy?",
+        "acceptedAnswer": {
+         "@type": "Answer",
+         "text": "Every PMN+ piece is made to order, just for you, so all sales are final: no returns or exchanges for size, colour or change of mind. If your item arrives damaged, misprinted or incorrect, email photos within 7 days of delivery and we'll review it and make it right."
+        }
+       },
+       {
+        "@type": "Question",
+        "name": "How do I wash it?",
+        "acceptedAnswer": {
+         "@type": "Answer",
+         "text": "Machine wash cold, inside out, with similar colours. Tumble dry low or hang dry. Do not iron directly on the print. Do not dry clean."
+        }
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "toa-rlwc26-royal": {
+   "slug": "toa-samoa-rlwc26-tee-royal-blue",
+   "url": "https://www.polynesianmusicnetwork.com/shop/toa-samoa-rlwc26-tee-royal-blue",
+   "title": "Toa Samoa RLWC26 Tee – Royal Blue | RLWC 2026 | PMN+",
+   "meta": "Royal blue Toa Samoa RLWC 2026 shirt with an arched TOA 1986 crest back print and Samoa script chest logo. L–3XL, 100% cotton. $45 · Ships across the USA.",
+   "h1": "Toa Samoa RLWC26 Tee",
+   "colour": "Royal Blue",
+   "price": 45,
+   "team": "samoa",
+   "keyword": "Toa Samoa World Cup 2026 shirt blue",
+   "description": [
+    "The RLWC26 tee in royal blue. The back carries an arched TOA over the Samoa crest, 19 and 86 either side, Samoa in script and a Rugby League World Cup 2026 line, in white. A small crest and Toa Samoa script sit on the left chest, with a PMN+ badge on the sleeve.",
+    "A supporter tee for Rugby League World Cup 2026. Printed on a 5.3 oz 100% cotton midweight tee with a regular fit, L to 3XL."
+   ],
+   "faq": [
+    {
+     "q": "Is this an official team shirt?",
+     "a": "No. It's an independent PMN+ supporter tee, made to rep Toa Samoa through the Rugby League World Cup 2026."
+    },
+    {
+     "q": "When will my order arrive?",
+     "a": "Each piece is printed to order. Printing takes 2–4 business days, then shipping takes 3–7 business days within the USA, so about 5–11 business days in total. You'll get a tracking link by email when it ships."
+    },
+    {
+     "q": "Do you ship outside the USA?",
+     "a": "Not yet. We ship to all 50 US states, including Hawaii and Alaska. We're working on New Zealand and Australia."
+    },
+    {
+     "q": "What payment methods do you take?",
+     "a": "Visa, Mastercard, Amex, Apple Pay, Google Pay and Shop Pay at secure checkout."
+    },
+    {
+     "q": "What's your return policy?",
+     "a": "Every PMN+ piece is made to order, just for you, so all sales are final: no returns or exchanges for size, colour or change of mind. If your item arrives damaged, misprinted or incorrect, email photos within 7 days of delivery and we'll review it and make it right."
+    },
+    {
+     "q": "How do I wash it?",
+     "a": "Machine wash cold, inside out, with similar colours. Tumble dry low or hang dry. Do not iron directly on the print. Do not dry clean."
+    }
+   ],
+   "sizes": [
+    "L",
+    "XL",
+    "2XL",
+    "3XL"
+   ],
+   "images": [
+    "https://www.polynesianmusicnetwork.com/shop/hires/toa-rlwc26-royal/toa-samoa-rlwc26-tee-royal-blue-back.webp",
+    "https://www.polynesianmusicnetwork.com/shop/hires/toa-rlwc26-royal/toa-samoa-rlwc26-tee-royal-blue-front.webp",
+    "https://www.polynesianmusicnetwork.com/shop/hires/toa-rlwc26-royal/toa-samoa-rlwc26-tee-royal-blue-front-right.webp",
+    "https://www.polynesianmusicnetwork.com/shop/hires/toa-rlwc26-royal/toa-samoa-rlwc26-tee-royal-blue-right.webp",
+    "https://www.polynesianmusicnetwork.com/shop/hires/toa-rlwc26-royal/toa-samoa-rlwc26-tee-royal-blue-front-left.webp"
+   ],
+   "og": "https://www.polynesianmusicnetwork.com/shop/og/toa-samoa-rlwc26-tee-royal-blue.jpg",
+   "sold": false,
+   "kind": "tee",
+   "teamName": "Toa Samoa",
+   "alt": [
+    "Toa Samoa RLWC26 Tee in royal blue, back view",
+    "Toa Samoa RLWC26 Tee in royal blue, front view",
+    "Toa Samoa RLWC26 Tee in royal blue, front right view",
+    "Toa Samoa RLWC26 Tee in royal blue, right view",
+    "Toa Samoa RLWC26 Tee in royal blue, front left view"
+   ],
+   "jsonld": {
+    "@context": "https://schema.org",
+    "@graph": [
+     {
+      "@type": "Organization",
+      "@id": "https://www.polynesianmusicnetwork.com/#org",
+      "name": "PMN+",
+      "alternateName": "Polynesian Music Network Plus",
+      "url": "https://www.polynesianmusicnetwork.com",
+      "logo": "https://www.polynesianmusicnetwork.com/shop/brand/pmn-plus-logo-black.png",
+      "legalName": "Polynesian Music"
+     },
+     {
+      "@type": "Product",
+      "@id": "https://www.polynesianmusicnetwork.com/shop/toa-samoa-rlwc26-tee-royal-blue#product",
+      "name": "Toa Samoa RLWC26 Tee – Royal Blue",
+      "sku": "toa-samoa-rlwc26-tee-royal-blue",
+      "brand": {
+       "@type": "Brand",
+       "name": "PMN+"
+      },
+      "color": "Royal Blue",
+      "category": "Apparel & Accessories > Clothing > Shirts & Tops",
+      "image": [
+       "https://www.polynesianmusicnetwork.com/shop/hires/toa-rlwc26-royal/toa-samoa-rlwc26-tee-royal-blue-back.webp",
+       "https://www.polynesianmusicnetwork.com/shop/hires/toa-rlwc26-royal/toa-samoa-rlwc26-tee-royal-blue-front.webp",
+       "https://www.polynesianmusicnetwork.com/shop/hires/toa-rlwc26-royal/toa-samoa-rlwc26-tee-royal-blue-front-right.webp",
+       "https://www.polynesianmusicnetwork.com/shop/hires/toa-rlwc26-royal/toa-samoa-rlwc26-tee-royal-blue-right.webp",
+       "https://www.polynesianmusicnetwork.com/shop/hires/toa-rlwc26-royal/toa-samoa-rlwc26-tee-royal-blue-front-left.webp"
+      ],
+      "description": "The RLWC26 tee in royal blue. The back carries an arched TOA over the Samoa crest, 19 and 86 either side, Samoa in script and a Rugby League World Cup 2026 line, in white. A small crest and Toa Samoa script sit on the left chest, with a PMN+ badge on the sleeve. A supporter tee for Rugby League World Cup 2026. Printed on a 5.3 oz 100% cotton midweight tee with a regular fit, L to 3XL.",
+      "url": "https://www.polynesianmusicnetwork.com/shop/toa-samoa-rlwc26-tee-royal-blue",
+      "audience": {
+       "@type": "PeopleAudience",
+       "suggestedGender": "unisex"
+      },
+      "offers": {
+       "@type": "Offer",
+       "url": "https://www.polynesianmusicnetwork.com/shop/toa-samoa-rlwc26-tee-royal-blue",
+       "price": "45.00",
+       "priceCurrency": "USD",
+       "availability": "https://schema.org/InStock",
+       "itemCondition": "https://schema.org/NewCondition",
+       "seller": {
+        "@id": "https://www.polynesianmusicnetwork.com/#org"
+       },
+       "hasMerchantReturnPolicy": {
+        "@type": "MerchantReturnPolicy",
+        "applicableCountry": "US",
+        "returnPolicyCategory": "https://schema.org/MerchantReturnNotPermitted"
+       },
+       "shippingDetails": {
+        "@type": "OfferShippingDetails",
+        "shippingRate": {
+         "@type": "MonetaryAmount",
+         "value": "8.00",
+         "currency": "USD"
+        },
+        "shippingDestination": {
+         "@type": "DefinedRegion",
+         "addressCountry": "US"
+        },
+        "deliveryTime": {
+         "@type": "ShippingDeliveryTime",
+         "handlingTime": {
+          "@type": "QuantitativeValue",
+          "minValue": 2,
+          "maxValue": 4,
+          "unitCode": "DAY"
+         },
+         "transitTime": {
+          "@type": "QuantitativeValue",
+          "minValue": 3,
+          "maxValue": 7,
+          "unitCode": "DAY"
+         }
+        }
+       }
+      },
+      "isVariantOf": {
+       "@type": "ProductGroup",
+       "name": "Toa Samoa RLWC26 Tee",
+       "brand": {
+        "@type": "Brand",
+        "name": "PMN+"
+       },
+       "productGroupID": "toa-samoa-rlwc26-tee",
+       "variesBy": [
+        "https://schema.org/color",
+        "https://schema.org/size"
+       ]
+      }
+     },
+     {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+       {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Shop",
+        "item": "https://www.polynesianmusicnetwork.com/shop"
+       },
+       {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Toa Samoa",
+        "item": "https://www.polynesianmusicnetwork.com/shop/toa-samoa"
+       },
+       {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Toa Samoa RLWC26 Tee",
+        "item": "https://www.polynesianmusicnetwork.com/shop/toa-samoa-rlwc26-tee-royal-blue"
+       }
+      ]
+     },
+     {
+      "@type": "FAQPage",
+      "mainEntity": [
+       {
+        "@type": "Question",
+        "name": "Is this an official team shirt?",
+        "acceptedAnswer": {
+         "@type": "Answer",
+         "text": "No. It's an independent PMN+ supporter tee, made to rep Toa Samoa through the Rugby League World Cup 2026."
+        }
+       },
+       {
+        "@type": "Question",
+        "name": "When will my order arrive?",
+        "acceptedAnswer": {
+         "@type": "Answer",
+         "text": "Each piece is printed to order. Printing takes 2–4 business days, then shipping takes 3–7 business days within the USA, so about 5–11 business days in total. You'll get a tracking link by email when it ships."
+        }
+       },
+       {
+        "@type": "Question",
+        "name": "Do you ship outside the USA?",
+        "acceptedAnswer": {
+         "@type": "Answer",
+         "text": "Not yet. We ship to all 50 US states, including Hawaii and Alaska. We're working on New Zealand and Australia."
+        }
+       },
+       {
+        "@type": "Question",
+        "name": "What payment methods do you take?",
+        "acceptedAnswer": {
+         "@type": "Answer",
+         "text": "Visa, Mastercard, Amex, Apple Pay, Google Pay and Shop Pay at secure checkout."
+        }
+       },
+       {
+        "@type": "Question",
+        "name": "What's your return policy?",
+        "acceptedAnswer": {
+         "@type": "Answer",
+         "text": "Every PMN+ piece is made to order, just for you, so all sales are final: no returns or exchanges for size, colour or change of mind. If your item arrives damaged, misprinted or incorrect, email photos within 7 days of delivery and we'll review it and make it right."
+        }
+       },
+       {
+        "@type": "Question",
+        "name": "How do I wash it?",
+        "acceptedAnswer": {
+         "@type": "Answer",
+         "text": "Machine wash cold, inside out, with similar colours. Tumble dry low or hang dry. Do not iron directly on the print. Do not dry clean."
+        }
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "mmt-player-red": {
+   "slug": "mate-maa-tonga-player-tee-red",
+   "url": "https://www.polynesianmusicnetwork.com/shop/mate-maa-tonga-player-tee-red",
+   "title": "Mate Ma'a Tonga Player Tee – Red | RLWC 2026 | PMN+",
+   "meta": "Red Mate Ma'a Tonga player tee: MATE MA'A TONGA 676 crest front, jersey-style TONGA 00 back. L–3XL, 100% cotton. $45 · Ships across the USA.",
+   "h1": "Mate Ma'a Tonga Player Tee",
+   "colour": "Red",
+   "price": 45,
+   "team": "tonga",
+   "keyword": "Tonga rugby league jersey tee red",
+   "description": [
+    "A jersey-style supporter tee in Tonga red with white prints. The front reads Six·Seven·Six over MATE MA'A TONGA and Rugby League, with the Tonga crest and 676 below. The back carries TONGA with the crest in the O and big 00 numbers, plus a PMN+ badge on the sleeve.",
+    "Printed on a 5.3 oz 100% cotton midweight tee with a regular fit, L to 3XL."
+   ],
+   "faq": [
+    {
+     "q": "Can I get my own name or number?",
+     "a": "Not yet. Every Player Tee carries the 00 number shown. Join the PMN+ list to hear first if custom names and numbers launch."
+    },
+    {
+     "q": "When will my order arrive?",
+     "a": "Each piece is printed to order. Printing takes 2–4 business days, then shipping takes 3–7 business days within the USA, so about 5–11 business days in total. You'll get a tracking link by email when it ships."
+    },
+    {
+     "q": "Do you ship outside the USA?",
+     "a": "Not yet. We ship to all 50 US states, including Hawaii and Alaska. We're working on New Zealand and Australia."
+    },
+    {
+     "q": "What payment methods do you take?",
+     "a": "Visa, Mastercard, Amex, Apple Pay, Google Pay and Shop Pay at secure checkout."
+    },
+    {
+     "q": "What's your return policy?",
+     "a": "Every PMN+ piece is made to order, just for you, so all sales are final: no returns or exchanges for size, colour or change of mind. If your item arrives damaged, misprinted or incorrect, email photos within 7 days of delivery and we'll review it and make it right."
+    },
+    {
+     "q": "How do I wash it?",
+     "a": "Machine wash cold, inside out, with similar colours. Tumble dry low or hang dry. Do not iron directly on the print. Do not dry clean."
+    }
+   ],
+   "sizes": [
+    "L",
+    "XL",
+    "2XL",
+    "3XL"
+   ],
+   "images": [
+    "https://www.polynesianmusicnetwork.com/shop/hires/mmt-player-red/mate-maa-tonga-player-tee-red-front.webp",
+    "https://www.polynesianmusicnetwork.com/shop/hires/mmt-player-red/mate-maa-tonga-player-tee-red-front-right.webp",
+    "https://www.polynesianmusicnetwork.com/shop/hires/mmt-player-red/mate-maa-tonga-player-tee-red-right.webp",
+    "https://www.polynesianmusicnetwork.com/shop/hires/mmt-player-red/mate-maa-tonga-player-tee-red-back.webp",
+    "https://www.polynesianmusicnetwork.com/shop/hires/mmt-player-red/mate-maa-tonga-player-tee-red-front-left.webp"
+   ],
+   "og": "https://www.polynesianmusicnetwork.com/shop/og/mate-maa-tonga-player-tee-red.jpg",
+   "sold": false,
+   "kind": "tee",
+   "teamName": "Mate Ma'a Tonga",
+   "alt": [
+    "Mate Ma'a Tonga Player Tee in red, front view",
+    "Mate Ma'a Tonga Player Tee in red, front right view",
+    "Mate Ma'a Tonga Player Tee in red, right view",
+    "Mate Ma'a Tonga Player Tee in red, back view",
+    "Mate Ma'a Tonga Player Tee in red, front left view"
+   ],
+   "jsonld": {
+    "@context": "https://schema.org",
+    "@graph": [
+     {
+      "@type": "Organization",
+      "@id": "https://www.polynesianmusicnetwork.com/#org",
+      "name": "PMN+",
+      "alternateName": "Polynesian Music Network Plus",
+      "url": "https://www.polynesianmusicnetwork.com",
+      "logo": "https://www.polynesianmusicnetwork.com/shop/brand/pmn-plus-logo-black.png",
+      "legalName": "Polynesian Music"
+     },
+     {
+      "@type": "Product",
+      "@id": "https://www.polynesianmusicnetwork.com/shop/mate-maa-tonga-player-tee-red#product",
+      "name": "Mate Ma'a Tonga Player Tee – Red",
+      "sku": "mate-maa-tonga-player-tee-red",
+      "brand": {
+       "@type": "Brand",
+       "name": "PMN+"
+      },
+      "color": "Red",
+      "category": "Apparel & Accessories > Clothing > Shirts & Tops",
+      "image": [
+       "https://www.polynesianmusicnetwork.com/shop/hires/mmt-player-red/mate-maa-tonga-player-tee-red-front.webp",
+       "https://www.polynesianmusicnetwork.com/shop/hires/mmt-player-red/mate-maa-tonga-player-tee-red-front-right.webp",
+       "https://www.polynesianmusicnetwork.com/shop/hires/mmt-player-red/mate-maa-tonga-player-tee-red-right.webp",
+       "https://www.polynesianmusicnetwork.com/shop/hires/mmt-player-red/mate-maa-tonga-player-tee-red-back.webp",
+       "https://www.polynesianmusicnetwork.com/shop/hires/mmt-player-red/mate-maa-tonga-player-tee-red-front-left.webp"
+      ],
+      "description": "A jersey-style supporter tee in Tonga red with white prints. The front reads Six·Seven·Six over MATE MA'A TONGA and Rugby League, with the Tonga crest and 676 below. The back carries TONGA with the crest in the O and big 00 numbers, plus a PMN+ badge on the sleeve. Printed on a 5.3 oz 100% cotton midweight tee with a regular fit, L to 3XL.",
+      "url": "https://www.polynesianmusicnetwork.com/shop/mate-maa-tonga-player-tee-red",
+      "audience": {
+       "@type": "PeopleAudience",
+       "suggestedGender": "unisex"
+      },
+      "offers": {
+       "@type": "Offer",
+       "url": "https://www.polynesianmusicnetwork.com/shop/mate-maa-tonga-player-tee-red",
+       "price": "45.00",
+       "priceCurrency": "USD",
+       "availability": "https://schema.org/InStock",
+       "itemCondition": "https://schema.org/NewCondition",
+       "seller": {
+        "@id": "https://www.polynesianmusicnetwork.com/#org"
+       },
+       "hasMerchantReturnPolicy": {
+        "@type": "MerchantReturnPolicy",
+        "applicableCountry": "US",
+        "returnPolicyCategory": "https://schema.org/MerchantReturnNotPermitted"
+       },
+       "shippingDetails": {
+        "@type": "OfferShippingDetails",
+        "shippingRate": {
+         "@type": "MonetaryAmount",
+         "value": "8.00",
+         "currency": "USD"
+        },
+        "shippingDestination": {
+         "@type": "DefinedRegion",
+         "addressCountry": "US"
+        },
+        "deliveryTime": {
+         "@type": "ShippingDeliveryTime",
+         "handlingTime": {
+          "@type": "QuantitativeValue",
+          "minValue": 2,
+          "maxValue": 4,
+          "unitCode": "DAY"
+         },
+         "transitTime": {
+          "@type": "QuantitativeValue",
+          "minValue": 3,
+          "maxValue": 7,
+          "unitCode": "DAY"
+         }
+        }
+       }
+      },
+      "isVariantOf": {
+       "@type": "ProductGroup",
+       "name": "Mate Ma'a Tonga Player Tee",
+       "brand": {
+        "@type": "Brand",
+        "name": "PMN+"
+       },
+       "productGroupID": "mate-maa-tonga-player-tee",
+       "variesBy": [
+        "https://schema.org/color",
+        "https://schema.org/size"
+       ]
+      }
+     },
+     {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+       {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Shop",
+        "item": "https://www.polynesianmusicnetwork.com/shop"
+       },
+       {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Mate Ma'a Tonga",
+        "item": "https://www.polynesianmusicnetwork.com/shop/mate-maa-tonga"
+       },
+       {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Mate Ma'a Tonga Player Tee",
+        "item": "https://www.polynesianmusicnetwork.com/shop/mate-maa-tonga-player-tee-red"
+       }
+      ]
+     },
+     {
+      "@type": "FAQPage",
+      "mainEntity": [
+       {
+        "@type": "Question",
+        "name": "Can I get my own name or number?",
+        "acceptedAnswer": {
+         "@type": "Answer",
+         "text": "Not yet. Every Player Tee carries the 00 number shown. Join the PMN+ list to hear first if custom names and numbers launch."
+        }
+       },
+       {
+        "@type": "Question",
+        "name": "When will my order arrive?",
+        "acceptedAnswer": {
+         "@type": "Answer",
+         "text": "Each piece is printed to order. Printing takes 2–4 business days, then shipping takes 3–7 business days within the USA, so about 5–11 business days in total. You'll get a tracking link by email when it ships."
+        }
+       },
+       {
+        "@type": "Question",
+        "name": "Do you ship outside the USA?",
+        "acceptedAnswer": {
+         "@type": "Answer",
+         "text": "Not yet. We ship to all 50 US states, including Hawaii and Alaska. We're working on New Zealand and Australia."
+        }
+       },
+       {
+        "@type": "Question",
+        "name": "What payment methods do you take?",
+        "acceptedAnswer": {
+         "@type": "Answer",
+         "text": "Visa, Mastercard, Amex, Apple Pay, Google Pay and Shop Pay at secure checkout."
+        }
+       },
+       {
+        "@type": "Question",
+        "name": "What's your return policy?",
+        "acceptedAnswer": {
+         "@type": "Answer",
+         "text": "Every PMN+ piece is made to order, just for you, so all sales are final: no returns or exchanges for size, colour or change of mind. If your item arrives damaged, misprinted or incorrect, email photos within 7 days of delivery and we'll review it and make it right."
+        }
+       },
+       {
+        "@type": "Question",
+        "name": "How do I wash it?",
+        "acceptedAnswer": {
+         "@type": "Answer",
+         "text": "Machine wash cold, inside out, with similar colours. Tumble dry low or hang dry. Do not iron directly on the print. Do not dry clean."
+        }
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "toa-player-royal": {
+   "slug": "toa-samoa-player-tee-royal-blue",
+   "url": "https://www.polynesianmusicnetwork.com/shop/toa-samoa-player-tee-royal-blue",
+   "title": "Toa Samoa Player Tee – Royal Blue | RLWC 2026 | PMN+",
+   "meta": "Royal blue Toa Samoa player tee: TOA SAMOA 685 crest front, jersey-style SAMOA 00 back. L–3XL, 100% cotton. $45 · Ships across the USA.",
+   "h1": "Toa Samoa Player Tee",
+   "colour": "Royal Blue",
+   "price": 45,
+   "team": "samoa",
+   "keyword": "Samoa rugby league jersey tee blue",
+   "description": [
+    "A jersey-style supporter tee in royal blue. The front reads Six·Eight·Five over TOA SAMOA and Rugby League, with the Samoa crest and 685 below. The back carries SAMOA with the crest in the O and big white 00 numbers outlined in red, plus a PMN+ badge on the sleeve.",
+    "Printed on a 5.3 oz 100% cotton midweight tee with a regular fit, L to 3XL."
+   ],
+   "faq": [
+    {
+     "q": "Can I get my own name or number?",
+     "a": "Not yet. Every Player Tee carries the 00 number shown. Join the PMN+ list to hear first if custom names and numbers launch."
+    },
+    {
+     "q": "When will my order arrive?",
+     "a": "Each piece is printed to order. Printing takes 2–4 business days, then shipping takes 3–7 business days within the USA, so about 5–11 business days in total. You'll get a tracking link by email when it ships."
+    },
+    {
+     "q": "Do you ship outside the USA?",
+     "a": "Not yet. We ship to all 50 US states, including Hawaii and Alaska. We're working on New Zealand and Australia."
+    },
+    {
+     "q": "What payment methods do you take?",
+     "a": "Visa, Mastercard, Amex, Apple Pay, Google Pay and Shop Pay at secure checkout."
+    },
+    {
+     "q": "What's your return policy?",
+     "a": "Every PMN+ piece is made to order, just for you, so all sales are final: no returns or exchanges for size, colour or change of mind. If your item arrives damaged, misprinted or incorrect, email photos within 7 days of delivery and we'll review it and make it right."
+    },
+    {
+     "q": "How do I wash it?",
+     "a": "Machine wash cold, inside out, with similar colours. Tumble dry low or hang dry. Do not iron directly on the print. Do not dry clean."
+    }
+   ],
+   "sizes": [
+    "L",
+    "XL",
+    "2XL",
+    "3XL"
+   ],
+   "images": [
+    "https://www.polynesianmusicnetwork.com/shop/hires/toa-player-royal/toa-samoa-player-tee-royal-blue-front.webp",
+    "https://www.polynesianmusicnetwork.com/shop/hires/toa-player-royal/toa-samoa-player-tee-royal-blue-front-right.webp",
+    "https://www.polynesianmusicnetwork.com/shop/hires/toa-player-royal/toa-samoa-player-tee-royal-blue-right.webp",
+    "https://www.polynesianmusicnetwork.com/shop/hires/toa-player-royal/toa-samoa-player-tee-royal-blue-back.webp",
+    "https://www.polynesianmusicnetwork.com/shop/hires/toa-player-royal/toa-samoa-player-tee-royal-blue-front-left.webp"
+   ],
+   "og": "https://www.polynesianmusicnetwork.com/shop/og/toa-samoa-player-tee-royal-blue.jpg",
+   "sold": false,
+   "kind": "tee",
+   "teamName": "Toa Samoa",
+   "alt": [
+    "Toa Samoa Player Tee in royal blue, front view",
+    "Toa Samoa Player Tee in royal blue, front right view",
+    "Toa Samoa Player Tee in royal blue, right view",
+    "Toa Samoa Player Tee in royal blue, back view",
+    "Toa Samoa Player Tee in royal blue, front left view"
+   ],
+   "jsonld": {
+    "@context": "https://schema.org",
+    "@graph": [
+     {
+      "@type": "Organization",
+      "@id": "https://www.polynesianmusicnetwork.com/#org",
+      "name": "PMN+",
+      "alternateName": "Polynesian Music Network Plus",
+      "url": "https://www.polynesianmusicnetwork.com",
+      "logo": "https://www.polynesianmusicnetwork.com/shop/brand/pmn-plus-logo-black.png",
+      "legalName": "Polynesian Music"
+     },
+     {
+      "@type": "Product",
+      "@id": "https://www.polynesianmusicnetwork.com/shop/toa-samoa-player-tee-royal-blue#product",
+      "name": "Toa Samoa Player Tee – Royal Blue",
+      "sku": "toa-samoa-player-tee-royal-blue",
+      "brand": {
+       "@type": "Brand",
+       "name": "PMN+"
+      },
+      "color": "Royal Blue",
+      "category": "Apparel & Accessories > Clothing > Shirts & Tops",
+      "image": [
+       "https://www.polynesianmusicnetwork.com/shop/hires/toa-player-royal/toa-samoa-player-tee-royal-blue-front.webp",
+       "https://www.polynesianmusicnetwork.com/shop/hires/toa-player-royal/toa-samoa-player-tee-royal-blue-front-right.webp",
+       "https://www.polynesianmusicnetwork.com/shop/hires/toa-player-royal/toa-samoa-player-tee-royal-blue-right.webp",
+       "https://www.polynesianmusicnetwork.com/shop/hires/toa-player-royal/toa-samoa-player-tee-royal-blue-back.webp",
+       "https://www.polynesianmusicnetwork.com/shop/hires/toa-player-royal/toa-samoa-player-tee-royal-blue-front-left.webp"
+      ],
+      "description": "A jersey-style supporter tee in royal blue. The front reads Six·Eight·Five over TOA SAMOA and Rugby League, with the Samoa crest and 685 below. The back carries SAMOA with the crest in the O and big white 00 numbers outlined in red, plus a PMN+ badge on the sleeve. Printed on a 5.3 oz 100% cotton midweight tee with a regular fit, L to 3XL.",
+      "url": "https://www.polynesianmusicnetwork.com/shop/toa-samoa-player-tee-royal-blue",
+      "audience": {
+       "@type": "PeopleAudience",
+       "suggestedGender": "unisex"
+      },
+      "offers": {
+       "@type": "Offer",
+       "url": "https://www.polynesianmusicnetwork.com/shop/toa-samoa-player-tee-royal-blue",
+       "price": "45.00",
+       "priceCurrency": "USD",
+       "availability": "https://schema.org/InStock",
+       "itemCondition": "https://schema.org/NewCondition",
+       "seller": {
+        "@id": "https://www.polynesianmusicnetwork.com/#org"
+       },
+       "hasMerchantReturnPolicy": {
+        "@type": "MerchantReturnPolicy",
+        "applicableCountry": "US",
+        "returnPolicyCategory": "https://schema.org/MerchantReturnNotPermitted"
+       },
+       "shippingDetails": {
+        "@type": "OfferShippingDetails",
+        "shippingRate": {
+         "@type": "MonetaryAmount",
+         "value": "8.00",
+         "currency": "USD"
+        },
+        "shippingDestination": {
+         "@type": "DefinedRegion",
+         "addressCountry": "US"
+        },
+        "deliveryTime": {
+         "@type": "ShippingDeliveryTime",
+         "handlingTime": {
+          "@type": "QuantitativeValue",
+          "minValue": 2,
+          "maxValue": 4,
+          "unitCode": "DAY"
+         },
+         "transitTime": {
+          "@type": "QuantitativeValue",
+          "minValue": 3,
+          "maxValue": 7,
+          "unitCode": "DAY"
+         }
+        }
+       }
+      },
+      "isVariantOf": {
+       "@type": "ProductGroup",
+       "name": "Toa Samoa Player Tee",
+       "brand": {
+        "@type": "Brand",
+        "name": "PMN+"
+       },
+       "productGroupID": "toa-samoa-player-tee",
+       "variesBy": [
+        "https://schema.org/color",
+        "https://schema.org/size"
+       ]
+      }
+     },
+     {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+       {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Shop",
+        "item": "https://www.polynesianmusicnetwork.com/shop"
+       },
+       {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Toa Samoa",
+        "item": "https://www.polynesianmusicnetwork.com/shop/toa-samoa"
+       },
+       {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Toa Samoa Player Tee",
+        "item": "https://www.polynesianmusicnetwork.com/shop/toa-samoa-player-tee-royal-blue"
+       }
+      ]
+     },
+     {
+      "@type": "FAQPage",
+      "mainEntity": [
+       {
+        "@type": "Question",
+        "name": "Can I get my own name or number?",
+        "acceptedAnswer": {
+         "@type": "Answer",
+         "text": "Not yet. Every Player Tee carries the 00 number shown. Join the PMN+ list to hear first if custom names and numbers launch."
         }
        },
        {

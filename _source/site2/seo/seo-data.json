@@ -35,8 +35,8 @@
    "name": "Shop all",
    "tab": "All",
    "title": "Shop All PMN+ Merch: Toa Samoa & Mate Ma'a Tonga Tees, Hats | PMN+",
-   "meta": "Shop every PMN+ piece: Toa Samoa and Mate Ma'a Tonga RLWC 2026 tees, oversized crest tees, snapbacks, truckers and PMN+ apparel. Ships across the USA.",
-   "intro": "Every piece in the PMN+ shop in one place: the Toa Samoa and Mate Ma'a Tonga Rugby League World Cup 2026 range, from 685 and 676 tees and oversized crest tees to snapbacks and truckers, plus PMN+ core apparel. Printed to order and shipped across the USA.",
+   "meta": "Shop every PMN+ piece: Toa Samoa and Mate Ma'a Tonga RLWC 2026 tees, player tees, oversized crest tees, snapbacks and truckers. Ships across the USA.",
+   "intro": "Every piece in the PMN+ shop in one place: the Toa Samoa and Mate Ma'a Tonga Rugby League World Cup 2026 range, from RLWC26 and jersey-style Player tees to 685 and 676 tees, oversized crest tees, snapbacks and truckers, plus PMN+ core apparel. Printed to order and shipped across the USA.",
    "url": "https://www.polynesianmusicnetwork.com/shop/all",
    "products": [
     "mmt-oversized",
@@ -68,7 +68,7 @@
     "@type": "CollectionPage",
     "name": "Shop all",
     "url": "https://www.polynesianmusicnetwork.com/shop/all",
-    "description": "Shop every PMN+ piece: Toa Samoa and Mate Ma'a Tonga RLWC 2026 tees, oversized crest tees, snapbacks, truckers and PMN+ apparel. Ships across the USA.",
+    "description": "Shop every PMN+ piece: Toa Samoa and Mate Ma'a Tonga RLWC 2026 tees, player tees, oversized crest tees, snapbacks and truckers. Ships across the USA.",
     "mainEntity": {
      "@type": "ItemList",
      "itemListElement": [
@@ -193,9 +193,9 @@
   },
   "mate-maa-tonga": {
    "name": "Mate Ma'a Tonga",
-   "title": "Mate Ma'a Tonga Merch: 676 Tees, Snapbacks & Hats | PMN+",
-   "meta": "Shop Mate Ma'a Tonga merch for Rugby League World Cup 2026: 676 tees, oversized crest tees, snapbacks and trucker hats. Ships across the USA.",
-   "intro": "Rep Tongan red for Rugby League World Cup 2026. The Mate Ma'a Tonga collection brings the 676 back print, the Est. 1986 crest and Tongan patches to heavyweight tees, snapbacks and truckers, printed to order and shipped across the USA.",
+   "title": "Mate Ma'a Tonga Merch: World Cup Tees, 676 & Hats | PMN+",
+   "meta": "Shop Mate Ma'a Tonga merch for Rugby League World Cup 2026: RLWC26 and player tees, 676 tees, oversized crest tees, snapbacks and truckers. Ships across the USA.",
+   "intro": "Rep Tongan red for Rugby League World Cup 2026. The Mate Ma'a Tonga collection brings the RLWC26 crest tee, the jersey-style TONGA 00 Player tee, the 676 back print and the Est. 1986 crest to tees, snapbacks and truckers, in black and Tonga red, printed to order and shipped across the USA.",
    "url": "https://www.polynesianmusicnetwork.com/shop/mate-maa-tonga",
    "products": [
     "mmt-oversized",
@@ -214,7 +214,7 @@
     "@type": "CollectionPage",
     "name": "Mate Ma'a Tonga",
     "url": "https://www.polynesianmusicnetwork.com/shop/mate-maa-tonga",
-    "description": "Shop Mate Ma'a Tonga merch for Rugby League World Cup 2026: 676 tees, oversized crest tees, snapbacks and trucker hats. Ships across the USA.",
+    "description": "Shop Mate Ma'a Tonga merch for Rugby League World Cup 2026: RLWC26 and player tees, 676 tees, oversized crest tees, snapbacks and truckers. Ships across the USA.",
     "mainEntity": {
      "@type": "ItemList",
      "itemListElement": [
@@ -274,9 +274,9 @@
   },
   "toa-samoa": {
    "name": "Toa Samoa",
-   "title": "Toa Samoa Merch: 685 Tees, Snapbacks & Hats | PMN+",
-   "meta": "Shop Toa Samoa merch for Rugby League World Cup 2026: 685 tees, oversized crest tees, snapbacks and trucker hats. Ships across the USA.",
-   "intro": "Rep Toa Samoa blue for Rugby League World Cup 2026. The Toa Samoa collection brings the 685 back print, the Est. 1986 crest and Samoan patches to heavyweight tees, snapbacks and truckers, printed to order and shipped across the USA.",
+   "title": "Toa Samoa Merch: World Cup Tees, 685 & Hats | PMN+",
+   "meta": "Shop Toa Samoa merch for Rugby League World Cup 2026: RLWC26 and player tees, 685 tees, oversized crest tees, snapbacks and truckers. Ships across the USA.",
+   "intro": "Rep Toa Samoa blue for Rugby League World Cup 2026. The Toa Samoa collection brings the RLWC26 crest tee, the jersey-style SAMOA 00 Player tee, the 685 back print and the Est. 1986 crest to tees, snapbacks and truckers, in black and royal blue, printed to order and shipped across the USA.",
    "url": "https://www.polynesianmusicnetwork.com/shop/toa-samoa",
    "products": [
     "toa-oversized",
@@ -295,7 +295,7 @@
     "@type": "CollectionPage",
     "name": "Toa Samoa",
     "url": "https://www.polynesianmusicnetwork.com/shop/toa-samoa",
-    "description": "Shop Toa Samoa merch for Rugby League World Cup 2026: 685 tees, oversized crest tees, snapbacks and trucker hats. Ships across the USA.",
+    "description": "Shop Toa Samoa merch for Rugby League World Cup 2026: RLWC26 and player tees, 685 tees, oversized crest tees, snapbacks and truckers. Ships across the USA.",
     "mainEntity": {
      "@type": "ItemList",
      "itemListElement": [
@@ -833,7 +833,7 @@
   "mmt-rlwc26-black": {
    "slug": "mate-maa-tonga-rlwc26-tee-black",
    "url": "https://www.polynesianmusicnetwork.com/shop/mate-maa-tonga-rlwc26-tee-black",
-   "title": "Mate Ma'a Tonga RLWC26 Tee – Black | RLWC 2026 | PMN+",
+   "title": "Mate Ma'a Tonga RLWC26 Tee – Black | World Cup 2026 | PMN+",
    "meta": "Black Mate Ma'a Tonga RLWC 2026 shirt with an arched 1986 crest back print and Tonga script chest logo. S–5XL, 100% cotton. $45 · Ships across the USA.",
    "h1": "Mate Ma'a Tonga RLWC26 Tee",
    "colour": "Black",
@@ -1073,7 +1073,7 @@
   "toa-rlwc26-black": {
    "slug": "toa-samoa-rlwc26-tee-black",
    "url": "https://www.polynesianmusicnetwork.com/shop/toa-samoa-rlwc26-tee-black",
-   "title": "Toa Samoa RLWC26 Tee – Black | RLWC 2026 | PMN+",
+   "title": "Toa Samoa RLWC26 Tee – Black | World Cup 2026 | PMN+",
    "meta": "Black Toa Samoa RLWC 2026 shirt with an arched TOA 1986 crest back print and Samoa script chest logo. S–5XL, 100% cotton. $45 · Ships across the USA.",
    "h1": "Toa Samoa RLWC26 Tee",
    "colour": "Black",
@@ -3191,7 +3191,7 @@
   "mmt-rlwc26-red": {
    "slug": "mate-maa-tonga-rlwc26-tee-red",
    "url": "https://www.polynesianmusicnetwork.com/shop/mate-maa-tonga-rlwc26-tee-red",
-   "title": "Mate Ma'a Tonga RLWC26 Tee – Red | RLWC 2026 | PMN+",
+   "title": "Mate Ma'a Tonga RLWC26 Tee – Red | World Cup 2026 | PMN+",
    "meta": "Red Mate Ma'a Tonga RLWC 2026 shirt with an arched 1986 crest back print and Tonga script chest logo. L–3XL, 100% cotton. $45 · Ships across the USA.",
    "h1": "Mate Ma'a Tonga RLWC26 Tee",
    "colour": "Red",
@@ -3427,7 +3427,7 @@
   "toa-rlwc26-royal": {
    "slug": "toa-samoa-rlwc26-tee-royal-blue",
    "url": "https://www.polynesianmusicnetwork.com/shop/toa-samoa-rlwc26-tee-royal-blue",
-   "title": "Toa Samoa RLWC26 Tee – Royal Blue | RLWC 2026 | PMN+",
+   "title": "Toa Samoa RLWC26 Tee – Royal Blue | World Cup 2026 | PMN+",
    "meta": "Royal blue Toa Samoa RLWC 2026 shirt with an arched TOA 1986 crest back print and Samoa script chest logo. L–3XL, 100% cotton. $45 · Ships across the USA.",
    "h1": "Toa Samoa RLWC26 Tee",
    "colour": "Royal Blue",

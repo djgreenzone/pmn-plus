@@ -34,7 +34,7 @@ for p in prods:
     og=f"{D}/shop/og/{slug}.jpg"
     if not imgs and m.get('src')=='shopify photo': imgs=['https://cdn.shopify.com/s/files/1/0814/5030/3687/files/7c0c7b35-e27f-4a48-9b05-c0ef2d0a4375-481207-front-ecru-zoom.png']
     nc=f"{p['name']} – {p['colour']}"
-    cands=([nc+" | RLWC 2026 | PMN+"] if p['team']!='pmn' else [nc+" | Pasifika Apparel"])+[nc+" | PMN+",nc]
+    cands=([nc+" | World Cup 2026 | PMN+"] if 'RLWC' in p['name'] else [])+([nc+" | RLWC 2026 | PMN+"] if p['team']!='pmn' else [nc+" | Pasifika Apparel"])+[nc+" | PMN+",nc]
     title=next(t for t in cands if len(t)<=60)
     tails=[f"${p['price']}" + (" · RLWC 2026" if p['team']!='pmn' else "") + ". Printed to order and shipped across the USA by PMN+, the Pasifika media platform.",
            f"${p['price']}. Printed to order and shipped across the USA by PMN+, the Pasifika media platform.",

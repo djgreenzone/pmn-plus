@@ -1795,6 +1795,8 @@ function showLab(){Hero.stop();$("hero").hidden=true;$("pdp").hidden=true;$("lab
 function showHero(){$("lab").hidden=true;Hero.show()}
 $("toLab").onclick=showLab;$("labBack").onclick=showHero;
 Hero.init();
+/* ?hero=<product id> opens the shop with that product centred in the carousel (e.g. homepage Toa Samoa card) */
+{const h=new URLSearchParams(location.search).get("hero");if(h&&PRODUCTS.some(p=>p.id===h)){Hero.jumpTo(h);history.replaceState(null,"",location.pathname+location.hash)}}
 $("arcPrev").onclick=()=>Hero.step(-1);$("arcNext").onclick=()=>Hero.step(1);
 /* desktop rail arrows: scroll by a page of cards */
 document.querySelectorAll("#hRail,#hHatRail,#hPmnRail,#pAlso,#hSamoaRail,#hTongaRail").forEach(r=>{const w=document.createElement("div");w.className="rail-wrap"+(r.classList.contains("big-rail")?" big-wrap":"");r.parentNode.insertBefore(w,r);w.append(r);

@@ -165,7 +165,7 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--ink);outline-offset
 @keyframes nudge{25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
 .buy{height:56px;border-radius:16px;background:var(--ink);color:var(--night);font-family:var(--display);font-size:24px;letter-spacing:.04em}
 .fine{margin:0;font-size:12px;color:rgba(244,242,238,.7)}
-.foot .fbot{display:flex;justify-content:space-between;align-items:center;gap:12px 20px;flex-wrap:wrap}.foot .pow{display:inline-flex;align-items:center;gap:6px;height:30px;padding:0 12px;border-radius:999px;border:1px solid rgba(244,242,238,.22);color:rgba(244,242,238,.75);font-size:11.5px;letter-spacing:.02em;text-decoration:none;white-space:nowrap;transition:border-color .15s,color .15s}.foot .pow b{font-weight:700;color:#fff}.foot .pow:hover{border-color:#fff;color:#fff}.foot .pow::before{content:"";width:6px;height:6px;border-radius:50%;background:#C8102E}
+.foot .fbot{display:flex;justify-content:flex-start;align-items:center;gap:12px 20px;flex-wrap:wrap}.foot .pow{display:inline-flex;align-items:center;gap:6px;height:30px;padding:0 12px;border-radius:999px;border:1px solid rgba(244,242,238,.22);color:rgba(244,242,238,.75);font-size:11.5px;letter-spacing:.02em;text-decoration:none;white-space:nowrap;transition:border-color .15s,color .15s}.foot .pow b{font-weight:700;color:#fff}.foot .pow:hover{border-color:#fff;color:#fff}.foot .pow::before{content:"";width:6px;height:6px;border-radius:50%;background:#C8102E}
 /* ---------- conversion product page ---------- */
 .promo{position:relative;z-index:6;text-align:center;font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--ink);background:rgba(0,0,0,.45);padding:calc(env(safe-area-inset-top,0px) + 7px) 16px 7px;border-bottom:1px solid var(--line)}
 #pdp .bar{padding-top:8px}
@@ -624,7 +624,7 @@ s.was{color:var(--ink-dim);font-weight:400;margin-left:4px}
   .coll-scroll>.foot-x{margin-inline:calc(-1*var(--gut));padding-inline:var(--gut)}
   .page-body>.foot-x{margin-inline:calc(-1*max(24px,calc(50vw - 380px)));padding-inline:max(24px,calc(50vw - 380px))}
   .foot{grid-template-columns:auto 1fr auto;align-items:start;column-gap:56px}
-  .foot>.fine,.foot>.pay{grid-column:1/-1}
+  .foot>.fine,.foot>.pay,.foot>.fbot{grid-column:1/-1}
   @media (hover:hover){
     .card img,.big img,.gcard img{transition:transform .35s cubic-bezier(.2,.7,.2,1)}
     .card:hover img,.big:hover img,.gcard:hover img{transform:scale(1.05)}

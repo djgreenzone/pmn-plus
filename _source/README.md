@@ -1,5 +1,7 @@
 # PMN+ site source (not published)
 
+> Full documentation: `/CLAUDE.md` (start here) and `/docs/` (architecture, runbook, troubleshooting, business rules, access).
+
 This folder holds the editable sources the live site is built from. Vercel ignores it (see `/.vercelignore`).
 
 ## What's what

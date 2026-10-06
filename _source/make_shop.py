@@ -86,7 +86,7 @@ def rep(a,b,n=1):
     global s
     assert s.count(a)==n,(a[:70],s.count(a));s=s.replace(a,b)
 # persist the bag across reloads and the round trip to checkout
-rep('let bag=0;const cart=[];','let bag=0;const cart=[];try{(JSON.parse(localStorage.getItem("pmn_cart")||"[]")||[]).forEach(i=>{if(BY[i.id]&&i.qty>0)cart.push({id:i.id,size:i.size??null,qty:Math.min(10,i.qty|0)})})}catch(e){}')
+rep('let bag=0;const cart=[];','let bag=0;const cart=[];try{(JSON.parse(localStorage.getItem("pmn_cart")||"[]")||[]).forEach(i=>{if(BY[i.id]&&i.qty>0)cart.push({id:i.id,size:(BY[i.id].kind==="tee"&&i.size&&!blankFor(BY[i.id]).sizes.includes(i.size))?null:(i.size??null),qty:Math.min(10,i.qty|0)})})}catch(e){}')
 rep('function setBag(){','function setBag(){try{localStorage.setItem("pmn_cart",JSON.stringify(cart))}catch(e){}')
 rep('  return{add,open,close};','  setBag();\n  return{add,open,close};')
 # remember the shopper's email from sign-ups so checkout is prefilled

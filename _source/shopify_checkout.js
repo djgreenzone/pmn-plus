@@ -14,6 +14,9 @@
     busy(true,"Opening secure checkout…");await shopifyReady;
     try{const its=cart.map(i=>({id:i.id,name:(BY[i.id]||{}).name||i.id,price:(BY[i.id]||{}).price||0,size:i.size||"",qty:+i.qty||1}));window.pmnTrack&&window.pmnTrack("begin_checkout",{value:its.reduce((n,i)=>n+i.price*i.qty,0),items:its})}catch(e){}
     if(!shopifyOK){busy(false,"");return soon()}
+    /* a size that isn't sold in this colour (e.g. from an older bag) -> ask for a size instead of failing */
+    let fixed=0;cart.forEach(i=>{const p=BY[i.id];if(p&&p.kind==="tee"&&i.size&&!blankFor(p).sizes.includes(i.size)){i.size=null;fixed++}});
+    if(fixed){setBag();render();busy(false,"Please choose a size for the highlighted item"+(fixed>1?"s":"")+".");return}
     const miss=cart.filter(i=>!lineFor(i)).map(i=>BY[i.id].name+(i.size&&i.size!=="One size"?` (${i.size})`:""));
     if(miss.length){busy(false,`${miss.join(", ")} ${miss.length>1?"aren't":"isn't"} available to order yet. Remove ${miss.length>1?"them":"it"} to check out.`);return}
     try{const d=await sf(CART_Q,{i:cartInput(code?[code]:[])});const r=d.cartCreate;

@@ -23,7 +23,7 @@ async function sf(query,variables){
   const r=await fetch(`https://${SHOPIFY.domain}/api/${SHOPIFY.api}/graphql.json`,{method:"POST",headers:{"Content-Type":"application/json","X-Shopify-Storefront-Access-Token":SHOPIFY.token},body:JSON.stringify({query,variables})});
   const j=await r.json();if(j.errors)throw new Error(j.errors[0].message);return j.data}
 const shopifyReady=(async()=>{try{
-  const d=await sf(`{products(first:100){nodes{handle variants(first:60){nodes{id availableForSale price{amount} selectedOptions{name value}}}}}}`);
+  const d=await sf(`{products(first:250){nodes{handle variants(first:60){nodes{id availableForSale price{amount} selectedOptions{name value}}}}}}`);
   const H={};d.products.nodes.forEach(p=>H[p.handle]=p);const norm=v=>String(v||"").replace(/\s+/g,"").toLowerCase();let changed=false;
   for(const [id,[h,col]] of Object.entries(SHOPIFY_MAP)){const sp=H[h],p=BY[id];if(!sp||!p)continue;
     const vs=sp.variants.nodes.filter(v=>{if(!col)return true;const c=v.selectedOptions.find(o=>/colou?r/i.test(o.name));return !c||norm(c.value)===norm(col)});

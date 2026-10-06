@@ -1195,7 +1195,7 @@ async function sf(query,variables){
   const r=await fetch(`https://${SHOPIFY.domain}/api/${SHOPIFY.api}/graphql.json`,{method:"POST",headers:{"Content-Type":"application/json","X-Shopify-Storefront-Access-Token":SHOPIFY.token},body:JSON.stringify({query,variables})});
   const j=await r.json();if(j.errors)throw new Error(j.errors[0].message);return j.data}
 const shopifyReady=(async()=>{try{
-  const d=await sf(`{products(first:100){nodes{handle variants(first:60){nodes{id availableForSale price{amount} selectedOptions{name value}}}}}}`);
+  const d=await sf(`{products(first:250){nodes{handle variants(first:60){nodes{id availableForSale price{amount} selectedOptions{name value}}}}}}`);
   const H={};d.products.nodes.forEach(p=>H[p.handle]=p);const norm=v=>String(v||"").replace(/\s+/g,"").toLowerCase();let changed=false;
   for(const [id,[h,col]] of Object.entries(SHOPIFY_MAP)){const sp=H[h],p=BY[id];if(!sp||!p)continue;
     const vs=sp.variants.nodes.filter(v=>{if(!col)return true;const c=v.selectedOptions.find(o=>/colou?r/i.test(o.name));return !c||norm(c.value)===norm(col)});
@@ -1431,7 +1431,7 @@ const mix=(a,b,t)=>{const A=hex2rgb(a),B=hex2rgb(b);return`rgb(${A.map((v,i)=>Ma
 const money=v=>"$"+v.toFixed(2);
 const teamName=p=>p.team==="pmn"?"PMN+":p.team==="samoa"?"Toa Samoa":"Mate Ma'a Tonga";
 const wrapOff=(i,pos,n)=>{let d=((i-pos)%n+n)%n;if(d>n/2)d-=n;return d};
-let bag=0;const cart=[];try{(JSON.parse(localStorage.getItem("pmn_cart")||"[]")||[]).forEach(i=>{if(BY[i.id]&&i.qty>0)cart.push({id:i.id,size:i.size??null,qty:Math.min(10,i.qty|0)})})}catch(e){}const BUNDLE_OFF=10;const FREE_SHIP=100;
+let bag=0;const cart=[];try{(JSON.parse(localStorage.getItem("pmn_cart")||"[]")||[]).forEach(i=>{if(BY[i.id]&&i.qty>0)cart.push({id:i.id,size:(BY[i.id].kind==="tee"&&i.size&&!blankFor(BY[i.id]).sizes.includes(i.size))?null:(i.size??null),qty:Math.min(10,i.qty|0)})})}catch(e){}const BUNDLE_OFF=10;const FREE_SHIP=100;
 /* Checkout bump: one checkbox above checkout (Brunson order-form bump). PLACEHOLDER: pick a preset once the item and price are confirmed. */
 const BUMPS={
   protect:{title:"Yes, protect my order",copy:"Lost, stolen or damaged in transit? We reprint and reship it free. One tap, no claim forms.",price:4.5,line:"Order protection"},
@@ -1900,6 +1900,9 @@ const Cart=(()=>{
     busy(true,"Opening secure checkout…");await shopifyReady;
     try{const its=cart.map(i=>({id:i.id,name:(BY[i.id]||{}).name||i.id,price:(BY[i.id]||{}).price||0,size:i.size||"",qty:+i.qty||1}));window.pmnTrack&&window.pmnTrack("begin_checkout",{value:its.reduce((n,i)=>n+i.price*i.qty,0),items:its})}catch(e){}
     if(!shopifyOK){busy(false,"");return soon()}
+    /* a size that isn't sold in this colour (e.g. from an older bag) -> ask for a size instead of failing */
+    let fixed=0;cart.forEach(i=>{const p=BY[i.id];if(p&&p.kind==="tee"&&i.size&&!blankFor(p).sizes.includes(i.size)){i.size=null;fixed++}});
+    if(fixed){setBag();render();busy(false,"Please choose a size for the highlighted item"+(fixed>1?"s":"")+".");return}
     const miss=cart.filter(i=>!lineFor(i)).map(i=>BY[i.id].name+(i.size&&i.size!=="One size"?` (${i.size})`:""));
     if(miss.length){busy(false,`${miss.join(", ")} ${miss.length>1?"aren't":"isn't"} available to order yet. Remove ${miss.length>1?"them":"it"} to check out.`);return}
     try{const d=await sf(CART_Q,{i:cartInput(code?[code]:[])});const r=d.cartCreate;

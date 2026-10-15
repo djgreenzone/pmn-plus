@@ -51,7 +51,7 @@ Wrong loop length passed to `tools/add_spin.py`. Find the frame that repeats `f0
 Shopify price wins at runtime; if Shopify didn't load (blocked network) the `PRODUCTS[].price` fallback shows. Keep both in sync.
 
 **Sizes wrong on a product page**
-`blankFor()` picks the size list from `colourName`: anything containing "Black" gets S–5XL. Check the product's
+`blankFor()` picks the size list from `colourName`: every tee is S–6XL in every colour. Check the product's
 `colourName` and the `BLANK` lists.
 
 ## Payments / Shopify admin

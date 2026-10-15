@@ -37,7 +37,8 @@ Merging to `main` deploys production in about a minute.
 2. Price set on every variant.
 3. **Publish it to the "Polynesian Music Network Headless" sales channel** (product page → Publishing → Manage,
    or Settings → Apps and sales channels). Without this the site can show it but **checkout fails**.
-4. Remove variants we don't sell (e.g. red S, M, 4XL, 5XL) in Fulfill Engine, or leave them: the site never offers them.
+4. Every tee is sold S–6XL in every colour. Fulfill Engine products stop at 5XL, so add the 6XL variant in Shopify by hand
+   (give it a SKU, tracking off, stocked at the JQF location only, never Shop location).
 5. Add it to the **Buy 3 tees, get 1 free** discount (Discounts → Buy 3 tees, get 1 free):
    - *Customer buys*: add the product.
    - *Customer gets*: add only the **L, XL, 2XL** variants, and only black, red or royal standard tees (never oversized).
@@ -70,7 +71,7 @@ python3 tools/add_spin.py toa-newtee-black toa-samoa-newtee-tee-black /tmp/spin/
      Set `opts` to `[self, other colour, other team's version]`. Position in the array = position in the hero carousel.
    - Add `COPY["<id>"]` (one line + 3 points, describe what's printed and where).
    - If the product page should open on the back print, add `"<id>":180` to `REST`.
-2. `_source/seo_content.py`: add `P["<id>"]` (copy a sibling; state the size range: black "S–5XL", colour "L–3XL").
+2. `_source/seo_content.py`: add `P["<id>"]` (copy a sibling; state the size range: "S–6XL" for every tee).
    Never write "official".
 3. `_source/shopify_layer.js`: add `"<id>":["<shopify-handle>","<Color value exactly as in Shopify>"]`.
    Royal blue is `"Bright Royal"` in Shopify.

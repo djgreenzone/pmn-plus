@@ -5,9 +5,9 @@ The site, Shopify, Klaviyo emails and Google Merchant Center must all say the sa
 ## Products and sizes (as of Oct 6, 2026)
 | Line | Colours | Sizes | Price |
 |---|---|---|---|
-| Standard tees (685/676, RLWC26, Player, Silver Blackout, PMN+ Logo Tee) | Black | S–5XL (6XL once set up in Fulfill Engine) | $45 |
-| Standard tees | Red (Tonga) / Royal blue (Samoa) | **L–3XL only**; S, M, 4XL, 5XL shown crossed out | $45 |
-| Crest Oversized Tee (heavyweight) | Black | S–5XL | $60 |
+| Standard tees (685/676, RLWC26, Player, Silver Blackout, PMN+ Logo Tee) | Black | S–6XL | $45 |
+| Standard tees | Red (Tonga) / Royal blue (Samoa) | S–6XL | $45 |
+| Crest Oversized Tee (heavyweight) | Black | S–6XL | $60 |
 | Snapbacks / truckers / dad hat | — | One size | $35–55 |
 
 - Prices: **Shopify is the source of truth**; keep `PRODUCTS[].price` in sync for SEO/feeds.

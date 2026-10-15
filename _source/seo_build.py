@@ -17,8 +17,7 @@ TEAM={'samoa':'Toa Samoa','tonga':"Mate Ma'a Tonga",'pmn':'PMN+'}
 COLL={'samoa':'toa-samoa','tonga':'mate-maa-tonga','pmn':'pmn-plus'}
 def sizes(p):
     if p['kind']=='hat': return ['One size']
-    if 'oversized' in p['id'] or p['colour'].startswith('Black'): return ['S','M','L','XL','2XL','3XL','4XL','5XL']
-    return ['L','XL','2XL','3XL']  # red / royal: L–3XL only
+    return ['S','M','L','XL','2XL','3XL','4XL','5XL','6XL']  # every tee, every colour: S–6XL
 GROUP={'mmt-rlwc26-black':'mate-maa-tonga-rlwc26-tee','mmt-rlwc26-red':'mate-maa-tonga-rlwc26-tee','toa-rlwc26-black':'toa-samoa-rlwc26-tee','toa-rlwc26-royal':'toa-samoa-rlwc26-tee','mmt-player-black':'mate-maa-tonga-player-tee','mmt-player-red':'mate-maa-tonga-player-tee','toa-player-black':'toa-samoa-player-tee','toa-player-royal':'toa-samoa-player-tee','mmt-676-tee':'mate-maa-tonga-676-tee','mmt-676-black':'mate-maa-tonga-676-tee','toa-685-tee':'toa-samoa-685-tee','toa-685-black':'toa-samoa-685-tee'}
 def trim(t,n):
     return t if len(t)<=n else t[:n-1].rsplit(' ',1)[0].rstrip(',.;:')+'…'
@@ -43,11 +42,12 @@ for p in prods:
            f"${p['price']} · Ships across the USA."]
     meta=next(sc["m"]+" "+t for t in tails if len(sc["m"]+" "+t)<=155)
     faq=[{"q":q,"a":a_} for q,a_ in sc['faq']+C['sharedFaq']]
-    prod={"@type":"Product","@id":url+"#product","name":f"{p['name']} – {p['colour']}","sku":slug,"brand":{"@type":"Brand","name":"PMN+"},"color":p['colour'],
+    prod={"@type":"Product","@id":url+"#product","name":f"{p['name']} – {p['colour']}","sku":slug,"brand":{"@type":"Brand","name":"PMN+"},"color":p['colour'],"size":sizes(p),
+          **({"material":"100% ring-spun cotton"} if p['kind']=='tee' else {}),
           "category":"Apparel & Accessories > "+("Clothing Accessories > Hats" if p['kind']=='hat' else "Clothing > Shirts & Tops"),
           "image":imgs,"description":" ".join(sc['d']),"url":url,
           "audience":{"@type":"PeopleAudience","suggestedGender":"unisex"},
-          "offers":{"@type":"Offer","url":url,"price":f"{p['price']}.00","priceCurrency":"USD","availability":"https://schema.org/"+("OutOfStock" if p['id'] in SOLD else "InStock"),"itemCondition":"https://schema.org/NewCondition","seller":{"@id":D+"/#org"},"hasMerchantReturnPolicy":ret,"shippingDetails":ship}}
+          "offers":{"@type":"Offer","url":url,"price":f"{p['price']}.00","priceCurrency":"USD","priceValidUntil":"2027-12-31","availability":"https://schema.org/"+("OutOfStock" if p['id'] in SOLD else "InStock"),"itemCondition":"https://schema.org/NewCondition","seller":{"@id":D+"/#org"},"hasMerchantReturnPolicy":ret,"shippingDetails":ship}}
     if p['id'] in GROUP: prod["isVariantOf"]={"@type":"ProductGroup","name":p['name'],"brand":{"@type":"Brand","name":"PMN+"},"productGroupID":GROUP[p['id']],"variesBy":["https://schema.org/color","https://schema.org/size"]}
     crumbs={"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Shop","item":D+"/shop"},{"@type":"ListItem","position":2,"name":TEAM[p['team']],"item":f"{D}/shop/{COLL[p['team']]}"},{"@type":"ListItem","position":3,"name":p['name'],"item":url}]}
     faqld={"@type":"FAQPage","mainEntity":[{"@type":"Question","name":f['q'],"acceptedAnswer":{"@type":"Answer","text":f['a']}} for f in faq]}

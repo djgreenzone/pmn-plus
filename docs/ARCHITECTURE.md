@@ -74,8 +74,8 @@ generate the shop. Generated output is **committed**: Vercel just serves the rep
      **Order of this array = order of the hero carousel.**
    - `COPY["<id>"]`: one-line pitch + 3 bullet points for the product page.
    - `REST["<id>"]`: angle the product page opens on (e.g. 180 = back print). Missing = front.
-   - Sizes come from `BLANK` via `blankFor(p)`: black standard tees `fwjCore` (S–5XL), red/royal `fwjColour` (L–3XL),
-     oversized (S–5XL), hats (one size). Colour tees show the full S–5XL ladder with unavailable sizes crossed out.
+   - Sizes come from `BLANK` via `blankFor(p)`: every tee in every colour is S–6XL (`fwjCore`, `fwjColour`, `oversized`),
+     hats are one size. If a colour ever gets fewer sizes, the page shows the full ladder with unavailable sizes crossed out.
 2. **`_source/seo_content.py`** `P["<id>"]`: meta description, keyword, description paragraphs, product FAQ.
 3. **`_source/shopify_layer.js`** `SHOPIFY_MAP["<id>"] = ["<shopify-handle>", "<Color option value>"]`.
 4. Optional: `_source/seo_build.py` `GROUP` (links colourways as one ProductGroup for Google),

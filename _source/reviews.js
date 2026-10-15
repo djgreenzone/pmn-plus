@@ -1,9 +1,9 @@
 /* Klaviyo Reviews: star rating under the product name + full reviews in the Reviews panel.
    data-id = Shopify product ID (Klaviyo catalog is synced from Shopify). klaviyo.js loads in pmn-nav.js. */
 const KL_PID={"mmt-samoa-crest-oversized-tee":15382958342343,"toa-samoa-crest-oversized-tee":15382957359303,
-  "mmt-676-tee-shirt":15382959227079,"mmt-676-tee":15382961225927,"toa-samoa-685-tee-shirt":15382961651911,
-  "mmt-silver-blackout-tee":15382961914055,"toa-samoa-silver-blackout-tee":15382962143431,
-  "tonga-trucker-snapback":15382965911751,"samoa-trucker-snapback":15382966141127,"pmn-classic-tee":15382962929863,
+  "mmt-676-tee-1":15414195650759,"mmt-676-tee-red":15414195192007,"toa-samoa-685-tee":15414198370503,
+  "mmt-silver-blackout":15414195880135,"toa-samoa-silver-blackout":15414196076743,
+  "tonga-trucker-snapback":15382965911751,"samoa-trucker-snapback":15382966141127,"pmn-tee":15414197256391,
   "pmn-retro-trucker-hat-blk":15382967091399,"pmn-classic-dad-hat-khaki":15382966862023,
   "toa-samoa-snapback-red-wht":15382968565959,"toa-samoa-snapback-nvy-wht":15382983803079};
 function klReviews(p){

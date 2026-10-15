@@ -1175,15 +1175,15 @@ const SHOPIFY={domain:"polynesianmusicnetwork.myshopify.com",token:"ac4ace2c0dde
 /* site product id -> [Shopify handle, Color option value (null = only one colour)] */
 const SHOPIFY_MAP={
   "mmt-oversized":["mmt-samoa-crest-oversized-tee","Black"],"toa-oversized":["toa-samoa-crest-oversized-tee","Black"],
-  "mmt-676-black":["mmt-676-tee-shirt","Black"],"mmt-676-tee":["mmt-676-tee","Red"],
-  "toa-685-black":["toa-samoa-685-tee-shirt","Black"],
-  "mmt-rlwc26-black":["mmt-rlwc-26-tee","Black"],"mmt-rlwc26-red":["mmt-rlwc-26-tee","Red"],
-  "toa-rlwc26-black":["toa-samoa-rlwc-26-tee","Black"],"toa-rlwc26-royal":["toa-samoa-rlwc-26-tee","Bright Royal"],
-  "mmt-player-black":["mmt-player-tee-blk","Black"],"mmt-player-red":["mmt-player-tee-red","Red"],
-  "toa-player-black":["toa-samoa-player-tee","Black"],"toa-player-royal":["toa-samoa-player-tee","Bright Royal"],"toa-685-tee":["toa-samoa-685-tee-shirt","Bright Royal"],
-  "mmt-silver-blackout":["mmt-silver-blackout-tee","Black"],"toa-silver-blackout":["toa-samoa-silver-blackout-tee","Black"],
+  "mmt-676-black":["mmt-676-tee-1","Black"],"mmt-676-tee":["mmt-676-tee-red","Red"],
+  "toa-685-black":["toa-samoa-685-tee","Black"],
+  "mmt-rlwc26-black":["mmt-rlwc-26-tee-1","Black"],"mmt-rlwc26-red":["mmt-rlwc-26-tee-1","Red"],
+  "toa-rlwc26-black":["toa-samoa-rlwc-26-tee-1","Black"],"toa-rlwc26-royal":["toa-samoa-rlwc-26-tee-1","Royal"],
+  "mmt-player-black":["mmt-player-tee","Black"],"mmt-player-red":["mmt-player-tee-red-1","Red"],
+  "toa-player-black":["toa-samoa-player-tee-1","Black"],"toa-player-royal":["toa-samoa-player-tee-1","Royal"],"toa-685-tee":["toa-samoa-685-tee","Royal"],
+  "mmt-silver-blackout":["mmt-silver-blackout","Black"],"toa-silver-blackout":["toa-samoa-silver-blackout","Black"],
   "mmt-trucker":["tonga-trucker-snapback",null],"toa-trucker":["samoa-trucker-snapback",null],
-  "pmn-tee":["pmn-classic-tee","Black"],"pmn-trucker":["pmn-retro-trucker-hat-blk",null],"pmn-dad-hat":["pmn-classic-dad-hat-khaki",null],
+  "pmn-tee":["pmn-tee","Black"],"pmn-trucker":["pmn-retro-trucker-hat-blk",null],"pmn-dad-hat":["pmn-classic-dad-hat-khaki",null],
   "mmt-hp-snapback":["toa-samoa-snapback-red-wht",null],"toa-hp-snapback":["toa-samoa-snapback-nvy-wht",null]
   /* add when published: mmt-snapback, toa-snapback (curved bill) */
 };
@@ -1222,9 +1222,9 @@ document.addEventListener("submit",async e=>{const f=e.target;if(f.id!=="pBis")r
 /* Klaviyo Reviews: star rating under the product name + full reviews in the Reviews panel.
    data-id = Shopify product ID (Klaviyo catalog is synced from Shopify). klaviyo.js loads in pmn-nav.js. */
 const KL_PID={"mmt-samoa-crest-oversized-tee":15382958342343,"toa-samoa-crest-oversized-tee":15382957359303,
-  "mmt-676-tee-shirt":15382959227079,"mmt-676-tee":15382961225927,"toa-samoa-685-tee-shirt":15382961651911,
-  "mmt-silver-blackout-tee":15382961914055,"toa-samoa-silver-blackout-tee":15382962143431,
-  "tonga-trucker-snapback":15382965911751,"samoa-trucker-snapback":15382966141127,"pmn-classic-tee":15382962929863,
+  "mmt-676-tee-1":15414195650759,"mmt-676-tee-red":15414195192007,"toa-samoa-685-tee":15414198370503,
+  "mmt-silver-blackout":15414195880135,"toa-samoa-silver-blackout":15414196076743,
+  "tonga-trucker-snapback":15382965911751,"samoa-trucker-snapback":15382966141127,"pmn-tee":15414197256391,
   "pmn-retro-trucker-hat-blk":15382967091399,"pmn-classic-dad-hat-khaki":15382966862023,
   "toa-samoa-snapback-red-wht":15382968565959,"toa-samoa-snapback-nvy-wht":15382983803079};
 function klReviews(p){

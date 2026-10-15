@@ -4,6 +4,13 @@ Problems we've actually hit, newest first. Format: **symptom → cause → fix**
 
 ## Checkout
 
+**Products rebuilt in Fulfill Engine (Oct 15): new Shopify products replace the archived ones**
+- Fulfill Engine creates brand-new Shopify products (new ids, often a `-1` handle, colour "Royal" not "Bright Royal")
+  and they arrive as **Draft with every variant at $0.00**.
+- Fix: set prices, set Active, publish to the Headless channel, swap them into the Buy 3 get 1 discount (buys + L–2XL
+  gets), then update `SHOPIFY_MAP` (`_source/shopify_layer.js`), `KL_PID` (`_source/reviews.js`) and `KL_PID`/`HANDLE`
+  (`_source/account/template.html`) and rebuild. Site ids and page URLs don't change.
+
 **"<Product> (size) isn't available to order yet. Remove it to check out."**
 - Cause A: the product isn't published to the **Polynesian Music Network Headless** channel. The Storefront API doesn't
   return it, so the site has no variant ids. (Oct 5: all 5 new RLWC26/Player products.)

@@ -106,7 +106,7 @@ html.pn-lock,html.pn-lock body{overflow:hidden}
 .pn-offer b{font-weight:700}.pn-offer span{opacity:.5}.pn-offer u{text-underline-offset:3px;font-weight:600}
 .pn-offer:hover u{text-decoration-thickness:2px}
 .pn-offer~.pn-row{padding-top:0}
-.pn-ap{font-style:normal;font-weight:500}.pn-ap b{font-weight:700;color:#B2FCE4}
+.pn-ap{font-style:normal;font-weight:500;display:inline-flex;align-items:center;gap:6px}.pn-ap-logo{height:17px;width:auto;display:block}
 @media (max-width:640px){.pn-offer{font-size:10.5px;gap:6px;letter-spacing:.05em}.pn-offer:has(.pn-ap) u,.pn-ap-dot{display:none}}
 .pn-offer-fine{font-size:10px;letter-spacing:.04em;text-transform:none;opacity:.6;margin-left:6px}
 @media (max-width:640px){.pn-offer-fine{display:none}}

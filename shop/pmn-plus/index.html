@@ -740,7 +740,8 @@ s.was{color:var(--ink-dim);font-weight:400;margin-left:4px}
 .bnpl{margin:4px 0 0;font-size:13px;color:var(--ink-dim)}.bnpl b{color:var(--ink);font-weight:600}.ap-ok #pBnpl{display:none}.bnpl[hidden],.eta[hidden],.fit-tip[hidden]{display:none}
 .fit-tip{margin:8px 0 0;font-size:12.5px;color:var(--ink-dim)}
 .eta{display:flex;gap:8px;align-items:flex-start;margin:10px 0 0;font-size:13px;line-height:1.45;color:var(--ink-dim)}.eta b{color:var(--ink);font-weight:600}
-.ap-line{margin:-6px 0 0;font-size:14px;color:var(--ink-dim)}.ap-line b{color:var(--ink);font-weight:700}
+.ap-line{margin:-6px 0 0;font-size:14px;color:var(--ink-dim);display:flex;align-items:center;flex-wrap:wrap;gap:7px}.ap-line .ap-logo{height:20px;width:auto}
+.ds-ap{display:inline-flex;align-items:center;gap:10px}.ds-ap .ap-logo{height:22px;width:auto}
 .ap-msg{margin:12px 0 0;font-size:13px;min-height:0}
 /* Afterpay's wordmark is always black, so the widget sits on a light chip to stay readable on dark backgrounds */
 .ap-msg square-placement{display:inline-block;max-width:100%;background:#f4f2ee;color:#111;border-radius:10px;padding:4px 10px}.ap-msg:empty{display:none}.ap-cart{margin:6px 0 0}.ap-pdp{margin:4px 0 0}
@@ -800,10 +801,10 @@ s.was{color:var(--ink-dim);font-weight:400;margin-left:4px}
     <button type="button" class="proto scroll-cue" aria-label="Scroll for more" onclick="document.getElementById('hero').scrollBy({top:innerHeight*.85,behavior:'smooth'})"><svg viewBox="0 0 24 14" aria-hidden="true"><path d="M3 3l9 8 9-8"/></svg><svg viewBox="0 0 24 14" aria-hidden="true"><path d="M3 3l9 8 9-8"/></svg></button>
    </div>
    <div class="home" id="home">
-    <div class="drop-strip" role="note" aria-label="Exclusive RLWC 2026 drop. Limited supply. Only while stocks last. Pay in 4 with Afterpay."><div class="ds-track" aria-hidden="true"><span>Exclusive RLWC 2026 drop</span><i></i><span>Limited supply</span><i></i><span>Only while stocks last</span><i></i><span>Pay in 4 with Afterpay</span><i></i><span>Exclusive RLWC 2026 drop</span><i></i><span>Limited supply</span><i></i><span>Only while stocks last</span><i></i><span>Pay in 4 with Afterpay</span><i></i><span>Exclusive RLWC 2026 drop</span><i></i><span>Limited supply</span><i></i><span>Only while stocks last</span><i></i><span>Pay in 4 with Afterpay</span><i></i><span>Exclusive RLWC 2026 drop</span><i></i><span>Limited supply</span><i></i><span>Only while stocks last</span><i></i><span>Pay in 4 with Afterpay</span><i></i></div></div>
+    <div class="drop-strip" role="note" aria-label="Exclusive RLWC 2026 drop. Limited supply. Only while stocks last. Pay in 4 with Afterpay."><div class="ds-track" aria-hidden="true"><span>Exclusive RLWC 2026 drop</span><i></i><span>Limited supply</span><i></i><span>Only while stocks last</span><i></i><span class="ds-ap">Pay in 4 with <img class="ap-logo" src="/shop/brand/afterpay-badge-dark.svg" alt="Afterpay" width="98" height="24"></span><i></i><span>Exclusive RLWC 2026 drop</span><i></i><span>Limited supply</span><i></i><span>Only while stocks last</span><i></i><span class="ds-ap">Pay in 4 with <img class="ap-logo" src="/shop/brand/afterpay-badge-dark.svg" alt="Afterpay" width="98" height="24"></span><i></i><span>Exclusive RLWC 2026 drop</span><i></i><span>Limited supply</span><i></i><span>Only while stocks last</span><i></i><span class="ds-ap">Pay in 4 with <img class="ap-logo" src="/shop/brand/afterpay-badge-dark.svg" alt="Afterpay" width="98" height="24"></span><i></i><span>Exclusive RLWC 2026 drop</span><i></i><span>Limited supply</span><i></i><span>Only while stocks last</span><i></i><span class="ds-ap">Pay in 4 with <img class="ap-logo" src="/shop/brand/afterpay-badge-dark.svg" alt="Afterpay" width="98" height="24"></span><i></i></div></div>
     <section class="h-sec" aria-labelledby="hTeams">
       <h2 class="h-title" id="hTeams">Shop by team for the 2026 RLWC</h2>
-      <p class="ap-line">Get it now, pay in 4. Interest-free with <b>Afterpay</b>.</p>
+      <p class="ap-line">Get it now, pay in 4. Interest-free with <img class="ap-logo" src="/shop/brand/afterpay-badge-dark.svg" alt="Afterpay" width="98" height="24"></p>
       <div class="teams" id="hTeamsGrid"></div>
     </section>
     <section class="h-sec h-light" aria-labelledby="hBest">

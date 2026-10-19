@@ -39,7 +39,7 @@ The site, Shopify, Klaviyo emails and Google Merchant Center must all say the sa
 - **All sales final** (made to order). Damaged, defective, misprinted or incorrect items reported within **7 days** of
   delivery with photos → replacement, store credit or refund once approved.
 - Contact: info@islandcitymediagroup.com · 8545 W Warm Springs Rd A4, Las Vegas, NV 89113.
-- Payments: cards, Apple Pay, Google Pay, Shop Pay (incl. Shop Pay Installments). Afterpay being added (Oct 6).
+- Payments: cards, Apple Pay, Google Pay, Shop Pay (incl. Shop Pay Installments) and Afterpay (pay in 4; site shows it from `afterpayMin`, default $35, in `assets/pmn-config.js`).
 
 ## Brand and wording
 - Never "official", "licensed" or similar for Toa Samoa / Mate Ma'a Tonga merch. They're independent supporter designs.

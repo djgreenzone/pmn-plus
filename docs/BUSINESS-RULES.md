@@ -38,7 +38,7 @@ The site, Shopify, Klaviyo emails and Google Merchant Center must all say the sa
 - Made to order: printing 2–4 business days + shipping 3–7 business days ≈ 5–11 business days.
 - **All sales final** (made to order). Damaged, defective, misprinted or incorrect items reported within **7 days** of
   delivery with photos → replacement, store credit or refund once approved.
-- Contact: info@islandcitymediagroup.com · 8545 W Warm Springs Rd A4, Las Vegas, NV 89113.
+- Contact: shoppmn@islandcitymediagroup.com · 8545 W Warm Springs Rd A4, Las Vegas, NV 89113.
 - Payments: cards, Apple Pay, Google Pay, Shop Pay (incl. Shop Pay Installments) and Afterpay (pay in 4). Afterpay is advertised in the offer bar, ticker, team section, product pages and bag.
   Product page + bag use Afterpay's own `<square-placement>` widget (official logo, MPID/placement ids in `AP` in
   `site2/index.html`); our text line is the fallback if their script is blocked. Say "Pay in 4" / "interest-free", never "no fees".

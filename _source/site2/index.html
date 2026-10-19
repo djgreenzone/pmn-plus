@@ -696,7 +696,9 @@ s.was{color:var(--ink-dim);font-weight:400;margin-left:4px}
 .fit-tip{margin:8px 0 0;font-size:12.5px;color:var(--ink-dim)}
 .eta{display:flex;gap:8px;align-items:flex-start;margin:10px 0 0;font-size:13px;line-height:1.45;color:var(--ink-dim)}.eta b{color:var(--ink);font-weight:600}
 .ap-line{margin:-6px 0 0;font-size:14px;color:var(--ink-dim)}.ap-line b{color:var(--ink);font-weight:700}
-.ap-msg{margin:12px 0 0;font-size:13px;min-height:0}.ap-msg:empty{display:none}.ap-cart{margin:6px 0 0}
+.ap-msg{margin:12px 0 0;font-size:13px;min-height:0}
+/* Afterpay's wordmark is always black, so the widget sits on a light chip to stay readable on dark backgrounds */
+.ap-msg square-placement{display:inline-block;max-width:100%;background:#f4f2ee;color:#111;border-radius:10px;padding:4px 10px}.ap-msg:empty{display:none}.ap-cart{margin:6px 0 0}.ap-pdp{margin:4px 0 0}
 .eta svg{flex:none;width:18px;height:18px;fill:none;stroke:#3DDC84;stroke-width:1.8;margin-top:1px}
 .proof{display:flex;align-items:center;gap:12px;margin:14px 0 0;padding:10px 12px;border:1px solid var(--line);border-radius:14px;text-decoration:none;color:inherit}
 .proof-ims{display:flex;flex:none}.proof-ims img{width:34px;height:34px;border-radius:50%;object-fit:cover;border:2px solid var(--bg,#000);margin-left:-10px}.proof-ims img:first-child{margin-left:0}
@@ -853,6 +855,7 @@ s.was{color:var(--ink-dim);font-weight:400;margin-left:4px}
           <h2 id="pName">Toa Samoa Snapback</h2>
           <div class="price-row"><strong class="num" id="pPrice">$55.00</strong></div>
           <p class="bnpl" id="pBnpl" hidden></p>
+          <div class="ap-msg ap-pdp" id="pAp"></div>
           <p class="facts" id="pFacts"></p>
           <p class="pdp-ship" id="pPromo"></p>
         </div>
@@ -871,7 +874,6 @@ s.was{color:var(--ink-dim);font-weight:400;margin-left:4px}
           <div class="qty" role="group" aria-label="Quantity"><button type="button" id="qMinus" aria-label="Decrease quantity">−</button><span class="num" id="qVal" aria-live="polite">1</span><button type="button" id="qPlus" aria-label="Increase quantity">+</button></div>
           <button class="buy" id="pBuy">Add to bag</button>
         </div>
-        <div class="ap-msg" id="pAp"></div>
         <p class="eta" id="pEta" hidden></p>
         <details class="mto"><summary><b>Made to order:</b> This product is produced specifically for you. Please verify your size and order details before checkout. <span class="mto-more">More</span></summary><p>Returns or exchanges are not accepted for incorrect size selection or change of mind. Defective or incorrect items will be reviewed and, when approved, corrected. <button type="button" class="link" data-page="returns">Return policy</button></p></details>
         <a class="proof" href="https://www.instagram.com/polynesianmusic/" target="_blank" rel="noopener"><span class="proof-ims"><img loading="lazy" alt="" src="/assets/home/pmn-plus-toa-samoa-fans-up-the-toa-signs-360h.webp"><img loading="lazy" alt="" src="/assets/home/pmn-plus-concert-crowd-tonga-flag-360h.webp"><img loading="lazy" alt="" src="/assets/home/pmn-plus-singer-draped-in-tonga-flag-360h.webp"><img loading="lazy" alt="" src="/assets/home/pmn-plus-hsbc-svns-los-angeles-samoa-flags-360h.webp"></span><span><b>197K+ fam on Instagram</b>Repped in the stands, at the shows, on the field · @polynesianmusic</span></a>

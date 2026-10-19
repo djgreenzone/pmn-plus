@@ -12,6 +12,7 @@
 <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
 <title>Mate Ma&#x27;a Tonga Player Tee – Black | RLWC 2026 | PMN+</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
+<script src="https://js.squarecdn.com/square-marketplace.js" async></script>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Archivo:wght@400;500;600;700&display=swap">
 <meta name="description" content="Black Mate Ma&#x27;a Tonga player tee: MATE MA&#x27;A TONGA 676 crest front in red, jersey-style TONGA 00 back. S–6XL, 100% cotton. $45 · Ships across the USA.">
@@ -743,9 +744,11 @@ s.was{color:var(--ink-dim);font-weight:400;margin-left:4px}
 .bx.done{border-color:rgba(61,220,132,.45)}
 .code-warn{margin:0;font-size:12px;line-height:1.4;color:#f3c76b}.code-warn[hidden]{display:none}
 #pStars.zero{display:none}
-.bnpl{margin:4px 0 0;font-size:13px;color:var(--ink-dim)}.bnpl b{color:var(--ink);font-weight:600}.bnpl[hidden],.eta[hidden],.fit-tip[hidden]{display:none}
+.bnpl{margin:4px 0 0;font-size:13px;color:var(--ink-dim)}.bnpl b{color:var(--ink);font-weight:600}.ap-ok #pBnpl{display:none}.bnpl[hidden],.eta[hidden],.fit-tip[hidden]{display:none}
 .fit-tip{margin:8px 0 0;font-size:12.5px;color:var(--ink-dim)}
 .eta{display:flex;gap:8px;align-items:flex-start;margin:10px 0 0;font-size:13px;line-height:1.45;color:var(--ink-dim)}.eta b{color:var(--ink);font-weight:600}
+.ap-line{margin:-6px 0 0;font-size:14px;color:var(--ink-dim)}.ap-line b{color:var(--ink);font-weight:700}
+.ap-msg{margin:12px 0 0;font-size:13px;min-height:0}.ap-msg:empty{display:none}.ap-cart{margin:6px 0 0}
 .eta svg{flex:none;width:18px;height:18px;fill:none;stroke:#3DDC84;stroke-width:1.8;margin-top:1px}
 .proof{display:flex;align-items:center;gap:12px;margin:14px 0 0;padding:10px 12px;border:1px solid var(--line);border-radius:14px;text-decoration:none;color:inherit}
 .proof-ims{display:flex;flex:none}.proof-ims img{width:34px;height:34px;border-radius:50%;object-fit:cover;border:2px solid var(--bg,#000);margin-left:-10px}.proof-ims img:first-child{margin-left:0}
@@ -802,9 +805,10 @@ s.was{color:var(--ink-dim);font-weight:400;margin-left:4px}
     <button type="button" class="proto scroll-cue" aria-label="Scroll for more" onclick="document.getElementById('hero').scrollBy({top:innerHeight*.85,behavior:'smooth'})"><svg viewBox="0 0 24 14" aria-hidden="true"><path d="M3 3l9 8 9-8"/></svg><svg viewBox="0 0 24 14" aria-hidden="true"><path d="M3 3l9 8 9-8"/></svg></button>
    </div>
    <div class="home" id="home">
-    <div class="drop-strip" role="note" aria-label="Exclusive RLWC 2026 drop. Limited supply. Only while stocks last."><div class="ds-track" aria-hidden="true"><span>Exclusive RLWC 2026 drop</span><i></i><span>Limited supply</span><i></i><span>Only while stocks last</span><i></i><span>Exclusive RLWC 2026 drop</span><i></i><span>Limited supply</span><i></i><span>Only while stocks last</span><i></i><span>Exclusive RLWC 2026 drop</span><i></i><span>Limited supply</span><i></i><span>Only while stocks last</span><i></i><span>Exclusive RLWC 2026 drop</span><i></i><span>Limited supply</span><i></i><span>Only while stocks last</span><i></i></div></div>
+    <div class="drop-strip" role="note" aria-label="Exclusive RLWC 2026 drop. Limited supply. Only while stocks last. Pay in 4 with Afterpay."><div class="ds-track" aria-hidden="true"><span>Exclusive RLWC 2026 drop</span><i></i><span>Limited supply</span><i></i><span>Only while stocks last</span><i></i><span>Pay in 4 with Afterpay</span><i></i><span>Exclusive RLWC 2026 drop</span><i></i><span>Limited supply</span><i></i><span>Only while stocks last</span><i></i><span>Pay in 4 with Afterpay</span><i></i><span>Exclusive RLWC 2026 drop</span><i></i><span>Limited supply</span><i></i><span>Only while stocks last</span><i></i><span>Pay in 4 with Afterpay</span><i></i><span>Exclusive RLWC 2026 drop</span><i></i><span>Limited supply</span><i></i><span>Only while stocks last</span><i></i><span>Pay in 4 with Afterpay</span><i></i></div></div>
     <section class="h-sec" aria-labelledby="hTeams">
       <h2 class="h-title" id="hTeams">Shop by team for the 2026 RLWC</h2>
+      <p class="ap-line">Get it now, pay in 4. Interest-free with <b>Afterpay</b>.</p>
       <div class="teams" id="hTeamsGrid"></div>
     </section>
     <section class="h-sec h-light" aria-labelledby="hBest">
@@ -915,6 +919,7 @@ s.was{color:var(--ink-dim);font-weight:400;margin-left:4px}
           <button class="buy" id="pBuy">Add to bag</button>
           <form class="bis" id="pBis" hidden novalidate><p class="bis-h">Back soon. Get an email the moment it restocks.</p><div class="bis-row"><label class="sr" for="bisEmail">Email address</label><input id="bisEmail" type="email" inputmode="email" autocomplete="email" placeholder="Email address" required><button class="bis-go" type="submit">Notify me</button></div><p class="bis-msg" id="bisMsg" role="status"></p><p class="bis-fine">We&#39;ll also send PMN+ drop news. Unsubscribe anytime.</p></form>
         </div>
+        <div class="ap-msg" id="pAp"></div>
         <p class="eta" id="pEta" hidden></p>
         <details class="mto"><summary><b>Made to order:</b> This product is produced specifically for you. Please verify your size and order details before checkout. <span class="mto-more">More</span></summary><p>Returns or exchanges are not accepted for incorrect size selection or change of mind. Defective or incorrect items will be reviewed and, when approved, corrected. <button type="button" class="link" data-page="returns">Return policy</button></p></details>
         <a class="proof" href="https://www.instagram.com/polynesianmusic/" target="_blank" rel="noopener"><span class="proof-ims"><img loading="lazy" alt="" src="/assets/home/pmn-plus-toa-samoa-fans-up-the-toa-signs-360h.webp"><img loading="lazy" alt="" src="/assets/home/pmn-plus-concert-crowd-tonga-flag-360h.webp"><img loading="lazy" alt="" src="/assets/home/pmn-plus-singer-draped-in-tonga-flag-360h.webp"><img loading="lazy" alt="" src="/assets/home/pmn-plus-hsbc-svns-los-angeles-samoa-flags-360h.webp"></span><span><b>197K+ fam on Instagram</b>Repped in the stands, at the shows, on the field · @polynesianmusic</span></a>
@@ -1007,6 +1012,7 @@ s.was{color:var(--ink-dim);font-weight:400;margin-left:4px}
       <p class="fine" id="codeMsg" role="status"></p></div>
       <p class="code-on" id="codeOn" hidden><span>Code <b id="codeTag"></b> applies at checkout</span><button type="button" id="codeRm">Remove</button></p></div>
     <div class="tot"><span>Subtotal</span><strong class="num" id="cartSub"></strong></div>
+    <div class="ap-msg ap-cart" id="cartAp"></div>
     <p class="fine" id="shipFine">Shipping and tax calculated at checkout. Ships within the USA.</p>
     <button class="buy" id="cartGo" type="button">Checkout</button>
     <p class="fine cart-msg" id="cartMsg" role="status"></p>
@@ -1437,6 +1443,12 @@ const $=id=>document.getElementById(id);
 const hex2rgb=h=>[1,3,5].map(i=>parseInt(h.slice(i,i+2),16));
 const mix=(a,b,t)=>{const A=hex2rgb(a),B=hex2rgb(b);return`rgb(${A.map((v,i)=>Math.round(v+(B[i]-v)*t)).join(",")})`};
 const money=v=>"$"+v.toFixed(2);
+/* Afterpay on-site messaging (Square). Official logo + pay-in-4 amount, rendered by square-marketplace.js. Hide with PMN_CONFIG.payLater=false. */
+const AP={mpid:"4b2abf80-35ba-4a68-9832-c961a5bd3456",product:"a376d56d-a294-498e-a486-79cf044ee6e5",cart:"4307347a-3b2c-453c-84ee-66ccdb14da6d"};
+function apPlace(id,type,amt){const el=document.getElementById(id);if(!el)return;if((window.PMN_CONFIG||{}).payLater===false||!amt){el.innerHTML="";return}
+  const a=(+amt).toFixed(2);if(el.dataset.amt===a)return;el.dataset.amt=a;
+  el.innerHTML=`<square-placement data-mpid="${AP.mpid}" data-placement-id="${AP[type]}" data-page-type="${type}" data-amount="${a}" data-currency="USD" data-consumer-locale="en_US" data-is-eligible="true"></square-placement>`}
+if(window.customElements)customElements.whenDefined("square-placement").then(()=>document.documentElement.classList.add("ap-ok"));
 const teamName=p=>p.team==="pmn"?"PMN+":p.team==="samoa"?"Toa Samoa":"Mate Ma'a Tonga";
 const wrapOff=(i,pos,n)=>{let d=((i-pos)%n+n)%n;if(d>n/2)d-=n;return d};
 let bag=0;const cart=[];try{(JSON.parse(localStorage.getItem("pmn_cart")||"[]")||[]).forEach(i=>{if(BY[i.id]&&i.qty>0)cart.push({id:i.id,size:(BY[i.id].kind==="tee"&&i.size&&!blankFor(BY[i.id]).sizes.includes(i.size))?null:(i.size??null),qty:Math.min(10,i.qty|0)})})}catch(e){}const BUNDLE_OFF=10;const FREE_SHIP=100;
@@ -1670,7 +1682,7 @@ const PDP=(()=>{
     cta()}
   function cta(){
     const p=BY[cur];if(!p)return;const c=BY[comp],set=tier==="set"&&!!c,unit=set?p.price+c.price-BUNDLE_OFF:p.price,t=unit*qty;
-    $("pBuy").textContent=`${set?"Add both":"Add to bag"} · ${money(t)}`;
+    $("pBuy").textContent=`${set?"Add both":"Add to bag"} · ${money(t)}`;apPlace("pAp","product",unit);
     {const bn=$("pBnpl");bn.hidden=(window.PMN_CONFIG||{}).payLater===false;const apMin=(window.PMN_CONFIG||{}).afterpayMin||35;bn.innerHTML=unit>=apMin?`or 4 interest-free payments of <b>${money(unit/4)}</b> with <b>Afterpay</b>`:`Pay in 4 interest-free with <b>Afterpay</b> on orders $${apMin}+`}$("stBuy").textContent=set?"Add both":"Add to bag";
     $("stPrice").innerHTML=set?`${money(unit)} <s class="was">${money(unit+BUNDLE_OFF)}</s>`:money(p.price);
     $("stName").textContent=set?`${p.short||p.name} + ${c.short||c.name}`:p.name;
@@ -1875,7 +1887,7 @@ const Cart=(()=>{
      $("ship").hidden=false;$("ship").classList.toggle("done",!left);$("shipFill").style.width=pct+"%";$("shipBar").setAttribute("aria-valuenow",Math.round(pct));
      $("shipTxt").innerHTML=left?`You're <b class="num">${money(left)}</b> away from free shipping`:`You've unlocked <b>free US shipping</b>`;
      $("shipFine").textContent=left?"Shipping and tax calculated at checkout. Ships within the USA.":"Free US shipping applied. Tax calculated at checkout."}
-    const t=sub(),B=best();$("cartDisc").hidden=!B.v;$("cartDisc").querySelector("span").textContent=B.l;$("cartDiscV").textContent=`−${money(B.v)}`;$("cartSub").textContent=money(t);
+    const t=sub(),B=best();$("cartDisc").hidden=!B.v;$("cartDisc").querySelector("span").textContent=B.l;$("cartDiscV").textContent=`−${money(B.v)}`;$("cartSub").textContent=money(t);apPlace("cartAp","cart",t);
     {const x=bx(),box=$("bx");box.hidden=!x.T;if(x.T){let msg;const T=x.T,slots=T>=4?8:4;
       const avg=x.apps?` Your tees now work out to <b>${money((x.tg-x.save)/T)}</b> each.`:"";
       if(x.apps>=2)msg=`<b>2 free tees unlocked 🎉</b> That's the max per order.${avg}`;

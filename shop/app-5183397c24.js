@@ -532,7 +532,7 @@ const PDP=(()=>{
     lbls.forEach(([ld,b])=>{const diff=Math.abs(((d-ld)%360+540)%360-180);b.classList.toggle("on",diff<23)});syncThumbs(a)}});
   sp.attach(stage,{onStart:()=>{if(!hinted){hinted=true;hint.style.opacity=0}}});
   function fit(){const r=stage.getBoundingClientRect(),m=META[cur],asp=m.w/m.h;let w=r.width*0.86,h=w/asp;if(h>r.height*0.86){h=r.height*0.86;w=h*asp}sp.size(w,h)}
-  function setWorld(p){pdp.style.setProperty("--flood",p.team==="pmn"?"#141416":p.team==="samoa"?"#0b1b5e":"#8f0a14");pdp.dataset.team=p.team;{const cu=crestURL(p.team),ce=$("pdpCrest");if(ce.getAttribute("src")!==cu)ce.src=cu}cv.setAttribute("aria-label",`${altFor(p)} — drag to rotate 360°`)}
+  function setWorld(p){pdp.style.setProperty("--flood",p.team==="pmn"?"#141416":p.team==="samoa"?"#0b1b5e":"#8f0a14");pdp.dataset.team=p.team;{const cu=crestURL(p.team),ce=$("pdpCrest");if(ce.getAttribute("src")!==cu){ce.removeAttribute("srcset");ce.src=cu}}cv.setAttribute("aria-label",`${altFor(p)} — drag to rotate 360°`)}
   function fill(p){
     $("pTeam").textContent=teamName(p);$("pName").textContent=p.name;try{klReviews(p)}catch(e){}try{svPdp(p)}catch(e){}$("pPrice").textContent=money(p.price);
     const opts=p.opts.map(o=>BY[o]);

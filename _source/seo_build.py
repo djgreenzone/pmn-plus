@@ -47,8 +47,11 @@ for p in prods:
           "category":"Apparel & Accessories > "+("Clothing Accessories > Hats" if p['kind']=='hat' else "Clothing > Shirts & Tops"),
           "image":imgs,"description":" ".join(sc['d']),"url":url,
           "audience":{"@type":"PeopleAudience","suggestedGender":"unisex"},
-          "offers":{"@type":"Offer","url":url,"price":f"{p['price']}.00","priceCurrency":"USD","priceValidUntil":"2027-12-31","availability":"https://schema.org/"+("OutOfStock" if p['id'] in SOLD else "InStock"),"itemCondition":"https://schema.org/NewCondition","seller":{"@id":D+"/#org"},"hasMerchantReturnPolicy":ret,"shippingDetails":ship}}
-    if p['id'] in GROUP: prod["isVariantOf"]={"@type":"ProductGroup","name":p['name'],"brand":{"@type":"Brand","name":"PMN+"},"productGroupID":GROUP[p['id']],"variesBy":["https://schema.org/color","https://schema.org/size"]}
+          "offers":{"@type":"Offer","url":url,"price":f"{p['price']}.00","priceCurrency":"USD","validFrom":"2026-10-01","priceValidUntil":"2027-12-31","availability":"https://schema.org/"+("OutOfStock" if p['id'] in SOLD else "InStock"),"itemCondition":"https://schema.org/NewCondition","seller":{"@id":D+"/#org"},"hasMerchantReturnPolicy":ret,"shippingDetails":ship}}
+    if p['id'] in GROUP:
+        gc=[q['colour'].lower() for q in prods if GROUP.get(q['id'])==GROUP[p['id']]]
+        gdesc=f"The {p['name']} from PMN+ in {' and '.join(gc)}, sizes S to 6XL at one price. Printed to order and shipped across the USA."
+        prod["isVariantOf"]={"@type":"ProductGroup","name":p['name'],"description":gdesc,"brand":{"@type":"Brand","name":"PMN+"},"productGroupID":GROUP[p['id']],"variesBy":["https://schema.org/color","https://schema.org/size"]}
     crumbs={"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Shop","item":D+"/shop"},{"@type":"ListItem","position":2,"name":TEAM[p['team']],"item":f"{D}/shop/{COLL[p['team']]}"},{"@type":"ListItem","position":3,"name":p['name'],"item":url}]}
     faqld={"@type":"FAQPage","mainEntity":[{"@type":"Question","name":f['q'],"acceptedAnswer":{"@type":"Answer","text":f['a']}} for f in faq]}
     out['products'][p['id']]=dict(slug=slug,url=url,title=title,meta=meta,h1=p['name'],colour=p['colour'],price=p['price'],team=p['team'],keyword=sc['kw'],

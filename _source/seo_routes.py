@@ -33,6 +33,28 @@ rep('return{open,close,current:()=>cur};','return{open,close,swap:id=>swap(id),c
 rep('if(reduceMotion){Hero.stop();$("hero").hidden=true;$("coll").hidden=true;pdp.classList.remove("entering");busy=false;return}',
     'if(reduceMotion||window.pmnInstant){Hero.stop();$("hero").hidden=true;$("coll").hidden=true;pdp.classList.remove("entering");busy=false;return}')
 
+# ---------- speed: deep links (/shop/<product>, /shop/<collection>) don't boot the hero carousel ----------
+# Pre-rendered product/collection pages ship with #hero hidden. The carousel then holds back its ~2 MB of
+# images and 360° prefetches until someone actually goes to the shop home (Hero.show()).
+rep('const Hero=(()=>{const PRODUCTS=HERO_P;',
+    'let HLIVE=!$("hero").hidden;const HDEFER=[],hsrc=(im,u)=>{if(HLIVE)im.src=u;else HDEFER.push([im,u])};\nconst Hero=(()=>{const PRODUCTS=HERO_P;')
+rep('im.decoding="async";im.src=heroURL(p.id);arc.append(im);return im});','im.decoding="async";hsrc(im,heroURL(p.id));arc.append(im);return im});')
+rep('items[i].src=hiURL(p.id,f);','hsrc(items[i],hiURL(p.id,f));')
+rep('a.decoding="async";a.src=hiURL(p.id,k);a.style.opacity=0;arc.append(a);','a.decoding="async";hsrc(a,hiURL(p.id,k));a.style.opacity=0;arc.append(a);')
+rep('c.decoding="async";c.src=crestURL(p.team);','c.decoding="async";hsrc(c,crestURL(p.team));')
+rep('show(){hero.hidden=false;measure();','show(){if(!HLIVE){HLIVE=true;HDEFER.splice(0).forEach(([im,u])=>im.src=u);label(0)}hero.hidden=false;measure();')
+rep('\nHero.init();\n','\nif(HLIVE)Hero.init();\n')
+# other colourways' 360° frames: wait until the page has finished loading
+rep('setTimeout(()=>p.opts.slice(1).forEach(o=>loadFrames(o)),1500);',
+    '{const f=()=>setTimeout(()=>p.opts.slice(1).forEach(o=>loadFrames(o)),1500);document.readyState==="complete"?f():addEventListener("load",f,{once:true})}')
+rep('crests.map(t=>`<img alt="" src="${crestURL(t)}">`)','crests.map(t=>`<img alt="" loading="lazy" decoding="async" src="${crestURL(t)}">`)')
+rep('muted loop playsinline preload="metadata" aria-hidden="true"','muted loop playsinline preload="none" aria-hidden="true"')  # plays on scroll-into-view anyway
+# the product page's crest is already right in the HTML: don't reset it (that re-triggered the largest paint after the app loaded)
+rep('$("pdpCrest").src=crestURL(p.team);','{const cu=crestURL(p.team),ce=$("pdpCrest");if(ce.getAttribute("src")!==cu)ce.src=cu}')
+# below-the-fold team crests on the shop home: lazy (they also downloaded inside the hidden hero on every product page)
+rep('<img src="brand/toa-samoa-rugby-league-crest.webp" alt="" id="hSamoaCrest">','<img src="brand/toa-samoa-rugby-league-crest.webp" alt="" id="hSamoaCrest" loading="lazy" decoding="async">')
+rep('<img src="brand/mate-maa-tonga-rugby-league-crest.webp" alt="" id="hTongaCrest">','<img src="brand/mate-maa-tonga-rugby-league-crest.webp" alt="" id="hTongaCrest" loading="lazy" decoding="async">')
+
 # ---------- crawlable product + collection links (real <a href>, app still opens in place) ----------
 m=re.search(r'\nconst SEO=\{.*?\n',s); assert m
 s=s[:m.end()]+'const pmnURL=id=>SEO.products[id]?"/shop/"+SEO.products[id].slug:"/shop";\nconst pmnNav=(a,fn)=>{a.addEventListener("click",e=>{if(e.metaKey||e.ctrlKey||e.shiftKey||e.button)return;e.preventDefault();fn()})};\n'+s[m.end():]
@@ -86,6 +108,19 @@ const r0=parse(location.pathname);if(r0.k!=="h"){mode="replace";show(r0);mode="p
 '''%(json.dumps(DOM),json.dumps(OG0),json.dumps(html.unescape(D0)))
 # router goes right after the app script, before the deep-link helper
 i=s.index('\n<script>/* DEEPLINK */'); s=s[:i]+'\n'+ROUTER+s[i:]
+# ---------- speed: the ~170 KB shop app is the same on every shop page, so ship it as one cacheable file ----------
+import hashlib, glob as _glob
+APP=max(re.findall(r'<script>(.*?)</script>',s,re.S),key=len); assert len(APP)>100000 and 'const Hero=' in APP
+app_name='app-'+hashlib.sha1(APP.encode()).hexdigest()[:10]+'.js'
+for old in _glob.glob(os.path.join(SHOPDIR,'app-*.js')):
+    if os.path.basename(old)!=app_name: os.remove(old)
+open(os.path.join(SHOPDIR,app_name),'w').write(APP)
+rep('<script>'+APP+'</script>','<script src="/shop/'+app_name+'"></script>')
+# Run the end-of-page scripts after the HTML has painted: defer the files, and make the two small inline
+# scripts modules (modules are deferred too and keep document order, so ROUTES/DEEPLINK still run after the app).
+for f_ in ['/assets/pmn-config.js','/assets/pmn-nav.js','/shop/'+app_name]: rep(f'<script src="{f_}"></script>',f'<script src="{f_}" defer></script>')
+rep('<script>/* ROUTES */','<script type="module">/* ROUTES */')
+rep('<script>/* DEEPLINK */','<script type="module">/* DEEPLINK */')
 open(OUT,'w').write(s)
 BASE=s
 
@@ -114,6 +149,11 @@ for pid,o in SD['products'].items():
     pg=head(BASE,o['title'],o['meta'],url,img,alt,o['jsonld'],extra,'product')
     pg=pg.replace('<link rel="preconnect" href="https://polynesianmusicnetwork.myshopify.com" crossorigin>',
                   '<link rel="preconnect" href="https://polynesianmusicnetwork.myshopify.com" crossorigin>\n<link rel="preload" as="image" href="'+o['images'][0].split('/shop/')[1]+'">',1)
+    # paint the product view straight from the HTML (hero carousel stays hidden and idle)
+    pg=sub1(pg,r'<section id="hero" class="view" ','<section id="hero" class="view" hidden ')
+    pg=sub1(pg,r'<section id="pdp" class="view entering" hidden ','<section id="pdp" class="view" data-team="'+o['team']+'" style="--flood:'+{'pmn':'#141416','samoa':'#0b1b5e','tonga':'#8f0a14'}[o['team']]+'" ')
+    csrc={'samoa':'brand/toa-samoa-rugby-league-crest.webp','tonga':'brand/mate-maa-tonga-rugby-league-crest.webp','pmn':'brand/pmn-plus-logo-white.svg'}[o['team']]
+    pg=sub1(pg,r'<img class="crest" id="pdpCrest" alt="" src="[^"]*">',f'<img class="crest" id="pdpCrest" alt="" src="{csrc}" fetchpriority="high">')
     # visible content in the HTML itself (the app re-renders the same thing)
     pg=sub1(pg,r'<button class="eyebrow team-link" id="pTeam" type="button">[^<]*</button>',f'<button class="eyebrow team-link" id="pTeam" type="button">{E(o["teamName"])}</button>')
     pg=sub1(pg,r'<h2 id="pName">[^<]*</h2>',f'<h1 id="pName">{E(o["h1"])}</h1>')
@@ -131,6 +171,8 @@ for k,c in SD['collections'].items():
     ld={"@context":"https://schema.org","@graph":[{kk:vv for kk,vv in c['jsonld'].items() if kk!='@context'},crumbs]}
     for it,pid in zip(ld['@graph'][0]['mainEntity']['itemListElement'],c['products']): it['name']=SD['products'][pid]['h1']
     pg=head(BASE,c['title'],c['meta'],url,OG0,"Toa Samoa and Mate Ma'a Tonga tees and snapbacks from PMN+",ld)
+    pg=sub1(pg,r'<section id="hero" class="view" ','<section id="hero" class="view" hidden ')
+    pg=sub1(pg,r'<section id="coll" class="view" hidden ','<section id="coll" class="view" ')
     pg=sub1(pg,r'<h2 id="collH" class="sr"></h2><p id="cIntro" class="sr"></p>',f'<h1 id="collH" class="sr">{E(c["name"])}</h1><p id="cIntro" class="sr">{E(c["intro"])}</p>')
     pg=re.sub(r'<h1 class="hero-h">(.*?)</h1>',r'<h2 class="hero-h">\1</h2>',pg,count=1)
     cards=''.join(f'<a class="gcard" href="/shop/{SD["products"][pid]["slug"]}"><span class="im"><img loading="lazy" src="{SD["products"][pid]["images"][0].split("/shop/")[1]}" alt="{E(SD["products"][pid]["alt"][0])}"></span><b>{E(SD["products"][pid]["h1"])}</b><span class="num">{"Sold out" if SD["products"][pid]["sold"] else "$"+str(SD["products"][pid]["price"])+".00"}</span></a>' for pid in c['products'])

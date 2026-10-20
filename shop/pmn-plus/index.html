@@ -710,6 +710,8 @@ s.was{color:var(--ink-dim);font-weight:400;margin-left:4px}
 .cdots i.on{box-shadow:0 0 0 1.5px #fff,0 0 0 3px #111}
 #coll .cdots i.on{box-shadow:0 0 0 1.5px #05060a,0 0 0 3px #fff}
 .tag.best{background:#C8102E;left:8px;right:auto}
+#heroSold:empty::after{content:"Sold out"}
+.c-about{max-width:68ch;margin:18px 0 6px;padding-top:18px;border-top:1px solid rgba(244,242,238,.16)}.c-about:has(#cAboutH:empty){display:none}.c-about h2{margin:0 0 10px;font-family:var(--display);font-weight:400;font-size:26px;line-height:1;letter-spacing:.02em}.c-about p{margin:0 0 10px;font-size:14px;line-height:1.6;color:var(--ink-dim)}
 .c-tools{display:flex;justify-content:space-between;align-items:center;gap:12px;margin:2px 0 4px;font-size:13px;color:var(--ink-dim)}
 .c-sort{display:flex;align-items:center;gap:8px}.c-sort select{font:inherit;color:var(--ink);background:rgba(255,255,255,.06);border:1px solid var(--line);border-radius:999px;padding:7px 12px}
 .repit .rep-rail{display:flex;gap:10px;overflow-x:auto;scrollbar-width:none;margin-inline:-16px;padding:0 16px 4px;scroll-snap-type:x mandatory}
@@ -785,14 +787,14 @@ s.was{color:var(--ink-dim);font-weight:400;margin-left:4px}
     </div>
     <button class="arc-btn prev" id="arcPrev" type="button" aria-label="Previous product"><svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg></button>
     <button class="arc-btn next" id="arcNext" type="button" aria-label="Next product"><svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></button>
-    <i class="sold hero-sold" id="heroSold" aria-hidden="true">Sold out</i>
+    <i class="sold hero-sold" id="heroSold" aria-hidden="true"></i>
     <div class="hero-foot">
       <div class="dots" id="dots" aria-hidden="true"></div>
     <div class="podium">
         <button class="tap" id="heroLabel" aria-label="Open product">
-          <span class="eyebrow" id="hlTeam">Toa Samoa</span>
-          <h2 id="hlName">Toa Samoa Snapback</h2>
-          <p class="price"><strong id="hlPrice">$38.00</strong></p>
+          <span class="eyebrow" id="hlTeam"></span>
+          <h2 id="hlName"></h2>
+          <p class="price"><strong id="hlPrice"></strong></p>
         </button>
       </div>
       <span class="eyebrow num" id="heroCount">01 / 09</span>
@@ -857,7 +859,7 @@ s.was{color:var(--ink-dim);font-weight:400;margin-left:4px}
     <footer class="foot">
       <a class="foot-logo" href="/" aria-label="PMN+ home"><img src="brand/pmn-plus-logo-white.svg" alt="PMN+ Polynesian Music Network Plus" width="48" height="52"></a>
       <div class="foot-cols">
-        <nav aria-label="Shop"><b>Shop</b><button type="button" data-coll="mate-maa-tonga">Mate Ma'a Tonga</button><button type="button" data-coll="toa-samoa">Toa Samoa</button><button type="button" data-coll="pmn-plus" data-f="pmn">PMN+</button><button type="button" data-coll="all">Shop all</button></nav>
+        <nav aria-label="Shop"><b>Shop</b><a href="/shop/mate-maa-tonga" data-coll="mate-maa-tonga">Mate Ma'a Tonga merch</a><a href="/shop/toa-samoa" data-coll="toa-samoa">Toa Samoa merch</a><button type="button" data-coll="pmn-plus" data-f="pmn">PMN+</button><a href="/shop/all" data-coll="all">Shop all</a></nav>
         <nav aria-label="Help"><b>Help</b><a href="/about">About us</a><button type="button" data-page="shipping">Shipping</button><button type="button" data-page="returns">Returns</button><a href="/contact">Contact</a><a href="/sitemap.xml">Sitemap</a></nav>
         <nav aria-label="Legal"><b>Legal</b><a href="/privacy-policy">Privacy policy</a><a href="/terms#sms">SMS terms</a><a href="/terms">Terms of service</a><a href="/privacy-policy#opt-out">Do not sell or share my info</a></nav>
       </div>
@@ -892,7 +894,7 @@ s.was{color:var(--ink-dim);font-weight:400;margin-left:4px}
       <div class="sheet reveal d2">
         <div class="title-block">
           <button class="eyebrow team-link" id="pTeam" type="button">Toa Samoa</button>
-          <h2 id="pName">Toa Samoa Snapback</h2>
+          <h2 id="pName"></h2>
           <div class="p-namerow"><div id="pStars" class="p-stars"></div><button type="button" class="sv-btn" id="pSave" aria-pressed="false" aria-label="Save"></button></div>
           <div class="price-row"><strong class="num" id="pPrice">$55.00</strong></div>
           <p class="bnpl" id="pBnpl" hidden></p>
@@ -951,6 +953,7 @@ s.was{color:var(--ink-dim);font-weight:400;margin-left:4px}
       <div class="chips" role="group" aria-label="Filter" id="cFilter"><button class="chip" data-f="all" aria-pressed="true">All</button><button class="chip" data-f="tee" aria-pressed="false">Tees</button><button class="chip" data-f="hat" aria-pressed="false">Hats</button></div>
       <div class="c-tools"><span class="c-n" id="cCount"></span><label class="c-sort">Sort <select id="cSort"><option value="feat">Featured</option><option value="best">Best sellers</option><option value="lo">Price: low to high</option><option value="hi">Price: high to low</option></select></label></div>
       <div class="grid" id="cGrid"><a class="gcard" href="/shop/pmn-plus-logo-tee-black"><span class="im"><img loading="lazy" src="hires/pmn-tee/pmn-plus-logo-tee-black-front.webp" alt="PMN+ Logo Tee in black, front view"></span><b>PMN+ Logo Tee</b><span class="num">$45.00</span></a><a class="gcard" href="/shop/pmn-plus-trucker-hat-black"><span class="im"><img loading="lazy" src="hires/pmn-trucker/pmn-plus-trucker-hat-black-front-right.webp" alt="PMN+ Trucker Hat in black, front right view"></span><b>PMN+ Trucker Hat</b><span class="num">$35.00</span></a><a class="gcard" href="/shop/pmn-plus-classic-dad-hat-khaki"><span class="im"><img loading="lazy" src="hires/pmn-dad-hat/pmn-plus-classic-dad-hat-khaki-front-right.webp" alt="PMN+ Classic Dad Hat in khaki, front right view"></span><b>PMN+ Classic Dad Hat</b><span class="num">$35.00</span></a></div>
+      <section class="c-about" aria-labelledby="cAboutH"><h2 id="cAboutH">Everyday PMN+ apparel</h2><div id="cAbout"><p>PMN+ shares Pasifika music, sport and culture with the community worldwide. These core pieces aren&#x27;t tied to a tournament: the Logo Tee with the circle mark on the chest, the mesh-back PMN+ Trucker and the khaki Classic Dad Hat.</p><p>The Logo Tee is 5.3 oz, 100% cotton in S to 6XL at one price, and it counts toward Buy 3 tees, get 1 free with any team tees. Add a hat and the Game Day Set takes $10 off the pair.</p></div></section>
     </div>
   </section>
   <section id="lab" class="view" aria-label="Spin lab" hidden>
@@ -1058,7 +1061,7 @@ s.was{color:var(--ink-dim);font-weight:400;margin-left:4px}
 
 <script src="/assets/pmn-config.js" defer></script>
 <script src="/assets/pmn-nav.js" defer></script>
-<script src="/shop/app-5183397c24.js" defer></script>
+<script src="/shop/app-42531ec264.js" defer></script>
 
 <script type="module">/* ROUTES */(()=>{const D="https://www.polynesianmusicnetwork.com",OG0="https://www.polynesianmusicnetwork.com/shop/pmn-plus-shop-og-rlwc-2026-toa-samoa-mate-maa-tonga.jpg",D0="Represent your Pacific team: Toa Samoa and Mate Ma'a Tonga tees, snapbacks and truckers for RLWC 2026, plus PMN+ core pieces. Ships across the USA.",SL={};
 Object.entries(SEO.products).forEach(([id,o])=>{if(BY[id])SL[o.slug]=id});

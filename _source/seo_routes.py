@@ -162,6 +162,7 @@ for pid,o in SD['products'].items():
     pg=re.sub(r'<h1 class="hero-h">(.*?)</h1>',r'<h2 class="hero-h">\1</h2>',pg,count=1)
     pg=sub1(pg,r'<strong class="num" id="pPrice">[^<]*</strong>',f'<strong class="num" id="pPrice">${o["price"]}.00</strong>')
     pg=sub1(pg,r'<div id="pDesc"></div>','<div id="pDesc">'+''.join(f'<p>{E(t)}</p>' for t in o['description'])+'</div>')
+    pg=sub1(pg,r'<div class="faq-list" id="pFaq"></div>','<div class="faq-list" id="pFaq">'+''.join(f'<details><summary>{E(f["q"])}</summary><p>{E(f["a"])}</p></details>' for f in o['faq'])+'</div>')
     th=''.join(f'<button class="thumb" type="button"><img loading="lazy" src="{u.split("/shop/")[1]}" alt="{E(a)}" width="72" height="72"></button>' for u,a in zip(o['images'],o['alt']))
     T0='<div class="thumbs reveal d1" id="pThumbs" role="group" aria-label="Product views"></div>'
     assert pg.count(T0)==1;pg=pg.replace(T0,T0[:-6]+th+'</div>')
@@ -176,6 +177,8 @@ for k,c in SD['collections'].items():
     pg=sub1(pg,r'<section id="hero" class="view" ','<section id="hero" class="view" hidden ')
     pg=sub1(pg,r'<section id="coll" class="view" hidden ','<section id="coll" class="view" ')
     pg=sub1(pg,r'<h2 id="collH" class="sr"></h2><p id="cIntro" class="sr"></p>',f'<h1 id="collH" class="sr">{E(c["name"])}</h1><p id="cIntro" class="sr">{E(c["intro"])}</p>')
+    pg=sub1(pg,r'<section class="c-about" aria-labelledby="cAboutH"><h2 id="cAboutH"></h2><div id="cAbout"></div></section>',
+            f'<section class="c-about" aria-labelledby="cAboutH"><h2 id="cAboutH">{E(c["aboutH"])}</h2><div id="cAbout">'+''.join(f'<p>{E(t)}</p>' for t in c['about'])+'</div></section>')
     pg=re.sub(r'<h1 class="hero-h">(.*?)</h1>',r'<h2 class="hero-h">\1</h2>',pg,count=1)
     cards=''.join(f'<a class="gcard" href="/shop/{SD["products"][pid]["slug"]}"><span class="im"><img loading="lazy" src="{SD["products"][pid]["images"][0].split("/shop/")[1]}" alt="{E(SD["products"][pid]["alt"][0])}"></span><b>{E(SD["products"][pid]["h1"])}</b><span class="num">{"Sold out" if SD["products"][pid]["sold"] else "$"+str(SD["products"][pid]["price"])+".00"}</span></a>' for pid in c['products'])
     pg=sub1(pg,r'<div class="grid" id="cGrid"></div>',f'<div class="grid" id="cGrid">{cards}</div>')

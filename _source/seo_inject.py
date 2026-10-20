@@ -3,7 +3,7 @@ d=json.load(open('site2/seo/seo-data.json'))
 p='site2/index.html'; s=open(p).read()
 def rep(a,b):
     global s; assert a in s, a[:90]; s=s.replace(a,b,1)
-lite={'policy':d['policy'],'collections':{k:{kk:v[kk] for kk in ('name','title','meta','intro','products')} for k,v in d['collections'].items()},
+lite={'policy':d['policy'],'collections':{k:{kk:v[kk] for kk in ('name','title','meta','intro','aboutH','about','products')} for k,v in d['collections'].items()},
       'products':{k:{kk:v[kk] for kk in ('slug','title','meta','description','faq')} for k,v in d['products'].items()}}
 blob='const SEO='+json.dumps(lite,ensure_ascii=False,separators=(',',':'))+';\n'
 if 'const SEO=' in s:

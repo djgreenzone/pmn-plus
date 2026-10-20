@@ -17,7 +17,7 @@ git checkout main && git pull
 git checkout -b fix/short-description
 # … edit sources …
 cd _source
-python3 seo_content.py && python3 seo_build.py && python3 seo_inject.py && python3 make_og.py && python3 make_shop.py ../shop/index.html
+python3 tools/make_sizes.py && python3 seo_content.py && python3 seo_build.py && python3 seo_inject.py && python3 make_og.py && python3 make_shop.py ../shop/index.html
 cd .. && python3 -m http.server 8765      # open http://localhost:8765/shop/
 git add -A && git commit -m "What changed and why"
 git push -u origin fix/short-description

@@ -37,11 +37,12 @@ rep('if(reduceMotion){Hero.stop();$("hero").hidden=true;$("coll").hidden=true;pd
 # Pre-rendered product/collection pages ship with #hero hidden. The carousel then holds back its ~2 MB of
 # images and 360° prefetches until someone actually goes to the shop home (Hero.show()).
 rep('const Hero=(()=>{const PRODUCTS=HERO_P;',
-    'let HLIVE=!$("hero").hidden;const HDEFER=[],hsrc=(im,u)=>{if(HLIVE)im.src=u;else HDEFER.push([im,u])};\nconst Hero=(()=>{const PRODUCTS=HERO_P;')
-rep('im.decoding="async";im.src=heroURL(p.id);arc.append(im);return im});','im.decoding="async";hsrc(im,heroURL(p.id));arc.append(im);return im});')
-rep('items[i].src=hiURL(p.id,f);','hsrc(items[i],hiURL(p.id,f));')
+    'let HLIVE=!$("hero").hidden;const HM=innerWidth<900,HDEFER=[],hsrc=(im,u,full)=>{if(HM&&!full)u=sizedURL(u,640);if(HLIVE)im.src=u;else HDEFER.push([im,u])};\nconst Hero=(()=>{const PRODUCTS=HERO_P;')
+rep('im.decoding="async";im.src=heroURL(p.id);arc.append(im);return im});','im.decoding="async";hsrc(im,heroURL(p.id),i===0);arc.append(im);return im});')
+rep('items[i].src=hiURL(p.id,f);','hsrc(items[i],hiURL(p.id,f),i===0);')
 rep('a.decoding="async";a.src=hiURL(p.id,k);a.style.opacity=0;arc.append(a);','a.decoding="async";hsrc(a,hiURL(p.id,k));a.style.opacity=0;arc.append(a);')
-rep('c.decoding="async";c.src=crestURL(p.team);','c.decoding="async";hsrc(c,crestURL(p.team));')
+rep('c.decoding="async";c.src=crestURL(p.team);','c.decoding="async";hsrc(c,crestURL(p.team),1);')
+rep('function label(i){const p=PRODUCTS[i];','function label(i){const p=PRODUCTS[i];{const e=items[i];if(HM&&e&&/-640\\.webp$/.test(e.src))e.src=e.src.replace(/-640\\.webp$/,".webp")}')
 rep('show(){hero.hidden=false;measure();','show(){if(!HLIVE){HLIVE=true;HDEFER.splice(0).forEach(([im,u])=>im.src=u);label(0)}hero.hidden=false;measure();')
 rep('\nHero.init();\n','\nif(HLIVE)Hero.init();\n')
 # other colourways' 360° frames: wait until the page has finished loading
@@ -77,7 +78,7 @@ rep('b.onclick=()=>{$("pdpScroll").scrollTo({top:0,behavior:reduceMotion?"auto":
     'pmnNav(b,()=>{$("pdpScroll").scrollTo({top:0,behavior:reduceMotion?"auto":"smooth"});swap(o.id)});$("pAlso").append(b)});')
 # product view thumbnails: describe the view for image search
 rep('const im=new Image();im.loading="lazy";im.alt="";im.src=`hires/${p.id}/${name}.webp`;',
-    'const im=new Image();im.loading="lazy";im.alt=altFor(p,views(ang).toLowerCase());im.src=`hires/${p.id}/${name}.webp`;')
+    'const im=new Image();im.loading="lazy";im.alt=altFor(p,views(ang).toLowerCase());im.src=`hires/${p.id}/${name}.webp`;')  # same files the 360° viewer loads, so no extra download
 rep('.size.so{',':where(a.card,a.big,a.gcard,a.team){box-sizing:border-box;padding:1px 6px;color:inherit;text-decoration:none;-webkit-tap-highlight-color:transparent}.size.so{')
 
 # ---------- router ----------
@@ -180,7 +181,7 @@ for k,c in SD['collections'].items():
     pg=sub1(pg,r'<section class="c-about" aria-labelledby="cAboutH"><h2 id="cAboutH"></h2><div id="cAbout"></div></section>',
             f'<section class="c-about" aria-labelledby="cAboutH"><h2 id="cAboutH">{E(c["aboutH"])}</h2><div id="cAbout">'+''.join(f'<p>{E(t)}</p>' for t in c['about'])+'</div></section>')
     pg=re.sub(r'<h1 class="hero-h">(.*?)</h1>',r'<h2 class="hero-h">\1</h2>',pg,count=1)
-    cards=''.join(f'<a class="gcard" href="/shop/{SD["products"][pid]["slug"]}"><span class="im"><img loading="lazy" src="{SD["products"][pid]["images"][0].split("/shop/")[1]}" alt="{E(SD["products"][pid]["alt"][0])}"></span><b>{E(SD["products"][pid]["h1"])}</b><span class="num">{"Sold out" if SD["products"][pid]["sold"] else "$"+str(SD["products"][pid]["price"])+".00"}</span></a>' for pid in c['products'])
+    cards=''.join(f'<a class="gcard" href="/shop/{SD["products"][pid]["slug"]}"><span class="im"><img loading="lazy" src="{SD["products"][pid]["images"][0].split("/shop/")[1][:-5]}-640.webp" alt="{E(SD["products"][pid]["alt"][0])}"></span><b>{E(SD["products"][pid]["h1"])}</b><span class="num">{"Sold out" if SD["products"][pid]["sold"] else "$"+str(SD["products"][pid]["price"])+".00"}</span></a>' for pid in c['products'])
     pg=sub1(pg,r'<div class="grid" id="cGrid"></div>',f'<div class="grid" id="cGrid">{cards}</div>')
     os.makedirs(os.path.join(SHOPDIR,k),exist_ok=True)
     open(os.path.join(SHOPDIR,k,'index.html'),'w').write(pg)
@@ -190,7 +191,7 @@ def _norm(t): t=unicodedata.normalize('NFD',t.lower());t=''.join(c for c in t if
 _idx=[]
 for pid,o in SD['products'].items():
     syn='tee t-shirt tshirt shirt top' if o['kind']=='tee' else 'hat cap snapback trucker'
-    _idx.append(dict(id=pid,n=o['h1'],c=o['colour'],t=o['teamName'],k=o['kind'],p=o['price'],s=o['slug'],i='/shop/'+o['images'][0].split('/shop/')[1],so=o['sold'],
+    _idx.append(dict(id=pid,n=o['h1'],c=o['colour'],t=o['teamName'],k=o['kind'],p=o['price'],s=o['slug'],i='/shop/'+o['images'][0].split('/shop/')[1][:-5]+'-320.webp',so=o['sold'],
       h=' '+_norm(' '.join([o['h1'],o['colour'],o['teamName'],syn,o.get('keyword',''),'rlwc rugby league world cup 2026' if o['team']!='pmn' else 'pmn+ pmn plus pasifika']))+' '))
 _idx.sort(key=lambda x:x['so'])
 for x in _idx: x['h']=x['h'].strip()

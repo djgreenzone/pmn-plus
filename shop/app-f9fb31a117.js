@@ -235,6 +235,9 @@ const REST={"pmn-dad-hat":60,"pmn-trucker":44,"toa-snapback":48,"mmt-snapback":3
 const restAngle=id=>REST[id]||0;
 function heroKey(id){const h=META[id].hi||{},r=restAngle(id);return Object.keys(h).find(a=>Math.abs(((a-r)%360+540)%360-180)<=8)}
 function heroURL(id){const k=heroKey(id);if(k!=null)return hiURL(id,k);const m=META[id];return frameURL(id,0)}
+/* phone-sized copies of product photos (made by tools/make_sizes.py): -640 for cards and grids, -320 for thumbnails */
+const sizedURL=(u,w)=>typeof u==="string"&&/^hires\/.+\.webp$/.test(u)&&!/-(320|640)\.webp$/.test(u)?u.replace(/\.webp$/,"-"+w+".webp"):u;
+const cardURL=id=>sizedURL(heroURL(id),640),thumbURL=id=>sizedURL(heroURL(id),320);
 /* Each product's frames live in a few sprite sheets. Sheet j holds frames j, j+S, j+2S…,
    so the first sheet alone already gives an evenly spaced full turn; later sheets fill the gaps. */
 function loadFrames(id,onProgress){
@@ -404,21 +407,21 @@ const altFor=(p,v="front")=>`${p.name} in ${p.colourName.toLowerCase()}, ${v} vi
 
 /* ---------- Hero arc ---------- */
 const HERO_P=PRODUCTS.filter(p=>!p.noHero);
-let HLIVE=!$("hero").hidden;const HDEFER=[],hsrc=(im,u)=>{if(HLIVE)im.src=u;else HDEFER.push([im,u])};
+let HLIVE=!$("hero").hidden;const HM=innerWidth<900,HDEFER=[],hsrc=(im,u,full)=>{if(HM&&!full)u=sizedURL(u,640);if(HLIVE)im.src=u;else HDEFER.push([im,u])};
 const Hero=(()=>{const PRODUCTS=HERO_P;
   const hero=$("hero"),arc=$("arc"),plinth=$("plinth"),crestsEl=$("heroCrests"),bgS=$("bgSamoa"),bgT=$("bgTonga");
   const n=PRODUCTS.length;
   const HAT_F=0.62; /* hats render ~45% smaller than their sprite width suggests (sprites are wide and short, so they were dominating the stage) */
   let CS=1.75,CSM=1.45,capS=[],hatLift=[],pos=0,W=0,H=0,base=0,U=0,SPREAD=0,DESK=false,STEP=0,STEP2=0,LIM=2.2,FADE=1.6,arcL=0,arcT=0,raf=0,tween=null,settledAt=performance.now(),lastIdx=-1,active=true;
-  const items=PRODUCTS.map((p,i)=>{const im=new Image();im.className="item";im.alt=altFor(p,REST[p.id]>=150?"back":REST[p.id]?"front left":"front");if(i<3){im.fetchPriority="high"}else{im.loading="eager"}im.draggable=false;im.decoding="async";hsrc(im,heroURL(p.id));arc.append(im);return im});
+  const items=PRODUCTS.map((p,i)=>{const im=new Image();im.className="item";im.alt=altFor(p,REST[p.id]>=150?"back":REST[p.id]?"front left":"front");if(i<3){im.fetchPriority="high"}else{im.loading="eager"}im.draggable=false;im.decoding="async";hsrc(im,heroURL(p.id),i===0);arc.append(im);return im});
   /* tees: rest on the front, turn to the back on hover (mouse only) */
   const hk=(id,t)=>{const h=(META[id]&&META[id].hi)||{};let b=null,d=999;Object.keys(h).forEach(a=>{const x=Math.abs((((+a-t)%360)+540)%360-180);if(x<d){d=x;b=a}});return d<=30?b:null};
   const FL=PRODUCTS.map((p,i)=>{const r=REST[p.id]||0,f=p.kind==="tee"?hk(p.id,0):hk(p.id,r),k=p.kind==="tee"?hk(p.id,180):hk(p.id,360-r);if(f==null||k==null||f===k)return null;
-    hsrc(items[i],hiURL(p.id,f));if(p.kind==="tee")items[i].alt=altFor(p,"front");
+    hsrc(items[i],hiURL(p.id,f),i===0);if(p.kind==="tee")items[i].alt=altFor(p,"front");
     const a=new Image();a.className="item";a.alt="";a.setAttribute("aria-hidden","true");a.draggable=false;a.decoding="async";hsrc(a,hiURL(p.id,k));a.style.opacity=0;arc.append(a);
     return{el:a,f:0}});
   let hov=-1,hr=null,rT=0;const FLIP_MS=220;
-  const crests=PRODUCTS.map(p=>{const c=new Image();c.className="crest";c.alt="";c.decoding="async";hsrc(c,crestURL(p.team));c.setAttribute("aria-hidden","true");crestsEl.append(c);return c});
+  const crests=PRODUCTS.map(p=>{const c=new Image();c.className="crest";c.alt="";c.decoding="async";hsrc(c,crestURL(p.team),1);c.setAttribute("aria-hidden","true");crestsEl.append(c);return c});
   const dots=$("dots");PRODUCTS.forEach(()=>dots.append(document.createElement("i")));
   const sizes=[];
   function measure(){
@@ -472,7 +475,7 @@ const Hero=(()=>{const PRODUCTS=HERO_P;
     if(idx!==lastIdx){lastIdx=idx;label(idx)}
     if(!tween&&!dragging&&t-settledAt>900)prefetch(idx);
   }
-  function label(i){const p=PRODUCTS[i];$("hlTeam").textContent=teamName(p);$("hlName").textContent=p.name;$("hlPrice").textContent=SOLD.has(p.id)?"Sold out":money(p.price);$("hlPrice").classList.toggle("so",SOLD.has(p.id));
+  function label(i){const p=PRODUCTS[i];{const e=items[i];if(HM&&e&&/-640\.webp$/.test(e.src))e.src=e.src.replace(/-640\.webp$/,".webp")}$("hlTeam").textContent=teamName(p);$("hlName").textContent=p.name;$("hlPrice").textContent=SOLD.has(p.id)?"Sold out":money(p.price);$("hlPrice").classList.toggle("so",SOLD.has(p.id));
     $("heroCount").textContent=String(i+1).padStart(2,"0")+" / "+String(n).padStart(2,"0");
     [...dots.children].forEach((d,k)=>d.classList.toggle("on",k===i));$("heroLabel").setAttribute("aria-label",`Open ${p.name}`)}
   let prefetched=new Set();
@@ -586,7 +589,7 @@ const PDP=(()=>{
     const rest=PRODUCTS.filter(o=>o.id!==p.id).sort((x,y)=>(y.team===p.team)-(x.team===p.team));
     $("alsoTitle").textContent=`More ${teamName(p)}`;
     $("pAlso").innerHTML="";rest.slice(0,8).forEach(o=>{const b=document.createElement("a");b.className="card";b.href=pmnURL(o.id);b.dataset.id=o.id;
-      b.innerHTML=`<span class="im"><img loading="lazy" alt="${altFor(o).replace(/"/g,"&quot;")}" src="${heroURL(o.id)}"></span><b>${o.name}</b><span class="num">${money(o.price)}</span>`;
+      b.innerHTML=`<span class="im"><img loading="lazy" alt="${altFor(o).replace(/"/g,"&quot;")}" src="${cardURL(o.id)}"></span><b>${o.name}</b><span class="num">${money(o.price)}</span>`;
       pmnNav(b,()=>{$("pdpScroll").scrollTo({top:0,behavior:reduceMotion?"auto":"smooth"});swap(o.id)});$("pAlso").append(b)});
     $("stName").textContent=p.name;
   }
@@ -604,13 +607,13 @@ const PDP=(()=>{
     $("pickL").textContent=want==="hat"?"Choose your hat":"Choose your tee";
     const cm=$("dealCmp");cm.innerHTML="";cm.setAttribute("aria-label",$("pickL").textContent);
     list.forEach(o=>{const b=document.createElement("button");b.type="button";b.dataset.id=o.id;
-      b.innerHTML=`<img loading="lazy" alt="" src="${heroURL(o.id)}"><b>${(o.short||o.name).replace(/-/g,"‑")}</b><span class="num">${money(o.price-BUNDLE_OFF)}</span>`;
+      b.innerHTML=`<img loading="lazy" alt="" src="${thumbURL(o.id)}"><b>${(o.short||o.name).replace(/-/g,"‑")}</b><span class="num">${money(o.price-BUNDLE_OFF)}</span>`;
       b.setAttribute("aria-label",`${o.name}, ${money(o.price-BUNDLE_OFF)} in the set`);b.onclick=()=>{comp=o.id;compSize=null;syncDeal()};cm.append(b)});
     syncDeal()}
   function syncDeal(){
     const p=BY[cur],c=BY[comp],on=tier==="set";
     $("tierSet").setAttribute("aria-checked",on);$("pDeal").classList.toggle("on",on);$("dealPick").hidden=!on||$("dealCmp").children.length<2&&c.kind!=="tee";
-    $("t2ImgB").src=heroURL(c.id);$("t2Sub").textContent=c.short||c.name;
+    $("t2ImgB").src=thumbURL(c.id);$("t2Sub").textContent=c.short||c.name;
     $("t2Price").textContent=money(c.price-BUNDLE_OFF);$("t2Was").textContent=money(c.price);
     $("dealCmp").querySelectorAll("button").forEach(b=>b.setAttribute("aria-pressed",b.dataset.id===comp));
     const needs=c.kind==="tee",sz=$("dealCsz");$("cszL").hidden=sz.hidden=!needs;sz.innerHTML="";
@@ -708,8 +711,8 @@ const dotsHTML=p=>{const g=sibs(p);return g.length>1?`<span class="cdots" aria-l
 /* cards: tees show the front and the back on hover; hats show the other side on hover */
 const nearKey=(id,t)=>{const h=(META[id]&&META[id].hi)||{};let best=null,d=999;Object.keys(h).forEach(a=>{const x=Math.abs((((+a-t)%360)+540)%360-180);if(x<d){d=x;best=a}});return d<=30?best:null};
 const flipCard=(b,p)=>{const im=b.querySelector(".im"),img=im&&im.querySelector("img");if(!img||im.querySelector(".alt"))return;
-  const r=REST[p.id]||0,f=p.kind==="tee"?nearKey(p.id,0):nearKey(p.id,r),k=p.kind==="tee"?nearKey(p.id,180):nearKey(p.id,360-r);if(f==null||k==null||f===k)return;img.src=hiURL(p.id,f);
-  const a=new Image();a.className="alt";a.loading="lazy";a.decoding="async";a.alt="";a.setAttribute("aria-hidden","true");a.src=hiURL(p.id,k);im.append(a);im.classList.add("flip")};
+  const r=REST[p.id]||0,f=p.kind==="tee"?nearKey(p.id,0):nearKey(p.id,r),k=p.kind==="tee"?nearKey(p.id,180):nearKey(p.id,360-r);if(f==null||k==null||f===k)return;img.src=sizedURL(hiURL(p.id,f),640);
+  const a=new Image();a.className="alt";a.loading="lazy";a.decoding="async";a.alt="";a.setAttribute("aria-hidden","true");a.src=sizedURL(hiURL(p.id,k),640);im.append(a);im.classList.add("flip")};
 const sizeRange=p=>{let z=[];try{z=(blankFor(p)||{}).sizes||[]}catch(e){}if(!z.length)z=(SEO.products[p.id]&&SEO.products[p.id].sizes)||[];return p.kind!=="tee"||z.length<2?"OSFA":`Sizes ${z[0]}–${z[z.length-1]}`};
 const decorate=(b,p)=>{if(!p||b.dataset.dec)return;b.dataset.dec=1;flipCard(b,p);const im=b.querySelector(".im");
   if(BADGE[p.id]&&im&&!im.querySelector(".tag,.sold"))im.insertAdjacentHTML("afterbegin",`<i class="tag best">${BADGE[p.id]}</i>`);
@@ -724,7 +727,7 @@ const Coll=(()=>{
   $("cFilter").querySelectorAll(".chip").forEach(b=>b.onclick=()=>{filt=b.dataset.f;$("cFilter").querySelectorAll(".chip").forEach(x=>x.setAttribute("aria-pressed",x===b));grid()});
   function grid(){const c=SEO.collections[key],g=$("cGrid");g.innerHTML="";queueMicrotask(()=>g.querySelectorAll("[data-id]").forEach(b=>decorate(b,BY[b.dataset.id])));
     const L=sortList(c.products.map(id=>BY[id]).filter(p=>p&&(filt==="all"||(filt==="pmn"?p.team==="pmn":p.kind===filt))),$("cSort").value);$("cCount").textContent=L.length+(L.length===1?" piece":" pieces");L.forEach(p=>{const b=document.createElement("a");b.className="gcard";b.href=pmnURL(p.id);b.dataset.id=p.id;
-      b.innerHTML=`<span class="im">${SOLD.has(p.id)?'<i class="sold">Sold out</i>':""}<img loading="lazy" decoding="async" alt="${altFor(p).replace(/"/g,"&quot;")}" src="${heroURL(p.id)}"></span><b>${p.name}</b><span class="num">${SOLD.has(p.id)?"Sold out":money(p.price)}</span>`;
+      b.innerHTML=`<span class="im">${SOLD.has(p.id)?'<i class="sold">Sold out</i>':""}<img loading="lazy" decoding="async" alt="${altFor(p).replace(/"/g,"&quot;")}" src="${cardURL(p.id)}"></span><b>${p.name}</b><span class="num">${SOLD.has(p.id)?"Sold out":money(p.price)}</span>`;
       pmnNav(b,()=>PDP.open(p.id,b.querySelector("img"),"coll"));g.append(b)})}
   function show(k){key=k;try{window.pmnLog&&pmnLog("view_collection",{ref:k,title:(SEO.collections[k]||{}).name||k,url:"/shop/"+k,meta:{filter:filt}})}catch(e){}const c=SEO.collections[k],team=k==="toa-samoa"?"samoa":k==="mate-maa-tonga"?"tonga":"all";if(k!==key||!$("cSort").dataset.t){$("cSort").value=k==="all"?"best":"feat";$("cSort").dataset.t=1}
     el.dataset.team=team;$("collH").textContent=c.name;$("cIntro").textContent=c.intro;$("cAboutH").textContent=c.aboutH||"";$("cAbout").innerHTML="";(c.about||[]).forEach(t=>{const e=document.createElement("p");e.textContent=t;$("cAbout").append(e)});$("crHere").textContent=c.name;
@@ -750,7 +753,7 @@ $("pTeam").onclick=()=>{const c=PDP.current(),t=BY[c]?BY[c].team:"tonga";documen
   const isLimited=p=>false; /* one meaningful badge only: see BADGE */
   const cardTitle=p=>p.name;
   const card=(p,cls)=>{const b=document.createElement("a");b.className=cls;b.href=pmnURL(p.id);b.dataset.pid=p.id;
-    b.innerHTML=`<span class="im">${SOLD.has(p.id)?'<i class="sold">Sold out</i>':isLimited(p)?'<i class="tag">Exclusive</i>':""}<img loading="lazy" decoding="async" alt="${altFor(p).replace(/"/g,"&quot;")}" src="${heroURL(p.id)}"></span>
+    b.innerHTML=`<span class="im">${SOLD.has(p.id)?'<i class="sold">Sold out</i>':isLimited(p)?'<i class="tag">Exclusive</i>':""}<img loading="lazy" decoding="async" alt="${altFor(p).replace(/"/g,"&quot;")}" src="${cardURL(p.id)}"></span>
       <b class="nm">${cardTitle(p)}</b><strong class="pr num">${money(p.price)}</strong>${isLimited(p)?'<small class="lim">Limited drop · While stocks last</small>':""}`;
     b.setAttribute("aria-label",`${cardTitle(p)}, ${p.colourName}, ${money(p.price)}${BADGE[p.id]?", "+BADGE[p.id].toLowerCase():""}`);queueMicrotask(()=>decorate(b,p));
     pmnNav(b,()=>PDP.open(p.id,b.querySelector("img"),"home"));return b};
@@ -805,7 +808,7 @@ const Cart=(()=>{
       $("cartShop").onclick=()=>{close();Coll.open("pmn-plus")};return}
     cart.forEach((it,ix)=>{const p=BY[it.id],row=document.createElement("div");row.className="line";
       const sizes=blankFor(p).sizes;
-      row.innerHTML=`<span class="im"><img alt="" src="${heroURL(p.id)}"></span><div class="meta"><div class="t"><span>${p.name}</span><span class="num">${money(p.price*it.qty)}</span></div>
+      row.innerHTML=`<span class="im"><img alt="" src="${thumbURL(p.id)}"></span><div class="meta"><div class="t"><span>${p.name}</span><span class="num">${money(p.price*it.qty)}</span></div>
         <div class="v">${p.colourName}${p.kind==="hat"?" · OSFA":""}</div>
         <div class="ctl">${p.kind==="hat"?"":`<label class="sr" for="sz${ix}">Size</label><select id="sz${ix}" class="${it.size?"":"need"}"><option value="">Choose size</option>${sizes.map(z=>`<option${z===it.size?" selected":""}>${z}</option>`).join("")}</select>`}
         <div class="qty" role="group" aria-label="Quantity"><button type="button" data-d="-1" aria-label="Decrease quantity">−</button><span class="num">${it.qty}</span><button type="button" data-d="1" aria-label="Increase quantity">+</button></div>
@@ -815,7 +818,7 @@ const Cart=(()=>{
       const sel=row.querySelector("select");if(sel)sel.onchange=()=>{const dup=find(it.id,sel.value);if(dup&&dup!==it){dup.qty+=it.qty;cart.splice(cart.indexOf(it),1)}else it.size=sel.value||null;setBag();render()};
       body.append(row)});
     const u=bx().apps?null:upsell();
-    if(u){const d=document.createElement("div");d.className="upsell";d.innerHTML=`<img alt="" src="${heroURL(u.id)}"><div><span>Make it a Game Day Set · save $10</span><b>${u.name}</b><span class="num">${money(u.price)}</span></div><button type="button">Add</button>`;
+    if(u){const d=document.createElement("div");d.className="upsell";d.innerHTML=`<img alt="" src="${thumbURL(u.id)}"><div><span>Make it a Game Day Set · save $10</span><b>${u.name}</b><span class="num">${money(u.price)}</span></div><button type="button">Add</button>`;
       d.querySelector("button").onclick=()=>add(u.id,u.kind==="hat"?"One size":null,1);body.append(d)}
     $("bump").hidden=!BUMP.variant;if(!BUMP.variant)bumpOn=false;$("bumpT").textContent=BUMP.title;$("bumpC").textContent=BUMP.copy;$("bumpP").textContent=`+${money(BUMP.price)}`;
     $("bumpChk").checked=bumpOn;$("bump").classList.toggle("on",bumpOn);$("bumpLine").hidden=!bumpOn;$("bumpLineT").textContent=BUMP.line;$("bumpLineV").textContent=money(BUMP.price);

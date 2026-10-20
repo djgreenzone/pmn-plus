@@ -26,4 +26,4 @@ Then commit and push as usual.
 - **Mark something sold out / back in stock:** edit the `SOLD` list in `shopify_layer.js`, rebuild.
 - **Connect a new Shopify product:** add it to `SHOPIFY_MAP` in `shopify_layer.js`, rebuild.
 - **Hide / unhide a product:** edit `HIDE` in `make_shop.py`, rebuild.
-- **SEO copy changed / product added:** `python3 seo_content.py && python3 seo_build.py && python3 seo_inject.py && python3 make_og.py`, then rebuild.
+- **SEO copy changed / product added:** `python3 tools/make_sizes.py && python3 seo_content.py && python3 seo_build.py && python3 seo_inject.py && python3 make_og.py`, then rebuild.

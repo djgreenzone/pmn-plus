@@ -27,8 +27,10 @@ Full docs live in `docs/`. Read the one that matches the task before changing an
    goes to all of them (the account page copies the homepage footer at build time).
 3. **Rebuild after any shop change** (from `_source/`):
    ```
-   python3 seo_content.py && python3 seo_build.py && python3 seo_inject.py && python3 make_og.py && python3 make_shop.py ../shop/index.html
+   python3 tools/make_sizes.py && python3 seo_content.py && python3 seo_build.py && python3 seo_inject.py && python3 make_og.py && python3 make_shop.py ../shop/index.html
    ```
+   `tools/make_sizes.py` makes the -320/-640 phone copies of product photos in `shop/hires/` (cards, grids and search use them;
+   originals stay for the 360° viewer and Google Shopping). Skips photos that already have copies.
    `make_shop.py` uses exact-string replacements with asserts. If it fails with an AssertionError, the source text it
    expects changed: fix the `rep()` call, don't delete the assert.
 4. **Shopify is the source of truth for price, variants and stock.** The site reads them live via the Storefront API.

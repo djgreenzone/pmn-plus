@@ -1,5 +1,12 @@
 {
   "trailingSlash": false,
+  "headers": [
+    { "source": "/shop/app-(.*)\\.js", "headers": [{ "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }] },
+    { "source": "/shop/:dir(hires|frames|brand|og)/(.*)", "headers": [{ "key": "Cache-Control", "value": "public, max-age=2592000, stale-while-revalidate=604800" }] },
+    { "source": "/assets/:dir(home|about|ig|email)/(.*)", "headers": [{ "key": "Cache-Control", "value": "public, max-age=2592000, stale-while-revalidate=604800" }] },
+    { "source": "/assets/:file(.*\\.(?:png|jpg|jpeg|webp|avif|svg|mp4))", "headers": [{ "key": "Cache-Control", "value": "public, max-age=2592000, stale-while-revalidate=604800" }] },
+    { "source": "/assets/:file(pmn-nav\\.css|pmn-nav\\.js|pmn-config\\.js)", "headers": [{ "key": "Cache-Control", "value": "public, max-age=3600, stale-while-revalidate=86400" }] }
+  ],
   "redirects": [
     { "source": "/:path*", "has": [{ "type": "host", "value": "polynesianmusicnetwork.com" }], "destination": "https://www.polynesianmusicnetwork.com/:path*", "permanent": true },
     { "source": "/about-us", "destination": "/about", "permanent": true },

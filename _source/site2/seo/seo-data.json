@@ -515,6 +515,7 @@
        "url": "https://www.polynesianmusicnetwork.com/shop/mate-maa-tonga-crest-oversized-tee-black",
        "price": "60.00",
        "priceCurrency": "USD",
+       "validFrom": "2026-10-01",
        "priceValidUntil": "2027-12-31",
        "availability": "https://schema.org/InStock",
        "itemCondition": "https://schema.org/NewCondition",
@@ -759,6 +760,7 @@
        "url": "https://www.polynesianmusicnetwork.com/shop/toa-samoa-crest-oversized-tee-black",
        "price": "60.00",
        "priceCurrency": "USD",
+       "validFrom": "2026-10-01",
        "priceValidUntil": "2027-12-31",
        "availability": "https://schema.org/InStock",
        "itemCondition": "https://schema.org/NewCondition",
@@ -1012,6 +1014,7 @@
        "url": "https://www.polynesianmusicnetwork.com/shop/mate-maa-tonga-rlwc26-tee-black",
        "price": "45.00",
        "priceCurrency": "USD",
+       "validFrom": "2026-10-01",
        "priceValidUntil": "2027-12-31",
        "availability": "https://schema.org/InStock",
        "itemCondition": "https://schema.org/NewCondition",
@@ -1054,6 +1057,7 @@
       "isVariantOf": {
        "@type": "ProductGroup",
        "name": "Mate Ma'a Tonga RLWC26 Tee",
+       "description": "The Mate Ma'a Tonga RLWC26 Tee from PMN+ in black and red, sizes S to 6XL at one price. Printed to order and shipped across the USA.",
        "brand": {
         "@type": "Brand",
         "name": "PMN+"
@@ -1278,6 +1282,7 @@
        "url": "https://www.polynesianmusicnetwork.com/shop/toa-samoa-rlwc26-tee-black",
        "price": "45.00",
        "priceCurrency": "USD",
+       "validFrom": "2026-10-01",
        "priceValidUntil": "2027-12-31",
        "availability": "https://schema.org/InStock",
        "itemCondition": "https://schema.org/NewCondition",
@@ -1320,6 +1325,7 @@
       "isVariantOf": {
        "@type": "ProductGroup",
        "name": "Toa Samoa RLWC26 Tee",
+       "description": "The Toa Samoa RLWC26 Tee from PMN+ in black and royal blue, sizes S to 6XL at one price. Printed to order and shipped across the USA.",
        "brand": {
         "@type": "Brand",
         "name": "PMN+"
@@ -1544,6 +1550,7 @@
        "url": "https://www.polynesianmusicnetwork.com/shop/mate-maa-tonga-player-tee-black",
        "price": "45.00",
        "priceCurrency": "USD",
+       "validFrom": "2026-10-01",
        "priceValidUntil": "2027-12-31",
        "availability": "https://schema.org/InStock",
        "itemCondition": "https://schema.org/NewCondition",
@@ -1586,6 +1593,7 @@
       "isVariantOf": {
        "@type": "ProductGroup",
        "name": "Mate Ma'a Tonga Player Tee",
+       "description": "The Mate Ma'a Tonga Player Tee from PMN+ in black and red, sizes S to 6XL at one price. Printed to order and shipped across the USA.",
        "brand": {
         "@type": "Brand",
         "name": "PMN+"
@@ -1810,6 +1818,7 @@
        "url": "https://www.polynesianmusicnetwork.com/shop/toa-samoa-player-tee-black",
        "price": "45.00",
        "priceCurrency": "USD",
+       "validFrom": "2026-10-01",
        "priceValidUntil": "2027-12-31",
        "availability": "https://schema.org/InStock",
        "itemCondition": "https://schema.org/NewCondition",
@@ -1852,6 +1861,7 @@
       "isVariantOf": {
        "@type": "ProductGroup",
        "name": "Toa Samoa Player Tee",
+       "description": "The Toa Samoa Player Tee from PMN+ in black and royal blue, sizes S to 6XL at one price. Printed to order and shipped across the USA.",
        "brand": {
         "@type": "Brand",
         "name": "PMN+"
@@ -2070,6 +2080,7 @@
        "url": "https://www.polynesianmusicnetwork.com/shop/mate-maa-tonga-676-tee-black",
        "price": "45.00",
        "priceCurrency": "USD",
+       "validFrom": "2026-10-01",
        "priceValidUntil": "2027-12-31",
        "availability": "https://schema.org/InStock",
        "itemCondition": "https://schema.org/NewCondition",
@@ -2112,6 +2123,7 @@
       "isVariantOf": {
        "@type": "ProductGroup",
        "name": "Mate Ma'a Tonga 676 Tee",
+       "description": "The Mate Ma'a Tonga 676 Tee from PMN+ in black and red, sizes S to 6XL at one price. Printed to order and shipped across the USA.",
        "brand": {
         "@type": "Brand",
         "name": "PMN+"
@@ -2333,6 +2345,7 @@
        "url": "https://www.polynesianmusicnetwork.com/shop/toa-samoa-685-tee-black",
        "price": "45.00",
        "priceCurrency": "USD",
+       "validFrom": "2026-10-01",
        "priceValidUntil": "2027-12-31",
        "availability": "https://schema.org/InStock",
        "itemCondition": "https://schema.org/NewCondition",
@@ -2375,6 +2388,7 @@
       "isVariantOf": {
        "@type": "ProductGroup",
        "name": "Toa Samoa 685 Tee",
+       "description": "The Toa Samoa 685 Tee from PMN+ in black and royal blue, sizes S to 6XL at one price. Printed to order and shipped across the USA.",
        "brand": {
         "@type": "Brand",
         "name": "PMN+"
@@ -2583,6 +2597,7 @@
        "url": "https://www.polynesianmusicnetwork.com/shop/mate-maa-tonga-high-profile-snapback-white-crimson",
        "price": "55.00",
        "priceCurrency": "USD",
+       "validFrom": "2026-10-01",
        "priceValidUntil": "2027-12-31",
        "availability": "https://schema.org/InStock",
        "itemCondition": "https://schema.org/NewCondition",
@@ -2831,6 +2846,7 @@
        "url": "https://www.polynesianmusicnetwork.com/shop/toa-samoa-high-profile-snapback-navy-white",
        "price": "55.00",
        "priceCurrency": "USD",
+       "validFrom": "2026-10-01",
        "priceValidUntil": "2027-12-31",
        "availability": "https://schema.org/InStock",
        "itemCondition": "https://schema.org/NewCondition",
@@ -3089,6 +3105,7 @@
        "url": "https://www.polynesianmusicnetwork.com/shop/mate-maa-tonga-676-tee-red",
        "price": "45.00",
        "priceCurrency": "USD",
+       "validFrom": "2026-10-01",
        "priceValidUntil": "2027-12-31",
        "availability": "https://schema.org/InStock",
        "itemCondition": "https://schema.org/NewCondition",
@@ -3131,6 +3148,7 @@
       "isVariantOf": {
        "@type": "ProductGroup",
        "name": "Mate Ma'a Tonga 676 Tee",
+       "description": "The Mate Ma'a Tonga 676 Tee from PMN+ in black and red, sizes S to 6XL at one price. Printed to order and shipped across the USA.",
        "brand": {
         "@type": "Brand",
         "name": "PMN+"
@@ -3352,6 +3370,7 @@
        "url": "https://www.polynesianmusicnetwork.com/shop/toa-samoa-685-tee-royal-blue",
        "price": "45.00",
        "priceCurrency": "USD",
+       "validFrom": "2026-10-01",
        "priceValidUntil": "2027-12-31",
        "availability": "https://schema.org/InStock",
        "itemCondition": "https://schema.org/NewCondition",
@@ -3394,6 +3413,7 @@
       "isVariantOf": {
        "@type": "ProductGroup",
        "name": "Toa Samoa 685 Tee",
+       "description": "The Toa Samoa 685 Tee from PMN+ in black and royal blue, sizes S to 6XL at one price. Printed to order and shipped across the USA.",
        "brand": {
         "@type": "Brand",
         "name": "PMN+"
@@ -3618,6 +3638,7 @@
        "url": "https://www.polynesianmusicnetwork.com/shop/mate-maa-tonga-rlwc26-tee-red",
        "price": "45.00",
        "priceCurrency": "USD",
+       "validFrom": "2026-10-01",
        "priceValidUntil": "2027-12-31",
        "availability": "https://schema.org/InStock",
        "itemCondition": "https://schema.org/NewCondition",
@@ -3660,6 +3681,7 @@
       "isVariantOf": {
        "@type": "ProductGroup",
        "name": "Mate Ma'a Tonga RLWC26 Tee",
+       "description": "The Mate Ma'a Tonga RLWC26 Tee from PMN+ in black and red, sizes S to 6XL at one price. Printed to order and shipped across the USA.",
        "brand": {
         "@type": "Brand",
         "name": "PMN+"
@@ -3884,6 +3906,7 @@
        "url": "https://www.polynesianmusicnetwork.com/shop/toa-samoa-rlwc26-tee-royal-blue",
        "price": "45.00",
        "priceCurrency": "USD",
+       "validFrom": "2026-10-01",
        "priceValidUntil": "2027-12-31",
        "availability": "https://schema.org/InStock",
        "itemCondition": "https://schema.org/NewCondition",
@@ -3926,6 +3949,7 @@
       "isVariantOf": {
        "@type": "ProductGroup",
        "name": "Toa Samoa RLWC26 Tee",
+       "description": "The Toa Samoa RLWC26 Tee from PMN+ in black and royal blue, sizes S to 6XL at one price. Printed to order and shipped across the USA.",
        "brand": {
         "@type": "Brand",
         "name": "PMN+"
@@ -4150,6 +4174,7 @@
        "url": "https://www.polynesianmusicnetwork.com/shop/mate-maa-tonga-player-tee-red",
        "price": "45.00",
        "priceCurrency": "USD",
+       "validFrom": "2026-10-01",
        "priceValidUntil": "2027-12-31",
        "availability": "https://schema.org/InStock",
        "itemCondition": "https://schema.org/NewCondition",
@@ -4192,6 +4217,7 @@
       "isVariantOf": {
        "@type": "ProductGroup",
        "name": "Mate Ma'a Tonga Player Tee",
+       "description": "The Mate Ma'a Tonga Player Tee from PMN+ in black and red, sizes S to 6XL at one price. Printed to order and shipped across the USA.",
        "brand": {
         "@type": "Brand",
         "name": "PMN+"
@@ -4416,6 +4442,7 @@
        "url": "https://www.polynesianmusicnetwork.com/shop/toa-samoa-player-tee-royal-blue",
        "price": "45.00",
        "priceCurrency": "USD",
+       "validFrom": "2026-10-01",
        "priceValidUntil": "2027-12-31",
        "availability": "https://schema.org/InStock",
        "itemCondition": "https://schema.org/NewCondition",
@@ -4458,6 +4485,7 @@
       "isVariantOf": {
        "@type": "ProductGroup",
        "name": "Toa Samoa Player Tee",
+       "description": "The Toa Samoa Player Tee from PMN+ in black and royal blue, sizes S to 6XL at one price. Printed to order and shipped across the USA.",
        "brand": {
         "@type": "Brand",
         "name": "PMN+"
@@ -4679,6 +4707,7 @@
        "url": "https://www.polynesianmusicnetwork.com/shop/mate-maa-tonga-silver-blackout-tee-black",
        "price": "45.00",
        "priceCurrency": "USD",
+       "validFrom": "2026-10-01",
        "priceValidUntil": "2027-12-31",
        "availability": "https://schema.org/InStock",
        "itemCondition": "https://schema.org/NewCondition",
@@ -4926,6 +4955,7 @@
        "url": "https://www.polynesianmusicnetwork.com/shop/toa-samoa-silver-blackout-tee-black",
        "price": "45.00",
        "priceCurrency": "USD",
+       "validFrom": "2026-10-01",
        "priceValidUntil": "2027-12-31",
        "availability": "https://schema.org/InStock",
        "itemCondition": "https://schema.org/NewCondition",
@@ -5156,6 +5186,7 @@
        "url": "https://www.polynesianmusicnetwork.com/shop/mate-maa-tonga-trucker-snapback-black",
        "price": "35.00",
        "priceCurrency": "USD",
+       "validFrom": "2026-10-01",
        "priceValidUntil": "2027-12-31",
        "availability": "https://schema.org/InStock",
        "itemCondition": "https://schema.org/NewCondition",
@@ -5386,6 +5417,7 @@
        "url": "https://www.polynesianmusicnetwork.com/shop/toa-samoa-trucker-snapback-black",
        "price": "35.00",
        "priceCurrency": "USD",
+       "validFrom": "2026-10-01",
        "priceValidUntil": "2027-12-31",
        "availability": "https://schema.org/InStock",
        "itemCondition": "https://schema.org/NewCondition",
@@ -5630,6 +5662,7 @@
        "url": "https://www.polynesianmusicnetwork.com/shop/pmn-plus-logo-tee-black",
        "price": "45.00",
        "priceCurrency": "USD",
+       "validFrom": "2026-10-01",
        "priceValidUntil": "2027-12-31",
        "availability": "https://schema.org/InStock",
        "itemCondition": "https://schema.org/NewCondition",
@@ -5860,6 +5893,7 @@
        "url": "https://www.polynesianmusicnetwork.com/shop/pmn-plus-trucker-hat-black",
        "price": "35.00",
        "priceCurrency": "USD",
+       "validFrom": "2026-10-01",
        "priceValidUntil": "2027-12-31",
        "availability": "https://schema.org/InStock",
        "itemCondition": "https://schema.org/NewCondition",
@@ -6103,6 +6137,7 @@
        "url": "https://www.polynesianmusicnetwork.com/shop/pmn-plus-classic-dad-hat-khaki",
        "price": "35.00",
        "priceCurrency": "USD",
+       "validFrom": "2026-10-01",
        "priceValidUntil": "2027-12-31",
        "availability": "https://schema.org/InStock",
        "itemCondition": "https://schema.org/NewCondition",

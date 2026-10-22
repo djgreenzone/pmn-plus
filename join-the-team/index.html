@@ -507,11 +507,11 @@ legend,.lbl{font-size:.8rem;font-weight:600;letter-spacing:.06em;text-transform:
    let ok=true;try{const x=new URL(u);ok=/\./.test(x.hostname)}catch(e){ok=false}
    const ig=val('instagram').replace(/^@/,'');
    return [err('portfolio',ok?'':'Add a public link to your work.'),err('instagram',/^(?!.*\.\.)(?!\.)[A-Za-z0-9._]{1,30}$/.test(ig)?'':'Enter a valid Instagram handle.'),
-    err('files',vals('role').includes('model')&&files.length<2?(files.length?'Add one more photo. Models need 2: a headshot and a full-length shot.':'Models need 2 photos: a headshot and a full-length shot.'):'')].every(Boolean)},
+    (()=>{photoNote();return !(vals('role').includes('model')&&files.length<2)})()].every(Boolean)},
   guardian:()=>[err('guardian_name',val('guardian_name').split(/\s+/).length>=2?'':'Add their full name.'),err('guardian_email',!emailOk(val('guardian_email'))?'Check their email.':val('guardian_email').toLowerCase()===val('email').toLowerCase()?'Use your parent or guardian\'s own email.':''),err('guardian_ok',f.elements.guardian_ok.checked?'':'Tick this to continue.')].every(Boolean),
   last:()=>[err('availability',vals('availability').length?'':'Pick at least one.'),err('why',val('why').length>=10?'':'Tell us a little more.')].every(Boolean)
  };
- const api=(body)=>fetch('/api/join',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)}).then(async r=>{const j=await r.json().catch(()=>({}));if(!r.ok)throw new Error(j.error||'Something went wrong. Please try again.');return j});
+ const api=(body)=>fetch('/api/join',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)}).then(async r=>{const j=await r.json().catch(()=>({}));if(!r.ok)throw new Error((j.error||'Something went wrong. Please try again.')+(j.code?' (code: '+j.code+')':''));return j});
  async function sendApp(){
   next.disabled=true;back.disabled=true;err('submit','');
   try{
@@ -530,7 +530,7 @@ legend,.lbl{font-size:.8rem;font-weight:600;letter-spacing:.06em;text-transform:
     availability:vals('availability'),newsletter:f.elements.newsletter.checked,photos});
    document.getElementById('fn').textContent=val('first_name');hist.push(cur);show('done');
    try{window.pmnTrack&&pmnTrack('generate_lead',{form:'join_the_team'})}catch(_){}
-  }catch(e){err('submit',e.message);next.disabled=false;back.disabled=false;next.textContent='Send application'}
+  }catch(e){err('submit',e.message);const sm=f.querySelector('[data-err="submit"]');sm&&sm.scrollIntoView({behavior:'smooth',block:'center'});next.disabled=false;back.disabled=false;next.textContent='Send application'}
  }
  f.addEventListener('submit',e=>{e.preventDefault();if(!check[cur]()){const m=[...steps.find(x=>x.dataset.step===cur).querySelectorAll('.msg')].find(x=>x.textContent&&!x.classList.contains('ok'));if(m)m.scrollIntoView({behavior:'smooth',block:'center'});return}const o=order(),i=o.indexOf(cur);
   if(cur==='last'){sendApp();return}
@@ -541,7 +541,10 @@ legend,.lbl{font-size:.8rem;font-weight:600;letter-spacing:.06em;text-transform:
  /* uploads */
  const inp=document.getElementById('files'),th=document.getElementById('thumbs'),drop=document.getElementById('drop');
  const draw=()=>{th.innerHTML='';files.forEach((fl,i)=>{const fg=document.createElement('figure'),im=document.createElement('img'),b=document.createElement('button');
-  im.alt='';im.src=URL.createObjectURL(fl);b.type='button';b.setAttribute('aria-label','Remove photo');b.textContent='×';b.onclick=()=>{files.splice(i,1);draw()};fg.append(im,b);th.append(fg)})};
+  im.alt='';im.src=URL.createObjectURL(fl);b.type='button';b.setAttribute('aria-label','Remove photo');b.textContent='×';b.onclick=()=>{files.splice(i,1);draw()};fg.append(im,b);th.append(fg)});photoNote()};
+ const photoNote=()=>{const m=f.querySelector('[data-err="files"]'),model=vals('role').includes('model');m.classList.remove('ok');
+  if(model){if(files.length<2){m.textContent=files.length+' of 2 photos added. Models need a headshot and a full-length shot.'}else{m.classList.add('ok');m.textContent=files.length+' photos added. You’re good to go.'}}
+  else{m.textContent=files.length?files.length+' of 3 photos added.':'';if(files.length)m.classList.add('ok')}};
  const add=list=>{for(const fl of list){if(files.length>=3){err('files','Up to 3 photos.');break}if(fl.size>10*1024*1024){err('files',fl.name+' is over 10 MB.');continue}files.push(fl)}draw();inp.value=''};
  inp.onchange=()=>add(inp.files);
  ['dragenter','dragover'].forEach(t=>drop.addEventListener(t,e=>{e.preventDefault();drop.classList.add('on')}));

@@ -34,7 +34,7 @@ const emailOk = (e) => /^[^\s@]+@[^\s@]+\.[a-z]{2,}$/i.test(e);
 function supa() {
   const url = (process.env.SUPABASE_URL || '').replace(/\/+$/, '');
   const key = process.env.SUPABASE_SERVICE_ROLE_KEY;
-  if (!url || !key) throw new Error('Supabase env missing');
+  if (!url || !key) throw Object.assign(new Error('Supabase env missing'), { code: 'config' });
   const h = { apikey: key, Authorization: `Bearer ${key}` };
   return { url, h };
 }
@@ -46,13 +46,13 @@ async function ensureBucket(s) {
     method: 'POST', headers: { ...s.h, 'Content-Type': 'application/json' },
     body: JSON.stringify({ id: BUCKET, name: BUCKET, public: false, file_size_limit: MAX_FILE, allowed_mime_types: Object.keys(TYPES) }),
   });
-  if (!c.ok && c.status !== 409) throw new Error('bucket ' + c.status + ' ' + (await c.text()).slice(0, 200));
+  if (!c.ok && c.status !== 409 && c.status !== 400) throw Object.assign(new Error('bucket ' + c.status + ' ' + (await c.text()).slice(0, 200)), { code: 'storage-bucket' });
 }
 
 async function signUpload(s, path) {
   const r = await fetch(`${s.url}/storage/v1/object/upload/sign/${BUCKET}/${path}`, { method: 'POST', headers: s.h });
   const j = await r.json().catch(() => ({}));
-  if (!r.ok || !j.url) throw new Error('sign upload ' + r.status);
+  if (!r.ok || !j.url) throw Object.assign(new Error('sign upload ' + r.status + ' ' + JSON.stringify(j).slice(0, 200)), { code: 'storage-sign' });
   return `${s.url}/storage/v1${j.url}`;
 }
 
@@ -68,7 +68,7 @@ async function klaviyo(path, body) {
   const r = await fetch(`https://a.klaviyo.com/client/${path}/?company_id=${KLAVIYO_COMPANY_ID}`, {
     method: 'POST', headers: { 'content-type': 'application/json', revision: KLAVIYO_REVISION }, body: JSON.stringify(body),
   });
-  if (!r.ok) throw new Error(`klaviyo ${path} ${r.status} ${(await r.text()).slice(0, 300)}`);
+  if (!r.ok) throw Object.assign(new Error(`klaviyo ${path} ${r.status} ${(await r.text()).slice(0, 300)}`), { code: 'klaviyo-' + path + '-' + r.status });
 }
 
 async function upload(req, res) {
@@ -174,7 +174,7 @@ module.exports = async (req, res) => {
     if (req.body.action === 'submit') return await submit(req, res);
     send(res, 400, { error: 'Unknown action' });
   } catch (e) {
-    console.error('join', e);
-    send(res, 500, { error: 'Something went wrong sending your application. Please try again.' });
+    console.error('join', e.code || '', e.message);
+    send(res, 500, { error: 'Something went wrong sending your application. Please try again.', code: e.code || 'server' });
   }
 };

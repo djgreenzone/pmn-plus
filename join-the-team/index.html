@@ -160,7 +160,7 @@ main.jt{width:100%;margin:0}
 @media (prefers-reduced-motion:reduce){.mq-track{animation:none}.mq-row{overflow-x:auto}.mq-ph[aria-hidden]{display:none}}
 /* path */
 .path-sec{position:relative;isolation:isolate;overflow:hidden}
-.path-sec::before{content:"";position:absolute;inset:0;z-index:-1;background:image-set(url(/assets/about/siapo-pattern-white.avif) type("image/avif"),url(/assets/about/siapo-pattern-white.webp) type("image/webp")) center/cover;opacity:.07}
+.path-sec::before{content:"";position:absolute;inset:-35% 0;z-index:-1;will-change:transform;transform:translate3d(0,var(--py,0px),0);background:image-set(url(/assets/about/siapo-pattern-white.avif) type("image/avif"),url(/assets/about/siapo-pattern-white.webp) type("image/webp")) center/cover;opacity:.07}
 .path{list-style:none;display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem;margin-top:2.2rem;counter-reset:s}
 .path li{background:rgba(13,14,18,.85);border:1px solid var(--line);border-radius:26px;padding:1.6rem 1.4rem;counter-increment:s}
 .path li::before{content:"0" counter(s);display:block;font-family:var(--display);font-size:1rem;letter-spacing:.14em;color:var(--dim);margin-bottom:1.6rem}
@@ -169,7 +169,7 @@ main.jt{width:100%;margin:0}
 /* cta band */
 .band-in{display:grid;grid-template-columns:1fr 1fr;gap:clamp(2rem,5vw,4.5rem);align-items:center}
 .band picture{aspect-ratio:4/5;border-radius:26px}
-.band picture img{object-position:50% 62%}
+.band picture img{object-position:50% 40%}
 .band .disp{font-size:clamp(3rem,6.5vw,5.6rem);line-height:.9}
 .band p{max-width:34ch;margin-top:1.2rem}
 .band .btn{width:auto;padding:0 2rem;margin-top:1.8rem}
@@ -315,7 +315,7 @@ legend,.lbl{font-size:.8rem;font-weight:600;letter-spacing:.06em;text-transform:
       <p>Bring your eye, your hustle and your voice. We'll bring the stage.</p>
       <a class="btn" href="#apply">Apply now</a>
     </div>
-    <div class="rv"><picture class="dev"><source type="image/avif" srcset="/assets/join/pmn-plus-join-models-tonga-pair-warehouse-wall-640.avif 640w, /assets/join/pmn-plus-join-models-tonga-pair-warehouse-wall-1200.avif 1200w" sizes="(max-width:900px) 100vw, 46vw"><source type="image/webp" srcset="/assets/join/pmn-plus-join-models-tonga-pair-warehouse-wall-640.webp 640w, /assets/join/pmn-plus-join-models-tonga-pair-warehouse-wall-1200.webp 1200w" sizes="(max-width:900px) 100vw, 46vw"><img src="/assets/join/pmn-plus-join-models-tonga-pair-warehouse-wall-1200.webp" width="1200" height="1800" alt="Two models in Mate Maʻa Tonga tees standing small against a tall white warehouse wall" loading="lazy" decoding="async"></picture></div>
+    <div class="rv"><picture class=""><source type="image/avif" srcset="/assets/about/pmn-plus-locker-room-interview-700.avif 700w, /assets/about/pmn-plus-locker-room-interview.avif 1200w" sizes="(max-width:900px) 100vw, 46vw"><source type="image/webp" srcset="/assets/about/pmn-plus-locker-room-interview-700.webp 700w, /assets/about/pmn-plus-locker-room-interview.webp 1200w" sizes="(max-width:900px) 100vw, 46vw"><img src="/assets/about/pmn-plus-locker-room-interview.webp" width="1200" height="1200" alt="PMN+ crew filming a post-game interview with a player in a stadium locker-room corridor" loading="lazy" decoding="async"></picture></div>
   </div>
 </section>
 
@@ -526,6 +526,14 @@ legend,.lbl{font-size:.8rem;font-weight:600;letter-spacing:.06em;text-transform:
  ['dragleave','drop'].forEach(t=>drop.addEventListener(t,e=>{e.preventDefault();drop.classList.remove('on')}));
  drop.addEventListener('drop',e=>add(e.dataTransfer.files));
  show('start');
+})();
+</script>
+<script>
+(()=>{/* parallax: siapo pattern behind The process (same as About page) */
+ const b=document.querySelector('.path-sec');if(!b||matchMedia('(prefers-reduced-motion:reduce)').matches)return;let on=false,t=0;
+ const f=()=>{t=0;const r=b.getBoundingClientRect(),vh=innerHeight;const p=(r.top+r.height/2-vh/2)/(vh+r.height);b.style.setProperty('--py',(p*-0.6*r.height).toFixed(1)+'px')};
+ const q=()=>{if(on&&!t)t=requestAnimationFrame(f)};
+ new IntersectionObserver(e=>{on=e[0].isIntersecting;q()}).observe(b);addEventListener('scroll',q,{passive:true});addEventListener('resize',q);
 })();
 </script>
 <script>document.getElementById('yr').textContent=new Date().getFullYear()</script>

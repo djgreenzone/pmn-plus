@@ -118,13 +118,14 @@ async function submit(req, res) {
   if (bad.length) return send(res, 400, { error: 'Please check: ' + bad.join(', ') });
   a.phone = '+1' + digits;
 
-  const s = supa();
-  const photoLinks = (await Promise.all(a.photos.map((p) => signDownload(s, p).catch(() => null)))).filter(Boolean);
+  let s = null;
+  try { s = supa(); } catch (e) { console.warn('join: no Supabase env, sending to Klaviyo only'); }
+  const photoLinks = s ? (await Promise.all(a.photos.map((p) => signDownload(s, p).catch(() => null)))).filter(Boolean) : [];
   const submitted = new Date().toISOString();
   const id = 'CT-' + Date.now().toString(36).toUpperCase();
 
   // 1. Supabase record (the roster). Quietly skipped until the table exists.
-  try {
+  if (s) try {
     const r = await fetch(`${s.url}/rest/v1/content_team_applications`, {
       method: 'POST', headers: { ...s.h, 'Content-Type': 'application/json', Prefer: 'return=minimal' },
       body: JSON.stringify({ ref: id, ...a, status: 'applied', created_at: submitted }),

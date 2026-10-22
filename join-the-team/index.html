@@ -78,6 +78,32 @@ main{flex:1;width:min(1180px,100% - 2*clamp(1rem,5vw,2.5rem));margin:clamp(1.5re
 .foot .fine{margin:0;font-size:12px;color:var(--dim)}
 .foot .fbot{display:flex;justify-content:flex-start;align-items:center;gap:12px 20px;flex-wrap:wrap}.foot .pow{display:inline-flex;align-items:center;gap:6px;height:30px;padding:0 12px;border-radius:999px;border:1px solid rgba(244,242,238,.22);color:rgba(244,242,238,.75);font-size:11.5px;letter-spacing:.02em;text-decoration:none;white-space:nowrap;transition:border-color .15s,color .15s}.foot .pow b{font-weight:700;color:#fff}.foot .pow:hover{border-color:#fff;color:#fff}.foot .pow::before{content:"";width:6px;height:6px;border-radius:50%;background:#C8102E}
 @media (min-width:900px){.foot{grid-template-columns:auto 1fr auto;align-items:start;column-gap:56px;padding-inline:max(2.5rem,calc(50vw - 620px))}.foot>.fine,.foot>.pay,.foot>.fbot{grid-column:1/-1}.foot-cols{gap:48px}}
+
+/* PMN+ Shop promo */
+.sp{padding:clamp(56px,8vw,104px) 0 clamp(64px,8vw,112px);border-top:1px solid var(--line)}
+.sp-head{display:flex;align-items:end;justify-content:space-between;gap:24px;flex-wrap:wrap;margin-bottom:28px}
+.sp-head .eyebrow{margin:0 0 10px}
+.sp-head h2{margin:0}
+.sp-head p{margin:10px 0 0;color:var(--dim);max-width:46ch}
+.sp-ctl{display:flex;gap:10px;align-items:center}
+.sp-btn{width:46px;height:46px;border-radius:50%;border:1px solid var(--line);background:transparent;color:var(--ink);display:grid;place-items:center;cursor:pointer}
+.sp-btn:hover{border-color:var(--ink)}
+.sp-btn svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:2}
+.sp-all{display:inline-flex;align-items:center;height:46px;padding:0 22px;border-radius:999px;background:var(--ink);color:#000;font-family:var(--display);font-size:20px;letter-spacing:.04em;text-decoration:none}
+.sp-track{list-style:none;margin:0;padding:0 0 8px;display:grid;grid-auto-flow:column;grid-auto-columns:clamp(200px,62vw,260px);gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+.sp-track::-webkit-scrollbar{display:none}
+.sp-card{scroll-snap-align:start}
+.sp-card a{display:grid;gap:6px;color:var(--ink);text-decoration:none}
+.sp-ph{display:grid;place-items:center;aspect-ratio:4/5;border-radius:16px;background:radial-gradient(120% 90% at 50% 35%,#fff 0,#e9e9eb 70%,#dcdcdf 100%);overflow:hidden;margin-bottom:6px}
+.sp-ph img{width:86%;height:86%;object-fit:contain;transition:transform .35s ease}
+.sp-card a:hover .sp-ph img{transform:scale(1.05)}
+.sp-t{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--dim)}
+.sp-n{font-weight:600;font-size:15px;line-height:1.3}
+.sp-p{font-size:15px;color:var(--ink)}
+.sp-card.sold .sp-p::after{content:" · Sold out";color:var(--dim)}
+.sp-offer{margin-top:22px;color:var(--dim);font-size:14px}
+.sp-offer b{color:var(--ink);font-weight:600}
+@media (prefers-reduced-motion:reduce){.sp-ph img{transition:none}}
 </style>
 <link rel="stylesheet" href="/assets/pmn-nav.css">
 <style>
@@ -463,6 +489,25 @@ legend,.lbl{font-size:.8rem;font-weight:600;letter-spacing:.06em;text-transform:
   </div>
 </section>
 
+
+<section class="wrap sp" id="shop" aria-labelledby="spTitle">
+  <div class="sp-head">
+    <div>
+      <p class="eyebrow">PMN+ Shop</p>
+      <h2 class="disp" id="spTitle">Rep your island</h2>
+      <p>Our best-selling Toa Samoa and Mate Maʻa Tonga merch, made for Rugby League World Cup 2026.</p>
+    </div>
+    <div class="sp-ctl">
+      <button class="sp-btn" type="button" data-dir="-1" aria-label="Previous products"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
+      <button class="sp-btn" type="button" data-dir="1" aria-label="Next products"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button>
+      <a class="sp-all" href="/shop">Shop all</a>
+    </div>
+  </div>
+  <ul class="sp-track" id="spTrack">
+    <li class="sp-card" data-slug="toa-samoa-crest-oversized-tee-black"><a href="/shop/toa-samoa-crest-oversized-tee-black"><span class="sp-ph"><img src="/shop/hires/toa-oversized/toa-samoa-crest-oversized-tee-black-front-640.webp" srcset="/shop/hires/toa-oversized/toa-samoa-crest-oversized-tee-black-front-320.webp 320w, /shop/hires/toa-oversized/toa-samoa-crest-oversized-tee-black-front-640.webp 640w" sizes="(max-width:700px) 62vw, 260px" alt="Toa Samoa Crest Oversized Tee in black, front view" loading="lazy" decoding="async"></span><span class="sp-t">Toa Samoa</span><b class="sp-n">Toa Samoa Crest Oversized Tee</b><span class="sp-p">$60</span></a></li><li class="sp-card" data-slug="mate-maa-tonga-crest-oversized-tee-black"><a href="/shop/mate-maa-tonga-crest-oversized-tee-black"><span class="sp-ph"><img src="/shop/hires/mmt-oversized/mate-maa-tonga-crest-oversized-tee-black-front-640.webp" srcset="/shop/hires/mmt-oversized/mate-maa-tonga-crest-oversized-tee-black-front-320.webp 320w, /shop/hires/mmt-oversized/mate-maa-tonga-crest-oversized-tee-black-front-640.webp 640w" sizes="(max-width:700px) 62vw, 260px" alt="Mate Ma&#x27;a Tonga Crest Oversized Tee in black, front view" loading="lazy" decoding="async"></span><span class="sp-t">Mate Ma&#x27;a Tonga</span><b class="sp-n">Mate Ma&#x27;a Tonga Crest Oversized Tee</b><span class="sp-p">$60</span></a></li><li class="sp-card" data-slug="toa-samoa-player-tee-royal-blue"><a href="/shop/toa-samoa-player-tee-royal-blue"><span class="sp-ph"><img src="/shop/hires/toa-player-royal/toa-samoa-player-tee-royal-blue-front-640.webp" srcset="/shop/hires/toa-player-royal/toa-samoa-player-tee-royal-blue-front-320.webp 320w, /shop/hires/toa-player-royal/toa-samoa-player-tee-royal-blue-front-640.webp 640w" sizes="(max-width:700px) 62vw, 260px" alt="Toa Samoa Player Tee in royal blue, front view" loading="lazy" decoding="async"></span><span class="sp-t">Toa Samoa</span><b class="sp-n">Toa Samoa Player Tee</b><span class="sp-p">$45</span></a></li><li class="sp-card" data-slug="mate-maa-tonga-trucker-snapback-black"><a href="/shop/mate-maa-tonga-trucker-snapback-black"><span class="sp-ph"><img src="/shop/hires/mmt-trucker/mate-maa-tonga-trucker-snapback-black-front-right-640.webp" srcset="/shop/hires/mmt-trucker/mate-maa-tonga-trucker-snapback-black-front-right-320.webp 320w, /shop/hires/mmt-trucker/mate-maa-tonga-trucker-snapback-black-front-right-640.webp 640w" sizes="(max-width:700px) 62vw, 260px" alt="Mate Ma&#x27;a Tonga Trucker Snapback in black, front view" loading="lazy" decoding="async"></span><span class="sp-t">Mate Ma&#x27;a Tonga</span><b class="sp-n">Mate Ma&#x27;a Tonga Trucker Snapback</b><span class="sp-p">$35</span></a></li><li class="sp-card" data-slug="toa-samoa-rlwc26-tee-black"><a href="/shop/toa-samoa-rlwc26-tee-black"><span class="sp-ph"><img src="/shop/hires/toa-rlwc26-black/toa-samoa-rlwc26-tee-black-back-640.webp" srcset="/shop/hires/toa-rlwc26-black/toa-samoa-rlwc26-tee-black-back-320.webp 320w, /shop/hires/toa-rlwc26-black/toa-samoa-rlwc26-tee-black-back-640.webp 640w" sizes="(max-width:700px) 62vw, 260px" alt="Toa Samoa RLWC26 Tee in black, back view" loading="lazy" decoding="async"></span><span class="sp-t">Toa Samoa</span><b class="sp-n">Toa Samoa RLWC26 Tee</b><span class="sp-p">$45</span></a></li><li class="sp-card" data-slug="mate-maa-tonga-rlwc26-tee-black"><a href="/shop/mate-maa-tonga-rlwc26-tee-black"><span class="sp-ph"><img src="/shop/hires/mmt-rlwc26-black/mate-maa-tonga-rlwc26-tee-black-back-640.webp" srcset="/shop/hires/mmt-rlwc26-black/mate-maa-tonga-rlwc26-tee-black-back-320.webp 320w, /shop/hires/mmt-rlwc26-black/mate-maa-tonga-rlwc26-tee-black-back-640.webp 640w" sizes="(max-width:700px) 62vw, 260px" alt="Mate Ma&#x27;a Tonga RLWC26 Tee in black, back view" loading="lazy" decoding="async"></span><span class="sp-t">Mate Ma&#x27;a Tonga</span><b class="sp-n">Mate Ma&#x27;a Tonga RLWC26 Tee</b><span class="sp-p">$45</span></a></li><li class="sp-card" data-slug="toa-samoa-trucker-snapback-black"><a href="/shop/toa-samoa-trucker-snapback-black"><span class="sp-ph"><img src="/shop/hires/toa-trucker/toa-samoa-trucker-snapback-black-front-right-640.webp" srcset="/shop/hires/toa-trucker/toa-samoa-trucker-snapback-black-front-right-320.webp 320w, /shop/hires/toa-trucker/toa-samoa-trucker-snapback-black-front-right-640.webp 640w" sizes="(max-width:700px) 62vw, 260px" alt="Toa Samoa Trucker Snapback in black, front view" loading="lazy" decoding="async"></span><span class="sp-t">Toa Samoa</span><b class="sp-n">Toa Samoa Trucker Snapback</b><span class="sp-p">$35</span></a></li><li class="sp-card" data-slug="mate-maa-tonga-high-profile-snapback-white-crimson"><a href="/shop/mate-maa-tonga-high-profile-snapback-white-crimson"><span class="sp-ph"><img src="/shop/hires/mmt-hp-snapback/mate-maa-tonga-high-profile-snapback-white-crimson-front-right-640.webp" srcset="/shop/hires/mmt-hp-snapback/mate-maa-tonga-high-profile-snapback-white-crimson-front-right-320.webp 320w, /shop/hires/mmt-hp-snapback/mate-maa-tonga-high-profile-snapback-white-crimson-front-right-640.webp 640w" sizes="(max-width:700px) 62vw, 260px" alt="Mate Ma&#x27;a Tonga High Profile Snapback in white/crimson, front view" loading="lazy" decoding="async"></span><span class="sp-t">Mate Ma&#x27;a Tonga</span><b class="sp-n">Mate Ma&#x27;a Tonga High Profile Snapback</b><span class="sp-p">$55</span></a></li><li class="sp-card" data-slug="toa-samoa-silver-blackout-tee-black"><a href="/shop/toa-samoa-silver-blackout-tee-black"><span class="sp-ph"><img src="/shop/hires/toa-silver-blackout/toa-samoa-silver-blackout-tee-black-front-640.webp" srcset="/shop/hires/toa-silver-blackout/toa-samoa-silver-blackout-tee-black-front-320.webp 320w, /shop/hires/toa-silver-blackout/toa-samoa-silver-blackout-tee-black-front-640.webp 640w" sizes="(max-width:700px) 62vw, 260px" alt="Toa Samoa Silver Blackout Tee in black/silver, front view" loading="lazy" decoding="async"></span><span class="sp-t">Toa Samoa</span><b class="sp-n">Toa Samoa Silver Blackout Tee</b><span class="sp-p">$45</span></a></li><li class="sp-card" data-slug="toa-samoa-high-profile-snapback-navy-white"><a href="/shop/toa-samoa-high-profile-snapback-navy-white"><span class="sp-ph"><img src="/shop/hires/toa-hp-snapback/toa-samoa-high-profile-snapback-navy-white-front-right-640.webp" srcset="/shop/hires/toa-hp-snapback/toa-samoa-high-profile-snapback-navy-white-front-right-320.webp 320w, /shop/hires/toa-hp-snapback/toa-samoa-high-profile-snapback-navy-white-front-right-640.webp 640w" sizes="(max-width:700px) 62vw, 260px" alt="Toa Samoa High Profile Snapback in navy/white, front view" loading="lazy" decoding="async"></span><span class="sp-t">Toa Samoa</span><b class="sp-n">Toa Samoa High Profile Snapback</b><span class="sp-p">$55</span></a></li><li class="sp-card" data-slug="mate-maa-tonga-silver-blackout-tee-black"><a href="/shop/mate-maa-tonga-silver-blackout-tee-black"><span class="sp-ph"><img src="/shop/hires/mmt-silver-blackout/mate-maa-tonga-silver-blackout-tee-black-front-640.webp" srcset="/shop/hires/mmt-silver-blackout/mate-maa-tonga-silver-blackout-tee-black-front-320.webp 320w, /shop/hires/mmt-silver-blackout/mate-maa-tonga-silver-blackout-tee-black-front-640.webp 640w" sizes="(max-width:700px) 62vw, 260px" alt="Mate Ma&#x27;a Tonga Silver Blackout Tee in black/silver, front view" loading="lazy" decoding="async"></span><span class="sp-t">Mate Ma&#x27;a Tonga</span><b class="sp-n">Mate Ma&#x27;a Tonga Silver Blackout Tee</b><span class="sp-p">$45</span></a></li><li class="sp-card" data-slug="mate-maa-tonga-player-tee-red"><a href="/shop/mate-maa-tonga-player-tee-red"><span class="sp-ph"><img src="/shop/hires/mmt-player-red/mate-maa-tonga-player-tee-red-front-640.webp" srcset="/shop/hires/mmt-player-red/mate-maa-tonga-player-tee-red-front-320.webp 320w, /shop/hires/mmt-player-red/mate-maa-tonga-player-tee-red-front-640.webp 640w" sizes="(max-width:700px) 62vw, 260px" alt="Mate Ma&#x27;a Tonga Player Tee in red, front view" loading="lazy" decoding="async"></span><span class="sp-t">Mate Ma&#x27;a Tonga</span><b class="sp-n">Mate Ma&#x27;a Tonga Player Tee</b><span class="sp-p">$45</span></a></li>
+  </ul>
+  <p class="sp-offer"><b>Buy 3 tees, get 1 free.</b> Pay in 4 with Afterpay.</p>
+</section>
 </main>
 <footer class="foot">
   <a class="foot-logo" href="/" aria-label="PMN+ home"><img src="/shop/brand/pmn-plus-logo-white.svg" alt="PMN+" width="48" height="52" loading="lazy"></a>
@@ -574,5 +619,19 @@ legend,.lbl{font-size:.8rem;font-weight:600;letter-spacing:.06em;text-transform:
 })();
 </script>
 <script>document.getElementById('yr').textContent=new Date().getFullYear()</script>
+<script>
+(()=>{const t=document.getElementById('spTrack');if(!t)return;
+const step=()=>{const c=t.querySelector('.sp-card');return c?c.getBoundingClientRect().width+16:260};
+const go=d=>{const end=t.scrollLeft+t.clientWidth>=t.scrollWidth-4;if(d>0&&end)t.scrollTo({left:0,behavior:'smooth'});else if(d<0&&t.scrollLeft<=4)t.scrollTo({left:t.scrollWidth,behavior:'smooth'});else t.scrollBy({left:d*step(),behavior:'smooth'})};
+document.querySelectorAll('.sp-btn').forEach(b=>b.addEventListener('click',()=>{go(+b.dataset.dir);idle=Date.now()}));
+let idle=0,vis=false;const rm=matchMedia('(prefers-reduced-motion: reduce)').matches;
+['pointerdown','wheel','touchstart','focusin'].forEach(e=>t.addEventListener(e,()=>idle=Date.now(),{passive:true}));
+t.addEventListener('mouseenter',()=>idle=Date.now()+6e5);t.addEventListener('mouseleave',()=>idle=Date.now());
+new IntersectionObserver(es=>vis=es[0].isIntersecting).observe(t);
+if(!rm)setInterval(()=>{if(vis&&Date.now()-idle>5000)go(1)},3500);
+fetch('/shop/search.json').then(r=>r.json()).then(list=>{const m={};list.forEach(x=>m[x.s]=x);
+t.querySelectorAll('.sp-card').forEach(c=>{const x=m[c.dataset.slug];if(!x){c.remove();return}c.querySelector('.sp-p').textContent='$'+x.p;c.classList.toggle('sold',!!x.so)})}).catch(()=>{});
+})();
+</script>
 </body>
 </html>

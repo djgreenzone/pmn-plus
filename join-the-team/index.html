@@ -189,13 +189,14 @@ main.jt{width:100%;margin:0}
 .step .sub{margin-top:-.8rem;color:#b9b9be;font-size:.98rem}
 fieldset{border:0;display:grid;gap:.6rem}
 legend,.lbl{font-size:.8rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:#b9b9be;margin-bottom:.6rem}
-.opts{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:.6rem}
+.opts{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:.6rem}
+.opts.four{grid-template-columns:repeat(4,minmax(0,1fr))}
 .opt{position:relative}
 .opt input{position:absolute;opacity:0;inset:0;cursor:pointer}
-.opt span{display:flex;align-items:center;justify-content:space-between;gap:.5rem;min-height:54px;padding:.7rem 1rem;border-radius:14px;background:var(--field);border:1px solid rgba(255,255,255,.14);font-weight:500;cursor:pointer;transition:border-color .15s,background .15s}
-.opt span svg{width:18px;height:18px;flex:none;stroke:#000;fill:none;stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round;background:#fff;border-radius:50%;padding:2px;opacity:0;transform:scale(.6);transition:.15s}
-.opt input:checked+span{border-color:#fff;background:#1d1e23}
-.opt input:checked+span svg{opacity:1;transform:none}
+.opt span{display:flex;align-items:center;justify-content:center;text-align:center;height:56px;padding:0 .6rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;border-radius:14px;background:var(--field);border:1.5px solid rgba(255,255,255,.14);font-weight:500;font-size:.95rem;cursor:pointer;transition:border-color .15s,background .15s}
+.opt span svg{display:none}
+.opt input:checked+span{border-color:#fff;background:#16171b}
+
 .opt input:focus-visible+span{outline:2px solid #fff;outline-offset:2px}
 .field textarea,.field select{width:100%;padding:.9rem 1.1rem;font:500 1rem var(--font);color:#fff;background:var(--field);border:1px solid rgba(255,255,255,.16);border-radius:12px}
 .field textarea{min-height:110px;resize:vertical}
@@ -239,7 +240,7 @@ legend,.lbl{font-size:.8rem;font-weight:600;letter-spacing:.06em;text-transform:
   .apply-side{position:static}.apply-side picture{display:none}
   .band-in{grid-template-columns:1fr}
 }
-@media (max-width:560px){.path{grid-template-columns:1fr}.done{grid-template-columns:1fr}.nav-row .btn{padding:0 1.4rem}}
+@media (max-width:560px){.opts.four{grid-template-columns:1fr 1fr}.path{grid-template-columns:1fr}.done{grid-template-columns:1fr}.nav-row .btn{padding:0 1.4rem}}
 @media (prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none}.dev img{transition:none}.rec::before{animation:none}.step{animation:none}}
 </style>
 </head>
@@ -332,8 +333,8 @@ legend,.lbl{font-size:.8rem;font-weight:600;letter-spacing:.06em;text-transform:
     <form id="jf" novalidate>
 
       <div class="step" data-step="start">
-        <h3 class="disp">What do you do?</h3><p class="sub">Pick all that fit.</p>
-        <fieldset><legend class="sr">Role</legend><div class="opts">
+        <h3 class="disp">What's your craft?</h3><p class="sub">Choose all that apply.</p>
+        <fieldset><legend class="sr">Role</legend><div class="opts four">
           <label class="opt"><input type="checkbox" name="role" value="photographer"><span>Photographer<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span></label>
           <label class="opt"><input type="checkbox" name="role" value="videographer"><span>Videographer<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span></label>
           <label class="opt"><input type="checkbox" name="role" value="model"><span>Model<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span></label>

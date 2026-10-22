@@ -331,6 +331,7 @@ legend,.lbl{font-size:.8rem;font-weight:600;letter-spacing:.06em;text-transform:
     <div class="prog"><span id="stepLbl">Step 1 of 5</span><span id="stepName">Start</span></div>
     <div class="bar"><i id="bar"></i></div>
     <form id="jf" novalidate>
+      <div aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden"><label>Website <input name="website" tabindex="-1" autocomplete="off"></label></div>
 
       <div class="step" data-step="start">
         <h3 class="disp">What's your craft?</h3><p class="sub">Choose all that apply.</p>
@@ -430,6 +431,7 @@ legend,.lbl{font-size:.8rem;font-weight:600;letter-spacing:.06em;text-transform:
         </div><p class="msg" data-err="availability"></p></fieldset>
         <div class="field"><label for="lWhy">Why PMN+?</label><textarea id="lWhy" name="why" maxlength="500" placeholder="One or two lines."></textarea><p class="msg" data-err="why"></p></div>
         <label class="chk"><input type="checkbox" name="newsletter"><span>Send me PMN+ news, drops and culture. Unsubscribe anytime.</span></label>
+        <p class="msg" data-err="submit" role="alert"></p>
         <p class="fine-print">By applying you agree to our <a href="/privacy-policy">privacy policy</a>. You must be 16 or older to apply. Applicants under 18 need a parent or guardian's consent.</p>
       </div>
 
@@ -506,8 +508,29 @@ legend,.lbl{font-size:.8rem;font-weight:600;letter-spacing:.06em;text-transform:
   guardian:()=>[err('guardian_name',val('guardian_name').split(/\s+/).length>=2?'':'Add their full name.'),err('guardian_email',!emailOk(val('guardian_email'))?'Check their email.':val('guardian_email').toLowerCase()===val('email').toLowerCase()?'Use your parent or guardian\'s own email.':''),err('guardian_ok',f.elements.guardian_ok.checked?'':'Tick this to continue.')].every(Boolean),
   last:()=>[err('availability',vals('availability').length?'':'Pick at least one.'),err('why',val('why').length>=10?'':'Tell us a little more.')].every(Boolean)
  };
+ const api=(body)=>fetch('/api/join',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)}).then(async r=>{const j=await r.json().catch(()=>({}));if(!r.ok)throw new Error(j.error||'Something went wrong. Please try again.');return j});
+ async function sendApp(){
+  next.disabled=true;back.disabled=true;err('submit','');
+  try{
+   const photos=[];
+   if(files.length){
+    next.textContent='Uploading photos…';
+    const up=await api({action:'upload',files:files.map(x=>({type:x.type||'image/jpeg',size:x.size}))});
+    await Promise.all(up.uploads.map((u,i)=>fetch(u.url,{method:'PUT',headers:{'Content-Type':files[i].type||'image/jpeg','x-upsert':'false'},body:files[i]}).then(r=>{if(!r.ok)throw new Error('A photo failed to upload. Please try again.')})));
+    up.uploads.forEach(u=>photos.push(u.path));
+   }
+   next.textContent='Sending…';
+   const roles=vals('role'),fields={};
+   ['first_name','last_name','email','phone','portfolio','instagram','photo_gear','photo_edit','video_gear','video_edit','height','tee_size','guardian_name','guardian_email','why','website'].forEach(n=>fields[n]=val(n));
+   await api({action:'submit',...fields,roles,city:vals('city')[0],age:vals('age')[0],model_exp:vals('model_exp')[0]||'',
+    photo_types:roles.includes('photographer')?vals('photo_types'):[],video_types:roles.includes('videographer')?vals('video_types'):[],
+    availability:vals('availability'),newsletter:f.elements.newsletter.checked,photos});
+   document.getElementById('fn').textContent=val('first_name');hist.push(cur);show('done');
+   try{window.pmnTrack&&pmnTrack('generate_lead',{form:'join_the_team'})}catch(_){}
+  }catch(e){err('submit',e.message);next.disabled=false;back.disabled=false;next.textContent='Send application'}
+ }
  f.addEventListener('submit',e=>{e.preventDefault();if(!check[cur]())return;const o=order(),i=o.indexOf(cur);
-  if(cur==='last'){next.disabled=true;next.textContent='Sending…';setTimeout(()=>{document.getElementById('fn').textContent=val('first_name');hist.push(cur);show('done')},700);return}
+  if(cur==='last'){sendApp();return}
   hist.push(cur);show(o[i+1])});
  back.onclick=()=>{const p=hist.pop();if(p)show(p)};
  f.addEventListener('change',e=>{if(e.target.name)err(e.target.name,'');if(cur==='start'&&/^(role|age)$/.test(e.target.name))show('start')});

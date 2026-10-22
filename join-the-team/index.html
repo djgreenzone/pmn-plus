@@ -75,6 +75,9 @@ main.jt{width:100%;margin:0}
 .jt .eyebrow{margin-bottom:.9rem}
 .jt h2.disp{font-size:clamp(2.6rem,6vw,4.4rem)}
 .jt p{color:#d6d6da;font-size:1.06rem;line-height:1.65}
+.jt .msg,.jt p.msg{color:#ff6b7d;font-size:.9rem;font-weight:500}
+.jt .msg.ok{color:var(--ok)}
+.jt .msg:empty{display:none}
 .jt picture{display:block;overflow:hidden;border-radius:16px;background:#0d0e12}
 .jt picture img{width:100%;height:100%;object-fit:cover}
 /* develop: B&W until in view, then colour */
@@ -504,7 +507,7 @@ legend,.lbl{font-size:.8rem;font-weight:600;letter-spacing:.06em;text-transform:
    let ok=true;try{const x=new URL(u);ok=/\./.test(x.hostname)}catch(e){ok=false}
    const ig=val('instagram').replace(/^@/,'');
    return [err('portfolio',ok?'':'Add a public link to your work.'),err('instagram',/^(?!.*\.\.)(?!\.)[A-Za-z0-9._]{1,30}$/.test(ig)?'':'Enter a valid Instagram handle.'),
-    err('files',vals('role').includes('model')&&files.length<2?'Add a headshot and a full-length photo.':'')].every(Boolean)},
+    err('files',vals('role').includes('model')&&files.length<2?(files.length?'Add one more photo. Models need 2: a headshot and a full-length shot.':'Models need 2 photos: a headshot and a full-length shot.'):'')].every(Boolean)},
   guardian:()=>[err('guardian_name',val('guardian_name').split(/\s+/).length>=2?'':'Add their full name.'),err('guardian_email',!emailOk(val('guardian_email'))?'Check their email.':val('guardian_email').toLowerCase()===val('email').toLowerCase()?'Use your parent or guardian\'s own email.':''),err('guardian_ok',f.elements.guardian_ok.checked?'':'Tick this to continue.')].every(Boolean),
   last:()=>[err('availability',vals('availability').length?'':'Pick at least one.'),err('why',val('why').length>=10?'':'Tell us a little more.')].every(Boolean)
  };
@@ -529,7 +532,7 @@ legend,.lbl{font-size:.8rem;font-weight:600;letter-spacing:.06em;text-transform:
    try{window.pmnTrack&&pmnTrack('generate_lead',{form:'join_the_team'})}catch(_){}
   }catch(e){err('submit',e.message);next.disabled=false;back.disabled=false;next.textContent='Send application'}
  }
- f.addEventListener('submit',e=>{e.preventDefault();if(!check[cur]())return;const o=order(),i=o.indexOf(cur);
+ f.addEventListener('submit',e=>{e.preventDefault();if(!check[cur]()){const m=[...steps.find(x=>x.dataset.step===cur).querySelectorAll('.msg')].find(x=>x.textContent&&!x.classList.contains('ok'));if(m)m.scrollIntoView({behavior:'smooth',block:'center'});return}const o=order(),i=o.indexOf(cur);
   if(cur==='last'){sendApp();return}
   hist.push(cur);show(o[i+1])});
  back.onclick=()=>{const p=hist.pop();if(p)show(p)};

@@ -82,10 +82,6 @@ main.jt{width:100%;margin:0}
 .in .dev img,.dev.in img{filter:none}
 /* hero */
 .hero{position:relative;isolation:isolate;overflow:hidden;padding-block:clamp(2rem,5vw,4rem) clamp(3.5rem,8vw,6rem)!important}
-.hero .bgv{position:absolute;inset:0;z-index:-1}
-.hero .bgv video{width:100%;height:100%;object-fit:cover;opacity:.4}
-.hero .bgv::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(0,0,0,.75),rgba(0,0,0,.25) 60%,rgba(0,0,0,.45)),linear-gradient(180deg,transparent 60%,#000)}
-@media (prefers-reduced-motion:reduce){.hero .bgv video{display:none}}
 .hero-in{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(2rem,5vw,4.5rem);align-items:center}
 .hero h1{font-size:clamp(4.2rem,12vw,9.5rem);line-height:.86;margin:.2rem 0 1.2rem}
 .hero .lede{max-width:46ch;font-size:clamp(1.08rem,1.6vw,1.22rem);color:#e8e8ea}
@@ -160,7 +156,10 @@ main.jt{width:100%;margin:0}
 @media (prefers-reduced-motion:reduce){.mq-track{animation:none}.mq-row{overflow-x:auto}.mq-ph[aria-hidden]{display:none}}
 /* path */
 .path-sec{position:relative;isolation:isolate;overflow:hidden}
-.path-sec::before{content:"";position:absolute;inset:-35% 0;z-index:-1;will-change:transform;transform:translate3d(0,var(--py,0px),0);background:image-set(url(/assets/about/siapo-pattern-white.avif) type("image/avif"),url(/assets/about/siapo-pattern-white.webp) type("image/webp")) center/cover;opacity:.07}
+.path-sec .bgv{position:absolute;inset:0;z-index:-1}
+.path-sec .bgv video{width:100%;height:100%;object-fit:cover;opacity:.45}
+.path-sec .bgv::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,#000,rgba(0,0,0,.35) 30%,rgba(0,0,0,.35) 70%,#000)}
+@media (prefers-reduced-motion:reduce){.path-sec .bgv video{display:none}}
 .path{list-style:none;display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem;margin-top:2.2rem;counter-reset:s}
 .path li{background:rgba(13,14,18,.85);border:1px solid var(--line);border-radius:26px;padding:1.6rem 1.4rem;counter-increment:s}
 .path li::before{content:"0" counter(s);display:block;font-family:var(--display);font-size:1rem;letter-spacing:.14em;color:var(--dim);margin-bottom:1.6rem}
@@ -249,7 +248,6 @@ legend,.lbl{font-size:.8rem;font-weight:600;letter-spacing:.06em;text-transform:
 <main id="main" class="jt">
 
 <section class="hero">
-  <div class="bgv" aria-hidden="true"><video autoplay muted loop playsinline preload="metadata"><source src="/assets/bg.mp4" type="video/mp4"></video></div>
   <div class="wrap hero-in">
     <div>
       <p class="eyebrow">PMN+ Content Team</p>
@@ -299,6 +297,7 @@ legend,.lbl{font-size:.8rem;font-weight:600;letter-spacing:.06em;text-transform:
 </section>
 
 <section class="path-sec">
+  <div class="bgv" aria-hidden="true"><video autoplay muted loop playsinline preload="none" data-src="/assets/bg.mp4"></video></div>
   <div class="wrap">
     <p class="eyebrow">How it works</p><h2 class="disp">The process</h2>
     <ol class="path">
@@ -525,11 +524,10 @@ legend,.lbl{font-size:.8rem;font-weight:600;letter-spacing:.06em;text-transform:
 })();
 </script>
 <script>
-(()=>{/* parallax: siapo pattern behind The process (same as About page) */
- const b=document.querySelector('.path-sec');if(!b||matchMedia('(prefers-reduced-motion:reduce)').matches)return;let on=false,t=0;
- const f=()=>{t=0;const r=b.getBoundingClientRect(),vh=innerHeight;const p=(r.top+r.height/2-vh/2)/(vh+r.height);b.style.setProperty('--py',(p*-0.6*r.height).toFixed(1)+'px')};
- const q=()=>{if(on&&!t)t=requestAnimationFrame(f)};
- new IntersectionObserver(e=>{on=e[0].isIntersecting;q()}).observe(b);addEventListener('scroll',q,{passive:true});addEventListener('resize',q);
+(()=>{/* background video behind The process: load only when near, never with reduced motion */
+ const v=document.querySelector('.path-sec video'),c=navigator.connection;if(!v||matchMedia('(prefers-reduced-motion:reduce)').matches||(c&&c.saveData))return;
+ const go=()=>{if(!v.src){v.src=v.dataset.src;v.play().catch(()=>{})}};
+ 'IntersectionObserver' in window?new IntersectionObserver((e,o)=>{if(e[0].isIntersecting){go();o.disconnect()}},{rootMargin:'400px'}).observe(v):go();
 })();
 </script>
 <script>document.getElementById('yr').textContent=new Date().getFullYear()</script>

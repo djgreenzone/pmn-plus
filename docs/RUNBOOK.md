@@ -155,9 +155,11 @@ template: `_source/account/email-signin.html` (paste into Supabase → Auth → 
 
 ## Content Team applications (/join-the-team)
 - Page: `join-the-team/index.html` (hand-edited). Form posts to `api/join.js`.
-- Each application fires the Klaviyo event **Content Team Application** (PMN+ account). Flow **Content Team Application**
-  (`UPaYnL`) sends: 1) internal alert to Tiomai (etdevoux@gmail.com), template "Content Team – New Application Alert";
+- Each application fires the Klaviyo event **Content Team Application** (PMN+ account). Flow **Content Team Application (website)**
+  (`SZNkHY`, triggered by metric `UGZHQH`, the one the site's API key creates) sends: 1) internal alert to Tiomai (etdevoux@gmail.com), template "Content Team – New Application Alert";
   2) "We got your application" email to the applicant. Change the alert recipients in that flow's alert step.
+  Klaviyo's API can't switch an internal-alert step to Live: that's done by hand in the flow editor. The older flow
+  `UPaYnL` (on an unused metric) is set to Draft and can be deleted.
 - Photos: private Supabase Storage bucket `content-team` (created automatically on first upload). The alert email links
   to them with 1-year signed links.
 - Roster table: run `docs/sql/content_team_applications.sql` once in Supabase SQL Editor. Until it exists the API skips the

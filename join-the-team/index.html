@@ -356,14 +356,12 @@ legend,.lbl{font-size:.8rem;font-weight:600;letter-spacing:.06em;text-transform:
       </div>
 
       <div class="step" data-step="you" hidden>
-        <h3 class="disp">About you</h3><p class="sub">We'll send a code to confirm your email.</p>
-        <div class="field"><label for="fName">Full name</label><input id="fName" name="name" autocomplete="name" required><p class="msg" data-err="name"></p></div>
+        <h3 class="disp">About you</h3>
+        <div class="two"><div class="field"><label for="fFirst">First name</label><input id="fFirst" name="first_name" autocomplete="given-name" required><p class="msg" data-err="first_name"></p></div>
+        <div class="field"><label for="fLast">Last name</label><input id="fLast" name="last_name" autocomplete="family-name" required><p class="msg" data-err="last_name"></p></div></div>
         <div class="field"><label for="fEmail">Email</label>
-          <div class="inl"><input id="fEmail" name="email" type="email" autocomplete="email" inputmode="email" required><button type="button" class="btn ghost" id="sendCode">Send code</button></div>
+          <input id="fEmail" name="email" type="email" autocomplete="email" inputmode="email" required>
           <p class="msg" data-err="email"></p></div>
-        <div class="field" id="codeWrap" hidden><label for="fCode">6-digit code</label>
-          <div class="inl"><input id="fCode" inputmode="numeric" autocomplete="one-time-code" maxlength="6" class="code"><button type="button" class="btn" id="checkCode">Verify</button></div>
-          <p class="msg" data-err="code"></p></div>
         <div class="field"><label for="fPhone">Mobile</label><input id="fPhone" name="phone" type="tel" autocomplete="tel" inputmode="tel" placeholder="(702) 555-0123" required><p class="msg" data-err="phone"></p></div>
       </div>
 
@@ -478,7 +476,7 @@ legend,.lbl{font-size:.8rem;font-weight:600;letter-spacing:.06em;text-transform:
 (()=>{/* step form — preview build: verification + submit are stubbed until the API is wired */
  const f=document.getElementById('jf'),steps=[...f.querySelectorAll('.step')],$=s=>f.querySelector(s);
  const next=document.getElementById('next'),back=document.getElementById('back'),navRow=document.getElementById('navRow');
- let verified=false,files=[],cur='start',hist=[];
+ let files=[],cur='start',hist=[];
  const vals=n=>[...f.querySelectorAll(`[name="${n}"]:checked`)].map(i=>i.value);
  const val=n=>(f.elements[n]&&f.elements[n].value||'').trim();
  const order=()=>{const r=vals('role');const o=['start','you'];['photographer','videographer','model'].forEach(x=>r.includes(x)&&o.push(x));o.push('work');if(vals('age')[0]==='16-17')o.push('guardian');o.push('last');return o};
@@ -494,8 +492,8 @@ legend,.lbl{font-size:.8rem;font-weight:600;letter-spacing:.06em;text-transform:
  const check={
   start:()=>[err('role',vals('role').length?'':'Pick at least one.'),err('city',vals('city').length?'':'Pick a city.'),err('age',vals('age').length?'':'Pick one.')].every(Boolean),
   you:()=>{const ph=val('phone').replace(/\D/g,'').replace(/^1(?=\d{10}$)/,'');
-   return [err('name',val('name').split(/\s+/).length>=2?'':'Add your first and last name.'),
-    err('email',!emailOk(val('email'))?'Check your email address.':!verified?'Verify your email with the code we send.':''),
+   return [err('first_name',val('first_name')?'':'Add your first name.'),err('last_name',val('last_name')?'':'Add your last name.'),
+    err('email',emailOk(val('email'))?'':'Check your email address.'),
     err('phone',ph.length===10?'':'Enter a 10-digit US mobile number.')].every(Boolean)},
   photographer:()=>err('photo_types',vals('photo_types').length?'':'Pick at least one.'),
   videographer:()=>err('video_types',vals('video_types').length?'':'Pick at least one.'),
@@ -509,16 +507,11 @@ legend,.lbl{font-size:.8rem;font-weight:600;letter-spacing:.06em;text-transform:
   last:()=>[err('availability',vals('availability').length?'':'Pick at least one.'),err('why',val('why').length>=10?'':'Tell us a little more.')].every(Boolean)
  };
  f.addEventListener('submit',e=>{e.preventDefault();if(!check[cur]())return;const o=order(),i=o.indexOf(cur);
-  if(cur==='last'){next.disabled=true;next.textContent='Sending…';setTimeout(()=>{document.getElementById('fn').textContent=val('name').split(/\s+/)[0];hist.push(cur);show('done')},700);return}
+  if(cur==='last'){next.disabled=true;next.textContent='Sending…';setTimeout(()=>{document.getElementById('fn').textContent=val('first_name');hist.push(cur);show('done')},700);return}
   hist.push(cur);show(o[i+1])});
  back.onclick=()=>{const p=hist.pop();if(p)show(p)};
  f.addEventListener('change',e=>{if(e.target.name)err(e.target.name,'');if(cur==='start'&&/^(role|age)$/.test(e.target.name))show('start')});
  /* email code (stub) */
- document.getElementById('sendCode').onclick=()=>{if(!err('email',emailOk(val('email'))?'':'Check your email address.'))return;
-  document.getElementById('codeWrap').hidden=false;err('email','');const m=f.querySelector('[data-err="email"]');m.classList.add('ok');m.textContent='Code sent to '+val('email')+'. Check your inbox.';document.getElementById('fCode').focus()};
- document.getElementById('checkCode').onclick=()=>{if(!/^\d{6}$/.test(document.getElementById('fCode').value))return err('code','Enter the 6-digit code.');
-  verified=true;err('code','');document.getElementById('codeWrap').hidden=true;const m=f.querySelector('[data-err="email"]');m.classList.add('ok');m.innerHTML='&#10003; Email verified';f.elements.email.readOnly=true;document.getElementById('sendCode').hidden=true};
- f.elements.email.addEventListener('input',()=>{verified=false});
  /* uploads */
  const inp=document.getElementById('files'),th=document.getElementById('thumbs'),drop=document.getElementById('drop');
  const draw=()=>{th.innerHTML='';files.forEach((fl,i)=>{const fg=document.createElement('figure'),im=document.createElement('img'),b=document.createElement('button');

@@ -14,8 +14,12 @@ def build(root, nb):
     s=open(out).read()
     if 'id="yr"' in s and "getElementById('yr')" not in s:
         s=s.replace('</body>',"<script>document.getElementById('yr').textContent=new Date().getFullYear()</script>\n</body>",1);open(out,'w').write(s)
-    for rel in ('api/_account.js','api/account/link.js','api/account/orders.js','api/account/reviews.js'):
+    for rel in ('api/_account.js','api/account/link.js','api/account/orders.js','api/account/reviews.js','api/admin/posts.js'):
         dst=os.path.join(root,rel);os.makedirs(os.path.dirname(dst),exist_ok=True);shutil.copyfile(os.path.join(HERE,rel),dst)
+    # Team dashboard (static page served at /admin)
+    adm=os.path.join(os.path.dirname(HERE),'admin','index.html')
+    if os.path.exists(adm):
+        os.makedirs(os.path.join(root,'admin'),exist_ok=True);shutil.copyfile(adm,os.path.join(root,'admin','index.html'))
     cfg=os.path.join(root,'assets','pmn-config.js')
     if not os.path.exists(cfg):
         open(cfg,'w').write('/* Public settings for the browser. Only PUBLIC values go here (never the service_role key). */\nwindow.PMN_CONFIG={\n  supabaseUrl:"",        // Supabase → Project Settings → API → Project URL\n  supabaseAnonKey:"",    // Supabase → Project Settings → API → anon / publishable key\n  google:false,          // true once Google sign-in is switched on in Supabase\n  apple:false,           // true once Apple sign-in is switched on in Supabase\n  memberGift:"",         // text shown on the account page once the Shopify member gift is set up\n  accountsLive:false     // true shows the account icon in the header\n};\n')

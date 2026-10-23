@@ -26,8 +26,10 @@
 | `SHOPIFY_CLIENT_ID`, `SHOPIFY_CLIENT_SECRET` | `/api/account/*` via the Shopify app "PMN+ Accounts" (read/write customers, read orders) |
 | `SHOPIFY_ADMIN_TOKEN` | optional alternative to client credentials in `_account.js` |
 | `SHOPIFY_STORE` | optional, defaults to `polynesianmusicnetwork.myshopify.com` |
-| `KLAVIYO_PRIVATE_KEY` | `/api/account/reviews` |
+| `KLAVIYO_PRIVATE_KEY` | `/api/account/reviews`; also `tools/ratings_fetch.py` (review aggregates for aggregateRating schema) |
 | `IG_ACCESS_TOKEN` | `/api/reels` |
+| `ADMIN_EMAILS` | `/api/admin/*` — comma-separated team emails allowed into the Studio dashboard (`/admin`). Controls who can publish content. |
+| `DEPLOY_HOOK_URL` | `/api/admin/*` — Vercel Deploy Hook (Settings → Git → Deploy Hooks). Publishing a post POSTs this to rebuild the static site. Optional; without it, publish still sets status but you rebuild manually. |
 
 ## Public keys (safe in the browser, live in the repo)
 - `assets/pmn-config.js`: Supabase URL + **publishable** key, analytics IDs, feature flags.

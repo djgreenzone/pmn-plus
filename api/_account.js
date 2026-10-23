@@ -17,10 +17,27 @@ function send(res, status, body) {
 function env() {
   const P = process.env;
   const e = { url: P.SUPABASE_URL, service: P.SUPABASE_SERVICE_ROLE_KEY, shopify: P.SHOPIFY_ADMIN_TOKEN,
-    clientId: P.SHOPIFY_CLIENT_ID, clientSecret: P.SHOPIFY_CLIENT_SECRET };
+    clientId: P.SHOPIFY_CLIENT_ID, clientSecret: P.SHOPIFY_CLIENT_SECRET,
+    adminEmails: (P.ADMIN_EMAILS || '').toLowerCase().split(',').map(s => s.trim()).filter(Boolean),
+    deployHook: P.DEPLOY_HOOK_URL || '' };
   const missing = Object.entries({ SUPABASE_URL: e.url, SUPABASE_SERVICE_ROLE_KEY: e.service }).filter(([, v]) => !v).map(([k]) => k);
   if (!e.shopify && !(e.clientId && e.clientSecret)) missing.push('SHOPIFY_CLIENT_ID + SHOPIFY_CLIENT_SECRET');
   return { ...e, missing, url: (e.url || '').replace(/\/+$/, '') };
+}
+
+// Admin gate for the team dashboard: the signed-in email must be in ADMIN_EMAILS
+// (Vercel env, comma-separated). No schema change, DJ controls who can publish.
+function isAdmin(e, user) {
+  return !!(user && user.email && e.adminEmails.includes(String(user.email).toLowerCase()));
+}
+
+// Fire the Vercel Deploy Hook so a publish rebuilds the static site. Best-effort.
+async function fireDeploy(e) {
+  if (!e.deployHook) return { ok: false, reason: 'no DEPLOY_HOOK_URL' };
+  try {
+    const r = await fetch(e.deployHook, { method: 'POST' });
+    return { ok: r.ok, status: r.status };
+  } catch (err) { return { ok: false, reason: String(err).slice(0, 120) }; }
 }
 
 // Dev Dashboard apps get a 24-hour Admin API token from their client ID + secret (client credentials grant).
@@ -89,4 +106,4 @@ async function shopify(e, query, variables) {
   return j.data;
 }
 
-module.exports = { send, env, currentUser, getProfile, updateProfile, ensureProfile, shopify };
+module.exports = { send, env, currentUser, getProfile, updateProfile, ensureProfile, shopify, db, isAdmin, fireDeploy };

@@ -1,0 +1,310 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>PMN+ Studio</title>
+<style>
+  :root{--bg:#08080a;--card:#0d0e12;--field:#15161a;--ink:#f4f2ee;--dim:rgba(244,242,238,.6);
+    --line:rgba(244,242,238,.16);--accent:#2f5fe0;--good:#3ddc84;--warn:#ffb020;--err:#ff6b5e;}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 "Instrument Sans",system-ui,sans-serif;}
+  h1,h2,h3,.bebas{font-family:"Bebas Neue",Impact,sans-serif;text-transform:uppercase;letter-spacing:.03em;font-weight:400;}
+  a{color:var(--accent)}
+  header.top{display:flex;align-items:center;gap:12px;padding:14px 20px;border-bottom:1px solid var(--line);position:sticky;top:0;background:var(--bg);z-index:5}
+  header.top h1{font-size:1.5rem;margin:0}
+  header.top .sp{flex:1}
+  .muted{color:var(--dim)}
+  button,.btn{font:inherit;cursor:pointer;border:1px solid var(--line);background:var(--field);color:var(--ink);
+    border-radius:999px;padding:8px 16px;transition:.2s}
+  button:hover,.btn:hover{border-color:var(--accent)}
+  button.primary{background:var(--ink);color:#000;border-color:var(--ink);font-family:"Bebas Neue",Impact,sans-serif;letter-spacing:.04em;padding:9px 20px}
+  button.primary:hover{background:var(--accent);color:#fff}
+  button.ghost{background:transparent}
+  button.danger:hover{border-color:var(--err);color:var(--err)}
+  .wrap{max-width:1100px;margin:0 auto;padding:20px}
+  .gate{max-width:420px;margin:12vh auto;padding:28px;background:var(--card);border:1px solid var(--line);border-radius:18px;text-align:center}
+  input,textarea,select{width:100%;font:inherit;color:var(--ink);background:var(--field);border:1px solid var(--line);
+    border-radius:12px;padding:10px 12px;margin-top:4px}
+  textarea{min-height:120px;resize:vertical;font-family:ui-monospace,monospace;font-size:13px}
+  label{display:block;margin:12px 0 0;font-size:.82rem;color:var(--dim);text-transform:uppercase;letter-spacing:.05em}
+  .row{display:grid;gap:14px}
+  @media(min-width:720px){.row.two{grid-template-columns:1fr 1fr}.row.three{grid-template-columns:1fr 1fr 1fr}}
+  table{width:100%;border-collapse:collapse;margin-top:8px}
+  th,td{text-align:left;padding:10px 8px;border-bottom:1px solid var(--line);vertical-align:top}
+  th{font-size:.75rem;text-transform:uppercase;letter-spacing:.05em;color:var(--dim)}
+  .pill{display:inline-block;font-size:.72rem;padding:2px 9px;border-radius:999px;border:1px solid var(--line)}
+  .pill.published{color:var(--good);border-color:var(--good)}
+  .pill.draft{color:var(--warn);border-color:var(--warn)}
+  .toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:var(--card);border:1px solid var(--line);
+    border-radius:12px;padding:12px 18px;opacity:0;pointer-events:none;transition:.3s;max-width:90vw}
+  .toast.on{opacity:1}
+  .toast.err{border-color:var(--err)}
+  .toast.ok{border-color:var(--good)}
+  .actions{display:flex;gap:8px;flex-wrap:wrap}
+  .hide{display:none!important}
+  .bar{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin:16px 0}
+  .bar .sp{flex:1}
+  dialog{background:var(--card);color:var(--ink);border:1px solid var(--line);border-radius:18px;max-width:760px;width:94vw;padding:0}
+  dialog::backdrop{background:rgba(0,0,0,.6)}
+  .dlg-head{display:flex;align-items:center;padding:16px 20px;border-bottom:1px solid var(--line);position:sticky;top:0;background:var(--card)}
+  .dlg-head h2{margin:0;font-size:1.3rem}.dlg-head .sp{flex:1}
+  .dlg-body{padding:20px;max-height:70vh;overflow:auto}
+  .dlg-foot{display:flex;gap:10px;padding:16px 20px;border-top:1px solid var(--line);position:sticky;bottom:0;background:var(--card)}
+  .hint{font-size:.78rem;color:var(--dim);margin-top:3px}
+</style>
+</head>
+<body>
+<header class="top">
+  <h1>PMN+ Studio</h1>
+  <span class="pill" id="envPill">Content</span>
+  <span class="sp"></span>
+  <span class="muted" id="who"></span>
+  <button class="ghost hide" id="rebuildBtn" title="Rebuild the live site now">Rebuild site</button>
+  <button class="ghost hide" id="signOut">Sign out</button>
+</header>
+
+<!-- Sign-in gate -->
+<div class="gate" id="gate">
+  <h2>Team sign-in</h2>
+  <p class="muted">Use your PMN+ team email. Access is limited to editors.</p>
+  <div id="step1">
+    <label>Email</label>
+    <input id="email" type="email" autocomplete="email" placeholder="you@islandcitymediagroup.com">
+    <div style="margin-top:14px" class="actions">
+      <button class="primary" id="sendCode">Email me a code</button>
+      <button class="ghost" id="googleBtn">Continue with Google</button>
+    </div>
+  </div>
+  <div id="step2" class="hide">
+    <label>6-digit code</label>
+    <input id="code" inputmode="numeric" autocomplete="one-time-code" placeholder="••••••">
+    <div style="margin-top:14px" class="actions">
+      <button class="primary" id="verify">Sign in</button>
+      <button class="ghost" id="back">Back</button>
+    </div>
+  </div>
+  <p class="hint" id="gateMsg"></p>
+</div>
+
+<!-- Dashboard -->
+<main class="wrap hide" id="app">
+  <div class="bar">
+    <button class="primary" id="newPost">+ New post</button>
+    <select id="filter" style="width:auto">
+      <option value="all">All</option>
+      <option value="draft">Drafts</option>
+      <option value="published">Published</option>
+    </select>
+    <span class="sp"></span>
+    <span class="muted" id="count"></span>
+  </div>
+  <table id="list"><thead><tr><th>Title</th><th>Status</th><th>Issue</th><th>Category</th><th>Updated</th><th></th></tr></thead>
+    <tbody id="rows"></tbody></table>
+</main>
+
+<!-- Editor -->
+<dialog id="editor">
+  <form method="dialog" id="postForm">
+    <div class="dlg-head"><h2 id="edTitle">New post</h2><span class="sp"></span>
+      <span class="pill" id="edStatus"></span></div>
+    <div class="dlg-body">
+      <label>Title *</label><input name="title" required>
+      <div class="row two">
+        <div><label>Slug</label><input name="slug" placeholder="auto from title"><div class="hint">/stories/&lt;slug&gt;</div></div>
+        <div><label>Reading minutes</label><input name="reading_minutes" type="number" min="0"></div>
+      </div>
+      <label>Dek (standfirst)</label><input name="dek">
+      <div class="row three">
+        <div><label>Category</label><select name="category_id" id="catSel"></select></div>
+        <div><label>Author</label><select name="author_id" id="authSel"></select></div>
+        <div><label>Issue</label><select name="issue_id" id="issueSel"></select></div>
+      </div>
+      <div class="row two">
+        <div><label>Order in issue</label><input name="order_in_issue" type="number" min="0"></div>
+        <div><label>Cover story?</label><select name="is_cover_story"><option value="false">No</option><option value="true">Yes</option></select></div>
+      </div>
+      <label>Body (HTML)</label><textarea name="body_html" style="min-height:220px"></textarea>
+      <div class="hint">Add products with: &lt;div class="shop-this-story" data-products="toa-oversized,toa-685-tee"&gt;&lt;/div&gt;</div>
+      <div class="row two">
+        <div><label>Hero image URL</label><input name="hero_image_url"></div>
+        <div><label>Hero alt text</label><input name="hero_alt"></div>
+      </div>
+      <div class="row two">
+        <div><label>Keywords (comma-sep)</label><input name="keywords"></div>
+        <div><label>Tags (comma-sep)</label><input name="tags"></div>
+      </div>
+      <label>SEO title (≤60)</label><input name="seo_title" maxlength="70">
+      <label>SEO description (≤155)</label><input name="seo_description" maxlength="170">
+      <div class="row two">
+        <div><label>Schema type</label><select name="schema_type"><option>Article</option><option>NewsArticle</option></select></div>
+        <div><label>OG image URL</label><input name="og_image_url"></div>
+      </div>
+      <label>Rights note</label><input name="rights_note">
+    </div>
+    <div class="dlg-foot">
+      <button type="button" class="primary" id="saveBtn">Save</button>
+      <button type="button" id="pubBtn">Save & publish</button>
+      <button type="button" id="unpubBtn" class="ghost hide">Unpublish</button>
+      <span class="sp"></span>
+      <button type="button" class="ghost danger hide" id="delBtn">Delete</button>
+      <button type="button" class="ghost" id="closeBtn">Close</button>
+    </div>
+  </form>
+</dialog>
+
+<div class="toast" id="toast"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+<script src="/assets/pmn-config.js"></script>
+<script>
+(function(){
+  var C=window.PMN_CONFIG||{};
+  var sb=window.supabase.createClient(C.supabaseUrl,C.supabaseAnonKey);
+  var $=function(id){return document.getElementById(id)};
+  var token=null, meta={authors:[],categories:[],issues:[]}, editingId=null, editingStatus=null;
+
+  function toast(msg,kind){var t=$('toast');t.textContent=msg;t.className='toast on '+(kind||'');setTimeout(function(){t.className='toast'},2600)}
+  function api(method,body){
+    return fetch('/api/admin/posts',{method:method,headers:{'Content-Type':'application/json','Authorization':'Bearer '+token},
+      body:body?JSON.stringify(body):undefined}).then(function(r){return r.json().then(function(j){if(!r.ok)throw new Error(j.error||r.status);return j})});
+  }
+
+  // ---- auth ----
+  function show(signedIn){ $('gate').classList.toggle('hide',signedIn); $('app').classList.toggle('hide',!signedIn);
+    $('signOut').classList.toggle('hide',!signedIn); $('rebuildBtn').classList.toggle('hide',!signedIn); }
+
+  async function onSession(s){
+    if(!s){show(false);return}
+    token=s.access_token; $('who').textContent=s.user.email;
+    show(true);
+    try{ await loadMeta(); await loadList(); }
+    catch(e){ if(String(e).indexOf('403')>-1||/authorized/i.test(e)){ toast('This account is not an editor.','err'); show(false);} else toast(String(e),'err'); }
+  }
+  sb.auth.getSession().then(function(r){onSession(r.data.session)});
+  sb.auth.onAuthStateChange(function(_e,s){onSession(s)});
+
+  $('sendCode').onclick=function(){
+    var email=$('email').value.trim(); if(!email)return toast('Enter your email','err');
+    $('gateMsg').textContent='Sending…';
+    sb.auth.signInWithOtp({email:email,options:{shouldCreateUser:false}}).then(function(r){
+      if(r.error){$('gateMsg').textContent=r.error.message;return}
+      $('step1').classList.add('hide');$('step2').classList.remove('hide');$('gateMsg').textContent='Check '+email+' for a code.';
+    });
+  };
+  $('verify').onclick=function(){
+    var email=$('email').value.trim(),tok=$('code').value.trim();
+    sb.auth.verifyOtp({email:email,token:tok,type:'email'}).then(function(r){
+      if(r.error)$('gateMsg').textContent=r.error.message;
+    });
+  };
+  $('back').onclick=function(){$('step2').classList.add('hide');$('step1').classList.remove('hide');$('gateMsg').textContent=''};
+  $('googleBtn').onclick=function(){sb.auth.signInWithOAuth({provider:'google',options:{redirectTo:location.href}})};
+  $('signOut').onclick=function(){sb.auth.signOut()};
+
+  // ---- data ----
+  function loadMeta(){
+    return fetch('/api/admin/posts?meta=1',{headers:{Authorization:'Bearer '+token}}).then(function(r){
+      if(r.status===403)throw new Error('403 not authorized'); return r.json();
+    }).then(function(j){
+      if(j.error)throw new Error(j.error); meta=j; fillSelect('catSel',j.categories,'name',true); fillSelect('authSel',j.authors,'name',true);
+      fillSelect('issueSel',j.issues,function(x){return x.title+(x.period_label?' ('+x.period_label+')':'')},true);
+    });
+  }
+  function fillSelect(id,items,label,blank){
+    var sel=$(id),fn=typeof label==='function'?label:function(x){return x[label]};
+    sel.innerHTML=(blank?'<option value="">—</option>':'')+items.map(function(x){return '<option value="'+x.id+'">'+esc(fn(x))+'</option>'}).join('');
+  }
+  function loadList(){
+    return fetch('/api/admin/posts',{headers:{Authorization:'Bearer '+token}}).then(function(r){return r.json()}).then(function(j){
+      if(j.error)throw new Error(j.error); renderRows(j.posts||[]);
+    });
+  }
+  function esc(v){return String(v==null?'':v).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/"/g,'&quot;')}
+  function fmt(d){return d?new Date(d).toLocaleDateString(undefined,{month:'short',day:'numeric'}):''}
+  function renderRows(posts){
+    var f=$('filter').value;
+    var shown=posts.filter(function(p){return f==='all'||p.status===f});
+    $('count').textContent=shown.length+' of '+posts.length;
+    $('rows').innerHTML=shown.map(function(p){
+      return '<tr><td><strong>'+esc(p.title)+'</strong>'+(p.is_cover_story?' <span class="pill">cover</span>':'')+
+        '<br><span class="muted">/stories/'+esc(p.slug)+'</span></td>'+
+        '<td><span class="pill '+p.status+'">'+p.status+'</span></td>'+
+        '<td>'+esc((p.issue||{}).title||'')+'</td>'+
+        '<td>'+esc((p.category||{}).name||'')+'</td>'+
+        '<td class="muted">'+fmt(p.updated_at)+'</td>'+
+        '<td class="actions"><button data-edit="'+p.id+'">Edit</button></td></tr>';
+    }).join('')||'<tr><td colspan="6" class="muted">No posts yet.</td></tr>';
+    Array.prototype.forEach.call(document.querySelectorAll('[data-edit]'),function(b){
+      b.onclick=function(){openEditor(posts.find(function(p){return p.id===b.getAttribute('data-edit')}))};
+    });
+  }
+  $('filter').onchange=loadList;
+
+  // ---- editor ----
+  var form=$('postForm');
+  function setField(name,val){var el=form.elements[name];if(el)el.value=val==null?'':val}
+  function openEditor(p){
+    editingId=p?p.id:null; editingStatus=p?p.status:null;
+    $('edTitle').textContent=p?'Edit post':'New post';
+    $('edStatus').textContent=p?p.status:'draft'; $('edStatus').className='pill '+(p?p.status:'draft');
+    form.reset();
+    if(p)loadFull(p.id);           // the list is a summary; fetch the full row for the form
+    $('delBtn').classList.toggle('hide',!p);
+    $('unpubBtn').classList.toggle('hide',!(p&&p.status==='published'));
+    $('editor').showModal();
+  }
+  function loadFull(id){
+    fetch('/api/admin/posts?full='+encodeURIComponent(id),{headers:{Authorization:'Bearer '+token}})
+      .then(function(r){return r.json()}).then(function(j){
+        var p=j.post; if(!p)return;
+        ['title','slug','dek','body_html','hero_image_url','hero_alt','seo_title','seo_description','og_image_url','rights_note','reading_minutes','order_in_issue'].forEach(function(k){setField(k,p[k])});
+        setField('category_id',p.category_id||''); setField('author_id',p.author_id||''); setField('issue_id',p.issue_id||'');
+        form.elements.is_cover_story.value=p.is_cover_story?'true':'false';
+        form.elements.schema_type.value=p.schema_type||'Article';
+        setField('keywords',(p.keywords||[]).join(', ')); setField('tags',(p.tags||[]).join(', '));
+      });
+  }
+  function collect(){
+    var fd=new FormData(form),o={};
+    fd.forEach(function(v,k){o[k]=v});
+    o.is_cover_story=o.is_cover_story==='true';
+    o.reading_minutes=o.reading_minutes?parseInt(o.reading_minutes,10):null;
+    o.order_in_issue=o.order_in_issue?parseInt(o.order_in_issue,10):null;
+    o.keywords=(o.keywords||'').split(',').map(function(s){return s.trim()}).filter(Boolean);
+    o.tags=(o.tags||'').split(',').map(function(s){return s.trim()}).filter(Boolean);
+    if(!o.issue_id)o.issue_id=null; if(!o.category_id)o.category_id=null; if(!o.author_id)o.author_id=null;
+    return o;
+  }
+  function save(then){
+    var post=collect(); if(!post.title)return toast('Title required','err');
+    var body=editingId?{id:editingId,patch:post}:{post:post};
+    api('POST',body).then(function(j){
+      editingId=(j.post&&j.post.id)||editingId; toast('Saved','ok');
+      if(then)then(); else {loadList();$('editor').close();}
+    }).catch(function(e){toast(String(e),'err')});
+  }
+  $('saveBtn').onclick=function(){save()};
+  $('closeBtn').onclick=function(){$('editor').close()};
+  $('newPost').onclick=function(){openEditor(null)};
+  $('pubBtn').onclick=function(){
+    save(function(){ api('POST',{id:editingId,action:'publish'}).then(function(j){
+      toast(j.deploy&&j.deploy.ok?'Published — rebuilding site':'Published (set DEPLOY_HOOK_URL to auto-rebuild)','ok');
+      loadList();$('editor').close();
+    }).catch(function(e){toast(String(e),'err')})});
+  };
+  $('unpubBtn').onclick=function(){
+    if(!editingId)return; api('POST',{id:editingId,action:'unpublish'}).then(function(){toast('Unpublished','ok');loadList();$('editor').close()}).catch(function(e){toast(String(e),'err')});
+  };
+  $('delBtn').onclick=function(){
+    if(!editingId||!confirm('Delete this post? This cannot be undone.'))return;
+    api('DELETE',{id:editingId}).then(function(){toast('Deleted','ok');loadList();$('editor').close()}).catch(function(e){toast(String(e),'err')});
+  };
+  $('rebuildBtn').onclick=function(){
+    api('POST',{action:'deploy'}).then(function(j){toast(j.ok?'Rebuild triggered':'No deploy hook set','ok')}).catch(function(e){toast(String(e),'err')});
+  };
+})();
+</script>
+</body>
+</html>

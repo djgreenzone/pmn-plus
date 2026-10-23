@@ -34,7 +34,10 @@ The site, Shopify, Klaviyo emails and Google Merchant Center must all say the sa
 - One code per order.
 
 ## Shipping, production, returns
-- USA only (all 50 states). Standard **$8**, Express **$15**. Free shipping over $100 is **not** live; don't advertise it.
+- USA only. **Free shipping on every order** (no minimum) to the 48 contiguous states + DC, since Oct 22, 2026. Hawaii, Alaska,
+  US territories (Guam etc.) and APO/FPO are **not** free: they keep carrier-calculated rates at checkout. Shopify zone
+  "Contiguous US (free shipping)" = flat $0; zone "HI, AK, territories and APO (paid)" = FedEx Ground + USPS Ground Advantage.
+  Merchant Center shipping must say the same. Express shipping is parked until DJ decides on fast options.
 - Made to order: printing 2–4 business days + shipping 3–7 business days ≈ 5–11 business days.
 - **All sales final** (made to order). Damaged, defective, misprinted or incorrect items reported within **7 days** of
   delivery with photos → replacement, store credit or refund once approved.

@@ -25,7 +25,8 @@ out={'domain':D,'policy':POL,'sharedFaq':C['sharedFaq'],'collections':{},'produc
 org={"@type":"Organization","@id":D+"/#org","name":"PMN+","alternateName":"Polynesian Music Network Plus","url":D,"logo":D+"/shop/brand/pmn-plus-logo-black.png","legalName":"Polynesian Music"}
 ret={"@type":"MerchantReturnPolicy","applicableCountry":"US","returnPolicyCategory":"https://schema.org/MerchantReturnNotPermitted"}
 prods=[p for p in prods if p['id'] not in HIDE]
-ship={"@type":"OfferShippingDetails","shippingRate":{"@type":"MonetaryAmount","value":"8.00","currency":"USD"},"shippingDestination":{"@type":"DefinedRegion","addressCountry":"US"},"deliveryTime":{"@type":"ShippingDeliveryTime","handlingTime":{"@type":"QuantitativeValue","minValue":2,"maxValue":4,"unitCode":"DAY"},"transitTime":{"@type":"QuantitativeValue","minValue":3,"maxValue":7,"unitCode":"DAY"}}}
+CONTIG="AL AZ AR CA CO CT DE DC FL GA ID IL IN IA KS KY LA ME MD MA MI MN MS MO MT NE NV NH NJ NM NY NC ND OH OK OR PA RI SC SD TN TX UT VT VA WA WV WI WY".split()
+ship={"@type":"OfferShippingDetails","shippingRate":{"@type":"MonetaryAmount","value":"0.00","currency":"USD"},"shippingDestination":{"@type":"DefinedRegion","addressCountry":"US","addressRegion":CONTIG},"deliveryTime":{"@type":"ShippingDeliveryTime","handlingTime":{"@type":"QuantitativeValue","minValue":2,"maxValue":4,"unitCode":"DAY"},"transitTime":{"@type":"QuantitativeValue","minValue":3,"maxValue":7,"unitCode":"DAY"}}}
 for p in prods:
     sc=C['products'][p['id']]; m=META[p['id']]; slug=m['seo']; url=f"{D}/shop/{slug}"
     ha=hero_angle(p['id']);order=sorted(m['hi'].items(),key=lambda x:(x[0]!=ha,int(x[0])))

@@ -10,7 +10,8 @@ Problems we've actually hit, newest first. Format: **symptom → cause → fix**
   settings are the only source of checkout options. The carrier's "2 business days" ignores our 2–4 day print time.
 - Fulfill Engine store `polynesianmusicnetwork` → Shipping methods has **one** method: **Standard** (default, "Account
   covers shipping", 1–5 business days after production). Expedited needs JQF / Fulfill Engine to add a tier first.
-- Fix (Oct 22): free shipping zone for the contiguous US. HI/AK/territories/APO still use carrier rates. Don't add a paid
+- Fix (Oct 22): free shipping zone for the contiguous US. Oct 23: HI/AK/territories/APO zone switched from carrier rates (+$9.95, "2 business days") to one flat
+  $15 "Standard shipping" with description "Printed to order in 2–4 business days, then shipped". Don't add a paid
   Express option at checkout until Fulfill Engine has an Expedited method, or customers pay for speed they won't get.
 
 **Products rebuilt in Fulfill Engine (Oct 15): new Shopify products replace the archived ones**

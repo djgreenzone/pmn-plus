@@ -35,10 +35,11 @@ The site, Shopify, Klaviyo emails and Google Merchant Center must all say the sa
 
 ## Shipping, production, returns
 - USA only. **Free shipping on every order** (no minimum) to the 48 contiguous states + DC, since Oct 22, 2026. Hawaii, Alaska,
-  US territories (Guam etc.) and APO/FPO are **not** free: they keep carrier-calculated rates at checkout. Shopify zone
-  "Contiguous US (free shipping)" = flat $0; zone "HI, AK, territories and APO (paid)" = FedEx Ground + USPS Ground Advantage.
+  US territories (Guam etc.) and APO/FPO are **not** free: they pay a flat **$15** "Standard shipping" (since Oct 23). Shopify zone
+  "Contiguous US (free shipping)" = flat $0; zone "HI, AK, territories and APO (paid)" = one flat $15 rate (no carrier-calculated rates).
   Merchant Center shipping must say the same. Express shipping is parked until DJ decides on fast options.
-- Made to order: printing 2–4 business days + shipping 3–7 business days ≈ 5–11 business days.
+- Made to order: printing 2–4 business days + shipping 1–5 business days (Fulfill Engine Standard, contiguous US) ≈ 3–9 business days.
+  The site ETA (`ETA` in `site2/index.html`), `POLICY` in `seo_content.py`, the shipping page and the feed transit times must match.
 - **All sales final** (made to order). Damaged, defective, misprinted or incorrect items reported within **7 days** of
   delivery with photos → replacement, store credit or refund once approved.
 - Contact: info@islandcitymediagroup.com · 8545 W Warm Springs Rd A4, Las Vegas, NV 89113.

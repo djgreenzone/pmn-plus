@@ -7,8 +7,8 @@ DOMAIN = "https://www.polynesianmusicnetwork.com"
 # --- policy defaults (TO CONFIRM with JQF) ---
 POLICY = {
     "production": "2–4 business days",
-    "shipping": "3–7 business days",
-    "total": "about 5–11 business days",
+    "shipping": "1–5 business days",
+    "total": "about 3–9 business days",
     "returnDays": 0,
     "returns": ("Every PMN+ piece is made to order, just for you, so all sales are final: no returns or exchanges for size, colour or change of mind. "
                 "If your item arrives damaged, misprinted or incorrect, email photos within 7 days of delivery and we'll review it and make it right."),
@@ -256,8 +256,8 @@ for _k,(_d,_f) in X.items():
 
 SHARED_FAQ = [
  ("What sizes do you carry?", "Every PMN+ tee comes in S to 6XL at one price, so big and tall sizes (4XL, 5XL and 6XL) cost the same as a medium. Hats are one size with an adjustable strap. Check the size guide on each tee for chest and length."),
- ("When will my order arrive?", f"Each piece is printed to order. Printing takes {POLICY['production']}, then shipping takes {POLICY['shipping']} within the USA, so {POLICY['total']} in total. You'll get a tracking link by email when it ships."),
- ("Is shipping free?", "Yes. Every order ships free to the 48 contiguous US states and Washington, DC, with no minimum. Hawaii, Alaska, US territories (including Guam) and APO/FPO addresses are not included in free shipping."),
+ ("When will my order arrive?", f"Each piece is printed to order. Printing takes {POLICY['production']}, then shipping takes {POLICY['shipping']} to the contiguous US, so {POLICY['total']} in total. Hawaii, Alaska, territories and APO can take a few days longer. You'll get a tracking link by email when it ships."),
+ ("Is shipping free?", "Yes. Every order ships free to the 48 contiguous US states and Washington, DC, with no minimum. Hawaii, Alaska, US territories (including Guam) and APO/FPO addresses are not included in free shipping and pay a flat $15 for standard shipping."),
  ("Do you ship outside the USA?", "Not yet. We ship within the USA only. We're working on New Zealand and Australia."),
  ("What payment methods do you take?", "Visa, Mastercard, Amex, Apple Pay, Google Pay and Shop Pay at secure checkout. You can also pay in 4 interest-free installments with Afterpay."),
  ("What's your return policy?", POLICY["returns"]),
@@ -271,7 +271,7 @@ COLLECTIONS = {
    aboutH="Every tee and hat, in one place",
    about=["This is the whole PMN+ shop on one page. Use the Tees and Hats filters to narrow it down, or sort by best sellers or price. Prefer to shop by team? The Toa Samoa and Mate Ma'a Tonga collections hold each team's Rugby League World Cup 2026 range, and the PMN+ collection holds our everyday core pieces.",
      "Every standard tee is 5.3 oz, 100% cotton with a regular fit, and the Crest Oversized Tees are a heavier 8.2 oz with a boxy cut. All tees run S to 6XL at one price, so 4XL, 5XL and 6XL cost the same as a medium. Hats are one size with an adjustable closure.",
-     "Two offers run across the whole shop: Buy 3 tees, get 1 free (the free tee is a black, red or royal blue standard tee in L, XL or 2XL), and the Game Day Set, which takes $10 off a tee and hat bought together. Everything is printed to order and ships across the USA in about 5–11 business days."]),
+     "Two offers run across the whole shop: Buy 3 tees, get 1 free (the free tee is a black, red or royal blue standard tee in L, XL or 2XL), and the Game Day Set, which takes $10 off a tee and hat bought together. Everything is printed to order and ships to the contiguous US in about 3–9 business days."]),
  "mate-maa-tonga": dict(name="Mate Ma'a Tonga", title="Mate Ma'a Tonga Shirts, Hats & Merch | RLWC 2026 | PMN+",
    meta="Mate Ma'a Tonga shirts, hats and merch for Rugby League World Cup 2026: Tonga 676 tees, RLWC26 and player tees in S–6XL, oversized crest tees and snapbacks.",
    intro="Tonga shirts, hats and merch for Rugby League World Cup 2026: the 676 tee, the RLWC26 crest tee, the jersey-style TONGA 00 Player Tee, the Est. 1986 oversized crest tee, snapbacks and truckers, in black and Tonga red, S to 6XL.",

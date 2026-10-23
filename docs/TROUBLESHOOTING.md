@@ -4,6 +4,15 @@ Problems we've actually hit, newest first. Format: **symptom → cause → fix**
 
 ## Checkout
 
+**Checkout shows only one carrier option, or "2 business days" for ~$16 (Oct 14–21)**
+- Cause: Shopify shipping was switched to carrier-calculated USPS Ground Advantage (+$9.95 fee) and FedEx Ground. Fulfill
+  Engine sends **no rates** to Shopify (the "JQF Design & Print LLC App" is a fulfillment service only), so Shopify's own
+  settings are the only source of checkout options. The carrier's "2 business days" ignores our 2–4 day print time.
+- Fulfill Engine store `polynesianmusicnetwork` → Shipping methods has **one** method: **Standard** (default, "Account
+  covers shipping", 1–5 business days after production). Expedited needs JQF / Fulfill Engine to add a tier first.
+- Fix (Oct 22): free shipping zone for the contiguous US. HI/AK/territories/APO still use carrier rates. Don't add a paid
+  Express option at checkout until Fulfill Engine has an Expedited method, or customers pay for speed they won't get.
+
 **Products rebuilt in Fulfill Engine (Oct 15): new Shopify products replace the archived ones**
 - Fulfill Engine creates brand-new Shopify products (new ids, often a `-1` handle, colour "Royal" not "Bright Royal")
   and they arrive as **Draft with every variant at $0.00**.
@@ -62,6 +71,16 @@ account number from Chase → Account details), then confirm the micro-deposits.
 
 **Payouts going to Shopify Balance instead of the bank**
 Settings → Payments → Shopify Payments → payout account → Switch to a different account. The first payout after a switch is delayed ~4 days.
+
+**Afterpay logo invisible on phones / widget text too big**
+- The `<square-placement>` widget's "Afterpay" wordmark is always black (every logo/theme option in the hub). The site
+  puts the widget on a light chip (`.ap-msg square-placement` in `site2/index.html`) so it reads on dark backgrounds.
+- Size, logo type and theme are set in **Afterpay Business Hub → Online → On-site messaging → Placements → Product page /
+  Cart page**, then **Save all changes**. Current: Sm-14px, Badge, Black on mint. Pay in 4 shows for $1–$400.
+- Banner/ticker/team-line logo is `shop/brand/afterpay-badge-dark.svg` (Afterpay's badge with a white wordmark).
+
+**Afterpay not offered at checkout although installed** → the provider was "Installed" but not activated:
+Settings → Payments → Afterpay US (New) → **Activate**. (Oct 6.)
 
 **Afterpay: which provider?**
 Use **Afterpay US (New)** (green $ logo). Ignore the cross-border aggregators (Asiabill, LianLian, Airwallex, UseePay).

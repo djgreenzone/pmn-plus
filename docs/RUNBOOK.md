@@ -123,7 +123,7 @@ identical to the site.
 `vercel.json` → `redirects`. Use `permanent: true` (301) for moved pages. Keep `trailingSlash: false`.
 
 ## 10. Feature flags (no rebuild)
-`assets/pmn-config.js`: `payLater:false` hides the pay-in-4 line, `offerBar:false` hides the top offer bar,
+`assets/pmn-config.js`: `payLater:false` hides the Afterpay pay-in-4 widget/line, `offerAfterpay:false` drops Afterpay from the offer bar, `offerBar:false` hides the top offer bar,
 `accountsLive`, `google`, `apple` (sign-in buttons), `analytics` IDs (blank = off).
 
 ## 11. Environment variables

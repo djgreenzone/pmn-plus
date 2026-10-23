@@ -18,8 +18,12 @@
    "Each piece is printed to order. Printing takes 2–4 business days, then shipping takes 3–7 business days within the USA, so about 5–11 business days in total. You'll get a tracking link by email when it ships."
   ],
   [
+   "Is shipping free?",
+   "Yes. Every order ships free to the 48 contiguous US states and Washington, DC, with no minimum. Hawaii, Alaska, US territories (including Guam) and APO/FPO addresses are not included in free shipping."
+  ],
+  [
    "Do you ship outside the USA?",
-   "Not yet. We ship to all 50 US states, including Hawaii and Alaska. We're working on New Zealand and Australia."
+   "Not yet. We ship within the USA only. We're working on New Zealand and Australia."
   ],
   [
    "What payment methods do you take?",
@@ -455,8 +459,12 @@
      "a": "Each piece is printed to order. Printing takes 2–4 business days, then shipping takes 3–7 business days within the USA, so about 5–11 business days in total. You'll get a tracking link by email when it ships."
     },
     {
+     "q": "Is shipping free?",
+     "a": "Yes. Every order ships free to the 48 contiguous US states and Washington, DC, with no minimum. Hawaii, Alaska, US territories (including Guam) and APO/FPO addresses are not included in free shipping."
+    },
+    {
      "q": "Do you ship outside the USA?",
-     "a": "Not yet. We ship to all 50 US states, including Hawaii and Alaska. We're working on New Zealand and Australia."
+     "a": "Not yet. We ship within the USA only. We're working on New Zealand and Australia."
     },
     {
      "q": "What payment methods do you take?",
@@ -560,12 +568,63 @@
         "@type": "OfferShippingDetails",
         "shippingRate": {
          "@type": "MonetaryAmount",
-         "value": "8.00",
+         "value": "0.00",
          "currency": "USD"
         },
         "shippingDestination": {
          "@type": "DefinedRegion",
-         "addressCountry": "US"
+         "addressCountry": "US",
+         "addressRegion": [
+          "AL",
+          "AZ",
+          "AR",
+          "CA",
+          "CO",
+          "CT",
+          "DE",
+          "DC",
+          "FL",
+          "GA",
+          "ID",
+          "IL",
+          "IN",
+          "IA",
+          "KS",
+          "KY",
+          "LA",
+          "ME",
+          "MD",
+          "MA",
+          "MI",
+          "MN",
+          "MS",
+          "MO",
+          "MT",
+          "NE",
+          "NV",
+          "NH",
+          "NJ",
+          "NM",
+          "NY",
+          "NC",
+          "ND",
+          "OH",
+          "OK",
+          "OR",
+          "PA",
+          "RI",
+          "SC",
+          "SD",
+          "TN",
+          "TX",
+          "UT",
+          "VT",
+          "VA",
+          "WA",
+          "WV",
+          "WI",
+          "WY"
+         ]
         },
         "deliveryTime": {
          "@type": "ShippingDeliveryTime",
@@ -645,10 +704,18 @@
        },
        {
         "@type": "Question",
+        "name": "Is shipping free?",
+        "acceptedAnswer": {
+         "@type": "Answer",
+         "text": "Yes. Every order ships free to the 48 contiguous US states and Washington, DC, with no minimum. Hawaii, Alaska, US territories (including Guam) and APO/FPO addresses are not included in free shipping."
+        }
+       },
+       {
+        "@type": "Question",
         "name": "Do you ship outside the USA?",
         "acceptedAnswer": {
          "@type": "Answer",
-         "text": "Not yet. We ship to all 50 US states, including Hawaii and Alaska. We're working on New Zealand and Australia."
+         "text": "Not yet. We ship within the USA only. We're working on New Zealand and Australia."
         }
        },
        {
@@ -714,8 +781,12 @@
      "a": "Each piece is printed to order. Printing takes 2–4 business days, then shipping takes 3–7 business days within the USA, so about 5–11 business days in total. You'll get a tracking link by email when it ships."
     },
     {
+     "q": "Is shipping free?",
+     "a": "Yes. Every order ships free to the 48 contiguous US states and Washington, DC, with no minimum. Hawaii, Alaska, US territories (including Guam) and APO/FPO addresses are not included in free shipping."
+    },
+    {
      "q": "Do you ship outside the USA?",
-     "a": "Not yet. We ship to all 50 US states, including Hawaii and Alaska. We're working on New Zealand and Australia."
+     "a": "Not yet. We ship within the USA only. We're working on New Zealand and Australia."
     },
     {
      "q": "What payment methods do you take?",
@@ -819,12 +890,63 @@
         "@type": "OfferShippingDetails",
         "shippingRate": {
          "@type": "MonetaryAmount",
-         "value": "8.00",
+         "value": "0.00",
          "currency": "USD"
         },
         "shippingDestination": {
          "@type": "DefinedRegion",
-         "addressCountry": "US"
+         "addressCountry": "US",
+         "addressRegion": [
+          "AL",
+          "AZ",
+          "AR",
+          "CA",
+          "CO",
+          "CT",
+          "DE",
+          "DC",
+          "FL",
+          "GA",
+          "ID",
+          "IL",
+          "IN",
+          "IA",
+          "KS",
+          "KY",
+          "LA",
+          "ME",
+          "MD",
+          "MA",
+          "MI",
+          "MN",
+          "MS",
+          "MO",
+          "MT",
+          "NE",
+          "NV",
+          "NH",
+          "NJ",
+          "NM",
+          "NY",
+          "NC",
+          "ND",
+          "OH",
+          "OK",
+          "OR",
+          "PA",
+          "RI",
+          "SC",
+          "SD",
+          "TN",
+          "TX",
+          "UT",
+          "VT",
+          "VA",
+          "WA",
+          "WV",
+          "WI",
+          "WY"
+         ]
         },
         "deliveryTime": {
          "@type": "ShippingDeliveryTime",
@@ -904,10 +1026,18 @@
        },
        {
         "@type": "Question",
+        "name": "Is shipping free?",
+        "acceptedAnswer": {
+         "@type": "Answer",
+         "text": "Yes. Every order ships free to the 48 contiguous US states and Washington, DC, with no minimum. Hawaii, Alaska, US territories (including Guam) and APO/FPO addresses are not included in free shipping."
+        }
+       },
+       {
+        "@type": "Question",
         "name": "Do you ship outside the USA?",
         "acceptedAnswer": {
          "@type": "Answer",
-         "text": "Not yet. We ship to all 50 US states, including Hawaii and Alaska. We're working on New Zealand and Australia."
+         "text": "Not yet. We ship within the USA only. We're working on New Zealand and Australia."
         }
        },
        {
@@ -973,8 +1103,12 @@
      "a": "Each piece is printed to order. Printing takes 2–4 business days, then shipping takes 3–7 business days within the USA, so about 5–11 business days in total. You'll get a tracking link by email when it ships."
     },
     {
+     "q": "Is shipping free?",
+     "a": "Yes. Every order ships free to the 48 contiguous US states and Washington, DC, with no minimum. Hawaii, Alaska, US territories (including Guam) and APO/FPO addresses are not included in free shipping."
+    },
+    {
      "q": "Do you ship outside the USA?",
-     "a": "Not yet. We ship to all 50 US states, including Hawaii and Alaska. We're working on New Zealand and Australia."
+     "a": "Not yet. We ship within the USA only. We're working on New Zealand and Australia."
     },
     {
      "q": "What payment methods do you take?",
@@ -1087,12 +1221,63 @@
         "@type": "OfferShippingDetails",
         "shippingRate": {
          "@type": "MonetaryAmount",
-         "value": "8.00",
+         "value": "0.00",
          "currency": "USD"
         },
         "shippingDestination": {
          "@type": "DefinedRegion",
-         "addressCountry": "US"
+         "addressCountry": "US",
+         "addressRegion": [
+          "AL",
+          "AZ",
+          "AR",
+          "CA",
+          "CO",
+          "CT",
+          "DE",
+          "DC",
+          "FL",
+          "GA",
+          "ID",
+          "IL",
+          "IN",
+          "IA",
+          "KS",
+          "KY",
+          "LA",
+          "ME",
+          "MD",
+          "MA",
+          "MI",
+          "MN",
+          "MS",
+          "MO",
+          "MT",
+          "NE",
+          "NV",
+          "NH",
+          "NJ",
+          "NM",
+          "NY",
+          "NC",
+          "ND",
+          "OH",
+          "OK",
+          "OR",
+          "PA",
+          "RI",
+          "SC",
+          "SD",
+          "TN",
+          "TX",
+          "UT",
+          "VT",
+          "VA",
+          "WA",
+          "WV",
+          "WI",
+          "WY"
+         ]
         },
         "deliveryTime": {
          "@type": "ShippingDeliveryTime",
@@ -1186,10 +1371,18 @@
        },
        {
         "@type": "Question",
+        "name": "Is shipping free?",
+        "acceptedAnswer": {
+         "@type": "Answer",
+         "text": "Yes. Every order ships free to the 48 contiguous US states and Washington, DC, with no minimum. Hawaii, Alaska, US territories (including Guam) and APO/FPO addresses are not included in free shipping."
+        }
+       },
+       {
+        "@type": "Question",
         "name": "Do you ship outside the USA?",
         "acceptedAnswer": {
          "@type": "Answer",
-         "text": "Not yet. We ship to all 50 US states, including Hawaii and Alaska. We're working on New Zealand and Australia."
+         "text": "Not yet. We ship within the USA only. We're working on New Zealand and Australia."
         }
        },
        {
@@ -1255,8 +1448,12 @@
      "a": "Each piece is printed to order. Printing takes 2–4 business days, then shipping takes 3–7 business days within the USA, so about 5–11 business days in total. You'll get a tracking link by email when it ships."
     },
     {
+     "q": "Is shipping free?",
+     "a": "Yes. Every order ships free to the 48 contiguous US states and Washington, DC, with no minimum. Hawaii, Alaska, US territories (including Guam) and APO/FPO addresses are not included in free shipping."
+    },
+    {
      "q": "Do you ship outside the USA?",
-     "a": "Not yet. We ship to all 50 US states, including Hawaii and Alaska. We're working on New Zealand and Australia."
+     "a": "Not yet. We ship within the USA only. We're working on New Zealand and Australia."
     },
     {
      "q": "What payment methods do you take?",
@@ -1369,12 +1566,63 @@
         "@type": "OfferShippingDetails",
         "shippingRate": {
          "@type": "MonetaryAmount",
-         "value": "8.00",
+         "value": "0.00",
          "currency": "USD"
         },
         "shippingDestination": {
          "@type": "DefinedRegion",
-         "addressCountry": "US"
+         "addressCountry": "US",
+         "addressRegion": [
+          "AL",
+          "AZ",
+          "AR",
+          "CA",
+          "CO",
+          "CT",
+          "DE",
+          "DC",
+          "FL",
+          "GA",
+          "ID",
+          "IL",
+          "IN",
+          "IA",
+          "KS",
+          "KY",
+          "LA",
+          "ME",
+          "MD",
+          "MA",
+          "MI",
+          "MN",
+          "MS",
+          "MO",
+          "MT",
+          "NE",
+          "NV",
+          "NH",
+          "NJ",
+          "NM",
+          "NY",
+          "NC",
+          "ND",
+          "OH",
+          "OK",
+          "OR",
+          "PA",
+          "RI",
+          "SC",
+          "SD",
+          "TN",
+          "TX",
+          "UT",
+          "VT",
+          "VA",
+          "WA",
+          "WV",
+          "WI",
+          "WY"
+         ]
         },
         "deliveryTime": {
          "@type": "ShippingDeliveryTime",
@@ -1468,10 +1716,18 @@
        },
        {
         "@type": "Question",
+        "name": "Is shipping free?",
+        "acceptedAnswer": {
+         "@type": "Answer",
+         "text": "Yes. Every order ships free to the 48 contiguous US states and Washington, DC, with no minimum. Hawaii, Alaska, US territories (including Guam) and APO/FPO addresses are not included in free shipping."
+        }
+       },
+       {
+        "@type": "Question",
         "name": "Do you ship outside the USA?",
         "acceptedAnswer": {
          "@type": "Answer",
-         "text": "Not yet. We ship to all 50 US states, including Hawaii and Alaska. We're working on New Zealand and Australia."
+         "text": "Not yet. We ship within the USA only. We're working on New Zealand and Australia."
         }
        },
        {
@@ -1537,8 +1793,12 @@
      "a": "Each piece is printed to order. Printing takes 2–4 business days, then shipping takes 3–7 business days within the USA, so about 5–11 business days in total. You'll get a tracking link by email when it ships."
     },
     {
+     "q": "Is shipping free?",
+     "a": "Yes. Every order ships free to the 48 contiguous US states and Washington, DC, with no minimum. Hawaii, Alaska, US territories (including Guam) and APO/FPO addresses are not included in free shipping."
+    },
+    {
      "q": "Do you ship outside the USA?",
-     "a": "Not yet. We ship to all 50 US states, including Hawaii and Alaska. We're working on New Zealand and Australia."
+     "a": "Not yet. We ship within the USA only. We're working on New Zealand and Australia."
     },
     {
      "q": "What payment methods do you take?",
@@ -1651,12 +1911,63 @@
         "@type": "OfferShippingDetails",
         "shippingRate": {
          "@type": "MonetaryAmount",
-         "value": "8.00",
+         "value": "0.00",
          "currency": "USD"
         },
         "shippingDestination": {
          "@type": "DefinedRegion",
-         "addressCountry": "US"
+         "addressCountry": "US",
+         "addressRegion": [
+          "AL",
+          "AZ",
+          "AR",
+          "CA",
+          "CO",
+          "CT",
+          "DE",
+          "DC",
+          "FL",
+          "GA",
+          "ID",
+          "IL",
+          "IN",
+          "IA",
+          "KS",
+          "KY",
+          "LA",
+          "ME",
+          "MD",
+          "MA",
+          "MI",
+          "MN",
+          "MS",
+          "MO",
+          "MT",
+          "NE",
+          "NV",
+          "NH",
+          "NJ",
+          "NM",
+          "NY",
+          "NC",
+          "ND",
+          "OH",
+          "OK",
+          "OR",
+          "PA",
+          "RI",
+          "SC",
+          "SD",
+          "TN",
+          "TX",
+          "UT",
+          "VT",
+          "VA",
+          "WA",
+          "WV",
+          "WI",
+          "WY"
+         ]
         },
         "deliveryTime": {
          "@type": "ShippingDeliveryTime",
@@ -1750,10 +2061,18 @@
        },
        {
         "@type": "Question",
+        "name": "Is shipping free?",
+        "acceptedAnswer": {
+         "@type": "Answer",
+         "text": "Yes. Every order ships free to the 48 contiguous US states and Washington, DC, with no minimum. Hawaii, Alaska, US territories (including Guam) and APO/FPO addresses are not included in free shipping."
+        }
+       },
+       {
+        "@type": "Question",
         "name": "Do you ship outside the USA?",
         "acceptedAnswer": {
          "@type": "Answer",
-         "text": "Not yet. We ship to all 50 US states, including Hawaii and Alaska. We're working on New Zealand and Australia."
+         "text": "Not yet. We ship within the USA only. We're working on New Zealand and Australia."
         }
        },
        {
@@ -1819,8 +2138,12 @@
      "a": "Each piece is printed to order. Printing takes 2–4 business days, then shipping takes 3–7 business days within the USA, so about 5–11 business days in total. You'll get a tracking link by email when it ships."
     },
     {
+     "q": "Is shipping free?",
+     "a": "Yes. Every order ships free to the 48 contiguous US states and Washington, DC, with no minimum. Hawaii, Alaska, US territories (including Guam) and APO/FPO addresses are not included in free shipping."
+    },
+    {
      "q": "Do you ship outside the USA?",
-     "a": "Not yet. We ship to all 50 US states, including Hawaii and Alaska. We're working on New Zealand and Australia."
+     "a": "Not yet. We ship within the USA only. We're working on New Zealand and Australia."
     },
     {
      "q": "What payment methods do you take?",
@@ -1933,12 +2256,63 @@
         "@type": "OfferShippingDetails",
         "shippingRate": {
          "@type": "MonetaryAmount",
-         "value": "8.00",
+         "value": "0.00",
          "currency": "USD"
         },
         "shippingDestination": {
          "@type": "DefinedRegion",
-         "addressCountry": "US"
+         "addressCountry": "US",
+         "addressRegion": [
+          "AL",
+          "AZ",
+          "AR",
+          "CA",
+          "CO",
+          "CT",
+          "DE",
+          "DC",
+          "FL",
+          "GA",
+          "ID",
+          "IL",
+          "IN",
+          "IA",
+          "KS",
+          "KY",
+          "LA",
+          "ME",
+          "MD",
+          "MA",
+          "MI",
+          "MN",
+          "MS",
+          "MO",
+          "MT",
+          "NE",
+          "NV",
+          "NH",
+          "NJ",
+          "NM",
+          "NY",
+          "NC",
+          "ND",
+          "OH",
+          "OK",
+          "OR",
+          "PA",
+          "RI",
+          "SC",
+          "SD",
+          "TN",
+          "TX",
+          "UT",
+          "VT",
+          "VA",
+          "WA",
+          "WV",
+          "WI",
+          "WY"
+         ]
         },
         "deliveryTime": {
          "@type": "ShippingDeliveryTime",
@@ -2032,10 +2406,18 @@
        },
        {
         "@type": "Question",
+        "name": "Is shipping free?",
+        "acceptedAnswer": {
+         "@type": "Answer",
+         "text": "Yes. Every order ships free to the 48 contiguous US states and Washington, DC, with no minimum. Hawaii, Alaska, US territories (including Guam) and APO/FPO addresses are not included in free shipping."
+        }
+       },
+       {
+        "@type": "Question",
         "name": "Do you ship outside the USA?",
         "acceptedAnswer": {
          "@type": "Answer",
-         "text": "Not yet. We ship to all 50 US states, including Hawaii and Alaska. We're working on New Zealand and Australia."
+         "text": "Not yet. We ship within the USA only. We're working on New Zealand and Australia."
         }
        },
        {
@@ -2101,8 +2483,12 @@
      "a": "Each piece is printed to order. Printing takes 2–4 business days, then shipping takes 3–7 business days within the USA, so about 5–11 business days in total. You'll get a tracking link by email when it ships."
     },
     {
+     "q": "Is shipping free?",
+     "a": "Yes. Every order ships free to the 48 contiguous US states and Washington, DC, with no minimum. Hawaii, Alaska, US territories (including Guam) and APO/FPO addresses are not included in free shipping."
+    },
+    {
      "q": "Do you ship outside the USA?",
-     "a": "Not yet. We ship to all 50 US states, including Hawaii and Alaska. We're working on New Zealand and Australia."
+     "a": "Not yet. We ship within the USA only. We're working on New Zealand and Australia."
     },
     {
      "q": "What payment methods do you take?",
@@ -2209,12 +2595,63 @@
         "@type": "OfferShippingDetails",
         "shippingRate": {
          "@type": "MonetaryAmount",
-         "value": "8.00",
+         "value": "0.00",
          "currency": "USD"
         },
         "shippingDestination": {
          "@type": "DefinedRegion",
-         "addressCountry": "US"
+         "addressCountry": "US",
+         "addressRegion": [
+          "AL",
+          "AZ",
+          "AR",
+          "CA",
+          "CO",
+          "CT",
+          "DE",
+          "DC",
+          "FL",
+          "GA",
+          "ID",
+          "IL",
+          "IN",
+          "IA",
+          "KS",
+          "KY",
+          "LA",
+          "ME",
+          "MD",
+          "MA",
+          "MI",
+          "MN",
+          "MS",
+          "MO",
+          "MT",
+          "NE",
+          "NV",
+          "NH",
+          "NJ",
+          "NM",
+          "NY",
+          "NC",
+          "ND",
+          "OH",
+          "OK",
+          "OR",
+          "PA",
+          "RI",
+          "SC",
+          "SD",
+          "TN",
+          "TX",
+          "UT",
+          "VT",
+          "VA",
+          "WA",
+          "WV",
+          "WI",
+          "WY"
+         ]
         },
         "deliveryTime": {
          "@type": "ShippingDeliveryTime",
@@ -2308,10 +2745,18 @@
        },
        {
         "@type": "Question",
+        "name": "Is shipping free?",
+        "acceptedAnswer": {
+         "@type": "Answer",
+         "text": "Yes. Every order ships free to the 48 contiguous US states and Washington, DC, with no minimum. Hawaii, Alaska, US territories (including Guam) and APO/FPO addresses are not included in free shipping."
+        }
+       },
+       {
+        "@type": "Question",
         "name": "Do you ship outside the USA?",
         "acceptedAnswer": {
          "@type": "Answer",
-         "text": "Not yet. We ship to all 50 US states, including Hawaii and Alaska. We're working on New Zealand and Australia."
+         "text": "Not yet. We ship within the USA only. We're working on New Zealand and Australia."
         }
        },
        {
@@ -2377,8 +2822,12 @@
      "a": "Each piece is printed to order. Printing takes 2–4 business days, then shipping takes 3–7 business days within the USA, so about 5–11 business days in total. You'll get a tracking link by email when it ships."
     },
     {
+     "q": "Is shipping free?",
+     "a": "Yes. Every order ships free to the 48 contiguous US states and Washington, DC, with no minimum. Hawaii, Alaska, US territories (including Guam) and APO/FPO addresses are not included in free shipping."
+    },
+    {
      "q": "Do you ship outside the USA?",
-     "a": "Not yet. We ship to all 50 US states, including Hawaii and Alaska. We're working on New Zealand and Australia."
+     "a": "Not yet. We ship within the USA only. We're working on New Zealand and Australia."
     },
     {
      "q": "What payment methods do you take?",
@@ -2488,12 +2937,63 @@
         "@type": "OfferShippingDetails",
         "shippingRate": {
          "@type": "MonetaryAmount",
-         "value": "8.00",
+         "value": "0.00",
          "currency": "USD"
         },
         "shippingDestination": {
          "@type": "DefinedRegion",
-         "addressCountry": "US"
+         "addressCountry": "US",
+         "addressRegion": [
+          "AL",
+          "AZ",
+          "AR",
+          "CA",
+          "CO",
+          "CT",
+          "DE",
+          "DC",
+          "FL",
+          "GA",
+          "ID",
+          "IL",
+          "IN",
+          "IA",
+          "KS",
+          "KY",
+          "LA",
+          "ME",
+          "MD",
+          "MA",
+          "MI",
+          "MN",
+          "MS",
+          "MO",
+          "MT",
+          "NE",
+          "NV",
+          "NH",
+          "NJ",
+          "NM",
+          "NY",
+          "NC",
+          "ND",
+          "OH",
+          "OK",
+          "OR",
+          "PA",
+          "RI",
+          "SC",
+          "SD",
+          "TN",
+          "TX",
+          "UT",
+          "VT",
+          "VA",
+          "WA",
+          "WV",
+          "WI",
+          "WY"
+         ]
         },
         "deliveryTime": {
          "@type": "ShippingDeliveryTime",
@@ -2587,10 +3087,18 @@
        },
        {
         "@type": "Question",
+        "name": "Is shipping free?",
+        "acceptedAnswer": {
+         "@type": "Answer",
+         "text": "Yes. Every order ships free to the 48 contiguous US states and Washington, DC, with no minimum. Hawaii, Alaska, US territories (including Guam) and APO/FPO addresses are not included in free shipping."
+        }
+       },
+       {
+        "@type": "Question",
         "name": "Do you ship outside the USA?",
         "acceptedAnswer": {
          "@type": "Answer",
-         "text": "Not yet. We ship to all 50 US states, including Hawaii and Alaska. We're working on New Zealand and Australia."
+         "text": "Not yet. We ship within the USA only. We're working on New Zealand and Australia."
         }
        },
        {
@@ -2660,8 +3168,12 @@
      "a": "Each piece is printed to order. Printing takes 2–4 business days, then shipping takes 3–7 business days within the USA, so about 5–11 business days in total. You'll get a tracking link by email when it ships."
     },
     {
+     "q": "Is shipping free?",
+     "a": "Yes. Every order ships free to the 48 contiguous US states and Washington, DC, with no minimum. Hawaii, Alaska, US territories (including Guam) and APO/FPO addresses are not included in free shipping."
+    },
+    {
      "q": "Do you ship outside the USA?",
-     "a": "Not yet. We ship to all 50 US states, including Hawaii and Alaska. We're working on New Zealand and Australia."
+     "a": "Not yet. We ship within the USA only. We're working on New Zealand and Australia."
     },
     {
      "q": "What payment methods do you take?",
@@ -2754,12 +3266,63 @@
         "@type": "OfferShippingDetails",
         "shippingRate": {
          "@type": "MonetaryAmount",
-         "value": "8.00",
+         "value": "0.00",
          "currency": "USD"
         },
         "shippingDestination": {
          "@type": "DefinedRegion",
-         "addressCountry": "US"
+         "addressCountry": "US",
+         "addressRegion": [
+          "AL",
+          "AZ",
+          "AR",
+          "CA",
+          "CO",
+          "CT",
+          "DE",
+          "DC",
+          "FL",
+          "GA",
+          "ID",
+          "IL",
+          "IN",
+          "IA",
+          "KS",
+          "KY",
+          "LA",
+          "ME",
+          "MD",
+          "MA",
+          "MI",
+          "MN",
+          "MS",
+          "MO",
+          "MT",
+          "NE",
+          "NV",
+          "NH",
+          "NJ",
+          "NM",
+          "NY",
+          "NC",
+          "ND",
+          "OH",
+          "OK",
+          "OR",
+          "PA",
+          "RI",
+          "SC",
+          "SD",
+          "TN",
+          "TX",
+          "UT",
+          "VT",
+          "VA",
+          "WA",
+          "WV",
+          "WI",
+          "WY"
+         ]
         },
         "deliveryTime": {
          "@type": "ShippingDeliveryTime",
@@ -2847,10 +3410,18 @@
        },
        {
         "@type": "Question",
+        "name": "Is shipping free?",
+        "acceptedAnswer": {
+         "@type": "Answer",
+         "text": "Yes. Every order ships free to the 48 contiguous US states and Washington, DC, with no minimum. Hawaii, Alaska, US territories (including Guam) and APO/FPO addresses are not included in free shipping."
+        }
+       },
+       {
+        "@type": "Question",
         "name": "Do you ship outside the USA?",
         "acceptedAnswer": {
          "@type": "Answer",
-         "text": "Not yet. We ship to all 50 US states, including Hawaii and Alaska. We're working on New Zealand and Australia."
+         "text": "Not yet. We ship within the USA only. We're working on New Zealand and Australia."
         }
        },
        {
@@ -2920,8 +3491,12 @@
      "a": "Each piece is printed to order. Printing takes 2–4 business days, then shipping takes 3–7 business days within the USA, so about 5–11 business days in total. You'll get a tracking link by email when it ships."
     },
     {
+     "q": "Is shipping free?",
+     "a": "Yes. Every order ships free to the 48 contiguous US states and Washington, DC, with no minimum. Hawaii, Alaska, US territories (including Guam) and APO/FPO addresses are not included in free shipping."
+    },
+    {
      "q": "Do you ship outside the USA?",
-     "a": "Not yet. We ship to all 50 US states, including Hawaii and Alaska. We're working on New Zealand and Australia."
+     "a": "Not yet. We ship within the USA only. We're working on New Zealand and Australia."
     },
     {
      "q": "What payment methods do you take?",
@@ -3017,12 +3592,63 @@
         "@type": "OfferShippingDetails",
         "shippingRate": {
          "@type": "MonetaryAmount",
-         "value": "8.00",
+         "value": "0.00",
          "currency": "USD"
         },
         "shippingDestination": {
          "@type": "DefinedRegion",
-         "addressCountry": "US"
+         "addressCountry": "US",
+         "addressRegion": [
+          "AL",
+          "AZ",
+          "AR",
+          "CA",
+          "CO",
+          "CT",
+          "DE",
+          "DC",
+          "FL",
+          "GA",
+          "ID",
+          "IL",
+          "IN",
+          "IA",
+          "KS",
+          "KY",
+          "LA",
+          "ME",
+          "MD",
+          "MA",
+          "MI",
+          "MN",
+          "MS",
+          "MO",
+          "MT",
+          "NE",
+          "NV",
+          "NH",
+          "NJ",
+          "NM",
+          "NY",
+          "NC",
+          "ND",
+          "OH",
+          "OK",
+          "OR",
+          "PA",
+          "RI",
+          "SC",
+          "SD",
+          "TN",
+          "TX",
+          "UT",
+          "VT",
+          "VA",
+          "WA",
+          "WV",
+          "WI",
+          "WY"
+         ]
         },
         "deliveryTime": {
          "@type": "ShippingDeliveryTime",
@@ -3110,10 +3736,18 @@
        },
        {
         "@type": "Question",
+        "name": "Is shipping free?",
+        "acceptedAnswer": {
+         "@type": "Answer",
+         "text": "Yes. Every order ships free to the 48 contiguous US states and Washington, DC, with no minimum. Hawaii, Alaska, US territories (including Guam) and APO/FPO addresses are not included in free shipping."
+        }
+       },
+       {
+        "@type": "Question",
         "name": "Do you ship outside the USA?",
         "acceptedAnswer": {
          "@type": "Answer",
-         "text": "Not yet. We ship to all 50 US states, including Hawaii and Alaska. We're working on New Zealand and Australia."
+         "text": "Not yet. We ship within the USA only. We're working on New Zealand and Australia."
         }
        },
        {
@@ -3179,8 +3813,12 @@
      "a": "Each piece is printed to order. Printing takes 2–4 business days, then shipping takes 3–7 business days within the USA, so about 5–11 business days in total. You'll get a tracking link by email when it ships."
     },
     {
+     "q": "Is shipping free?",
+     "a": "Yes. Every order ships free to the 48 contiguous US states and Washington, DC, with no minimum. Hawaii, Alaska, US territories (including Guam) and APO/FPO addresses are not included in free shipping."
+    },
+    {
      "q": "Do you ship outside the USA?",
-     "a": "Not yet. We ship to all 50 US states, including Hawaii and Alaska. We're working on New Zealand and Australia."
+     "a": "Not yet. We ship within the USA only. We're working on New Zealand and Australia."
     },
     {
      "q": "What payment methods do you take?",
@@ -3290,12 +3928,63 @@
         "@type": "OfferShippingDetails",
         "shippingRate": {
          "@type": "MonetaryAmount",
-         "value": "8.00",
+         "value": "0.00",
          "currency": "USD"
         },
         "shippingDestination": {
          "@type": "DefinedRegion",
-         "addressCountry": "US"
+         "addressCountry": "US",
+         "addressRegion": [
+          "AL",
+          "AZ",
+          "AR",
+          "CA",
+          "CO",
+          "CT",
+          "DE",
+          "DC",
+          "FL",
+          "GA",
+          "ID",
+          "IL",
+          "IN",
+          "IA",
+          "KS",
+          "KY",
+          "LA",
+          "ME",
+          "MD",
+          "MA",
+          "MI",
+          "MN",
+          "MS",
+          "MO",
+          "MT",
+          "NE",
+          "NV",
+          "NH",
+          "NJ",
+          "NM",
+          "NY",
+          "NC",
+          "ND",
+          "OH",
+          "OK",
+          "OR",
+          "PA",
+          "RI",
+          "SC",
+          "SD",
+          "TN",
+          "TX",
+          "UT",
+          "VT",
+          "VA",
+          "WA",
+          "WV",
+          "WI",
+          "WY"
+         ]
         },
         "deliveryTime": {
          "@type": "ShippingDeliveryTime",
@@ -3389,10 +4078,18 @@
        },
        {
         "@type": "Question",
+        "name": "Is shipping free?",
+        "acceptedAnswer": {
+         "@type": "Answer",
+         "text": "Yes. Every order ships free to the 48 contiguous US states and Washington, DC, with no minimum. Hawaii, Alaska, US territories (including Guam) and APO/FPO addresses are not included in free shipping."
+        }
+       },
+       {
+        "@type": "Question",
         "name": "Do you ship outside the USA?",
         "acceptedAnswer": {
          "@type": "Answer",
-         "text": "Not yet. We ship to all 50 US states, including Hawaii and Alaska. We're working on New Zealand and Australia."
+         "text": "Not yet. We ship within the USA only. We're working on New Zealand and Australia."
         }
        },
        {
@@ -3458,8 +4155,12 @@
      "a": "Each piece is printed to order. Printing takes 2–4 business days, then shipping takes 3–7 business days within the USA, so about 5–11 business days in total. You'll get a tracking link by email when it ships."
     },
     {
+     "q": "Is shipping free?",
+     "a": "Yes. Every order ships free to the 48 contiguous US states and Washington, DC, with no minimum. Hawaii, Alaska, US territories (including Guam) and APO/FPO addresses are not included in free shipping."
+    },
+    {
      "q": "Do you ship outside the USA?",
-     "a": "Not yet. We ship to all 50 US states, including Hawaii and Alaska. We're working on New Zealand and Australia."
+     "a": "Not yet. We ship within the USA only. We're working on New Zealand and Australia."
     },
     {
      "q": "What payment methods do you take?",
@@ -3569,12 +4270,63 @@
         "@type": "OfferShippingDetails",
         "shippingRate": {
          "@type": "MonetaryAmount",
-         "value": "8.00",
+         "value": "0.00",
          "currency": "USD"
         },
         "shippingDestination": {
          "@type": "DefinedRegion",
-         "addressCountry": "US"
+         "addressCountry": "US",
+         "addressRegion": [
+          "AL",
+          "AZ",
+          "AR",
+          "CA",
+          "CO",
+          "CT",
+          "DE",
+          "DC",
+          "FL",
+          "GA",
+          "ID",
+          "IL",
+          "IN",
+          "IA",
+          "KS",
+          "KY",
+          "LA",
+          "ME",
+          "MD",
+          "MA",
+          "MI",
+          "MN",
+          "MS",
+          "MO",
+          "MT",
+          "NE",
+          "NV",
+          "NH",
+          "NJ",
+          "NM",
+          "NY",
+          "NC",
+          "ND",
+          "OH",
+          "OK",
+          "OR",
+          "PA",
+          "RI",
+          "SC",
+          "SD",
+          "TN",
+          "TX",
+          "UT",
+          "VT",
+          "VA",
+          "WA",
+          "WV",
+          "WI",
+          "WY"
+         ]
         },
         "deliveryTime": {
          "@type": "ShippingDeliveryTime",
@@ -3668,10 +4420,18 @@
        },
        {
         "@type": "Question",
+        "name": "Is shipping free?",
+        "acceptedAnswer": {
+         "@type": "Answer",
+         "text": "Yes. Every order ships free to the 48 contiguous US states and Washington, DC, with no minimum. Hawaii, Alaska, US territories (including Guam) and APO/FPO addresses are not included in free shipping."
+        }
+       },
+       {
+        "@type": "Question",
         "name": "Do you ship outside the USA?",
         "acceptedAnswer": {
          "@type": "Answer",
-         "text": "Not yet. We ship to all 50 US states, including Hawaii and Alaska. We're working on New Zealand and Australia."
+         "text": "Not yet. We ship within the USA only. We're working on New Zealand and Australia."
         }
        },
        {
@@ -3737,8 +4497,12 @@
      "a": "Each piece is printed to order. Printing takes 2–4 business days, then shipping takes 3–7 business days within the USA, so about 5–11 business days in total. You'll get a tracking link by email when it ships."
     },
     {
+     "q": "Is shipping free?",
+     "a": "Yes. Every order ships free to the 48 contiguous US states and Washington, DC, with no minimum. Hawaii, Alaska, US territories (including Guam) and APO/FPO addresses are not included in free shipping."
+    },
+    {
      "q": "Do you ship outside the USA?",
-     "a": "Not yet. We ship to all 50 US states, including Hawaii and Alaska. We're working on New Zealand and Australia."
+     "a": "Not yet. We ship within the USA only. We're working on New Zealand and Australia."
     },
     {
      "q": "What payment methods do you take?",
@@ -3851,12 +4615,63 @@
         "@type": "OfferShippingDetails",
         "shippingRate": {
          "@type": "MonetaryAmount",
-         "value": "8.00",
+         "value": "0.00",
          "currency": "USD"
         },
         "shippingDestination": {
          "@type": "DefinedRegion",
-         "addressCountry": "US"
+         "addressCountry": "US",
+         "addressRegion": [
+          "AL",
+          "AZ",
+          "AR",
+          "CA",
+          "CO",
+          "CT",
+          "DE",
+          "DC",
+          "FL",
+          "GA",
+          "ID",
+          "IL",
+          "IN",
+          "IA",
+          "KS",
+          "KY",
+          "LA",
+          "ME",
+          "MD",
+          "MA",
+          "MI",
+          "MN",
+          "MS",
+          "MO",
+          "MT",
+          "NE",
+          "NV",
+          "NH",
+          "NJ",
+          "NM",
+          "NY",
+          "NC",
+          "ND",
+          "OH",
+          "OK",
+          "OR",
+          "PA",
+          "RI",
+          "SC",
+          "SD",
+          "TN",
+          "TX",
+          "UT",
+          "VT",
+          "VA",
+          "WA",
+          "WV",
+          "WI",
+          "WY"
+         ]
         },
         "deliveryTime": {
          "@type": "ShippingDeliveryTime",
@@ -3950,10 +4765,18 @@
        },
        {
         "@type": "Question",
+        "name": "Is shipping free?",
+        "acceptedAnswer": {
+         "@type": "Answer",
+         "text": "Yes. Every order ships free to the 48 contiguous US states and Washington, DC, with no minimum. Hawaii, Alaska, US territories (including Guam) and APO/FPO addresses are not included in free shipping."
+        }
+       },
+       {
+        "@type": "Question",
         "name": "Do you ship outside the USA?",
         "acceptedAnswer": {
          "@type": "Answer",
-         "text": "Not yet. We ship to all 50 US states, including Hawaii and Alaska. We're working on New Zealand and Australia."
+         "text": "Not yet. We ship within the USA only. We're working on New Zealand and Australia."
         }
        },
        {
@@ -4019,8 +4842,12 @@
      "a": "Each piece is printed to order. Printing takes 2–4 business days, then shipping takes 3–7 business days within the USA, so about 5–11 business days in total. You'll get a tracking link by email when it ships."
     },
     {
+     "q": "Is shipping free?",
+     "a": "Yes. Every order ships free to the 48 contiguous US states and Washington, DC, with no minimum. Hawaii, Alaska, US territories (including Guam) and APO/FPO addresses are not included in free shipping."
+    },
+    {
      "q": "Do you ship outside the USA?",
-     "a": "Not yet. We ship to all 50 US states, including Hawaii and Alaska. We're working on New Zealand and Australia."
+     "a": "Not yet. We ship within the USA only. We're working on New Zealand and Australia."
     },
     {
      "q": "What payment methods do you take?",
@@ -4133,12 +4960,63 @@
         "@type": "OfferShippingDetails",
         "shippingRate": {
          "@type": "MonetaryAmount",
-         "value": "8.00",
+         "value": "0.00",
          "currency": "USD"
         },
         "shippingDestination": {
          "@type": "DefinedRegion",
-         "addressCountry": "US"
+         "addressCountry": "US",
+         "addressRegion": [
+          "AL",
+          "AZ",
+          "AR",
+          "CA",
+          "CO",
+          "CT",
+          "DE",
+          "DC",
+          "FL",
+          "GA",
+          "ID",
+          "IL",
+          "IN",
+          "IA",
+          "KS",
+          "KY",
+          "LA",
+          "ME",
+          "MD",
+          "MA",
+          "MI",
+          "MN",
+          "MS",
+          "MO",
+          "MT",
+          "NE",
+          "NV",
+          "NH",
+          "NJ",
+          "NM",
+          "NY",
+          "NC",
+          "ND",
+          "OH",
+          "OK",
+          "OR",
+          "PA",
+          "RI",
+          "SC",
+          "SD",
+          "TN",
+          "TX",
+          "UT",
+          "VT",
+          "VA",
+          "WA",
+          "WV",
+          "WI",
+          "WY"
+         ]
         },
         "deliveryTime": {
          "@type": "ShippingDeliveryTime",
@@ -4232,10 +5110,18 @@
        },
        {
         "@type": "Question",
+        "name": "Is shipping free?",
+        "acceptedAnswer": {
+         "@type": "Answer",
+         "text": "Yes. Every order ships free to the 48 contiguous US states and Washington, DC, with no minimum. Hawaii, Alaska, US territories (including Guam) and APO/FPO addresses are not included in free shipping."
+        }
+       },
+       {
+        "@type": "Question",
         "name": "Do you ship outside the USA?",
         "acceptedAnswer": {
          "@type": "Answer",
-         "text": "Not yet. We ship to all 50 US states, including Hawaii and Alaska. We're working on New Zealand and Australia."
+         "text": "Not yet. We ship within the USA only. We're working on New Zealand and Australia."
         }
        },
        {
@@ -4301,8 +5187,12 @@
      "a": "Each piece is printed to order. Printing takes 2–4 business days, then shipping takes 3–7 business days within the USA, so about 5–11 business days in total. You'll get a tracking link by email when it ships."
     },
     {
+     "q": "Is shipping free?",
+     "a": "Yes. Every order ships free to the 48 contiguous US states and Washington, DC, with no minimum. Hawaii, Alaska, US territories (including Guam) and APO/FPO addresses are not included in free shipping."
+    },
+    {
      "q": "Do you ship outside the USA?",
-     "a": "Not yet. We ship to all 50 US states, including Hawaii and Alaska. We're working on New Zealand and Australia."
+     "a": "Not yet. We ship within the USA only. We're working on New Zealand and Australia."
     },
     {
      "q": "What payment methods do you take?",
@@ -4415,12 +5305,63 @@
         "@type": "OfferShippingDetails",
         "shippingRate": {
          "@type": "MonetaryAmount",
-         "value": "8.00",
+         "value": "0.00",
          "currency": "USD"
         },
         "shippingDestination": {
          "@type": "DefinedRegion",
-         "addressCountry": "US"
+         "addressCountry": "US",
+         "addressRegion": [
+          "AL",
+          "AZ",
+          "AR",
+          "CA",
+          "CO",
+          "CT",
+          "DE",
+          "DC",
+          "FL",
+          "GA",
+          "ID",
+          "IL",
+          "IN",
+          "IA",
+          "KS",
+          "KY",
+          "LA",
+          "ME",
+          "MD",
+          "MA",
+          "MI",
+          "MN",
+          "MS",
+          "MO",
+          "MT",
+          "NE",
+          "NV",
+          "NH",
+          "NJ",
+          "NM",
+          "NY",
+          "NC",
+          "ND",
+          "OH",
+          "OK",
+          "OR",
+          "PA",
+          "RI",
+          "SC",
+          "SD",
+          "TN",
+          "TX",
+          "UT",
+          "VT",
+          "VA",
+          "WA",
+          "WV",
+          "WI",
+          "WY"
+         ]
         },
         "deliveryTime": {
          "@type": "ShippingDeliveryTime",
@@ -4514,10 +5455,18 @@
        },
        {
         "@type": "Question",
+        "name": "Is shipping free?",
+        "acceptedAnswer": {
+         "@type": "Answer",
+         "text": "Yes. Every order ships free to the 48 contiguous US states and Washington, DC, with no minimum. Hawaii, Alaska, US territories (including Guam) and APO/FPO addresses are not included in free shipping."
+        }
+       },
+       {
+        "@type": "Question",
         "name": "Do you ship outside the USA?",
         "acceptedAnswer": {
          "@type": "Answer",
-         "text": "Not yet. We ship to all 50 US states, including Hawaii and Alaska. We're working on New Zealand and Australia."
+         "text": "Not yet. We ship within the USA only. We're working on New Zealand and Australia."
         }
        },
        {
@@ -4583,8 +5532,12 @@
      "a": "Each piece is printed to order. Printing takes 2–4 business days, then shipping takes 3–7 business days within the USA, so about 5–11 business days in total. You'll get a tracking link by email when it ships."
     },
     {
+     "q": "Is shipping free?",
+     "a": "Yes. Every order ships free to the 48 contiguous US states and Washington, DC, with no minimum. Hawaii, Alaska, US territories (including Guam) and APO/FPO addresses are not included in free shipping."
+    },
+    {
      "q": "Do you ship outside the USA?",
-     "a": "Not yet. We ship to all 50 US states, including Hawaii and Alaska. We're working on New Zealand and Australia."
+     "a": "Not yet. We ship within the USA only. We're working on New Zealand and Australia."
     },
     {
      "q": "What payment methods do you take?",
@@ -4697,12 +5650,63 @@
         "@type": "OfferShippingDetails",
         "shippingRate": {
          "@type": "MonetaryAmount",
-         "value": "8.00",
+         "value": "0.00",
          "currency": "USD"
         },
         "shippingDestination": {
          "@type": "DefinedRegion",
-         "addressCountry": "US"
+         "addressCountry": "US",
+         "addressRegion": [
+          "AL",
+          "AZ",
+          "AR",
+          "CA",
+          "CO",
+          "CT",
+          "DE",
+          "DC",
+          "FL",
+          "GA",
+          "ID",
+          "IL",
+          "IN",
+          "IA",
+          "KS",
+          "KY",
+          "LA",
+          "ME",
+          "MD",
+          "MA",
+          "MI",
+          "MN",
+          "MS",
+          "MO",
+          "MT",
+          "NE",
+          "NV",
+          "NH",
+          "NJ",
+          "NM",
+          "NY",
+          "NC",
+          "ND",
+          "OH",
+          "OK",
+          "OR",
+          "PA",
+          "RI",
+          "SC",
+          "SD",
+          "TN",
+          "TX",
+          "UT",
+          "VT",
+          "VA",
+          "WA",
+          "WV",
+          "WI",
+          "WY"
+         ]
         },
         "deliveryTime": {
          "@type": "ShippingDeliveryTime",
@@ -4796,10 +5800,18 @@
        },
        {
         "@type": "Question",
+        "name": "Is shipping free?",
+        "acceptedAnswer": {
+         "@type": "Answer",
+         "text": "Yes. Every order ships free to the 48 contiguous US states and Washington, DC, with no minimum. Hawaii, Alaska, US territories (including Guam) and APO/FPO addresses are not included in free shipping."
+        }
+       },
+       {
+        "@type": "Question",
         "name": "Do you ship outside the USA?",
         "acceptedAnswer": {
          "@type": "Answer",
-         "text": "Not yet. We ship to all 50 US states, including Hawaii and Alaska. We're working on New Zealand and Australia."
+         "text": "Not yet. We ship within the USA only. We're working on New Zealand and Australia."
         }
        },
        {
@@ -4865,8 +5877,12 @@
      "a": "Each piece is printed to order. Printing takes 2–4 business days, then shipping takes 3–7 business days within the USA, so about 5–11 business days in total. You'll get a tracking link by email when it ships."
     },
     {
+     "q": "Is shipping free?",
+     "a": "Yes. Every order ships free to the 48 contiguous US states and Washington, DC, with no minimum. Hawaii, Alaska, US territories (including Guam) and APO/FPO addresses are not included in free shipping."
+    },
+    {
      "q": "Do you ship outside the USA?",
-     "a": "Not yet. We ship to all 50 US states, including Hawaii and Alaska. We're working on New Zealand and Australia."
+     "a": "Not yet. We ship within the USA only. We're working on New Zealand and Australia."
     },
     {
      "q": "What payment methods do you take?",
@@ -4976,12 +5992,63 @@
         "@type": "OfferShippingDetails",
         "shippingRate": {
          "@type": "MonetaryAmount",
-         "value": "8.00",
+         "value": "0.00",
          "currency": "USD"
         },
         "shippingDestination": {
          "@type": "DefinedRegion",
-         "addressCountry": "US"
+         "addressCountry": "US",
+         "addressRegion": [
+          "AL",
+          "AZ",
+          "AR",
+          "CA",
+          "CO",
+          "CT",
+          "DE",
+          "DC",
+          "FL",
+          "GA",
+          "ID",
+          "IL",
+          "IN",
+          "IA",
+          "KS",
+          "KY",
+          "LA",
+          "ME",
+          "MD",
+          "MA",
+          "MI",
+          "MN",
+          "MS",
+          "MO",
+          "MT",
+          "NE",
+          "NV",
+          "NH",
+          "NJ",
+          "NM",
+          "NY",
+          "NC",
+          "ND",
+          "OH",
+          "OK",
+          "OR",
+          "PA",
+          "RI",
+          "SC",
+          "SD",
+          "TN",
+          "TX",
+          "UT",
+          "VT",
+          "VA",
+          "WA",
+          "WV",
+          "WI",
+          "WY"
+         ]
         },
         "deliveryTime": {
          "@type": "ShippingDeliveryTime",
@@ -5061,10 +6128,18 @@
        },
        {
         "@type": "Question",
+        "name": "Is shipping free?",
+        "acceptedAnswer": {
+         "@type": "Answer",
+         "text": "Yes. Every order ships free to the 48 contiguous US states and Washington, DC, with no minimum. Hawaii, Alaska, US territories (including Guam) and APO/FPO addresses are not included in free shipping."
+        }
+       },
+       {
+        "@type": "Question",
         "name": "Do you ship outside the USA?",
         "acceptedAnswer": {
          "@type": "Answer",
-         "text": "Not yet. We ship to all 50 US states, including Hawaii and Alaska. We're working on New Zealand and Australia."
+         "text": "Not yet. We ship within the USA only. We're working on New Zealand and Australia."
         }
        },
        {
@@ -5130,8 +6205,12 @@
      "a": "Each piece is printed to order. Printing takes 2–4 business days, then shipping takes 3–7 business days within the USA, so about 5–11 business days in total. You'll get a tracking link by email when it ships."
     },
     {
+     "q": "Is shipping free?",
+     "a": "Yes. Every order ships free to the 48 contiguous US states and Washington, DC, with no minimum. Hawaii, Alaska, US territories (including Guam) and APO/FPO addresses are not included in free shipping."
+    },
+    {
      "q": "Do you ship outside the USA?",
-     "a": "Not yet. We ship to all 50 US states, including Hawaii and Alaska. We're working on New Zealand and Australia."
+     "a": "Not yet. We ship within the USA only. We're working on New Zealand and Australia."
     },
     {
      "q": "What payment methods do you take?",
@@ -5238,12 +6317,63 @@
         "@type": "OfferShippingDetails",
         "shippingRate": {
          "@type": "MonetaryAmount",
-         "value": "8.00",
+         "value": "0.00",
          "currency": "USD"
         },
         "shippingDestination": {
          "@type": "DefinedRegion",
-         "addressCountry": "US"
+         "addressCountry": "US",
+         "addressRegion": [
+          "AL",
+          "AZ",
+          "AR",
+          "CA",
+          "CO",
+          "CT",
+          "DE",
+          "DC",
+          "FL",
+          "GA",
+          "ID",
+          "IL",
+          "IN",
+          "IA",
+          "KS",
+          "KY",
+          "LA",
+          "ME",
+          "MD",
+          "MA",
+          "MI",
+          "MN",
+          "MS",
+          "MO",
+          "MT",
+          "NE",
+          "NV",
+          "NH",
+          "NJ",
+          "NM",
+          "NY",
+          "NC",
+          "ND",
+          "OH",
+          "OK",
+          "OR",
+          "PA",
+          "RI",
+          "SC",
+          "SD",
+          "TN",
+          "TX",
+          "UT",
+          "VT",
+          "VA",
+          "WA",
+          "WV",
+          "WI",
+          "WY"
+         ]
         },
         "deliveryTime": {
          "@type": "ShippingDeliveryTime",
@@ -5323,10 +6453,18 @@
        },
        {
         "@type": "Question",
+        "name": "Is shipping free?",
+        "acceptedAnswer": {
+         "@type": "Answer",
+         "text": "Yes. Every order ships free to the 48 contiguous US states and Washington, DC, with no minimum. Hawaii, Alaska, US territories (including Guam) and APO/FPO addresses are not included in free shipping."
+        }
+       },
+       {
+        "@type": "Question",
         "name": "Do you ship outside the USA?",
         "acceptedAnswer": {
          "@type": "Answer",
-         "text": "Not yet. We ship to all 50 US states, including Hawaii and Alaska. We're working on New Zealand and Australia."
+         "text": "Not yet. We ship within the USA only. We're working on New Zealand and Australia."
         }
        },
        {
@@ -5392,8 +6530,12 @@
      "a": "Each piece is printed to order. Printing takes 2–4 business days, then shipping takes 3–7 business days within the USA, so about 5–11 business days in total. You'll get a tracking link by email when it ships."
     },
     {
+     "q": "Is shipping free?",
+     "a": "Yes. Every order ships free to the 48 contiguous US states and Washington, DC, with no minimum. Hawaii, Alaska, US territories (including Guam) and APO/FPO addresses are not included in free shipping."
+    },
+    {
      "q": "Do you ship outside the USA?",
-     "a": "Not yet. We ship to all 50 US states, including Hawaii and Alaska. We're working on New Zealand and Australia."
+     "a": "Not yet. We ship within the USA only. We're working on New Zealand and Australia."
     },
     {
      "q": "What payment methods do you take?",
@@ -5483,12 +6625,63 @@
         "@type": "OfferShippingDetails",
         "shippingRate": {
          "@type": "MonetaryAmount",
-         "value": "8.00",
+         "value": "0.00",
          "currency": "USD"
         },
         "shippingDestination": {
          "@type": "DefinedRegion",
-         "addressCountry": "US"
+         "addressCountry": "US",
+         "addressRegion": [
+          "AL",
+          "AZ",
+          "AR",
+          "CA",
+          "CO",
+          "CT",
+          "DE",
+          "DC",
+          "FL",
+          "GA",
+          "ID",
+          "IL",
+          "IN",
+          "IA",
+          "KS",
+          "KY",
+          "LA",
+          "ME",
+          "MD",
+          "MA",
+          "MI",
+          "MN",
+          "MS",
+          "MO",
+          "MT",
+          "NE",
+          "NV",
+          "NH",
+          "NJ",
+          "NM",
+          "NY",
+          "NC",
+          "ND",
+          "OH",
+          "OK",
+          "OR",
+          "PA",
+          "RI",
+          "SC",
+          "SD",
+          "TN",
+          "TX",
+          "UT",
+          "VT",
+          "VA",
+          "WA",
+          "WV",
+          "WI",
+          "WY"
+         ]
         },
         "deliveryTime": {
          "@type": "ShippingDeliveryTime",
@@ -5568,10 +6761,18 @@
        },
        {
         "@type": "Question",
+        "name": "Is shipping free?",
+        "acceptedAnswer": {
+         "@type": "Answer",
+         "text": "Yes. Every order ships free to the 48 contiguous US states and Washington, DC, with no minimum. Hawaii, Alaska, US territories (including Guam) and APO/FPO addresses are not included in free shipping."
+        }
+       },
+       {
+        "@type": "Question",
         "name": "Do you ship outside the USA?",
         "acceptedAnswer": {
          "@type": "Answer",
-         "text": "Not yet. We ship to all 50 US states, including Hawaii and Alaska. We're working on New Zealand and Australia."
+         "text": "Not yet. We ship within the USA only. We're working on New Zealand and Australia."
         }
        },
        {
@@ -5637,8 +6838,12 @@
      "a": "Each piece is printed to order. Printing takes 2–4 business days, then shipping takes 3–7 business days within the USA, so about 5–11 business days in total. You'll get a tracking link by email when it ships."
     },
     {
+     "q": "Is shipping free?",
+     "a": "Yes. Every order ships free to the 48 contiguous US states and Washington, DC, with no minimum. Hawaii, Alaska, US territories (including Guam) and APO/FPO addresses are not included in free shipping."
+    },
+    {
      "q": "Do you ship outside the USA?",
-     "a": "Not yet. We ship to all 50 US states, including Hawaii and Alaska. We're working on New Zealand and Australia."
+     "a": "Not yet. We ship within the USA only. We're working on New Zealand and Australia."
     },
     {
      "q": "What payment methods do you take?",
@@ -5728,12 +6933,63 @@
         "@type": "OfferShippingDetails",
         "shippingRate": {
          "@type": "MonetaryAmount",
-         "value": "8.00",
+         "value": "0.00",
          "currency": "USD"
         },
         "shippingDestination": {
          "@type": "DefinedRegion",
-         "addressCountry": "US"
+         "addressCountry": "US",
+         "addressRegion": [
+          "AL",
+          "AZ",
+          "AR",
+          "CA",
+          "CO",
+          "CT",
+          "DE",
+          "DC",
+          "FL",
+          "GA",
+          "ID",
+          "IL",
+          "IN",
+          "IA",
+          "KS",
+          "KY",
+          "LA",
+          "ME",
+          "MD",
+          "MA",
+          "MI",
+          "MN",
+          "MS",
+          "MO",
+          "MT",
+          "NE",
+          "NV",
+          "NH",
+          "NJ",
+          "NM",
+          "NY",
+          "NC",
+          "ND",
+          "OH",
+          "OK",
+          "OR",
+          "PA",
+          "RI",
+          "SC",
+          "SD",
+          "TN",
+          "TX",
+          "UT",
+          "VT",
+          "VA",
+          "WA",
+          "WV",
+          "WI",
+          "WY"
+         ]
         },
         "deliveryTime": {
          "@type": "ShippingDeliveryTime",
@@ -5813,10 +7069,18 @@
        },
        {
         "@type": "Question",
+        "name": "Is shipping free?",
+        "acceptedAnswer": {
+         "@type": "Answer",
+         "text": "Yes. Every order ships free to the 48 contiguous US states and Washington, DC, with no minimum. Hawaii, Alaska, US territories (including Guam) and APO/FPO addresses are not included in free shipping."
+        }
+       },
+       {
+        "@type": "Question",
         "name": "Do you ship outside the USA?",
         "acceptedAnswer": {
          "@type": "Answer",
-         "text": "Not yet. We ship to all 50 US states, including Hawaii and Alaska. We're working on New Zealand and Australia."
+         "text": "Not yet. We ship within the USA only. We're working on New Zealand and Australia."
         }
        },
        {
@@ -5882,8 +7146,12 @@
      "a": "Each piece is printed to order. Printing takes 2–4 business days, then shipping takes 3–7 business days within the USA, so about 5–11 business days in total. You'll get a tracking link by email when it ships."
     },
     {
+     "q": "Is shipping free?",
+     "a": "Yes. Every order ships free to the 48 contiguous US states and Washington, DC, with no minimum. Hawaii, Alaska, US territories (including Guam) and APO/FPO addresses are not included in free shipping."
+    },
+    {
      "q": "Do you ship outside the USA?",
-     "a": "Not yet. We ship to all 50 US states, including Hawaii and Alaska. We're working on New Zealand and Australia."
+     "a": "Not yet. We ship within the USA only. We're working on New Zealand and Australia."
     },
     {
      "q": "What payment methods do you take?",
@@ -5987,12 +7255,63 @@
         "@type": "OfferShippingDetails",
         "shippingRate": {
          "@type": "MonetaryAmount",
-         "value": "8.00",
+         "value": "0.00",
          "currency": "USD"
         },
         "shippingDestination": {
          "@type": "DefinedRegion",
-         "addressCountry": "US"
+         "addressCountry": "US",
+         "addressRegion": [
+          "AL",
+          "AZ",
+          "AR",
+          "CA",
+          "CO",
+          "CT",
+          "DE",
+          "DC",
+          "FL",
+          "GA",
+          "ID",
+          "IL",
+          "IN",
+          "IA",
+          "KS",
+          "KY",
+          "LA",
+          "ME",
+          "MD",
+          "MA",
+          "MI",
+          "MN",
+          "MS",
+          "MO",
+          "MT",
+          "NE",
+          "NV",
+          "NH",
+          "NJ",
+          "NM",
+          "NY",
+          "NC",
+          "ND",
+          "OH",
+          "OK",
+          "OR",
+          "PA",
+          "RI",
+          "SC",
+          "SD",
+          "TN",
+          "TX",
+          "UT",
+          "VT",
+          "VA",
+          "WA",
+          "WV",
+          "WI",
+          "WY"
+         ]
         },
         "deliveryTime": {
          "@type": "ShippingDeliveryTime",
@@ -6072,10 +7391,18 @@
        },
        {
         "@type": "Question",
+        "name": "Is shipping free?",
+        "acceptedAnswer": {
+         "@type": "Answer",
+         "text": "Yes. Every order ships free to the 48 contiguous US states and Washington, DC, with no minimum. Hawaii, Alaska, US territories (including Guam) and APO/FPO addresses are not included in free shipping."
+        }
+       },
+       {
+        "@type": "Question",
         "name": "Do you ship outside the USA?",
         "acceptedAnswer": {
          "@type": "Answer",
-         "text": "Not yet. We ship to all 50 US states, including Hawaii and Alaska. We're working on New Zealand and Australia."
+         "text": "Not yet. We ship within the USA only. We're working on New Zealand and Australia."
         }
        },
        {
@@ -6141,8 +7468,12 @@
      "a": "Each piece is printed to order. Printing takes 2–4 business days, then shipping takes 3–7 business days within the USA, so about 5–11 business days in total. You'll get a tracking link by email when it ships."
     },
     {
+     "q": "Is shipping free?",
+     "a": "Yes. Every order ships free to the 48 contiguous US states and Washington, DC, with no minimum. Hawaii, Alaska, US territories (including Guam) and APO/FPO addresses are not included in free shipping."
+    },
+    {
      "q": "Do you ship outside the USA?",
-     "a": "Not yet. We ship to all 50 US states, including Hawaii and Alaska. We're working on New Zealand and Australia."
+     "a": "Not yet. We ship within the USA only. We're working on New Zealand and Australia."
     },
     {
      "q": "What payment methods do you take?",
@@ -6232,12 +7563,63 @@
         "@type": "OfferShippingDetails",
         "shippingRate": {
          "@type": "MonetaryAmount",
-         "value": "8.00",
+         "value": "0.00",
          "currency": "USD"
         },
         "shippingDestination": {
          "@type": "DefinedRegion",
-         "addressCountry": "US"
+         "addressCountry": "US",
+         "addressRegion": [
+          "AL",
+          "AZ",
+          "AR",
+          "CA",
+          "CO",
+          "CT",
+          "DE",
+          "DC",
+          "FL",
+          "GA",
+          "ID",
+          "IL",
+          "IN",
+          "IA",
+          "KS",
+          "KY",
+          "LA",
+          "ME",
+          "MD",
+          "MA",
+          "MI",
+          "MN",
+          "MS",
+          "MO",
+          "MT",
+          "NE",
+          "NV",
+          "NH",
+          "NJ",
+          "NM",
+          "NY",
+          "NC",
+          "ND",
+          "OH",
+          "OK",
+          "OR",
+          "PA",
+          "RI",
+          "SC",
+          "SD",
+          "TN",
+          "TX",
+          "UT",
+          "VT",
+          "VA",
+          "WA",
+          "WV",
+          "WI",
+          "WY"
+         ]
         },
         "deliveryTime": {
          "@type": "ShippingDeliveryTime",
@@ -6317,10 +7699,18 @@
        },
        {
         "@type": "Question",
+        "name": "Is shipping free?",
+        "acceptedAnswer": {
+         "@type": "Answer",
+         "text": "Yes. Every order ships free to the 48 contiguous US states and Washington, DC, with no minimum. Hawaii, Alaska, US territories (including Guam) and APO/FPO addresses are not included in free shipping."
+        }
+       },
+       {
+        "@type": "Question",
         "name": "Do you ship outside the USA?",
         "acceptedAnswer": {
          "@type": "Answer",
-         "text": "Not yet. We ship to all 50 US states, including Hawaii and Alaska. We're working on New Zealand and Australia."
+         "text": "Not yet. We ship within the USA only. We're working on New Zealand and Australia."
         }
        },
        {
@@ -6390,8 +7780,12 @@
      "a": "Each piece is printed to order. Printing takes 2–4 business days, then shipping takes 3–7 business days within the USA, so about 5–11 business days in total. You'll get a tracking link by email when it ships."
     },
     {
+     "q": "Is shipping free?",
+     "a": "Yes. Every order ships free to the 48 contiguous US states and Washington, DC, with no minimum. Hawaii, Alaska, US territories (including Guam) and APO/FPO addresses are not included in free shipping."
+    },
+    {
      "q": "Do you ship outside the USA?",
-     "a": "Not yet. We ship to all 50 US states, including Hawaii and Alaska. We're working on New Zealand and Australia."
+     "a": "Not yet. We ship within the USA only. We're working on New Zealand and Australia."
     },
     {
      "q": "What payment methods do you take?",
@@ -6490,12 +7884,63 @@
         "@type": "OfferShippingDetails",
         "shippingRate": {
          "@type": "MonetaryAmount",
-         "value": "8.00",
+         "value": "0.00",
          "currency": "USD"
         },
         "shippingDestination": {
          "@type": "DefinedRegion",
-         "addressCountry": "US"
+         "addressCountry": "US",
+         "addressRegion": [
+          "AL",
+          "AZ",
+          "AR",
+          "CA",
+          "CO",
+          "CT",
+          "DE",
+          "DC",
+          "FL",
+          "GA",
+          "ID",
+          "IL",
+          "IN",
+          "IA",
+          "KS",
+          "KY",
+          "LA",
+          "ME",
+          "MD",
+          "MA",
+          "MI",
+          "MN",
+          "MS",
+          "MO",
+          "MT",
+          "NE",
+          "NV",
+          "NH",
+          "NJ",
+          "NM",
+          "NY",
+          "NC",
+          "ND",
+          "OH",
+          "OK",
+          "OR",
+          "PA",
+          "RI",
+          "SC",
+          "SD",
+          "TN",
+          "TX",
+          "UT",
+          "VT",
+          "VA",
+          "WA",
+          "WV",
+          "WI",
+          "WY"
+         ]
         },
         "deliveryTime": {
          "@type": "ShippingDeliveryTime",
@@ -6583,10 +8028,18 @@
        },
        {
         "@type": "Question",
+        "name": "Is shipping free?",
+        "acceptedAnswer": {
+         "@type": "Answer",
+         "text": "Yes. Every order ships free to the 48 contiguous US states and Washington, DC, with no minimum. Hawaii, Alaska, US territories (including Guam) and APO/FPO addresses are not included in free shipping."
+        }
+       },
+       {
+        "@type": "Question",
         "name": "Do you ship outside the USA?",
         "acceptedAnswer": {
          "@type": "Answer",
-         "text": "Not yet. We ship to all 50 US states, including Hawaii and Alaska. We're working on New Zealand and Australia."
+         "text": "Not yet. We ship within the USA only. We're working on New Zealand and Australia."
         }
        },
        {

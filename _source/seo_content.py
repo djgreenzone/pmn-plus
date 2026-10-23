@@ -257,7 +257,8 @@ for _k,(_d,_f) in X.items():
 SHARED_FAQ = [
  ("What sizes do you carry?", "Every PMN+ tee comes in S to 6XL at one price, so big and tall sizes (4XL, 5XL and 6XL) cost the same as a medium. Hats are one size with an adjustable strap. Check the size guide on each tee for chest and length."),
  ("When will my order arrive?", f"Each piece is printed to order. Printing takes {POLICY['production']}, then shipping takes {POLICY['shipping']} within the USA, so {POLICY['total']} in total. You'll get a tracking link by email when it ships."),
- ("Do you ship outside the USA?", "Not yet. We ship to all 50 US states, including Hawaii and Alaska. We're working on New Zealand and Australia."),
+ ("Is shipping free?", "Yes. Every order ships free to the 48 contiguous US states and Washington, DC, with no minimum. Hawaii, Alaska, US territories (including Guam) and APO/FPO addresses are not included in free shipping."),
+ ("Do you ship outside the USA?", "Not yet. We ship within the USA only. We're working on New Zealand and Australia."),
  ("What payment methods do you take?", "Visa, Mastercard, Amex, Apple Pay, Google Pay and Shop Pay at secure checkout. You can also pay in 4 interest-free installments with Afterpay."),
  ("What's your return policy?", POLICY["returns"]),
  ("How do I wash it?", POLICY["care"]),

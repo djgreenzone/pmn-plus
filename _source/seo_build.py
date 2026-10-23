@@ -25,7 +25,8 @@ out={'domain':D,'policy':POL,'sharedFaq':C['sharedFaq'],'collections':{},'produc
 org={"@type":"Organization","@id":D+"/#org","name":"PMN+","alternateName":"Polynesian Music Network Plus","url":D,"logo":D+"/shop/brand/pmn-plus-logo-black.png","legalName":"Polynesian Music"}
 ret={"@type":"MerchantReturnPolicy","applicableCountry":"US","returnPolicyCategory":"https://schema.org/MerchantReturnNotPermitted"}
 prods=[p for p in prods if p['id'] not in HIDE]
-ship={"@type":"OfferShippingDetails","shippingRate":{"@type":"MonetaryAmount","value":"8.00","currency":"USD"},"shippingDestination":{"@type":"DefinedRegion","addressCountry":"US"},"deliveryTime":{"@type":"ShippingDeliveryTime","handlingTime":{"@type":"QuantitativeValue","minValue":2,"maxValue":4,"unitCode":"DAY"},"transitTime":{"@type":"QuantitativeValue","minValue":3,"maxValue":7,"unitCode":"DAY"}}}
+CONTIG="AL AZ AR CA CO CT DE DC FL GA ID IL IN IA KS KY LA ME MD MA MI MN MS MO MT NE NV NH NJ NM NY NC ND OH OK OR PA RI SC SD TN TX UT VT VA WA WV WI WY".split()
+ship={"@type":"OfferShippingDetails","shippingRate":{"@type":"MonetaryAmount","value":"0.00","currency":"USD"},"shippingDestination":{"@type":"DefinedRegion","addressCountry":"US","addressRegion":CONTIG},"deliveryTime":{"@type":"ShippingDeliveryTime","handlingTime":{"@type":"QuantitativeValue","minValue":2,"maxValue":4,"unitCode":"DAY"},"transitTime":{"@type":"QuantitativeValue","minValue":3,"maxValue":7,"unitCode":"DAY"}}}
 for p in prods:
     sc=C['products'][p['id']]; m=META[p['id']]; slug=m['seo']; url=f"{D}/shop/{slug}"
     ha=hero_angle(p['id']);order=sorted(m['hi'].items(),key=lambda x:(x[0]!=ha,int(x[0])))
@@ -63,8 +64,10 @@ for k,c in C['collections'].items():
 os.makedirs('site2/seo',exist_ok=True)
 json.dump(out,open('site2/seo/seo-data.json','w'),ensure_ascii=False,indent=1)
 # ---- Merchant Center feed (one row per size) ----
-cols=['id','item_group_id','title','description','link','image_link','additional_image_link','availability','price','brand','condition','google_product_category','product_type','gender','age_group','color','size','size_system','material','shipping(country)','custom_label_0','identifier_exists']
+cols=['id','item_group_id','title','description','link','image_link','additional_image_link','availability','price','brand','condition','google_product_category','product_type','gender','age_group','color','size','size_system','material','shipping(country:region:service:price:min_handling_time:max_handling_time:min_transit_time:max_transit_time)','custom_label_0','identifier_exists']
 rows=['\t'.join(cols)]
+# Free shipping = 48 contiguous states + DC only (HI, AK, territories, APO are charged at checkout). Item-level shipping overrides the Merchant Center account policy, so list each free region on every row.
+SHIPCELL=','.join(f'US:{r}:Standard:0.00 USD:2:4:3:7' for r in CONTIG)
 for p in prods:
     o=out['products'][p['id']]; grp=GROUP.get(p['id'],o['slug'])
     if META[p['id']].get('src')=='shopify photo': continue  # test product: keep out of Google Shopping
@@ -74,7 +77,7 @@ for p in prods:
         sid=f"{o['slug']}-{z.lower().replace(' ','-')}"
         rows.append('\t'.join([sid,grp,trim(f"{p['name']} – {p['colour']}"+("" if z=='One size' else f" – {z}"),150)," ".join(o['description']),
           o['url']+("" if z=='One size' else f"?size={z}"),o['images'][0],",".join(o['images'][1:10]),'out_of_stock' if p['id'] in SOLD else 'in_stock',f"{p['price']}.00 USD",'PMN+','new',gpc,
-          f"{TEAM[p['team']]} > {'Hats' if p['kind']=='hat' else 'Tees'}",'unisex','adult',p['colour'],z,'US',mat,'US','RLWC 2026' if p['team'] in ('samoa','tonga') else 'PMN+','no']))  # own designs: no GTIN/MPN
+          f"{TEAM[p['team']]} > {'Hats' if p['kind']=='hat' else 'Tees'}",'unisex','adult',p['colour'],z,'US',mat,SHIPCELL,'RLWC 2026' if p['team'] in ('samoa','tonga') else 'PMN+','no']))  # own designs: no GTIN/MPN
 feed='\n'.join(rows)+'\n'
 open('site2/seo/merchant-center-feed.tsv','w').write(feed)
 open('../merchant-center-feed.txt','w').write(feed)  # public URL for Merchant Center scheduled fetch

@@ -140,7 +140,7 @@ Vercel → Project → Settings → Environment Variables (Production + Preview)
 | Afterpay | Settings → Payments → Add payment method → **Afterpay US (New)** (needs Afterpay Business Hub) |
 | Checkout tracking | Settings → Customer events (paste `_source/analytics/shopify-checkout-pixel.js`) |
 | Refund/return policy text | Settings → Policies |
-| Shipping rates | Settings → Shipping and delivery (Standard $8, Express $15). Must match Merchant Center. |
+| Shipping rates | Settings → Shipping and delivery (free to the contiguous US (zone "Contiguous US (free shipping)"); HI/AK/territories/APO paid). Must match Merchant Center. |
 
 ## 13. Klaviyo (email/SMS)
 Account: ICM (company `T9JJzp`). Lists: PMN+ Launch List `SLSsGL`, PMN+ Newsletter `Sggasa`.

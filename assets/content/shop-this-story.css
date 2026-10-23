@@ -1,0 +1,44 @@
+/* Shop this story — editorial product cards. Brand: black world, Bebas Neue
+   headings, Instrument Sans body, team accent hairline, pill CTA. Mobile-first.
+   Scoped under .shop-this-story / [data-shop] so it is safe on any page. */
+.shop-this-story{--sts-ink:#f4f2ee;--sts-dim:rgba(244,242,238,.62);--sts-line:rgba(244,242,238,.16);
+  --sts-card:#0d0e12;--sts-accent:#f4f2ee;margin:28px 0;}
+.shop-this-story.sts-samoa{--sts-accent:#2f5fe0;}
+.shop-this-story.sts-tonga{--sts-accent:#c8102e;}
+.sts-head{font-family:"Bebas Neue",Impact,sans-serif;text-transform:uppercase;letter-spacing:.04em;
+  font-size:1.35rem;line-height:1;margin:0 0 12px;color:var(--sts-ink);}
+.sts-head::after{content:"";display:block;width:40px;height:3px;margin-top:8px;background:var(--sts-accent);border-radius:2px;}
+.sts-items{display:grid;gap:14px;grid-template-columns:1fr;}
+@media(min-width:560px){.sts-grid .sts-items{grid-template-columns:1fr 1fr;}}
+@media(min-width:900px){.sts-grid .sts-items{grid-template-columns:repeat(3,1fr);}}
+.sts-card{display:flex;flex-direction:column;background:var(--sts-card);border:1px solid var(--sts-line);
+  border-radius:16px;overflow:hidden;text-decoration:none;color:var(--sts-ink);
+  transition:transform .4s cubic-bezier(.2,.7,.2,1),border-color .4s;}
+.sts-card:hover{transform:translateY(-3px);border-color:var(--sts-accent);}
+.sts-card:focus-visible{outline:2px solid var(--sts-accent);outline-offset:3px;}
+.sts-media{display:block;aspect-ratio:1/1;background:#fff;overflow:hidden;}
+.sts-media img{width:100%;height:100%;object-fit:cover;display:block;
+  transition:transform .6s cubic-bezier(.2,.7,.2,1);}
+.sts-card:hover .sts-media img{transform:scale(1.04);}
+.sts-body{display:flex;flex-direction:column;gap:4px;padding:12px 14px 14px;}
+.sts-team{font-size:.66rem;letter-spacing:.08em;text-transform:uppercase;color:var(--sts-dim);}
+.sts-name{font-family:"Bebas Neue",Impact,sans-serif;text-transform:uppercase;letter-spacing:.02em;
+  font-size:1.15rem;line-height:1.02;color:var(--sts-ink);}
+.sts-row{display:flex;align-items:center;gap:8px;margin-top:6px;}
+.sts-price{font-weight:600;font-size:.95rem;}
+.sts-so{font-size:.7rem;text-transform:uppercase;letter-spacing:.06em;color:var(--sts-dim);}
+.sts-cta{margin-left:auto;font-family:"Bebas Neue",Impact,sans-serif;text-transform:uppercase;
+  letter-spacing:.06em;font-size:.95rem;line-height:1;padding:7px 16px;border-radius:999px;
+  background:var(--sts-ink);color:#000;}
+.sts-card:hover .sts-cta{background:var(--sts-accent);color:#fff;}
+.sts-samoa .sts-cta,.sts-tonga .sts-cta{color:#000;}
+/* inline single-product chip (mid-paragraph) */
+.sts-inline{display:inline-block;margin:0;vertical-align:baseline;}
+.sts-inline .sts-items{display:inline;}
+.sts-inline .sts-card{flex-direction:row;align-items:center;gap:10px;display:inline-flex;
+  padding:4px 12px 4px 4px;border-radius:999px;}
+.sts-inline .sts-media{width:34px;height:34px;aspect-ratio:1/1;border-radius:999px;flex:0 0 auto;}
+.sts-inline .sts-body{flex-direction:row;align-items:center;gap:8px;padding:0;}
+.sts-inline .sts-team,.sts-inline .sts-row .sts-so{display:none;}
+.sts-inline .sts-name{font-size:.95rem;}
+@media(prefers-reduced-motion:reduce){.sts-card,.sts-media img{transition:none;}}

@@ -58,3 +58,10 @@ def build_home(path):
 def copy_assets(root):
     os.makedirs(os.path.join(root,'assets'),exist_ok=True)
     for f in ('pmn-nav.css','pmn-nav.js'): shutil.copyfile(os.path.join(NAVDIR,f),os.path.join(root,'assets',f))
+    # Content/editorial assets (shop-this-story module for /stories posts)
+    cdir=os.path.join(os.path.dirname(NAVDIR),'content')
+    if os.path.isdir(cdir):
+        os.makedirs(os.path.join(root,'assets','content'),exist_ok=True)
+        for f in ('shop-this-story.js','shop-this-story.css'):
+            sp=os.path.join(cdir,f)
+            if os.path.exists(sp): shutil.copyfile(sp,os.path.join(root,'assets','content',f))

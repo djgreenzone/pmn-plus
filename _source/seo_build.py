@@ -7,6 +7,19 @@ META=json.loads(s[a:b])
 HIDE=json.loads(re.search(r'HIDE=(\[[^\]]*\])',open('make_shop.py').read()).group(1))
 SOLD=set(json.loads(re.search(r'SOLD=new Set\((\[[^\]]*\])\)',open('shopify_layer.js').read()).group(1)))
 REST={k:int(v) for k,v in re.findall(r'"([a-z0-9-]+)":(\d+)',re.search(r'const REST=\{([^}]*)\}',s).group(1))}
+# Review ratings: KL_PID (site id -> [shopify handle, shopify product id]) from reviews.js,
+# and per-product aggregates from seo/reviews-summary.json (written by tools/ratings_fetch.py).
+# Empty/missing summary => no aggregateRating emitted (correct while there are no reviews).
+_rv=open('reviews.js').read()
+KL_PID={k:int(v) for k,v in re.findall(r'"([a-z0-9-]+)":(\d+)',_rv[_rv.index('KL_PID='):_rv.index('};',_rv.index('KL_PID='))])}  # shopify handle -> shopify product id
+_sl=open('shopify_layer.js').read()
+SMAP={k:v for k,v in re.findall(r'"([a-z0-9-]+)":\["([a-z0-9-]+)"',_sl[_sl.index('SHOPIFY_MAP='):])}  # site id -> shopify handle
+try: REVSUM=json.load(open('site2/seo/reviews-summary.json'))
+except Exception: REVSUM={}
+def rating_of(site_id):  # site id -> handle -> shopify pid -> summary
+    r=REVSUM.get(str(KL_PID.get(SMAP.get(site_id,''),'')))
+    if not r or not r.get('count'): return None
+    return {"@type":"AggregateRating","ratingValue":str(r['average']),"reviewCount":int(r['count']),"bestRating":"5","worstRating":"1"}
 def hero_angle(pid):
     h=META[pid].get('hi') or {};r=REST.get(pid,0)
     for a in h:
@@ -49,6 +62,8 @@ for p in prods:
           "image":imgs,"description":" ".join(sc['d']),"url":url,
           "audience":{"@type":"PeopleAudience","suggestedGender":"unisex"},
           "offers":{"@type":"Offer","url":url,"price":f"{p['price']}.00","priceCurrency":"USD","validFrom":"2026-10-01","priceValidUntil":"2027-12-31","availability":"https://schema.org/"+("OutOfStock" if p['id'] in SOLD else "InStock"),"itemCondition":"https://schema.org/NewCondition","seller":{"@id":D+"/#org"},"hasMerchantReturnPolicy":ret,"shippingDetails":ship}}
+    _ar=rating_of(p['id'])
+    if _ar: prod["aggregateRating"]=_ar
     if p['id'] in GROUP:
         gc=[q['colour'].lower() for q in prods if GROUP.get(q['id'])==GROUP[p['id']]]
         gdesc=f"The {p['name']} from PMN+ in {' and '.join(gc)}, sizes S to 6XL at one price. Printed to order and shipped across the USA."

@@ -27,8 +27,12 @@ Full docs live in `docs/`. Read the one that matches the task before changing an
    goes to all of them (the account page copies the homepage footer at build time).
 3. **Rebuild after any shop change** (from `_source/`):
    ```
-   python3 tools/make_sizes.py && python3 seo_content.py && python3 seo_build.py && python3 seo_inject.py && python3 make_og.py && python3 make_shop.py ../shop/index.html
+   python3 tools/make_sizes.py && python3 tools/ratings_fetch.py && python3 seo_content.py && python3 seo_build.py && python3 seo_inject.py && python3 make_og.py && python3 make_shop.py ../shop/index.html
    ```
+   `tools/ratings_fetch.py` pulls published review aggregates from Klaviyo into `site2/seo/reviews-summary.json`,
+   which `seo_build.py` turns into `aggregateRating` JSON-LD (Google star rich-results). It no-ops without
+   `KLAVIYO_PRIVATE_KEY` in the shell (keeps the committed summary), so local builds never need the key; run it
+   with the key to refresh ratings. No reviews yet => empty summary => no rating emitted (correct).
    `tools/make_sizes.py` makes the -320/-640 phone copies of product photos in `shop/hires/` (cards, grids and search use them;
    originals stay for the 360° viewer and Google Shopping). Skips photos that already have copies.
    `make_shop.py` uses exact-string replacements with asserts. If it fails with an AssertionError, the source text it

@@ -145,7 +145,7 @@ n_p=0
 for pid,o in SD['products'].items():
     url=o['url']; img=o['og']
     alt=f"{o['h1']} in {o['colour'].lower()} from the PMN+ {o['teamName']} collection"
-    extra=(f'<meta property="product:brand" content="PMN+">\n<meta property="product:price:amount" content="{o["price"]}.00">\n<meta property="product:price:currency" content="USD">\n'
+    extra=(f'<meta property="product:brand" content="PMN+">\n<meta property="product:price:amount" content="{float(o["price"]):.2f}">\n<meta property="product:price:currency" content="USD">\n'
            f'<meta property="product:availability" content="{"out of stock" if o["sold"] else "in stock"}">\n<meta property="product:condition" content="new">\n<meta property="product:retailer_item_id" content="{o["slug"]}">\n')
     pg=head(BASE,o['title'],o['meta'],url,img,alt,o['jsonld'],extra,'product')
     pg=pg.replace('<link rel="preconnect" href="https://polynesianmusicnetwork.myshopify.com" crossorigin>',
@@ -161,7 +161,7 @@ for pid,o in SD['products'].items():
     pg=sub1(pg,r'<button class="eyebrow team-link" id="pTeam" type="button">[^<]*</button>',f'<button class="eyebrow team-link" id="pTeam" type="button">{E(o["teamName"])}</button>')
     pg=sub1(pg,r'<h2 id="pName">[^<]*</h2>',f'<h1 id="pName">{E(o["h1"])}</h1>')
     pg=re.sub(r'<h1 class="hero-h">(.*?)</h1>',r'<h2 class="hero-h">\1</h2>',pg,count=1)
-    pg=sub1(pg,r'<strong class="num" id="pPrice">[^<]*</strong>',f'<strong class="num" id="pPrice">${o["price"]}.00</strong>')
+    pg=sub1(pg,r'<strong class="num" id="pPrice">[^<]*</strong>',f'<strong class="num" id="pPrice">${float(o["price"]):.2f}</strong>')
     pg=sub1(pg,r'<div id="pDesc"></div>','<div id="pDesc">'+''.join(f'<p>{E(t)}</p>' for t in o['description'])+'</div>')
     pg=sub1(pg,r'<div class="faq-list" id="pFaq"></div>','<div class="faq-list" id="pFaq">'+''.join(f'<details><summary>{E(f["q"])}</summary><p>{E(f["a"])}</p></details>' for f in o['faq'])+'</div>')
     th=''.join(f'<button class="thumb" type="button"><img loading="lazy" src="{u.split("/shop/")[1]}" alt="{E(a)}" width="72" height="72"></button>' for u,a in zip(o['images'],o['alt']))

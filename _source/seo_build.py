@@ -25,7 +25,7 @@ def hero_angle(pid):
     for a in h:
         if abs(((int(a)-r)%360+540)%360-180)<=8: return a
     return None
-prods=[dict(id=m[0],name=m[1].replace('\u2011','-').replace('MMT ','Mate Ma\'a Tonga '),price=int(m[2]),kind=m[3],team=m[4],colour=m[5].replace(' / ','/')) for m in re.findall(r'\{id:"([^"]+)",name:"([^"]+)",short:"[^"]*",price:(\d+),kind:"(\w+)",team:"(\w+)"[^}]*?colourName:"([^"]+)"',s)]
+prods=[dict(id=m[0],name=m[1].replace('\u2011','-').replace('MMT ','Mate Ma\'a Tonga '),price=(lambda v:int(v) if v.is_integer() else v)(float(m[2])),kind=m[3],team=m[4],colour=m[5].replace(' / ','/')) for m in re.findall(r'\{id:"([^"]+)",name:"([^"]+)",short:"[^"]*",price:([\d.]+),kind:"(\w+)",team:"(\w+)"[^}]*?colourName:"([^"]+)"',s)]
 TEAM={'samoa':'Toa Samoa','tonga':"Mate Ma'a Tonga",'pmn':'PMN+'}
 COLL={'samoa':'toa-samoa','tonga':'mate-maa-tonga','pmn':'pmn-plus'}
 def sizes(p):
@@ -53,7 +53,8 @@ for p in prods:
            f"${p['price']}. Printed to order and shipped across the USA by PMN+, the Pasifika media platform.",
            f"${p['price']}. Printed to order and shipped across the USA by PMN+.",
            f"${p['price']}. Printed to order and shipped across the USA.",
-           f"${p['price']} · Ships across the USA."]
+           f"${p['price']} · Ships across the USA.",
+           f"${p['price']}."]
     meta=next(sc["m"]+" "+t for t in tails if len(sc["m"]+" "+t)<=155)
     faq=[{"q":q,"a":a_} for q,a_ in sc['faq']+C['sharedFaq']]
     prod={"@type":"Product","@id":url+"#product","name":f"{p['name']} – {p['colour']}","sku":slug,"brand":{"@type":"Brand","name":"PMN+"},"color":p['colour'],"size":sizes(p),
@@ -61,7 +62,7 @@ for p in prods:
           "category":"Apparel & Accessories > "+("Clothing Accessories > Hats" if p['kind']=='hat' else "Clothing > Shirts & Tops"),
           "image":imgs,"description":" ".join(sc['d']),"url":url,
           "audience":{"@type":"PeopleAudience","suggestedGender":"unisex"},
-          "offers":{"@type":"Offer","url":url,"price":f"{p['price']}.00","priceCurrency":"USD","validFrom":"2026-10-01","priceValidUntil":"2027-12-31","availability":"https://schema.org/"+("OutOfStock" if p['id'] in SOLD else "InStock"),"itemCondition":"https://schema.org/NewCondition","seller":{"@id":D+"/#org"},"hasMerchantReturnPolicy":ret,"shippingDetails":ship}}
+          "offers":{"@type":"Offer","url":url,"price":f"{p['price']:.2f}","priceCurrency":"USD","validFrom":"2026-10-01","priceValidUntil":"2027-12-31","availability":"https://schema.org/"+("OutOfStock" if p['id'] in SOLD else "InStock"),"itemCondition":"https://schema.org/NewCondition","seller":{"@id":D+"/#org"},"hasMerchantReturnPolicy":ret,"shippingDetails":ship}}
     _ar=rating_of(p['id'])
     if _ar: prod["aggregateRating"]=_ar
     if p['id'] in GROUP:
@@ -91,7 +92,7 @@ for p in prods:
     for z in o['sizes']:
         sid=f"{o['slug']}-{z.lower().replace(' ','-')}"
         rows.append('\t'.join([sid,grp,trim(f"{p['name']} – {p['colour']}"+("" if z=='One size' else f" – {z}"),150)," ".join(o['description']),
-          o['url']+("" if z=='One size' else f"?size={z}"),o['images'][0],",".join(o['images'][1:10]),'out_of_stock' if p['id'] in SOLD else 'in_stock',f"{p['price']}.00 USD",'PMN+','new',gpc,
+          o['url']+("" if z=='One size' else f"?size={z}"),o['images'][0],",".join(o['images'][1:10]),'out_of_stock' if p['id'] in SOLD else 'in_stock',f"{p['price']:.2f} USD",'PMN+','new',gpc,
           f"{TEAM[p['team']]} > {'Hats' if p['kind']=='hat' else 'Tees'}",'unisex','adult',p['colour'],z,'US',mat,SHIPCELL,'RLWC 2026' if p['team'] in ('samoa','tonga') else 'PMN+','no']))  # own designs: no GTIN/MPN
 feed='\n'.join(rows)+'\n'
 open('site2/seo/merchant-center-feed.tsv','w').write(feed)

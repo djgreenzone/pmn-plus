@@ -5,8 +5,8 @@ The site, Shopify, Klaviyo emails and Google Merchant Center must all say the sa
 ## Products and sizes (as of Oct 6, 2026)
 | Line | Colours | Sizes | Price |
 |---|---|---|---|
-| Standard tees (685/676, RLWC26, Player, Silver Blackout, PMN+ Logo Tee) | Black | S–6XL | $45 |
-| Standard tees | Red (Tonga) / Royal blue (Samoa) | S–6XL | $45 |
+| Standard tees (685/676, RLWC26, Player, Silver Blackout, PMN+ Logo Tee) | Black | S–6XL | $49.95 |
+| Standard tees | Red (Tonga) / Royal blue (Samoa) | S–6XL | $49.95 |
 | Crest Oversized Tee (heavyweight) | Black | S–6XL | $60 |
 | Snapbacks / truckers / dad hat | — | One size | $35–55 |
 

@@ -94,7 +94,7 @@ button[disabled]{opacity:.5;cursor:default}
 /* shop */
 .shop{padding:clamp(4rem,9vw,7rem) 0;background:#000}
 .shop .top{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:1.25rem 2rem;margin-bottom:clamp(1.75rem,4vw,2.75rem)}
-.shop h2,.ig h2{font-family:var(--display);font-weight:400;text-transform:uppercase;font-size:clamp(2.8rem,7vw,5.4rem);line-height:.88;letter-spacing:.01em;margin-top:.4rem}
+.shop h2,.ig h2,.wyr h2{font-family:var(--display);font-weight:400;text-transform:uppercase;font-size:clamp(2.8rem,7vw,5.4rem);line-height:.88;letter-spacing:.01em;margin-top:.4rem}
 .shop .top p.sub{color:#b9b9be;max-width:38ch;margin-top:.8rem;font-size:1.06rem}.shop .top p.team-links{margin-top:.5rem;font-size:.95rem}.shop .top p.team-links a{color:#fff;text-decoration:underline;text-underline-offset:3px}
 .teams{display:grid;grid-template-columns:1fr 1fr;gap:clamp(.75rem,2vw,1.25rem)}
 .team{position:relative;display:flex;flex-direction:column;justify-content:flex-end;min-height:clamp(420px,52vw,600px);border-radius:26px;overflow:hidden;text-decoration:none;isolation:isolate;padding:clamp(1.25rem,3vw,2rem)}
@@ -229,6 +229,20 @@ button[disabled]{opacity:.5;cursor:default}
 .lb-x{top:16px;right:16px}.lb-p{left:16px;top:calc(50% - 24px)}.lb-nx{right:16px;top:calc(50% - 24px)}
 .lb-x:hover,.lb-n:hover{background:rgba(255,255,255,.2)}
 @media (max-width:700px){.lb-n{top:auto;bottom:20px}.lb-p{left:calc(50% - 60px)}.lb-nx{right:calc(50% - 60px)}}
+/* Who you reppin' (section 2): white break band, main graphic, one pill to /shop */
+.wyr{background:#fff;color:#050507;padding:clamp(3rem,7vw,5.5rem) 0}
+.wyr .eyebrow{color:#5f5f66;text-align:center}
+.wyr h2{color:#050507;text-align:center;margin:.4rem 0 clamp(1.25rem,3vw,2rem)}
+.wyr-card{display:block;overflow:hidden;background:#fff;isolation:isolate}
+.wyr-card img{display:block;width:100%;height:auto;aspect-ratio:2160/1350;transition:transform .6s cubic-bezier(.2,.7,.2,1)}
+.wyr-card:hover img{transform:scale(1.02)}
+.wyr-go{display:flex;justify-content:center;margin-top:clamp(1.25rem,3vw,2rem)}
+.wyr-go a{display:inline-flex;align-items:center;gap:.6rem;min-height:60px;padding:0 2.2rem;border-radius:999px;background:#050507;color:#fff;font-family:var(--display);font-size:clamp(1.25rem,2.4vw,1.55rem);letter-spacing:.08em;line-height:1;text-transform:uppercase;text-decoration:none;transition:opacity .15s,transform .1s}
+.wyr-go a svg{width:1.1em;height:1.1em;transition:transform .2s}
+.wyr-go a:hover{opacity:.86}.wyr-go a:hover svg{transform:translateX(3px)}.wyr-go a:active{transform:translateY(1px)}
+.wyr-card:focus-visible,.wyr-go a:focus-visible{outline:2px solid #050507;outline-offset:3px}
+@media (max-width:520px){.wyr-go a{width:100%;justify-content:center}}
+@media (prefers-reduced-motion:reduce){.wyr-card img,.wyr-go a svg{transition:none}.wyr-card:hover img{transform:none}}
 </style>
 <link rel="stylesheet" href="/assets/pmn-nav.css">
 </head>
@@ -261,7 +275,22 @@ button[disabled]{opacity:.5;cursor:default}
       <a class="go" href="/shop">Shop now</a>
     </div>
   </div>
-  <a class="cue" href="#everywhere">Scroll</a>
+  <a class="cue" href="#reppin">Scroll</a>
+</section>
+
+<section class="wyr" id="reppin" aria-labelledby="wyrH">
+  <div class="wrap">
+    <p class="eyebrow">RLWC 2026 &middot; Toa Samoa vs Mate Ma&#8217;a Tonga</p>
+    <h2 id="wyrH">Who you reppin&#8217;?</h2>
+    <a class="wyr-card" href="/shop" aria-label="Shop Toa Samoa and Mate Ma&#8217;a Tonga merch">
+      <picture>
+        <source type="image/avif" srcset="/assets/home/pmn-plus-who-you-reppin-toa-samoa-mate-maa-tonga-1080.avif 1080w, /assets/home/pmn-plus-who-you-reppin-toa-samoa-mate-maa-tonga-1600.avif 1600w, /assets/home/pmn-plus-who-you-reppin-toa-samoa-mate-maa-tonga-2160.avif 2160w" sizes="(min-width:1240px) 1180px, calc(100vw - 2rem)">
+        <source type="image/webp" srcset="/assets/home/pmn-plus-who-you-reppin-toa-samoa-mate-maa-tonga-1080.webp 1080w, /assets/home/pmn-plus-who-you-reppin-toa-samoa-mate-maa-tonga-1600.webp 1600w, /assets/home/pmn-plus-who-you-reppin-toa-samoa-mate-maa-tonga-2160.webp 2160w" sizes="(min-width:1240px) 1180px, calc(100vw - 2rem)">
+        <img src="/assets/home/pmn-plus-who-you-reppin-toa-samoa-mate-maa-tonga-1600.webp" width="2160" height="1350" alt="Two models under palm trees, one in the Toa Samoa Crest Oversized Tee and trucker, one in the Mate Ma&#8217;a Tonga Crest Oversized Tee" loading="lazy" decoding="async">
+      </picture>
+    </a>
+    <div class="wyr-go"><a href="/shop">Shop all merch <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
+  </div>
 </section>
 
 <section class="ev" id="everywhere" aria-labelledby="evH">

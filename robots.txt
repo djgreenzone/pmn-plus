@@ -2,3 +2,4 @@ User-agent: *
 Allow: /
 
 Sitemap: https://www.polynesianmusicnetwork.com/sitemap.xml
+Sitemap: https://www.polynesianmusicnetwork.com/sitemap-stories.xml

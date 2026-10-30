@@ -374,9 +374,10 @@ def main():
         out.append(write(f"stories/{p['slug']}/index.html", post_page(p, idx)))
     # stories index
     out.append(write("stories/index.html", index_page(
-        "Stories | PMN+", "Pacific music, sport, entertainment and culture — PMN+ stories.",
-        SITE + "/stories", "Stories", "PMN+", newest, idx, cats_nav=cats,
-        intro="Pacific music, sport, entertainment and culture — first.")))
+        "Pasifika Stories | PMN+",
+        "Pasifika stories — Pacific music, sport, entertainment and culture, from the people who live it. PMN+.",
+        SITE + "/stories", "Pasifika Stories", "PMN+", newest, idx, cats_nav=cats,
+        intro="No one tells our stories better than we can.")))
     # category hubs
     for c in cats:
         cp = [p for p in newest if p.get("category_id") == c["id"]]

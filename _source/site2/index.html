@@ -777,7 +777,7 @@ s.was{color:var(--ink-dim);font-weight:400;margin-left:4px}
       <div class="grid h-grid" id="hGridEl"></div>
     </section>
     <section class="h-sec team-sec t-samoa" aria-labelledby="hSamoa">
-      <div class="h-row"><div class="team-head"><img src="brand/toa-samoa-rugby-league-logo.webp" alt="" id="hSamoaCrest"><div><span class="eyebrow h-eyebrow">685 · RLWC 2026</span><h2 class="h-title" id="hSamoa">Toa Samoa</h2></div></div><button class="link" type="button" data-coll="toa-samoa">Shop all</button></div>
+      <div class="h-row"><div class="team-head"><img src="brand/toa-samoa-logo.webp" alt="" id="hSamoaCrest"><div><span class="eyebrow h-eyebrow">685 · RLWC 2026</span><h2 class="h-title" id="hSamoa">Toa Samoa</h2></div></div><button class="link" type="button" data-coll="toa-samoa">Shop all</button></div>
       <div class="big-rail" id="hSamoaRail"></div>
     </section>
     <section class="h-sec team-sec t-tonga" aria-labelledby="hTonga">
@@ -835,7 +835,7 @@ s.was{color:var(--ink-dim);font-weight:400;margin-left:4px}
 
   <section id="pdp" class="view entering" hidden aria-label="Product">
     <div class="promo reveal">Game Day Set: save $10 on a tee + hat</div>
-    <div class="pdp-bg" aria-hidden="true"><div class="bg bg-tonga"></div><div class="bg bg-samoa"></div><img class="crest" id="pdpCrest" alt="" src="brand/toa-samoa-rugby-league-logo.webp"><div class="light"></div><div class="vig"></div></div>
+    <div class="pdp-bg" aria-hidden="true"><div class="bg bg-tonga"></div><div class="bg bg-samoa"></div><img class="crest" id="pdpCrest" alt="" src="brand/toa-samoa-logo.webp"><div class="light"></div><div class="vig"></div></div>
     <header class="bar reveal">
       <button class="icon-btn" id="pdpBack" aria-label="Back to the drop"><svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg></button>
       <img class="logo" src="brand/pmn-plus-logo-white.svg" alt="PMN+ Polynesian Music Network Plus" width="40" height="44">
@@ -1325,7 +1325,7 @@ const BUMP=BUMPS.stickers;let bumpOn=false;
 function toast(msg){const t=$("toast");t.textContent=msg;t.classList.add("on");clearTimeout(toast.t);toast.t=setTimeout(()=>t.classList.remove("on"),2600)}
 function setBag(){bag=cart.reduce((n,i)=>n+i.qty,0);document.querySelectorAll(".bag-count").forEach(b=>{b.hidden=!bag;b.textContent=bag});document.querySelectorAll(".bag").forEach(b=>b.setAttribute("aria-label",`Bag, ${bag} item${bag===1?"":"s"}`))}
 
-const CREST={samoa:"brand/toa-samoa-rugby-league-logo",tonga:"brand/mate-maa-tonga-rugby-league-crest"};
+const CREST={samoa:"brand/toa-samoa-logo",tonga:"brand/mate-maa-tonga-rugby-league-crest"};
 const avifOK=(()=>{try{return document.createElement("canvas").toDataURL("image/avif").startsWith("data:image/avif")}catch(e){return false}})();
 const crestURL=t=>t==="pmn"?"brand/pmn-plus-logo-white.svg":CREST[t]+".webp";
 const altFor=(p,v="front")=>`${p.name} in ${p.colourName.toLowerCase()}, ${v} view`;

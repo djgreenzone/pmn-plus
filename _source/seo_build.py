@@ -101,7 +101,7 @@ open('../merchant-center-feed.txt','w').write(feed)  # public URL for Merchant C
 u=['<?xml version="1.0" encoding="UTF-8"?>','<?xml-stylesheet type="text/xsl" href="/sitemap.xsl"?>','<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">']
 u.append(f"  <url><loc>{D}/</loc><lastmod>2026-10-25</lastmod><image:image><image:loc>{D}/assets/pmn-plus-og-music-culture-tradition-sports.jpg</image:loc></image:image><image:image><image:loc>{D}/assets/home/pmn-plus-who-you-reppin-toa-samoa-mate-maa-tonga-2160.webp</image:loc></image:image></url>")
 u.append(f"  <url><loc>{D}/shop</loc><lastmod>2026-10-02</lastmod><image:image><image:loc>{D}/shop/pmn-plus-shop-og-rlwc-2026-toa-samoa-mate-maa-tonga.jpg</image:loc></image:image></url>")
-CIMG={'toa-samoa':['shop/brand/toa-samoa-rugby-league-logo.webp'],'mate-maa-tonga':['shop/brand/mate-maa-tonga-rugby-league-crest.webp']}   # collection page images
+CIMG={'toa-samoa':['shop/brand/toa-samoa-logo.webp'],'mate-maa-tonga':['shop/brand/mate-maa-tonga-rugby-league-crest.webp']}   # collection page images
 for k,c in out['collections'].items():
     slug=c['url'].rstrip('/').rsplit('/',1)[-1]
     imgs=[f"{D}/{x}" for x in CIMG.get(slug,[])]+[f"{D}/shop/pmn-plus-shop-og-rlwc-2026-toa-samoa-mate-maa-tonga.jpg"]

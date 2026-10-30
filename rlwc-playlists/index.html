@@ -213,6 +213,31 @@ main.pl{width:auto;margin:0;flex:1}
 .votes .pill{min-width:min(100%,250px);border:0;cursor:pointer;font-family:var(--display)}
 .votes .pill:disabled{opacity:.5;cursor:default}
 .poll-msg:empty{display:none}
+.vdlg{position:fixed;inset:0;margin:auto;height:fit-content;border:0;padding:0;border-radius:26px;width:min(440px,calc(100% - 32px));max-height:calc(100% - 32px);background:#fff;color:#050507;box-shadow:0 30px 80px rgba(0,0,0,.45)}
+.vdlg::backdrop{background:rgba(0,0,0,.6);backdrop-filter:blur(3px);-webkit-backdrop-filter:blur(3px)}
+.vdlg[open]{animation:vdIn .28s cubic-bezier(.2,.7,.2,1)}
+@keyframes vdIn{from{opacity:0;transform:translateY(14px) scale(.98)}}
+.vform{position:relative;display:grid;gap:.5rem;padding:2rem 1.6rem 1.6rem;text-align:left}
+.vd-x{position:absolute;top:.6rem;right:.6rem;width:44px;height:44px;border:0;border-radius:50%;background:transparent;font-size:1.8rem;line-height:1;color:#050507;cursor:pointer}
+.vd-x:hover{background:#f0f0f2}
+.vd-crest{height:64px;width:auto;margin-bottom:.25rem;justify-self:center}
+.vform .eyebrow,.vform h3,.vd-p{text-align:center}
+.vform .eyebrow{color:#5f5f66;font-size:.95rem}
+.vform h3{font-family:var(--display);font-weight:400;text-transform:uppercase;font-size:2.1rem;line-height:.95;letter-spacing:.01em;text-wrap:balance}
+.vd-p{color:#3d3d44;font-size:.95rem;margin-bottom:.4rem}
+.vform label{font-size:.78rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:#3d3d44;margin-top:.25rem}
+.vform input{height:52px;padding:0 1.05rem;border-radius:12px;border:1.5px solid #cfcfd4;background:#fff;color:#050507;font:500 1rem var(--font);width:100%}
+.vform input:focus{outline:none;border-color:#050507}
+.vform input[aria-invalid=true]{border-color:#b3102a}
+.vd-err{min-height:1.2em;font-size:.9rem;font-weight:600;color:#b3102a}
+.vd-err:empty{min-height:0}
+.vform .pill{width:100%;border:0;cursor:pointer;font-family:var(--display);background:#050507;color:#fff;margin-top:.25rem}
+.vform .pill.s{background:#1e4fa0}.vform .pill.t{background:#c8102e}
+.vform .pill:disabled{opacity:.6;cursor:default}
+.vf-fine{font-size:.76rem;color:#5f5f66;text-align:center}.vf-fine a{color:#050507}
+.vf-chg{background:none;border:0;padding:.3rem;font:600 .85rem var(--font);color:#050507;text-decoration:underline;text-underline-offset:3px;cursor:pointer;justify-self:center}
+@media (prefers-reduced-motion:reduce){.vdlg[open]{animation:none}}
+.poll-msg.err{color:#b3102a}
 .poll-msg{margin-top:1rem;font-weight:600;color:#050507}
 .poll .wyr-go{margin-top:1rem}
 .poll-msg:not(:empty)+.poll-n{margin-top:.35rem}
@@ -312,6 +337,21 @@ main.pl{width:auto;margin:0;flex:1}
         <button type="button" class="pill s" data-team="samoa">Vote Toa Samoa</button>
         <button type="button" class="pill t" data-team="tonga">Vote Mate Ma&#8217;a Tonga</button>
       </div>
+      <dialog class="vdlg" id="pollDlg" aria-labelledby="vdH" aria-describedby="vdP">
+        <form class="vform" id="pollForm" method="dialog" novalidate>
+          <button type="button" class="vd-x" id="vdX" aria-label="Close">&times;</button>
+          <img class="vd-crest" id="vdCrest" src="/shop/brand/toa-samoa-rugby-league-crest-360.webp" alt="" width="360" height="386">
+          <p class="eyebrow">Fan vote &middot; Samoa vs Tonga</p>
+          <h3 id="vdH">Confirm your vote for <span id="vfTeam">Toa Samoa</span></h3>
+          <p id="vdP" class="vd-p">To complete your vote, enter your name and email. One vote per person.</p>
+          <label for="vfName">First name</label><input id="vfName" name="name" autocomplete="given-name" maxlength="60" required>
+          <label for="vfEmail">Email</label><input id="vfEmail" name="email" type="email" inputmode="email" autocomplete="email" maxlength="200" required>
+          <p class="vd-err" id="vdErr" aria-live="assertive"></p>
+          <button type="submit" class="pill" id="vfGo">Submit my vote</button>
+          <p class="vf-fine">By voting you agree to join the PMN+ email list for drops, deals and game day news. Unsubscribe anytime. <a href="/privacy-policy">Privacy policy</a></p>
+          <button type="button" class="vf-chg" id="vfChg">Switch to <span id="vfOther">Mate Ma&#8217;a Tonga</span></button>
+        </form>
+      </dialog>
       <p class="poll-msg" id="pollMsg" aria-live="polite"></p>
       <p class="poll-n" id="pollN"></p>
       <div class="wyr-go" id="pollShop" hidden><a href="/shop">Shop all merch <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
@@ -379,13 +419,31 @@ main.pl{width:auto;margin:0;flex:1}
  const done=team=>{btns.forEach(b=>b.hidden=true);{const sh=$('pollShop'),l=sh.querySelector('a');if(team){l.href='/shop/'+(team==='samoa'?'toa-samoa':'mate-maa-tonga');l.firstChild.textContent='Shop '+NAME[team]+' merch '}sh.hidden=false}$('pollMsg').textContent=team?`You’re reppin’ ${NAME[team]}. ${team==='samoa'?'Faʻafetai':'Mālō'} for voting!`:''};
  const mine=get(K+'-team');if(mine)done(mine);
  const load=()=>fetch('/api/vote?poll='+P).then(r=>r.json()).then(d=>draw(d.totals)).catch(()=>{});
- btns.forEach(b=>b.addEventListener('click',()=>{btns.forEach(x=>x.disabled=true);
-  fetch('/api/vote',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({poll:P,team:b.dataset.team,voter})})
-   .then(r=>r.json()).then(d=>{if(d.totals)draw(d.totals);
-     if(d.status==='ok'||d.status==='already'){set(K+'-team',d.team);done(d.team)}
-     else if(d.status==='limit'){done(null);$('pollMsg').textContent='Lots of votes from this network already. Thanks for repping!'}
-     else{btns.forEach(x=>x.disabled=false);$('pollMsg').textContent=d.error||'Couldn’t save your vote. Try again.'}})
-   .catch(()=>{btns.forEach(x=>x.disabled=false);$('pollMsg').textContent='Couldn’t save your vote. Check your connection and try again.'});}));
+ let pick=null;const dlg=$('pollDlg'),form=$('pollForm'),go=$('vfGo'),nm=$('vfName'),em=$('vfEmail'),msg=$('pollMsg'),ve=$('vdErr');
+ const CREST={samoa:'/shop/brand/toa-samoa-rugby-league-crest-360.webp',tonga:'/shop/brand/mate-maa-tonga-rugby-league-crest-360.webp'};
+ nm.value=get('pmn-vote-name')||'';em.value=get('pmn-vote-email')||'';
+ const choose=t=>{pick=t;const o=t==='samoa'?'tonga':'samoa';$('vfTeam').textContent=NAME[t];$('vfOther').textContent=NAME[o];$('vdCrest').src=CREST[t];
+  go.className='pill '+(t==='samoa'?'s':'t');ve.textContent='';[nm,em].forEach(x=>x.removeAttribute('aria-invalid'))};
+ const open=t=>{choose(t);if(dlg.showModal){if(!dlg.open)dlg.showModal()}else dlg.setAttribute('open','');setTimeout(()=>(nm.value?em:nm).focus(),50)};
+ const close=()=>{dlg.close?dlg.close():dlg.removeAttribute('open')};
+ btns.forEach(b=>b.addEventListener('click',()=>open(b.dataset.team)));
+ $('vfChg').addEventListener('click',()=>choose(pick==='samoa'?'tonga':'samoa'));
+ $('vdX').addEventListener('click',close);
+ dlg.addEventListener('click',e=>{if(e.target===dlg)close()});
+ form.addEventListener('input',e=>{ve.textContent='';e.target.removeAttribute('aria-invalid')});
+ const err=(t,f)=>{ve.textContent=t;[nm,em].forEach(x=>x.removeAttribute('aria-invalid'));if(f){const x=f==='name'?nm:em;x.setAttribute('aria-invalid','true');x.focus()}};
+ form.addEventListener('submit',e=>{e.preventDefault();if(!pick)return;
+  const name=nm.value.trim(),email=em.value.trim();
+  if(!name)return err('Add your first name.','name');
+  if(!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email))return err('Enter a valid email address.','email');
+  go.disabled=true;go.textContent='Submitting…';
+  fetch('/api/vote',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({poll:P,team:pick,voter,name,email})})
+   .then(r=>r.json()).then(d=>{if(d.totals)draw(d.totals);go.disabled=false;go.textContent='Submit my vote';
+     if(d.status==='ok'||d.status==='already'){set(K+'-team',d.team);set('pmn-vote-name',name);set('pmn-vote-email',email);close();done(d.team);
+       if(d.status==='already')msg.textContent=`That email already voted for ${NAME[d.team]}. One vote each, fam.`}
+     else if(d.status==='limit'){close();done(null);msg.textContent='Lots of votes from this network already. Thanks for repping!'}
+     else err(d.error||'Couldn’t submit your vote. Try again.',d.field)})
+   .catch(()=>{go.disabled=false;go.textContent='Submit my vote';err('Couldn’t submit your vote. Check your connection and try again.')});});
  let vis=false;const el=$('vote');
  if('IntersectionObserver' in window)new IntersectionObserver(e=>{vis=e[0].isIntersecting;if(vis)load()},{rootMargin:'300px'}).observe(el);else load();
  setInterval(()=>{if(vis&&!document.hidden)load()},15000);

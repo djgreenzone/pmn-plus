@@ -174,7 +174,10 @@ template: `_source/account/email-signin.html` (paste into Supabase → Auth → 
   watch, Oct 29 sources: CommBank Stadium event page, broadcaster listings) → Who You Reppin' graphic with the fan vote →
   most-popular merch carousel (prices refresh from `/shop/search.json`).
 - Fan vote: `api/vote.js` → Supabase table `fan_votes` via SQL functions `fan_vote_cast` / `fan_vote_totals`
-  (service role only; RLS on, no public access). Poll id `rlwc26-samoa-tonga`. One vote per browser (random id in a
-  cookie + localStorage) and max 8 votes per network (hashed IP) per poll. Totals:
+  (service role only; RLS on, no public access). Poll id `rlwc26-samoa-tonga`. Voting asks for first name + email:
+  the voter is subscribed to the newsletter list (Klaviyo custom source "RLWC fan vote") and gets a "RLWC Fan Vote"
+  event plus profile property `rlwc_team`, so you can segment Samoa vs Tonga fans. One vote per email (stored hashed),
+  one per browser (random id in a cookie + localStorage) and max 8 per network (hashed IP) per poll. The old 4-argument
+  `fan_vote_cast` is a wrapper kept for compatibility; it can be dropped once this version is live. Totals:
   `select poll, team, count(*) from fan_votes group by 1,2;`. A new poll = add its id to `POLLS` in `api/vote.js`.
 - After the match: update the copy (result, next fixture) or close the vote by removing the poll id from `POLLS`.

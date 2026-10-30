@@ -113,6 +113,10 @@ html.pn-lock,html.pn-lock body{overflow:hidden}
 @media (max-width:640px){.pn-offer-fine{display:none}}
 /* Cover Stories mega-menu in the category row (desktop; mobile uses the drawer links).
    The panel is anchored to the whole row (.pn-cats) so a wide menu never runs off-screen. */
+/* nine items now that WATCH is in — tighten the row before it overflows on narrow laptops.
+   The row can't use overflow-x: .pn-cats is the dropdown's positioning parent and would clip it. */
+@media(max-width:1200px){.pn-cats{gap:14px}.pn-cats a,.pn-cats button{font-size:16px;letter-spacing:.07em}}
+@media(max-width:940px){.pn-cats{gap:10px;padding:0 10px}.pn-cats a,.pn-cats button{font-size:15px}}
 .pn-cats{position:relative}
 /* stretch the trigger to the full height of the row. The link box is only ~26px tall in a 48px row,
    so without this there's dead space between it and the menu and the hover drops on the way down. */

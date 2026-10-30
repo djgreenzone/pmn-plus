@@ -10,6 +10,7 @@ I_USER=SV('<circle cx="12" cy="8" r="4"/><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 
 I_BAG=SV('<path d="M5 8h14l-1 12H6L5 8z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/>')
 I_BACK='<svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg>'
 CATS=[("Shop","/shop"),("Toa Samoa","/shop/toa-samoa"),("Mate Ma'a Tonga","/shop/mate-maa-tonga"),("PMN+","/shop#pmn"),("Tees","/shop#tee"),("Hats","/shop#hat")]
+YOUTUBE="https://www.youtube.com/@polynesianmusicnetwork"
 def header(back_id=None,back_label="Back",bag="button",extra="",shop=False):
     back=f'<button type="button" class="pn-ic icon-btn" id="{back_id}" aria-label="{back_label}">{I_BACK}</button>' if back_id else ''
     bagel=(f'<button type="button" class="pn-ic icon-btn bag" aria-label="Bag">{I_BAG}<span class="bag-count" hidden></span></button>' if bag=="button"
@@ -23,10 +24,11 @@ def header(back_id=None,back_label="Back",bag="button",extra="",shop=False):
          '<div class="pn-dd-inner" role="menu">'
          '<a class="pn-dd-all" href="/digital-magazine" role="menuitem">View all cover stories →</a>'
          '<div class="pn-dd-covers"></div></div></div></div>')
-    # SHOP leads, then the editorial pair, then the team/product categories
+    # SHOP leads, then the editorial pair, then the team/product categories, then WATCH (off-site)
     cats=(f'<a href="{CATS[0][1]}">{CATS[0][0]}</a>'
           '<a href="/stories">Stories</a>'+mag
-          +''.join(f'<a href="{h}">{t}</a>' for t,h in CATS[1:]))
+          +''.join(f'<a href="{h}">{t}</a>' for t,h in CATS[1:])
+          +f'<a href="{YOUTUBE}" target="_blank" rel="noopener">Watch</a>')
     return (f'<div class="pn"><div class="pn-row">'
       f'<div class="pn-l">{back}<button type="button" class="pn-ic pn-menu" aria-label="Open menu" aria-expanded="false" aria-controls="pnDrawer">{I_MENU}</button></div>'
       f'{logo}'

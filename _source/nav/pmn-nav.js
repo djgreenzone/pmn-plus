@@ -10,7 +10,7 @@ const ic={
   bag:'<svg viewBox="0 0 24 24"><path d="M5 8h14l-1 12H6L5 8z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg>',
   home:'<svg viewBox="0 0 24 24"><path d="M4 11l8-7 8 7v9h-5v-6H9v6H4z"/></svg>',
   play:'<svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="M10 9.5v5l4.5-2.5z"/></svg>'};
-const LINKS=[["Shop","/shop"],["Stories","/stories"],["Cover Stories","/digital-magazine"],["Toa Samoa","/shop/toa-samoa"],["Mate Ma'a Tonga","/shop/mate-maa-tonga"],["PMN+","/shop#pmn"],["Tees","/shop#tee"],["Hats","/shop#hat"]];
+const LINKS=[["Shop","/shop"],["Stories","/stories"],["Cover Stories","/digital-magazine"],["Toa Samoa","/shop/toa-samoa"],["Mate Ma'a Tonga","/shop/mate-maa-tonga"],["PMN+","/shop#pmn"],["Tees","/shop#tee"],["Hats","/shop#hat"],["Watch","https://www.youtube.com/@polynesianmusicnetwork"]];
 const onShop=()=>/^\/shop(\/|$)/.test(location.pathname);
 let data=null,loading=null;
 const load=()=>data?Promise.resolve(data):loading||(loading=fetch("/shop/search.json").then(r=>r.json()).then(j=>data=j).catch(()=>data=[]));
@@ -32,7 +32,7 @@ function buildDrawer(){
   scrim=document.createElement("div");scrim.className="pn-scrim";scrim.hidden=true;
   drawer=document.createElement("nav");drawer.className="pn-drawer";drawer.id="pnDrawer";drawer.hidden=true;drawer.setAttribute("aria-label","Menu");
   drawer.innerHTML=`<div class="pn-dh">${LIVE?`<a href="/account">${INI?"My account":"Sign in / Join"} ${ic.chev}</a>`:`<b class="pn-dtitle">Menu</b>`}<button type="button" class="pn-ic pn-dx" aria-label="Close menu">${ic.x}</button></div>
-  <div class="pn-db"><ul class="pn-dl">${LINKS.map(([t,h])=>`<li><a href="${h}"><span>${esc(t)}</span>${ic.chev}</a></li>`).join("")}</ul>
+  <div class="pn-db"><ul class="pn-dl">${LINKS.map(([t,h])=>`<li><a href="${h}"${/^https?:/.test(h)?' target="_blank" rel="noopener"':""}><span>${esc(t)}</span>${ic.chev}</a></li>`).join("")}</ul>
   <div class="pn-dsec"><b>Featured</b><div class="pn-feat" id="pnFeat"></div></div>
   <div class="pn-dsec"><b>Game day</b><div class="pn-help"><a href="/rlwc-playlists">RLWC playlists &amp; how to watch</a></div></div>
   <div class="pn-dsec"><b>Help</b><div class="pn-help"><a href="/about">About PMN+</a><a href="/shipping">Shipping</a><a href="/returns">Returns</a><a href="/contact">Contact</a></div></div></div>

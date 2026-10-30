@@ -264,24 +264,61 @@ window.pmnClaimEvents=async()=>{const a=auth();if(!a)return 0;const k="pmn_claim
   if(r&&r.ok)p(localStorage,k,"1");return r&&r.ok?await r.json().catch(()=>0):0};
 })();
 
-/* ---------- Magazine menu: fill the desktop "Magazine" dropdown with the published issues ----------
-   Reads public.issues with the publishable key, groups by year, newest first. New issues show up in
-   the menu on their own — no rebuild needed. If the fetch fails the baked-in "View all issues" link stays. */
+/* ---------- Cover Stories menu: fill the desktop dropdown from Supabase ----------
+   Complex-style: the newest issue gets a big whole cover with its cover-story headline beside it, so
+   someone who doesn't read still sees a face and a line. The other issues follow as whole covers, each
+   labelled with its own cover story. Until there's a second issue the right side falls back to the
+   current issue's other stories. New issues appear on their own — no rebuild needed. If any fetch fails
+   the baked-in "View all cover stories" link is still there. */
 (()=>{
 const C=window.PMN_CONFIG||{},SB=C.supabaseUrl,AK=C.supabaseAnonKey;
 const grids=document.querySelectorAll("[data-pn-mag] .pn-dd-covers");
 if(!grids.length||!SB||!AK)return;
 const esc=t=>String(t==null?"":t).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
-fetch(SB+"/rest/v1/issues?status=eq.published&select=slug,title,period_label,cover_image_url&order=published_at.desc&limit=5",
-  {headers:{apikey:AK,Authorization:"Bearer "+AK}})
- .then(r=>r.ok?r.json():null)
- .then(issues=>{
-   if(!Array.isArray(issues)||!issues.length)return;
-   const html=issues.map(i=>{
-     const img=i.cover_image_url?`<img loading="lazy" src="${esc(i.cover_image_url)}" alt="PMN+ ${esc(i.title)} cover">`:`<img alt="">`;
-     return `<a href="/digital-magazine/${esc(i.slug)}" role="menuitem">${img}<b>${esc(i.title)}</b>`+
-            (i.period_label?`<small>${esc(i.period_label)}</small>`:"")+`</a>`;
-   }).join("");
-   grids.forEach(g=>{g.innerHTML=html});
- }).catch(()=>{});
+const get=q=>fetch(SB+"/rest/v1/"+q,{headers:{apikey:AK,Authorization:"Bearer "+AK}})
+  .then(r=>r.ok?r.json():[]).catch(()=>[]);
+const cov=(i,cls)=>(i.cover_image_url
+  ? `<img class="${cls}" loading="lazy" src="${esc(i.cover_image_url)}" alt="PMN+ ${esc(i.title)} cover">`
+  : `<span class="pn-ph ${cls}"></span>`);
+
+Promise.all([
+  get("issues?status=eq.published&select=id,slug,title,period_label,cover_image_url&order=published_at.desc&limit=6"),
+  get("posts?status=eq.published&is_cover_story=eq.true&select=issue_id,slug,title,dek&limit=6")
+]).then(([issues,feats])=>{
+  if(!Array.isArray(issues)||!issues.length)return;
+  const by={};(feats||[]).forEach(p=>{by[p.issue_id]=p});
+  const lead=issues[0],lf=by[lead.id],rest=issues.slice(1);
+
+  const featHtml=
+    `<div class="pn-dd-feat">`+
+      `<a class="pn-dd-feat-cov" href="/digital-magazine/${esc(lead.slug)}" role="menuitem">${cov(lead,"")}</a>`+
+      `<div class="pn-dd-feat-txt">`+
+        `<a class="pn-dd-ey" href="/digital-magazine/${esc(lead.slug)}" role="menuitem">${esc(lead.title)}`+
+          (lead.period_label?` <span>· ${esc(lead.period_label)}</span>`:"")+`</a>`+
+        (lf?`<a class="pn-dd-feat-t" href="/stories/${esc(lf.slug)}" role="menuitem">${esc(lf.title)}</a>`+
+            (lf.dek?`<p class="pn-dd-dek">${esc(lf.dek)}</p>`:""):"")+
+      `</div></div>`;
+
+  const restHtml=is=>`<div class="pn-dd-rest">`+is.map(i=>{
+    const f=by[i.id];
+    return `<a href="/digital-magazine/${esc(i.slug)}" role="menuitem">${cov(i,"")}`+
+           `<b>${esc(i.title)}</b>`+
+           (f?`<small>${esc(f.title)}</small>`:i.period_label?`<small>${esc(i.period_label)}</small>`:"")+
+           `</a>`}).join("")+`</div>`;
+
+  const paint=h=>grids.forEach(g=>{g.innerHTML=featHtml+h});
+
+  if(rest.length){paint(restHtml(rest));return}
+  // only one issue so far — show what's inside it instead of an empty right half
+  paint("");
+  get("posts?status=eq.published&issue_id=eq."+encodeURIComponent(lead.id)+
+      "&is_cover_story=eq.false&select=slug,title,hero_image_url&order=order_in_issue&limit=4")
+   .then(ps=>{
+     if(!Array.isArray(ps)||!ps.length)return;
+     paint(`<div class="pn-dd-list"><span class="pn-dd-lh">In this issue</span>`+ps.map(p=>
+       `<a href="/stories/${esc(p.slug)}" role="menuitem">`+
+       (p.hero_image_url?`<img loading="lazy" src="${esc(p.hero_image_url)}" alt="">`:`<span class="pn-ph"></span>`)+
+       `<b>${esc(p.title)}</b></a>`).join("")+`</div>`);
+   });
+});
 })();

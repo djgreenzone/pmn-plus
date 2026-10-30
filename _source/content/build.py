@@ -517,7 +517,9 @@ def magazine_index(issues, idx, og=None):
         '<source data-src="/assets/home/mag-bg.mp4" type="video/mp4"></video></div>'
         '<div class="ed-wrap"><div class="ed-head"><span class="ey">PMN+</span>'
         '<h1>Digital Magazine</h1>'
-        '<p>Every issue, read online, story by story.</p></div></div></section>')
+        '<p>Every issue, read online, story by story.</p></div>'
+        + feature(lead) +
+        '</div></section>')
     vidjs = ("<script>(function(){var v=document.querySelector('.ed-maghero .bgv video[data-lazy]');"
              "if(!v)return;var c=navigator.connection;"
              "if((c&&c.saveData)||matchMedia('(prefers-reduced-motion:reduce)').matches||!('IntersectionObserver' in window))return;"
@@ -526,7 +528,7 @@ def magazine_index(issues, idx, og=None):
              "v.play().catch(function(){})}else if(loaded)v.pause()})},{rootMargin:'300px 0px'}).observe(v.parentElement)})();</script>")
     return page("Digital Magazine | PMN+", "Every issue of the PMN+ digital magazine.",
                 SITE + "/digital-magazine", og_image=og,
-                body=maghero + '<div class="ed-wrap">' + feature(lead) + archive + '</div>' + vidjs)
+                body=maghero + ('<div class="ed-wrap">' + archive + '</div>' if archive else '') + vidjs)
 
 
 def main():

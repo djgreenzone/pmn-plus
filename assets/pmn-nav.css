@@ -118,17 +118,21 @@ html.pn-lock,html.pn-lock body{overflow:hidden}
 .pn-dd-t{display:inline-flex!important;align-items:center;gap:4px}
 .pn-dd-cx{width:15px;height:15px;stroke:currentColor;fill:none;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;transition:transform .2s;margin-top:-2px}
 .pn-dd:hover .pn-dd-cx,.pn-dd:focus-within .pn-dd-cx{transform:rotate(180deg)}
-/* transparent wrapper: its padding-top bridges the gap so hover doesn't drop */
-.pn-dd-menu{position:absolute;top:100%;left:50%;transform:translateX(-50%);width:min(900px,calc(100vw - 24px));padding-top:10px;z-index:60;display:none;text-align:left;cursor:default}
+/* full-width bar under the nav row; sits flush against it so hover never drops */
+.pn-dd-menu{position:absolute;top:100%;left:0;right:0;z-index:60;display:none;text-align:left;cursor:default}
 .pn-dd:hover .pn-dd-menu,.pn-dd:focus-within .pn-dd-menu{display:block}
-.pn-dd-inner{background:#0d0e12;border:1px solid rgba(255,255,255,.14);border-radius:14px;box-shadow:0 28px 70px rgba(0,0,0,.65);padding:16px 18px 20px}
-.pn-dd-all{display:inline-block!important;border-bottom:0!important;font-size:13px;letter-spacing:.12em;color:#22c5c5;margin-bottom:14px;white-space:nowrap}
+.pn-dd-inner{background:#0d0e12;border-top:1px solid rgba(255,255,255,.12);border-bottom:1px solid rgba(255,255,255,.12);
+  box-shadow:0 26px 50px rgba(0,0,0,.6);padding:22px max(16px,calc(50vw - 640px)) 28px}
+.pn-dd-all{display:inline-block!important;border-bottom:0!important;font:700 12px/1 system-ui,sans-serif;letter-spacing:.14em;
+  text-transform:uppercase;color:#22c5c5;margin-bottom:18px;white-space:nowrap}
 .pn-dd-all:hover{color:#5ee0e0;border-bottom:0!important}
-.pn-dd-covers{display:grid;grid-template-columns:repeat(auto-fill,minmax(136px,1fr));gap:18px 16px}
-.pn-dd-covers a{display:block!important;border-bottom:0!important;padding:0}
+/* covers shown WHOLE (contain) — a magazine cover is never cropped */
+.pn-dd-covers{display:flex;flex-wrap:wrap;gap:22px}
+.pn-dd-covers a{display:block!important;border-bottom:0!important;padding:0;width:168px}
 .pn-dd-covers a:hover{border-bottom:0!important}
-.pn-dd-covers img{width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:9px;background:#15161a;display:block;transition:transform .2s,box-shadow .2s}
+.pn-dd-covers img{width:100%;aspect-ratio:4/5;object-fit:contain;background:#0b0b0e;border-radius:6px;display:block;
+  transition:transform .2s,box-shadow .2s}
 .pn-dd-covers a:hover img{transform:translateY(-3px);box-shadow:0 14px 30px rgba(0,0,0,.55)}
-.pn-dd-covers b{display:block;margin-top:9px;font-family:"Bebas Neue",Impact,sans-serif;font-weight:400;font-size:16px;letter-spacing:.05em;color:#fff;line-height:1.05}
-.pn-dd-covers small{display:block;margin-top:2px;font:500 11px/1.3 system-ui,sans-serif;color:rgba(255,255,255,.55);letter-spacing:0;text-transform:none}
+.pn-dd-covers b{display:block;margin-top:10px;font-family:"Bebas Neue",Impact,sans-serif;font-weight:400;font-size:17px;letter-spacing:.05em;color:#fff;line-height:1.05}
+.pn-dd-covers small{display:block;margin-top:3px;font:500 11.5px/1.3 system-ui,sans-serif;color:rgba(255,255,255,.55);letter-spacing:0;text-transform:none}
 .pn-dd-covers a:hover b{color:#22c5c5}

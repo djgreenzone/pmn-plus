@@ -67,7 +67,12 @@ def build_home(path):
     h=h.replace('<section class="ig" id="reels" aria-labelledby="igH">','<section class="ig" aria-labelledby="igH">')
     open(path,'w').write(h)
 
-STATIC_PAGES=('rlwc-playlists/index.html',)
+# Every hand-edited page that carries the shared header. These were drifting: only rlwc-playlists
+# was listed, so /about, /contact, the legal pages and 404 still had the pre-October nav — no Stories,
+# no Cover Stories, no Watch. They all use the same <header class="nav"> and already link the assets.
+# sms-terms is deliberately absent: it has no shared header at all.
+STATIC_PAGES=('rlwc-playlists/index.html','about/index.html','shipping/index.html','returns/index.html',
+              'contact/index.html','terms/index.html','privacy-policy/index.html','404.html')
 def build_static(path):
     """standalone hand-edited pages that carry the shared header: replace their <header id="nav"> with the current one"""
     h=open(path,encoding='utf-8').read()

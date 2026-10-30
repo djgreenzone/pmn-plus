@@ -151,11 +151,11 @@ html.pn-lock,html.pn-lock body{overflow:hidden}
 .pn-dd-covers img,.pn-dd-covers .pn-ph{background:#0b0b0e;border-radius:6px;display:block;object-fit:contain}
 
 /* lead issue */
-.pn-dd-feat{display:grid;grid-template-columns:150px minmax(0,1fr);gap:18px;align-items:start}
+.pn-dd-feat{display:grid;grid-template-columns:150px minmax(0,1fr);gap:18px;align-items:center}
 .pn-dd-feat-cov{display:block!important}
 .pn-dd-feat-cov img,.pn-dd-feat-cov .pn-ph{width:100%;aspect-ratio:4/5;transition:transform .2s,box-shadow .2s}
 .pn-dd-feat-cov:hover img{transform:translateY(-3px);box-shadow:0 16px 34px rgba(0,0,0,.6)}
-.pn-dd-feat-txt{display:flex;flex-direction:column;gap:7px;padding-top:2px}
+.pn-dd-feat-txt{display:flex;flex-direction:column;gap:7px}
 .pn-dd-ey{display:block!important;font:700 11px/1.2 system-ui,sans-serif!important;letter-spacing:.14em!important;text-transform:uppercase!important;color:#22c5c5}
 .pn-dd-ey span{color:rgba(255,255,255,.45);font-weight:500;letter-spacing:.06em}
 .pn-dd-feat-t{display:block!important;font-family:"Bebas Neue",Impact,sans-serif;font-weight:400;font-size:27px!important;line-height:1.02;letter-spacing:.02em!important;color:#fff}

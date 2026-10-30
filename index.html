@@ -230,6 +230,19 @@ button[disabled]{opacity:.5;cursor:default}
 .lb-x:hover,.lb-n:hover{background:rgba(255,255,255,.2)}
 @media (max-width:700px){.lb-n{top:auto;bottom:20px}.lb-p{left:calc(50% - 60px)}.lb-nx{right:calc(50% - 60px)}}
 /* Who you reppin' (section 2): white break band, main graphic, one pill to /shop */
+.rlp{position:relative;isolation:isolate;overflow:hidden;background:#000;min-height:clamp(440px,64svh,660px);display:flex;align-items:center;justify-content:center;text-align:center;padding:clamp(4rem,10vw,6.5rem) 0}
+.rlp video{position:absolute;inset:0;z-index:-2;width:100%;height:100%;object-fit:cover;object-position:center top;opacity:.45}
+.rlp::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,#000 0,rgba(0,0,0,.15) 22%,rgba(0,0,0,.25) 60%,#000)}
+.rlp .eyebrow{color:rgba(255,255,255,.85)}
+.rlp h2{font-family:var(--display);font-weight:400;text-transform:uppercase;font-size:clamp(2.6rem,11vw,7rem);line-height:.9;letter-spacing:.01em;margin-top:.4rem;text-shadow:0 2px 24px rgba(0,0,0,.45)}
+.rlp h2 span{display:block;white-space:nowrap}
+.rlp p.l{margin:1rem auto 0;max-width:42ch;color:#e4e4e7;font-size:clamp(1rem,.95rem + .3vw,1.2rem)}
+.rlp .go{display:inline-flex;align-items:center;gap:.6rem;min-height:60px;margin-top:clamp(1.4rem,3vw,2rem);padding:0 2.2rem;border-radius:999px;background:#fff;color:#050507;font-family:var(--display);font-size:clamp(1.25rem,2.4vw,1.55rem);letter-spacing:.08em;line-height:1;text-transform:uppercase;text-decoration:none;transition:opacity .15s,transform .1s}
+.rlp .go svg{width:1.1em;height:1.1em;transition:transform .2s}
+.rlp .go:hover{opacity:.88}.rlp .go:hover svg{transform:translateX(3px)}.rlp .go:active{transform:translateY(1px)}
+.rlp .go:focus-visible{outline:2px solid #fff;outline-offset:3px}
+@media (max-width:520px){.rlp .go{width:100%;justify-content:center}}
+@media (prefers-reduced-motion:reduce){.rlp video{display:none}.rlp .go svg{transition:none}}
 .wyr{background:#fff;color:#050507;padding:clamp(3rem,7vw,5.5rem) 0}
 .wyr .eyebrow{color:#5f5f66;text-align:center}
 .wyr h2{color:#050507;text-align:center;margin:.4rem 0 clamp(1.25rem,3vw,2rem)}
@@ -275,7 +288,20 @@ button[disabled]{opacity:.5;cursor:default}
       <a class="go" href="/shop">Shop now</a>
     </div>
   </div>
-  <a class="cue" href="#reppin">Scroll</a>
+  <a class="cue" href="#playlist">Scroll</a>
+</section>
+
+<section class="rlp" id="playlist" aria-labelledby="rlpH">
+  <video muted loop playsinline preload="none" aria-hidden="true" data-lazy>
+    <source data-src="/assets/playlists/pmn-plus-toa-samoa-vs-tonga-rlwc-2026-mobile.mp4" type="video/mp4" media="(max-width:700px) and (orientation:portrait)">
+    <source data-src="/assets/playlists/pmn-plus-toa-samoa-vs-tonga-rlwc-2026-1280.mp4" type="video/mp4">
+  </video>
+  <div class="wrap">
+    <p class="eyebrow">Toa Samoa vs Mate Ma&#8217;a Tonga &middot; Sun Nov 1</p>
+    <h2 id="rlpH"><span>Rugby League</span> <span>World Cup Playlist</span></h2>
+    <p class="l">Game day soundtrack for the biggest Pacific derby of the tournament: one playlist for Samoa, one for Tonga.</p>
+    <a class="go" href="/rlwc-playlists">Listen to the playlists <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18V5l11-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="17" cy="16" r="3"/></svg></a>
+  </div>
 </section>
 
 <section class="wyr" id="reppin" aria-labelledby="wyrH">
@@ -489,5 +515,12 @@ let x0=null;lb.addEventListener('touchstart',e=>{x0=e.touches[0].clientX},{passi
 </script>
 <script src="/assets/pmn-config.js"></script>
 <script src="/assets/pmn-nav.js"></script>
+<script>
+(()=>{/* RLWC playlist band: load the video only near the screen, pause it off screen; skip on data saver / reduced motion */
+ const v=document.querySelector('.rlp video[data-lazy]');if(!v)return;const c=navigator.connection;
+ if((c&&c.saveData)||matchMedia('(prefers-reduced-motion:reduce)').matches||!('IntersectionObserver' in window))return;
+ let loaded=false;new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){if(!loaded){v.querySelectorAll('source').forEach(s=>s.src=s.dataset.src);v.load();loaded=true}v.play().catch(()=>{})}else if(loaded)v.pause()}),{rootMargin:'200px 0px'}).observe(v.parentElement);
+})();
+</script>
 </body>
 </html>

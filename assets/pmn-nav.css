@@ -144,7 +144,8 @@ html.pn-lock,html.pn-lock body{overflow:hidden}
 .pn-dd-menu a,.pn-dd-menu b,.pn-dd-menu small,.pn-dd-menu p,.pn-dd-menu span{
   white-space:normal!important;border-bottom:0!important;text-transform:none;letter-spacing:0}
 .pn-dd-menu a:hover{border-bottom:0!important}
-.pn-dd-covers{display:grid;grid-template-columns:minmax(0,420px) minmax(0,1fr);gap:40px;align-items:start}
+/* one uniform row of cover tiles (no featured lead) */
+.pn-dd-covers{display:block}
 .pn-dd-covers>*{min-width:0}
 .pn-dd-covers a{border-bottom:0!important;padding:0}
 .pn-dd-covers a:hover{border-bottom:0!important}

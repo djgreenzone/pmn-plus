@@ -9,12 +9,16 @@
 // Limits: one vote per email per poll (email stored only as a hash; the address lives in Klaviyo), one per
 // browser id, and at most 8 per network (hashed IP). Votes live in Supabase table `fan_votes`; the SQL functions
 // fan_vote_cast / fan_vote_totals are callable only with the service role.
+// Each new vote also makes sure the voter has a PMN+ account (passwordless: they sign in at /account with an
+// emailed code) and saves the team they voted for as the profile's favourite team, unless they already picked one.
 // Env (already in Vercel): SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY. Optional: KLAVIYO_LIST_ID (default Sggasa).
 const crypto = require('crypto');
 
 const KLAVIYO_COMPANY_ID = 'T9JJzp';
 const KLAVIYO_REVISION = '2026-07-15';
-const POLLS = { 'rlwc26-samoa-tonga': { teams: ['samoa', 'tonga'], label: { samoa: 'Toa Samoa', tonga: "Mate Ma'a Tonga" } } };
+const POLLS = { 'rlwc26-samoa-tonga': { teams: ['samoa', 'tonga'], label: { samoa: 'Toa Samoa', tonga: "Mate Ma'a Tonga" },
+  // profiles.favourite_team values used by the account page
+  slug: { samoa: 'toa-samoa', tonga: 'mate-maa-tonga' } } };
 
 function send(res, status, body, cache) {
   res.statusCode = status;
@@ -41,6 +45,23 @@ async function klaviyo(path, body) {
     method: 'POST', headers: { 'content-type': 'application/json', revision: KLAVIYO_REVISION }, body: JSON.stringify(body),
   });
   if (!r.ok) throw new Error(`klaviyo ${path} ${r.status} ${(await r.text()).slice(0, 200)}`);
+}
+
+// Create the voter's PMN+ account if they don't have one, then save their team on the profile when it's empty.
+// The on_auth_user_created trigger makes the profiles row. No email is sent; they sign in later with a code.
+async function linkAccount(email, name, team) {
+  const url = (process.env.SUPABASE_URL || '').replace(/\/+$/, '');
+  const key = process.env.SUPABASE_SERVICE_ROLE_KEY;
+  const h = { apikey: key, Authorization: `Bearer ${key}`, 'Content-Type': 'application/json' };
+  const r = await fetch(`${url}/auth/v1/admin/users`, { method: 'POST', headers: h, body: JSON.stringify({
+    email, email_confirm: true, user_metadata: { first_name: name, signup_source: 'rlwc_fan_vote', marketing_opt_in: true } }) });
+  if (!r.ok && r.status !== 422) throw new Error(`account create ${r.status} ${(await r.text()).slice(0, 160)}`); // 422 = already has an account
+  const q = `email=eq.${encodeURIComponent(email)}&or=(favourite_team.is.null,favourite_team.eq.)`;
+  const u = await fetch(`${url}/rest/v1/profiles?${q}`, { method: 'PATCH', headers: { ...h, Prefer: 'return=minimal' },
+    body: JSON.stringify({ favourite_team: team, updated_at: new Date().toISOString() }) });
+  if (!u.ok) throw new Error(`profile team ${u.status} ${(await u.text()).slice(0, 160)}`);
+  await fetch(`${url}/rest/v1/profiles?email=eq.${encodeURIComponent(email)}&first_name=is.null`, { method: 'PATCH',
+    headers: { ...h, Prefer: 'return=minimal' }, body: JSON.stringify({ first_name: name }) });
 }
 
 const salt = () => (process.env.SUPABASE_SERVICE_ROLE_KEY || 'pmn').slice(-16);
@@ -77,6 +98,7 @@ module.exports = async (req, res) => {
       const list = process.env.KLAVIYO_LIST_ID || 'Sggasa';
       const profile = { email, first_name: name, properties: { rlwc_team: P.label[team] } };
       await Promise.allSettled([
+        linkAccount(email, name, P.slug[team]),
         klaviyo('subscriptions', { data: { type: 'subscription', attributes: {
           custom_source: 'RLWC fan vote',
           profile: { data: { type: 'profile', attributes: { email, first_name: name, subscriptions: { email: { marketing: { consent: 'SUBSCRIBED' } } } } } },
@@ -86,7 +108,7 @@ module.exports = async (req, res) => {
           metric: { data: { type: 'metric', attributes: { name: 'RLWC Fan Vote' } } },
           profile: { data: { type: 'profile', attributes: profile } },
         } } }),
-      ]).then((r) => r.forEach((x) => x.status === 'rejected' && console.warn('vote: klaviyo', x.reason && x.reason.message)));
+      ]).then((r) => r.forEach((x) => x.status === 'rejected' && console.warn('vote: follow-up', x.reason && x.reason.message)));
     }
     send(res, 200, out);
   } catch (e) {

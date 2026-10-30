@@ -180,4 +180,11 @@ template: `_source/account/email-signin.html` (paste into Supabase → Auth → 
   one per browser (random id in a cookie + localStorage) and max 8 per network (hashed IP) per poll. The old 4-argument
   `fan_vote_cast` is a wrapper kept for compatibility; it can be dropped once this version is live. Totals:
   `select poll, team, count(*) from fan_votes group by 1,2;`. A new poll = add its id to `POLLS` in `api/vote.js`.
+- Each vote also makes sure the voter has a PMN+ account (Supabase auth user, `signup_source` `rlwc_fan_vote`,
+  no email sent; they sign in at `/account` with an emailed code) and sets `profiles.favourite_team` to
+  `toa-samoa` / `mate-maa-tonga` when it's empty (a team they picked themselves is never overwritten). The account
+  page then shows "Your team's gear" for that team.
+- Klaviyo flow "RLWC Fan Vote · Thank you": trigger metric "RLWC Fan Vote" → wait 5 minutes → split on event
+  property `Team` = "Toa Samoa" → Samoa email, otherwise Tonga email. Images live in `assets/email/` (uploaded to the
+  Klaviyo CDN). Turn the flow off or edit its copy after the match.
 - After the match: update the copy (result, next fixture) or close the vote by removing the poll id from `POLLS`.

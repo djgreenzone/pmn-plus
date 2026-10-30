@@ -239,6 +239,7 @@ main.pl{width:auto;margin:0;flex:1}
 @media (prefers-reduced-motion:reduce){.vdlg[open]{animation:none}}
 .poll-msg.err{color:#b3102a}
 .poll-msg{margin-top:1rem;font-weight:600;color:#050507}
+.poll-msg a{display:inline-block;margin-top:.35rem;color:inherit;font-weight:500;font-size:.92em;text-decoration:underline;text-underline-offset:3px}
 .poll .wyr-go{margin-top:1rem}
 .poll-msg:not(:empty)+.poll-n{margin-top:.35rem}
 .poll-n{margin-top:.85rem;font-size:.9rem;color:#5f5f66;font-variant-numeric:tabular-nums}
@@ -348,7 +349,7 @@ main.pl{width:auto;margin:0;flex:1}
           <label for="vfEmail">Email</label><input id="vfEmail" name="email" type="email" inputmode="email" autocomplete="email" maxlength="200" required>
           <p class="vd-err" id="vdErr" aria-live="assertive"></p>
           <button type="submit" class="pill" id="vfGo">Submit my vote</button>
-          <p class="vf-fine">By voting you agree to join the PMN+ email list for drops, deals and game day news. Unsubscribe anytime. <a href="/privacy-policy">Privacy policy</a></p>
+          <p class="vf-fine">By voting you get a free PMN+ member account (your team is saved to it) and join the PMN+ email list for drops, deals and game day news. Unsubscribe anytime. <a href="/privacy-policy">Privacy policy</a></p>
           <button type="button" class="vf-chg" id="vfChg">Switch to <span id="vfOther">Mate Ma&#8217;a Tonga</span></button>
         </form>
       </dialog>
@@ -416,7 +417,7 @@ main.pl{width:auto;margin:0;flex:1}
   bs.classList.toggle('ahead',s>g);bt.classList.toggle('ahead',g>s);
   $('pollBar').setAttribute('aria-label',`Toa Samoa ${ps}%, Mate Ma’a Tonga ${pt}%`);
   $('pollN').textContent=n?n.toLocaleString()+(n===1?' vote':' votes')+' so far':'Be the first to vote';};
- const done=team=>{btns.forEach(b=>b.hidden=true);{const sh=$('pollShop'),l=sh.querySelector('a');if(team){l.href='/shop/'+(team==='samoa'?'toa-samoa':'mate-maa-tonga');l.firstChild.textContent='Shop '+NAME[team]+' merch '}sh.hidden=false}$('pollMsg').textContent=team?`You’re reppin’ ${NAME[team]}. ${team==='samoa'?'Faʻafetai':'Mālō'} for voting!`:''};
+ const done=team=>{btns.forEach(b=>b.hidden=true);{const sh=$('pollShop'),l=sh.querySelector('a');if(team){l.href='/shop/'+(team==='samoa'?'toa-samoa':'mate-maa-tonga');l.firstChild.textContent='Shop '+NAME[team]+' merch '}sh.hidden=false}$('pollMsg').innerHTML=team?`You’re reppin’ ${NAME[team]}. ${team==='samoa'?'Faʻafetai':'Mālō'} for voting!<br><a href="/account">Your PMN+ account is ready. Sign in with your email</a>`:''};
  const mine=get(K+'-team');if(mine)done(mine);
  const load=()=>fetch('/api/vote?poll='+P).then(r=>r.json()).then(d=>draw(d.totals)).catch(()=>{});
  let pick=null;const dlg=$('pollDlg'),form=$('pollForm'),go=$('vfGo'),nm=$('vfName'),em=$('vfEmail'),msg=$('pollMsg'),ve=$('vdErr');

@@ -511,12 +511,22 @@ def magazine_index(issues, idx, og=None):
                f'<h2>Past issues</h2><div class="ed-grid-cards">'
                + "".join(card(i) for i in rest) + '</div></div>') if rest else ""
 
+    maghero = (
+        '<section class="ed-maghero">'
+        '<div class="bgv" aria-hidden="true"><video muted loop playsinline preload="none" data-lazy>'
+        '<source data-src="/assets/home/mag-bg.mp4" type="video/mp4"></video></div>'
+        '<div class="ed-wrap"><div class="ed-head"><span class="ey">PMN+</span>'
+        '<h1>Digital Magazine</h1>'
+        '<p>Every issue, read online, story by story.</p></div></div></section>')
+    vidjs = ("<script>(function(){var v=document.querySelector('.ed-maghero .bgv video[data-lazy]');"
+             "if(!v)return;var c=navigator.connection;"
+             "if((c&&c.saveData)||matchMedia('(prefers-reduced-motion:reduce)').matches||!('IntersectionObserver' in window))return;"
+             "var loaded=false;new IntersectionObserver(function(es){es.forEach(function(e){"
+             "if(e.isIntersecting){if(!loaded){v.querySelectorAll('source').forEach(function(s){s.src=s.dataset.src});v.load();loaded=true}"
+             "v.play().catch(function(){})}else if(loaded)v.pause()})},{rootMargin:'300px 0px'}).observe(v.parentElement)})();</script>")
     return page("Digital Magazine | PMN+", "Every issue of the PMN+ digital magazine.",
                 SITE + "/digital-magazine", og_image=og,
-                body='<div class="ed-wrap"><div class="ed-head"><span class="ey">PMN+</span>'
-                     '<h1>Digital Magazine</h1>'
-                     '<p>Every issue, read online, story by story.</p></div>'
-                     + feature(lead) + archive + '</div>')
+                body=maghero + '<div class="ed-wrap">' + feature(lead) + archive + '</div>' + vidjs)
 
 
 def main():

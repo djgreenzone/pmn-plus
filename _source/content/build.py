@@ -446,7 +446,12 @@ def make_cards(cats, authors, issues, newest, idx):
     covers = [g for g in (grab(i.get("cover_image_url")) for i in
                           sorted(issues, key=lambda x: x.get("published_at") or "", reverse=True)[:3]) if g]
 
-    want = [("digital-magazine", "Digital Magazine", "PMN+", covers, "shelf"),
+    # The magazine card uses a still from the homepage background video — one lively image of the
+    # people and culture — under the usual black gradient, instead of the cover shelf. Falls back to
+    # the cover shelf if the frame is missing.
+    mag_frame = os.path.join(HERE, "mag-og-frame.jpg")
+    mag_imgs, mag_layout = ([mag_frame], "bleed") if os.path.exists(mag_frame) else (covers, "shelf")
+    want = [("digital-magazine", "Digital Magazine", "PMN+", mag_imgs, mag_layout),
             ("stories", "Pasifika Stories", "PMN+", heroes(newest), "bleed")]
     for c in cats:
         want.append(("category-" + c["slug"], c["name"], "PMN+ Stories",

@@ -18,6 +18,11 @@
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="PMN+ logo over Pasifika music, sports and culture scenes: Music, Culture, Tradition, Sports">
+<meta property="og:video" content="https://www.polynesianmusicnetwork.com/assets/pmn-plus-homepage-og.mp4">
+<meta property="og:video:secure_url" content="https://www.polynesianmusicnetwork.com/assets/pmn-plus-homepage-og.mp4">
+<meta property="og:video:type" content="video/mp4">
+<meta property="og:video:width" content="1200">
+<meta property="og:video:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="PMN+: Music, Tradition, Sports, Trends &amp; Pasifika Culture">
 <meta name="twitter:description" content="PMN+ is the biggest Pasifika-driven platform: music, tradition, sports, trends and culture from all across the Pacific Islands. Shop the RLWC 2026 drop.">
@@ -63,14 +68,12 @@ img{display:block;max-width:100%}
 /* hero */
 .hero{position:relative;min-height:100svh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:6.5rem clamp(1.25rem,5vw,2.5rem) 4rem;gap:clamp(1.1rem,2.6vw,1.6rem);overflow:hidden;isolation:isolate}
 .hero .bgv{position:absolute;inset:0;z-index:-1;background:#000}
-.hero .bgv video{width:100%;height:100%;object-fit:cover;opacity:.55}
+.hero .bgv video{width:100%;height:100%;object-fit:cover;opacity:.70}
 .hero .bgv::after{content:'';position:absolute;inset:0;background:radial-gradient(80% 60% at 50% 45%,rgba(0,0,0,.25),rgba(0,0,0,.8)),linear-gradient(180deg,rgba(0,0,0,.5),transparent 30%,transparent 65%,#000)}
 @media (prefers-reduced-motion:reduce){.hero .bgv video{display:none}}
-.hero .logo{width:clamp(110px,16vw,170px);height:auto}
 .hero h1{font-family:var(--display);font-weight:400;text-transform:uppercase;font-size:min(9.6vw,8.5rem);line-height:.9;letter-spacing:.01em}
 .hero h1 span{display:block;white-space:nowrap}
 @media (min-width:900px){.hero{padding-top:calc(125px + 2.5rem)}}
-.hero .logo{margin-top:.5rem}
 .hero .line{max-width:34ch;color:#c9c9cd;font-size:clamp(1.05rem,1rem + .4vw,1.3rem);text-wrap:balance}
 .capture{width:100%;max-width:27rem;margin-top:.35rem}
 form{display:flex;gap:.5rem;flex-wrap:wrap;justify-content:center}
@@ -276,7 +279,6 @@ button[disabled]{opacity:.5;cursor:default}
   <div class="bgv" aria-hidden="true">
     <video autoplay muted loop playsinline preload="metadata"><source src="/assets/bg.mp4" type="video/mp4"></video>
   </div>
-  <img class="logo" src="/assets/pmn-logo.png" alt="PMN+ Polynesian Music Network">
   <p class="eyebrow">Polynesian Music Network</p>
   <h1 id="h1"><span>Welcome to the biggest</span> <span>Pasifika-driven platform</span></h1>
   <p class="line">Music, tradition, sports, trends and culture from all across the Pacific Islands.</p>

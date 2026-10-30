@@ -9,7 +9,7 @@
 .pn-ic:hover{background:rgba(255,255,255,.08)}
 .pn-ic svg{width:24px;height:24px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
 .pn-logo{display:block;line-height:0}
-.pn-logo img{display:block;height:44px;width:auto}
+.pn-logo img{display:block;height:29px;width:auto}
 .pn .bag-count{position:absolute;top:4px;right:3px;min-width:17px;height:17px;border-radius:9px;background:#C8102E;color:#fff;font:700 10px/17px system-ui,sans-serif;text-align:center;padding:0 4px}
 .pn .bag-count[hidden]{display:none}
 /* search */
@@ -38,7 +38,7 @@
 @media (min-width:900px){
   .pn{--pn-h:76px}
   .pn-row{padding-inline:max(16px,calc(50vw - 640px))}
-  .pn-logo img{height:52px}
+  .pn-logo img{height:35px}
   .pn-search{display:flex}
   .pn-sbtn{display:none}
   .pn-cats{display:flex}

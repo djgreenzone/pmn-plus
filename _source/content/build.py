@@ -78,6 +78,20 @@ FOOTER_HTML, FOOTER_CSS = footer_parts()
 YEAR_JS = ('<script>document.getElementById("yr").textContent=new Date().getFullYear()</script>'
            if 'id="yr"' in FOOTER_HTML else "")
 
+# Cache-busting stamps. These three files change on most deploys and vercel.json caches them
+# for an hour with stale-while-revalidate=86400, so without a stamp a returning visitor can get
+# a day-old stylesheet. The hash changes only when the file does, so caching stays aggressive.
+def _hash(path):
+    try:
+        import hashlib
+        return hashlib.sha1(open(path, "rb").read()).hexdigest()[:8]
+    except Exception:
+        return "0"
+
+NAVV = nav_build.asset_hash("pmn-nav.css")
+NAVJV = nav_build.asset_hash("pmn-nav.js")
+EDV = _hash(os.path.join(HERE, "story.css"))
+
 HEADER = '<header class="nav pn-bar" id="nav">' + nav_build.header(bag="link") + '</header>'
 
 def page(title, desc, canonical, *, body, og_image=None, og_type="website",
@@ -112,8 +126,8 @@ def page(title, desc, canonical, *, body, og_image=None, og_type="website",
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preload" as="style" href="{FONTS}" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" href="{FONTS}"></noscript>
-<link rel="stylesheet" href="/assets/pmn-nav.css">
-<link rel="stylesheet" href="/assets/content/story.css">
+<link rel="stylesheet" href="/assets/pmn-nav.css?v={NAVV}">
+<link rel="stylesheet" href="/assets/content/story.css?v={EDV}">
 <link rel="stylesheet" href="/assets/content/shop-this-story.css">
 {head_extra}
 {ld_block}
@@ -127,7 +141,7 @@ def page(title, desc, canonical, *, body, og_image=None, og_type="website",
 {body}
 </main>
 {FOOTER_HTML}
-<script src="/assets/pmn-nav.js"></script>
+<script src="/assets/pmn-nav.js?v={NAVJV}"></script>
 <script src="/assets/content/shop-this-story.js" defer></script>
 {YEAR_JS}
 </body>
@@ -343,12 +357,33 @@ def rss(posts, idx):
 {''.join(items)}
 </channel></rss>"""
 
-def sitemap(posts, issues, cats, authors):
+def body_text_len(p):
+    """Visible characters in a post body — used to keep photo-only pages out of the sitemap."""
+    return len(re.sub(r"<[^>]+>", "", p.get("body_html") or ""))
+
+
+# Two pages in the archive are photographs with a caption and nothing else — a full-page
+# in-memoriam portrait (53 chars) and a Through the Lens spread (184). They belong in their
+# issue and stay linked from it, but submitting them invites Google to index pages with
+# nothing to rank. The threshold sits deliberately below the shortest real news hit
+# (a 260-char coupon page, a 399-char single-paragraph story), so it excludes photo pages
+# and nothing else. Raise it only with the same check: query the real bodies first.
+THIN_CHARS = 200
+
+
+def sitemap(posts, issues, cats, authors, idx):
     now = datetime.now(timezone.utc).strftime("%Y-%m-%d")
     urls = [(SITE + "/stories", now), (SITE + "/digital-magazine", now)]
-    for c in cats: urls.append((SITE + "/stories/" + c["slug"], now))
-    for a in authors: urls.append((SITE + "/stories/author/" + a["slug"], now))
+    # a hub with no published stories renders an empty page; don't submit one
+    for c in cats:
+        if any(p.get("category_id") == c["id"] for p in posts):
+            urls.append((SITE + "/stories/" + c["slug"], now))
+    for a in authors:
+        if any(p.get("author_id") == a["id"] for p in posts):
+            urls.append((SITE + "/stories/author/" + a["slug"], now))
     for p in posts:
+        if body_text_len(p) < THIN_CHARS:
+            continue
         lm = (p.get("updated_at") or p.get("published_at") or now)[:10]
         urls.append((SITE + "/stories/" + p["slug"], lm))
     for i in issues:
@@ -514,23 +549,32 @@ def main():
         out.append(write(f"stories/{p['slug']}/index.html", post_page(p, idx)))
     # Share cards for the hubs. /digital-magazine is about every issue and /stories about every
     # story, so neither can honestly borrow one story's photograph.
-    cards = make_cards(cats, authors, issues, newest, idx)
+    # an empty hub is a dead end: keep it out of the filter row, the cards and the sitemap
+    live_cats = [c for c in cats if any(p.get("category_id") == c["id"] for p in newest)]
+    live_authors = [a for a in authors if any(p.get("author_id") == a["id"] for p in newest)]
+    cards = make_cards(live_cats, live_authors, issues, newest, idx)
     # stories index
     out.append(write("stories/index.html", index_page(
         "Pasifika Stories | PMN+",
         "Pasifika stories — Pacific music, sport, entertainment and culture, from the people who live it. PMN+.",
-        SITE + "/stories", "Pasifika Stories", "PMN+", newest, idx, cats_nav=cats,
+        SITE + "/stories", "Pasifika Stories", "PMN+", newest, idx, cats_nav=live_cats,
         intro="No one tells our stories better than we can.", og=cards.get("stories"))))
     # category hubs
     for c in cats:
         cp = [p for p in newest if p.get("category_id") == c["id"]]
+        if not cp:
+            print(f"  skipped empty category hub: {c['slug']}")
+            continue
         out.append(write(f"stories/{c['slug']}/index.html", index_page(
             f"{c['name']} | PMN+ Stories", f"PMN+ {c['name'].lower()} stories.",
-            SITE + "/stories/" + c["slug"], c["name"], "Stories", cp, idx, cats_nav=cats, on=c["slug"],
+            SITE + "/stories/" + c["slug"], c["name"], "Stories", cp, idx, cats_nav=live_cats, on=c["slug"],
             og=cards.get("category-" + c["slug"]))))
     # author pages
     for a in authors:
         ap = [p for p in newest if p.get("author_id") == a["id"]]
+        if not ap:
+            print(f"  skipped empty author hub: {a['slug']}")
+            continue
         out.append(write(f"stories/author/{a['slug']}/index.html", index_page(
             f"{a['name']} | PMN+", f"Stories by {a['name']}, {a.get('role') or 'PMN+'}.",
             SITE + "/stories/author/" + a["slug"], a["name"], a.get("role") or "Writer", ap, idx,
@@ -554,7 +598,7 @@ def main():
         magazine_index(issues, idx, cards.get("digital-magazine"))))
     # feeds
     out.append(write("stories/feed.xml", rss(posts, idx)))
-    out.append(write("sitemap-stories.xml", sitemap(posts, issues, cats, authors)))
+    out.append(write("sitemap-stories.xml", sitemap(posts, issues, live_cats, live_authors, idx)))
 
     print(f"generated {len(out)} files:")
     for r in out: print("  " + r)

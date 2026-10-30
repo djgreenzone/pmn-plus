@@ -1,8 +1,28 @@
 # One header for the whole site (homepage + every shop view). Run by make_shop.py.
 # - writes the header markup into each shop view and into the homepage (between the <header id="nav"> tags)
 # - copies pmn-nav.css / pmn-nav.js to /assets
-import os, re, shutil
+import os, re, shutil, hashlib
 NAVDIR=os.path.dirname(os.path.abspath(__file__))
+
+# Cache busting. vercel.json caches pmn-nav.css/js for an hour with stale-while-revalidate=86400,
+# so after a deploy a returning visitor can be served yesterday's CSS for a full day — which is
+# what made the Cover Stories menu look broken until a hard refresh. The filenames can't change
+# (they're referenced from hand-edited pages too), so we stamp a content hash on the query string:
+# the browser treats ?v=<hash> as a different URL, while vercel.json still matches on the path.
+def asset_hash(name):
+    try:
+        return hashlib.sha1(open(os.path.join(NAVDIR,name),'rb').read()).hexdigest()[:8]
+    except Exception:
+        return ""
+
+def stamp(html):
+    """Point every nav-asset reference at the current content hash, replacing any older stamp."""
+    for name in ('pmn-nav.css','pmn-nav.js'):
+        h=asset_hash(name)
+        if not h: continue
+        html=re.sub(r'/assets/'+re.escape(name)+r'(\?v=[0-9a-f]+)?',
+                    '/assets/'+name+'?v='+h, html)
+    return html
 SV=lambda d:f'<svg viewBox="0 0 24 24" aria-hidden="true">{d}</svg>'
 I_MENU=SV('<path d="M4 7h16M4 12h16M4 17h16"/>')
 I_SEARCH=SV('<circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/>')
@@ -52,7 +72,7 @@ def build_shop(s):
     i=s.index('<style>');s=s[:i]+'<link rel="stylesheet" href="/assets/pmn-nav.css">\n'+s[i:]
     a='<script>\n/* ---------- Product data';assert s.count(a)==1
     s=s.replace(a,'<script src="/assets/pmn-config.js"></script>\n<script src="/assets/pmn-nav.js"></script>\n'+a)
-    return s
+    return stamp(s)
 
 def build_home(path):
     h=open(path).read()
@@ -65,7 +85,7 @@ def build_home(path):
     h=re.sub(r'\n(?:\.nav \.mark|\.nav nav|\.nav \.bag|@media \(min-width:900px\)\{\.nav nav)[^\n]*','',h)
     h=h.replace('.nav{position:fixed;inset:0 0 auto;z-index:20;display:flex;align-items:center;justify-content:space-between;padding:.85rem clamp(1rem,5vw,2.5rem);background:linear-gradient(180deg,rgba(0,0,0,.75),rgba(0,0,0,0));transition:background .25s}','.nav{position:fixed;inset:0 0 auto;z-index:20}')
     h=h.replace('<section class="ig" id="reels" aria-labelledby="igH">','<section class="ig" aria-labelledby="igH">')
-    open(path,'w').write(h)
+    open(path,'w').write(stamp(h))
 
 # Every hand-edited page that carries the shared header. These were drifting: only rlwc-playlists
 # was listed, so /about, /contact, the legal pages and 404 still had the pre-October nav — no Stories,
@@ -78,7 +98,7 @@ def build_static(path):
     h=open(path,encoding='utf-8').read()
     i=h.index('<header class="nav');j=h.index('</header>',i)+9
     h=h[:i]+'<header class="nav pn-bar" id="nav">'+header(bag="link")+'</header>'+h[j:]
-    open(path,'w',encoding='utf-8').write(h)
+    open(path,'w',encoding='utf-8').write(stamp(h))
 
 def copy_assets(root):
     os.makedirs(os.path.join(root,'assets'),exist_ok=True)

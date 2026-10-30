@@ -22,7 +22,7 @@ Full docs live in `docs/`. Read the one that matches the task before changing an
    - `api/_account.js`, `api/account/*.js` ← `_source/account/api/...` (the build copies them over)
    - `assets/pmn-nav.css`, `assets/pmn-nav.js` and the **site header** on `index.html`, `/shop` and `/account` ← `_source/nav/`
 2. **Hand-edited files** (no build step): `index.html` (homepage, except its header), `about/`, `shipping/`, `returns/`,
-   `contact/`, `terms/`, `privacy-policy/`, `sms-terms/`, `404.html`, `api/reels.js`, `assets/pmn-config.js`,
+   `contact/`, `terms/`, `privacy-policy/`, `sms-terms/`, `rlwc-playlists/` (header from the build), `404.html`, `api/reels.js`, `assets/pmn-config.js`,
    `vercel.json`, `sitemap.xsl`, `robots.txt`. The **footer** markup/CSS is duplicated in each page, so a footer change
    goes to all of them (the account page copies the homepage footer at build time).
 3. **Rebuild after any shop change** (from `_source/`):

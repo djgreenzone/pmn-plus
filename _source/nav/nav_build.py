@@ -55,6 +55,14 @@ def build_home(path):
     h=h.replace('<section class="ig" id="reels" aria-labelledby="igH">','<section class="ig" aria-labelledby="igH">')
     open(path,'w').write(h)
 
+STATIC_PAGES=('rlwc-playlists/index.html',)
+def build_static(path):
+    """standalone hand-edited pages that carry the shared header: replace their <header id="nav"> with the current one"""
+    h=open(path,encoding='utf-8').read()
+    i=h.index('<header class="nav');j=h.index('</header>',i)+9
+    h=h[:i]+'<header class="nav pn-bar" id="nav">'+header(bag="link")+'</header>'+h[j:]
+    open(path,'w',encoding='utf-8').write(h)
+
 def copy_assets(root):
     os.makedirs(os.path.join(root,'assets'),exist_ok=True)
     for f in ('pmn-nav.css','pmn-nav.js'): shutil.copyfile(os.path.join(NAVDIR,f),os.path.join(root,'assets',f))

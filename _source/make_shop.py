@@ -239,6 +239,8 @@ s=_nb.build_shop(open(sys.argv[1]).read());open(sys.argv[1],'w').write(s)
 _root=os.path.dirname(os.path.dirname(os.path.abspath(sys.argv[1])))
 _nb.copy_assets(_root)
 if os.path.exists(os.path.join(_root,'index.html')):_nb.build_home(os.path.join(_root,'index.html'))
+for _pg in _nb.STATIC_PAGES:
+    if os.path.exists(os.path.join(_root,_pg)):_nb.build_static(os.path.join(_root,_pg))
 print('nav ok')
 # ---------- ACCOUNT: /account page, server functions, public config (see account/build.py) ----------
 if os.path.exists(os.path.join(_root,'index.html')):

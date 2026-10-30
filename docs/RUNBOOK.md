@@ -165,3 +165,16 @@ template: `_source/account/email-signin.html` (paste into Supabase → Auth → 
 - Roster table: run `docs/sql/content_team_applications.sql` once in Supabase SQL Editor. Until it exists the API skips the
   database write (Klaviyo still gets everything). Track candidates with the `status` column.
 - Newsletter tick box subscribes them to list `Sggasa` (PMN+ Newsletter).
+
+## RLWC playlists page + fan vote (/rlwc-playlists)
+- Hand-edited page: `rlwc-playlists/index.html`. Its **header** is rewritten by the build (`nav_build.STATIC_PAGES`), so
+  menu changes reach it; its **footer** is a copy like every other page. Assets: `assets/playlists/` (header video
+  1280px + mobile portrait cut, posters, 1200×630 OG image and OG video).
+- Sections: video hero → two Spotify embeds (playlist ids in the iframes) → match details (date/kick-off/venue/where to
+  watch, Oct 29 sources: CommBank Stadium event page, broadcaster listings) → Who You Reppin' graphic with the fan vote →
+  most-popular merch carousel (prices refresh from `/shop/search.json`).
+- Fan vote: `api/vote.js` → Supabase table `fan_votes` via SQL functions `fan_vote_cast` / `fan_vote_totals`
+  (service role only; RLS on, no public access). Poll id `rlwc26-samoa-tonga`. One vote per browser (random id in a
+  cookie + localStorage) and max 8 votes per network (hashed IP) per poll. Totals:
+  `select poll, team, count(*) from fan_votes group by 1,2;`. A new poll = add its id to `POLLS` in `api/vote.js`.
+- After the match: update the copy (result, next fixture) or close the vote by removing the poll id from `POLLS`.

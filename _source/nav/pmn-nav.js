@@ -303,46 +303,17 @@ const cov=(i,cls)=>(i.cover_image_url
   ? `<img class="${cls}" loading="lazy" src="${esc(i.cover_image_url)}" alt="PMN+ ${esc(i.title)} cover">`
   : `<span class="pn-ph ${cls}"></span>`);
 
-Promise.all([
-  get("issues?status=eq.published&select=id,slug,title,period_label,cover_image_url&order=published_at.desc&limit=6"),
-  get("posts?status=eq.published&is_cover_story=eq.true&select=issue_id,slug,title,dek&order=published_at.desc&limit=12")
-]).then(([issues,feats])=>{
-  if(!Array.isArray(issues)||!issues.length)return;
-  const by={};(feats||[]).forEach(p=>{by[p.issue_id]=p});
-  const lead=issues[0],lf=by[lead.id],rest=issues.slice(1);
+// One uniform cover tile per issue, lined up in a row — no featured/lead treatment. (A spotlighted
+// first issue is coming back later, but the newest issue isn't necessarily the most relevant one to
+// feature, so for now every issue gets the same tile.)
+const tile=i=>`<a href="/digital-magazine/${esc(i.slug)}" role="menuitem">${cov(i,"")}`+
+  `<b>${esc(i.title)}</b>`+
+  (i.period_label?`<small>${esc(i.period_label)}</small>`:"")+
+  `</a>`;
 
-  const featHtml=
-    `<div class="pn-dd-feat">`+
-      `<a class="pn-dd-feat-cov" href="/digital-magazine/${esc(lead.slug)}" role="menuitem">${cov(lead,"")}</a>`+
-      `<div class="pn-dd-feat-txt">`+
-        `<a class="pn-dd-ey" href="/digital-magazine/${esc(lead.slug)}" role="menuitem">${esc(lead.title)}`+
-          (lead.period_label?` <span>· ${esc(lead.period_label)}</span>`:"")+`</a>`+
-        (lf?`<a class="pn-dd-feat-t" href="/stories/${esc(lf.slug)}" role="menuitem">${esc(lf.title)}</a>`+
-            (lf.dek?`<p class="pn-dd-dek">${esc(lf.dek)}</p>`:""):"")+
-      `</div></div>`;
-
-  // Rest tiles: issue title + volume label, the same on every tile. (They used to fall back to
-  // the cover-story headline when it happened to be fetched, which made one tile out of five read
-  // differently from the others.)
-  const restHtml=is=>`<div class="pn-dd-rest">`+is.map(i=>
-    `<a href="/digital-magazine/${esc(i.slug)}" role="menuitem">${cov(i,"")}`+
-    `<b>${esc(i.title)}</b>`+
-    (i.period_label?`<small>${esc(i.period_label)}</small>`:"")+
-    `</a>`).join("")+`</div>`;
-
-  const paint=h=>grids.forEach(g=>{g.innerHTML=featHtml+h});
-
-  if(rest.length){paint(restHtml(rest));return}
-  // only one issue so far — show what's inside it instead of an empty right half
-  paint("");
-  get("posts?status=eq.published&issue_id=eq."+encodeURIComponent(lead.id)+
-      "&is_cover_story=eq.false&select=slug,title,hero_image_url&order=order_in_issue&limit=4")
-   .then(ps=>{
-     if(!Array.isArray(ps)||!ps.length)return;
-     paint(`<div class="pn-dd-list"><span class="pn-dd-lh">In this issue</span>`+ps.map(p=>
-       `<a href="/stories/${esc(p.slug)}" role="menuitem">`+
-       (p.hero_image_url?`<img loading="lazy" src="${esc(p.hero_image_url)}" alt="">`:`<span class="pn-ph"></span>`)+
-       `<b>${esc(p.title)}</b></a>`).join("")+`</div>`);
-   });
-});
+get("issues?status=eq.published&select=slug,title,period_label,cover_image_url&order=published_at.desc&limit=8")
+ .then(issues=>{
+   if(!Array.isArray(issues)||!issues.length)return;
+   grids.forEach(g=>{g.innerHTML=`<div class="pn-dd-rest">`+issues.map(tile).join("")+`</div>`});
+ });
 })();

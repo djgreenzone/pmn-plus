@@ -72,7 +72,11 @@ def build_shop(s):
     i=s.index('<style>');s=s[:i]+'<link rel="stylesheet" href="/assets/pmn-nav.css">\n'+s[i:]
     a='<script>\n/* ---------- Product data';assert s.count(a)==1
     s=s.replace(a,'<script src="/assets/pmn-config.js"></script>\n<script src="/assets/pmn-nav.js"></script>\n'+a)
-    return stamp(s)
+    # Do NOT stamp the shop views. make_shop.py's seo_routes step matches the bare
+    # "/assets/pmn-nav.js" script tag by exact string to add defer and build the router; a ?v= hash
+    # here makes that assert fail and leaves the shop SPA unoptimised (app inlined, no router).
+    # The shop keeps its existing cache behaviour; home, static and story pages still get stamped.
+    return s
 
 def build_home(path):
     h=open(path).read()

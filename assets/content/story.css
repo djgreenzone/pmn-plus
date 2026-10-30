@@ -100,6 +100,17 @@
 .ed-issue-cover img{width:100%;height:auto;display:block;border-radius:14px;border:1px solid var(--line);box-shadow:0 26px 60px rgba(0,0,0,.6);background:#0b0b0e}
 .ed-issue-meta h1{margin-top:14px}
 .ed-issue-meta .ed-dek{margin-top:14px}
+/* the lead issue on /digital-magazine: give it room instead of one card in an empty grid */
+/* no rule of its own — .ed-strip below already brings a border-top, and with a single issue
+   a trailing line would just hang above the footer */
+.ed-issue-lead{margin:30px 0 10px}
+.ed-issue-lead .ed-issue-meta h1{font-size:clamp(40px,6vw,64px)}
+.ed-lead-cs{margin:14px 0 0;font-size:15px;color:var(--dim)}
+.ed-lead-cs a{color:var(--ink);border-bottom:1px solid var(--accent-line)}
+.ed-lead-cs a:hover{color:var(--accent);border-bottom-color:var(--accent)}
+.ed-btn-lead{width:auto;align-self:flex-start;margin-top:22px;padding:12px 24px;border-color:var(--accent);color:var(--accent)}
+.ed-btn-lead:hover{background:var(--accent);color:var(--accent-ink)}
+.ed-issue-lead .ed-issue-meta{display:flex;flex-direction:column;align-items:flex-start}
 /* issue cards on /digital-magazine: full cover, contained so nothing is cut off */
 .ed-card.issue .ph{aspect-ratio:4/5;object-fit:contain;background:#0b0b0e}
 .ed-reader{margin:28px 0 0}

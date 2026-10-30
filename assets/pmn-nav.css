@@ -114,25 +114,68 @@ html.pn-lock,html.pn-lock body{overflow:hidden}
 /* Cover Stories mega-menu in the category row (desktop; mobile uses the drawer links).
    The panel is anchored to the whole row (.pn-cats) so a wide menu never runs off-screen. */
 .pn-cats{position:relative}
-.pn-dd{position:static;display:inline-flex;align-items:center}
+/* stretch the trigger to the full height of the row. The link box is only ~26px tall in a 48px row,
+   so without this there's dead space between it and the menu and the hover drops on the way down. */
+.pn-dd{position:static;display:inline-flex;align-items:center;align-self:stretch}
 .pn-dd-t{display:inline-flex!important;align-items:center;gap:4px}
 .pn-dd-cx{width:15px;height:15px;stroke:currentColor;fill:none;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;transition:transform .2s;margin-top:-2px}
 .pn-dd:hover .pn-dd-cx,.pn-dd:focus-within .pn-dd-cx{transform:rotate(180deg)}
 /* full-width bar under the nav row; sits flush against it so hover never drops */
 .pn-dd-menu{position:absolute;top:100%;left:0;right:0;z-index:60;display:none;text-align:left;cursor:default}
-.pn-dd:hover .pn-dd-menu,.pn-dd:focus-within .pn-dd-menu{display:block}
-.pn-dd-inner{background:#0d0e12;border-top:1px solid rgba(255,255,255,.12);border-bottom:1px solid rgba(255,255,255,.12);
+/* .is-open is set by the hover-intent script; the :hover rules keep it working without JS */
+.pn-dd:hover .pn-dd-menu,.pn-dd:focus-within .pn-dd-menu,.pn-dd.is-open .pn-dd-menu{display:block}
+/* everything below the nav goes soft so the menu holds the focus. pointer-events:none matters —
+   the scrim is a child of the menu, so without it hovering the whole page would pin the menu open. */
+.pn-dd-scrim{position:absolute;top:0;left:0;right:0;height:100vh;pointer-events:none;
+  background:rgba(0,0,0,.5);backdrop-filter:blur(7px);-webkit-backdrop-filter:blur(7px)}
+.pn-dd-inner{position:relative;z-index:1;background:#0d0e12;border-top:1px solid rgba(255,255,255,.12);border-bottom:1px solid rgba(255,255,255,.12);
   box-shadow:0 26px 50px rgba(0,0,0,.6);padding:22px max(16px,calc(50vw - 640px)) 28px}
-.pn-dd-all{display:inline-block!important;border-bottom:0!important;font:700 12px/1 system-ui,sans-serif;letter-spacing:.14em;
-  text-transform:uppercase;color:#22c5c5;margin-bottom:18px;white-space:nowrap}
+.pn-dd-all{display:inline-block!important;border-bottom:0!important;font:700 12px/1 system-ui,sans-serif!important;letter-spacing:.14em!important;
+  text-transform:uppercase!important;color:#22c5c5;margin-bottom:18px;white-space:nowrap}
 .pn-dd-all:hover{color:#5ee0e0;border-bottom:0!important}
-/* covers shown WHOLE (contain) — a magazine cover is never cropped */
-.pn-dd-covers{display:flex;flex-wrap:wrap;gap:22px}
-.pn-dd-covers a{display:block!important;border-bottom:0!important;padding:0;width:168px}
+/* Two zones: the newest issue as a lead (cover + its cover-story headline), then the other issues.
+   Every cover is object-fit:contain — a magazine cover is never cropped.
+   .pn-cats a forces nowrap, Bebas !important and an underline border on everything in this row,
+   which is right for the nav links and wrong for every headline in here — undo it once, up front. */
+.pn-dd-menu a,.pn-dd-menu b,.pn-dd-menu small,.pn-dd-menu p,.pn-dd-menu span{
+  white-space:normal!important;border-bottom:0!important;text-transform:none;letter-spacing:0}
+.pn-dd-menu a:hover{border-bottom:0!important}
+.pn-dd-covers{display:grid;grid-template-columns:minmax(0,420px) minmax(0,1fr);gap:40px;align-items:start}
+.pn-dd-covers>*{min-width:0}
+.pn-dd-covers a{border-bottom:0!important;padding:0}
 .pn-dd-covers a:hover{border-bottom:0!important}
-.pn-dd-covers img{width:100%;aspect-ratio:4/5;object-fit:contain;background:#0b0b0e;border-radius:6px;display:block;
-  transition:transform .2s,box-shadow .2s}
-.pn-dd-covers a:hover img{transform:translateY(-3px);box-shadow:0 14px 30px rgba(0,0,0,.55)}
-.pn-dd-covers b{display:block;margin-top:10px;font-family:"Bebas Neue",Impact,sans-serif;font-weight:400;font-size:17px;letter-spacing:.05em;color:#fff;line-height:1.05}
-.pn-dd-covers small{display:block;margin-top:3px;font:500 11.5px/1.3 system-ui,sans-serif;color:rgba(255,255,255,.55);letter-spacing:0;text-transform:none}
-.pn-dd-covers a:hover b{color:#22c5c5}
+.pn-dd-covers img,.pn-dd-covers .pn-ph{background:#0b0b0e;border-radius:6px;display:block;object-fit:contain}
+
+/* lead issue */
+.pn-dd-feat{display:grid;grid-template-columns:150px minmax(0,1fr);gap:18px;align-items:start}
+.pn-dd-feat-cov{display:block!important}
+.pn-dd-feat-cov img,.pn-dd-feat-cov .pn-ph{width:100%;aspect-ratio:4/5;transition:transform .2s,box-shadow .2s}
+.pn-dd-feat-cov:hover img{transform:translateY(-3px);box-shadow:0 16px 34px rgba(0,0,0,.6)}
+.pn-dd-feat-txt{display:flex;flex-direction:column;gap:7px;padding-top:2px}
+.pn-dd-ey{display:block!important;font:700 11px/1.2 system-ui,sans-serif!important;letter-spacing:.14em!important;text-transform:uppercase!important;color:#22c5c5}
+.pn-dd-ey span{color:rgba(255,255,255,.45);font-weight:500;letter-spacing:.06em}
+.pn-dd-feat-t{display:block!important;font-family:"Bebas Neue",Impact,sans-serif;font-weight:400;font-size:27px!important;line-height:1.02;letter-spacing:.02em!important;color:#fff}
+.pn-dd-feat-t:hover{color:#22c5c5}
+.pn-dd-dek{margin:0;font:400 13px/1.45 system-ui,sans-serif!important;color:rgba(255,255,255,.6);
+  display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+
+/* other issues */
+.pn-dd-rest{display:flex;flex-wrap:wrap;gap:22px}
+.pn-dd-rest a{display:block!important;width:132px}
+.pn-dd-rest img,.pn-dd-rest .pn-ph{width:100%;aspect-ratio:4/5;transition:transform .2s,box-shadow .2s}
+.pn-dd-rest a:hover img{transform:translateY(-3px);box-shadow:0 14px 30px rgba(0,0,0,.55)}
+.pn-dd-rest b{display:block;margin-top:9px;font:700 10.5px/1.2 system-ui,sans-serif!important;letter-spacing:.12em!important;text-transform:uppercase!important;color:rgba(255,255,255,.5)}
+.pn-dd-rest small{display:block;margin-top:4px;font-family:"Bebas Neue",Impact,sans-serif;font-weight:400;font-size:16px!important;line-height:1.05;letter-spacing:.04em!important;color:#fff}
+.pn-dd-rest a:hover small{color:#22c5c5}
+
+/* fallback until there's a second issue: what's inside this one */
+.pn-dd-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px 26px}
+.pn-dd-lh{grid-column:1/-1;font:700 11px/1 system-ui,sans-serif!important;letter-spacing:.14em!important;text-transform:uppercase!important;color:rgba(255,255,255,.4)}
+.pn-dd-list a{display:grid!important;grid-template-columns:58px minmax(0,1fr);gap:11px;align-items:center}
+.pn-dd-list img,.pn-dd-list .pn-ph{width:58px;height:58px;object-fit:cover;border-radius:5px}
+.pn-dd-list b{font:600 13px/1.3 system-ui,sans-serif!important;color:#fff;
+  display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.pn-dd-list a:hover b{color:#22c5c5}
+
+@media(max-width:1000px){.pn-dd-covers{grid-template-columns:minmax(0,1fr);gap:26px}
+  .pn-dd-list{grid-template-columns:minmax(0,1fr)}}

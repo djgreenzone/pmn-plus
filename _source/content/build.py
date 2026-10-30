@@ -291,12 +291,17 @@ def magazine_page(iss, idx):
     title = iss.get("seo_title") or ("PMN+ Digital Magazine — " + iss["title"])
     desc = iss.get("seo_description") or trim(iss.get("intro") or "", 155)
     cover = iss.get("cover_image_url")
-    cov = ""
-    if cover:
-        cov = (f'<div class="ed-mag-cover"><img src="{esc(cover)}" alt="PMN+ {esc(iss["title"])} cover">'
-               f'<div class="grad"></div><div class="copy"><span class="ed-chip">DIGITAL MAGAZINE</span>'
-               f'<h1>{esc(iss["title"])}</h1><p class="ed-dek">{esc(iss.get("intro") or "")}</p>'
-               f'<div class="ed-byline"><span>{esc(iss.get("period_label") or "")}</span></div></div></div>')
+    # The cover is the point of a magazine — show it whole, never cropped behind text.
+    n = len(posts)
+    cov = (f'<div class="ed-issue-hero">'
+           + (f'<div class="ed-issue-cover"><img src="{esc(cover)}" '
+              f'alt="PMN+ {esc(iss["title"])} cover"></div>' if cover else "")
+           + f'<div class="ed-issue-meta"><span class="ed-chip">DIGITAL MAGAZINE</span>'
+             f'<h1>{esc(iss["title"])}</h1>'
+             f'<p class="ed-dek">{esc(iss.get("intro") or "")}</p>'
+             f'<div class="ed-byline"><span>{esc(iss.get("period_label") or "")}</span>'
+             f'<span class="dot"></span><span>{n} {"story" if n == 1 else "stories"}</span></div>'
+             f'</div></div>')
     toc = "".join(big_card(p, idx) for p in posts)
     ld = {"@context": "https://schema.org", "@graph": [
         {"@type": "CollectionPage", "@id": url + "#issue", "name": title, "url": url,
@@ -421,8 +426,8 @@ def main():
              body='<div class="ed-wrap"><div class="ed-head"><span class="ey">PMN+</span><h1>Digital Magazine</h1>'
                   '<p>Every issue — read online, story by story.</p></div><div class="ed-grid-cards">' +
                   "".join(
-                      f'<a class="ed-card" href="/digital-magazine/{esc(i["slug"])}">'
-                      f'{("<img class=ph loading=lazy src=\"" + esc(i.get("cover_image_url")) + "\" alt=\"" + esc(i["title"]) + " cover\">") if i.get("cover_image_url") else "<div class=ph></div>"}'
+                      f'<a class="ed-card issue" href="/digital-magazine/{esc(i["slug"])}">'
+                      f'{("<img class=ph loading=lazy src=\"" + esc(i.get("cover_image_url")) + "\" alt=\"PMN+ " + esc(i["title"]) + " cover\">") if i.get("cover_image_url") else "<div class=ph></div>"}'
                       f'<div class="b"><span class="cat">ISSUE</span><span class="t">{esc(i["title"])}</span>'
                       f'<span class="d">{esc(i.get("intro") or "")}</span>'
                       f'<span class="by">{esc(i.get("period_label") or "")}</span></div></a>'

@@ -270,6 +270,28 @@ window.pmnClaimEvents=async()=>{const a=auth();if(!a)return 0;const k="pmn_claim
    labelled with its own cover story. Until there's a second issue the right side falls back to the
    current issue's other stories. New issues appear on their own — no rebuild needed. If any fetch fails
    the baked-in "View all cover stories" link is still there. */
+/* Hover intent: CSS :hover alone closes the menu the instant the pointer leaves the trigger, so a
+   diagonal move down to a cover loses it. Hold it open briefly on the way out, and let a click on
+   the trigger pin it. Pure addition — without JS the :hover rules still work. */
+(()=>{
+document.querySelectorAll("[data-pn-mag]").forEach(dd=>{
+  let t;
+  const open=()=>{clearTimeout(t);dd.classList.add("is-open")};
+  const close=d=>{clearTimeout(t);t=setTimeout(()=>dd.classList.remove("is-open"),d)};
+  dd.addEventListener("mouseenter",open);
+  dd.addEventListener("mouseleave",()=>close(260));
+  dd.addEventListener("focusin",open);
+  dd.addEventListener("focusout",()=>close(120));
+  // clicking the trigger pins the menu instead of navigating straight to the index
+  const trig=dd.querySelector(".pn-dd-t");
+  if(trig)trig.addEventListener("click",e=>{
+    if(!dd.classList.contains("is-open")){e.preventDefault();open()}
+  });
+  document.addEventListener("keydown",e=>{if(e.key==="Escape")close(0)});
+  window.addEventListener("scroll",()=>close(0),{passive:true});
+});
+})();
+
 (()=>{
 const C=window.PMN_CONFIG||{},SB=C.supabaseUrl,AK=C.supabaseAnonKey;
 const grids=document.querySelectorAll("[data-pn-mag] .pn-dd-covers");

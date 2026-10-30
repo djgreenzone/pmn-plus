@@ -361,6 +361,57 @@ def write(relpath, content):
     return relpath
 
 # ---------- main ----------
+def magazine_index(issues, idx):
+    """/digital-magazine. The newest issue leads with its cover whole and its cover story named;
+    older issues follow as cards. One issue in a bare auto-fill grid left most of the page empty,
+    which is the wrong first impression for the magazine."""
+    order = sorted(issues, key=lambda x: x.get("published_at") or "", reverse=True)
+    lead, rest = order[0], order[1:]
+
+    def count(i):
+        n = len(idx["by_issue"].get(i["id"], []))
+        return f'{n} {"story" if n == 1 else "stories"}'
+
+    def feature(i):
+        ps = idx["by_issue"].get(i["id"], [])
+        cs = next((p for p in ps if p.get("is_cover_story")), None)
+        cover = i.get("cover_image_url")
+        return (
+            '<div class="ed-issue-hero ed-issue-lead">'
+            + (f'<a class="ed-issue-cover" href="/digital-magazine/{esc(i["slug"])}">'
+               f'<img src="{esc(cover)}" alt="PMN+ {esc(i["title"])} cover"></a>' if cover else "")
+            + '<div class="ed-issue-meta"><span class="ed-chip">LATEST ISSUE</span>'
+              f'<h1>{esc(i["title"])}</h1>'
+              f'<p class="ed-dek">{esc(i.get("intro") or "")}</p>'
+            + (f'<p class="ed-lead-cs">Cover story: <a href="/stories/{esc(cs["slug"])}">'
+               f'{esc(cs["title"])}</a></p>' if cs else "")
+            + f'<div class="ed-byline"><span>{esc(i.get("period_label") or "")}</span>'
+              f'<span class="dot"></span><span>{count(i)}</span></div>'
+              f'<a class="ed-btn ed-btn-lead" href="/digital-magazine/{esc(i["slug"])}">'
+              f'Read the issue &rarr;</a></div></div>')
+
+    def card(i):
+        cover = i.get("cover_image_url")
+        return (f'<a class="ed-card issue" href="/digital-magazine/{esc(i["slug"])}">'
+                + (f'<img class="ph" loading="lazy" src="{esc(cover)}" '
+                   f'alt="PMN+ {esc(i["title"])} cover">' if cover else '<div class="ph"></div>')
+                + f'<div class="b"><span class="cat">{esc(i.get("period_label") or "ISSUE")}</span>'
+                  f'<span class="t">{esc(i["title"])}</span>'
+                  f'<span class="d">{esc(i.get("intro") or "")}</span>'
+                  f'<span class="by">{count(i)}</span></div></a>')
+
+    archive = (f'<div class="ed-strip"><span class="ey">THE ARCHIVE</span>'
+               f'<h2>Past issues</h2><div class="ed-grid-cards">'
+               + "".join(card(i) for i in rest) + '</div></div>') if rest else ""
+
+    return page("Digital Magazine | PMN+", "Every issue of the PMN+ digital magazine.",
+                SITE + "/digital-magazine",
+                body='<div class="ed-wrap"><div class="ed-head"><span class="ey">PMN+</span>'
+                     '<h1>Digital Magazine</h1>'
+                     '<p>Every issue, read online, story by story.</p></div>'
+                     + feature(lead) + archive + '</div>')
+
+
 def main():
     data = load_data(sys.argv)
     posts = [p for p in data["posts"] if p.get("status") == "published"]
@@ -422,17 +473,7 @@ def main():
     out.append(write("digital-magazine/index.html", index_page(
         "Digital Magazine | PMN+", "Every issue of the PMN+ digital magazine.",
         SITE + "/digital-magazine", "Digital Magazine", "PMN+", [], idx) if not issues else
-        page("Digital Magazine | PMN+", "Every issue of the PMN+ digital magazine.", SITE + "/digital-magazine",
-             body='<div class="ed-wrap"><div class="ed-head"><span class="ey">PMN+</span><h1>Digital Magazine</h1>'
-                  '<p>Every issue — read online, story by story.</p></div><div class="ed-grid-cards">' +
-                  "".join(
-                      f'<a class="ed-card issue" href="/digital-magazine/{esc(i["slug"])}">'
-                      f'{("<img class=ph loading=lazy src=\"" + esc(i.get("cover_image_url")) + "\" alt=\"PMN+ " + esc(i["title"]) + " cover\">") if i.get("cover_image_url") else "<div class=ph></div>"}'
-                      f'<div class="b"><span class="cat">ISSUE</span><span class="t">{esc(i["title"])}</span>'
-                      f'<span class="d">{esc(i.get("intro") or "")}</span>'
-                      f'<span class="by">{esc(i.get("period_label") or "")}</span></div></a>'
-                      for i in sorted(issues, key=lambda x: x.get("published_at") or "", reverse=True)) +
-                  "</div></div>")))
+        magazine_index(issues, idx)))
     # feeds
     out.append(write("stories/feed.xml", rss(posts, idx)))
     out.append(write("sitemap-stories.xml", sitemap(posts, issues, cats, authors)))

@@ -19,7 +19,8 @@ def header(back_id=None,back_label="Back",bag="button",extra="",shop=False):
     mag=('<div class="pn-dd" data-pn-mag>'
          '<a class="pn-dd-t" href="/digital-magazine">Cover Stories'
          '<svg class="pn-dd-cx" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></a>'
-         '<div class="pn-dd-menu"><div class="pn-dd-inner" role="menu">'
+         '<div class="pn-dd-menu"><div class="pn-dd-scrim"></div>'
+         '<div class="pn-dd-inner" role="menu">'
          '<a class="pn-dd-all" href="/digital-magazine" role="menuitem">View all cover stories →</a>'
          '<div class="pn-dd-covers"></div></div></div></div>')
     # SHOP leads, then the editorial pair, then the team/product categories

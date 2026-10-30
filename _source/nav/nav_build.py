@@ -16,7 +16,12 @@ def header(back_id=None,back_label="Back",bag="button",extra="",shop=False):
            else f'<a class="pn-ic bag" href="/shop#bag" aria-label="Bag">{I_BAG}<span class="bag-count" id="bagN" hidden></span></a>')
     logo=(f'<a class="pn-logo pn-logo-shop" href="/shop" aria-label="PMN+ Shop home"><img class="logo" src="/shop/brand/pmn-plus-shop-logo-white.svg" alt="PMN+ Shop" width="84" height="52"></a>' if shop else
        f'<a class="pn-logo" href="/" aria-label="PMN+ home"><img class="logo" src="/shop/brand/pmn-plus-logo-white.svg" alt="PMN+ Polynesian Music Network Plus" width="48" height="52"></a>')
-    cats=''.join(f'<a href="{h}">{t}</a>' for t,h in CATS)
+    mag=('<div class="pn-dd" data-pn-mag>'
+         '<a class="pn-dd-t" href="/digital-magazine">Magazine'
+         '<svg class="pn-dd-cx" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></a>'
+         '<div class="pn-dd-menu" role="menu">'
+         '<a class="all" href="/digital-magazine" role="menuitem">View all issues →</a></div></div>')
+    cats='<a href="/stories">Stories</a>'+mag+''.join(f'<a href="{h}">{t}</a>' for t,h in CATS)
     return (f'<div class="pn"><div class="pn-row">'
       f'<div class="pn-l">{back}<button type="button" class="pn-ic pn-menu" aria-label="Open menu" aria-expanded="false" aria-controls="pnDrawer">{I_MENU}</button></div>'
       f'{logo}'
@@ -24,7 +29,7 @@ def header(back_id=None,back_label="Back",bag="button",extra="",shop=False):
       f'<input type="search" name="q" placeholder="Search tees, hats, teams…" aria-label="Search the shop" autocomplete="off" role="combobox" aria-expanded="false" aria-autocomplete="list"><div class="pn-res" role="listbox" hidden></div></form>'
       f'<button type="button" class="pn-ic pn-sbtn" aria-label="Search">{I_SEARCH}</button>'
       f'<a class="pn-ic pn-acct" href="/account" aria-label="Your PMN+ account" hidden>{I_USER}</a>{bagel}</div></div>'  # shown when PMN_CONFIG.accountsLive
-      f'<nav class="pn-cats" aria-label="Shop categories">{cats}</nav>{extra}</div>')
+      f'<nav class="pn-cats" aria-label="Sections">{cats}</nav>{extra}</div>')
 
 def build_shop(s):
     """replace the four shop view headers"""

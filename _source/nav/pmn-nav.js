@@ -10,7 +10,7 @@ const ic={
   bag:'<svg viewBox="0 0 24 24"><path d="M5 8h14l-1 12H6L5 8z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg>',
   home:'<svg viewBox="0 0 24 24"><path d="M4 11l8-7 8 7v9h-5v-6H9v6H4z"/></svg>',
   play:'<svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="M10 9.5v5l4.5-2.5z"/></svg>'};
-const LINKS=[["Shop","/shop"],["Toa Samoa","/shop/toa-samoa"],["Mate Ma'a Tonga","/shop/mate-maa-tonga"],["PMN+","/shop#pmn"],["Tees","/shop#tee"],["Hats","/shop#hat"]];
+const LINKS=[["Stories","/stories"],["Magazine","/digital-magazine"],["Shop","/shop"],["Toa Samoa","/shop/toa-samoa"],["Mate Ma'a Tonga","/shop/mate-maa-tonga"],["PMN+","/shop#pmn"],["Tees","/shop#tee"],["Hats","/shop#hat"]];
 const onShop=()=>/^\/shop(\/|$)/.test(location.pathname);
 let data=null,loading=null;
 const load=()=>data?Promise.resolve(data):loading||(loading=fetch("/shop/search.json").then(r=>r.json()).then(j=>data=j).catch(()=>data=[]));
@@ -262,4 +262,27 @@ document.addEventListener("click",e=>{const a=e.target.closest&&e.target.closest
 window.pmnClaimEvents=async()=>{const a=auth();if(!a)return 0;const k="pmn_claimed_"+a.u;if(g(localStorage,k))return 0;
   const r=await fetch(SB+"/rest/v1/rpc/claim_events",{method:"POST",headers:{apikey:AK,Authorization:"Bearer "+a.t,"Content-Type":"application/json"},body:JSON.stringify({p_anon:aid})}).catch(()=>null);
   if(r&&r.ok)p(localStorage,k,"1");return r&&r.ok?await r.json().catch(()=>0):0};
+})();
+
+/* ---------- Magazine menu: fill the desktop "Magazine" dropdown with the published issues ----------
+   Reads public.issues with the publishable key, groups by year, newest first. New issues show up in
+   the menu on their own — no rebuild needed. If the fetch fails the baked-in "View all issues" link stays. */
+(()=>{
+const C=window.PMN_CONFIG||{},SB=C.supabaseUrl,AK=C.supabaseAnonKey;
+const menus=document.querySelectorAll("[data-pn-mag] .pn-dd-menu");
+if(!menus.length||!SB||!AK)return;
+const esc=t=>String(t==null?"":t).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+fetch(SB+"/rest/v1/issues?status=eq.published&select=slug,title,published_at&order=published_at.desc",
+  {headers:{apikey:AK,Authorization:"Bearer "+AK}})
+ .then(r=>r.ok?r.json():null)
+ .then(issues=>{
+   if(!Array.isArray(issues)||!issues.length)return;
+   const by={};
+   issues.forEach(i=>{const y=String(i.published_at||"").slice(0,4)||"—";(by[y]=by[y]||[]).push(i)});
+   const html=Object.keys(by).sort().reverse().map(y=>
+       `<div class="yr">${esc(y)}</div>`+
+       by[y].map(i=>`<a href="/digital-magazine/${esc(i.slug)}" role="menuitem">${esc(i.title)}</a>`).join("")
+     ).join("")+`<a class="all" href="/digital-magazine" role="menuitem">View all issues →</a>`;
+   menus.forEach(m=>{m.innerHTML=html});
+ }).catch(()=>{});
 })();

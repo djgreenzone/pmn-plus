@@ -1,9 +1,9 @@
 // /api/vote — "Who you reppin'?" fan vote (Samoa vs Tonga) on /rlwc-playlists.
 //
 // GET  /api/vote?poll=rlwc26-samoa-tonga                       -> {totals:{samoa,tonga}}
-// POST {poll, team:"samoa"|"tonga", voter, name, email}       -> {status:"ok"|"already"|"limit", team, totals}
+// POST {poll, team:"samoa"|"tonga", voter, name, email}   (name: first word = first name, rest = last name)       -> {status:"ok"|"already"|"limit", team, totals}
 //
-// Voting needs a first name + email. The voter is subscribed to the PMN+ newsletter list in Klaviyo
+// Voting needs a name + email. The voter is subscribed to the PMN+ newsletter list in Klaviyo
 // (custom source "RLWC fan vote") and a "RLWC Fan Vote" event with their team is recorded on their profile,
 // so flows/segments can target Samoa vs Tonga fans.
 // Limits: one vote per email per poll (email stored only as a hash; the address lives in Klaviyo), one per
@@ -77,7 +77,7 @@ module.exports = async (req, res) => {
       const poll = String((req.query && req.query.poll) || '');
       if (!POLLS[poll]) return send(res, 400, { error: 'Unknown poll' });
       const totals = await rpc('fan_vote_totals', { p_poll: poll });
-      return send(res, 200, { totals }, 'public, s-maxage=5, stale-while-revalidate=30');
+      return send(res, 200, { totals }, 'public, max-age=0, s-maxage=3'); // short CDN cache, never serve stale totals
     }
     if (req.method !== 'POST') return send(res, 405, { error: 'GET or POST only' });
     let b = req.body;
@@ -89,19 +89,20 @@ module.exports = async (req, res) => {
     const P = POLLS[poll];
     if (!P || !P.teams.includes(team)) return send(res, 400, { error: 'Pick Samoa or Tonga.' });
     if (!/^[a-zA-Z0-9-]{16,64}$/.test(voter)) return send(res, 400, { error: 'Reload the page and try again.' });
-    if (!name) return send(res, 400, { error: 'Add your first name.', field: 'name' });
+    if (!name) return send(res, 400, { error: 'Add your name.', field: 'name' });
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)) return send(res, 400, { error: 'Check your email address.', field: 'email' });
 
+    const [first, ...rest] = name.split(/\s+/); const last = rest.join(' ').slice(0, 60);
     const out = await rpc('fan_vote_cast', { p_poll: poll, p_team: team, p_voter: voter, p_ip: ipHash(req), p_email_hash: hash('email|' + email) });
 
     if (out.status === 'ok') {
       const list = process.env.KLAVIYO_LIST_ID || 'Sggasa';
-      const profile = { email, first_name: name, properties: { rlwc_team: P.label[team] } };
+      const profile = { email, first_name: first, ...(last ? { last_name: last } : {}), properties: { rlwc_team: P.label[team] } };
       await Promise.allSettled([
-        linkAccount(email, name, P.slug[team]),
+        linkAccount(email, first, P.slug[team]),
         klaviyo('subscriptions', { data: { type: 'subscription', attributes: {
           custom_source: 'RLWC fan vote',
-          profile: { data: { type: 'profile', attributes: { email, first_name: name, subscriptions: { email: { marketing: { consent: 'SUBSCRIBED' } } } } } },
+          profile: { data: { type: 'profile', attributes: { email, first_name: first, subscriptions: { email: { marketing: { consent: 'SUBSCRIBED' } } } } } },
         }, relationships: { list: { data: { type: 'list', id: list } } } } }),
         klaviyo('events', { data: { type: 'event', attributes: {
           properties: { Poll: poll, Team: P.label[team], Page: '/rlwc-playlists' },

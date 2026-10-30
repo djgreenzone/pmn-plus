@@ -556,7 +556,7 @@ const api=(path,opts={})=>fetch(path,{...opts,headers:{...(opts.headers||{}),Aut
 const fmtDate=d=>new Date(d).toLocaleDateString("en-US",{month:"short",day:"numeric",year:"numeric"});
 const money=(a,c)=>new Intl.NumberFormat("en-US",{style:"currency",currency:c||"USD"}).format(+a);
 const nice=s=>String(s||"").replace(/_/g," ").toLowerCase().replace(/^\w/,c=>c.toUpperCase());
-const TEAMS=[{v:"toa-samoa",n:"Toa Samoa",cls:"t-samoa",img:"/shop/brand/toa-samoa-rugby-league-crest.webp",url:"/shop/toa-samoa"},
+const TEAMS=[{v:"toa-samoa",n:"Toa Samoa",cls:"t-samoa",img:"/shop/brand/toa-samoa-rugby-league-logo.webp",url:"/shop/toa-samoa"},
   {v:"mate-maa-tonga",n:"Mate Maʻa Tonga",cls:"t-tonga",img:"/shop/brand/mate-maa-tonga-rugby-league-crest.webp",url:"/shop/mate-maa-tonga"},
   {v:"pmn",n:"PMN+",cls:"t-pmn",img:"/shop/brand/pmn-plus-logo-white.svg",url:"/shop/pmn-plus"}];
 const PICK=[TEAMS[0],TEAMS[1],{v:"both",n:"Both",gl:"2"},{v:"other",n:"Another team",gl:"+"}];

@@ -8,7 +8,7 @@ d=json.load(open(D+'site2/seo/seo-data.json'))
 F=lambda n:ImageFont.truetype(D+'fonts/BebasNeue-Regular.ttf',n)
 W,H=1200,630
 BG={'samoa':'brand/toa-samoa-pattern-background-blue.webp','tonga':'brand/mate-maa-tonga-pattern-background-red.webp'}
-CREST={'samoa':'brand/toa-samoa-rugby-league-crest.webp','tonga':'brand/mate-maa-tonga-rugby-league-crest.webp'}
+CREST={'samoa':'brand/toa-samoa-rugby-league-logo.webp','tonga':'brand/mate-maa-tonga-rugby-league-crest.webp'}
 def cover(im):
     r=max(W/im.width,H/im.height);im=im.resize((round(im.width*r),round(im.height*r)),Image.LANCZOS)
     x=(im.width-W)//2;y=(im.height-H)//2;return im.crop((x,y,x+W,y+H))

@@ -30,8 +30,6 @@
 <meta name="twitter:image" content="https://www.polynesianmusicnetwork.com/assets/playlists/pmn-plus-rlwc-2026-samoa-vs-tonga-playlists-og.jpg">
 <meta name="twitter:image:alt" content="Toa Samoa vs Mate Ma&#x27;a Tonga crests over match footage with the headline Rugby League World Cup Game Day Playlists">
 <meta name="theme-color" content="#000000">
-<link rel="preload" as="image" href="/assets/playlists/pmn-plus-toa-samoa-vs-tonga-rlwc-2026-poster-mobile.webp" media="(max-width:700px) and (orientation:portrait)" fetchpriority="high">
-<link rel="preload" as="image" href="/assets/playlists/pmn-plus-toa-samoa-vs-tonga-rlwc-2026-poster.webp" media="(min-width:701px), (orientation:landscape)" fetchpriority="high">
 <link rel="preconnect" href="https://open.spotify.com">
 <link rel="icon" type="image/png" href="/assets/favicon.png">
 <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
@@ -126,17 +124,13 @@ main.pl{width:auto;margin:0;flex:1}
 .pill svg{width:1.1em;height:1.1em}.pill:hover{opacity:.88}.pill:active{transform:translateY(1px)}
 .pill.s{background:#1e4fa0;color:#fff}.pill.t{background:#c8102e;color:#fff}
 /* hero */
-.pl .plh{position:relative;isolation:isolate;overflow:hidden;min-height:clamp(520px,82svh,820px);display:flex;align-items:flex-end;padding-block:clamp(6rem,14vw,9rem) clamp(2.5rem,6vw,4.5rem);background:#000 url(/assets/playlists/pmn-plus-toa-samoa-vs-tonga-rlwc-2026-poster.webp) center/cover no-repeat}
+.pl .plh{position:relative;isolation:isolate;overflow:hidden;min-height:clamp(520px,82svh,820px);display:flex;align-items:center;justify-content:center;text-align:center;padding-block:clamp(6rem,14vw,9rem) clamp(3rem,7vw,5rem);background:#000}
 .plh video{position:absolute;inset:0;z-index:-2;width:100%;height:100%;object-fit:cover;opacity:.6}
 .plh::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(0,0,0,.45),rgba(0,0,0,.1) 30%,rgba(0,0,0,.55) 62%,#000)}
-.plh .vs-crests{display:flex;align-items:center;gap:clamp(.75rem,2vw,1.25rem);margin-bottom:1.25rem}
-.plh .vs-crests img{height:clamp(52px,7vw,76px);width:auto;filter:drop-shadow(0 6px 14px rgba(0,0,0,.5))}
-.plh .vs-crests span{font-family:var(--display);font-size:clamp(1.3rem,2.6vw,1.8rem);letter-spacing:.06em}
-.plh h1{font-family:var(--display);font-weight:400;text-transform:uppercase;font-size:clamp(3.2rem,10vw,8.5rem);line-height:.88;letter-spacing:.01em;text-wrap:balance;text-shadow:0 2px 24px rgba(0,0,0,.45);max-width:14ch}
+.plh h1{font-family:var(--display);font-weight:400;text-transform:uppercase;font-size:clamp(2.6rem,13vw,8.5rem);line-height:.9;margin-top:.35rem;letter-spacing:.01em;text-shadow:0 2px 24px rgba(0,0,0,.45)}
+.plh h1 span{display:block;white-space:nowrap}
 .plh .eyebrow{color:rgba(255,255,255,.85);text-shadow:0 1px 10px rgba(0,0,0,.6)}
-.plh .sub{margin-top:1rem;max-width:44ch;color:#e4e4e7;font-size:clamp(1.02rem,1rem + .35vw,1.25rem)}
-.plh .ctas{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:1.6rem}
-@media (max-width:700px) and (orientation:portrait){.pl .plh{background-image:url(/assets/playlists/pmn-plus-toa-samoa-vs-tonga-rlwc-2026-poster-mobile.webp)}}
+.plh .sub{margin:1.1rem auto 0;max-width:44ch;color:#e4e4e7;font-size:clamp(1.02rem,1rem + .35vw,1.25rem)}
 @media (prefers-reduced-motion:reduce){.plh video{display:none}}
 /* playlists */
 .lists{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(.9rem,2vw,1.25rem);margin-top:clamp(1.75rem,4vw,2.75rem)}
@@ -178,7 +172,7 @@ main.pl{width:auto;margin:0;flex:1}
 /* merch carousel spacing on this page */
 .pl .sp{border-top:0}
 @media (max-width:900px){.facts{grid-template-columns:1fr}.lists{grid-template-columns:1fr}}
-@media (max-width:520px){.match{grid-template-columns:1fr auto 1fr;padding:1.25rem .9rem}.list iframe{height:380px}.plh .ctas .pill{flex:1 1 100%}}
+@media (max-width:520px){.match{grid-template-columns:1fr auto 1fr;padding:1.25rem .9rem}.list iframe{height:380px}}
 @media (prefers-reduced-motion:reduce){.team-x img{transition:none}}
 /* Who you reppin' (section 2): white break band, main graphic, one pill to /shop */
 .wyr{background:#fff;color:#050507;padding:clamp(3rem,7vw,5.5rem) 0}
@@ -260,11 +254,9 @@ main.pl{width:auto;margin:0;flex:1}
     <source src="/assets/playlists/pmn-plus-toa-samoa-vs-tonga-rlwc-2026-1280.mp4" type="video/mp4">
   </video>
   <div class="wrap">
-    <div class="vs-crests" aria-hidden="true"><img src="/shop/brand/toa-samoa-rugby-league-crest-360.webp" alt="" width="360" height="386"><span>vs</span><img src="/shop/brand/mate-maa-tonga-rugby-league-crest-360.webp" alt="" width="360" height="531"></div>
     <p class="eyebrow">Toa Samoa vs Mate Ma&#8217;a Tonga &middot; Sun Nov 1</p>
-    <h1 id="plH">Rugby League World Cup playlist</h1>
+    <h1 id="plH"><span>Rugby League</span> <span>World Cup Playlist</span></h1>
     <p class="sub">Game day is here. Turn it up for the biggest Pacific derby of the tournament: one playlist for Samoa, one for Tonga.</p>
-    <div class="ctas"><a class="pill s" href="#samoa">Samoa playlist <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18V5l11-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="17" cy="16" r="3"/></svg></a><a class="pill t" href="#tonga">Tonga playlist <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18V5l11-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="17" cy="16" r="3"/></svg></a></div>
   </div>
 </section>
 
@@ -274,7 +266,7 @@ main.pl{width:auto;margin:0;flex:1}
   <p class="lead">Toa Samoa and Mate Ma&#8217;a Tonga meet on <b>Sunday, November 1</b> at CommBank Stadium in Sydney. Whether you&#8217;re in the stands, at a watch party or up at 1am in the States, start the build-up here. Pick your side, press play and get loud, fam.</p>
   <div class="lists">
     <article class="list s" id="samoa" aria-labelledby="sH">
-      <div class="list-h"><img src="/shop/brand/toa-samoa-rugby-league-crest-360.webp" alt="Toa Samoa crest" width="360" height="386" loading="lazy"><div><h3 id="sH">Toa Samoa playlist</h3><p>For the 685. Up the Toa!</p></div></div>
+      <div class="list-h"><img src="/shop/brand/toa-samoa-rugby-league-logo-360.webp" alt="Toa Samoa crest" width="360" height="386" loading="lazy"><div><h3 id="sH">Toa Samoa playlist</h3><p>For the 685. Up the Toa!</p></div></div>
       <iframe title="Toa Samoa game day playlist on Spotify" src="https://open.spotify.com/embed/playlist/42iE2Q3zvWwnWJ9MOc8BCE?utm_source=generator&amp;theme=0" loading="lazy" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
       <a class="open" href="https://open.spotify.com/playlist/42iE2Q3zvWwnWJ9MOc8BCE" target="_blank" rel="noopener">Open in Spotify <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
     </article>
@@ -283,37 +275,6 @@ main.pl{width:auto;margin:0;flex:1}
       <iframe title="Mate Ma&#8217;a Tonga game day playlist on Spotify" src="https://open.spotify.com/embed/playlist/6ZaUChLDVQBZm9xC8Jf8y3?utm_source=generator&amp;theme=0" loading="lazy" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
       <a class="open" href="https://open.spotify.com/playlist/6ZaUChLDVQBZm9xC8Jf8y3" target="_blank" rel="noopener">Open in Spotify <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
     </article>
-  </div>
-</section>
-
-<section class="game" id="game" aria-labelledby="gameH">
-  <div class="wrap">
-    <p class="eyebrow">Rugby League World Cup 2026 &middot; Match details</p>
-    <h2 class="disp" id="gameH">Samoa vs Tonga: how to watch</h2>
-    <div class="match">
-      <a class="team-x" href="/shop/toa-samoa"><img src="/shop/brand/toa-samoa-rugby-league-crest.webp" alt="Toa Samoa rugby league crest" width="662" height="710" loading="lazy"><b>Toa Samoa</b><span>685</span></a>
-      <span class="vbig" aria-label="versus">VS</span>
-      <a class="team-x" href="/shop/mate-maa-tonga"><img src="/shop/brand/mate-maa-tonga-rugby-league-crest.webp" alt="Mate Ma&#8217;a Tonga rugby league crest" width="900" height="1329" loading="lazy"><b>Mate Ma&#8217;a Tonga</b><span>676</span></a>
-    </div>
-    <div class="facts">
-      <div class="fact">
-        <h3>When</h3>
-        <p class="big"><time datetime="2026-11-01T09:05:00Z">Sun Nov 1 &middot; 8:05pm AEDT</time></p>
-        <p class="you" id="localKick" hidden></p>
-        <ul class="tz" aria-label="Kick-off around the world"><li><span>Sydney <i>AEDT</i></span><b>Sun Nov 1 · 8:05 pm</b></li><li><span>Samoa &amp; Tonga</span><b>Sun Nov 1 · 10:05 pm</b></li><li><span>New Zealand <i>NZDT</i></span><b>Sun Nov 1 · 10:05 pm</b></li><li><span>Hawai&#699;i <i>HST</i></span><b>Sat Oct 31 · 11:05 pm</b></li><li><span>US Pacific <i>PST</i></span><b>Sun Nov 1 · 1:05 am</b></li><li><span>US Eastern <i>EST</i></span><b>Sun Nov 1 · 4:05 am</b></li><li><span>UK <i>GMT</i></span><b>Sun Nov 1 · 9:05 am</b></li></ul>
-      </div>
-      <div class="fact">
-        <h3>Where</h3>
-        <p class="big">CommBank Stadium</p>
-        <p>Parramatta, Sydney, Australia. Gates open 3pm. The last game of a triple-header: Jillaroos v Wales (3:40pm) and Lebanon v France (5:40pm) come first.</p>
-        <p><a href="https://www.commbankstadium.com.au/events/rugby_league_world_cup_2026__tonga_v_samoa" target="_blank" rel="noopener">Get tickets</a></p>
-      </div>
-      <div class="fact">
-        <h3>Watch</h3>
-        <ul class="wl"><li><span class="w-c">USA</span><b>Premier Sports</b><span class="w-d">Streams every match of the tournament.</span></li><li><span class="w-c">Australia</span><b>Channel 7, 7mate &amp; 7plus</b><span class="w-d">Free-to-air, every match.</span></li><li><span class="w-c">UK</span><b>Premier Sports</b><span class="w-d">Exclusive coverage.</span></li></ul>
-        <p class="fine">Broadcasters can change. Check your local listings before kick-off.</p>
-      </div>
-    </div>
   </div>
 </section>
 
@@ -330,8 +291,8 @@ main.pl{width:auto;margin:0;flex:1}
     </a>
     <div class="poll" id="vote">
       <div class="tug">
-        <img src="/shop/brand/toa-samoa-rugby-league-crest-360.webp" alt="Toa Samoa" width="360" height="386" loading="lazy">
-        <div class="tugbar" role="img" id="pollBar" aria-label="Toa Samoa 50%, Mate Ma&#8217;a Tonga 50%"><i class="bs" id="barS"><img class="ic" src="/shop/brand/toa-samoa-rugby-league-crest-360.webp" alt="" width="360" height="386" loading="lazy"><span class="w">Samoa </span><span id="pS">50%</span></i><i class="bt" id="barT"><span id="pT">50%</span><span class="w"> Tonga</span><img class="ic" src="/shop/brand/mate-maa-tonga-rugby-league-crest-360.webp" alt="" width="360" height="531" loading="lazy"></i></div>
+        <img src="/shop/brand/toa-samoa-rugby-league-logo-360.webp" alt="Toa Samoa" width="360" height="386" loading="lazy">
+        <div class="tugbar" role="img" id="pollBar" aria-label="Toa Samoa 50%, Mate Ma&#8217;a Tonga 50%"><i class="bs" id="barS"><img class="ic" src="/shop/brand/toa-samoa-rugby-league-logo-360.webp" alt="" width="360" height="386" loading="lazy"><span class="w">Samoa </span><span id="pS">50%</span></i><i class="bt" id="barT"><span id="pT">50%</span><span class="w"> Tonga</span><img class="ic" src="/shop/brand/mate-maa-tonga-rugby-league-crest-360.webp" alt="" width="360" height="531" loading="lazy"></i></div>
         <img src="/shop/brand/mate-maa-tonga-rugby-league-crest-360.webp" alt="Mate Ma&#8217;a Tonga" width="360" height="531" loading="lazy">
       </div>
       <div class="votes" id="pollBtns">
@@ -341,11 +302,11 @@ main.pl{width:auto;margin:0;flex:1}
       <dialog class="vdlg" id="pollDlg" aria-labelledby="vdH" aria-describedby="vdP">
         <form class="vform" id="pollForm" method="dialog" novalidate>
           <button type="button" class="vd-x" id="vdX" aria-label="Close">&times;</button>
-          <img class="vd-crest" id="vdCrest" src="/shop/brand/toa-samoa-rugby-league-crest-360.webp" alt="" width="360" height="386">
+          <img class="vd-crest" id="vdCrest" src="/shop/brand/toa-samoa-rugby-league-logo-360.webp" alt="" width="360" height="386">
           <p class="eyebrow">Fan vote &middot; Samoa vs Tonga</p>
           <h3 id="vdH">Confirm your vote for <span id="vfTeam">Toa Samoa</span></h3>
           <p id="vdP" class="vd-p">To complete your vote, enter your name and email. One vote per person.</p>
-          <label for="vfName">First name</label><input id="vfName" name="name" autocomplete="given-name" maxlength="60" required>
+          <label for="vfName">Name</label><input id="vfName" name="name" autocomplete="name" maxlength="60" required>
           <label for="vfEmail">Email</label><input id="vfEmail" name="email" type="email" inputmode="email" autocomplete="email" maxlength="200" required>
           <p class="vd-err" id="vdErr" aria-live="assertive"></p>
           <button type="submit" class="pill" id="vfGo">Submit my vote</button>
@@ -379,6 +340,37 @@ main.pl{width:auto;margin:0;flex:1}
   </ul>
   <p class="sp-offer"><b>Buy 3 tees, get 1 free.</b> Pay in 4 with Afterpay.</p>
 </section>
+
+<section class="game" id="game" aria-labelledby="gameH">
+  <div class="wrap">
+    <p class="eyebrow">Rugby League World Cup 2026 &middot; Match details</p>
+    <h2 class="disp" id="gameH">Samoa vs Tonga: how to watch</h2>
+    <div class="match">
+      <a class="team-x" href="/shop/toa-samoa"><img src="/shop/brand/toa-samoa-rugby-league-logo.webp" alt="Toa Samoa rugby league crest" width="662" height="710" loading="lazy"><b>Toa Samoa</b><span>685</span></a>
+      <span class="vbig" aria-label="versus">VS</span>
+      <a class="team-x" href="/shop/mate-maa-tonga"><img src="/shop/brand/mate-maa-tonga-rugby-league-crest.webp" alt="Mate Ma&#8217;a Tonga rugby league crest" width="900" height="1329" loading="lazy"><b>Mate Ma&#8217;a Tonga</b><span>676</span></a>
+    </div>
+    <div class="facts">
+      <div class="fact">
+        <h3>When</h3>
+        <p class="big"><time datetime="2026-11-01T09:05:00Z">Sun Nov 1 &middot; 8:05pm AEDT</time></p>
+        <p class="you" id="localKick" hidden></p>
+        <ul class="tz" aria-label="Kick-off around the world"><li><span>Sydney <i>AEDT</i></span><b>Sun Nov 1 · 8:05 pm</b></li><li><span>Samoa &amp; Tonga</span><b>Sun Nov 1 · 10:05 pm</b></li><li><span>New Zealand <i>NZDT</i></span><b>Sun Nov 1 · 10:05 pm</b></li><li><span>Hawai&#699;i <i>HST</i></span><b>Sat Oct 31 · 11:05 pm</b></li><li><span>US Pacific <i>PST</i></span><b>Sun Nov 1 · 1:05 am</b></li><li><span>US Eastern <i>EST</i></span><b>Sun Nov 1 · 4:05 am</b></li><li><span>UK <i>GMT</i></span><b>Sun Nov 1 · 9:05 am</b></li></ul>
+      </div>
+      <div class="fact">
+        <h3>Where</h3>
+        <p class="big">CommBank Stadium</p>
+        <p>Parramatta, Sydney, Australia. Gates open 3pm. The last game of a triple-header: Jillaroos v Wales (3:40pm) and Lebanon v France (5:40pm) come first.</p>
+        <p><a href="https://www.commbankstadium.com.au/events/rugby_league_world_cup_2026__tonga_v_samoa" target="_blank" rel="noopener">Get tickets</a></p>
+      </div>
+      <div class="fact">
+        <h3>Watch</h3>
+        <ul class="wl"><li><span class="w-c">USA</span><b>Premier Sports</b><span class="w-d">Streams every match of the tournament.</span></li><li><span class="w-c">Australia</span><b>Channel 7, 7mate &amp; 7plus</b><span class="w-d">Free-to-air, every match.</span></li><li><span class="w-c">UK</span><b>Premier Sports</b><span class="w-d">Exclusive coverage.</span></li></ul>
+        <p class="fine">Broadcasters can change. Check your local listings before kick-off.</p>
+      </div>
+    </div>
+  </div>
+</section>
 </main>
 <footer class="foot">
   <a class="foot-logo" href="/" aria-label="PMN+ home"><img src="/shop/brand/pmn-plus-logo-white.svg" alt="PMN+" width="48" height="52" loading="lazy"></a>
@@ -411,7 +403,7 @@ main.pl{width:auto;margin:0;flex:1}
  const get=k=>{try{return localStorage.getItem(k)}catch(e){const m=document.cookie.match(new RegExp('(?:^|; )'+k+'=([^;]*)'));return m?decodeURIComponent(m[1]):null}};
  const set=(k,v)=>{try{localStorage.setItem(k,v)}catch(e){}document.cookie=k+'='+encodeURIComponent(v)+';max-age=31536000;path=/;samesite=lax'};
  let voter=get(K+'-id');if(!voter){voter=(crypto.randomUUID?crypto.randomUUID():Date.now().toString(36)+Math.random().toString(36).slice(2)+Math.random().toString(36).slice(2)).replace(/[^a-zA-Z0-9-]/g,'');set(K+'-id',voter)}
- const draw=t=>{if(!t)return;const s=+t.samoa||0,g=+t.tonga||0,n=s+g,ps=n?Math.round(s/n*100):50,pt=100-ps;
+ let seen=0;const draw=t=>{if(!t)return;const s=+t.samoa||0,g=+t.tonga||0,n=s+g;if(n<seen)return;seen=n;const ps=n?Math.round(s/n*100):50,pt=100-ps;
   const bs=$('barS'),bt=$('barT');bs.style.flexBasis=ps+'%';bt.style.flexBasis=pt+'%';
   $('pS').textContent=ps+'%';$('pT').textContent=pt+'%';bs.classList.toggle('narrow',ps<18);bt.classList.toggle('narrow',pt<18);
   bs.classList.toggle('ahead',s>g);bt.classList.toggle('ahead',g>s);
@@ -421,7 +413,7 @@ main.pl{width:auto;margin:0;flex:1}
  const mine=get(K+'-team');if(mine)done(mine);
  const load=()=>fetch('/api/vote?poll='+P).then(r=>r.json()).then(d=>draw(d.totals)).catch(()=>{});
  let pick=null;const dlg=$('pollDlg'),form=$('pollForm'),go=$('vfGo'),nm=$('vfName'),em=$('vfEmail'),msg=$('pollMsg'),ve=$('vdErr');
- const CREST={samoa:'/shop/brand/toa-samoa-rugby-league-crest-360.webp',tonga:'/shop/brand/mate-maa-tonga-rugby-league-crest-360.webp'};
+ const CREST={samoa:'/shop/brand/toa-samoa-rugby-league-logo-360.webp',tonga:'/shop/brand/mate-maa-tonga-rugby-league-crest-360.webp'};
  nm.value=get('pmn-vote-name')||'';em.value=get('pmn-vote-email')||'';
  const choose=t=>{pick=t;const o=t==='samoa'?'tonga':'samoa';$('vfTeam').textContent=NAME[t];$('vfOther').textContent=NAME[o];$('vdCrest').src=CREST[t];
   go.className='pill '+(t==='samoa'?'s':'t');ve.textContent='';[nm,em].forEach(x=>x.removeAttribute('aria-invalid'))};
@@ -435,7 +427,7 @@ main.pl{width:auto;margin:0;flex:1}
  const err=(t,f)=>{ve.textContent=t;[nm,em].forEach(x=>x.removeAttribute('aria-invalid'));if(f){const x=f==='name'?nm:em;x.setAttribute('aria-invalid','true');x.focus()}};
  form.addEventListener('submit',e=>{e.preventDefault();if(!pick)return;
   const name=nm.value.trim(),email=em.value.trim();
-  if(!name)return err('Add your first name.','name');
+  if(!name)return err('Add your name.','name');
   if(!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email))return err('Enter a valid email address.','email');
   go.disabled=true;go.textContent='Submitting…';
   fetch('/api/vote',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({poll:P,team:pick,voter,name,email})})

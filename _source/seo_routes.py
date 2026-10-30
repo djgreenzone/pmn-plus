@@ -53,7 +53,7 @@ rep('muted loop playsinline preload="metadata" aria-hidden="true"','muted loop p
 # the product page's crest is already right in the HTML: don't reset it (that re-triggered the largest paint after the app loaded)
 rep('$("pdpCrest").src=crestURL(p.team);','{const cu=crestURL(p.team),ce=$("pdpCrest");if(ce.getAttribute("src")!==cu){ce.removeAttribute("srcset");ce.src=cu}}')
 # below-the-fold team crests on the shop home: lazy (they also downloaded inside the hidden hero on every product page)
-rep('<img src="brand/toa-samoa-rugby-league-crest.webp" alt="" id="hSamoaCrest">','<img src="brand/toa-samoa-rugby-league-crest.webp" alt="" id="hSamoaCrest" loading="lazy" decoding="async">')
+rep('<img src="brand/toa-samoa-rugby-league-logo.webp" alt="" id="hSamoaCrest">','<img src="brand/toa-samoa-rugby-league-logo.webp" alt="" id="hSamoaCrest" loading="lazy" decoding="async">')
 rep('<img src="brand/mate-maa-tonga-rugby-league-crest.webp" alt="" id="hTongaCrest">','<img src="brand/mate-maa-tonga-rugby-league-crest.webp" alt="" id="hTongaCrest" loading="lazy" decoding="async">')
 
 # ---------- crawlable product + collection links (real <a href>, app still opens in place) ----------
@@ -153,7 +153,7 @@ for pid,o in SD['products'].items():
     # paint the product view straight from the HTML (hero carousel stays hidden and idle)
     pg=sub1(pg,r'<section id="hero" class="view" ','<section id="hero" class="view" hidden ')
     pg=sub1(pg,r'<section id="pdp" class="view entering" hidden ','<section id="pdp" class="view" data-team="'+o['team']+'" style="--flood:'+{'pmn':'#141416','samoa':'#0b1b5e','tonga':'#8f0a14'}[o['team']]+'" ')
-    csrc={'samoa':'brand/toa-samoa-rugby-league-crest.webp','tonga':'brand/mate-maa-tonga-rugby-league-crest.webp','pmn':'brand/pmn-plus-logo-white.svg'}[o['team']]
+    csrc={'samoa':'brand/toa-samoa-rugby-league-logo.webp','tonga':'brand/mate-maa-tonga-rugby-league-crest.webp','pmn':'brand/pmn-plus-logo-white.svg'}[o['team']]
     # faint (14% opacity) background crest: a 360px copy is plenty on phones, desktop gets the full file
     cset=f' srcset="{csrc[:-5]}-360.webp 360w, {csrc} 900w" sizes="(min-width:900px) 560px, 138px"' if o['team']!='pmn' else ''
     pg=sub1(pg,r'<img class="crest" id="pdpCrest" alt="" src="[^"]*">',f'<img class="crest" id="pdpCrest" alt="" src="{csrc}"{cset} fetchpriority="high">')

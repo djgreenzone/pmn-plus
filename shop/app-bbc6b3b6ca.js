@@ -400,7 +400,7 @@ const BUMP=BUMPS.stickers;let bumpOn=false;
 function toast(msg){const t=$("toast");t.textContent=msg;t.classList.add("on");clearTimeout(toast.t);toast.t=setTimeout(()=>t.classList.remove("on"),2600)}
 function setBag(){try{localStorage.setItem("pmn_cart",JSON.stringify(cart))}catch(e){}bag=cart.reduce((n,i)=>n+i.qty,0);document.querySelectorAll(".bag-count").forEach(b=>{b.hidden=!bag;b.textContent=bag});document.querySelectorAll(".bag").forEach(b=>b.setAttribute("aria-label",`Bag, ${bag} item${bag===1?"":"s"}`))}
 
-const CREST={samoa:"brand/toa-samoa-rugby-league-crest",tonga:"brand/mate-maa-tonga-rugby-league-crest"};
+const CREST={samoa:"brand/toa-samoa-rugby-league-logo",tonga:"brand/mate-maa-tonga-rugby-league-crest"};
 const avifOK=(()=>{try{return document.createElement("canvas").toDataURL("image/avif").startsWith("data:image/avif")}catch(e){return false}})();
 const crestURL=t=>t==="pmn"?"brand/pmn-plus-logo-white.svg":CREST[t]+".webp";
 const altFor=(p,v="front")=>`${p.name} in ${p.colourName.toLowerCase()}, ${v} view`;

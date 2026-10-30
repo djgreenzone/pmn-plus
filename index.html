@@ -266,6 +266,34 @@ button[disabled]{opacity:.5;cursor:default}
 .wyr-card:focus-visible,.wyr-go a:focus-visible{outline:2px solid #050507;outline-offset:3px}
 @media (max-width:520px){.wyr-go a{width:100%;justify-content:center}}
 @media (prefers-reduced-motion:reduce){.wyr-card img,.wyr-go a svg{transition:none}.wyr-card:hover img{transform:none}}
+/* Digital magazine: cover-story carousel */
+.mag{position:relative;padding:clamp(4rem,9vw,7rem) 0;background:#050507;color:#fff;border-top:1px solid var(--line)}
+.mag .head{display:grid;grid-template-columns:1.1fr .9fr;gap:2rem 3rem;align-items:end;margin-bottom:clamp(1.75rem,4vw,2.75rem)}
+.mag h2{font-family:var(--display);font-weight:400;text-transform:uppercase;font-size:clamp(2.8rem,7vw,5.4rem);line-height:.88;letter-spacing:.01em;margin-top:.4rem}
+.mag .head p{color:#c9c9cf;font-size:1.08rem;max-width:42ch}
+.mag .head .acts{display:flex;flex-wrap:wrap;gap:.75rem;margin-top:1.25rem}
+.mag .btn{background:#fff;color:#050507}
+.mag .btn.ghost{background:transparent;color:#fff;box-shadow:inset 0 0 0 1.5px rgba(255,255,255,.4)}
+.mag .btn.ghost:hover{box-shadow:inset 0 0 0 1.5px #fff}
+.mags-wrap{position:relative}
+.mags{display:grid;grid-auto-flow:column;grid-auto-columns:calc((100% - 3*clamp(.6rem,1.2vw,1rem))/4.2);gap:clamp(.6rem,1.2vw,1rem);overflow-x:auto;scroll-behavior:smooth;scroll-snap-type:x mandatory;scrollbar-width:none;padding-bottom:4px}
+.mags::-webkit-scrollbar{display:none}
+.mag-card{position:relative;display:block;scroll-snap-align:start;text-decoration:none;color:#fff}
+.mag-card .cov{display:block;position:relative;aspect-ratio:3/4;border-radius:12px;overflow:hidden;background:#17171c;box-shadow:0 10px 30px rgba(0,0,0,.4)}
+.mag-card .cov img{width:100%;height:100%;object-fit:cover;transition:transform .35s}
+.mag-card:hover .cov img{transform:scale(1.03)}
+.mag-card b{display:block;margin-top:.7rem;font-weight:600;font-size:.98rem;line-height:1.25}
+.mag-card small{display:block;color:var(--dim);font-size:.82rem;letter-spacing:.04em;text-transform:uppercase;margin-top:.15rem}
+.mag-card.sk .cov{background:linear-gradient(100deg,#141418 30%,#1d1d22 50%,#141418 70%);background-size:200% 100%;animation:sk 1.2s linear infinite}
+.mag-card:focus-visible{outline:2px solid #fff;outline-offset:3px;border-radius:12px}
+.mag-nav{position:absolute;top:38%;z-index:3;width:52px;height:52px;margin-top:-26px;border-radius:50%;border:0;background:#fff;color:#050507;display:grid;place-items:center;cursor:pointer;box-shadow:0 8px 24px rgba(0,0,0,.35);transition:transform .15s}
+.mag-nav:hover{transform:scale(1.06)}
+.mag-nav svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.mag-nav.prev{left:-20px}.mag-nav.next{right:-20px}
+.mag-nav[hidden]{display:none}
+@media (max-width:900px){.mag .head{grid-template-columns:1fr}.mags{grid-auto-columns:calc((100% - 2*.6rem)/2.3)}.mag-nav{width:44px;height:44px}.mag-nav.prev{left:6px}.mag-nav.next{right:6px}}
+@media (max-width:520px){.mags{grid-auto-columns:62%;margin-right:calc(-1*clamp(1rem,5vw,2.5rem))}}
+@media (prefers-reduced-motion:reduce){.mag-card.sk .cov{animation:none}.mag-card .cov img{transition:none}}
 </style>
 <link rel="stylesheet" href="/assets/pmn-nav.css?v=21fb4b43">
 </head>
@@ -410,6 +438,30 @@ button[disabled]{opacity:.5;cursor:default}
     <p class="reels-empty" id="reelsEmpty">New reels are on the way. <a href="https://www.instagram.com/polynesianmusic/" target="_blank" rel="noopener">Watch on Instagram</a></p>
   </div>
 </section>
+<section class="mag" id="magazine" aria-labelledby="magH">
+  <div class="wrap">
+    <div class="head">
+      <div>
+        <p class="eyebrow">Digital Magazine &middot; PMN+</p>
+        <h2 id="magH">Cover<br>Stories</h2>
+      </div>
+      <div>
+        <p>Every issue of the PMN+ digital magazine &mdash; the artists, athletes and stories moving Pasifika culture forward.</p>
+        <div class="acts">
+          <a class="btn" href="/digital-magazine">Read the magazine</a>
+          <a class="btn ghost" href="/stories">Browse all stories</a>
+        </div>
+      </div>
+    </div>
+    <div class="mags-wrap">
+      <button type="button" class="mag-nav prev" id="magPrev" aria-label="Previous issues" hidden><svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg></button>
+      <div class="mags" id="magRail" aria-label="Latest PMN+ digital magazine issues">
+        <span class="mag-card sk"><span class="cov"></span></span><span class="mag-card sk"><span class="cov"></span></span><span class="mag-card sk"><span class="cov"></span></span><span class="mag-card sk"><span class="cov"></span></span>
+      </div>
+      <button type="button" class="mag-nav next" id="magNext" aria-label="More issues" hidden><svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></button>
+    </div>
+  </div>
+</section>
 <section class="ev-next band" aria-labelledby="nextH">
   <picture class="px" aria-hidden="true"><source type="image/avif" srcset="/assets/home/pmn-plus-full-band-concert-stage-bg1280.avif 1280w, /assets/home/pmn-plus-full-band-concert-stage-bg2400.avif 2400w" sizes="100vw"><source type="image/webp" srcset="/assets/home/pmn-plus-full-band-concert-stage-bg1280.webp 1280w, /assets/home/pmn-plus-full-band-concert-stage-bg2400.webp 2400w" sizes="100vw"><img src="/assets/home/pmn-plus-full-band-concert-stage-bg1280.webp" alt="" loading="lazy" decoding="async" style="object-position:50% 40%"></picture>
   <div class="wrap ev-next-in">
@@ -526,6 +578,30 @@ let x0=null;lb.addEventListener('touchstart',e=>{x0=e.touches[0].clientX},{passi
 </script>
 <script src="/assets/pmn-config.js"></script>
 <script src="/assets/pmn-nav.js?v=ca73adcf"></script>
+<script>
+/* Digital magazine: newest cover stories from Supabase (same source as the Cover Stories menu) */
+(function(){
+  const box=document.getElementById('magRail');if(!box)return;
+  const sec=document.getElementById('magazine');
+  const C=window.PMN_CONFIG||{},SB=C.supabaseUrl,AK=C.supabaseAnonKey;
+  const esc=t=>String(t||'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+  const hide=()=>{if(sec)sec.style.display='none'};
+  if(!SB||!AK){hide();return}
+  fetch(SB+'/rest/v1/issues?status=eq.published&select=slug,title,period_label,cover_image_url&order=published_at.desc&limit=6',{headers:{apikey:AK,Authorization:'Bearer '+AK}})
+   .then(r=>r.ok?r.json():null)
+   .then(list=>{
+     if(!Array.isArray(list)||!list.length){hide();return}
+     box.innerHTML=list.map(i=>`<a class="mag-card" href="/digital-magazine/${esc(i.slug)}" aria-label="Read ${esc(i.title)}"><span class="cov">${i.cover_image_url?`<img src="${esc(i.cover_image_url)}" alt="PMN+ ${esc(i.title)} cover" loading="lazy">`:''}</span><b>${esc(i.title)}</b>${i.period_label?`<small>${esc(i.period_label)}</small>`:''}</a>`).join('');
+     const prev=document.getElementById('magPrev'),next=document.getElementById('magNext');
+     const step=()=>{const c=box.querySelector('.mag-card');return c?c.getBoundingClientRect().width+parseFloat(getComputedStyle(box).columnGap||0):box.clientWidth};
+     const atEnd=()=>box.scrollLeft+box.clientWidth>=box.scrollWidth-4,atStart=()=>box.scrollLeft<=4;
+     const go=d=>{if(d>0&&atEnd())box.scrollTo({left:0});else if(d<0&&atStart())box.scrollTo({left:box.scrollWidth});else box.scrollBy({left:d*step()})};
+     const fits=()=>{const f=box.scrollWidth>box.clientWidth+4;prev.hidden=next.hidden=!f;return f};
+     prev.onclick=()=>go(-1);next.onclick=()=>go(1);fits();addEventListener('resize',fits);
+   })
+   .catch(hide);
+})();
+</script>
 <script>
 (()=>{/* RLWC playlist band: load the video only near the screen, pause it off screen; skip on data saver / reduced motion */
  const v=document.querySelector('.rlp video[data-lazy]');if(!v)return;const c=navigator.connection;

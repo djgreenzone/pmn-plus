@@ -17,11 +17,15 @@ def header(back_id=None,back_label="Back",bag="button",extra="",shop=False):
     logo=(f'<a class="pn-logo pn-logo-shop" href="/shop" aria-label="PMN+ Shop home"><img class="logo" src="/shop/brand/pmn-plus-shop-logo-white.svg" alt="PMN+ Shop" width="84" height="52"></a>' if shop else
        f'<a class="pn-logo" href="/" aria-label="PMN+ home"><img class="logo" src="/shop/brand/pmn-plus-logo-white.svg" alt="PMN+ Polynesian Music Network Plus" width="48" height="52"></a>')
     mag=('<div class="pn-dd" data-pn-mag>'
-         '<a class="pn-dd-t" href="/digital-magazine">Magazine'
+         '<a class="pn-dd-t" href="/digital-magazine">Cover Stories'
          '<svg class="pn-dd-cx" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></a>'
-         '<div class="pn-dd-menu" role="menu">'
-         '<a class="all" href="/digital-magazine" role="menuitem">View all issues →</a></div></div>')
-    cats='<a href="/stories">Stories</a>'+mag+''.join(f'<a href="{h}">{t}</a>' for t,h in CATS)
+         '<div class="pn-dd-menu"><div class="pn-dd-inner" role="menu">'
+         '<a class="pn-dd-all" href="/digital-magazine" role="menuitem">View all cover stories →</a>'
+         '<div class="pn-dd-covers"></div></div></div></div>')
+    # SHOP leads, then the editorial pair, then the team/product categories
+    cats=(f'<a href="{CATS[0][1]}">{CATS[0][0]}</a>'
+          '<a href="/stories">Stories</a>'+mag
+          +''.join(f'<a href="{h}">{t}</a>' for t,h in CATS[1:]))
     return (f'<div class="pn"><div class="pn-row">'
       f'<div class="pn-l">{back}<button type="button" class="pn-ic pn-menu" aria-label="Open menu" aria-expanded="false" aria-controls="pnDrawer">{I_MENU}</button></div>'
       f'{logo}'

@@ -305,7 +305,7 @@ const cov=(i,cls)=>(i.cover_image_url
 
 Promise.all([
   get("issues?status=eq.published&select=id,slug,title,period_label,cover_image_url&order=published_at.desc&limit=6"),
-  get("posts?status=eq.published&is_cover_story=eq.true&select=issue_id,slug,title,dek&limit=6")
+  get("posts?status=eq.published&is_cover_story=eq.true&select=issue_id,slug,title,dek&order=published_at.desc&limit=12")
 ]).then(([issues,feats])=>{
   if(!Array.isArray(issues)||!issues.length)return;
   const by={};(feats||[]).forEach(p=>{by[p.issue_id]=p});
@@ -321,12 +321,14 @@ Promise.all([
             (lf.dek?`<p class="pn-dd-dek">${esc(lf.dek)}</p>`:""):"")+
       `</div></div>`;
 
-  const restHtml=is=>`<div class="pn-dd-rest">`+is.map(i=>{
-    const f=by[i.id];
-    return `<a href="/digital-magazine/${esc(i.slug)}" role="menuitem">${cov(i,"")}`+
-           `<b>${esc(i.title)}</b>`+
-           (f?`<small>${esc(f.title)}</small>`:i.period_label?`<small>${esc(i.period_label)}</small>`:"")+
-           `</a>`}).join("")+`</div>`;
+  // Rest tiles: issue title + volume label, the same on every tile. (They used to fall back to
+  // the cover-story headline when it happened to be fetched, which made one tile out of five read
+  // differently from the others.)
+  const restHtml=is=>`<div class="pn-dd-rest">`+is.map(i=>
+    `<a href="/digital-magazine/${esc(i.slug)}" role="menuitem">${cov(i,"")}`+
+    `<b>${esc(i.title)}</b>`+
+    (i.period_label?`<small>${esc(i.period_label)}</small>`:"")+
+    `</a>`).join("")+`</div>`;
 
   const paint=h=>grids.forEach(g=>{g.innerHTML=featHtml+h});
 

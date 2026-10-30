@@ -20,6 +20,8 @@ Output (committed, served by Vercel):
 Build to the SEO contract (claude/pmn-content-seo-contract.md). Never hand-edit the output.
 """
 import os, sys, json, html, re, shutil, urllib.request
+import tempfile
+import hashlib
 from datetime import datetime, timezone
 
 HERE = os.path.dirname(os.path.abspath(__file__))
@@ -272,8 +274,10 @@ def fmt_date(iso):
     except Exception:
         return iso or ""
 
-def index_page(title, desc, canonical, heading, eyebrow, posts, idx, *, cats_nav=None, intro="", on=None):
-    og = next((p.get("hero_image_url") for p in posts if p.get("hero_image_url")), None)
+def index_page(title, desc, canonical, heading, eyebrow, posts, idx, *, cats_nav=None, intro="", on=None, og=None):
+    # A hub with its own share card uses it. Tag hubs have none and lead with their newest story,
+    # which is genuinely what that page is about.
+    og = og or next((p.get("hero_image_url") for p in posts if p.get("hero_image_url")), None)
     cards = "".join(big_card(p, idx) for p in posts) or '<p style="color:var(--dim)">No stories yet.</p>'
     cat_links = ""
     if cats_nav:
@@ -361,7 +365,75 @@ def write(relpath, content):
     return relpath
 
 # ---------- main ----------
-def magazine_index(issues, idx):
+_IMG_CACHE = {}
+
+
+def grab(url):
+    """Download an image once per run into a temp file. Returns a path, or None if it can't."""
+    if not url:
+        return None
+    if url in _IMG_CACHE:
+        return _IMG_CACHE[url]
+    try:
+        d = os.path.join(tempfile.gettempdir(), "pmn-og")
+        os.makedirs(d, exist_ok=True)
+        p = os.path.join(d, hashlib.sha1(url.encode()).hexdigest() + ".img")
+        if not os.path.exists(p):
+            with urllib.request.urlopen(url, timeout=25) as r, open(p, "wb") as f:
+                f.write(r.read())
+        _IMG_CACHE[url] = p
+    except Exception as e:
+        print(f"  og image unavailable ({e}): {url}")
+        _IMG_CACHE[url] = None
+    return _IMG_CACHE[url]
+
+
+def make_cards(cats, authors, issues, newest, idx):
+    """Render the hub share cards into assets/og/ and return {name: absolute URL}.
+
+    Stories and issues keep their own photography — a story's hero, an issue's cover. Only the hubs
+    get a card, because no single photo represents them. /digital-magazine gets the covers on a
+    shelf, so no one issue stands for the magazine; the rest get a collage of their own stories under
+    a black gradient. Tag hubs are left out on purpose: a tag page really does lead with its newest
+    story, and a real photograph beats a built card when shared.
+
+    Black and white only — per the brand guide PMN+ carries no accent colour. If Pillow, the font or
+    the images are missing the cards still render as type on black, and if the module itself won't
+    import every caller falls back to the site-wide OG.
+    """
+    try:
+        import og_cards
+    except Exception as e:
+        print(f"  og cards skipped ({e}); hubs fall back to the site OG")
+        return {}
+    logo = os.path.join(ROOT, "assets", "pmn-logo.png")
+    heroes = lambda ps: [g for g in (grab(p.get("hero_image_url")) for p in ps[:3]) if g]
+    covers = [g for g in (grab(i.get("cover_image_url")) for i in
+                          sorted(issues, key=lambda x: x.get("published_at") or "", reverse=True)[:3]) if g]
+
+    want = [("digital-magazine", "Digital Magazine", "PMN+", covers, "shelf"),
+            ("stories", "Pasifika Stories", "PMN+", heroes(newest), "bleed")]
+    for c in cats:
+        want.append(("category-" + c["slug"], c["name"], "PMN+ Stories",
+                     heroes([p for p in newest if p.get("category_id") == c["id"]]), "bleed"))
+    for a in authors:
+        want.append(("author-" + a["slug"], a["name"], "PMN+ " + (a.get("role") or "Writer"),
+                     heroes([p for p in newest if p.get("author_id") == a["id"]]), "bleed"))
+
+    made, withimg = {}, 0
+    for name, headline, eyebrow, imgs, layout in want:
+        try:
+            og_cards.card(os.path.join(ROOT, "assets", "og", name + ".jpg"),
+                          headline, eyebrow, images=imgs, layout=layout, logo=logo)
+            made[name] = SITE + "/assets/og/" + name + ".jpg"
+            withimg += 1 if imgs else 0
+        except Exception as e:
+            print(f"  og card {name} failed ({e})")
+    print(f"  {len(made)} share cards -> assets/og/ ({withimg} with photography)")
+    return made
+
+
+def magazine_index(issues, idx, og=None):
     """/digital-magazine. The newest issue leads with its cover whole and its cover story named;
     older issues follow as cards. One issue in a bare auto-fill grid left most of the page empty,
     which is the wrong first impression for the magazine."""
@@ -405,7 +477,7 @@ def magazine_index(issues, idx):
                + "".join(card(i) for i in rest) + '</div></div>') if rest else ""
 
     return page("Digital Magazine | PMN+", "Every issue of the PMN+ digital magazine.",
-                SITE + "/digital-magazine",
+                SITE + "/digital-magazine", og_image=og,
                 body='<div class="ed-wrap"><div class="ed-head"><span class="ey">PMN+</span>'
                      '<h1>Digital Magazine</h1>'
                      '<p>Every issue, read online, story by story.</p></div>'
@@ -440,24 +512,29 @@ def main():
     # posts
     for p in posts:
         out.append(write(f"stories/{p['slug']}/index.html", post_page(p, idx)))
+    # Share cards for the hubs. /digital-magazine is about every issue and /stories about every
+    # story, so neither can honestly borrow one story's photograph.
+    cards = make_cards(cats, authors, issues, newest, idx)
     # stories index
     out.append(write("stories/index.html", index_page(
         "Pasifika Stories | PMN+",
         "Pasifika stories — Pacific music, sport, entertainment and culture, from the people who live it. PMN+.",
         SITE + "/stories", "Pasifika Stories", "PMN+", newest, idx, cats_nav=cats,
-        intro="No one tells our stories better than we can.")))
+        intro="No one tells our stories better than we can.", og=cards.get("stories"))))
     # category hubs
     for c in cats:
         cp = [p for p in newest if p.get("category_id") == c["id"]]
         out.append(write(f"stories/{c['slug']}/index.html", index_page(
             f"{c['name']} | PMN+ Stories", f"PMN+ {c['name'].lower()} stories.",
-            SITE + "/stories/" + c["slug"], c["name"], "Stories", cp, idx, cats_nav=cats, on=c["slug"])))
+            SITE + "/stories/" + c["slug"], c["name"], "Stories", cp, idx, cats_nav=cats, on=c["slug"],
+            og=cards.get("category-" + c["slug"]))))
     # author pages
     for a in authors:
         ap = [p for p in newest if p.get("author_id") == a["id"]]
         out.append(write(f"stories/author/{a['slug']}/index.html", index_page(
             f"{a['name']} | PMN+", f"Stories by {a['name']}, {a.get('role') or 'PMN+'}.",
-            SITE + "/stories/author/" + a["slug"], a["name"], a.get("role") or "Writer", ap, idx)))
+            SITE + "/stories/author/" + a["slug"], a["name"], a.get("role") or "Writer", ap, idx,
+            og=cards.get("author-" + a["slug"]))))
     # tag pages
     tags = {}
     for p in newest:
@@ -472,8 +549,9 @@ def main():
         out.append(write(f"digital-magazine/{i['slug']}/index.html", magazine_page(i, idx)))
     out.append(write("digital-magazine/index.html", index_page(
         "Digital Magazine | PMN+", "Every issue of the PMN+ digital magazine.",
-        SITE + "/digital-magazine", "Digital Magazine", "PMN+", [], idx) if not issues else
-        magazine_index(issues, idx)))
+        SITE + "/digital-magazine", "Digital Magazine", "PMN+", [], idx,
+        og=cards.get("digital-magazine")) if not issues else
+        magazine_index(issues, idx, cards.get("digital-magazine"))))
     # feeds
     out.append(write("stories/feed.xml", rss(posts, idx)))
     out.append(write("sitemap-stories.xml", sitemap(posts, issues, cats, authors)))

@@ -56,15 +56,25 @@ def load_data(argv):
     }
 
 # ---------- shared chrome ----------
-def footer_html():
+def footer_parts():
+    """The homepage footer, markup *and* CSS. The footer's styles live inside each page's own
+    <style> block (see CLAUDE.md), so copying only the markup leaves it unstyled.
+    Same approach as _source/account/build.py."""
     try:
         h = open(os.path.join(ROOT, "index.html"), encoding="utf-8").read()
-        m = re.search(r"<footer\b.*?</footer>", h, re.S)
-        if m: return m.group(0)
+        i = h.index('<footer class="foot">')
+        foot = h[i:h.index("</footer>", i) + 9]
+        css = "\n".join(l for l in h.split("\n")
+                        if re.match(r'(\.foot|@media \(min-width:900px\)\{\.foot)', l))
+        return foot, css
     except Exception:
-        pass
-    return ('<footer class="ed-foot ed-wrap"><span>PMN+ · Community. Culture. Connection.</span>'
-            '<span>&copy; Polynesian Music Network Plus</span></footer>')
+        return ('<footer class="ed-foot ed-wrap"><span>PMN+ · Community. Culture. Connection.</span>'
+                '<span>&copy; Polynesian Music Network Plus</span></footer>', "")
+
+FOOTER_HTML, FOOTER_CSS = footer_parts()
+# the homepage footer prints the year from a script
+YEAR_JS = ('<script>document.getElementById("yr").textContent=new Date().getFullYear()</script>'
+           if 'id="yr"' in FOOTER_HTML else "")
 
 HEADER = '<header class="nav pn-bar" id="nav">' + nav_build.header(bag="link") + '</header>'
 
@@ -105,7 +115,8 @@ def page(title, desc, canonical, *, body, og_image=None, og_type="website",
 <link rel="stylesheet" href="/assets/content/shop-this-story.css">
 {head_extra}
 {ld_block}
-<style>html{{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}}*{{margin:0;padding:0;box-sizing:border-box}}body{{background:#000;color:#fff;min-height:100svh;display:flex;flex-direction:column}}main{{flex:1}}[hidden]{{display:none!important}}</style>
+<style>html{{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}}*{{margin:0;padding:0;box-sizing:border-box}}body{{background:#000;color:#fff;min-height:100svh;display:flex;flex-direction:column}}main{{flex:1}}[hidden]{{display:none!important}}
+{FOOTER_CSS}</style>
 </head>
 <body>
 <script src="/assets/pmn-config.js"></script>
@@ -113,9 +124,10 @@ def page(title, desc, canonical, *, body, og_image=None, og_type="website",
 <main class="ed">
 {body}
 </main>
-{footer_html()}
+{FOOTER_HTML}
 <script src="/assets/pmn-nav.js"></script>
 <script src="/assets/content/shop-this-story.js" defer></script>
+{YEAR_JS}
 </body>
 </html>"""
 

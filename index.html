@@ -234,13 +234,21 @@ button[disabled]{opacity:.5;cursor:default}
 .rlp video{position:absolute;inset:0;z-index:-2;width:100%;height:100%;object-fit:cover;object-position:center top;opacity:.45}
 .rlp::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,#000 0,rgba(0,0,0,.15) 22%,rgba(0,0,0,.25) 60%,#000)}
 .rlp .eyebrow{color:rgba(255,255,255,.85)}
-.rlp h2{font-family:var(--display);font-weight:400;text-transform:uppercase;font-size:clamp(2.6rem,11vw,7rem);line-height:.9;letter-spacing:.01em;margin-top:.4rem;text-shadow:0 2px 24px rgba(0,0,0,.45)}
+.rlp h2{font-family:var(--display);font-weight:400;text-transform:uppercase;font-size:clamp(2.6rem,11vw,5.6rem);line-height:.9;letter-spacing:.01em;margin-top:.4rem;text-shadow:0 2px 24px rgba(0,0,0,.45)}
 .rlp h2 span{display:block;white-space:nowrap}
-.rlp p.l{margin:1rem auto 0;max-width:42ch;color:#e4e4e7;font-size:clamp(1rem,.95rem + .3vw,1.2rem)}
-.rlp .go{display:inline-flex;align-items:center;gap:.6rem;min-height:60px;margin-top:clamp(1.4rem,3vw,2rem);padding:0 2.2rem;border-radius:999px;background:#fff;color:#050507;font-family:var(--display);font-size:clamp(1.25rem,2.4vw,1.55rem);letter-spacing:.08em;line-height:1;text-transform:uppercase;text-decoration:none;transition:opacity .15s,transform .1s}
+.rlp .go{display:inline-flex;align-items:center;gap:.6rem;min-height:60px;margin-top:clamp(1.4rem,3vw,2rem);padding:0 2.4rem;border-radius:999px;background:var(--tonga);color:#fff;font-family:var(--display);font-size:clamp(1.25rem,2.4vw,1.55rem);letter-spacing:.08em;line-height:1;text-transform:uppercase;text-decoration:none;transition:opacity .15s,transform .1s}
 .rlp .go svg{width:1.1em;height:1.1em;transition:transform .2s}
-.rlp .go:hover{opacity:.88}.rlp .go:hover svg{transform:translateX(3px)}.rlp .go:active{transform:translateY(1px)}
+.rlp .go:hover{opacity:.9}.rlp .go:hover svg{transform:translateX(3px)}.rlp .go:active{transform:translateY(1px)}
 .rlp .go:focus-visible{outline:2px solid #fff;outline-offset:3px}
+.rlp-in{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);grid-template-areas:"txt txt" "s t";gap:clamp(1.75rem,4vw,2.5rem) clamp(.9rem,2vw,1.25rem);align-items:center}
+.rlp-txt{grid-area:txt}
+.rlp-pl.s{grid-area:s}.rlp-pl.t{grid-area:t}
+.rlp-pl{text-align:left;padding:.75rem .75rem .5rem;border-radius:22px;background:rgba(10,10,12,.62);border:1px solid rgba(255,255,255,.1);border-top:3px solid var(--samoa);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
+.rlp-pl.t{border-top-color:var(--tonga)}
+.rlp-tag{font-family:var(--display);letter-spacing:.14em;text-transform:uppercase;font-size:1rem;color:rgba(255,255,255,.8);margin:0 0 .5rem .2rem}
+.rlp-pl iframe{display:block;width:100%;height:152px;border:0;border-radius:12px;background:#121214}
+@media (min-width:1100px){.rlp-in{grid-template-columns:280px minmax(0,1fr) 280px;grid-template-areas:"s txt t"}.rlp h2{font-size:clamp(3.4rem,5vw,5.2rem)}.rlp-pl.s{transform:rotate(-2deg)}.rlp-pl.t{transform:rotate(2deg)}}
+@media (max-width:640px){.rlp-in{grid-template-columns:1fr;grid-template-areas:"txt" "s" "t"}}
 @media (max-width:520px){.rlp .go{width:100%;justify-content:center}}
 @media (prefers-reduced-motion:reduce){.rlp video{display:none}.rlp .go svg{transition:none}}
 .wyr{background:#fff;color:#050507;padding:clamp(3rem,7vw,5.5rem) 0}
@@ -296,11 +304,14 @@ button[disabled]{opacity:.5;cursor:default}
     <source data-src="/assets/playlists/pmn-plus-toa-samoa-vs-tonga-rlwc-2026-mobile.mp4" type="video/mp4" media="(max-width:700px) and (orientation:portrait)">
     <source data-src="/assets/playlists/pmn-plus-toa-samoa-vs-tonga-rlwc-2026-1280.mp4" type="video/mp4">
   </video>
-  <div class="wrap">
-    <p class="eyebrow">Toa Samoa vs Mate Ma&#8217;a Tonga &middot; Sun Nov 1</p>
-    <h2 id="rlpH"><span>Rugby League</span> <span>World Cup Playlist</span></h2>
-    <p class="l">Game day soundtrack for the biggest Pacific derby of the tournament: one playlist for Samoa, one for Tonga.</p>
-    <a class="go" href="/rlwc-playlists">Listen to the playlists <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18V5l11-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="17" cy="16" r="3"/></svg></a>
+  <div class="wrap rlp-in">
+    <div class="rlp-txt">
+      <p class="eyebrow">Samoa vs Tonga &middot; Sun Nov 1</p>
+      <h2 id="rlpH"><span>Rugby League</span> <span>World Cup Playlist</span></h2>
+      <a class="go" href="/rlwc-playlists">Listen now <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+    </div>
+    <div class="rlp-pl s"><p class="rlp-tag">Toa Samoa</p><iframe title="Toa Samoa game day playlist on Spotify" src="https://open.spotify.com/embed/playlist/42iE2Q3zvWwnWJ9MOc8BCE?utm_source=generator&amp;theme=0" height="152" loading="lazy" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe></div>
+    <div class="rlp-pl t"><p class="rlp-tag">Mate Ma&#8217;a Tonga</p><iframe title="Mate Ma&#8217;a Tonga game day playlist on Spotify" src="https://open.spotify.com/embed/playlist/6ZaUChLDVQBZm9xC8Jf8y3?utm_source=generator&amp;theme=0" height="152" loading="lazy" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe></div>
   </div>
 </section>
 

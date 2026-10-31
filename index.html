@@ -267,11 +267,7 @@ button[disabled]{opacity:.5;cursor:default}
 @media (max-width:520px){.wyr-go a{width:100%;justify-content:center}}
 @media (prefers-reduced-motion:reduce){.wyr-card img,.wyr-go a svg{transition:none}.wyr-card:hover img{transform:none}}
 /* Digital magazine: cover-story carousel */
-.mag{position:relative;padding:clamp(4rem,9vw,7rem) 0;background:#050507;color:#fff;border-top:1px solid var(--line);overflow:hidden;isolation:isolate}
-.mag .bgv{position:absolute;inset:0;z-index:-1;background:#050507}
-.mag .bgv video{width:100%;height:100%;object-fit:cover;opacity:.42}
-.mag .bgv::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(5,5,7,.85) 0%,rgba(5,5,7,.25) 24%,rgba(5,5,7,.25) 64%,#050507 100%)}
-@media (prefers-reduced-motion:reduce){.mag .bgv video{display:none}}
+.mag{position:relative;padding:clamp(4rem,9vw,7rem) 0;background:#050507;color:#fff;border-top:1px solid var(--line)}
 .mag .head{display:grid;grid-template-columns:1.1fr .9fr;gap:2rem 3rem;align-items:end;margin-bottom:clamp(1.75rem,4vw,2.75rem)}
 .mag h2{font-family:var(--display);font-weight:400;text-transform:uppercase;font-size:clamp(2.8rem,7vw,5.4rem);line-height:.88;letter-spacing:.01em;margin-top:.4rem}
 .mag .head p{color:#c9c9cf;font-size:1.08rem;max-width:42ch}
@@ -443,7 +439,6 @@ button[disabled]{opacity:.5;cursor:default}
   </div>
 </section>
 <section class="mag" id="magazine" aria-labelledby="magH">
-  <div class="bgv" aria-hidden="true"><video muted loop playsinline preload="none" data-lazy><source data-src="/assets/home/mag-bg.mp4" type="video/mp4"></video></div>
   <div class="wrap">
     <div class="head">
       <div>
@@ -606,15 +601,7 @@ let x0=null;lb.addEventListener('touchstart',e=>{x0=e.touches[0].clientX},{passi
    })
    .catch(hide);
 })();
-</script>
-<script>
-(function(){/* magazine background video: load near screen, pause off-screen; skip on data saver / reduced motion */
- const v=document.querySelector('.mag .bgv video[data-lazy]');if(!v)return;const c=navigator.connection;
- if((c&&c.saveData)||matchMedia('(prefers-reduced-motion:reduce)').matches||!('IntersectionObserver' in window))return;
- let loaded=false;new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){if(!loaded){v.querySelectorAll('source').forEach(s=>s.src=s.dataset.src);v.load();loaded=true}v.play().catch(()=>{})}else if(loaded)v.pause()}),{rootMargin:'300px 0px'}).observe(v.parentElement);
-})();
-</script>
-<script>
+</script><script>
 (()=>{/* RLWC playlist band: load the video only near the screen, pause it off screen; skip on data saver / reduced motion */
  const v=document.querySelector('.rlp video[data-lazy]');if(!v)return;const c=navigator.connection;
  if((c&&c.saveData)||matchMedia('(prefers-reduced-motion:reduce)').matches||!('IntersectionObserver' in window))return;

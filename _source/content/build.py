@@ -94,9 +94,16 @@ EDV = _hash(os.path.join(HERE, "story.css"))
 
 HEADER = '<header class="nav pn-bar" id="nav">' + nav_build.header(bag="link") + '</header>'
 
-def page(title, desc, canonical, *, body, og_image=None, og_type="website",
+def page(title, desc, canonical, *, body, og_image=None, og_video=None, og_type="website",
          robots="index,follow", ld=None, head_extra=""):
     og_image = og_image or (SITE + "/assets/pmn-plus-og-music-culture-tradition-sports.jpg")
+    og_vid_tags = ""
+    if og_video:
+        og_vid_tags = (f'\n<meta property="og:video" content="{esc(og_video)}">'
+                       f'\n<meta property="og:video:secure_url" content="{esc(og_video)}">'
+                       f'\n<meta property="og:video:type" content="video/mp4">'
+                       f'\n<meta property="og:video:width" content="1280">'
+                       f'\n<meta property="og:video:height" content="720">')
     ld_block = ""
     if ld:
         ld_block = '<script type="application/ld+json">' + json.dumps(ld, ensure_ascii=False) + "</script>"
@@ -117,7 +124,7 @@ def page(title, desc, canonical, *, body, og_image=None, og_type="website",
 <meta property="og:title" content="{esc(title)}">
 <meta property="og:description" content="{esc(desc)}">
 <meta property="og:url" content="{esc(canonical)}">
-<meta property="og:image" content="{esc(og_image)}">
+<meta property="og:image" content="{esc(og_image)}">{og_vid_tags}
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="{esc(title)}">
 <meta name="twitter:description" content="{esc(desc)}">
@@ -288,7 +295,7 @@ def fmt_date(iso):
     except Exception:
         return iso or ""
 
-def index_page(title, desc, canonical, heading, eyebrow, posts, idx, *, cats_nav=None, intro="", on=None, og=None, bg_video=None):
+def index_page(title, desc, canonical, heading, eyebrow, posts, idx, *, cats_nav=None, intro="", on=None, og=None, bg_video=None, og_video=None):
     # A hub with its own share card uses it. Tag hubs have none and lead with their newest story,
     # which is genuinely what that page is about.
     og = og or next((p.get("hero_image_url") for p in posts if p.get("hero_image_url")), None)
@@ -315,7 +322,7 @@ def index_page(title, desc, canonical, heading, eyebrow, posts, idx, *, cats_nav
                 f'<div class="ed-wrap">{grid}</div>' + vid)
     else:
         body = f'<div class="ed-wrap">{head}{grid}</div>'
-    return page(title, desc, canonical, body=body, og_image=og)
+    return page(title, desc, canonical, body=body, og_image=og, og_video=og_video)
 
 def magazine_page(iss, idx):
     posts = idx["by_issue"].get(iss["id"], [])
@@ -590,7 +597,8 @@ def main():
         "Pasifika stories — Pacific music, sport, entertainment and culture, from the people who live it. PMN+.",
         SITE + "/stories", "No one tells our stories better than us", "Pasifika Stories", newest, idx, cats_nav=live_cats,
         intro="Pacific music, sport, entertainment and culture — reported, filmed and told by the people who live it.",
-        og=cards.get("stories"), bg_video="/assets/home/stories-bg.mp4")))
+        og=cards.get("stories"), bg_video="/assets/home/stories-bg.mp4",
+        og_video=SITE + "/assets/og/stories.mp4")))
     # category hubs
     for c in cats:
         cp = [p for p in newest if p.get("category_id") == c["id"]]

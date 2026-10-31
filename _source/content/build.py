@@ -596,7 +596,7 @@ def main():
         "Pasifika Stories | PMN+",
         "Pasifika stories — Pacific music, sport, entertainment and culture, from the people who live it. PMN+.",
         SITE + "/stories", "No one tells our stories better than us", "Pasifika Stories", newest, idx, cats_nav=live_cats,
-        intro="Pacific music, sport, entertainment and culture — reported, filmed and told by the people who live it.",
+        intro="Pacific music, sport, entertainment and culture — reported, filmed and told by us.",
         og=cards.get("stories"), bg_video="/assets/home/stories-bg.mp4",
         og_video=SITE + "/assets/og/stories.mp4")))
     # category hubs

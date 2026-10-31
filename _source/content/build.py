@@ -288,7 +288,7 @@ def fmt_date(iso):
     except Exception:
         return iso or ""
 
-def index_page(title, desc, canonical, heading, eyebrow, posts, idx, *, cats_nav=None, intro="", on=None, og=None):
+def index_page(title, desc, canonical, heading, eyebrow, posts, idx, *, cats_nav=None, intro="", on=None, og=None, bg_video=None):
     # A hub with its own share card uses it. Tag hubs have none and lead with their newest story,
     # which is genuinely what that page is about.
     og = og or next((p.get("hero_image_url") for p in posts if p.get("hero_image_url")), None)
@@ -298,9 +298,23 @@ def index_page(title, desc, canonical, heading, eyebrow, posts, idx, *, cats_nav
         cat_links = '<nav class="ed-cats"><a href="/stories"' + (' class="on"' if on is None else "") + ">All</a>" + "".join(
             f'<a href="/stories/{esc(c["slug"])}"' + (' class="on"' if on == c["slug"] else "") + f'>{esc(c["name"])}</a>'
             for c in cats_nav) + "</nav>"
-    body = (f'<div class="ed-wrap"><div class="ed-head"><span class="ey">{esc(eyebrow)}</span>'
-            f'<h1>{esc(heading)}</h1>{("<p>"+esc(intro)+"</p>") if intro else ""}{cat_links}</div>'
-            f'<div class="ed-grid-cards">{cards}</div></div>')
+    head = (f'<div class="ed-head"><span class="ey">{esc(eyebrow)}</span>'
+            f'<h1>{esc(heading)}</h1>{("<p>"+esc(intro)+"</p>") if intro else ""}{cat_links}</div>')
+    grid = f'<div class="ed-grid-cards">{cards}</div>'
+    if bg_video:
+        vid = ("<script>(function(){var v=document.querySelector('.ed-maghero .bgv video[data-lazy]');"
+               "if(!v)return;var c=navigator.connection;"
+               "if((c&&c.saveData)||matchMedia('(prefers-reduced-motion:reduce)').matches||!('IntersectionObserver' in window))return;"
+               "var loaded=false;new IntersectionObserver(function(es){es.forEach(function(e){"
+               "if(e.isIntersecting){if(!loaded){v.querySelectorAll('source').forEach(function(s){s.src=s.dataset.src});v.load();loaded=true}"
+               "v.play().catch(function(){})}else if(loaded)v.pause()})},{rootMargin:'300px 0px'}).observe(v.parentElement)})();</script>")
+        body = (f'<section class="ed-maghero"><div class="bgv" aria-hidden="true">'
+                f'<video muted loop playsinline preload="none" data-lazy>'
+                f'<source data-src="{esc(bg_video)}" type="video/mp4"></video></div>'
+                f'<div class="ed-wrap">{head}</div></section>'
+                f'<div class="ed-wrap">{grid}</div>' + vid)
+    else:
+        body = f'<div class="ed-wrap">{head}{grid}</div>'
     return page(title, desc, canonical, body=body, og_image=og)
 
 def magazine_page(iss, idx):
@@ -574,8 +588,9 @@ def main():
     out.append(write("stories/index.html", index_page(
         "Pasifika Stories | PMN+",
         "Pasifika stories — Pacific music, sport, entertainment and culture, from the people who live it. PMN+.",
-        SITE + "/stories", "Pasifika Stories", "PMN+", newest, idx, cats_nav=live_cats,
-        intro="No one tells our stories better than we can.", og=cards.get("stories"))))
+        SITE + "/stories", "No one tells our stories better than us", "Pasifika Stories", newest, idx, cats_nav=live_cats,
+        intro="Pacific music, sport, entertainment and culture — reported, filmed and told by the people who live it.",
+        og=cards.get("stories"), bg_video="/assets/home/stories-bg.mp4")))
     # category hubs
     for c in cats:
         cp = [p for p in newest if p.get("category_id") == c["id"]]

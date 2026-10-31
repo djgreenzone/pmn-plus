@@ -102,8 +102,8 @@ def page(title, desc, canonical, *, body, og_image=None, og_video=None, og_type=
         og_vid_tags = (f'\n<meta property="og:video" content="{esc(og_video)}">'
                        f'\n<meta property="og:video:secure_url" content="{esc(og_video)}">'
                        f'\n<meta property="og:video:type" content="video/mp4">'
-                       f'\n<meta property="og:video:width" content="1280">'
-                       f'\n<meta property="og:video:height" content="720">')
+                       f'\n<meta property="og:video:width" content="1200">'
+                       f'\n<meta property="og:video:height" content="630">')
     ld_block = ""
     if ld:
         ld_block = '<script type="application/ld+json">' + json.dumps(ld, ensure_ascii=False) + "</script>"
@@ -467,13 +467,10 @@ def make_cards(cats, authors, issues, newest, idx):
     covers = [g for g in (grab(i.get("cover_image_url")) for i in
                           sorted(issues, key=lambda x: x.get("published_at") or "", reverse=True)[:3]) if g]
 
-    # The magazine card uses a still from the homepage background video — one lively image of the
-    # people and culture — under the usual black gradient, instead of the cover shelf. Falls back to
-    # the cover shelf if the frame is missing.
-    mag_frame = os.path.join(HERE, "mag-og-frame.jpg")
-    mag_imgs, mag_layout = ([mag_frame], "bleed") if os.path.exists(mag_frame) else (covers, "shelf")
-    want = [("digital-magazine", "Digital Magazine", "PMN+", mag_imgs, mag_layout),
-            ("stories", "Pasifika Stories", "PMN+", heroes(newest), "bleed")]
+    # /digital-magazine and /stories carry their own committed branded video share cards
+    # (assets/og/<name>.mp4 as og:video + a matching .jpg poster), so they are not generated here.
+    # The category and author hubs still get a collage card.
+    want = []
     for c in cats:
         want.append(("category-" + c["slug"], c["name"], "PMN+ Stories",
                      heroes([p for p in newest if p.get("category_id") == c["id"]]), "bleed"))
@@ -553,7 +550,9 @@ def magazine_index(issues, idx, og=None):
              "if(e.isIntersecting){if(!loaded){v.querySelectorAll('source').forEach(function(s){s.src=s.dataset.src});v.load();loaded=true}"
              "v.play().catch(function(){})}else if(loaded)v.pause()})},{rootMargin:'300px 0px'}).observe(v.parentElement)})();</script>")
     return page("Digital Magazine | PMN+", "Every issue of the PMN+ digital magazine.",
-                SITE + "/digital-magazine", og_image=og,
+                SITE + "/digital-magazine",
+                og_image=SITE + "/assets/og/digital-magazine.jpg",
+                og_video=SITE + "/assets/og/digital-magazine.mp4",
                 body=maghero + ('<div class="ed-wrap">' + archive + '</div>' if archive else '') + vidjs)
 
 
@@ -591,15 +590,27 @@ def main():
     live_cats = [c for c in cats if any(p.get("category_id") == c["id"] for p in newest)]
     live_authors = [a for a in authors if any(p.get("author_id") == a["id"] for p in newest)]
     cards = make_cards(live_cats, live_authors, issues, newest, idx)
+    # One header for the whole /stories world: the video, title and copy stay put across the
+    # category filters — only the grid and the highlighted pill change — so switching a category
+    # never swaps the header out.
+    S_HEAD = "No one tells our stories better than us"
+    S_EYE = "Pasifika Stories"
+    S_INTRO = "Pacific music, sport, entertainment and culture — reported, filmed and told by us."
+    S_VID = "/assets/home/stories-bg.mp4"
     # stories index
     out.append(write("stories/index.html", index_page(
         "Pasifika Stories | PMN+",
         "Pasifika stories — Pacific music, sport, entertainment and culture, from the people who live it. PMN+.",
+<<<<<<< HEAD
         SITE + "/stories", "No one tells our stories better than us", "Pasifika Stories", newest, idx, cats_nav=live_cats,
         intro="Pacific music, sport, entertainment and culture — reported, filmed and told by us.",
         og=cards.get("stories"), bg_video="/assets/home/stories-bg.mp4",
+=======
+        SITE + "/stories", S_HEAD, S_EYE, newest, idx, cats_nav=live_cats,
+        intro=S_INTRO, og=SITE + "/assets/og/stories.jpg", bg_video=S_VID,
+>>>>>>> Stories categories share one header; branded video OG for stories + magazine
         og_video=SITE + "/assets/og/stories.mp4")))
-    # category hubs
+    # category hubs — identical header, only the grid and the active pill change
     for c in cats:
         cp = [p for p in newest if p.get("category_id") == c["id"]]
         if not cp:
@@ -607,8 +618,8 @@ def main():
             continue
         out.append(write(f"stories/{c['slug']}/index.html", index_page(
             f"{c['name']} | PMN+ Stories", f"PMN+ {c['name'].lower()} stories.",
-            SITE + "/stories/" + c["slug"], c["name"], "Stories", cp, idx, cats_nav=live_cats, on=c["slug"],
-            og=cards.get("category-" + c["slug"]))))
+            SITE + "/stories/" + c["slug"], S_HEAD, S_EYE, cp, idx, cats_nav=live_cats, on=c["slug"],
+            intro=S_INTRO, bg_video=S_VID, og=cards.get("category-" + c["slug"]))))
     # author pages
     for a in authors:
         ap = [p for p in newest if p.get("author_id") == a["id"]]

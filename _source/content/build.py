@@ -601,14 +601,8 @@ def main():
     out.append(write("stories/index.html", index_page(
         "Pasifika Stories | PMN+",
         "Pasifika stories — Pacific music, sport, entertainment and culture, from the people who live it. PMN+.",
-<<<<<<< HEAD
-        SITE + "/stories", "No one tells our stories better than us", "Pasifika Stories", newest, idx, cats_nav=live_cats,
-        intro="Pacific music, sport, entertainment and culture — reported, filmed and told by us.",
-        og=cards.get("stories"), bg_video="/assets/home/stories-bg.mp4",
-=======
         SITE + "/stories", S_HEAD, S_EYE, newest, idx, cats_nav=live_cats,
         intro=S_INTRO, og=SITE + "/assets/og/stories.jpg", bg_video=S_VID,
->>>>>>> Stories categories share one header; branded video OG for stories + magazine
         og_video=SITE + "/assets/og/stories.mp4")))
     # category hubs — identical header, only the grid and the active pill change
     for c in cats:

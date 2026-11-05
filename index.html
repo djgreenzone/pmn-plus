@@ -294,35 +294,33 @@ button[disabled]{opacity:.5;cursor:default}
 @media (max-width:900px){.mag .head{grid-template-columns:1fr}.mags{grid-auto-columns:calc((100% - 1*.8rem)/2.1)}.mag-nav{width:46px;height:46px;margin-top:-23px}.mag-nav.prev{left:6px}.mag-nav.next{right:6px}}
 @media (max-width:520px){.mags{grid-auto-columns:80%;margin-right:calc(-1*clamp(1rem,5vw,2.5rem))}}
 @media (prefers-reduced-motion:reduce){.mag-card.sk .cov{animation:none}.mag-card .cov img{transition:none}}
-/* Latest stories carousel (blog slider): editorial post cards, arrows + a visible progress bar */
-.stz{position:relative;padding:clamp(4rem,9vw,7rem) 0;background:#000;color:#fff;border-top:1px solid var(--line)}
-.stz .head{margin-bottom:clamp(1.5rem,3.5vw,2.25rem)}
-.stz h2{font-family:var(--display);font-weight:400;text-transform:uppercase;font-size:clamp(2.8rem,7vw,5.4rem);line-height:.88;letter-spacing:.01em;margin-top:.4rem}
-.stz .head p{color:#c9c9cf;font-size:1.08rem;max-width:42ch}
-.stz .head .acts{display:flex;flex-wrap:wrap;gap:.75rem;margin-top:1.25rem}
-.stz-wrap{position:relative}
-.stz-rail{display:grid;grid-auto-flow:column;grid-auto-columns:calc((100% - 3*clamp(.8rem,1.6vw,1.4rem))/4);gap:clamp(.8rem,1.6vw,1.4rem);overflow-x:auto;scroll-behavior:smooth;scroll-snap-type:x mandatory;scrollbar-width:none;padding-bottom:4px}
-.stz-rail::-webkit-scrollbar{display:none}
-.stz-card{position:relative;display:block;scroll-snap-align:start;text-decoration:none;color:#fff}
-.stz-cov{display:block;position:relative;aspect-ratio:4/3;border-radius:14px;overflow:hidden;background:#17171c;box-shadow:0 10px 30px rgba(0,0,0,.4)}
-.stz-cov img{width:100%;height:100%;object-fit:cover;transition:transform .35s}
-.stz-card:hover .stz-cov img{transform:scale(1.04)}
-.stz-tag{position:absolute;left:12px;bottom:12px;font-family:var(--display);font-size:.82rem;letter-spacing:.1em;text-transform:uppercase;color:#06251f;background:#22c5c5;padding:.34rem .7rem;border-radius:999px}
-.stz-card b{display:block;margin-top:.85rem;font-weight:600;font-size:1.08rem;line-height:1.22;-webkit-box-orient:vertical;-webkit-line-clamp:3;display:-webkit-box;overflow:hidden}
-.stz-card small{display:block;color:var(--dim);font-size:.82rem;letter-spacing:.06em;text-transform:uppercase;margin-top:.45rem}
-.stz-card.sk .stz-cov{background:linear-gradient(100deg,#141418 30%,#1d1d22 50%,#141418 70%);background-size:200% 100%;animation:sk 1.2s linear infinite}
-.stz-card:focus-visible{outline:2px solid #fff;outline-offset:3px;border-radius:14px}
-.stz-nav{position:absolute;top:34%;z-index:3;width:54px;height:54px;margin-top:-27px;border-radius:50%;border:0;background:#fff;color:#050507;display:grid;place-items:center;cursor:pointer;box-shadow:0 8px 24px rgba(0,0,0,.35);transition:transform .15s}
-.stz-nav:hover{transform:scale(1.06)}
-.stz-nav svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
-.stz-nav.prev{left:-20px}.stz-nav.next{right:-20px}
+/* Latest stories — compact card slider modeled on the Island City widget, in PMN+ branding */
+.stz{position:relative;padding:clamp(2.2rem,5vw,3.5rem) 0;background:#000;color:#fff}
+.stz-head{display:flex;align-items:flex-end;justify-content:space-between;gap:1rem;margin-bottom:1.1rem}
+.stz-head h2{font-family:var(--display);font-weight:400;text-transform:uppercase;font-size:clamp(1.6rem,3.2vw,2.3rem);line-height:1;letter-spacing:.04em;margin:0}
+.stz-navs{display:flex;gap:.5rem;flex:0 0 auto}
+.stz-nav{width:42px;height:42px;border-radius:50%;border:1.5px solid rgba(255,255,255,.35);background:transparent;color:#fff;display:grid;place-items:center;cursor:pointer;transition:border-color .15s,background .15s}
+.stz-nav:hover{border-color:#fff;background:rgba(255,255,255,.1)}
+.stz-nav svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
 .stz-nav[hidden]{display:none}
-.stz-bar{position:relative;height:5px;border-radius:999px;background:rgba(255,255,255,.16);margin:20px 2px 0;cursor:pointer;touch-action:none}
-.stz-bar-thumb{position:absolute;top:0;left:0;height:100%;width:40px;min-width:28px;border-radius:999px;background:rgba(255,255,255,.5);transition:background .15s}
-.stz-bar:hover .stz-bar-thumb{background:rgba(255,255,255,.82)}
+.stz-rail{display:grid;grid-auto-flow:column;grid-auto-columns:calc((100% - 3*clamp(.9rem,1.6vw,1.25rem))/4);gap:clamp(.9rem,1.6vw,1.25rem);overflow-x:auto;scroll-behavior:smooth;scroll-snap-type:x mandatory;scrollbar-width:none;padding-bottom:2px}
+.stz-rail::-webkit-scrollbar{display:none}
+.stz-card{display:flex;flex-direction:column;scroll-snap-align:start;text-decoration:none;color:#fff;border:1px solid rgba(255,255,255,.12);border-radius:16px;overflow:hidden;background:#0c0c0e;transition:border-color .2s,transform .2s}
+.stz-card:hover{border-color:rgba(255,255,255,.3);transform:translateY(-2px)}
+.stz-card:focus-visible{outline:2px solid #22c5c5;outline-offset:2px}
+.stz-cov{position:relative;aspect-ratio:16/11;overflow:hidden;background:#17171c}
+.stz-cov img{width:100%;height:100%;object-fit:cover;transition:transform .4s cubic-bezier(.2,.7,.2,1)}
+.stz-card:hover .stz-cov img{transform:scale(1.05)}
+.stz-tag{position:absolute;left:12px;bottom:12px;font-family:var(--display);font-size:.74rem;letter-spacing:.08em;text-transform:uppercase;color:#06251f;background:#22c5c5;padding:.3rem .66rem;border-radius:999px}
+.stz-card b{padding:14px 15px 0;font-weight:700;font-size:.98rem;line-height:1.26;text-transform:uppercase;letter-spacing:.01em;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.stz-card small{padding:8px 15px 16px;margin-top:auto;color:var(--dim);font-size:.74rem;letter-spacing:.07em;text-transform:uppercase}
+.stz-card.sk{pointer-events:none}
+.stz-card.sk .stz-cov{background:linear-gradient(100deg,#141418 30%,#1d1d22 50%,#141418 70%);background-size:200% 100%;animation:sk 1.2s linear infinite}
+.stz-bar{position:relative;height:4px;border-radius:999px;background:rgba(255,255,255,.14);margin:16px 2px 0;cursor:pointer;touch-action:none}
+.stz-bar-thumb{position:absolute;top:0;left:0;height:100%;min-width:40px;border-radius:999px;background:linear-gradient(90deg,#22c5c5,#1E4FA0)}
 .stz-bar[hidden]{display:none}
-@media (max-width:900px){.stz .head{grid-template-columns:1fr}.stz-rail{grid-auto-columns:calc((100% - 1*.8rem)/2.1)}.stz-nav{width:46px;height:46px;margin-top:-23px}.stz-nav.prev{left:6px}.stz-nav.next{right:6px}}
-@media (max-width:520px){.stz-rail{grid-auto-columns:82%;margin-right:calc(-1*clamp(1rem,5vw,2.5rem))}}
+@media (max-width:900px){.stz-rail{grid-auto-columns:calc((100% - .9rem)/2.1)}}
+@media (max-width:560px){.stz-rail{grid-auto-columns:84%}.stz-head h2{font-size:1.5rem}}
 @media (prefers-reduced-motion:reduce){.stz-card.sk .stz-cov{animation:none}.stz-card .stz-cov img{transition:none}}
 </style>
 <link rel="stylesheet" href="/assets/pmn-nav.css?v=21fb4b43">
@@ -359,17 +357,17 @@ button[disabled]{opacity:.5;cursor:default}
 
 <section class="stz" id="stories" aria-labelledby="stzH">
   <div class="wrap">
-    <div class="head">
+    <div class="stz-head">
       <h2 id="stzH">Latest Stories</h2>
-    </div>
-    <div class="stz-wrap">
-      <button type="button" class="stz-nav prev" id="stzPrev" aria-label="Previous stories" hidden><svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg></button>
-      <div class="stz-rail" id="stzRail" aria-label="Latest PMN+ stories">
-        <span class="stz-card sk"><span class="stz-cov"></span></span><span class="stz-card sk"><span class="stz-cov"></span></span><span class="stz-card sk"><span class="stz-cov"></span></span><span class="stz-card sk"><span class="stz-cov"></span></span>
+      <div class="stz-navs">
+        <button type="button" class="stz-nav prev" id="stzPrev" aria-label="Previous stories" hidden><svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg></button>
+        <button type="button" class="stz-nav next" id="stzNext" aria-label="More stories" hidden><svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></button>
       </div>
-      <button type="button" class="stz-nav next" id="stzNext" aria-label="More stories" hidden><svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></button>
-      <div class="stz-bar" id="stzBar" hidden><span class="stz-bar-thumb"></span></div>
     </div>
+    <div class="stz-rail" id="stzRail" aria-label="Latest PMN+ stories">
+      <span class="stz-card sk"><span class="stz-cov"></span></span><span class="stz-card sk"><span class="stz-cov"></span></span><span class="stz-card sk"><span class="stz-cov"></span></span><span class="stz-card sk"><span class="stz-cov"></span></span>
+    </div>
+    <div class="stz-bar" id="stzBar" hidden><span class="stz-bar-thumb"></span></div>
   </div>
 </section>
 

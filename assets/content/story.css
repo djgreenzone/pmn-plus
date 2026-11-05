@@ -34,6 +34,16 @@ body{font-family:var(--body);color:var(--ink);background:var(--bg)}
 .ed-dek{color:var(--ink-soft);font-size:clamp(15px,2vw,19px);max-width:60ch;margin:12px 0 0}
 .ed-byline{display:flex;flex-wrap:wrap;gap:8px 18px;align-items:center;margin-top:16px;font-size:13px;color:var(--dim);text-transform:uppercase;letter-spacing:.07em}
 .ed-byline .who{color:var(--ink)}.ed-byline .dot{width:4px;height:4px;border-radius:999px;background:var(--dim)}
+/* Mobile: the overlaid hero title + dek can't fit a short box, so stack — the
+   1200x630 feature image on top, the copy below on black. Applies to every story. */
+@media(max-width:640px){
+  .ed-hero{background:var(--bg);border-radius:20px}
+  .ed-hero img{aspect-ratio:1200/630;border-radius:20px;object-position:center 22%}
+  .ed-hero .grad{display:none}
+  .ed-hero .copy{position:static;padding:16px 2px 4px}
+  .ed h1{font-size:clamp(32px,8.5vw,46px);margin-top:14px}
+  .ed-hero .ed-dek{font-size:15px;margin-top:10px}
+}
 
 /* two-col body */
 .ed-grid{display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:clamp(28px,5vw,64px);margin-top:40px;align-items:start}

@@ -294,6 +294,36 @@ button[disabled]{opacity:.5;cursor:default}
 @media (max-width:900px){.mag .head{grid-template-columns:1fr}.mags{grid-auto-columns:calc((100% - 1*.8rem)/2.1)}.mag-nav{width:46px;height:46px;margin-top:-23px}.mag-nav.prev{left:6px}.mag-nav.next{right:6px}}
 @media (max-width:520px){.mags{grid-auto-columns:80%;margin-right:calc(-1*clamp(1rem,5vw,2.5rem))}}
 @media (prefers-reduced-motion:reduce){.mag-card.sk .cov{animation:none}.mag-card .cov img{transition:none}}
+/* Latest stories carousel (blog slider): editorial post cards, arrows + a visible progress bar */
+.stz{position:relative;padding:clamp(4rem,9vw,7rem) 0;background:#000;color:#fff;border-top:1px solid var(--line)}
+.stz .head{display:grid;grid-template-columns:1.1fr .9fr;gap:2rem 3rem;align-items:end;margin-bottom:clamp(1.75rem,4vw,2.75rem)}
+.stz h2{font-family:var(--display);font-weight:400;text-transform:uppercase;font-size:clamp(2.8rem,7vw,5.4rem);line-height:.88;letter-spacing:.01em;margin-top:.4rem}
+.stz .head p{color:#c9c9cf;font-size:1.08rem;max-width:42ch}
+.stz .head .acts{display:flex;flex-wrap:wrap;gap:.75rem;margin-top:1.25rem}
+.stz-wrap{position:relative}
+.stz-rail{display:grid;grid-auto-flow:column;grid-auto-columns:calc((100% - 3*clamp(.8rem,1.6vw,1.4rem))/4);gap:clamp(.8rem,1.6vw,1.4rem);overflow-x:auto;scroll-behavior:smooth;scroll-snap-type:x mandatory;scrollbar-width:none;padding-bottom:4px}
+.stz-rail::-webkit-scrollbar{display:none}
+.stz-card{position:relative;display:block;scroll-snap-align:start;text-decoration:none;color:#fff}
+.stz-cov{display:block;position:relative;aspect-ratio:4/3;border-radius:14px;overflow:hidden;background:#17171c;box-shadow:0 10px 30px rgba(0,0,0,.4)}
+.stz-cov img{width:100%;height:100%;object-fit:cover;transition:transform .35s}
+.stz-card:hover .stz-cov img{transform:scale(1.04)}
+.stz-tag{position:absolute;left:12px;bottom:12px;font-family:var(--display);font-size:.82rem;letter-spacing:.1em;text-transform:uppercase;color:#06251f;background:#22c5c5;padding:.34rem .7rem;border-radius:999px}
+.stz-card b{display:block;margin-top:.85rem;font-weight:600;font-size:1.08rem;line-height:1.22;-webkit-box-orient:vertical;-webkit-line-clamp:3;display:-webkit-box;overflow:hidden}
+.stz-card small{display:block;color:var(--dim);font-size:.82rem;letter-spacing:.06em;text-transform:uppercase;margin-top:.45rem}
+.stz-card.sk .stz-cov{background:linear-gradient(100deg,#141418 30%,#1d1d22 50%,#141418 70%);background-size:200% 100%;animation:sk 1.2s linear infinite}
+.stz-card:focus-visible{outline:2px solid #fff;outline-offset:3px;border-radius:14px}
+.stz-nav{position:absolute;top:34%;z-index:3;width:54px;height:54px;margin-top:-27px;border-radius:50%;border:0;background:#fff;color:#050507;display:grid;place-items:center;cursor:pointer;box-shadow:0 8px 24px rgba(0,0,0,.35);transition:transform .15s}
+.stz-nav:hover{transform:scale(1.06)}
+.stz-nav svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.stz-nav.prev{left:-20px}.stz-nav.next{right:-20px}
+.stz-nav[hidden]{display:none}
+.stz-bar{position:relative;height:5px;border-radius:999px;background:rgba(255,255,255,.16);margin:20px 2px 0;cursor:pointer;touch-action:none}
+.stz-bar-thumb{position:absolute;top:0;left:0;height:100%;width:40px;min-width:28px;border-radius:999px;background:rgba(255,255,255,.5);transition:background .15s}
+.stz-bar:hover .stz-bar-thumb{background:rgba(255,255,255,.82)}
+.stz-bar[hidden]{display:none}
+@media (max-width:900px){.stz .head{grid-template-columns:1fr}.stz-rail{grid-auto-columns:calc((100% - 1*.8rem)/2.1)}.stz-nav{width:46px;height:46px;margin-top:-23px}.stz-nav.prev{left:6px}.stz-nav.next{right:6px}}
+@media (max-width:520px){.stz-rail{grid-auto-columns:82%;margin-right:calc(-1*clamp(1rem,5vw,2.5rem))}}
+@media (prefers-reduced-motion:reduce){.stz-card.sk .stz-cov{animation:none}.stz-card .stz-cov img{transition:none}}
 </style>
 <link rel="stylesheet" href="/assets/pmn-nav.css?v=21fb4b43">
 </head>
@@ -438,6 +468,31 @@ button[disabled]{opacity:.5;cursor:default}
     <p class="reels-empty" id="reelsEmpty">New reels are on the way. <a href="https://www.instagram.com/polynesianmusic/" target="_blank" rel="noopener">Watch on Instagram</a></p>
   </div>
 </section>
+<section class="stz" id="stories" aria-labelledby="stzH">
+  <div class="wrap">
+    <div class="head">
+      <div>
+        <p class="eyebrow">From the Blog &middot; PMN+</p>
+        <h2 id="stzH">Latest<br>Stories</h2>
+      </div>
+      <div>
+        <p>The newest drops from across Pasifika sport, music and culture &mdash; refreshed as new stories publish.</p>
+        <div class="acts">
+          <a class="btn" href="/stories">Browse all stories</a>
+        </div>
+      </div>
+    </div>
+    <div class="stz-wrap">
+      <button type="button" class="stz-nav prev" id="stzPrev" aria-label="Previous stories" hidden><svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg></button>
+      <div class="stz-rail" id="stzRail" aria-label="Latest PMN+ stories">
+        <span class="stz-card sk"><span class="stz-cov"></span></span><span class="stz-card sk"><span class="stz-cov"></span></span><span class="stz-card sk"><span class="stz-cov"></span></span><span class="stz-card sk"><span class="stz-cov"></span></span>
+      </div>
+      <button type="button" class="stz-nav next" id="stzNext" aria-label="More stories" hidden><svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></button>
+      <div class="stz-bar" id="stzBar" hidden><span class="stz-bar-thumb"></span></div>
+    </div>
+  </div>
+</section>
+
 <section class="mag" id="magazine" aria-labelledby="magH">
   <div class="wrap">
     <div class="head">
@@ -598,6 +653,43 @@ let x0=null;lb.addEventListener('touchstart',e=>{x0=e.touches[0].clientX},{passi
      const go=d=>{if(d>0&&atEnd())box.scrollTo({left:0});else if(d<0&&atStart())box.scrollTo({left:box.scrollWidth});else box.scrollBy({left:d*step()})};
      const fits=()=>{const f=box.scrollWidth>box.clientWidth+4;prev.hidden=next.hidden=!f;return f};
      prev.onclick=()=>go(-1);next.onclick=()=>go(1);fits();addEventListener('resize',fits);
+   })
+   .catch(hide);
+})();
+</script><script>
+/* Latest stories carousel: newest posts from the static stories feed, with Born From
+   Culture and JuJu pinned to the front. New posts added to stories.json on each content
+   build appear here automatically. Arrows + a draggable progress bar signal the scroll. */
+(function(){
+  const rail=document.getElementById('stzRail');if(!rail)return;
+  const sec=document.getElementById('stories');
+  const esc=t=>String(t||'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+  const hide=()=>{if(sec)sec.style.display='none'};
+  const PINS=['born-from-culture-toa-fetu-samoa','juju-smith-schuster-fire-within'],LIMIT=12;
+  const fmt=s=>{const d=new Date(s);return isNaN(d)?'':d.toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric',timeZone:'UTC'}).toUpperCase()};
+  fetch('/assets/content/stories.json',{cache:'no-store'})
+   .then(r=>r.ok?r.json():null)
+   .then(list=>{
+     if(!Array.isArray(list)||!list.length){hide();return}
+     const by={};list.forEach(p=>{if(p&&p.s)by[p.s]=p});
+     const pinned=PINS.map(s=>by[s]).filter(Boolean),seen=new Set(pinned.map(p=>p.s));
+     const rest=list.filter(p=>p&&p.s&&!seen.has(p.s)).sort((a,b)=>String(b.d||'').localeCompare(String(a.d||'')));
+     const items=pinned.concat(rest).slice(0,LIMIT);
+     if(!items.length){hide();return}
+     rail.innerHTML=items.map(p=>`<a class="stz-card" href="/stories/${esc(p.s)}/" aria-label="${esc(p.t)}"><span class="stz-cov">${p.h?`<img src="${esc(p.h)}" alt="${esc(p.t)}" loading="lazy">`:''}${p.c?`<span class="stz-tag">${esc(p.c)}</span>`:''}</span><b>${esc(p.t)}</b>${p.d?`<small>${fmt(p.d)}</small>`:''}</a>`).join('');
+     const prev=document.getElementById('stzPrev'),next=document.getElementById('stzNext');
+     const bar=document.getElementById('stzBar'),thumb=bar&&bar.querySelector('.stz-bar-thumb');
+     const step=()=>{const c=rail.querySelector('.stz-card');return c?c.getBoundingClientRect().width+parseFloat(getComputedStyle(rail).columnGap||0):rail.clientWidth};
+     const atEnd=()=>rail.scrollLeft+rail.clientWidth>=rail.scrollWidth-4,atStart=()=>rail.scrollLeft<=4;
+     const go=d=>{if(d>0&&atEnd())rail.scrollTo({left:0});else if(d<0&&atStart())rail.scrollTo({left:rail.scrollWidth});else rail.scrollBy({left:d*step()})};
+     const sync=()=>{const sw=rail.scrollWidth,cw=rail.clientWidth,max=sw-cw,over=max>4;prev.hidden=next.hidden=!over;if(bar)bar.hidden=!over;if(over&&thumb){const bw=bar.clientWidth,tw=Math.max(bw*(cw/sw),28);thumb.style.width=tw+'px';thumb.style.transform='translateX('+(rail.scrollLeft/max)*(bw-tw)+'px)';}};
+     prev.onclick=()=>go(-1);next.onclick=()=>go(1);
+     rail.addEventListener('scroll',sync,{passive:true});addEventListener('resize',sync);
+     if(bar&&thumb){let drag=false;const seek=x=>{const r=bar.getBoundingClientRect(),tw=thumb.offsetWidth,bw=bar.clientWidth,pos=Math.max(0,Math.min(x-r.left-tw/2,bw-tw)),max=rail.scrollWidth-rail.clientWidth;rail.scrollLeft=(bw-tw)>0?(pos/(bw-tw))*max:0};
+       bar.addEventListener('pointerdown',e=>{drag=true;try{bar.setPointerCapture(e.pointerId)}catch(x){}seek(e.clientX);e.preventDefault()});
+       bar.addEventListener('pointermove',e=>{if(drag)seek(e.clientX)});
+       const stop=()=>{drag=false};bar.addEventListener('pointerup',stop);bar.addEventListener('pointercancel',stop);}
+     sync();setTimeout(sync,80);
    })
    .catch(hide);
 })();

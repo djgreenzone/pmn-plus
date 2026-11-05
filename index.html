@@ -296,7 +296,7 @@ button[disabled]{opacity:.5;cursor:default}
 @media (prefers-reduced-motion:reduce){.mag-card.sk .cov{animation:none}.mag-card .cov img{transition:none}}
 /* Latest stories carousel (blog slider): editorial post cards, arrows + a visible progress bar */
 .stz{position:relative;padding:clamp(4rem,9vw,7rem) 0;background:#000;color:#fff;border-top:1px solid var(--line)}
-.stz .head{display:grid;grid-template-columns:1.1fr .9fr;gap:2rem 3rem;align-items:end;margin-bottom:clamp(1.75rem,4vw,2.75rem)}
+.stz .head{margin-bottom:clamp(1.5rem,3.5vw,2.25rem)}
 .stz h2{font-family:var(--display);font-weight:400;text-transform:uppercase;font-size:clamp(2.8rem,7vw,5.4rem);line-height:.88;letter-spacing:.01em;margin-top:.4rem}
 .stz .head p{color:#c9c9cf;font-size:1.08rem;max-width:42ch}
 .stz .head .acts{display:flex;flex-wrap:wrap;gap:.75rem;margin-top:1.25rem}
@@ -353,6 +353,22 @@ button[disabled]{opacity:.5;cursor:default}
       <p class="sub">Welcome to the <b>aiga</b>. Your 10% off code is saved to your bag and comes off at checkout.</p>
       <div class="code" aria-label="Your code: WELCOME10">WELCOME10</div>
       <a class="go" href="/shop">Shop now</a>
+    </div>
+  </div>
+</section>
+
+<section class="stz" id="stories" aria-labelledby="stzH">
+  <div class="wrap">
+    <div class="head">
+      <h2 id="stzH">Latest Stories</h2>
+    </div>
+    <div class="stz-wrap">
+      <button type="button" class="stz-nav prev" id="stzPrev" aria-label="Previous stories" hidden><svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg></button>
+      <div class="stz-rail" id="stzRail" aria-label="Latest PMN+ stories">
+        <span class="stz-card sk"><span class="stz-cov"></span></span><span class="stz-card sk"><span class="stz-cov"></span></span><span class="stz-card sk"><span class="stz-cov"></span></span><span class="stz-card sk"><span class="stz-cov"></span></span>
+      </div>
+      <button type="button" class="stz-nav next" id="stzNext" aria-label="More stories" hidden><svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></button>
+      <div class="stz-bar" id="stzBar" hidden><span class="stz-bar-thumb"></span></div>
     </div>
   </div>
 </section>
@@ -468,31 +484,6 @@ button[disabled]{opacity:.5;cursor:default}
     <p class="reels-empty" id="reelsEmpty">New reels are on the way. <a href="https://www.instagram.com/polynesianmusic/" target="_blank" rel="noopener">Watch on Instagram</a></p>
   </div>
 </section>
-<section class="stz" id="stories" aria-labelledby="stzH">
-  <div class="wrap">
-    <div class="head">
-      <div>
-        <p class="eyebrow">From the Blog &middot; PMN+</p>
-        <h2 id="stzH">Latest<br>Stories</h2>
-      </div>
-      <div>
-        <p>The newest drops from across Pasifika sport, music and culture &mdash; refreshed as new stories publish.</p>
-        <div class="acts">
-          <a class="btn" href="/stories">Browse all stories</a>
-        </div>
-      </div>
-    </div>
-    <div class="stz-wrap">
-      <button type="button" class="stz-nav prev" id="stzPrev" aria-label="Previous stories" hidden><svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg></button>
-      <div class="stz-rail" id="stzRail" aria-label="Latest PMN+ stories">
-        <span class="stz-card sk"><span class="stz-cov"></span></span><span class="stz-card sk"><span class="stz-cov"></span></span><span class="stz-card sk"><span class="stz-cov"></span></span><span class="stz-card sk"><span class="stz-cov"></span></span>
-      </div>
-      <button type="button" class="stz-nav next" id="stzNext" aria-label="More stories" hidden><svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></button>
-      <div class="stz-bar" id="stzBar" hidden><span class="stz-bar-thumb"></span></div>
-    </div>
-  </div>
-</section>
-
 <section class="mag" id="magazine" aria-labelledby="magH">
   <div class="wrap">
     <div class="head">

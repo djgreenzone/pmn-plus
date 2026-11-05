@@ -58,9 +58,10 @@ TOA_RANK = ["toa-oversized", "toa-player-black", "toa-rlwc26-black", "toa-hp-sna
             "toa-silver-blackout", "toa-685-black", "toa-trucker"]
 MMT_RANK = ["mmt-oversized", "mmt-rlwc26-black", "mmt-player-red", "mmt-hp-snapback",
             "mmt-silver-blackout", "mmt-676-black", "mmt-trucker"]
-BESTSELLERS = ["toa-oversized", "toa-player-black", "toa-rlwc26-black", "mmt-oversized"]
+BESTSELLERS = ["toa-oversized", "toa-player-black", "toa-rlwc26-black", "mmt-oversized",
+               "toa-hp-snapback", "toa-silver-blackout", "mmt-rlwc26-black"]
 
-def pick_products(post, n=4):
+def pick_products(post, n=7):
     items = {p["id"]: p for p in _shop()}
     def instock(ids): return [i for i in ids if i in items and not items[i].get("so")]
     hay = " ".join([post.get("title") or "",
@@ -86,6 +87,19 @@ def shop_section(post):
         return ""
     return (f'<section class="ed-shop"><div class="shop-this-story sts-grid" '
             f'data-products="{esc(",".join(ids))}"></div></section>')
+
+def story_teams(post):
+    """Which national team(s) a story belongs to, from its tags/title/keywords.
+    Used by the shop team pages to pull a 'Read' carousel of relevant articles."""
+    hay = " ".join([post.get("title") or "",
+                    " ".join(post.get("tags") or []),
+                    " ".join(post.get("keywords") or [])]).lower()
+    teams = []
+    if any(t in hay for t in ("toa samoa", "manu samoa", "siva samoa", "samoan", "samoa")):
+        teams.append("samoa")
+    if any(t in hay for t in ("mate ma'a tonga", "mate maa tonga", "tongan", "tonga", "mmt")):
+        teams.append("tonga")
+    return teams
 def trim(s, n): s = s or ""; return s if len(s) <= n else s[:n-1].rsplit(" ", 1)[0] + "…"
 
 # ---------- data ----------
@@ -635,6 +649,20 @@ def main():
     # posts
     for p in posts:
         out.append(write(f"stories/{p['slug']}/index.html", post_page(p, idx)))
+    # stories.json — team-tagged stories for the shop team pages' "Read" carousel
+    newest_posts = sorted(posts, key=lambda q: q.get("published_at") or "", reverse=True)
+    stories_feed = []
+    for p in newest_posts:
+        teams = story_teams(p)
+        if not teams:
+            continue
+        cat = idx["cat"].get(p.get("category_id"), {})
+        stories_feed.append({
+            "s": p["slug"], "t": p["title"], "h": p.get("hero_image_url") or "",
+            "d": p.get("published_at") or "", "c": cat.get("name") or "", "team": teams,
+        })
+    out.append(write("assets/content/stories.json",
+                     json.dumps(stories_feed, ensure_ascii=False, separators=(",", ":"))))
     # Share cards for the hubs. /digital-magazine is about every issue and /stories about every
     # story, so neither can honestly borrow one story's photograph.
     # an empty hub is a dead end: keep it out of the filter row, the cards and the sitemap

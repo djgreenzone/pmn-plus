@@ -275,7 +275,7 @@ COLLECTIONS = {
  "mate-maa-tonga": dict(name="Mate Ma'a Tonga", title="Mate Ma'a Tonga Shirts, Hats & Merch | RLWC 2026 | PMN+",
    meta="Mate Ma'a Tonga shirts, hats and merch for Rugby League World Cup 2026: Tonga 676 tees, RLWC26 and player tees in S–6XL, oversized crest tees and snapbacks.",
    intro="Tonga shirts, hats and merch for Rugby League World Cup 2026: the 676 tee, the RLWC26 crest tee, the jersey-style TONGA 00 Player Tee, the Est. 1986 oversized crest tee, snapbacks and truckers, in black and Tonga red, S to 6XL.",
-   aboutH="Mate Ma'a Tonga merch, made for the red wall",
+   aboutH="Mate Ma'a Tonga merch, made for the red sea!",
    about=["Mate Ma'a Tonga means to die for Tonga, and Tongan fans live up to it: a sea of red flags and voices wherever the team plays. This collection brings that pride to tees and hats for Rugby League World Cup 2026 and every game after it.",
      "Start with the 676 tee. 676 is Tonga's international dialling code, the number that rings home, and it's printed large across the back in red and white. The RLWC26 tee frames the Tonga crest with an arched MATE MA'A and 19 / 86, the Player Tee gives you a jersey-style TONGA 00 back, and the heavyweight Crest Oversized Tee puts the Est. 1986 crest front and centre. For a quieter look, the Silver Blackout runs 676 down the spine in grey on black.",
      "Tees come in black and Tonga red, sizes S to 6XL at one price. Finish the outfit with the white and crimson High Profile Snapback or the black 2026 Trucker; the Game Day Set takes $10 off a tee and hat together, and Buy 3 tees, get 1 free covers family orders. These are independent PMN+ supporter designs, printed to order and shipped across the USA."]),

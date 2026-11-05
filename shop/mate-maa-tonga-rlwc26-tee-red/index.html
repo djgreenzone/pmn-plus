@@ -719,6 +719,19 @@ s.was{color:var(--ink-dim);font-weight:400;margin-left:4px}
 .tag.best{background:#C8102E;left:8px;right:auto}
 #heroSold:empty::after{content:"Sold out"}
 .c-about{max-width:68ch;margin:18px 0 6px;padding-top:18px;border-top:1px solid rgba(244,242,238,.16)}.c-about:has(#cAboutH:empty){display:none}.c-about h2{margin:0 0 10px;font-family:var(--display);font-weight:400;font-size:26px;line-height:1;letter-spacing:.02em}.c-about p{margin:0 0 10px;font-size:14px;line-height:1.6;color:var(--ink-dim)}
+/* "Read" — carousel of stories relevant to the team, under the collection grid */
+.c-read{margin:26px 0 6px;padding-top:20px;border-top:1px solid rgba(244,242,238,.16)}
+.c-read[hidden]{display:none}
+.c-read-h{margin:0 0 14px;font-family:var(--display);font-weight:400;font-size:28px;line-height:1;letter-spacing:.02em;color:var(--ink)}
+.read-rail{gap:14px}
+.read-card{flex:none;width:230px;display:grid;gap:7px;align-content:start;text-decoration:none;color:var(--ink);scroll-snap-align:start}
+.read-card .read-im{aspect-ratio:16/10;border-radius:14px;overflow:hidden;background:#141416}
+.read-card .read-im img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s cubic-bezier(.2,.7,.2,1)}
+.read-card:hover .read-im img{transform:scale(1.04)}
+.read-card .read-cat{font-size:11px;letter-spacing:.09em;text-transform:uppercase;color:var(--ink-dim)}
+.read-card .read-t{font-size:14px;line-height:1.3;font-weight:600;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.read-card .read-d{font-size:12px;color:var(--ink-dim)}
+@media(min-width:900px){.read-card{width:264px}.c-read-h{font-size:32px}}
 .c-tools{display:flex;justify-content:space-between;align-items:center;gap:12px;margin:2px 0 4px;font-size:13px;color:var(--ink-dim)}
 .c-sort{display:flex;align-items:center;gap:8px}.c-sort select{font:inherit;color:var(--ink);background:rgba(255,255,255,.06);border:1px solid var(--line);border-radius:999px;padding:7px 12px}
 .repit .rep-rail{display:flex;gap:10px;overflow-x:auto;scrollbar-width:none;margin-inline:-16px;padding:0 16px 4px;scroll-snap-type:x mandatory}
@@ -962,6 +975,7 @@ s.was{color:var(--ink-dim);font-weight:400;margin-left:4px}
       <div class="chips" role="group" aria-label="Filter" id="cFilter"><button class="chip" data-f="all" aria-pressed="true">All</button><button class="chip" data-f="tee" aria-pressed="false">Tees</button><button class="chip" data-f="hat" aria-pressed="false">Hats</button></div>
       <div class="c-tools"><span class="c-n" id="cCount"></span><label class="c-sort">Sort <select id="cSort"><option value="feat">Featured</option><option value="best">Best sellers</option><option value="lo">Price: low to high</option><option value="hi">Price: high to low</option></select></label></div>
       <div class="grid" id="cGrid"></div>
+      <section class="c-read" id="cRead" hidden aria-labelledby="cReadH"><h2 id="cReadH" class="c-read-h"></h2><div class="rail read-rail" id="cReadRail"></div></section>
       <section class="c-about" aria-labelledby="cAboutH"><h2 id="cAboutH"></h2><div id="cAbout"></div></section>
     </div>
   </section>
@@ -1070,7 +1084,7 @@ s.was{color:var(--ink-dim);font-weight:400;margin-left:4px}
 
 <script src="/assets/pmn-config.js" defer></script>
 <script src="/assets/pmn-nav.js" defer></script>
-<script src="/shop/app-6c51f25e0e.js" defer></script>
+<script src="/shop/app-aee73a8a2c.js" defer></script>
 
 <script type="module">/* ROUTES */(()=>{const D="https://www.polynesianmusicnetwork.com",OG0="https://www.polynesianmusicnetwork.com/shop/pmn-plus-shop-og-rlwc-2026-toa-samoa-mate-maa-tonga.jpg",D0="Represent your Pacific team: Toa Samoa and Mate Ma'a Tonga tees, snapbacks and truckers for RLWC 2026, plus PMN+ core pieces. Ships across the USA.",SL={};
 Object.entries(SEO.products).forEach(([id,o])=>{if(BY[id])SL[o.slug]=id});

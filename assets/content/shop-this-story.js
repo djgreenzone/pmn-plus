@@ -66,12 +66,31 @@
 
         var inline = el.hasAttribute("data-shop") && ids.length === 1;
         el.classList.add(inline ? "sts-inline" : "sts-grid");
-        if (!inline && !el.querySelector(".sts-head")) {
-          el.insertAdjacentHTML("afterbegin",
-            '<p class="sts-head">Shop this story</p>');
+        if (inline) {
+          el.insertAdjacentHTML("beforeend",
+            '<div class="sts-items">' + found.map(card).join("") + "</div>");
+        } else {
+          // CTA target: all one team -> that collection, mixed -> the whole shop
+          var teams = found.map(function (p) { return p.t || ""; });
+          var same = teams.every(function (t) { return t === teams[0]; });
+          var cta = { href: "/shop", label: "Shop all merch" };
+          if (same && /samoa/i.test(teams[0])) cta = { href: "/shop/toa-samoa", label: "Shop all Toa Samoa" };
+          else if (same && /tonga/i.test(teams[0])) cta = { href: "/shop/mate-maa-tonga", label: "Shop all Mate Ma'a Tonga" };
+          var ctaHref = cta.href + "?ref=story-" + encodeURIComponent(slugOfPost);
+          if (!el.querySelector(".sts-head")) {
+            el.insertAdjacentHTML("afterbegin", '<p class="sts-head">Shop this story</p>');
+          }
+          // terminal "see all" card lives at the end of the slider
+          var seeAll = '<a class="sts-card sts-seeall" href="' + ctaHref + '" data-pid="sts-seeall" aria-label="' +
+            esc(cta.label) + '"><span class="sts-seeall-ar" aria-hidden="true">&rarr;</span>' +
+            '<span class="sts-seeall-t">' + esc(cta.label) + '</span></a>';
+          el.insertAdjacentHTML("beforeend",
+            '<div class="sts-items">' + found.map(card).join("") + seeAll + "</div>");
+          // and a primary CTA button underneath
+          el.insertAdjacentHTML("beforeend",
+            '<a class="sts-shopall" href="' + ctaHref + '" data-pid="sts-shopall">' + esc(cta.label) +
+            ' <span aria-hidden="true">&rarr;</span></a>');
         }
-        el.insertAdjacentHTML("beforeend",
-          '<div class="sts-items">' + found.map(card).join("") + "</div>");
 
         // impression (once visible) — reuse the site's view_item vocabulary
         found.forEach(function (p) {
@@ -84,7 +103,7 @@
 
       // click attribution
       document.addEventListener("click", function (e) {
-        var a = e.target.closest ? e.target.closest(".sts-card") : null;
+        var a = e.target.closest ? e.target.closest(".sts-card, .sts-shopall") : null;
         if (!a) return;
         track("select_promotion", {
           ref: a.dataset.pid, url: a.getAttribute("href"),

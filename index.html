@@ -66,14 +66,15 @@ img{display:block;max-width:100%}
 .nav.solid{background:rgba(0,0,0,.92);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
 
 /* hero */
-.hero{position:relative;min-height:100svh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:6.5rem clamp(1.25rem,5vw,2.5rem) 4rem;gap:clamp(1.1rem,2.6vw,1.6rem);overflow:hidden;isolation:isolate}
+.hero{position:relative;min-height:100svh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:6.5rem 0 clamp(1.4rem,3vw,2.4rem);gap:clamp(1rem,2.4vw,1.6rem);overflow:hidden;isolation:isolate}
+.hero-top{flex:1 1 auto;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:clamp(1.1rem,2.6vw,1.6rem);width:100%;padding:0 clamp(1.25rem,5vw,2.5rem)}
 .hero .bgv{position:absolute;inset:0;z-index:-1;background:#000}
 .hero .bgv video{width:100%;height:100%;object-fit:cover;opacity:.70}
-.hero .bgv::after{content:'';position:absolute;inset:0;background:radial-gradient(80% 60% at 50% 45%,rgba(0,0,0,.25),rgba(0,0,0,.8)),linear-gradient(180deg,rgba(0,0,0,.5),transparent 30%,transparent 65%,#000)}
+.hero .bgv::after{content:'';position:absolute;inset:0;background:radial-gradient(80% 55% at 50% 36%,rgba(0,0,0,.2),rgba(0,0,0,.7)),linear-gradient(180deg,rgba(0,0,0,.5),transparent 24%,transparent 40%,rgba(0,0,0,.9) 86%,#000)}
 @media (prefers-reduced-motion:reduce){.hero .bgv video{display:none}}
 .hero h1{font-family:var(--display);font-weight:400;text-transform:uppercase;font-size:min(6.4vw,5rem);line-height:.96;letter-spacing:.01em}
 .hero h1 span{display:block;white-space:nowrap}
-@media (min-width:900px){.hero{justify-content:center;padding-top:calc(125px + 12vh);padding-bottom:clamp(4rem,10vh,9rem)}}
+@media (min-width:900px){.hero{justify-content:center;padding-top:calc(116px + 2vh);padding-bottom:clamp(1.4rem,3vh,2.4rem)}}
 .hero .line{max-width:34ch;color:#c9c9cd;font-size:clamp(1rem,.95rem + .25vw,1.12rem);text-wrap:balance}
 .capture{width:100%;max-width:27rem;margin-top:.35rem}
 form{display:flex;gap:.5rem;flex-wrap:wrap;justify-content:center}
@@ -295,7 +296,7 @@ button[disabled]{opacity:.5;cursor:default}
 @media (max-width:520px){.mags{grid-auto-columns:80%;margin-right:calc(-1*clamp(1rem,5vw,2.5rem))}}
 @media (prefers-reduced-motion:reduce){.mag-card.sk .cov{animation:none}.mag-card .cov img{transition:none}}
 /* Latest stories — compact card slider modeled on the Island City widget, in PMN+ branding */
-.stz{position:relative;padding:clamp(2.2rem,5vw,3.5rem) 0;background:#000;color:#fff}
+.stz{position:relative;z-index:1;width:100%;text-align:left;padding:0;color:#fff}
 .stz-head{display:flex;align-items:flex-end;justify-content:space-between;gap:1rem;margin-bottom:1.1rem}
 .stz-head h2{font-family:var(--display);font-weight:400;text-transform:uppercase;font-size:clamp(1.6rem,3.2vw,2.3rem);line-height:1;letter-spacing:.04em;margin:0}
 .stz-navs{display:flex;gap:.5rem;flex:0 0 auto}
@@ -307,17 +308,17 @@ button[disabled]{opacity:.5;cursor:default}
 .stz-rail::-webkit-scrollbar{display:none}
 .stz-card{display:flex;flex-direction:column;scroll-snap-align:start;text-decoration:none;color:#fff;border:1px solid rgba(255,255,255,.12);border-radius:16px;overflow:hidden;background:#0c0c0e;transition:border-color .2s,transform .2s}
 .stz-card:hover{border-color:rgba(255,255,255,.3);transform:translateY(-2px)}
-.stz-card:focus-visible{outline:2px solid #22c5c5;outline-offset:2px}
-.stz-cov{position:relative;aspect-ratio:16/11;overflow:hidden;background:#17171c}
+.stz-card:focus-visible{outline:2px solid #fff;outline-offset:2px}
+.stz-cov{position:relative;aspect-ratio:4/3;overflow:hidden;background:#17171c}
 .stz-cov img{width:100%;height:100%;object-fit:cover;transition:transform .4s cubic-bezier(.2,.7,.2,1)}
 .stz-card:hover .stz-cov img{transform:scale(1.05)}
-.stz-tag{position:absolute;left:12px;bottom:12px;font-family:var(--display);font-size:.74rem;letter-spacing:.08em;text-transform:uppercase;color:#06251f;background:#22c5c5;padding:.3rem .66rem;border-radius:999px}
+.stz-tag{position:absolute;left:12px;bottom:12px;font-family:var(--display);font-size:.74rem;letter-spacing:.08em;text-transform:uppercase;color:#0b0b0d;background:rgba(255,255,255,.92);padding:.3rem .66rem;border-radius:999px}
 .stz-card b{padding:14px 15px 0;font-weight:700;font-size:.98rem;line-height:1.26;text-transform:uppercase;letter-spacing:.01em;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
 .stz-card small{padding:8px 15px 16px;margin-top:auto;color:var(--dim);font-size:.74rem;letter-spacing:.07em;text-transform:uppercase}
 .stz-card.sk{pointer-events:none}
 .stz-card.sk .stz-cov{background:linear-gradient(100deg,#141418 30%,#1d1d22 50%,#141418 70%);background-size:200% 100%;animation:sk 1.2s linear infinite}
 .stz-bar{position:relative;height:4px;border-radius:999px;background:rgba(255,255,255,.14);margin:16px 2px 0;cursor:pointer;touch-action:none}
-.stz-bar-thumb{position:absolute;top:0;left:0;height:100%;min-width:40px;border-radius:999px;background:linear-gradient(90deg,#22c5c5,#1E4FA0)}
+.stz-bar-thumb{position:absolute;top:0;left:0;height:100%;min-width:40px;border-radius:999px;background:linear-gradient(90deg,#f2f2f4,#b8b8bf)}
 .stz-bar[hidden]{display:none}
 @media (max-width:900px){.stz-rail{grid-auto-columns:calc((100% - .9rem)/2.1)}}
 @media (max-width:560px){.stz-rail{grid-auto-columns:84%}.stz-head h2{font-size:1.5rem}}
@@ -333,6 +334,8 @@ button[disabled]{opacity:.5;cursor:default}
   <div class="bgv" aria-hidden="true">
     <video autoplay muted loop playsinline preload="metadata"><source src="/assets/bg.mp4" type="video/mp4"></video>
   </div>
+
+  <div class="hero-top">
   <p class="eyebrow">Polynesian Music Network</p>
   <h1 id="h1"><span>Welcome to the biggest</span> <span>Pasifika-driven platform</span></h1>
   <p class="line">Music, tradition, sports, culture and more from all across the Pacific Islands.</p>
@@ -353,9 +356,9 @@ button[disabled]{opacity:.5;cursor:default}
       <a class="go" href="/shop">Shop now</a>
     </div>
   </div>
-</section>
+  </div>
 
-<section class="stz" id="stories" aria-labelledby="stzH">
+  <div class="stz" id="stories" aria-labelledby="stzH">
   <div class="wrap">
     <div class="stz-head">
       <h2 id="stzH">Latest Stories</h2>
@@ -368,6 +371,7 @@ button[disabled]{opacity:.5;cursor:default}
       <span class="stz-card sk"><span class="stz-cov"></span></span><span class="stz-card sk"><span class="stz-cov"></span></span><span class="stz-card sk"><span class="stz-cov"></span></span><span class="stz-card sk"><span class="stz-cov"></span></span>
     </div>
     <div class="stz-bar" id="stzBar" hidden><span class="stz-bar-thumb"></span></div>
+  </div>
   </div>
 </section>
 

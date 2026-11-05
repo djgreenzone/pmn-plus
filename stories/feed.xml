@@ -2,7 +2,10 @@
 <rss version="2.0"><channel>
 <title>PMN+ Stories</title><link>https://www.polynesianmusicnetwork.com/stories</link>
 <description>Pacific music, sport and culture from PMN+.</description><language>en-us</language>
-<item><title>JuJu Smith-Schuster: Fire Within</title><link>https://www.polynesianmusicnetwork.com/stories/juju-smith-schuster-fire-within</link>
+<item><title>Born From Culture | Toa &amp; Fetū Samoa Edition</title><link>https://www.polynesianmusicnetwork.com/stories/born-from-culture-toa-fetu-samoa</link>
+<guid isPermaLink="true">https://www.polynesianmusicnetwork.com/stories/born-from-culture-toa-fetu-samoa</guid><pubDate>Thu, 05 Nov 2026 12:00:00 +0000</pubDate>
+<description>Inside Rugby League Samoa&#x27;s Born From Culture: Toa &amp; Fetū Edition — siva, the tuiga and the Mau movement, as both teams chase the 2026 World Cup.</description>
+<enclosure url="https://www.polynesianmusicnetwork.com/assets/content/stories/born-from-culture-toa-fetu-samoa/feature.webp" type="image/jpeg"/></item><item><title>JuJu Smith-Schuster: Fire Within</title><link>https://www.polynesianmusicnetwork.com/stories/juju-smith-schuster-fire-within</link>
 <guid isPermaLink="true">https://www.polynesianmusicnetwork.com/stories/juju-smith-schuster-fire-within</guid><pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
 <description>JuJu Smith-Schuster on his clothing brand AFI, growing up Samoan in Long Beach, wearing the ‘ie faitaga on NFL game days, his Super Bowl run and advice for the next generation.</description>
 <enclosure url="https://zacfssfjlmixnqhjuoed.supabase.co/storage/v1/object/public/media/stories/january-2026/juju-smith-schuster-fire-within-hero.jpg" type="image/jpeg"/></item><item><title>Siaosi: Blending Music &amp; Business with Otai Beer Co.</title><link>https://www.polynesianmusicnetwork.com/stories/siaosi-otai-beer-co</link>
@@ -149,8 +152,5 @@
 <enclosure url="https://zacfssfjlmixnqhjuoed.supabase.co/storage/v1/object/public/media/stories/september-2025/nalu-liufau-legacy-inked-in-culture-hero.jpg" type="image/jpeg"/></item><item><title>Faith, Family &amp;amp; Forks Up: The Polynesian Power of Jacob Kongaika</title><link>https://www.polynesianmusicnetwork.com/stories/jacob-kongaika-polynesian-power</link>
 <guid isPermaLink="true">https://www.polynesianmusicnetwork.com/stories/jacob-kongaika-polynesian-power</guid><pubDate>Mon, 01 Sep 2025 00:00:00 +0000</pubDate>
 <description>Arizona State defensive tackle Jacob Kongaika on Tongan roots, faith, NIL, retiring his dad early, and the Mater Dei choir nickname that still follows him.</description>
-<enclosure url="https://zacfssfjlmixnqhjuoed.supabase.co/storage/v1/object/public/media/stories/september-2025/jacob-kongaika-polynesian-power-hero.jpg" type="image/jpeg"/></item><item><title>The September 2025 Playlist</title><link>https://www.polynesianmusicnetwork.com/stories/the-september-2025-playlist</link>
-<guid isPermaLink="true">https://www.polynesianmusicnetwork.com/stories/the-september-2025-playlist</guid><pubDate>Mon, 01 Sep 2025 00:00:00 +0000</pubDate>
-<description>PMN+&#x27;s September playlist — 10 Pacific tracks blending throwbacks, trending hits and fresh discoveries, from L.A.B. and House of Shem to DJ Noiz and Aaradhna.</description>
-<enclosure url="https://zacfssfjlmixnqhjuoed.supabase.co/storage/v1/object/public/media/stories/september-2025/the-september-2025-playlist-hero.jpg" type="image/jpeg"/></item>
+<enclosure url="https://zacfssfjlmixnqhjuoed.supabase.co/storage/v1/object/public/media/stories/september-2025/jacob-kongaika-polynesian-power-hero.jpg" type="image/jpeg"/></item>
 </channel></rss>

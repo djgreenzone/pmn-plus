@@ -18,6 +18,15 @@
 @media(min-width:560px){.sts-grid .sts-card{flex-basis:30%;}}
 @media(min-width:900px){.sts-grid .sts-card{flex-basis:200px;}}
 
+/* always-visible slider bar — signals the cards scroll, and drags to scroll them.
+   JS (wireSlider) sizes/moves the thumb and hides the bar when nothing overflows. */
+.sts-grid .sts-bar{position:relative;height:5px;border-radius:999px;background:rgba(255,255,255,.16);
+  margin:16px 2px 2px;cursor:pointer;touch-action:none;}
+.sts-grid .sts-bar-thumb{position:absolute;top:0;left:0;height:100%;width:40px;min-width:28px;
+  border-radius:999px;background:rgba(255,255,255,.55);transition:background .15s;}
+.sts-grid .sts-bar:hover .sts-bar-thumb{background:rgba(255,255,255,.82);}
+.sts-grid .sts-bar[hidden]{display:none;}
+
 .sts-card{display:grid;gap:6px;align-content:start;min-width:0;text-decoration:none;color:#fff;}
 .sts-card:focus-visible{outline:2px solid #fff;outline-offset:3px;border-radius:16px;}
 
@@ -61,6 +70,9 @@
 .ed-shop .sts-team,.ed-shop .sts-name,.ed-shop .sts-price{color:#0b0b0d;}
 .ed-shop .sts-media{background:#f3f2ee;border-color:#e6e4de;}
 .ed-shop .sts-so{color:#c8102e;}
+.ed-shop .sts-bar{background:rgba(11,11,13,.1);}
+.ed-shop .sts-bar-thumb{background:rgba(11,11,13,.42);}
+.ed-shop .sts-bar:hover .sts-bar-thumb{background:rgba(11,11,13,.66);}
 @media(max-width:560px){.ed-shop{padding:20px 16px 24px;border-radius:18px;}}
 
 /* terminal "see all" card at the end of the slider */

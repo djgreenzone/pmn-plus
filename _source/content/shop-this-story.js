@@ -36,6 +36,45 @@
     return /samoa/i.test(t) ? "sts-samoa" : /tonga/i.test(t) ? "sts-tonga" : "sts-pmn";
   };
 
+  // Always-visible slider bar: sizes/moves the thumb to track scroll, drags to scroll,
+  // and hides itself when the cards don't overflow. Card widths are fixed (flex-basis),
+  // so geometry is stable regardless of image load.
+  var wireSlider = function (root) {
+    var items = root.querySelector(".sts-items");
+    var bar = root.querySelector(".sts-bar");
+    if (!items || !bar) return;
+    var thumb = bar.querySelector(".sts-bar-thumb");
+    var sync = function () {
+      var sw = items.scrollWidth, cw = items.clientWidth, max = sw - cw;
+      if (max <= 2) { bar.hidden = true; return; }
+      bar.hidden = false;
+      var bw = bar.clientWidth;
+      var tw = Math.max(bw * (cw / sw), 28);
+      thumb.style.width = tw + "px";
+      thumb.style.transform = "translateX(" + (items.scrollLeft / max) * (bw - tw) + "px)";
+    };
+    var drag = false;
+    var seek = function (clientX) {
+      var r = bar.getBoundingClientRect(), tw = thumb.offsetWidth, bw = bar.clientWidth;
+      var pos = Math.max(0, Math.min(clientX - r.left - tw / 2, bw - tw));
+      var max = items.scrollWidth - items.clientWidth;
+      items.scrollLeft = (bw - tw) > 0 ? (pos / (bw - tw)) * max : 0;
+    };
+    items.addEventListener("scroll", sync, { passive: true });
+    window.addEventListener("resize", sync);
+    bar.addEventListener("pointerdown", function (e) {
+      drag = true; try { bar.setPointerCapture(e.pointerId); } catch (x) {}
+      seek(e.clientX); e.preventDefault();
+    });
+    bar.addEventListener("pointermove", function (e) { if (drag) seek(e.clientX); });
+    var stop = function () { drag = false; };
+    bar.addEventListener("pointerup", stop);
+    bar.addEventListener("pointercancel", stop);
+    sync();
+    setTimeout(sync, 80);
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(sync);
+  };
+
   var card = function (p) {
     var href = "/shop/" + p.s + "?ref=story-" + encodeURIComponent(slugOfPost);
     var price = p.p != null ? "$" + p.p : "";
@@ -86,10 +125,14 @@
             '<span class="sts-seeall-t">' + esc(cta.label) + '</span></a>';
           el.insertAdjacentHTML("beforeend",
             '<div class="sts-items">' + found.map(card).join("") + seeAll + "</div>");
+          // visible slider bar between the cards and the CTA
+          el.insertAdjacentHTML("beforeend",
+            '<div class="sts-bar" hidden><span class="sts-bar-thumb"></span></div>');
           // and a primary CTA button underneath
           el.insertAdjacentHTML("beforeend",
             '<a class="sts-shopall" href="' + ctaHref + '" data-pid="sts-shopall">' + esc(cta.label) +
             ' <span aria-hidden="true">&rarr;</span></a>');
+          wireSlider(el);
         }
 
         // impression (once visible) — reuse the site's view_item vocabulary

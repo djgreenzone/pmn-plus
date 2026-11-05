@@ -46,3 +46,14 @@
 .sts-inline .sts-price{font-size:13px;}
 
 @media(prefers-reduced-motion:reduce){.sts-media img{transition:none;}}
+
+/* White "Shop this story" panel — breaks commerce out of the black editorial flow.
+   Cards flip to light mode (dark text, light product tile) like the shop's .h-light. */
+.ed-shop{background:#fff;border-radius:22px;padding:24px 22px 28px;margin:44px 0 12px;}
+.ed-shop .shop-this-story{margin:0;}
+.ed-shop .sts-head{color:#0b0b0d;}
+.ed-shop .shop-this-story a,
+.ed-shop .sts-team,.ed-shop .sts-name,.ed-shop .sts-price{color:#0b0b0d;}
+.ed-shop .sts-media{background:#f3f2ee;border-color:#e6e4de;}
+.ed-shop .sts-so{color:#c8102e;}
+@media(max-width:560px){.ed-shop{padding:20px 16px 24px;border-radius:18px;}}

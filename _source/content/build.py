@@ -38,6 +38,54 @@ import nav_build  # shared site header
 
 def esc(s): return html.escape("" if s is None else str(s), quote=True)
 def slugify(s): return re.sub(r"-+", "-", re.sub(r"[^a-z0-9]+", "-", (s or "").lower())).strip("-")
+
+# ---------- Shop This Story: auto product matching ----------
+# Picks up to 4 products for a story from the shop catalogue (shop/search.json):
+# match by nation (Toa Samoa / Mate Ma'a Tonga) via the story's tags+title+keywords,
+# else the site best-sellers. IDs are the search.json "id" field that shop-this-story.js
+# hydrates. Rankings seeded from Shopify 90-day net sales — safe to re-order.
+_SHOP = None
+def _shop():
+    global _SHOP
+    if _SHOP is None:
+        try:
+            _SHOP = json.load(open(os.path.join(ROOT, "shop", "search.json"), encoding="utf-8"))
+        except Exception:
+            _SHOP = []
+    return _SHOP
+
+TOA_RANK = ["toa-oversized", "toa-player-black", "toa-rlwc26-black", "toa-hp-snapback",
+            "toa-silver-blackout", "toa-685-black", "toa-trucker"]
+MMT_RANK = ["mmt-oversized", "mmt-rlwc26-black", "mmt-player-red", "mmt-hp-snapback",
+            "mmt-silver-blackout", "mmt-676-black", "mmt-trucker"]
+BESTSELLERS = ["toa-oversized", "toa-player-black", "toa-rlwc26-black", "mmt-oversized"]
+
+def pick_products(post, n=4):
+    items = {p["id"]: p for p in _shop()}
+    def instock(ids): return [i for i in ids if i in items and not items[i].get("so")]
+    hay = " ".join([post.get("title") or "",
+                    " ".join(post.get("tags") or []),
+                    " ".join(post.get("keywords") or [])]).lower()
+    samoa = sum(t in hay for t in ("toa samoa", "manu samoa", "siva samoa", "samoan", "samoa"))
+    tonga = sum(t in hay for t in ("mate ma'a tonga", "mate maa tonga", "tongan", "tonga", "mmt"))
+    if samoa and samoa >= tonga:
+        ids = instock(TOA_RANK)
+    elif tonga:
+        ids = instock(MMT_RANK)
+    else:
+        ids = instock(BESTSELLERS) or instock(TOA_RANK)
+    for i in instock(BESTSELLERS):      # pad if a team ran short
+        if len(ids) >= n: break
+        if i not in ids: ids.append(i)
+    return ids[:n]
+
+def shop_section(post):
+    """White-panel 'Shop this story' block; empty string if nothing in stock."""
+    ids = pick_products(post)
+    if not ids:
+        return ""
+    return (f'<section class="ed-shop"><div class="shop-this-story sts-grid" '
+            f'data-products="{esc(",".join(ids))}"></div></section>')
 def trim(s, n): s = s or ""; return s if len(s) <= n else s[:n-1].rsplit(" ", 1)[0] + "…"
 
 # ---------- data ----------
@@ -258,12 +306,15 @@ def post_page(post, idx):
         strip = (f'<div class="ed-strip"><div class="ey">FROM THIS ISSUE</div>'
                  f'<h2>{esc(iss["title"])} · Digital Magazine</h2>'
                  f'<div class="grid3">{"".join(big_card(q, idx) for q in issue_mates)}</div></div>')
+    # every story gets a matched Shop This Story block, unless the body already hand-placed one
+    shop = "" if 'shop-this-story' in (post.get('body_html') or '') else shop_section(post)
     body = f"""<div class="ed-wrap" data-post-slug="{esc(post['slug'])}" data-content-ref="{esc(post['slug'])}">
 {crumb}
 {hero}
 <div class="ed-grid">
 <article class="ed-article">
 {post.get('body_html') or ''}
+{shop}
 <div class="ed-tags">{tags}</div>
 <p class="ed-rights">{esc(post.get('rights_note') or '')}{mag_line}</p>
 {strip}

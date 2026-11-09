@@ -29,7 +29,7 @@ rep('busy=true;document.title=BASE_TITLE;$("pSticky")','busy=true;document.title
 rep('el.hidden=true;document.title=BASE_TITLE;Hero.show()}','el.hidden=true;document.title=BASE_TITLE;window.pmnRoute&&pmnRoute("h");Hero.show()}')
 rep('$("pageBack").onclick=()=>{$("page").hidden=true;document.title=BASE_TITLE;','$("pageBack").onclick=()=>{$("page").hidden=true;if(window.pmnRoute)pmnRoute.refresh();else document.title=BASE_TITLE;')
 rep('return{open,focus:','return{open,key:()=>key,focus:')
-rep('return{open,close,current:()=>cur};','return{open,close,swap:id=>swap(id),current:()=>cur};')
+rep('return{open,close,current:()=>cur};','return{open,close,swap:id=>swap(id),current:()=>cur,refresh:()=>{if(cur&&!pdp.hidden)fill(BY[cur])}};')
 rep('if(reduceMotion){Hero.stop();$("hero").hidden=true;$("coll").hidden=true;pdp.classList.remove("entering");busy=false;return}',
     'if(reduceMotion||window.pmnInstant){Hero.stop();$("hero").hidden=true;$("coll").hidden=true;pdp.classList.remove("entering");busy=false;return}')
 

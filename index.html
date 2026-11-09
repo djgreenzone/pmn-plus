@@ -342,17 +342,30 @@ button[disabled]{opacity:.5;cursor:default}
 
   <div class="capture">
     <form id="f" novalidate>
+      <label for="fName" class="sr">First name</label>
+      <input id="fName" type="text" placeholder="First name" autocomplete="given-name" required>
+      <label for="lName" class="sr">Last name</label>
+      <input id="lName" type="text" placeholder="Last name" autocomplete="family-name" required>
       <label for="email" class="sr">Email address</label>
       <input id="email" type="email" name="email" placeholder="you@email.com" autocomplete="email" required>
-      <button class="btn" type="submit" id="btn">Join the movement</button>
+      <button class="btn" type="submit" id="btn">Get my 20% code</button>
     </form>
-    <p class="fine">Get 10% off your first order, plus first access to drops, interviews and giveaways.</p>
+    <form id="fPhone" novalidate style="display:none">
+      <p style="margin:0 0 6px;font-weight:600">You&rsquo;re almost done &mdash; your 20% is locked in.</p>
+      <label for="fPh" class="sr">Mobile number</label>
+      <input id="fPh" type="tel" placeholder="Mobile number (optional)" autocomplete="tel">
+      <label style="display:flex;gap:8px;align-items:flex-start;text-align:left;font-size:13px;line-height:1.35;margin:8px 0"><input type="checkbox" id="fSms" style="margin-top:3px;flex:none;width:auto"> <span>Text me PMN+ drop alerts &amp; deals for first dibs.</span></label>
+      <button class="btn" type="submit" id="btnPh">Text me drops</button>
+      <button type="button" id="skipPh" style="display:block;margin:8px auto 0;background:none;border:0;color:inherit;text-decoration:underline;cursor:pointer;font:inherit">No thanks, just the 20%</button>
+      <p class="fine" style="margin-top:10px">By checking the box you agree to get recurring automated marketing texts from PMN+ at that number. Consent is not a condition of purchase. Msg frequency varies. Msg &amp; data rates may apply. Reply HELP for help, STOP to cancel. See our <a href="/terms">SMS Terms</a> and <a href="/privacy-policy">Privacy Policy</a>.</p>
+    </form>
+    <p class="fine">Get 20% off your first order, plus first access to drops, interviews and giveaways.</p>
     <p class="note" id="note" role="status" aria-live="polite"></p>
     <div class="success" id="success" role="status" aria-live="polite">
       <div class="tick" aria-hidden="true"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></div>
       <p class="big">You&rsquo;re in</p>
-      <p class="sub">Welcome to the <b>aiga</b>. Your 10% off code is saved to your bag and comes off at checkout.</p>
-      <div class="code" aria-label="Your code: WELCOME10">WELCOME10</div>
+      <p class="sub">Welcome to the <b>aiga</b>. Your 20% off code is saved to your bag and comes off at checkout.</p>
+      <div class="code" aria-label="Your code: WELCOME20">WELCOME20</div>
       <a class="go" href="/shop">Shop now</a>
     </div>
   </div>
@@ -545,24 +558,38 @@ try{const n=JSON.parse(localStorage.getItem('pmn_cart')||'[]').reduce((t,i)=>t+(
 const nav=document.getElementById('nav');
 const onScroll=()=>nav.classList.toggle('solid',scrollY>40);addEventListener('scroll',onScroll,{passive:true});onScroll();
 
-const KLAVIYO_COMPANY_ID='T9JJzp',KLAVIYO_LIST_ID='Sggasa'; /* PMN+ Newsletter list (home page). Shop forms stay on SLSsGL. */
+const KLAVIYO_COMPANY_ID='T9JJzp',KLAVIYO_LIST_ID='Sggasa',KLAVIYO_SMS_LIST='UdHNwW';
 const form=document.getElementById('f'),email=document.getElementById('email'),btn=document.getElementById('btn'),note=document.getElementById('note');
 const say=(m,k)=>{note.textContent=m;note.className='note '+(k||'')};
-async function sub(attrs){
-  const payload={data:{type:'subscription',attributes:{profile:{data:{type:'profile',attributes:attrs}}},relationships:{list:{data:{type:'list',id:KLAVIYO_LIST_ID}}}}};
+async function klSub(listId,attrs){
+  const payload={data:{type:'subscription',attributes:{profile:{data:{type:'profile',attributes:attrs}}},relationships:{list:{data:{type:'list',id:listId}}}}};
   const r=await fetch('https://a.klaviyo.com/client/subscriptions/?company_id='+KLAVIYO_COMPANY_ID,{method:'POST',headers:{'content-type':'application/json','revision':'2026-07-15'},body:JSON.stringify(payload)});
   if(!(r.status===202||r.ok))throw new Error(r.status)}
+const usPhone=d=>{d=String(d||'').replace(/\D/g,'');return d.length>=10?'+1'+d.slice(-10):null};
+function finishHome(){try{localStorage.setItem('pmn_code','WELCOME20')}catch(_){}
+  form.style.display='none';document.getElementById('fPhone').style.display='none';document.querySelectorAll('.fine').forEach(el=>el.style.display='none');note.textContent='';
+  document.getElementById('success').classList.add('on')}
 form.addEventListener('submit',async e=>{
-  e.preventDefault();const v=email.value.trim();
-  if(!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v)){say('That email address doesn\u2019t look right.','bad');email.focus();return}
-  btn.disabled=true;const label=btn.textContent;btn.textContent='Adding\u2026';
+  e.preventDefault();const fn=document.getElementById('fName').value.trim(),ln=document.getElementById('lName').value.trim(),v=email.value.trim();
+  if(!fn||!ln){say("Enter your first and last name.","bad");return}
+  if(!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v)){say("That email address does not look right.","bad");email.focus();return}
+  btn.disabled=true;const label=btn.textContent;btn.textContent="Adding...";
   try{
-    try{await sub({email:v,properties:{signup_source:'home_newsletter'}})}catch(_){await sub({email:v})}
-    try{localStorage.setItem('pmn_email',v);localStorage.setItem('pmn_code','WELCOME10')}catch(_){}
-    form.style.display='none';document.querySelector('.fine').style.display='none';note.textContent='';
-    document.getElementById('success').classList.add('on');
-  }catch(err){console.error(err);say('That didn\u2019t save. Try again in a moment.','bad');btn.disabled=false;btn.textContent=label}
+    await klSub(KLAVIYO_LIST_ID,{email:v,first_name:fn,last_name:ln,subscriptions:{email:{marketing:{consent:'SUBSCRIBED'}}},properties:{signup_source:'home_newsletter'}});
+    try{localStorage.setItem('pmn_email',v)}catch(_){}
+    form.style.display='none';say("");document.getElementById('fPhone').style.display='';document.getElementById('fPh').focus();
+  }catch(err){console.error(err);say("That did not save. Try again in a moment.","bad");btn.disabled=false;btn.textContent=label}
 });
+document.getElementById('fPhone').addEventListener('submit',async e=>{
+  e.preventDefault();const ph=document.getElementById('fPh').value.replace(/\D/g,'');
+  if(!ph){finishHome();return}
+  if(!(ph.length===10||(ph.length===11&&ph[0]==='1'))){say("Enter a 10-digit US mobile number, or skip.","bad");return}
+  if(!document.getElementById('fSms').checked){say("Check the box to get text alerts, or skip.","bad");return}
+  const pb=document.getElementById('btnPh');pb.disabled=true;
+  try{await klSub(KLAVIYO_SMS_LIST,{phone_number:usPhone(ph),subscriptions:{sms:{marketing:{consent:'SUBSCRIBED'}}}})}catch(_){}
+  finishHome();
+});
+document.getElementById('skipPh').addEventListener('click',finishHome);
 
 /* Instagram Reels widget: /api/reels (Vercel function) */
 (async()=>{

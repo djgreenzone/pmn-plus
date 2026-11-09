@@ -120,6 +120,12 @@ async function klavPost(attrs){const body={data:{type:"subscription",attributes:
 async function klav(email,phone,props){try{localStorage.setItem("pmn_email",email)}catch(e){}const a={email};if(phone)a.phone_number=phone;if(props)a.properties=props;
   try{await klavPost(a)}catch(e){await klavPost({email})}}
 const usPhone=d=>{d=String(d||"").replace(/\D/g,"");return d.length>=10?"+1"+d.slice(-10):null};
+const KL_SMS_LIST="UdHNwW";
+async function klavEmail(email,first,last,props){const a={email,subscriptions:{email:{marketing:{consent:"SUBSCRIBED"}}}};if(first)a.first_name=first;if(last)a.last_name=last;if(props)a.properties=props;try{localStorage.setItem("pmn_email",email)}catch(e){}
+  const body={data:{type:"subscription",attributes:{profile:{data:{type:"profile",attributes:a}}},relationships:{list:{data:{type:"list",id:KLAVIYO_LIST_ID}}}}};
+  const r=await fetch("https://a.klaviyo.com/client/subscriptions/?company_id="+KLAVIYO_COMPANY_ID,{method:"POST",headers:{"content-type":"application/json","revision":"2026-07-15"},body:JSON.stringify(body)});if(!(r.status===202||r.ok))throw new Error("klaviyo "+r.status)}
+async function klavSms(phone){const body={data:{type:"subscription",attributes:{profile:{data:{type:"profile",attributes:{phone_number:phone,subscriptions:{sms:{marketing:{consent:"SUBSCRIBED"}}}}}}},relationships:{list:{data:{type:"list",id:KL_SMS_LIST}}}}};
+  const r=await fetch("https://a.klaviyo.com/client/subscriptions/?company_id="+KLAVIYO_COMPANY_ID,{method:"POST",headers:{"content-type":"application/json","revision":"2026-07-15"},body:JSON.stringify(body)});if(!(r.status===202||r.ok))throw new Error("klaviyo sms "+r.status)}
 /* Shopify Storefront API (public token: read-only + cart, safe in the browser). Shopify wins on price. */
 const SHOPIFY={domain:"polynesianmusicnetwork.myshopify.com",token:"ac4ace2c0dde0ff361595f32f36beb6f",api:"2025-07"};
 /* site product id -> [Shopify handle, Color option value (null = only one colour)] */
@@ -155,6 +161,7 @@ const shopifyReady=(async()=>{try{
   const b=H[SHOPIFY_BUMP_HANDLE];if(b&&b.variants.nodes[0]){BUMP.variant=b.variants.nodes[0].id;BUMP.price=+b.variants.nodes[0].price.amount}
   SOLD.forEach(id=>{if(VAR[id])Object.values(VAR[id]).forEach(v=>v.ok=false)});
   shopifyOK=true;
+  try{if(typeof PDP!=="undefined"&&PDP.refresh)PDP.refresh()}catch(e){}
   if(changed)document.querySelectorAll("[data-pid]").forEach(el=>{const p=BY[el.dataset.pid],pr=el.querySelector(".pr");if(p&&pr)pr.textContent=money(p.price)});
 }catch(e){console.warn("Shopify",e)}})();
 /* back-in-stock requests -> Klaviyo list "PMN+ Back in Stock Requests" (X4re4C) */
@@ -698,7 +705,7 @@ const PDP=(()=>{
   }
   $("pdpBack").onclick=close;
   addEventListener("resize",()=>{if(!pdp.hidden&&cur)fit()});
-  return{open,close,swap:id=>swap(id),current:()=>cur};
+  return{open,close,swap:id=>swap(id),current:()=>cur,refresh:()=>{if(cur&&!pdp.hidden)fill(BY[cur])}};
 })();
 
 /* ---------- Routing between hero and spin lab ---------- */
@@ -793,9 +800,14 @@ $("pTeam").onclick=()=>{const c=PDP.current(),t=BY[c]?BY[c].team:"tonga";documen
   document.querySelectorAll("[data-coll]").forEach(b=>b.onclick=e=>{e.preventDefault();Coll.open(b.dataset.coll,b.dataset.f)});
   $("signup").addEventListener("submit",e=>{e.preventDefault();const v=$("suEmail").value.trim(),ok=/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(v);
     const ph=$("suPhone").value.replace(/\D/g,""),phOk=!ph||ph.length===10||(ph.length===11&&ph[0]==="1");
-    if(!ok||!phOk){$("suMsg").textContent=!ok?"Enter a valid email address, like name@example.com.":"Enter a 10-digit US mobile number, or leave it blank for 10% off.";return}
+    if(!ok){$("suMsg").textContent="Enter a valid email address, like name@example.com.";return}
+    const fn=$("suFirst").value.trim(),ln=$("suLast").value.trim();
+    if(!fn||!ln){$("suMsg").textContent="Enter your first and last name.";return}
+    if(!phOk){$("suMsg").textContent="Enter a 10-digit US mobile number, or leave it blank.";return}
     const btn=e.target.querySelector("button");btn.disabled=true;$("suMsg").textContent="Adding you to the list…";
-    klav(v,usPhone(ph),{signup_source:"shop_signup",offer:ph?"20":"10"}).then(()=>{const _c=ph?"WELCOME20":"WELCOME10";try{localStorage.setItem("pmn_code",_c)}catch(e){}if(window.pmnSetCode)pmnSetCode(_c);$("suMsg").textContent=`You're in. ${_c} is saved to your bag and comes off at checkout.`;$("suEmail").value="";$("suPhone").value=""})
+    klavEmail(v,fn,ln,{signup_source:"shop_signup"}).then(async()=>{try{localStorage.setItem("pmn_code","WELCOME20")}catch(e){}if(window.pmnSetCode)pmnSetCode("WELCOME20");
+      if(ph&&$("suSms")&&$("suSms").checked){try{await klavSms(usPhone(ph))}catch(e){}}
+      $("suMsg").textContent="You're in. WELCOME20 is saved to your bag and comes off at checkout.";$("suEmail").value="";$("suPhone").value="";if($("suSms"))$("suSms").checked=false})
       .catch(()=>{$("suMsg").textContent="That didn't go through. Please try again in a moment."}).finally(()=>{btn.disabled=false})});
 })();
 /* ---------- cart ---------- */
@@ -987,16 +999,18 @@ const Pages=(()=>{let prev=null;
   const step=n=>{["offS1","offS2","offS3"].forEach((id,i)=>$(id).hidden=i!==n-1);$("offNo").hidden=n!==1;o.setAttribute("aria-labelledby",n===3?"offDoneH":"offH");
     const f=n===1?$("offEmail"):n===2?$("offPhone"):$("offShop");setTimeout(()=>f.focus({preventScroll:true}),50)};
   let offEmailV="";
-  const done=pct=>{const ph=pct===20?usPhone($("offPhone").value):null;$("offCode").hidden=true;$("offDoneP").textContent="Saving…";step(3);
-    klav(offEmailV,ph,{signup_source:"shop_popup",offer:String(pct)}).then(()=>{const _c=pct===20?"WELCOME20":"WELCOME10";try{localStorage.setItem("pmn_code",_c)}catch(e){}if(window.pmnSetCode)pmnSetCode(_c);$("offCode").textContent=_c;$("offCode").hidden=false;$("offDoneP").textContent=`${pct}% off is saved to your bag. It comes off automatically at checkout.`})
-      .catch(()=>{$("offDoneP").textContent="That didn't go through. Please use the sign-up form at the bottom of the page."})};
+  const done=withPhone=>{$("offCode").textContent="WELCOME20";$("offCode").hidden=false;step(3);
+    if(withPhone){const ph=usPhone($("offPhone").value);if(ph)klavSms(ph).catch(()=>{});$("offDoneP").textContent="20% off is saved to your bag. Check your phone to confirm text alerts.";}
+    else{$("offDoneP").textContent="20% off is saved to your bag. It comes off automatically at checkout.";}};
   $("offForm1").addEventListener("submit",e=>{e.preventDefault();const v=$("offEmail").value.trim();
     if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(v)){$("offErr1").textContent="Enter a valid email, like name@example.com.";$("offEmail").focus();return}
-    $("offErr1").textContent="";offEmailV=v;step(2)});
+    $("offErr1").textContent="";const _fn=$("offFirst").value.trim(),_ln=$("offLast").value.trim();if(!_fn||!_ln){$("offErr1").textContent="Enter your first and last name.";$("offFirst").focus();return}offEmailV=v;const _b=e.target.querySelector("button");if(_b)_b.disabled=true;klavEmail(v,_fn,_ln,{signup_source:"shop_popup"}).then(()=>{try{localStorage.setItem("pmn_code","WELCOME20")}catch(e){}if(window.pmnSetCode)pmnSetCode("WELCOME20")}).catch(()=>{}).finally(()=>{if(_b)_b.disabled=false;step(2)});});
   $("offForm2").addEventListener("submit",e=>{e.preventDefault();const ph=$("offPhone").value.replace(/\D/g,"");
-    if(!(ph.length===10||(ph.length===11&&ph[0]==="1"))){$("offErr2").textContent="Enter a 10-digit US mobile number.";$("offPhone").focus();return}
-    $("offErr2").textContent="";done(20)});
-  $("offSkip").onclick=()=>done(10);
+    if(!ph){done(false);return}
+    if(!(ph.length===10||(ph.length===11&&ph[0]==="1"))){$("offErr2").textContent="Enter a 10-digit US mobile number, or skip.";$("offPhone").focus();return}
+    if(!$("offSms").checked){$("offErr2").textContent="Check the box to get text alerts, or skip.";return}
+    $("offErr2").textContent="";done(true)});
+  $("offSkip").onclick=()=>done(false);
   $("offShop").onclick=()=>{hide();Coll.open("pmn-plus")};
 })();
 function showLab(){Hero.stop();$("hero").hidden=true;$("pdp").hidden=true;$("lab").hidden=false;Lab.open()}

@@ -468,6 +468,7 @@ s.was{color:var(--ink-dim);font-weight:400;margin-left:4px}
 .offer.on{transform:none}
 .offer h2{margin:0;font-family:var(--display);font-weight:400;font-size:34px;line-height:1;letter-spacing:.02em}
 .offer p{margin:0;font-size:14px;color:rgba(244,242,238,.82)}
+.consent-row{display:flex;gap:8px;align-items:flex-start;text-align:left;font-size:13px;line-height:1.3;color:rgba(244,242,238,.82);margin:2px 0 4px}.consent-row input{margin-top:2px;flex:none;width:auto}
 .off-x{position:absolute;top:8px;right:8px}
 .off-form{display:grid;gap:8px;text-align:left}
 .off-form input{height:52px;border-radius:14px;border:1px solid rgba(244,242,238,.3);background:rgba(255,255,255,.06);color:var(--ink);padding:0 14px;font:inherit;font-size:16px;min-width:0}
@@ -858,14 +859,19 @@ s.was{color:var(--ink-dim);font-weight:400;margin-left:4px}
       </div>
     </section>
     <section class="h-sec signup" aria-labelledby="hSign">
-      <h2 class="h-title" id="hSign">10% off your first order</h2>
-      <p>Join the list for 10% off and first access to every drop. Add your mobile number too and get 20% off.</p>
+      <h2 class="h-title" id="hSign">20% off your first order</h2>
+      <p>Join the PMN+ list for 20% off and first access to every drop.</p>
       <form id="signup" class="signup-form" novalidate>
+        <label class="sr" for="suFirst">First name</label>
+        <input id="suFirst" type="text" autocomplete="given-name" placeholder="First name" required>
+        <label class="sr" for="suLast">Last name</label>
+        <input id="suLast" type="text" autocomplete="family-name" placeholder="Last name" required>
         <label class="sr" for="suEmail">Email address</label>
         <input id="suEmail" type="email" inputmode="email" autocomplete="email" placeholder="Email address" required>
-        <label class="sr" for="suPhone">Mobile number (optional, for 20% off)</label>
-        <input id="suPhone" type="tel" inputmode="tel" autocomplete="tel" placeholder="Mobile (optional) for 20% off">
-        <button class="buy" type="submit">Get my code</button>
+        <label class="sr" for="suPhone">Mobile number (optional)</label>
+        <input id="suPhone" type="tel" inputmode="tel" autocomplete="tel" placeholder="Mobile number (optional)">
+        <label class="consent-row"><input type="checkbox" id="suSms"> <span>Text me PMN+ drop alerts &amp; deals (optional).</span></label>
+        <button class="buy" type="submit">Get my 20% code</button>
       </form>
       <p class="fine" id="suMsg" role="status">New customers only, one code per person, first order. By signing up you agree to get marketing emails from PMN+. If you add your number, you agree to get recurring automated marketing texts from PMN+ at that number. Consent isn't a condition of purchase. Msg frequency varies. Msg &amp; data rates may apply. Reply HELP for help, STOP to cancel. See our <a href="/terms#sms">SMS Terms</a> and <a href="/privacy-policy">Privacy Policy</a>.</p>
     </section>
@@ -880,7 +886,7 @@ s.was{color:var(--ink-dim);font-weight:400;margin-left:4px}
         <a href="https://www.instagram.com/polynesianmusic/" target="_blank" rel="noopener" aria-label="PMN+ on Instagram"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.4" cy="6.6" r="1.1" class="f"/></svg></a>
         <a href="https://www.facebook.com/p/Polynesian-Music-61554168566749/" target="_blank" rel="noopener" aria-label="PMN+ on Facebook"><svg viewBox="0 0 24 24"><path class="f" d="M13.5 21v-7.4h2.5l.4-2.9h-2.9V8.9c0-.8.3-1.4 1.5-1.4h1.5V4.9c-.3 0-1.2-.1-2.2-.1-2.2 0-3.7 1.3-3.7 3.8v2.1H8.1v2.9h2.5V21h2.9z"/></svg></a>
         <a href="https://www.tiktok.com/@polynesianmusic" target="_blank" rel="noopener" aria-label="PMN+ on TikTok"><svg viewBox="0 0 24 24"><path class="f" d="M16.6 3c.3 2.2 1.6 3.6 3.8 3.8v2.6c-1.4.1-2.6-.3-3.8-1v6.1c0 3.3-2.5 5.5-5.6 5.5-3.2 0-5.4-2.6-5-5.7.4-2.6 2.6-4.5 5.5-4.3v2.8c-1.4-.3-2.8.5-3 1.9-.2 1.5 1 2.7 2.4 2.6 1.3 0 2.3-1 2.3-2.5V3h3.4z"/></svg></a>
-        <a href="https://www.youtube.com/c/PolynesianMusic" target="_blank" rel="noopener" aria-label="PMN+ on YouTube"><svg viewBox="0 0 24 24"><path class="f" d="M21.6 7.2c-.2-.9-.9-1.6-1.8-1.8C18.2 5 12 5 12 5s-6.2 0-7.8.4c-.9.2-1.6.9-1.8 1.8C2 8.8 2 12 2 12s0 3.2.4 4.8c.2.9.9 1.6 1.8 1.8C5.8 19 12 19 12 19s6.2 0 7.8-.4c.9-.2 1.6-.9 1.8-1.8.4-1.6.4-4.8.4-4.8s0-3.2-.4-4.8z"/><path d="M10 9.2v5.6l4.8-2.8z" fill="#05060a" stroke="none"/></svg></a>
+        <a href="https://www.youtube.com/@polynesianmusicnetwork" target="_blank" rel="noopener" aria-label="PMN+ on YouTube"><svg viewBox="0 0 24 24"><path class="f" d="M21.6 7.2c-.2-.9-.9-1.6-1.8-1.8C18.2 5 12 5 12 5s-6.2 0-7.8.4c-.9.2-1.6.9-1.8 1.8C2 8.8 2 12 2 12s0 3.2.4 4.8c.2.9.9 1.6 1.8 1.8C5.8 19 12 19 12 19s6.2 0 7.8-.4c.9-.2 1.6-.9 1.8-1.8.4-1.6.4-4.8.4-4.8s0-3.2-.4-4.8z"/><path d="M10 9.2v5.6l4.8-2.8z" fill="#05060a" stroke="none"/></svg></a>
       </div></div>
       <ul class="pay" aria-label="Payment methods"><li>Visa</li><li>Mastercard</li><li>Amex</li><li>Apple Pay</li><li>Google Pay</li><li>Shop Pay</li><li>Afterpay</li></ul>
       <div class="fbot"><p class="fine">© 2026 Polynesian Music. PMN+ ships within the USA. Prices in USD.</p><a class="pow" href="https://icmcreative.com" target="_blank" rel="noopener">Powered by <b>ICM Creative</b></a></div>
@@ -1041,32 +1047,37 @@ s.was{color:var(--ink-dim);font-weight:400;margin-left:4px}
 <aside class="offer" id="offer" role="dialog" aria-labelledby="offH" hidden>
   <button class="icon-btn off-x" id="offX" aria-label="Close offer"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
   <div id="offS1">
-    <h2 id="offH">10% off your first order</h2>
-    <p>Join the PMN+ list for 10% off and first access to every drop.</p>
+    <h2 id="offH">20% off your first order</h2>
+    <p>Join the PMN+ list for 20% off and first access to every drop.</p>
     <form class="off-form" id="offForm1" novalidate>
+      <label class="sr" for="offFirst">First name</label>
+      <input id="offFirst" type="text" autocomplete="given-name" placeholder="First name" required>
+      <label class="sr" for="offLast">Last name</label>
+      <input id="offLast" type="text" autocomplete="family-name" placeholder="Last name" required>
       <label class="sr" for="offEmail">Email address</label>
       <input id="offEmail" type="email" inputmode="email" autocomplete="email" placeholder="Email address" required>
       <p class="off-err" id="offErr1" role="alert"></p>
-      <button class="buy" type="submit">Get 10% off</button>
+      <button class="buy" type="submit">Unlock 20% off</button>
     </form>
   </div>
   <div id="offS2" hidden>
     <div class="off-steps" aria-hidden="true"><i class="on"></i><i class="on"></i></div>
-    <h2>Want 20% instead?</h2>
-    <p>Add your mobile and we'll double it. Drop alerts by text, nothing else.</p>
+    <h2>You&rsquo;re almost done</h2>
+    <p>Your 20% is locked in. Add your mobile for first dibs on drops by text &mdash; nothing else.</p>
     <form class="off-form" id="offForm2" novalidate>
       <label class="sr" for="offPhone">Mobile number</label>
-      <input id="offPhone" type="tel" inputmode="tel" autocomplete="tel" placeholder="Mobile number">
+      <input id="offPhone" type="tel" inputmode="tel" autocomplete="tel" placeholder="Mobile number (optional)">
+      <label class="consent-row"><input type="checkbox" id="offSms"> <span>Text me PMN+ drop alerts &amp; deals.</span></label>
       <p class="off-err" id="offErr2" role="alert"></p>
-      <button class="buy" type="submit">Get 20% off</button>
+      <button class="buy" type="submit">Text me drops</button>
     </form>
-    <button class="link" id="offSkip" type="button">No thanks, keep 10%</button>
-    <p class="fine">By adding your number you agree to get recurring automated marketing texts from PMN+ at that number. Consent isn't a condition of purchase. Msg frequency varies. Msg &amp; data rates may apply. Reply HELP for help, STOP to cancel. See our <a href="/terms#sms">SMS Terms</a> and <a href="/privacy-policy">Privacy Policy</a>.</p>
+    <button class="link" id="offSkip" type="button">No thanks, just the 20%</button>
+    <p class="fine">By checking the box you agree to get recurring automated marketing texts from PMN+ at that number. Consent isn't a condition of purchase. Msg frequency varies. Msg &amp; data rates may apply. Reply HELP for help, STOP to cancel. See our <a href="/terms#sms">SMS Terms</a> and <a href="/privacy-policy">Privacy Policy</a>.</p>
   </div>
   <div id="offS3" hidden>
     <h2 id="offDoneH">You're in</h2>
     <p id="offDoneP">Your offer is saved.</p>
-    <div class="off-code num" id="offCode">WELCOME10</div>
+    <div class="off-code num" id="offCode">WELCOME20</div>
     <button class="buy" id="offShop" type="button">Start shopping</button>
     <p class="fine">One code per order. Can't be combined with Buy 3 tees, get 1 free.</p>
   </div>
@@ -1076,7 +1087,7 @@ s.was{color:var(--ink-dim);font-weight:400;margin-left:4px}
 
 <script src="/assets/pmn-config.js" defer></script>
 <script src="/assets/pmn-nav.js" defer></script>
-<script src="/shop/app-aee73a8a2c.js" defer></script>
+<script src="/shop/app-de3a192303.js" defer></script>
 
 <script type="module">/* ROUTES */(()=>{const D="https://www.polynesianmusicnetwork.com",OG0="https://www.polynesianmusicnetwork.com/shop/pmn-plus-shop-og-rlwc-2026-toa-samoa-mate-maa-tonga.jpg",D0="Represent your Pacific team: Toa Samoa and Mate Ma'a Tonga tees, snapbacks and truckers for RLWC 2026, plus PMN+ core pieces. Ships across the USA.",SL={};
 Object.entries(SEO.products).forEach(([id,o])=>{if(BY[id])SL[o.slug]=id});

@@ -40,7 +40,7 @@
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Instrument+Sans:wght@400;500;600&display=swap" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Instrument+Sans:wght@400;500;600&display=swap"></noscript>
 
 <script type="application/ld+json">
-{"@context": "https://schema.org", "@graph": [{"@type": "Organization", "@id": "https://www.polynesianmusicnetwork.com/#org", "name": "PMN+", "alternateName": ["Polynesian Music Network", "Polynesian Music Network Plus"], "legalName": "Polynesian Music", "url": "https://www.polynesianmusicnetwork.com/", "logo": "https://www.polynesianmusicnetwork.com/assets/pmn-logo.png", "description": "Pasifika music, tradition, sports, culture and more from across the Pacific.", "sameAs": ["https://www.instagram.com/polynesianmusic/", "https://www.facebook.com/p/Polynesian-Music-61554168566749/", "https://www.tiktok.com/@polynesianmusic", "https://www.youtube.com/c/PolynesianMusic"]}, {"@type": "WebSite", "@id": "https://www.polynesianmusicnetwork.com/#website", "name": "PMN+", "alternateName": "Polynesian Music Network", "url": "https://www.polynesianmusicnetwork.com/", "publisher": {"@id": "https://www.polynesianmusicnetwork.com/#org"}, "inLanguage": "en"}]}
+{"@context": "https://schema.org", "@graph": [{"@type": "Organization", "@id": "https://www.polynesianmusicnetwork.com/#org", "name": "PMN+", "alternateName": ["Polynesian Music Network", "Polynesian Music Network Plus"], "legalName": "Polynesian Music", "url": "https://www.polynesianmusicnetwork.com/", "logo": "https://www.polynesianmusicnetwork.com/assets/pmn-logo.png", "description": "Pasifika music, tradition, sports, culture and more from across the Pacific.", "sameAs": ["https://www.instagram.com/polynesianmusic/", "https://www.facebook.com/p/Polynesian-Music-61554168566749/", "https://www.tiktok.com/@polynesianmusic", "https://www.youtube.com/@polynesianmusicnetwork"]}, {"@type": "WebSite", "@id": "https://www.polynesianmusicnetwork.com/#website", "name": "PMN+", "alternateName": "Polynesian Music Network", "url": "https://www.polynesianmusicnetwork.com/", "publisher": {"@id": "https://www.polynesianmusicnetwork.com/#org"}, "inLanguage": "en"}]}
 </script>
 
 <style>html{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;font-synthesis:none}
@@ -342,17 +342,30 @@ button[disabled]{opacity:.5;cursor:default}
 
   <div class="capture">
     <form id="f" novalidate>
+      <label for="fName" class="sr">First name</label>
+      <input id="fName" type="text" placeholder="First name" autocomplete="given-name" required>
+      <label for="lName" class="sr">Last name</label>
+      <input id="lName" type="text" placeholder="Last name" autocomplete="family-name" required>
       <label for="email" class="sr">Email address</label>
       <input id="email" type="email" name="email" placeholder="you@email.com" autocomplete="email" required>
-      <button class="btn" type="submit" id="btn">Join the movement</button>
+      <button class="btn" type="submit" id="btn">Get my 20% code</button>
     </form>
-    <p class="fine">Get 10% off your first order, plus first access to drops, interviews and giveaways.</p>
+    <form id="fPhone" novalidate style="display:none">
+      <p style="margin:0 0 6px;font-weight:600">You&rsquo;re almost done &mdash; your 20% is locked in.</p>
+      <label for="fPh" class="sr">Mobile number</label>
+      <input id="fPh" type="tel" placeholder="Mobile number (optional)" autocomplete="tel">
+      <label style="display:flex;gap:8px;align-items:flex-start;text-align:left;font-size:13px;line-height:1.35;margin:8px 0"><input type="checkbox" id="fSms" style="margin-top:3px;flex:none;width:auto"> <span>Text me PMN+ drop alerts &amp; deals for first dibs.</span></label>
+      <button class="btn" type="submit" id="btnPh">Text me drops</button>
+      <button type="button" id="skipPh" style="display:block;margin:8px auto 0;background:none;border:0;color:inherit;text-decoration:underline;cursor:pointer;font:inherit">No thanks, just the 20%</button>
+      <p class="fine" style="margin-top:10px">By checking the box you agree to get recurring automated marketing texts from PMN+ at that number. Consent is not a condition of purchase. Msg frequency varies. Msg &amp; data rates may apply. Reply HELP for help, STOP to cancel. See our <a href="/terms">SMS Terms</a> and <a href="/privacy-policy">Privacy Policy</a>.</p>
+    </form>
+    <p class="fine">Get 20% off your first order, plus first access to drops, interviews and giveaways.</p>
     <p class="note" id="note" role="status" aria-live="polite"></p>
     <div class="success" id="success" role="status" aria-live="polite">
       <div class="tick" aria-hidden="true"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></div>
       <p class="big">You&rsquo;re in</p>
-      <p class="sub">Welcome to the <b>aiga</b>. Your 10% off code is saved to your bag and comes off at checkout.</p>
-      <div class="code" aria-label="Your code: WELCOME10">WELCOME10</div>
+      <p class="sub">Welcome to the <b>aiga</b>. Your 20% off code is saved to your bag and comes off at checkout.</p>
+      <div class="code" aria-label="Your code: WELCOME20">WELCOME20</div>
       <a class="go" href="/shop">Shop now</a>
     </div>
   </div>
@@ -533,7 +546,7 @@ button[disabled]{opacity:.5;cursor:default}
     <a href="https://www.instagram.com/polynesianmusic/" target="_blank" rel="noopener" aria-label="PMN+ on Instagram"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.4" cy="6.6" r="1.1" class="f"/></svg></a>
         <a href="https://www.facebook.com/p/Polynesian-Music-61554168566749/" target="_blank" rel="noopener" aria-label="PMN+ on Facebook"><svg viewBox="0 0 24 24"><path class="f" d="M13.5 21v-7.4h2.5l.4-2.9h-2.9V8.9c0-.8.3-1.4 1.5-1.4h1.5V4.9c-.3 0-1.2-.1-2.2-.1-2.2 0-3.7 1.3-3.7 3.8v2.1H8.1v2.9h2.5V21h2.9z"/></svg></a>
         <a href="https://www.tiktok.com/@polynesianmusic" target="_blank" rel="noopener" aria-label="PMN+ on TikTok"><svg viewBox="0 0 24 24"><path class="f" d="M16.6 3c.3 2.2 1.6 3.6 3.8 3.8v2.6c-1.4.1-2.6-.3-3.8-1v6.1c0 3.3-2.5 5.5-5.6 5.5-3.2 0-5.4-2.6-5-5.7.4-2.6 2.6-4.5 5.5-4.3v2.8c-1.4-.3-2.8.5-3 1.9-.2 1.5 1 2.7 2.4 2.6 1.3 0 2.3-1 2.3-2.5V3h3.4z"/></svg></a>
-        <a href="https://www.youtube.com/c/PolynesianMusic" target="_blank" rel="noopener" aria-label="PMN+ on YouTube"><svg viewBox="0 0 24 24"><path class="f" d="M21.6 7.2c-.2-.9-.9-1.6-1.8-1.8C18.2 5 12 5 12 5s-6.2 0-7.8.4c-.9.2-1.6.9-1.8 1.8C2 8.8 2 12 2 12s0 3.2.4 4.8c.2.9.9 1.6 1.8 1.8C5.8 19 12 19 12 19s6.2 0 7.8-.4c.9-.2 1.6-.9 1.8-1.8.4-1.6.4-4.8.4-4.8s0-3.2-.4-4.8z"/><path d="M10 9.2v5.6l4.8-2.8z" fill="#05060a" stroke="none"/></svg></a>
+        <a href="https://www.youtube.com/@polynesianmusicnetwork" target="_blank" rel="noopener" aria-label="PMN+ on YouTube"><svg viewBox="0 0 24 24"><path class="f" d="M21.6 7.2c-.2-.9-.9-1.6-1.8-1.8C18.2 5 12 5 12 5s-6.2 0-7.8.4c-.9.2-1.6.9-1.8 1.8C2 8.8 2 12 2 12s0 3.2.4 4.8c.2.9.9 1.6 1.8 1.8C5.8 19 12 19 12 19s6.2 0 7.8-.4c.9-.2 1.6-.9 1.8-1.8.4-1.6.4-4.8.4-4.8s0-3.2-.4-4.8z"/><path d="M10 9.2v5.6l4.8-2.8z" fill="#05060a" stroke="none"/></svg></a>
   </div></div>
   <ul class="pay" aria-label="Payment methods"><li>Visa</li><li>Mastercard</li><li>Amex</li><li>Apple Pay</li><li>Google Pay</li><li>Shop Pay</li></ul>
   <div class="fbot"><p class="fine">&copy; <span id="yr"></span> Polynesian Music. PMN+ ships within the USA. Prices in USD.</p><a class="pow" href="https://icmcreative.com" target="_blank" rel="noopener">Powered by <b>ICM Creative</b></a></div>
@@ -545,24 +558,38 @@ try{const n=JSON.parse(localStorage.getItem('pmn_cart')||'[]').reduce((t,i)=>t+(
 const nav=document.getElementById('nav');
 const onScroll=()=>nav.classList.toggle('solid',scrollY>40);addEventListener('scroll',onScroll,{passive:true});onScroll();
 
-const KLAVIYO_COMPANY_ID='T9JJzp',KLAVIYO_LIST_ID='Sggasa'; /* PMN+ Newsletter list (home page). Shop forms stay on SLSsGL. */
+const KLAVIYO_COMPANY_ID='T9JJzp',KLAVIYO_LIST_ID='Sggasa',KLAVIYO_SMS_LIST='UdHNwW';
 const form=document.getElementById('f'),email=document.getElementById('email'),btn=document.getElementById('btn'),note=document.getElementById('note');
 const say=(m,k)=>{note.textContent=m;note.className='note '+(k||'')};
-async function sub(attrs){
-  const payload={data:{type:'subscription',attributes:{profile:{data:{type:'profile',attributes:attrs}}},relationships:{list:{data:{type:'list',id:KLAVIYO_LIST_ID}}}}};
+async function klSub(listId,attrs){
+  const payload={data:{type:'subscription',attributes:{profile:{data:{type:'profile',attributes:attrs}}},relationships:{list:{data:{type:'list',id:listId}}}}};
   const r=await fetch('https://a.klaviyo.com/client/subscriptions/?company_id='+KLAVIYO_COMPANY_ID,{method:'POST',headers:{'content-type':'application/json','revision':'2026-07-15'},body:JSON.stringify(payload)});
   if(!(r.status===202||r.ok))throw new Error(r.status)}
+const usPhone=d=>{d=String(d||'').replace(/\D/g,'');return d.length>=10?'+1'+d.slice(-10):null};
+function finishHome(){try{localStorage.setItem('pmn_code','WELCOME20')}catch(_){}
+  form.style.display='none';document.getElementById('fPhone').style.display='none';document.querySelectorAll('.fine').forEach(el=>el.style.display='none');note.textContent='';
+  document.getElementById('success').classList.add('on')}
 form.addEventListener('submit',async e=>{
-  e.preventDefault();const v=email.value.trim();
-  if(!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v)){say('That email address doesn\u2019t look right.','bad');email.focus();return}
-  btn.disabled=true;const label=btn.textContent;btn.textContent='Adding\u2026';
+  e.preventDefault();const fn=document.getElementById('fName').value.trim(),ln=document.getElementById('lName').value.trim(),v=email.value.trim();
+  if(!fn||!ln){say("Enter your first and last name.","bad");return}
+  if(!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v)){say("That email address does not look right.","bad");email.focus();return}
+  btn.disabled=true;const label=btn.textContent;btn.textContent="Adding...";
   try{
-    try{await sub({email:v,properties:{signup_source:'home_newsletter'}})}catch(_){await sub({email:v})}
-    try{localStorage.setItem('pmn_email',v);localStorage.setItem('pmn_code','WELCOME10')}catch(_){}
-    form.style.display='none';document.querySelector('.fine').style.display='none';note.textContent='';
-    document.getElementById('success').classList.add('on');
-  }catch(err){console.error(err);say('That didn\u2019t save. Try again in a moment.','bad');btn.disabled=false;btn.textContent=label}
+    await klSub(KLAVIYO_LIST_ID,{email:v,first_name:fn,last_name:ln,subscriptions:{email:{marketing:{consent:'SUBSCRIBED'}}},properties:{signup_source:'home_newsletter'}});
+    try{localStorage.setItem('pmn_email',v)}catch(_){}
+    form.style.display='none';say("");document.getElementById('fPhone').style.display='';document.getElementById('fPh').focus();
+  }catch(err){console.error(err);say("That did not save. Try again in a moment.","bad");btn.disabled=false;btn.textContent=label}
 });
+document.getElementById('fPhone').addEventListener('submit',async e=>{
+  e.preventDefault();const ph=document.getElementById('fPh').value.replace(/\D/g,'');
+  if(!ph){finishHome();return}
+  if(!(ph.length===10||(ph.length===11&&ph[0]==='1'))){say("Enter a 10-digit US mobile number, or skip.","bad");return}
+  if(!document.getElementById('fSms').checked){say("Check the box to get text alerts, or skip.","bad");return}
+  const pb=document.getElementById('btnPh');pb.disabled=true;
+  try{await klSub(KLAVIYO_SMS_LIST,{phone_number:usPhone(ph),subscriptions:{sms:{marketing:{consent:'SUBSCRIBED'}}}})}catch(_){}
+  finishHome();
+});
+document.getElementById('skipPh').addEventListener('click',finishHome);
 
 /* Instagram Reels widget: /api/reels (Vercel function) */
 (async()=>{

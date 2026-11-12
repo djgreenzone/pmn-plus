@@ -179,6 +179,7 @@ def page(title, desc, canonical, *, body, og_image=None, og_video=None, og_type=
 <meta name="robots" content="{robots}">
 <link rel="canonical" href="{esc(canonical)}">
 <meta name="theme-color" content="#000000">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3037842844679541" crossorigin="anonymous"></script>
 <link rel="icon" type="image/png" href="/assets/favicon.png">
 <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
 <meta property="og:site_name" content="PMN+">
@@ -475,6 +476,13 @@ def sitemap(posts, issues, cats, authors, idx):
     for i in issues:
         lm = (i.get("updated_at") or i.get("published_at") or now)[:10]
         urls.append((SITE + "/digital-magazine/" + i["slug"], lm))
+    seen_tags = set()
+    for p in posts:
+        for t in (p.get("tags") or []):
+            ts = slugify(t)
+            if ts and ts not in seen_tags:
+                seen_tags.add(ts)
+                urls.append((SITE + "/stories/tag/" + ts, now))
     body = "".join(f"<url><loc>{esc(u)}</loc><lastmod>{lm}</lastmod></url>" for u, lm in urls)
     return '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">' + body + "</urlset>"
 

@@ -288,6 +288,24 @@ def post_ld(post, idx):
     return {"@context": "https://schema.org", "@graph": graph}
 
 # ---------- pages ----------
+AD_CLIENT = "ca-pub-3037842844679541"
+AD_SLOT = "6402021036"
+def inject_ad(body_html):
+    """Place one in-article ad after the 3rd paragraph. Skips short posts (<4 paragraphs)."""
+    if not body_html:
+        return body_html
+    parts = re.split(r"(</p>)", body_html)
+    closes = [i for i, x in enumerate(parts) if x == "</p>"]
+    if len(closes) < 4:
+        return body_html
+    ad = ('<div class="ed-ad"><span class="ed-ad-label">Advertisement</span>'
+          '<ins class="adsbygoogle" style="display:block;text-align:center" '
+          'data-ad-layout="in-article" data-ad-format="fluid" '
+          'data-ad-client="' + AD_CLIENT + '" data-ad-slot="' + AD_SLOT + '"></ins>'
+          '<script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>')
+    parts.insert(closes[2] + 1, ad)
+    return "".join(parts)
+
 def post_page(post, idx):
     cat = idx["cat"].get(post.get("category_id"), {})
     au = idx["au"].get(post.get("author_id"), {})
@@ -328,7 +346,7 @@ def post_page(post, idx):
 {hero}
 <div class="ed-grid">
 <article class="ed-article">
-{post.get('body_html') or ''}
+{inject_ad(post.get('body_html') or '')}
 {shop}
 <div class="ed-tags">{tags}</div>
 <p class="ed-rights">{esc(post.get('rights_note') or '')}{mag_line}</p>

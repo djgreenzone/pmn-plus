@@ -1,24 +1,408 @@
 {
   "trailingSlash": false,
   "headers": [
-    { "source": "/shop/app-(.*)\\.js", "headers": [{ "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }] },
-    { "source": "/shop/:dir(hires|frames|brand|og)/(.*)", "headers": [{ "key": "Cache-Control", "value": "public, max-age=2592000, stale-while-revalidate=604800" }] },
-    { "source": "/assets/:dir(home|about|ig|email|og)/(.*)", "headers": [{ "key": "Cache-Control", "value": "public, max-age=2592000, stale-while-revalidate=604800" }] },
-    { "source": "/assets/:file(.*\\.(?:png|jpg|jpeg|webp|avif|svg|mp4))", "headers": [{ "key": "Cache-Control", "value": "public, max-age=2592000, stale-while-revalidate=604800" }] },
-    { "source": "/assets/:file(pmn-nav\\.css|pmn-nav\\.js|pmn-config\\.js)", "headers": [{ "key": "Cache-Control", "value": "public, max-age=3600, stale-while-revalidate=86400" }] }
+    {
+      "source": "/shop/app-(.*)\\.js",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    },
+    {
+      "source": "/shop/:dir(hires|frames|brand|og)/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=2592000, stale-while-revalidate=604800"
+        }
+      ]
+    },
+    {
+      "source": "/assets/:dir(home|about|ig|email|og)/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=2592000, stale-while-revalidate=604800"
+        }
+      ]
+    },
+    {
+      "source": "/assets/:file(.*\\.(?:png|jpg|jpeg|webp|avif|svg|mp4))",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=2592000, stale-while-revalidate=604800"
+        }
+      ]
+    },
+    {
+      "source": "/assets/:file(pmn-nav\\.css|pmn-nav\\.js|pmn-config\\.js)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=3600, stale-while-revalidate=86400"
+        }
+      ]
+    }
   ],
   "redirects": [
-    { "source": "/:path*", "has": [{ "type": "host", "value": "polynesianmusicnetwork.com" }], "destination": "https://www.polynesianmusicnetwork.com/:path*", "permanent": true },
-    { "source": "/about-us", "destination": "/about", "permanent": true },
-    { "source": "/about-us/", "destination": "/about", "permanent": true },
-    { "source": "/contact-us", "destination": "/contact", "permanent": true },
-    { "source": "/contact-us/", "destination": "/contact", "permanent": true },
-    { "source": "/privacy-policy/", "destination": "/privacy-policy", "permanent": true },
-    { "source": "/terms-of-service", "destination": "/terms", "permanent": true },
-    { "source": "/terms-of-service/", "destination": "/terms", "permanent": true },
-    { "source": "/store", "destination": "/shop", "permanent": true },
-    { "source": "/store/:path*", "destination": "/shop", "permanent": true },
-    { "source": "/merch", "destination": "/shop", "permanent": true },
-    { "source": "/merch/:path*", "destination": "/shop", "permanent": true }
+    {
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "polynesianmusicnetwork.com"
+        }
+      ],
+      "destination": "https://www.polynesianmusicnetwork.com/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/about-us",
+      "destination": "/about",
+      "permanent": true
+    },
+    {
+      "source": "/about-us/",
+      "destination": "/about",
+      "permanent": true
+    },
+    {
+      "source": "/contact-us",
+      "destination": "/contact",
+      "permanent": true
+    },
+    {
+      "source": "/contact-us/",
+      "destination": "/contact",
+      "permanent": true
+    },
+    {
+      "source": "/privacy-policy/",
+      "destination": "/privacy-policy",
+      "permanent": true
+    },
+    {
+      "source": "/terms-of-service",
+      "destination": "/terms",
+      "permanent": true
+    },
+    {
+      "source": "/terms-of-service/",
+      "destination": "/terms",
+      "permanent": true
+    },
+    {
+      "source": "/store",
+      "destination": "/shop",
+      "permanent": true
+    },
+    {
+      "source": "/store/:path*",
+      "destination": "/shop",
+      "permanent": true
+    },
+    {
+      "source": "/merch",
+      "destination": "/shop",
+      "permanent": true
+    },
+    {
+      "source": "/merch/:path*",
+      "destination": "/shop",
+      "permanent": true
+    },
+    {
+      "source": "/8ro8-fahk-em",
+      "destination": "/stories/8ro8-fahk-em",
+      "permanent": true
+    },
+    {
+      "source": "/a-journey-of-iconic-collaboration-tees-adventure-from-new-zealand-to-jamaica",
+      "destination": "/stories/tee-maree-revus-beenie-man-jamaica",
+      "permanent": true
+    },
+    {
+      "source": "/a-look-at-the-2024-pacific-music-awards",
+      "destination": "/stories/2024-pacific-music-awards-recap",
+      "permanent": true
+    },
+    {
+      "source": "/acknowledge-them-wrestlemania-40-recap",
+      "destination": "/stories/wrestlemania-40-recap",
+      "permanent": true
+    },
+    {
+      "source": "/airplane-mode-by-rappa-nui",
+      "destination": "/stories/rappa-nui-airplane-mode",
+      "permanent": true
+    },
+    {
+      "source": "/ardie-saveas-historic-move-honoring-heritage-and-inspiring-future-generations-with-moana-pasifika",
+      "destination": "/stories/ardie-savea-moana-pasifika-move",
+      "permanent": true
+    },
+    {
+      "source": "/arizona-wr-tetairoa-mcmillan-honoring-heritage-and-excellence-in-college-football",
+      "destination": "/stories/tetairoa-mcmillan-polynesian-player-of-the-year",
+      "permanent": true
+    },
+    {
+      "source": "/arkatype-powered-by-hereaux-introduces-a-purpose-led-identity-mark-for-jaron-keawe-sagapolutele",
+      "destination": "/stories/arkatype-jaron-keawe-sagapolutele-identity-mark",
+      "permanent": true
+    },
+    {
+      "source": "/asics-x-pasifika-asics-launches-the-first-of-its-kind-with-ardie-savea",
+      "destination": "/stories/asics-voyager-pack-pasifika",
+      "permanent": true
+    },
+    {
+      "source": "/baby-joe-carrying-tongan-language-through-music",
+      "destination": "/stories/baby-joe-tongan-language-through-music",
+      "permanent": true
+    },
+    {
+      "source": "/bronson-kaufusi-from-nfl-to-life-changing-impact-beyond-the-game",
+      "destination": "/stories/bronson-kaufusi-life-after-football",
+      "permanent": true
+    },
+    {
+      "source": "/building-bridges-through-beats-kiridox-on-collaboration-culture-and-coming-full-circle",
+      "destination": "/stories/kiridox-poetik-po-some",
+      "permanent": true
+    },
+    {
+      "source": "/championing-mens-mental-health-tetis-club",
+      "destination": "/stories/tetis-club-mens-mental-health",
+      "permanent": true
+    },
+    {
+      "source": "/coach-johnny-nansen-from-samoa-to-the-college-football-playoff-a-journey-of-leadership-and-hard-work",
+      "destination": "/stories/johnny-nansen-samoa-to-college-football-playoff",
+      "permanent": true
+    },
+    {
+      "source": "/coach-prime-confirms-domata-peko-joins-buffaloes-coaching-staff",
+      "destination": "/stories/domata-peko-joins-colorado-buffaloes",
+      "permanent": true
+    },
+    {
+      "source": "/coldplay-shares-the-stage-with-pasifika-artists",
+      "destination": "/stories/coldplay-shares-stage-with-pasifika-artists",
+      "permanent": true
+    },
+    {
+      "source": "/dreams-to-fruition",
+      "destination": "/stories/johnson-siblings-dreams-to-fruition",
+      "permanent": true
+    },
+    {
+      "source": "/eyes-up-past-present-future-tiare-jennings",
+      "destination": "/stories/tiare-jennings-eyes-up",
+      "permanent": true
+    },
+    {
+      "source": "/faamolemole-si-ou-tei-ufiufi-lou-malu-ink-and-intent-x-beyond-the-lyrics-with-musu-tapu-sitagata",
+      "destination": "/stories/musu-tapu-sitagata-ink-and-intent",
+      "permanent": true
+    },
+    {
+      "source": "/from-federal-way-to-utah-teenos-journey-in-entertainment",
+      "destination": "/stories/teeno-playforkeeps-entertainment",
+      "permanent": true
+    },
+    {
+      "source": "/from-tiktok-to-your-kitchen-ronnys-viral-pani-popo-recipe",
+      "destination": "/stories/ronnys-viral-pani-popo-recipe",
+      "permanent": true
+    },
+    {
+      "source": "/from-verse-to-vision-how-waynos-siva-samoa-2k24-sparked-a-cultural-dialogue",
+      "destination": "/stories/from-verse-to-vision-siva-samoa-2k24",
+      "permanent": true
+    },
+    {
+      "source": "/gaby-solomona-uses-her-skills-and-gifts-to-be-an-inspiration-to-other-young-aspiring-creatives",
+      "destination": "/stories/gaby-solomona",
+      "permanent": true
+    },
+    {
+      "source": "/grateful-new-zealands-up-and-coming-artists-lil-rick-and-lanakila",
+      "destination": "/stories/lil-rick-lanakila-grateful",
+      "permanent": true
+    },
+    {
+      "source": "/hawaii-meets-la-with-emerging-artists-duo-franskiiz-lelz",
+      "destination": "/stories/franskiiz-lelz-someone-else",
+      "permanent": true
+    },
+    {
+      "source": "/holo-holo-sacramento-in-case-you-missed-it",
+      "destination": "/stories/holo-holo-sacramento-recap",
+      "permanent": true
+    },
+    {
+      "source": "/holo-holo-san-diego-2024",
+      "destination": "/stories/holo-holo-san-diego-what-actually-happens",
+      "permanent": true
+    },
+    {
+      "source": "/just-give-it-a-crack-the-journey-of-jj4k",
+      "destination": "/stories/jj4k-just-give-it-a-crack",
+      "permanent": true
+    },
+    {
+      "source": "/kiridox-from-wellington-to-the-world-a-polynesian-rap-journey",
+      "destination": "/stories/kiridox-wellington-to-the-world",
+      "permanent": true
+    },
+    {
+      "source": "/legend-in-the-making-dj-k-swizz",
+      "destination": "/stories/dj-k-swizz-legend-in-the-making",
+      "permanent": true
+    },
+    {
+      "source": "/living-the-dream-samoan-artist-bobby-b-macs-music-featured-in-wrestler-jacob-fatus-entrance-song",
+      "destination": "/stories/bobby-b-mac-jacob-fatu-entrance-song",
+      "permanent": true
+    },
+    {
+      "source": "/loas-angeles-pasifika-film-fest",
+      "destination": "/stories/los-angeles-pasifika-film-fest",
+      "permanent": true
+    },
+    {
+      "source": "/max-holloway-takes-bmf-title-with-one-of-the-wildest-knockouts-in-mma-history",
+      "destination": "/stories/max-holloway-bmf-ufc-300",
+      "permanent": true
+    },
+    {
+      "source": "/meet-bay-area-singer-keniye-moala-do-you-enjoy-life",
+      "destination": "/stories/keniye-moala-flavors",
+      "permanent": true
+    },
+    {
+      "source": "/moana-2-trailer-shatters-records-as-disney-animations-most-watched-garnering-over-178-million-views-within-just-24-hours",
+      "destination": "/stories/moana-2-trailer-shatters-records",
+      "permanent": true
+    },
+    {
+      "source": "/mother-land-samoa-2023-you-just-had-to-be-there",
+      "destination": "/stories/motherland-samoa-2023-recap",
+      "permanent": true
+    },
+    {
+      "source": "/navigating-new-waters-moana-2-and-its-cultural-impact",
+      "destination": "/stories/moana-2-navigating-new-waters",
+      "permanent": true
+    },
+    {
+      "source": "/nfl-hall-of-famer-troy-polamalu-championing-leadership-through-service",
+      "destination": "/stories/troy-polamalu-leadership-through-service",
+      "permanent": true
+    },
+    {
+      "source": "/pasifika-representation-on-screen-the-halaufia-family-take-on-the-quiz-with-balls",
+      "destination": "/stories/halaufia-family-quiz-with-balls",
+      "permanent": true
+    },
+    {
+      "source": "/rima-by-tiana-nonosina-liufau",
+      "destination": "/stories/tiana-liufau-rima-anaheim",
+      "permanent": true
+    },
+    {
+      "source": "/romeo-toailoa-sabbath-the-voice-behind-baby-foi-mai",
+      "destination": "/stories/romeo-sabbath-baby-foi-mai",
+      "permanent": true
+    },
+    {
+      "source": "/runit-announces-usa-west-coast-trials-2025-six-stops-free-community-events",
+      "destination": "/stories/runit-usa-west-coast-trials-2025",
+      "permanent": true
+    },
+    {
+      "source": "/self-care-checklist-for-a-fresh-start-in-2025",
+      "destination": "/stories/2025-self-care-checklist",
+      "permanent": true
+    },
+    {
+      "source": "/taiojrs-first-ever-hometown-headliner-at-house-of-blues-sells-out",
+      "destination": "/stories/taiojr-first-hometown-headline-show",
+      "permanent": true
+    },
+    {
+      "source": "/treaty-principle-bill-submission",
+      "destination": "/stories/treaty-principles-bill-submission",
+      "permanent": true
+    },
+    {
+      "source": "/tupulaga-samoa-tree-wayno",
+      "destination": "/stories/tree-wayno-tupulaga-samoa",
+      "permanent": true
+    },
+    {
+      "source": "/ua-taunuu-the-arrival-of-success-with-teuilealealofa-rose-anna-saitumua-tafaoialii",
+      "destination": "/stories/teuilealealofa-tafaoialii-two-doctorates",
+      "permanent": true
+    },
+    {
+      "source": "/underrated-no-more-lomez-brown-on-culture-music-and-legacy",
+      "destination": "/stories/lomez-brown-underrated-no-more",
+      "permanent": true
+    },
+    {
+      "source": "/want-to-achieves-over-20-million-streams",
+      "destination": "/stories/victor-j-sefo-want-to-20-million-streams",
+      "permanent": true
+    },
+    {
+      "source": "/category/:path*",
+      "destination": "/stories",
+      "permanent": true
+    },
+    {
+      "source": "/tag/:path*",
+      "destination": "/stories",
+      "permanent": true
+    },
+    {
+      "source": "/author/:path*",
+      "destination": "/stories",
+      "permanent": true
+    },
+    {
+      "source": "/pmn-archive/:path*",
+      "destination": "/stories",
+      "permanent": true
+    },
+    {
+      "source": "/pmn-digital-magazine-editions",
+      "destination": "/digital-magazine",
+      "permanent": true
+    },
+    {
+      "source": "/2024/:path*",
+      "destination": "/stories",
+      "permanent": true
+    },
+    {
+      "source": "/2025/:path*",
+      "destination": "/stories",
+      "permanent": true
+    },
+    {
+      "source": "/2026/:path*",
+      "destination": "/stories",
+      "permanent": true
+    },
+    {
+      "source": "/:path*/feed",
+      "destination": "/stories/feed.xml",
+      "permanent": true
+    }
   ]
 }

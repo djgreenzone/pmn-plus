@@ -252,6 +252,30 @@ def related(post, idx, n=6):
     return ranked[:n]
 
 # ---------- JSON-LD ----------
+def faq_ld(body_html):
+    """Return an FAQPage node built from a story's own visible Q&A, or None.
+    Only fires on genuine interview Q&A markup (<li>/<p> with a <strong>question?</strong>),
+    so the schema always matches content shown on the page (Google policy)."""
+    if not body_html:
+        return None
+    pairs = re.findall(r"<li>\s*<strong>(.*?)</strong>(.*?)</li>", body_html, re.S)
+    if len(pairs) < 2:
+        pairs = re.findall(r"<p>\s*<strong>(.*?)</strong>(.*?)</p>", body_html, re.S)
+    def _clean(s):
+        s = re.sub(r"<[^>]+>", " ", s)
+        return re.sub(r"\s+", " ", html.unescape(s)).strip()
+    qa = []
+    for q, a in pairs:
+        qt, at = _clean(q), _clean(a)
+        if qt.endswith("?") and at:
+            qa.append((qt, at))
+    if len(qa) < 2:
+        return None
+    return {"@type": "FAQPage", "mainEntity": [
+        {"@type": "Question", "name": qt,
+         "acceptedAnswer": {"@type": "Answer", "text": at}} for qt, at in qa]}
+
+
 def post_ld(post, idx):
     cat = idx["cat"].get(post.get("category_id"), {})
     au = idx["au"].get(post.get("author_id"), {})
@@ -282,6 +306,10 @@ def post_ld(post, idx):
     breadcrumb = {"@type": "BreadcrumbList", "itemListElement": [
         {"@type": "ListItem", "position": i + 1, "name": n, "item": u} for i, (n, u) in enumerate(crumbs)]}
     graph = [article, breadcrumb, org]
+    faq = faq_ld(post.get("body_html"))
+    if faq:
+        faq["@id"] = url + "#faq"
+        graph.append(faq)
     if iss:
         article["isPartOf"] = {"@type": "CollectionPage", "@id": SITE + "/digital-magazine/" + iss["slug"] + "#issue",
                                "name": "PMN+ Magazine — " + iss["title"]}

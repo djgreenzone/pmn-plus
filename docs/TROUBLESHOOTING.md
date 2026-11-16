@@ -2,6 +2,19 @@
 
 Problems we've actually hit, newest first. Format: **symptom → cause → fix**. Add new ones at the top.
 
+## Homepage hero (`index.html`)
+
+**The "Polynesian Music Network" eyebrow / headline is hidden under the fixed header**
+- Cause: the hero is full-bleed *under* the transparent fixed header (`header.nav` ≈ 157px = offer bar 32 + logo row 76 + category row 48) and flex-centres its content. When the top padding reserves less than the real header height, the top line slides up under the bar and the hero's `overflow:hidden` clips it. It drifted because the header grew while the hero still reserved a hardcoded `116px`.
+- Fix (Nov 16): a small script on `index.html` measures `header.nav` into a `--nav-h` CSS var (re-measured on resize) and the hero reserves `calc(var(--nav-h,157px) + 5vh)` (desktop) / `7.75rem` (base), with `justify-content:safe center` so content never clips upward. **Don't re-hardcode the top padding** — if the header height changes again, the measured var self-corrects. To change the space above the eyebrow, adjust that `5vh` / `7.75rem`.
+
+**Hero text washes out on bright video frames**
+- `/assets/bg.mp4` has bright frames (crowd shots) where white text used to disappear.
+- The scrim is tuned for this: video `opacity:.55` + `.hero .bgv::after` = a centred radial darken anchored behind the headline/form column *plus* a stronger top/bottom gradient, and text-shadows on the headline, eyebrow, subline and fine print. If you swap the video, keep the scrim — a brighter clip needs a *deeper* scrim, not less. The video edges stay vivid by design; only the centre text zone is darkened.
+
+**Hero headline size / wrapping**
+- The hero headline (`#h1`) and the "Representation matters" band headline (`.band h2`) deliberately share one size (`clamp(3rem,8vw,6.2rem)`). The hero lines wrap (no `white-space:nowrap`) so the large size doesn't clip on mobile — don't re-add `nowrap`.
+
 ## Checkout
 
 **Checkout shows only one carrier option, or "2 business days" for ~$16 (Oct 14–21)**

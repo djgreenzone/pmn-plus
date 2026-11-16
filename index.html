@@ -66,15 +66,15 @@ img{display:block;max-width:100%}
 .nav.solid{background:rgba(0,0,0,.92);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
 
 /* hero */
-.hero{position:relative;min-height:100svh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:6.5rem 0 clamp(1.4rem,3vw,2.4rem);gap:clamp(1rem,2.4vw,1.6rem);overflow:hidden;isolation:isolate}
-.hero-top{flex:1 1 auto;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:clamp(1.1rem,2.6vw,1.6rem);width:100%;padding:0 clamp(1.25rem,5vw,2.5rem)}
+.hero{position:relative;min-height:100svh;display:flex;flex-direction:column;align-items:center;justify-content:safe center;text-align:center;padding:6.5rem 0 clamp(1.4rem,3vw,2.4rem);gap:clamp(1rem,2.4vw,1.6rem);overflow:hidden;isolation:isolate}
+.hero-top{flex:1 1 auto;display:flex;flex-direction:column;align-items:center;justify-content:safe center;gap:clamp(1.1rem,2.6vw,1.6rem);width:100%;padding:0 clamp(1.25rem,5vw,2.5rem)}
 .hero .bgv{position:absolute;inset:0;z-index:-1;background:#000}
 .hero .bgv video{width:100%;height:100%;object-fit:cover;opacity:.70}
 .hero .bgv::after{content:'';position:absolute;inset:0;background:radial-gradient(80% 55% at 50% 36%,rgba(0,0,0,.2),rgba(0,0,0,.7)),linear-gradient(180deg,rgba(0,0,0,.5),transparent 24%,transparent 40%,rgba(0,0,0,.9) 86%,#000)}
 @media (prefers-reduced-motion:reduce){.hero .bgv video{display:none}}
 .hero h1{font-family:var(--display);font-weight:400;text-transform:uppercase;font-size:min(6.4vw,5rem);line-height:.96;letter-spacing:.01em}
 .hero h1 span{display:block;white-space:nowrap}
-@media (min-width:900px){.hero{justify-content:center;padding-top:calc(116px + 2vh);padding-bottom:clamp(1.4rem,3vh,2.4rem)}}
+@media (min-width:900px){.hero{justify-content:safe center;padding-top:calc(var(--nav-h, 157px) + 2vh);padding-bottom:clamp(1.4rem,3vh,2.4rem)}}
 .hero .line{max-width:34ch;color:#c9c9cd;font-size:clamp(1rem,.95rem + .25vw,1.12rem);text-wrap:balance}
 .capture{width:100%;max-width:27rem;margin-top:.35rem}
 form{display:flex;gap:.5rem;flex-wrap:wrap;justify-content:center}
@@ -337,7 +337,7 @@ button[disabled]{opacity:.5;cursor:default}
 
   <div class="hero-top">
   <p class="eyebrow">Polynesian Music Network</p>
-  <h1 id="h1"><span>Welcome to the biggest</span> <span>Pasifika-driven platform</span></h1>
+  <h1 id="h1"><span>For the culture.</span> <span>By the culture.</span></h1>
   <p class="line">Music, tradition, sports, culture and more from all across the Pacific Islands.</p>
 
   <div class="capture">
@@ -390,28 +390,12 @@ button[disabled]{opacity:.5;cursor:default}
   </div>
 </section>
 
-<section class="rlp" id="playlist" aria-labelledby="rlpH">
-  <video muted loop playsinline preload="none" aria-hidden="true" data-lazy>
-    <source data-src="/assets/playlists/pmn-plus-toa-samoa-vs-tonga-rlwc-2026-mobile.mp4" type="video/mp4" media="(max-width:700px) and (orientation:portrait)">
-    <source data-src="/assets/playlists/pmn-plus-toa-samoa-vs-tonga-rlwc-2026-1280.mp4" type="video/mp4">
-  </video>
-  <div class="wrap rlp-in">
-    <div class="rlp-txt">
-      <p class="eyebrow">Samoa vs Tonga &middot; Sun Nov 1</p>
-      <h2 id="rlpH"><span>Rugby League</span> <span>World Cup</span> <span>Playlist</span></h2>
-      <a class="go" href="/rlwc-playlists">Listen now <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-    </div>
-    <div class="rlp-pl s"><p class="rlp-tag">Toa Samoa</p><iframe title="Toa Samoa game day playlist on Spotify" src="https://open.spotify.com/embed/playlist/42iE2Q3zvWwnWJ9MOc8BCE?utm_source=generator&amp;theme=0" height="152" loading="lazy" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe></div>
-    <div class="rlp-pl t"><p class="rlp-tag">Mate Ma&#8217;a Tonga</p><iframe title="Mate Ma&#8217;a Tonga game day playlist on Spotify" src="https://open.spotify.com/embed/playlist/6ZaUChLDVQBZm9xC8Jf8y3?utm_source=generator&amp;theme=0" height="152" loading="lazy" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe></div>
-  </div>
-</section>
-
 <section class="ev" id="everywhere" aria-labelledby="evH">
   <div class="ev-hero band">
     <picture class="px" aria-hidden="true"><source type="image/avif" srcset="/assets/home/pmn-plus-concert-crowd-tonga-flag-bg1280.avif 1280w, /assets/home/pmn-plus-concert-crowd-tonga-flag-bg2400.avif 2400w" sizes="100vw"><source type="image/webp" srcset="/assets/home/pmn-plus-concert-crowd-tonga-flag-bg1280.webp 1280w, /assets/home/pmn-plus-concert-crowd-tonga-flag-bg2400.webp 2400w" sizes="100vw"><img src="/assets/home/pmn-plus-concert-crowd-tonga-flag-bg1280.webp" alt="" loading="lazy" decoding="async" style="object-position:50% 35%"></picture>
     <div class="wrap ev-in">
       <p class="eyebrow">Representation matters</p>
-      <h2 id="evH">For the culture.<br>By the culture.</h2>
+      <h2 id="evH">Welcome to the biggest<br>Pasifika-driven platform</h2>
       <p class="sub">From the biggest Pacific artists to the biggest pro athletes in the game, we&rsquo;re there for every big moment, capturing our people, putting our culture on the map.</p>
       <ul class="ev-tags" aria-label="Our mantra"><li>Community</li><li>Culture</li><li>Connection</li></ul>
     </div>
@@ -687,10 +671,11 @@ let x0=null;lb.addEventListener('touchstart',e=>{x0=e.touches[0].clientX},{passi
    .catch(hide);
 })();
 </script><script>
-(()=>{/* RLWC playlist band: load the video only near the screen, pause it off screen; skip on data saver / reduced motion */
- const v=document.querySelector('.rlp video[data-lazy]');if(!v)return;const c=navigator.connection;
- if((c&&c.saveData)||matchMedia('(prefers-reduced-motion:reduce)').matches||!('IntersectionObserver' in window))return;
- let loaded=false;new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){if(!loaded){v.querySelectorAll('source').forEach(s=>s.src=s.dataset.src);v.load();loaded=true}v.play().catch(()=>{})}else if(loaded)v.pause()}),{rootMargin:'200px 0px'}).observe(v.parentElement);
+(()=>{/* keep the hero clear of the fixed header: measure it into --nav-h so the eyebrow never hides under the bar */
+ const h=document.querySelector('header.nav');if(!h)return;
+ const set=()=>document.documentElement.style.setProperty('--nav-h',h.offsetHeight+'px');
+ set();addEventListener('resize',set,{passive:true});
+ if(window.ResizeObserver)new ResizeObserver(set).observe(h);
 })();
 </script>
 </body>

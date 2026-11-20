@@ -306,6 +306,9 @@ def post_ld(post, idx):
     breadcrumb = {"@type": "BreadcrumbList", "itemListElement": [
         {"@type": "ListItem", "position": i + 1, "name": n, "item": u} for i, (n, u) in enumerate(crumbs)]}
     graph = [article, breadcrumb, org]
+    _tags = post.get("tags") or []
+    if _tags:
+        article["about"] = [{"@type": "Thing", "name": t} for t in _tags[:8]]
     faq = faq_ld(post.get("body_html"))
     if faq:
         faq["@id"] = url + "#faq"
@@ -507,6 +510,7 @@ THIN_CHARS = 200
 def sitemap(posts, issues, cats, authors, idx):
     now = datetime.now(timezone.utc).strftime("%Y-%m-%d")
     urls = [(SITE + "/stories", now), (SITE + "/digital-magazine", now)]
+    urls += [(SITE + "/" + h["slug"], now) for h in TEAM_HUBS]
     # a hub with no published stories renders an empty page; don't submit one
     for c in cats:
         if any(p.get("category_id") == c["id"] for p in posts):
@@ -675,6 +679,70 @@ def magazine_index(issues, idx, og=None):
                 body=maghero + ('<div class="ed-wrap">' + archive + '</div>' if archive else '') + vidjs)
 
 
+# ---------- team hubs ----------
+TEAM_HUBS = [
+  {
+    "slug": "toa-samoa", "team": "samoa", "team_name": "Toa Samoa",
+    "title": "Toa Samoa: News, Jerseys & Merch | PMN+",
+    "desc": "Everything Toa Samoa - the latest on Samoa's rugby league team, game coverage, culture, and Toa Samoa jerseys, hats and merch.",
+    "eyebrow": "RUGBY LEAGUE", "h1": "Toa Samoa",
+    "intro": "The warriors of Samoa. From record Fan Day crowds to the Pacific Championships - the stories, the culture, and the gear to rep the blue.",
+    "shop_h": "Shop Toa Samoa", "shop_p": "Jerseys, snapbacks and tees to rep the blue.",
+    "shop_url": "/shop/toa-samoa", "shop_label": "Shop the collection",
+    "stories_h": "Latest Toa Samoa stories", "faq_h": "Toa Samoa FAQ",
+    "faqs": [
+      ("What is Toa Samoa?", "Toa Samoa - the Samoan warriors - is the national rugby league team of Samoa, who reached the 2022 Rugby League World Cup final and anchor the Pacific Championships."),
+      ("What does Toa Samoa mean?", "Toa means warrior in Samoan, so Toa Samoa means the warriors of Samoa."),
+      ("Where can I get a Toa Samoa jersey?", 'Browse jerseys, hats and tees in the <a href="/shop/toa-samoa">PMN+ Toa Samoa collection</a>.'),
+    ],
+  },
+  {
+    "slug": "mate-maa-tonga", "team": "tonga", "team_name": "Mate Ma'a Tonga",
+    "title": "Mate Ma'a Tonga: News, Jerseys & Merch | PMN+",
+    "desc": "Everything Mate Ma'a Tonga - news on Tonga's rugby league team, game coverage, culture, and MMT jerseys, 676 tees and merch.",
+    "eyebrow": "RUGBY LEAGUE", "h1": "Mate Ma'a Tonga",
+    "intro": "Die for Tonga. The sea of red that became one of rugby league's most powerful movements - the stories, the culture, and the gear to rep the red.",
+    "shop_h": "Shop Mate Ma'a Tonga", "shop_p": "Jerseys, 676 tees and more to rep Tonga.",
+    "shop_url": "/shop/mate-maa-tonga", "shop_label": "Shop the collection",
+    "stories_h": "Latest Tonga stories", "faq_h": "Mate Ma'a Tonga FAQ",
+    "faqs": [
+      ("What does Mate Ma'a Tonga mean?", "It translates roughly as die for Tonga - the rallying identity of Tonga's national rugby league team."),
+      ("What does the 676 mean?", "676 is Tonga's international dialing code, worn as a badge of national pride on Mate Ma'a Tonga gear."),
+      ("Where can I get Mate Ma'a Tonga merch?", 'Browse jerseys, 676 tees and more in the <a href="/shop/mate-maa-tonga">PMN+ Mate Ma\'a Tonga collection</a>.'),
+    ],
+  },
+]
+
+def team_hub_page(cfg, idx):
+    stories = [p for p in idx["posts"] if cfg["team"] in story_teams(p)]
+    stories = sorted(stories, key=lambda q: q.get("published_at") or "", reverse=True)
+    url = SITE + "/" + cfg["slug"]
+    cards = "".join(big_card(p, idx) for p in stories[:12]) or '<p style="color:var(--dim)">Stories coming soon.</p>'
+    faqs = cfg["faqs"]
+    faq_html = "".join('<details class="ed-faq"><summary>' + esc(q) + '</summary><div>' + a + '</div></details>' for q, a in faqs)
+    shop_cta = ('<div class="ed-strip"><span class="ey">SHOP</span><h2>' + esc(cfg["shop_h"]) + '</h2><p>'
+                + esc(cfg["shop_p"]) + '</p><a class="ed-btn" href="' + esc(cfg["shop_url"]) + '">'
+                + esc(cfg["shop_label"]) + ' &rarr;</a></div>')
+    head = ('<div class="ed-head"><span class="ey">' + esc(cfg["eyebrow"]) + '</span><h1>'
+            + esc(cfg["h1"]) + '</h1><p>' + esc(cfg["intro"]) + '</p></div>')
+    grid = ('<div class="ed-strip"><span class="ey">LATEST</span><h2>' + esc(cfg["stories_h"])
+            + '</h2><div class="ed-grid-cards">' + cards + '</div></div>')
+    faq_sec = '<section class="ed-faqs"><h2>' + esc(cfg["faq_h"]) + '</h2>' + faq_html + '</section>'
+    body = '<div class="ed-wrap">' + head + shop_cta + grid + faq_sec + '</div>'
+    ld = {"@context": "https://schema.org", "@graph": [
+        {"@type": "SportsTeam", "name": cfg["team_name"], "sport": "Rugby league", "url": url},
+        {"@type": "FAQPage", "mainEntity": [
+            {"@type": "Question", "name": q,
+             "acceptedAnswer": {"@type": "Answer", "text": re.sub(r"<[^>]+>", " ", a).strip()}}
+            for q, a in faqs]},
+        {"@type": "BreadcrumbList", "itemListElement": [
+            {"@type": "ListItem", "position": 1, "name": "Home", "item": SITE + "/"},
+            {"@type": "ListItem", "position": 2, "name": cfg["team_name"], "item": url}]},
+    ]}
+    og = next((p.get("hero_image_url") for p in stories if p.get("hero_image_url")), None)
+    return page(cfg["title"], cfg["desc"], url, body=body, ld=ld, og_image=og)
+
+
 def main():
     data = load_data(sys.argv)
     posts = [p for p in data["posts"] if p.get("status") == "published"]
@@ -776,6 +844,9 @@ def main():
         magazine_index(issues, idx, cards.get("digital-magazine"))))
     # feeds
     out.append(write("stories/feed.xml", rss(posts, idx)))
+    # team hubs
+    for _h in TEAM_HUBS:
+        out.append(write(_h["slug"] + "/index.html", team_hub_page(_h, idx)))
     out.append(write("sitemap-stories.xml", sitemap(posts, issues, live_cats, live_authors, idx)))
 
     print(f"generated {len(out)} files:")

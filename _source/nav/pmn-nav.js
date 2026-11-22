@@ -10,7 +10,7 @@ const ic={
   bag:'<svg viewBox="0 0 24 24"><path d="M5 8h14l-1 12H6L5 8z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg>',
   home:'<svg viewBox="0 0 24 24"><path d="M4 11l8-7 8 7v9h-5v-6H9v6H4z"/></svg>',
   play:'<svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="M10 9.5v5l4.5-2.5z"/></svg>'};
-const LINKS=[["Shop","/shop"],["Stories","/stories"],["Cover Stories","/digital-magazine"],["Toa Samoa","/shop/toa-samoa"],["Mate Ma'a Tonga","/shop/mate-maa-tonga"],["PMN+","/shop#pmn"],["Tees","/shop#tee"],["Hats","/shop#hat"],["Watch","https://www.youtube.com/@polynesianmusicnetwork"]];
+const LINKS=[["Shop","/shop"],["Stories","/stories"],["Cover Stories","/digital-magazine"],["Music","/stories/music"],["Sports","/stories/sports"],["Culture","/stories/culture"],["Events","/stories/tag/holo-holo"],["Watch","https://www.youtube.com/@polynesianmusicnetwork"]];
 const onShop=()=>/^\/shop(\/|$)/.test(location.pathname);
 let data=null,loading=null;
 const load=()=>data?Promise.resolve(data):loading||(loading=fetch("/shop/search.json").then(r=>r.json()).then(j=>data=j).catch(()=>data=[]));
@@ -84,6 +84,10 @@ function bagCount(){let n=0;try{n=JSON.parse(localStorage.getItem("pmn_cart")||"
 document.querySelectorAll(".pn").forEach(root=>{
   root.querySelectorAll(".pn-menu").forEach(b=>b.onclick=()=>openDrawer(b));
   wireSearch(root);
+  const smOn=root.querySelector(".pn-shopmode-on"),smOff=root.querySelector(".pn-shopmode-off");
+  if(smOn)smOn.addEventListener("click",e=>{e.preventDefault();root.classList.add("pn-shopmode")});
+  if(smOff)smOff.addEventListener("click",e=>{e.preventDefault();root.classList.remove("pn-shopmode")});
+  if(onShop())root.classList.add("pn-shopmode");
   root.querySelectorAll(".pn-cats a").forEach(a=>{a.addEventListener("click",e=>go(e,a.getAttribute("href")));
     const u=new URL(a.href);if(u.pathname===location.pathname&&!u.hash&&u.pathname!=="/shop")a.setAttribute("aria-current","page")});
 });
@@ -316,4 +320,20 @@ get("issues?status=eq.published&select=slug,title,period_label,cover_image_url&o
    if(!Array.isArray(issues)||!issues.length)return;
    grids.forEach(g=>{g.innerHTML=`<div class="pn-dd-rest">`+issues.map(tile).join("")+`</div>`});
  });
+})();
+
+/* Content dropdowns (Music/Sports/Culture/Events): fill image cards from the full content feed. */
+(()=>{
+const grids=document.querySelectorAll("[data-pn-mag] .pn-dd-tiles");
+if(!grids.length)return;
+const esc=t=>String(t==null?"":t).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const EV=["holo holo","pacific championships","nrl","nrl vegas","nrl las vegas","las vegas","rlwc 2026"];
+const F={music:s=>(s.c||"").toLowerCase()==="music",sports:s=>(s.c||"").toLowerCase()==="sports",culture:s=>(s.c||"").toLowerCase()==="culture",events:s=>(s.tg||[]).includes("holo holo")};
+const tile=s=>`<a href="/stories/${esc(s.s)}" role="menuitem">`+
+  (s.h?`<img loading="lazy" src="${esc(s.h)}" alt="${esc(s.t)}">`:`<span class="pn-ph"></span>`)+
+  `<b>${esc(s.t)}</b>`+(s.c?`<small>${esc(s.c)}</small>`:"")+`</a>`;
+fetch("/assets/content/nav-menu.json").then(r=>r.ok?r.json():[]).then(all=>{
+  if(!Array.isArray(all)||!all.length)return;
+  grids.forEach(g=>{const f=F[g.dataset.dd];if(!f)return;const picks=all.filter(f).slice(0,4);if(picks.length)g.innerHTML=picks.map(tile).join("")});
+}).catch(()=>{});
 })();

@@ -804,6 +804,18 @@ def main():
         })
     out.append(write("assets/content/stories.json",
                      json.dumps(stories_feed, ensure_ascii=False, separators=(",", ":"))))
+    # nav-menu.json — full content feed (all sections, with tags) for the header dropdown image cards
+    nav_feed = []
+    for p in newest_posts:
+        if not p.get("hero_image_url"):
+            continue
+        cat = idx["cat"].get(p.get("category_id"), {})
+        nav_feed.append({
+            "s": p["slug"], "t": p["title"], "h": p["hero_image_url"],
+            "c": cat.get("name") or "", "tg": [t.lower() for t in (p.get("tags") or [])],
+        })
+    out.append(write("assets/content/nav-menu.json",
+                     json.dumps(nav_feed, ensure_ascii=False, separators=(",", ":"))))
     # Share cards for the hubs. /digital-magazine is about every issue and /stories about every
     # story, so neither can honestly borrow one story's photograph.
     # an empty hub is a dead end: keep it out of the filter row, the cards and the sitemap

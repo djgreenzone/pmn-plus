@@ -29,8 +29,24 @@ I_SEARCH=SV('<circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/>')
 I_USER=SV('<circle cx="12" cy="8" r="4"/><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6"/>')
 I_BAG=SV('<path d="M5 8h14l-1 12H6L5 8z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/>')
 I_BACK='<svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg>'
-CATS=[("Shop","/shop"),("Toa Samoa","/shop/toa-samoa"),("Mate Ma'a Tonga","/shop/mate-maa-tonga"),("PMN+","/shop#pmn"),("Tees","/shop#tee"),("Hats","/shop#hat")]
 YOUTUBE="https://www.youtube.com/@polynesianmusicnetwork"
+_DDCX='<svg class="pn-dd-cx" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>'
+_BKCX='<svg class="pn-bk-cx" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg>'
+# Content mega-menus (same mechanism as Cover Stories). All targets are live pages (categories + tag hubs).
+CONTENT_DD=[
+  ("Music","/stories/music","View all music",[("Artists","/stories/tag/pasifika-artists"),("Island Reggae","/stories/tag/island-reggae"),("Hip-Hop","/stories/tag/hip-hop"),("R&amp;B","/stories/tag/r-b"),("Samoan Music","/stories/tag/samoan-music"),("Tongan Music","/stories/tag/tongan-music"),("Playlists","/stories/tag/playlist")]),
+  ("Sports","/stories/sports","View all sports",[("Toa Samoa","/toa-samoa"),("Mate Ma'a Tonga","/mate-maa-tonga"),("NFL","/stories/tag/nfl"),("College Football","/stories/tag/college-football"),("Boxing","/stories/tag/boxing"),("All Athletes","/stories/tag/pasifika-athletes")]),
+  ("Culture","/stories/culture","View all culture",[("Moana 2","/stories/tag/moana-2"),("Samoan Culture","/stories/tag/samoan-culture"),("Language","/stories/tag/samoan-language"),("Faith","/stories/tag/faith"),("Community","/stories/community")]),
+  ("Events","/stories/tag/holo-holo","View all events",[("Holo Holo","/stories/tag/holo-holo"),("Pacific Championships","/stories/tag/pacific-championships"),("NRL Vegas","/stories/tag/las-vegas")]),
+]
+SHOP_CATS=[("Shop All","/shop"),("Toa Samoa","/shop/toa-samoa"),("Mate Ma'a Tonga","/shop/mate-maa-tonga"),("PMN+","/shop/pmn-plus"),("Tees","/shop#tee"),("Hats","/shop#hat")]
+def _content_dd(label,all_href,all_label,items):
+    return ('<div class="pn-dd" data-pn-mag>'
+            f'<a class="pn-dd-t" href="{all_href}">{label}{_DDCX}</a>'
+            '<div class="pn-dd-menu"><div class="pn-dd-scrim"></div>'
+            '<div class="pn-dd-inner pn-dd-cinner" role="menu">'
+            f'<a class="pn-dd-all" href="{all_href}" role="menuitem">{all_label} →</a>'
+            f'<div class="pn-dd-tiles" data-dd="{label.lower()}"></div></div></div></div>')
 def header(back_id=None,back_label="Back",bag="button",extra="",shop=False):
     back=f'<button type="button" class="pn-ic icon-btn" id="{back_id}" aria-label="{back_label}">{I_BACK}</button>' if back_id else ''
     bagel=(f'<button type="button" class="pn-ic icon-btn bag" aria-label="Bag">{I_BAG}<span class="bag-count" hidden></span></button>' if bag=="button"
@@ -44,11 +60,13 @@ def header(back_id=None,back_label="Back",bag="button",extra="",shop=False):
          '<div class="pn-dd-inner" role="menu">'
          '<a class="pn-dd-all" href="/digital-magazine" role="menuitem">View all cover stories →</a>'
          '<div class="pn-dd-covers"></div></div></div></div>')
-    # SHOP leads, then the editorial pair, then the team/product categories, then WATCH (off-site)
-    cats=(f'<a href="{CATS[0][1]}">{CATS[0][0]}</a>'
+    # Two-menu nav: content bar (editorial) <-> shop bar (merch), switched by the Shop / back controls.
+    content_cats=('<button type="button" class="pn-shopmode-on">Shop</button>'
           '<a href="/stories">Stories</a>'+mag
-          +''.join(f'<a href="{h}">{t}</a>' for t,h in CATS[1:])
+          +''.join(_content_dd(*d) for d in CONTENT_DD)
           +f'<a href="{YOUTUBE}" target="_blank" rel="noopener">Watch</a>')
+    shop_cats=(f'<button type="button" class="pn-shopmode-off">{_BKCX}Stories</button>'
+          +''.join(f'<a href="{h}">{t}</a>' for t,h in SHOP_CATS))
     return (f'<div class="pn"><div class="pn-row">'
       f'<div class="pn-l">{back}<button type="button" class="pn-ic pn-menu" aria-label="Open menu" aria-expanded="false" aria-controls="pnDrawer">{I_MENU}</button></div>'
       f'{logo}'
@@ -56,7 +74,7 @@ def header(back_id=None,back_label="Back",bag="button",extra="",shop=False):
       f'<input type="search" name="q" placeholder="Search tees, hats, teams…" aria-label="Search the shop" autocomplete="off" role="combobox" aria-expanded="false" aria-autocomplete="list"><div class="pn-res" role="listbox" hidden></div></form>'
       f'<button type="button" class="pn-ic pn-sbtn" aria-label="Search">{I_SEARCH}</button>'
       f'<a class="pn-ic pn-acct" href="/account" aria-label="Your PMN+ account" hidden>{I_USER}</a>{bagel}</div></div>'  # shown when PMN_CONFIG.accountsLive
-      f'<nav class="pn-cats" aria-label="Sections">{cats}</nav>{extra}</div>')
+      f'<nav class="pn-cats" aria-label="Sections"><span class="pn-cg pn-cg-content">{content_cats}</span><span class="pn-cg pn-cg-shop">{shop_cats}</span></nav>{extra}</div>')
 
 def build_shop(s):
     """replace the four shop view headers"""

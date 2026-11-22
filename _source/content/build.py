@@ -306,6 +306,9 @@ def post_ld(post, idx):
     breadcrumb = {"@type": "BreadcrumbList", "itemListElement": [
         {"@type": "ListItem", "position": i + 1, "name": n, "item": u} for i, (n, u) in enumerate(crumbs)]}
     graph = [article, breadcrumb, org]
+    _tags = post.get("tags") or []
+    if _tags:
+        article["about"] = [{"@type": "Thing", "name": t} for t in _tags[:8]]
     faq = faq_ld(post.get("body_html"))
     if faq:
         faq["@id"] = url + "#faq"
@@ -355,6 +358,8 @@ def post_page(post, idx):
              f'<a href="/stories/{esc(cat.get("slug"))}">{esc(cat.get("name"))}</a>'
              f'<span class="sep">/</span><span>{esc(trim(post["title"],40))}</span></div>')
     tags = "".join(f'<a class="ed-tag" href="/stories/tag/{esc(slugify(t))}">{esc(t)}</a>' for t in (post.get("tags") or []))
+    _th = [h for h in TEAM_HUBS if h["team"] in story_teams(post)]
+    hub_block = ('<div class="ed-tags">More: ' + " \u00b7 ".join('<a class="ed-tag" href="/' + h["slug"] + '">' + esc(h["team_name"]) + '</a>' for h in _th) + '</div>') if _th else ""
     mag_line = ""
     if iss:
         mag_line = (f' Originally published in <a href="/digital-magazine/{esc(iss["slug"])}">'
@@ -376,7 +381,7 @@ def post_page(post, idx):
 <article class="ed-article">
 {inject_ad(post.get('body_html') or '')}
 {shop}
-<div class="ed-tags">{tags}</div>
+{hub_block}<div class="ed-tags">{tags}</div>
 <p class="ed-rights">{esc(post.get('rights_note') or '')}{mag_line}</p>
 {strip}
 </article>
@@ -507,6 +512,7 @@ THIN_CHARS = 200
 def sitemap(posts, issues, cats, authors, idx):
     now = datetime.now(timezone.utc).strftime("%Y-%m-%d")
     urls = [(SITE + "/stories", now), (SITE + "/digital-magazine", now)]
+    urls += [(SITE + "/" + h["slug"], now) for h in TEAM_HUBS]
     # a hub with no published stories renders an empty page; don't submit one
     for c in cats:
         if any(p.get("category_id") == c["id"] for p in posts):
@@ -675,6 +681,87 @@ def magazine_index(issues, idx, og=None):
                 body=maghero + ('<div class="ed-wrap">' + archive + '</div>' if archive else '') + vidjs)
 
 
+# ---------- team hubs ----------
+TEAM_HUBS = [
+  {
+    "slug": "toa-samoa", "team": "samoa", "team_name": "Toa Samoa",
+    "title": "Toa Samoa: News, Jerseys & Merch | PMN+",
+    "desc": "Everything Toa Samoa - news on Samoa's rugby league team, game coverage, the culture behind the crest, and Toa Samoa jerseys, hats and tees.",
+    "eyebrow": "RUGBY LEAGUE", "h1": "Toa Samoa",
+    "hero_image": "https://zacfssfjlmixnqhjuoed.supabase.co/storage/v1/object/public/media/stories/november-2025/toa-samoa-fan-day-western-sydney-hero.jpg",
+    "intro": "The warriors of Samoa - the stories, the culture, and the gear to rep the blue.",
+    "about": [
+      "Toa Samoa - the warriors of Samoa - are the national rugby league team of Samoa. Long cast as underdogs of the international game, they stunned the world by reaching the final of the 2022 Rugby League World Cup, and have since become one of the proudest movements in Pacific sport.",
+      "Backed by a sea of blue, Toa Samoa carry more than a jersey. They carry siva, faith, family and the fa'a Samoa onto the world stage. This is your home for the team: the latest stories and game coverage, the culture behind the crest, and the gear to rep the blue.",
+    ],
+    "shop_h": "Shop Toa Samoa", "shop_p": "Jerseys, snapbacks and tees to rep the blue.",
+    "shop_url": "/shop/toa-samoa", "shop_label": "Shop the collection",
+    "stories_h": "Latest Toa Samoa stories", "faq_h": "Toa Samoa FAQ",
+    "faqs": [
+      ("What is Toa Samoa?", "Toa Samoa - the Samoan warriors - is the national rugby league team of Samoa, who reached the 2022 Rugby League World Cup final and anchor the Pacific Championships."),
+      ("What does Toa Samoa mean?", "Toa means warrior in Samoan, so Toa Samoa means the warriors of Samoa."),
+      ("Where can I get a Toa Samoa jersey?", 'Browse jerseys, hats and tees in the <a href="/shop/toa-samoa">PMN+ Toa Samoa collection</a>.'),
+    ],
+  },
+  {
+    "slug": "mate-maa-tonga", "team": "tonga", "team_name": "Mate Ma'a Tonga",
+    "title": "Mate Ma'a Tonga: News, Jerseys & Merch | PMN+",
+    "desc": "Everything Mate Ma'a Tonga - news on Tonga's rugby league team, game coverage, the culture, and MMT jerseys, 676 tees and merch.",
+    "eyebrow": "RUGBY LEAGUE", "h1": "Mate Ma'a Tonga",
+    "hero_image": "https://zacfssfjlmixnqhjuoed.supabase.co/storage/v1/object/public/media/stories/november-2025/josh-tatofi-tonga-anthem-eden-park-hero.jpg",
+    "intro": "Die for Tonga - the stories, the culture, and the gear to rep the red.",
+    "about": [
+      "Mate Ma'a Tonga - 'die for Tonga' - are the national rugby league team of Tonga, and one of the great stories of modern rugby league. Powered by a red army of fans, they have toppled some of the game's biggest nations and turned every match into a celebration of Tongan pride.",
+      "The 676 worn across their chest is Tonga's international dialing code, carried as a badge of nation and belonging. This is your home for Mate Ma'a Tonga: the latest coverage, the culture, and the gear to rep the red.",
+    ],
+    "shop_h": "Shop Mate Ma'a Tonga", "shop_p": "Jerseys, 676 tees and more to rep Tonga.",
+    "shop_url": "/shop/mate-maa-tonga", "shop_label": "Shop the collection",
+    "stories_h": "Latest Tonga stories", "faq_h": "Mate Ma'a Tonga FAQ",
+    "faqs": [
+      ("What does Mate Ma'a Tonga mean?", "It translates roughly as die for Tonga - the rallying identity of Tonga's national rugby league team."),
+      ("What does the 676 mean?", "676 is Tonga's international dialing code, worn as a badge of national pride on Mate Ma'a Tonga gear."),
+      ("Where can I get Mate Ma'a Tonga merch?", 'Browse jerseys, 676 tees and more in the <a href="/shop/mate-maa-tonga">PMN+ Mate Ma\'a Tonga collection</a>.'),
+    ],
+  },
+]
+
+def team_hub_page(cfg, idx):
+    stories = [p for p in idx["posts"] if cfg["team"] in story_teams(p)]
+    stories = sorted(stories, key=lambda q: q.get("published_at") or "", reverse=True)
+    url = SITE + "/" + cfg["slug"]
+    hero_img = cfg.get("hero_image") or next((p.get("hero_image_url") for p in stories if p.get("hero_image_url")), "")
+    if hero_img:
+        hero = ('<div class="ed-hero"><img src="' + esc(hero_img) + '" alt="' + esc(cfg["h1"]) + '">'
+                '<div class="grad"></div><div class="copy"><span class="ed-chip">' + esc(cfg["eyebrow"]) + '</span>'
+                '<h1>' + esc(cfg["h1"]) + '</h1><p class="ed-dek">' + esc(cfg["intro"]) + '</p></div></div>')
+    else:
+        hero = ('<div class="ed-head"><span class="ey">' + esc(cfg["eyebrow"]) + '</span><h1>'
+                + esc(cfg["h1"]) + '</h1><p>' + esc(cfg["intro"]) + '</p></div>')
+    about = "".join('<p>' + esc(par) + '</p>' for par in cfg.get("about", []))
+    about_sec = ('<article class="ed-article">' + about + '</article>') if about else ""
+    cards = "".join(big_card(p, idx) for p in stories[:12]) or '<p style="color:var(--dim)">Stories coming soon.</p>'
+    faqs = cfg["faqs"]
+    faq_html = "".join('<details class="ed-faq"><summary>' + esc(q) + '</summary><div>' + a + '</div></details>' for q, a in faqs)
+    shop_cta = ('<div class="ed-strip"><span class="ey">SHOP</span><h2>' + esc(cfg["shop_h"]) + '</h2><p>'
+                + esc(cfg["shop_p"]) + '</p><a class="ed-btn" href="' + esc(cfg["shop_url"]) + '">'
+                + esc(cfg["shop_label"]) + ' &rarr;</a></div>')
+    grid = ('<div class="ed-strip"><span class="ey">LATEST</span><h2>' + esc(cfg["stories_h"])
+            + '</h2><div class="ed-grid-cards">' + cards + '</div></div>')
+    faq_sec = '<section class="ed-faqs"><h2>' + esc(cfg["faq_h"]) + '</h2>' + faq_html + '</section>'
+    body = '<div class="ed-wrap">' + hero + about_sec + shop_cta + grid + faq_sec + '</div>'
+    ld = {"@context": "https://schema.org", "@graph": [
+        {"@type": "SportsTeam", "name": cfg["team_name"], "sport": "Rugby league", "url": url},
+        {"@type": "FAQPage", "mainEntity": [
+            {"@type": "Question", "name": q,
+             "acceptedAnswer": {"@type": "Answer", "text": re.sub(r"<[^>]+>", " ", a).strip()}}
+            for q, a in faqs]},
+        {"@type": "BreadcrumbList", "itemListElement": [
+            {"@type": "ListItem", "position": 1, "name": "Home", "item": SITE + "/"},
+            {"@type": "ListItem", "position": 2, "name": cfg["team_name"], "item": url}]},
+    ]}
+    return page(cfg["title"], cfg["desc"], url, body=body, ld=ld, og_image=hero_img or None, og_type="website")
+
+
 def main():
     data = load_data(sys.argv)
     posts = [p for p in data["posts"] if p.get("status") == "published"]
@@ -717,6 +804,18 @@ def main():
         })
     out.append(write("assets/content/stories.json",
                      json.dumps(stories_feed, ensure_ascii=False, separators=(",", ":"))))
+    # nav-menu.json — full content feed (all sections, with tags) for the header dropdown image cards
+    nav_feed = []
+    for p in newest_posts:
+        if not p.get("hero_image_url"):
+            continue
+        cat = idx["cat"].get(p.get("category_id"), {})
+        nav_feed.append({
+            "s": p["slug"], "t": p["title"], "h": p["hero_image_url"],
+            "c": cat.get("name") or "", "tg": [t.lower() for t in (p.get("tags") or [])],
+        })
+    out.append(write("assets/content/nav-menu.json",
+                     json.dumps(nav_feed, ensure_ascii=False, separators=(",", ":"))))
     # Share cards for the hubs. /digital-magazine is about every issue and /stories about every
     # story, so neither can honestly borrow one story's photograph.
     # an empty hub is a dead end: keep it out of the filter row, the cards and the sitemap
@@ -776,6 +875,9 @@ def main():
         magazine_index(issues, idx, cards.get("digital-magazine"))))
     # feeds
     out.append(write("stories/feed.xml", rss(posts, idx)))
+    # team hubs
+    for _h in TEAM_HUBS:
+        out.append(write(_h["slug"] + "/index.html", team_hub_page(_h, idx)))
     out.append(write("sitemap-stories.xml", sitemap(posts, issues, live_cats, live_authors, idx)))
 
     print(f"generated {len(out)} files:")

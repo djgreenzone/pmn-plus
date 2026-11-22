@@ -358,6 +358,8 @@ def post_page(post, idx):
              f'<a href="/stories/{esc(cat.get("slug"))}">{esc(cat.get("name"))}</a>'
              f'<span class="sep">/</span><span>{esc(trim(post["title"],40))}</span></div>')
     tags = "".join(f'<a class="ed-tag" href="/stories/tag/{esc(slugify(t))}">{esc(t)}</a>' for t in (post.get("tags") or []))
+    _th = [h for h in TEAM_HUBS if h["team"] in story_teams(post)]
+    hub_block = ('<div class="ed-tags">More: ' + " \u00b7 ".join('<a class="ed-tag" href="/' + h["slug"] + '">' + esc(h["team_name"]) + '</a>' for h in _th) + '</div>') if _th else ""
     mag_line = ""
     if iss:
         mag_line = (f' Originally published in <a href="/digital-magazine/{esc(iss["slug"])}">'
@@ -379,7 +381,7 @@ def post_page(post, idx):
 <article class="ed-article">
 {inject_ad(post.get('body_html') or '')}
 {shop}
-<div class="ed-tags">{tags}</div>
+{hub_block}<div class="ed-tags">{tags}</div>
 <p class="ed-rights">{esc(post.get('rights_note') or '')}{mag_line}</p>
 {strip}
 </article>
@@ -684,9 +686,14 @@ TEAM_HUBS = [
   {
     "slug": "toa-samoa", "team": "samoa", "team_name": "Toa Samoa",
     "title": "Toa Samoa: News, Jerseys & Merch | PMN+",
-    "desc": "Everything Toa Samoa - the latest on Samoa's rugby league team, game coverage, culture, and Toa Samoa jerseys, hats and merch.",
+    "desc": "Everything Toa Samoa - news on Samoa's rugby league team, game coverage, the culture behind the crest, and Toa Samoa jerseys, hats and tees.",
     "eyebrow": "RUGBY LEAGUE", "h1": "Toa Samoa",
-    "intro": "The warriors of Samoa. From record Fan Day crowds to the Pacific Championships - the stories, the culture, and the gear to rep the blue.",
+    "hero_image": "https://zacfssfjlmixnqhjuoed.supabase.co/storage/v1/object/public/media/stories/november-2025/toa-samoa-fan-day-western-sydney-hero.jpg",
+    "intro": "The warriors of Samoa - the stories, the culture, and the gear to rep the blue.",
+    "about": [
+      "Toa Samoa - the warriors of Samoa - are the national rugby league team of Samoa. Long cast as underdogs of the international game, they stunned the world by reaching the final of the 2022 Rugby League World Cup, and have since become one of the proudest movements in Pacific sport.",
+      "Backed by a sea of blue, Toa Samoa carry more than a jersey. They carry siva, faith, family and the fa'a Samoa onto the world stage. This is your home for the team: the latest stories and game coverage, the culture behind the crest, and the gear to rep the blue.",
+    ],
     "shop_h": "Shop Toa Samoa", "shop_p": "Jerseys, snapbacks and tees to rep the blue.",
     "shop_url": "/shop/toa-samoa", "shop_label": "Shop the collection",
     "stories_h": "Latest Toa Samoa stories", "faq_h": "Toa Samoa FAQ",
@@ -699,9 +706,14 @@ TEAM_HUBS = [
   {
     "slug": "mate-maa-tonga", "team": "tonga", "team_name": "Mate Ma'a Tonga",
     "title": "Mate Ma'a Tonga: News, Jerseys & Merch | PMN+",
-    "desc": "Everything Mate Ma'a Tonga - news on Tonga's rugby league team, game coverage, culture, and MMT jerseys, 676 tees and merch.",
+    "desc": "Everything Mate Ma'a Tonga - news on Tonga's rugby league team, game coverage, the culture, and MMT jerseys, 676 tees and merch.",
     "eyebrow": "RUGBY LEAGUE", "h1": "Mate Ma'a Tonga",
-    "intro": "Die for Tonga. The sea of red that became one of rugby league's most powerful movements - the stories, the culture, and the gear to rep the red.",
+    "hero_image": "https://zacfssfjlmixnqhjuoed.supabase.co/storage/v1/object/public/media/stories/november-2025/josh-tatofi-tonga-anthem-eden-park-hero.jpg",
+    "intro": "Die for Tonga - the stories, the culture, and the gear to rep the red.",
+    "about": [
+      "Mate Ma'a Tonga - 'die for Tonga' - are the national rugby league team of Tonga, and one of the great stories of modern rugby league. Powered by a red army of fans, they have toppled some of the game's biggest nations and turned every match into a celebration of Tongan pride.",
+      "The 676 worn across their chest is Tonga's international dialing code, carried as a badge of nation and belonging. This is your home for Mate Ma'a Tonga: the latest coverage, the culture, and the gear to rep the red.",
+    ],
     "shop_h": "Shop Mate Ma'a Tonga", "shop_p": "Jerseys, 676 tees and more to rep Tonga.",
     "shop_url": "/shop/mate-maa-tonga", "shop_label": "Shop the collection",
     "stories_h": "Latest Tonga stories", "faq_h": "Mate Ma'a Tonga FAQ",
@@ -717,18 +729,26 @@ def team_hub_page(cfg, idx):
     stories = [p for p in idx["posts"] if cfg["team"] in story_teams(p)]
     stories = sorted(stories, key=lambda q: q.get("published_at") or "", reverse=True)
     url = SITE + "/" + cfg["slug"]
+    hero_img = cfg.get("hero_image") or next((p.get("hero_image_url") for p in stories if p.get("hero_image_url")), "")
+    if hero_img:
+        hero = ('<div class="ed-hero"><img src="' + esc(hero_img) + '" alt="' + esc(cfg["h1"]) + '">'
+                '<div class="grad"></div><div class="copy"><span class="ed-chip">' + esc(cfg["eyebrow"]) + '</span>'
+                '<h1>' + esc(cfg["h1"]) + '</h1><p class="ed-dek">' + esc(cfg["intro"]) + '</p></div></div>')
+    else:
+        hero = ('<div class="ed-head"><span class="ey">' + esc(cfg["eyebrow"]) + '</span><h1>'
+                + esc(cfg["h1"]) + '</h1><p>' + esc(cfg["intro"]) + '</p></div>')
+    about = "".join('<p>' + esc(par) + '</p>' for par in cfg.get("about", []))
+    about_sec = ('<article class="ed-article">' + about + '</article>') if about else ""
     cards = "".join(big_card(p, idx) for p in stories[:12]) or '<p style="color:var(--dim)">Stories coming soon.</p>'
     faqs = cfg["faqs"]
     faq_html = "".join('<details class="ed-faq"><summary>' + esc(q) + '</summary><div>' + a + '</div></details>' for q, a in faqs)
     shop_cta = ('<div class="ed-strip"><span class="ey">SHOP</span><h2>' + esc(cfg["shop_h"]) + '</h2><p>'
                 + esc(cfg["shop_p"]) + '</p><a class="ed-btn" href="' + esc(cfg["shop_url"]) + '">'
                 + esc(cfg["shop_label"]) + ' &rarr;</a></div>')
-    head = ('<div class="ed-head"><span class="ey">' + esc(cfg["eyebrow"]) + '</span><h1>'
-            + esc(cfg["h1"]) + '</h1><p>' + esc(cfg["intro"]) + '</p></div>')
     grid = ('<div class="ed-strip"><span class="ey">LATEST</span><h2>' + esc(cfg["stories_h"])
             + '</h2><div class="ed-grid-cards">' + cards + '</div></div>')
     faq_sec = '<section class="ed-faqs"><h2>' + esc(cfg["faq_h"]) + '</h2>' + faq_html + '</section>'
-    body = '<div class="ed-wrap">' + head + shop_cta + grid + faq_sec + '</div>'
+    body = '<div class="ed-wrap">' + hero + about_sec + shop_cta + grid + faq_sec + '</div>'
     ld = {"@context": "https://schema.org", "@graph": [
         {"@type": "SportsTeam", "name": cfg["team_name"], "sport": "Rugby league", "url": url},
         {"@type": "FAQPage", "mainEntity": [
@@ -739,8 +759,7 @@ def team_hub_page(cfg, idx):
             {"@type": "ListItem", "position": 1, "name": "Home", "item": SITE + "/"},
             {"@type": "ListItem", "position": 2, "name": cfg["team_name"], "item": url}]},
     ]}
-    og = next((p.get("hero_image_url") for p in stories if p.get("hero_image_url")), None)
-    return page(cfg["title"], cfg["desc"], url, body=body, ld=ld, og_image=og)
+    return page(cfg["title"], cfg["desc"], url, body=body, ld=ld, og_image=hero_img or None, og_type="website")
 
 
 def main():

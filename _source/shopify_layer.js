@@ -33,5 +33,6 @@ const shopifyReady=(async()=>{try{
   const b=H[SHOPIFY_BUMP_HANDLE];if(b&&b.variants.nodes[0]){BUMP.variant=b.variants.nodes[0].id;BUMP.price=+b.variants.nodes[0].price.amount}
   SOLD.forEach(id=>{if(VAR[id])Object.values(VAR[id]).forEach(v=>v.ok=false)});
   shopifyOK=true;
+  try{if(typeof PDP!=="undefined"&&PDP.refresh)PDP.refresh()}catch(e){}
   if(changed)document.querySelectorAll("[data-pid]").forEach(el=>{const p=BY[el.dataset.pid],pr=el.querySelector(".pr");if(p&&pr)pr.textContent=money(p.price)});
 }catch(e){console.warn("Shopify",e)}})();

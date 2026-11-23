@@ -39,19 +39,30 @@ async function klavPost(attrs){const body={data:{type:"subscription",attributes:
 async function klav(email,phone,props){const a={email};if(phone)a.phone_number=phone;if(props)a.properties=props;
   try{await klavPost(a)}catch(e){await klavPost({email})}}
 const usPhone=d=>{d=String(d||"").replace(/\\D/g,"");return d.length>=10?"+1"+d.slice(-10):null};
+const KL_SMS_LIST="UdHNwW";
+async function klavEmail(email,first,last,props){const a={email,subscriptions:{email:{marketing:{consent:"SUBSCRIBED"}}}};if(first)a.first_name=first;if(last)a.last_name=last;if(props)a.properties=props;try{localStorage.setItem("pmn_email",email)}catch(e){}
+  const body={data:{type:"subscription",attributes:{profile:{data:{type:"profile",attributes:a}}},relationships:{list:{data:{type:"list",id:KLAVIYO_LIST_ID}}}}};
+  const r=await fetch("https://a.klaviyo.com/client/subscriptions/?company_id="+KLAVIYO_COMPANY_ID,{method:"POST",headers:{"content-type":"application/json","revision":"2026-07-15"},body:JSON.stringify(body)});if(!(r.status===202||r.ok))throw new Error("klaviyo "+r.status)}
+async function klavSms(phone){const body={data:{type:"subscription",attributes:{profile:{data:{type:"profile",attributes:{phone_number:phone,subscriptions:{sms:{marketing:{consent:"SUBSCRIBED"}}}}}}},relationships:{list:{data:{type:"list",id:KL_SMS_LIST}}}}};
+  const r=await fetch("https://a.klaviyo.com/client/subscriptions/?company_id="+KLAVIYO_COMPANY_ID,{method:"POST",headers:{"content-type":"application/json","revision":"2026-07-15"},body:JSON.stringify(body)});if(!(r.status===202||r.ok))throw new Error("klaviyo sms "+r.status)}
 const reduceMotion=''')
 rep('''    $("suMsg").textContent=!ok?"Enter a valid email address, like name@example.com.":!phOk?"Enter a 10-digit US mobile number, or leave it blank for 10% off.":
       `Thanks. In the live store Klaviyo emails your ${ph?"20%":"10%"} code now (prototype: nothing was sent).`;
-    if(ok&&phOk){$("suEmail").value="";$("suPhone").value=""}});''','''    if(!ok||!phOk){$("suMsg").textContent=!ok?"Enter a valid email address, like name@example.com.":"Enter a 10-digit US mobile number, or leave it blank for 10% off.";return}
+    if(ok&&phOk){$("suEmail").value="";$("suPhone").value=""}});''','''    if(!ok){$("suMsg").textContent="Enter a valid email address, like name@example.com.";return}
+    const fn=$("suFirst").value.trim(),ln=$("suLast").value.trim();
+    if(!fn||!ln){$("suMsg").textContent="Enter your first and last name.";return}
+    if(!phOk){$("suMsg").textContent="Enter a 10-digit US mobile number, or leave it blank.";return}
     const btn=e.target.querySelector("button");btn.disabled=true;$("suMsg").textContent="Adding you to the list…";
-    klav(v,usPhone(ph),{signup_source:"shop_signup",offer:ph?"20":"10"}).then(()=>{const _c=ph?"WELCOME20":"WELCOME10";try{localStorage.setItem("pmn_code",_c)}catch(e){}if(window.pmnSetCode)pmnSetCode(_c);$("suMsg").textContent=`You're in. ${_c} is saved to your bag and comes off at checkout.`;$("suEmail").value="";$("suPhone").value=""})
+    klavEmail(v,fn,ln,{signup_source:"shop_signup"}).then(async()=>{try{localStorage.setItem("pmn_code","WELCOME20")}catch(e){}if(window.pmnSetCode)pmnSetCode("WELCOME20");
+      if(ph&&$("suSms")&&$("suSms").checked){try{await klavSms(usPhone(ph))}catch(e){}}
+      $("suMsg").textContent="You're in. WELCOME20 is saved to your bag and comes off at checkout.";$("suEmail").value="";$("suPhone").value="";if($("suSms"))$("suSms").checked=false})
       .catch(()=>{$("suMsg").textContent="That didn't go through. Please try again in a moment."}).finally(()=>{btn.disabled=false})});''')
 rep('const done=pct=>{$("offCode").textContent=pct===20?"WELCOME20":"WELCOME10";$("offDoneP").textContent=`${pct}% off your first order. We\'ve emailed the code${pct===20?" and texted it":""} too.`;step(3)};',
 '''let offEmailV="";
-  const done=pct=>{const ph=pct===20?usPhone($("offPhone").value):null;$("offCode").hidden=true;$("offDoneP").textContent="Saving…";step(3);
-    klav(offEmailV,ph,{signup_source:"shop_popup",offer:String(pct)}).then(()=>{const _c=pct===20?"WELCOME20":"WELCOME10";try{localStorage.setItem("pmn_code",_c)}catch(e){}if(window.pmnSetCode)pmnSetCode(_c);$("offCode").textContent=_c;$("offCode").hidden=false;$("offDoneP").textContent=`${pct}% off is saved to your bag. It comes off automatically at checkout.`})
-      .catch(()=>{$("offDoneP").textContent="That didn't go through. Please use the sign-up form at the bottom of the page."})};''')
-rep('$("offErr1").textContent="";step(2)});','$("offErr1").textContent="";offEmailV=v;step(2)});')
+  const done=withPhone=>{$("offCode").textContent="WELCOME20";$("offCode").hidden=false;step(3);
+    if(withPhone){const ph=usPhone($("offPhone").value);if(ph)klavSms(ph).catch(()=>{});$("offDoneP").textContent="20% off is saved to your bag. Check your phone to confirm text alerts.";}
+    else{$("offDoneP").textContent="20% off is saved to your bag. It comes off automatically at checkout.";}};''')
+rep('$("offErr1").textContent="";step(2)});','$("offErr1").textContent="";const _fn=$("offFirst").value.trim(),_ln=$("offLast").value.trim();if(!_fn||!_ln){$("offErr1").textContent="Enter your first and last name.";$("offFirst").focus();return}offEmailV=v;const _b=e.target.querySelector("button");if(_b)_b.disabled=true;klavEmail(v,_fn,_ln,{signup_source:"shop_popup"}).then(()=>{try{localStorage.setItem("pmn_code","WELCOME20")}catch(e){}if(window.pmnSetCode)pmnSetCode("WELCOME20")}).catch(()=>{}).finally(()=>{if(_b)_b.disabled=false;step(2)});});')
 rep('<p id="offDoneP">Here\'s your code. We\'ve emailed it too.</p>','<p id="offDoneP">Your offer is saved.</p>')
 rep('''    <p class="fine cart-msg" id="cartMsg" role="status"></p>''','''    <p class="fine cart-msg" id="cartMsg" role="status"></p>
     <form class="cart-notify" id="cartNotify" hidden novalidate><label class="sr" for="cnEmail">Email address</label><input id="cnEmail" type="email" inputmode="email" autocomplete="email" placeholder="Email address"><button class="buy-alt" type="submit">Notify me</button></form>''')

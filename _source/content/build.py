@@ -829,6 +829,8 @@ def main():
     S_EYE = "Pasifika Stories"
     S_INTRO = "Pacific music, sport, entertainment and culture — reported, filmed and told by us."
     S_VID = "/assets/home/stories-bg.mp4"
+    # Sports hub uses the RLWC Toa Samoa vs Mate Ma'a Tonga clip instead of the shared stories bg
+    SPORTS_VID = "/assets/playlists/pmn-plus-toa-samoa-vs-tonga-rlwc-2026-1280.mp4"
     # stories index
     out.append(write("stories/index.html", index_page(
         "Pasifika Stories | PMN+",
@@ -845,7 +847,8 @@ def main():
         out.append(write(f"stories/{c['slug']}/index.html", index_page(
             f"{c['name']} | PMN+ Stories", f"PMN+ {c['name'].lower()} stories.",
             SITE + "/stories/" + c["slug"], S_HEAD, S_EYE, cp, idx, cats_nav=live_cats, on=c["slug"],
-            intro=S_INTRO, bg_video=S_VID, og=cards.get("category-" + c["slug"]))))
+            intro=S_INTRO, bg_video=(SPORTS_VID if c["slug"] == "sports" else S_VID),
+            og=cards.get("category-" + c["slug"]))))
     # author pages
     for a in authors:
         ap = [p for p in newest if p.get("author_id") == a["id"]]

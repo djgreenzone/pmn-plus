@@ -2,7 +2,10 @@
 <rss version="2.0"><channel>
 <title>PMN+ Stories</title><link>https://www.polynesianmusicnetwork.com/stories</link>
 <description>Pacific music, sport and culture from PMN+.</description><language>en-us</language>
-<item><title>Tongan Artists You Should Know</title><link>https://www.polynesianmusicnetwork.com/stories/tongan-artists-you-should-know</link>
+<item><title>America, You Have Four Years to Get Ready for Rugby League</title><link>https://www.polynesianmusicnetwork.com/stories/road-to-2030-rugby-league-world-cup</link>
+<guid isPermaLink="true">https://www.polynesianmusicnetwork.com/stories/road-to-2030-rugby-league-world-cup</guid><pubDate>Wed, 25 Nov 2026 07:20:00 +0000</pubDate>
+<description>The 2026 Rugby League World Cup is over and 2030 is coming to the USA and the Pacific. Five ways Pacific and new fans in America can get ready now.</description>
+<enclosure url="https://zacfssfjlmixnqhjuoed.supabase.co/storage/v1/object/public/media/stories/road-to-2030/hero.webp" type="image/jpeg"/></item><item><title>Tongan Artists You Should Know</title><link>https://www.polynesianmusicnetwork.com/stories/tongan-artists-you-should-know</link>
 <guid isPermaLink="true">https://www.polynesianmusicnetwork.com/stories/tongan-artists-you-should-know</guid><pubDate>Sun, 22 Nov 2026 09:11:27 +0000</pubDate>
 <description>Meet the Tongan and Tongan-heritage artists shaping Pasifika music — Baby Joe, Trixx, K&#x27;Nova, Diamond Langi, Dinah Jane and more.</description>
 <enclosure url="https://zacfssfjlmixnqhjuoed.supabase.co/storage/v1/object/public/media/stories/june-2024/dinah-jane-ocean-song-ancestors-hero.jpg" type="image/jpeg"/></item><item><title>Born From Culture | Toa &amp; Fetū Samoa Edition</title><link>https://www.polynesianmusicnetwork.com/stories/born-from-culture-toa-fetu-samoa</link>
@@ -149,8 +152,5 @@
 <enclosure url="https://zacfssfjlmixnqhjuoed.supabase.co/storage/v1/object/public/media/stories/september-2025/romeo-sabbath-baby-foi-mai-hero.jpg" type="image/jpeg"/></item><item><title>Airplane Mode by Rappa Nui</title><link>https://www.polynesianmusicnetwork.com/stories/rappa-nui-airplane-mode</link>
 <guid isPermaLink="true">https://www.polynesianmusicnetwork.com/stories/rappa-nui-airplane-mode</guid><pubDate>Mon, 01 Sep 2025 00:00:00 +0000</pubDate>
 <description>Big Island artist Rappa Nui on “Airplane Mode” with Randin Napeahi, where his name came from, and being part of the growing wave of Pacific Island music.</description>
-<enclosure url="https://zacfssfjlmixnqhjuoed.supabase.co/storage/v1/object/public/media/stories/september-2025/rappa-nui-airplane-mode-hero.jpg" type="image/jpeg"/></item><item><title>Florinalaula&#x27;au “Nalu” Liufau: A Legacy Inked in Culture, Forged in Rugby</title><link>https://www.polynesianmusicnetwork.com/stories/nalu-liufau-legacy-inked-in-culture</link>
-<guid isPermaLink="true">https://www.polynesianmusicnetwork.com/stories/nalu-liufau-legacy-inked-in-culture</guid><pubDate>Mon, 01 Sep 2025 00:00:00 +0000</pubDate>
-<description>At 18, Florinalaula&#x27;au “Nalu” Liufau earned a Team USA rugby sevens contract — carrying the Liufau family legacy and a malu inked by her father, Si&#x27;i</description>
-<enclosure url="https://zacfssfjlmixnqhjuoed.supabase.co/storage/v1/object/public/media/stories/september-2025/nalu-liufau-legacy-inked-in-culture-hero.jpg" type="image/jpeg"/></item>
+<enclosure url="https://zacfssfjlmixnqhjuoed.supabase.co/storage/v1/object/public/media/stories/september-2025/rappa-nui-airplane-mode-hero.jpg" type="image/jpeg"/></item>
 </channel></rss>

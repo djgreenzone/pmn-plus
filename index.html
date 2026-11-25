@@ -644,7 +644,7 @@ let x0=null;lb.addEventListener('touchstart',e=>{x0=e.touches[0].clientX},{passi
   const sec=document.getElementById('stories');
   const esc=t=>String(t||'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
   const hide=()=>{if(sec)sec.style.display='none'};
-  const PINS=['born-from-culture-toa-fetu-samoa','juju-smith-schuster-fire-within'],LIMIT=12;
+  const PINS=[],LIMIT=12;
   const fmt=s=>{const d=new Date(s);return isNaN(d)?'':d.toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric',timeZone:'UTC'}).toUpperCase()};
   fetch('/assets/content/stories.json',{cache:'no-store'})
    .then(r=>r.ok?r.json():null)

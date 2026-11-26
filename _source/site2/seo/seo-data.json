@@ -205,6 +205,338 @@
     }
    }
   },
+  "mens": {
+   "name": "Mens",
+   "tab": "Mens",
+   "title": "Mens PMN+ Tees & Hats | Toa Samoa & Mate Ma'a Tonga | RLWC 2026",
+   "meta": "Mens Pasifika tees and hats from PMN+: Toa Samoa and Mate Ma'a Tonga Rugby League World Cup 2026 shirts, oversized crest tees, player tees and snapbacks. S–6XL, ships across the USA.",
+   "intro": "Mens Pasifika tees and hats — the Toa Samoa and Mate Ma'a Tonga Rugby League World Cup 2026 range, from RLWC26 and jersey-style Player tees to 685 and 676 tees, oversized crest tees, snapbacks and truckers. Filter tees or hats and sort by price or best sellers.",
+   "aboutH": "Mens tees and hats, one grid",
+   "about": [
+    "The whole PMN+ range, shown for him. Every standard tee is 5.3 oz, 100% cotton with a regular fit, and the Crest Oversized Tees are a heavier 8.2 oz with a boxy cut. All tees run S to 6XL at one price, so 4XL, 5XL and 6XL cost the same as a medium, and hats are one size with an adjustable closure.",
+    "Rep Toa Samoa royal blue or Mate Ma'a Tonga red with RLWC26 crest tees, jersey-style Player tees, the 685 and 676 back prints and Est. 1986 oversized crest tees, finished with High Profile snapbacks and 2026 truckers.",
+    "Two offers run across the whole shop: Buy 3 tees, get 1 free (the free tee is a black, red or royal blue standard tee in L, XL or 2XL), and the Game Day Set, which takes $10 off a tee and hat bought together. Everything is printed to order and ships to the contiguous US in about 3–9 business days."
+   ],
+   "url": "https://www.polynesianmusicnetwork.com/shop/mens",
+   "products": [
+    "mmt-oversized",
+    "toa-oversized",
+    "mmt-rlwc26-black",
+    "toa-rlwc26-black",
+    "mmt-player-black",
+    "toa-player-black",
+    "mmt-676-black",
+    "toa-685-black",
+    "mmt-hp-snapback",
+    "toa-hp-snapback",
+    "mmt-676-tee",
+    "toa-685-tee",
+    "mmt-rlwc26-red",
+    "toa-rlwc26-royal",
+    "mmt-player-red",
+    "toa-player-royal",
+    "mmt-silver-blackout",
+    "toa-silver-blackout",
+    "mmt-trucker",
+    "toa-trucker",
+    "pmn-tee",
+    "pmn-trucker",
+    "pmn-dad-hat"
+   ],
+   "jsonld": {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "name": "Mens",
+    "url": "https://www.polynesianmusicnetwork.com/shop/mens",
+    "description": "Mens Pasifika tees and hats from PMN+: Toa Samoa and Mate Ma'a Tonga Rugby League World Cup 2026 shirts, oversized crest tees, player tees and snapbacks. S–6XL, ships across the USA.",
+    "mainEntity": {
+     "@type": "ItemList",
+     "itemListElement": [
+      {
+       "@type": "ListItem",
+       "position": 1,
+       "url": "https://www.polynesianmusicnetwork.com/shop/mate-maa-tonga-crest-oversized-tee-black"
+      },
+      {
+       "@type": "ListItem",
+       "position": 2,
+       "url": "https://www.polynesianmusicnetwork.com/shop/toa-samoa-crest-oversized-tee-black"
+      },
+      {
+       "@type": "ListItem",
+       "position": 3,
+       "url": "https://www.polynesianmusicnetwork.com/shop/mate-maa-tonga-rlwc26-tee-black"
+      },
+      {
+       "@type": "ListItem",
+       "position": 4,
+       "url": "https://www.polynesianmusicnetwork.com/shop/toa-samoa-rlwc26-tee-black"
+      },
+      {
+       "@type": "ListItem",
+       "position": 5,
+       "url": "https://www.polynesianmusicnetwork.com/shop/mate-maa-tonga-player-tee-black"
+      },
+      {
+       "@type": "ListItem",
+       "position": 6,
+       "url": "https://www.polynesianmusicnetwork.com/shop/toa-samoa-player-tee-black"
+      },
+      {
+       "@type": "ListItem",
+       "position": 7,
+       "url": "https://www.polynesianmusicnetwork.com/shop/mate-maa-tonga-676-tee-black"
+      },
+      {
+       "@type": "ListItem",
+       "position": 8,
+       "url": "https://www.polynesianmusicnetwork.com/shop/toa-samoa-685-tee-black"
+      },
+      {
+       "@type": "ListItem",
+       "position": 9,
+       "url": "https://www.polynesianmusicnetwork.com/shop/mate-maa-tonga-high-profile-snapback-white-crimson"
+      },
+      {
+       "@type": "ListItem",
+       "position": 10,
+       "url": "https://www.polynesianmusicnetwork.com/shop/toa-samoa-high-profile-snapback-navy-white"
+      },
+      {
+       "@type": "ListItem",
+       "position": 11,
+       "url": "https://www.polynesianmusicnetwork.com/shop/mate-maa-tonga-676-tee-red"
+      },
+      {
+       "@type": "ListItem",
+       "position": 12,
+       "url": "https://www.polynesianmusicnetwork.com/shop/toa-samoa-685-tee-royal-blue"
+      },
+      {
+       "@type": "ListItem",
+       "position": 13,
+       "url": "https://www.polynesianmusicnetwork.com/shop/mate-maa-tonga-rlwc26-tee-red"
+      },
+      {
+       "@type": "ListItem",
+       "position": 14,
+       "url": "https://www.polynesianmusicnetwork.com/shop/toa-samoa-rlwc26-tee-royal-blue"
+      },
+      {
+       "@type": "ListItem",
+       "position": 15,
+       "url": "https://www.polynesianmusicnetwork.com/shop/mate-maa-tonga-player-tee-red"
+      },
+      {
+       "@type": "ListItem",
+       "position": 16,
+       "url": "https://www.polynesianmusicnetwork.com/shop/toa-samoa-player-tee-royal-blue"
+      },
+      {
+       "@type": "ListItem",
+       "position": 17,
+       "url": "https://www.polynesianmusicnetwork.com/shop/mate-maa-tonga-silver-blackout-tee-black"
+      },
+      {
+       "@type": "ListItem",
+       "position": 18,
+       "url": "https://www.polynesianmusicnetwork.com/shop/toa-samoa-silver-blackout-tee-black"
+      },
+      {
+       "@type": "ListItem",
+       "position": 19,
+       "url": "https://www.polynesianmusicnetwork.com/shop/mate-maa-tonga-trucker-snapback-black"
+      },
+      {
+       "@type": "ListItem",
+       "position": 20,
+       "url": "https://www.polynesianmusicnetwork.com/shop/toa-samoa-trucker-snapback-black"
+      },
+      {
+       "@type": "ListItem",
+       "position": 21,
+       "url": "https://www.polynesianmusicnetwork.com/shop/pmn-plus-logo-tee-black"
+      },
+      {
+       "@type": "ListItem",
+       "position": 22,
+       "url": "https://www.polynesianmusicnetwork.com/shop/pmn-plus-trucker-hat-black"
+      },
+      {
+       "@type": "ListItem",
+       "position": 23,
+       "url": "https://www.polynesianmusicnetwork.com/shop/pmn-plus-classic-dad-hat-khaki"
+      }
+     ]
+    }
+   }
+  },
+  "womens": {
+   "name": "Womens",
+   "tab": "Womens",
+   "title": "Womens PMN+ Tees & Hats | Toa Samoa & Mate Ma'a Tonga | RLWC 2026",
+   "meta": "Womens Pasifika tees and hats from PMN+: Toa Samoa and Mate Ma'a Tonga Rugby League World Cup 2026 shirts, oversized crest tees, player tees and snapbacks. S–6XL, ships across the USA.",
+   "intro": "Womens Pasifika tees and hats — the Toa Samoa and Mate Ma'a Tonga Rugby League World Cup 2026 range, from RLWC26 and jersey-style Player tees to 685 and 676 tees, oversized crest tees, snapbacks and truckers. Filter tees or hats and sort by price or best sellers.",
+   "aboutH": "Womens tees and hats, one grid",
+   "about": [
+    "The whole PMN+ range, shown for her. The Crest Oversized Tees are a heavier 8.2 oz with a boxy, relaxed cut that works well oversized, and the standard tees are 5.3 oz, 100% cotton. All tees run S to 6XL at one price, and hats are one size with an adjustable closure.",
+    "Rep Toa Samoa royal blue or Mate Ma'a Tonga red with RLWC26 crest tees, jersey-style Player tees, the 685 and 676 back prints and Est. 1986 oversized crest tees, finished with High Profile snapbacks and 2026 truckers.",
+    "Two offers run across the whole shop: Buy 3 tees, get 1 free (the free tee is a black, red or royal blue standard tee in L, XL or 2XL), and the Game Day Set, which takes $10 off a tee and hat bought together. Everything is printed to order and ships to the contiguous US in about 3–9 business days."
+   ],
+   "url": "https://www.polynesianmusicnetwork.com/shop/womens",
+   "products": [
+    "mmt-oversized",
+    "toa-oversized",
+    "mmt-rlwc26-black",
+    "toa-rlwc26-black",
+    "mmt-player-black",
+    "toa-player-black",
+    "mmt-676-black",
+    "toa-685-black",
+    "mmt-hp-snapback",
+    "toa-hp-snapback",
+    "mmt-676-tee",
+    "toa-685-tee",
+    "mmt-rlwc26-red",
+    "toa-rlwc26-royal",
+    "mmt-player-red",
+    "toa-player-royal",
+    "mmt-silver-blackout",
+    "toa-silver-blackout",
+    "mmt-trucker",
+    "toa-trucker",
+    "pmn-tee",
+    "pmn-trucker",
+    "pmn-dad-hat"
+   ],
+   "jsonld": {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "name": "Womens",
+    "url": "https://www.polynesianmusicnetwork.com/shop/womens",
+    "description": "Womens Pasifika tees and hats from PMN+: Toa Samoa and Mate Ma'a Tonga Rugby League World Cup 2026 shirts, oversized crest tees, player tees and snapbacks. S–6XL, ships across the USA.",
+    "mainEntity": {
+     "@type": "ItemList",
+     "itemListElement": [
+      {
+       "@type": "ListItem",
+       "position": 1,
+       "url": "https://www.polynesianmusicnetwork.com/shop/mate-maa-tonga-crest-oversized-tee-black"
+      },
+      {
+       "@type": "ListItem",
+       "position": 2,
+       "url": "https://www.polynesianmusicnetwork.com/shop/toa-samoa-crest-oversized-tee-black"
+      },
+      {
+       "@type": "ListItem",
+       "position": 3,
+       "url": "https://www.polynesianmusicnetwork.com/shop/mate-maa-tonga-rlwc26-tee-black"
+      },
+      {
+       "@type": "ListItem",
+       "position": 4,
+       "url": "https://www.polynesianmusicnetwork.com/shop/toa-samoa-rlwc26-tee-black"
+      },
+      {
+       "@type": "ListItem",
+       "position": 5,
+       "url": "https://www.polynesianmusicnetwork.com/shop/mate-maa-tonga-player-tee-black"
+      },
+      {
+       "@type": "ListItem",
+       "position": 6,
+       "url": "https://www.polynesianmusicnetwork.com/shop/toa-samoa-player-tee-black"
+      },
+      {
+       "@type": "ListItem",
+       "position": 7,
+       "url": "https://www.polynesianmusicnetwork.com/shop/mate-maa-tonga-676-tee-black"
+      },
+      {
+       "@type": "ListItem",
+       "position": 8,
+       "url": "https://www.polynesianmusicnetwork.com/shop/toa-samoa-685-tee-black"
+      },
+      {
+       "@type": "ListItem",
+       "position": 9,
+       "url": "https://www.polynesianmusicnetwork.com/shop/mate-maa-tonga-high-profile-snapback-white-crimson"
+      },
+      {
+       "@type": "ListItem",
+       "position": 10,
+       "url": "https://www.polynesianmusicnetwork.com/shop/toa-samoa-high-profile-snapback-navy-white"
+      },
+      {
+       "@type": "ListItem",
+       "position": 11,
+       "url": "https://www.polynesianmusicnetwork.com/shop/mate-maa-tonga-676-tee-red"
+      },
+      {
+       "@type": "ListItem",
+       "position": 12,
+       "url": "https://www.polynesianmusicnetwork.com/shop/toa-samoa-685-tee-royal-blue"
+      },
+      {
+       "@type": "ListItem",
+       "position": 13,
+       "url": "https://www.polynesianmusicnetwork.com/shop/mate-maa-tonga-rlwc26-tee-red"
+      },
+      {
+       "@type": "ListItem",
+       "position": 14,
+       "url": "https://www.polynesianmusicnetwork.com/shop/toa-samoa-rlwc26-tee-royal-blue"
+      },
+      {
+       "@type": "ListItem",
+       "position": 15,
+       "url": "https://www.polynesianmusicnetwork.com/shop/mate-maa-tonga-player-tee-red"
+      },
+      {
+       "@type": "ListItem",
+       "position": 16,
+       "url": "https://www.polynesianmusicnetwork.com/shop/toa-samoa-player-tee-royal-blue"
+      },
+      {
+       "@type": "ListItem",
+       "position": 17,
+       "url": "https://www.polynesianmusicnetwork.com/shop/mate-maa-tonga-silver-blackout-tee-black"
+      },
+      {
+       "@type": "ListItem",
+       "position": 18,
+       "url": "https://www.polynesianmusicnetwork.com/shop/toa-samoa-silver-blackout-tee-black"
+      },
+      {
+       "@type": "ListItem",
+       "position": 19,
+       "url": "https://www.polynesianmusicnetwork.com/shop/mate-maa-tonga-trucker-snapback-black"
+      },
+      {
+       "@type": "ListItem",
+       "position": 20,
+       "url": "https://www.polynesianmusicnetwork.com/shop/toa-samoa-trucker-snapback-black"
+      },
+      {
+       "@type": "ListItem",
+       "position": 21,
+       "url": "https://www.polynesianmusicnetwork.com/shop/pmn-plus-logo-tee-black"
+      },
+      {
+       "@type": "ListItem",
+       "position": 22,
+       "url": "https://www.polynesianmusicnetwork.com/shop/pmn-plus-trucker-hat-black"
+      },
+      {
+       "@type": "ListItem",
+       "position": 23,
+       "url": "https://www.polynesianmusicnetwork.com/shop/pmn-plus-classic-dad-hat-khaki"
+      }
+     ]
+    }
+   }
+  },
   "mate-maa-tonga": {
    "name": "Mate Ma'a Tonga",
    "title": "Mate Ma'a Tonga Shirts, Hats & Merch | RLWC 2026 | PMN+",

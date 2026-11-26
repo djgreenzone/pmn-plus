@@ -85,7 +85,7 @@ document.querySelectorAll(".pn").forEach(root=>{
   root.querySelectorAll(".pn-menu").forEach(b=>b.onclick=()=>openDrawer(b));
   wireSearch(root);
   const smOn=root.querySelector(".pn-shopmode-on"),smOff=root.querySelector(".pn-shopmode-off");
-  if(smOn)smOn.addEventListener("click",e=>{e.preventDefault();root.classList.add("pn-shopmode")});
+  if(smOn)smOn.addEventListener("click",e=>{if(e.metaKey||e.ctrlKey||e.shiftKey||e.button)return;e.preventDefault();if(onShop()){root.classList.add("pn-shopmode")}else{location.href="/shop"}});
   if(smOff)smOff.addEventListener("click",e=>{e.preventDefault();root.classList.remove("pn-shopmode")});
   if(onShop())root.classList.add("pn-shopmode");
   root.querySelectorAll(".pn-cats a").forEach(a=>{a.addEventListener("click",e=>go(e,a.getAttribute("href")));

@@ -746,7 +746,7 @@ const Coll=(()=>{
     sec.hidden=false;
   }
   function show(k){key=k;try{window.pmnLog&&pmnLog("view_collection",{ref:k,title:(SEO.collections[k]||{}).name||k,url:"/shop/"+k,meta:{filter:filt}})}catch(e){}const c=SEO.collections[k],team=k==="toa-samoa"?"samoa":k==="mate-maa-tonga"?"tonga":"all";if(k!==key||!$("cSort").dataset.t){$("cSort").value=k==="all"?"best":"feat";$("cSort").dataset.t=1}
-    el.dataset.team=team;$("collH").textContent=c.name;$("cIntro").textContent=c.intro;$("cAboutH").textContent=c.aboutH||"";$("cAbout").innerHTML="";(c.about||[]).forEach(t=>{const e=document.createElement("p");e.textContent=t;$("cAbout").append(e)});$("crHere").textContent=c.name;
+    el.dataset.team=team;el.dataset.coll=k;$("collH").textContent=c.name;$("cIntro").textContent=c.intro;$("cAboutH").textContent=c.aboutH||"";$("cAbout").innerHTML="";(c.about||[]).forEach(t=>{const e=document.createElement("p");e.textContent=t;$("cAbout").append(e)});$("crHere").textContent=c.name;
     $("cCrest").hidden=false;$("cCrest").src=team==="all"?"brand/pmn-plus-logo-white.svg":crestURL(team);$("cCrest").alt=c.name+(team==="all"?" logo":" crest");
     tabs.querySelectorAll("button").forEach(b=>b.setAttribute("aria-selected",b.dataset.k===k));
     document.title=c.title;window.pmnRoute&&pmnRoute("c",k);grid();readRail(k,team);$("collScroll").scrollTop=0}

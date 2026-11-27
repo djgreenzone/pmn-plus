@@ -118,6 +118,21 @@ button[disabled]{opacity:.5;cursor:default}
 .shop .more b{color:#fff;font-weight:600}
 @media (max-width:760px){.teams{grid-template-columns:1fr}.team{min-height:440px}}
 
+/* Black Friday pill on the "Who you reppin" eyebrow */
+.wyr .eyebrow .bf-pill{display:inline-block;background:#C8102E;color:#fff;padding:.35em 1.1em;border-radius:999px;line-height:1.15}
+/* Best sellers carousel: white panel like the stories "Shop this story", bigger cards */
+.shop .home-bs{margin:0;padding:clamp(1.25rem,3vw,2.25rem);border-radius:26px}@media(min-width:700px){.shop .home-bs{min-height:520px}}
+.shop .home-bs .sts-grid .sts-items{gap:clamp(12px,1.6vw,20px)}
+.shop .home-bs .sts-grid .sts-card{flex:0 0 clamp(220px,44%,420px);gap:8px}
+@media(min-width:700px){.shop .home-bs .sts-grid .sts-card{flex-basis:calc((100% - 40px)/3)}}
+@media(min-width:1000px){.shop .home-bs .sts-grid .sts-card{flex-basis:calc((100% - 60px)/4)}}
+.shop .home-bs .sts-team{font-size:15px}
+.shop .home-bs .sts-name{font-size:15px}
+.shop .home-bs .sts-sale{font-size:22px}
+.shop .home-bs .sts-was{font-size:14px}
+.shop .home-bs .sts-off{font-size:11px}
+.shop .home-bs .sts-shopall{font-family:var(--display);font-size:1.3rem;letter-spacing:.08em;text-transform:uppercase;min-height:60px}
+
 /* instagram */
 .ig{position:relative;padding:clamp(4rem,9vw,7rem) 0;background:#f4f2ee;color:#050507}
 .ig .eyebrow{color:#5f5f66}
@@ -327,6 +342,7 @@ button[disabled]{opacity:.5;cursor:default}
 @media (prefers-reduced-motion:reduce){.stz-card.sk .stz-cov{animation:none}.stz-card .stz-cov img{transition:none}}
 </style>
 <link rel="stylesheet" href="/assets/pmn-nav.css?v=5d7fe528">
+<link rel="stylesheet" href="/assets/content/shop-this-story.css">
 </head>
 <body>
 <header class="nav pn-bar" id="nav"><div class="pn"><div class="pn-row"><div class="pn-l"><button type="button" class="pn-ic pn-menu" aria-label="Open menu" aria-expanded="false" aria-controls="pnDrawer"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button></div><a class="pn-logo" href="/" aria-label="PMN+ home"><img class="logo" src="/shop/brand/pmn-plus-logo-white.svg" alt="PMN+ Polynesian Music Network Plus" width="48" height="52"></a><div class="pn-r"><form class="pn-search" role="search" action="/shop"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg><input type="search" name="q" placeholder="Search tees, hats, teams…" aria-label="Search the shop" autocomplete="off" role="combobox" aria-expanded="false" aria-autocomplete="list"><div class="pn-res" role="listbox" hidden></div></form><button type="button" class="pn-ic pn-sbtn" aria-label="Search"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg></button><a class="pn-ic pn-acct" href="/account" aria-label="Your PMN+ account" hidden><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6"/></svg></a><a class="pn-ic bag" href="/shop#bag" aria-label="Bag"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 8h14l-1 12H6L5 8z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg><span class="bag-count" id="bagN" hidden></span></a></div></div><nav class="pn-cats" aria-label="Sections"><span class="pn-cg pn-cg-content"><button type="button" class="pn-shopmode-on">Shop</button><a href="/stories">Stories</a><div class="pn-dd" data-pn-mag><a class="pn-dd-t" href="/digital-magazine">Cover Stories<svg class="pn-dd-cx" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></a><div class="pn-dd-menu"><div class="pn-dd-scrim"></div><div class="pn-dd-inner" role="menu"><a class="pn-dd-all" href="/digital-magazine" role="menuitem">View all cover stories →</a><div class="pn-dd-covers"></div></div></div></div><div class="pn-dd" data-pn-mag><a class="pn-dd-t" href="/stories/music">Music<svg class="pn-dd-cx" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></a><div class="pn-dd-menu"><div class="pn-dd-scrim"></div><div class="pn-dd-inner pn-dd-cinner" role="menu"><a class="pn-dd-all" href="/stories/music" role="menuitem">View all music →</a><div class="pn-dd-tiles" data-dd="music"></div></div></div></div><div class="pn-dd" data-pn-mag><a class="pn-dd-t" href="/stories/sports">Sports<svg class="pn-dd-cx" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></a><div class="pn-dd-menu"><div class="pn-dd-scrim"></div><div class="pn-dd-inner pn-dd-cinner" role="menu"><a class="pn-dd-all" href="/stories/sports" role="menuitem">View all sports →</a><div class="pn-dd-tiles" data-dd="sports"></div></div></div></div><div class="pn-dd" data-pn-mag><a class="pn-dd-t" href="/stories/culture">Culture<svg class="pn-dd-cx" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></a><div class="pn-dd-menu"><div class="pn-dd-scrim"></div><div class="pn-dd-inner pn-dd-cinner" role="menu"><a class="pn-dd-all" href="/stories/culture" role="menuitem">View all culture →</a><div class="pn-dd-tiles" data-dd="culture"></div></div></div></div><div class="pn-dd" data-pn-mag><a class="pn-dd-t" href="/stories/tag/holo-holo">Events<svg class="pn-dd-cx" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></a><div class="pn-dd-menu"><div class="pn-dd-scrim"></div><div class="pn-dd-inner pn-dd-cinner" role="menu"><a class="pn-dd-all" href="/stories/tag/holo-holo" role="menuitem">View all events →</a><div class="pn-dd-tiles" data-dd="events"></div></div></div></div><a href="https://www.youtube.com/@polynesianmusicnetwork" target="_blank" rel="noopener">Watch</a></span><span class="pn-cg pn-cg-shop"><a href="/">PMN+</a><a href="/shop">Shop All</a><a href="/shop/mens">Mens</a><a href="/shop/womens">Womens</a><a href="/shop/toa-samoa">Toa Samoa</a><a href="/shop/mate-maa-tonga">Mate Ma'a Tonga</a><a href="/shop/pmn-plus">PMN+ Apparel</a></span></nav></div></header>
@@ -379,7 +395,7 @@ button[disabled]{opacity:.5;cursor:default}
 
 <section class="wyr" id="reppin" aria-labelledby="wyrH">
   <div class="wrap">
-    <p class="eyebrow">RLWC 2026 &middot; Toa Samoa vs Mate Ma&#8217;a Tonga</p>
+    <p class="eyebrow"><span class="bf-pill">Black Friday: 30% off everything | Free US shipping</span></p>
     <h2 id="wyrH">Who you reppin&#8217;?</h2>
     <a class="wyr-card" href="/shop">
       <picture>
@@ -389,6 +405,22 @@ button[disabled]{opacity:.5;cursor:default}
       </picture>
     </a>
     <div class="wyr-go"><a href="/shop">Shop all merch <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
+  </div>
+</section>
+
+<section class="shop" id="shop" aria-labelledby="shopH">
+  <div class="wrap">
+    <div class="top">
+      <div>
+        <p class="eyebrow">Best sellers</p>
+        <h2 id="shopH">Rep your team</h2>
+        <p class="sub">Toa Samoa and Mate Ma&#8217;a Tonga tees, snapbacks and truckers, made for game day and every day after. Limited run.</p>
+        <p class="sub team-links">Shop <a href="/shop/toa-samoa">Toa Samoa merch</a> or <a href="/shop/mate-maa-tonga">Mate Ma&#8217;a Tonga merch</a>.</p>
+      </div>
+      <a class="btn" href="/shop">Shop the drop</a>
+    </div>
+    <div class="ed-shop home-bs"><div class="shop-this-story" data-products="toa-oversized,mmt-oversized,toa-player-black,toa-rlwc26-black,mmt-rlwc26-black,toa-silver-blackout,mmt-hp-snapback,mmt-player-black" data-head="none" data-post-slug="home-best-sellers"></div></div>
+    <p class="more"><span><b>Black Friday:</b> 30% off everything, applied at checkout. Or Buy 2 tees, get 1 free.</span><span>Ships across the USA.</span></p>
   </div>
 </section>
 
@@ -409,40 +441,7 @@ button[disabled]{opacity:.5;cursor:default}
   <p class="ev-hint wrap">Tap any photo to see it full size.</p>
 </section>
 
-<section class="shop" id="shop" aria-labelledby="shopH">
-  <div class="wrap">
-    <div class="top">
-      <div>
-        <p class="eyebrow">RLWC 2026 &middot; New drop</p>
-        <h2 id="shopH">Rep your<br>Pacific team</h2>
-        <p class="sub">Toa Samoa and Mate Ma&#8217;a Tonga tees, snapbacks and truckers, made for game day and every day after. Limited run.</p>
-        <p class="sub team-links">Shop <a href="/shop/toa-samoa">Toa Samoa merch</a> or <a href="/shop/mate-maa-tonga">Mate Ma&#8217;a Tonga merch</a>.</p>
-      </div>
-      <a class="btn" href="/shop">Shop the drop</a>
-    </div>
-    <div class="teams">
-      <a class="team samoa" href="/shop?hero=toa-oversized" aria-label="Shop Toa Samoa">
-        <span class="pat" aria-hidden="true"></span>
-        <img class="crest" src="/shop/brand/toa-samoa-logo.webp" alt="" aria-hidden="true">
-        <img class="tee" src="/shop/hires/toa-685-black/toa-samoa-685-tee-black-back-640.webp" alt="Toa Samoa 685 tee in black, back print" loading="lazy">
-        <img class="hat" src="/shop/hires/toa-trucker/toa-samoa-trucker-snapback-black-front-640.webp" alt="" aria-hidden="true" loading="lazy">
-        <span class="tag">685 &middot; Toa Samoa</span>
-        <h3>Toa Samoa</h3>
-        <span class="btn go">Shop Toa Samoa</span>
-      </a>
-      <a class="team tonga" href="/shop" aria-label="Shop Mate Ma'a Tonga">
-        <span class="pat" aria-hidden="true"></span>
-        <img class="crest" src="/shop/brand/mate-maa-tonga-rugby-league-crest.webp" alt="" aria-hidden="true">
-        <img class="tee" src="/shop/hires/mmt-676-black/mate-maa-tonga-676-tee-black-back-640.webp" alt="Mate Ma'a Tonga 676 tee in black, back print" loading="lazy">
-        <img class="hat" src="/shop/hires/mmt-trucker/mate-maa-tonga-trucker-snapback-black-front-640.webp" alt="" aria-hidden="true" loading="lazy">
-        <span class="tag">676 &middot; Mate Ma&#8217;a Tonga</span>
-        <h3>Mate Ma&#8217;a<br>Tonga</h3>
-        <span class="btn go">Shop Tonga</span>
-      </a>
-    </div>
-    <p class="more"><span><b>Black Friday:</b> 30% off everything, applied at checkout. Or Buy 2 tees, get 1 free.</span><span>Ships across the USA.</span></p>
-  </div>
-</section>
+
 
 
 
@@ -680,5 +679,6 @@ let x0=null;lb.addEventListener('touchstart',e=>{x0=e.touches[0].clientX},{passi
  if(window.ResizeObserver)new ResizeObserver(set).observe(h);
 })();
 </script>
+<script src="/assets/content/shop-this-story.js" defer></script>
 </body>
 </html>

@@ -26,7 +26,8 @@ The site, Shopify, Klaviyo emails and Google Merchant Center must all say the sa
 - Site mirrors this in `bx()` / `BX_BUY` / `FREE_SZ` (bag meter + messages), the offer bar and account page. Every new tee
   product must be added to the discount.
 - **After the sale:** reactivate "Buy 3 tees, get 1 free" in Shopify and `git revert` the commit that switched the site to Buy 2
-  (it restores `BX_BUY=3`, the offer bar and account copy). The SEO/feed copy still says Buy 3 and was not changed.
+  (it restores `BX_BUY=3`, `BUNDLE_OFF=10`, the product-page Game Day Set box, the SEO/feed copy and the offer bar text in `assets/pmn-config.js`).
+  Also reactivate "Game Day Set: $10 off" (id `1535948751047`), which was deactivated for the weekend.
 
 ## Black Friday 30% off (Nov 27 to Nov 30, 2026)
 - Shopify automatic discount "Black Friday 30% Off" (id `1544614904007`), store-wide, no code, doesn't combine with any other

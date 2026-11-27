@@ -218,6 +218,17 @@ def page(title, desc, canonical, *, body, og_image=None, og_video=None, og_type=
 </html>"""
 
 # ---------- cards ----------
+# Black Friday 2026 sidebar banner (top of "More Stories"). After Mon Nov 30 set BF_BANNER_HTML = "" and rebuild.
+# Desktop: half page 300x600. Tablet: leaderboard 970x90. Phone: 320x100. All WebP in assets/banners/.
+BF_BANNER_HTML = (
+    '<a class="ed-bf" href="/shop/?utm_source=stories&amp;utm_medium=sidebar&amp;utm_campaign=bf2026" aria-label="Black Friday: 30% off everything at the PMN+ Shop">'
+    '<picture>'
+    '<source media="(max-width:560px)" srcset="/assets/banners/bf26-mobile-320x100.webp" width="320" height="100">'
+    '<source media="(max-width:900px)" srcset="/assets/banners/bf26-leaderboard-970x90.webp" width="970" height="90">'
+    '<img src="/assets/banners/bf26-halfpage-300x600.webp" width="300" height="600" alt="Black Friday at the PMN+ Shop: up to 30% off. Get all products." loading="lazy" decoding="async">'
+    '</picture></a>'
+)
+
 def rail_card(p, idx):
     cat = idx["cat"].get(p.get("category_id"), {})
     au = idx["au"].get(p.get("author_id"), {})
@@ -386,7 +397,7 @@ def post_page(post, idx):
 {strip}
 </article>
 <aside class="ed-aside">
-<h2 class="ed-rail-h">More Stories</h2>
+{BF_BANNER_HTML}<h2 class="ed-rail-h">More Stories</h2>
 <div class="ed-cards">{rail}</div>
 <a class="ed-btn" href="/stories">Browse all stories &rarr;</a>
 </aside>

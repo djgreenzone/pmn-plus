@@ -540,7 +540,7 @@ const PDP=(()=>{
     $("pTeam").textContent=teamName(p);$("pName").textContent=p.name;try{klReviews(p)}catch(e){}try{svPdp(p)}catch(e){}$("pPrice").textContent=money(p.price);
     const opts=p.opts.map(o=>BY[o]);
     $("pColour").textContent=`${p.colourName} · ${teamName(p)}`;
-    const sw=$("pSwatches");sw.innerHTML="";sw.hidden=opts.length<2;$("pPromo").innerHTML=p.kind==="tee"?`<b>Buy 3 tees, get 1 free</b> · mix any designs`:"";$("pPromo").hidden=p.kind!=="tee";
+    const sw=$("pSwatches");sw.innerHTML="";sw.hidden=opts.length<2;$("pPromo").innerHTML=p.kind==="tee"?`<b>Buy 2 tees, get 1 free</b> · mix any designs`:"";$("pPromo").hidden=p.kind!=="tee";
     opts.forEach(o=>{const b=document.createElement("button");b.className="sw";b.style.setProperty("--c",o.swatch);b.setAttribute("aria-pressed",o.id===p.id);
       b.innerHTML=`<i></i>${o.team===p.team?o.colourName:(o.team==="samoa"?"Samoa":"Tonga")}`;b.setAttribute("aria-label",`${o.colourName}, ${teamName(o)} version`);b.onclick=()=>o.id!==cur&&swap(o.id);sw.append(b)});
     const sz=$("pSizes");sz.innerHTML="";
@@ -805,11 +805,12 @@ const Cart=(()=>{
   function add(id,size,q=1){const ex=find(id,size);if(ex)ex.qty=Math.min(10,ex.qty+q);else cart.push({id,size,qty:q});setBag();render()}
   const gross=()=>cart.reduce((n,i)=>n+BY[i.id].price*i.qty,0);
   const sets=()=>{let t=0,h=0;cart.forEach(i=>{if(BY[i.id].kind==="hat")h+=i.qty;else t+=i.qty});return Math.min(t,h)};
-  /* Buy 3 tees, get 1 free (Shopify automatic discount; max 2 free; free tee = non-oversized L–2XL; doesn't stack with the Game Day Set) */
+  /* Buy 2 tees, get 1 free (Shopify automatic discount; every 3rd tee free; max 2 free; free tee = non-oversized L–2XL; doesn't stack with the Game Day Set). BX_BUY = tees bought before the next one is free (was 3 until Black Friday 2026) */
+  const BX_BUY=2,BX_G=BX_BUY+1,ord=n=>n+(n%10===1&&n!==11?"st":n%10===2&&n!==12?"nd":n%10===3&&n!==13?"rd":"th");
   const FREE_SZ=["L","XL","2XL"];
   const bx=()=>{let T=0,tg=0;const el=[];cart.forEach(i=>{const p=BY[i.id];if(p.kind!=="tee")return;T+=i.qty;tg+=p.price*i.qty;if(!p.id.includes("oversized")&&(i.size===null||FREE_SZ.includes(i.size)))for(let k=0;k<i.qty;k++)el.push(p.price)});
-    el.sort((a,b)=>a-b);const apps=Math.min(2,Math.floor(T/4),el.length);return{T,tg,E:el.length,apps,save:el.slice(0,apps).reduce((a,b)=>a+b,0)}};
-  const best=()=>{const b=bx().save,g=sets()*BUNDLE_OFF;return b>=g&&b>0?{v:b,l:"Buy 3, get 1 free"}:{v:g,l:"Game Day Set savings"}};
+    el.sort((a,b)=>a-b);const apps=Math.min(2,Math.floor(T/BX_G),el.length);return{T,tg,E:el.length,apps,save:el.slice(0,apps).reduce((a,b)=>a+b,0)}};
+  const best=()=>{const b=bx().save,g=sets()*BUNDLE_OFF;return b>=g&&b>0?{v:b,l:`Buy ${BX_BUY}, get 1 free`}:{v:g,l:"Game Day Set savings"}};
   const sub=()=>gross()-best().v+(bumpOn&&cart.length?BUMP.price:0);
   function upsell(){
     const buyable=id=>!shopifyOK||!!VAR[id];
@@ -841,18 +842,18 @@ const Cart=(()=>{
     $("ship").hidden=false;$("ship").classList.add("done");$("shipFill").style.width="100%";$("shipBar").setAttribute("aria-valuenow",100);
     $("shipTxt").innerHTML=`<b>Free shipping</b> on this order`;$("shipFine").textContent=`Order today, arrives ${ETA("pmn").range}. Free shipping to the contiguous US. Excludes HI, AK, territories and APO. Tax calculated at checkout.`;
     const t=sub(),B=best();$("cartDisc").hidden=!B.v;$("cartDisc").querySelector("span").textContent=B.l;$("cartDiscV").textContent=`−${money(B.v)}`;$("cartSub").textContent=money(t);apPlace("cartAp","cart",t);
-    {const x=bx(),box=$("bx");box.hidden=!x.T;if(x.T){let msg;const T=x.T,slots=T>=4?8:4;
+    {const x=bx(),box=$("bx");box.hidden=!x.T;if(x.T){let msg;const T=x.T,slots=T>=BX_G?2*BX_G:BX_G;
       const avg=x.apps?` Your tees now work out to <b>${money((x.tg-x.save)/T)}</b> each.`:"";
       if(x.apps>=2)msg=`<b>2 free tees unlocked 🎉</b> That's the max per order.${avg}`;
-      else if(x.apps===1)msg=T===7?`<b>1 free tee unlocked 🎉</b> Your 8th tee is free too. Add one more to claim it.`:T<8?`<b>1 free tee unlocked 🎉</b>${avg} Add ${8-T} more for a 2nd free one.`:`<b>1 free tee unlocked 🎉</b> Make one more a black, red or blue tee in L–2XL for a 2nd free one.`;
-      else if(T===3)msg=`<b>Your 4th tee is free.</b> Add one more tee to claim it.`;else if(T<4)msg=`<b>${T} of 4 tees.</b> Add ${4-T} more and the 4th one is <b>free</b>.`;
+      else if(x.apps===1)msg=T===2*BX_G-1?`<b>1 free tee unlocked 🎉</b> Your ${ord(2*BX_G)} tee is free too. Add one more to claim it.`:T<2*BX_G?`<b>1 free tee unlocked 🎉</b>${avg} Add ${2*BX_G-T} more for a 2nd free one.`:`<b>1 free tee unlocked 🎉</b> Make one more a black, red or blue tee in L–2XL for a 2nd free one.`;
+      else if(T===BX_G-1)msg=`<b>Your ${ord(BX_G)} tee is free.</b> Add one more tee to claim it.`;else if(T<BX_G)msg=`<b>${T} of ${BX_G} tees.</b> Add ${BX_G-T} more and the ${ord(BX_G)} one is <b>free</b>.`;
       else msg=`<b>Almost there.</b> Your free tee must be a black, red or blue tee (not oversized) in L–2XL.`;
-      let h="";for(let i=1;i<=slots;i++){const fr=i%4===0,f=i<=T,got=fr&&(i/4<=x.apps||T>=i-1);h+=`<i class="${f?"f ":""}${fr?"fr ":""}${got?"got":""}">${fr?"FREE":""}</i>`}
+      let h="";for(let i=1;i<=slots;i++){const fr=i%BX_G===0,f=i<=T,got=fr&&(i/BX_G<=x.apps||T>=i-1);h+=`<i class="${f?"f ":""}${fr?"fr ":""}${got?"got":""}">${fr?"FREE":""}</i>`}
       $("bxTxt").innerHTML=msg;$("bxSeg").innerHTML=h;$("bxSeg").style.gridTemplateColumns=`repeat(${slots},1fr)`;$("bxSeg").setAttribute("aria-label",`${Math.min(T,slots)} of ${slots} tees, ${x.apps} free`);box.classList.toggle("done",x.apps>0)}
     window.pmnCodeNote&&pmnCodeNote()}
   }
   window.pmnCodeNote=()=>{const on=$("codeOn");if(!on)return;let w=$("codeWarn");if(!w){w=document.createElement("p");w.id="codeWarn";w.className="code-warn";on.after(w)}
-    w.hidden=on.hidden||!bx().apps;w.textContent="Discount codes can't be combined with Buy 3, get 1 free. At checkout you get whichever saves you more."};
+    w.hidden=on.hidden||!bx().apps;w.textContent=`Discount codes can't be combined with Buy ${BX_BUY}, get 1 free. At checkout you get whichever saves you more.`};
   $("bumpChk").onchange=e=>{bumpOn=e.target.checked;render()};
   function ready(){const miss=cart.filter(i=>i.size===null);if(miss.length){$("cartMsg").textContent=`Choose a size for ${miss.length===1?BY[miss[0].id].name:miss.length+" items"} before checkout.`;
       const s0=$("cartBody").querySelector("select.need");s0&&s0.focus();return false}return true}

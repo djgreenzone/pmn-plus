@@ -428,7 +428,7 @@ main{flex:1;width:min(1180px,100% - 2*clamp(1rem,5vw,2.5rem));margin:clamp(1.5re
               <li><svg viewBox="0 0 24 24"><path d="M20 7L9 18l-5-5"/><path d="M7 7l1.5 1.5M16.5 15.5L18 17"/></svg><span><b>10% off every order</b>Code MEMBER10, members only, no limit.</span></li>
               <li><svg viewBox="0 0 24 24"><path d="M13 2L4 14h7l-1 8 9-12h-7z"/></svg><span><b>First access to drops</b>You hear about new team gear before anyone else.</span></li>
               <li id="perkGift" hidden><svg viewBox="0 0 24 24"><path d="M20 12v8H4v-8M2 7h20v5H2zM12 20V7M12 7H8a2 2 0 1 1 2-3l2 3 2-3a2 2 0 1 1 2 3h-4"/></svg><span><b>Free gift with your order</b><span id="perkGiftTxt"></span></span></li>
-              <li><svg viewBox="0 0 24 24"><path d="M4 7h16v4H4zM6 11v8h12v-8M12 7v12"/></svg><span><b>Buy 3 tees, get 1 free</b>Mix any designs. The 4th tee comes off in your bag.</span></li>
+              <li><svg viewBox="0 0 24 24"><path d="M4 7h16v4H4zM6 11v8h12v-8M12 7v12"/></svg><span><b>Buy 2 tees, get 1 free</b>Mix any designs. The 3rd tee comes off in your bag.</span></li>
               <li><svg viewBox="0 0 24 24"><path d="M3 7h13v10H3z"/><path d="M16 10h3l2 3v4h-5"/><circle cx="7" cy="18" r="1.8"/><circle cx="17.5" cy="18" r="1.8"/></svg><span><b>Order tracking</b>Every order with this email shows up here, UPS tracking included.</span></li>
             </ul>
           </div>
@@ -689,7 +689,7 @@ function renderSavings(){const el=$("savings");if(!el)return;const disc=ORDERS.r
   const tees=ORDERS.reduce((a,o)=>a+o.items.filter(i=>/TEE/i.test(i.title)).reduce((b,i)=>b+i.qty,0),0),free=ORDERS.reduce((a,o)=>a+o.items.filter(i=>/TEE/i.test(i.title)&&!+i.price).reduce((b,i)=>b+i.qty,0),0);
   const code=store.get("pmn_code");
   el.innerHTML=`<div class="sv"><b class="${disc?"":"w"}">${money(disc,"USD")}</b><span>${n?`saved across ${n} order${n>1?"s":""}`:"saved so far. Your welcome code is waiting in your bag."}</span></div>
-    <div class="sv"><b class="w">${free}</b><span>free tee${free===1?"":"s"} claimed · ${(need=>need===0?"max free tees claimed":need===1?"your next tee is free":`${need} more tees to your next free one`)(tees>=8?0:4-tees%4)}</span><a href="/shop/all">Buy 3 tees, get 1 free</a></div>
+    <div class="sv"><b class="w">${free}</b><span>free tee${free===1?"":"s"} claimed · ${(need=>need===0?"max free tees claimed":need===1?"your next tee is free":`${need} more tees to your next free one`)(tees>=6?0:3-tees%3)}</span><a href="/shop/all">Buy 2 tees, get 1 free</a></div>
     <div class="sv"><b class="w">${esc(code||MEMBER_CODE)}</b><span>${/^WELCOME/i.test(code||"")?code.replace(/\D/g,"")+"% off your first order, then MEMBER10 on every order after":"10% off every order, members only · already in your bag"}</span><a href="#help">Member perks</a></div>`}
 function renderBuyAgain(){const el=$("buyAgainRow"),b=bought();$("sec-buyagain").hidden=false;
   if(!b.length){el.innerHTML=`<div class="empty-row"><p>Everything you've bought shows up here, ready to reorder in a tap.</p><a class="btn sm" href="/shop">Shop the drop</a></div>`;return}
@@ -791,7 +791,7 @@ setTimeout(()=>{if(!started)show("vAuth")},4000);
 try{const n=JSON.parse(localStorage.getItem("pmn_saved")||"[]").filter(x=>x.kind==="product").length;if(n){$("svNote").hidden=false;$("svNote").textContent=`You have ${n} saved item${n>1?"s":""} on this device. Sign in to keep ${n>1?"them":"it"} on every device.`}}catch(e){}
 })();
 </script>
-<script src="/assets/pmn-nav.js?v=cb4f31e0"></script>
+<script src="/assets/pmn-nav.js?v=229b8d7e"></script>
 <script>document.getElementById('yr').textContent=new Date().getFullYear()</script>
 </body>
 </html>

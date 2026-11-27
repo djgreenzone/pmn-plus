@@ -139,7 +139,7 @@ Storage.prototype.setItem=function(k,v){set.apply(this,arguments);try{
       emit("add_to_cart",{value:it.Price*(now[key]-(prev[key]||0)),items:[{id:it.ProductID,name:it.ProductName,price:it.Price,category:p?p.t:"",size,qty:now[key]-(prev[key]||0)}]});
       kl("track","Added to Cart",{$value:lines.reduce((n,l)=>n+l.RowTotal,0),AddedItemProductName:it.ProductName,AddedItemProductID:it.ProductID,AddedItemSize:size,
         AddedItemImageURL:it.ImageURL,AddedItemURL:it.URL,AddedItemPrice:it.Price,AddedItemQuantity:now[key]-(prev[key]||0),
-        ItemNames:lines.map(l=>l.ProductName),CheckoutURL:ORIGIN+"/shop#bag",Items:lines,TeeCount:tc,FreeTees:Math.min(2,Math.floor(tc/4)),TeesToFree:tc>=8?0:4-tc%4})})})
+        ItemNames:lines.map(l=>l.ProductName),CheckoutURL:ORIGIN+"/shop#bag",Items:lines,TeeCount:tc,FreeTees:Math.min(2,Math.floor(tc/3)),TeesToFree:tc>=6?0:3-tc%3})})})
 }catch(e){}};
 })();
 
@@ -228,9 +228,9 @@ window.pmnSavedPaint=paint;
 })();
 /* ---------- offer bar above the menu (all pages). Turn off with PMN_CONFIG.offerBar=false ---------- */
 (()=>{const C=window.PMN_CONFIG||{};if(C.offerBar===false)return;
-const TXT=C.offerText||"Free US shipping · Buy 3 tees, get 1 free",LINK=C.offerLink||"/shop#tee",CTA=C.offerCta||"Shop tees";
+const TXT=C.offerText||"Free US shipping · Buy 2 tees, get 1 free",LINK=C.offerLink||"/shop#tee",CTA=C.offerCta||"Shop tees";
 const add=()=>document.querySelectorAll("header .pn").forEach(pn=>{if(pn.querySelector(".pn-offer"))return;const a=document.createElement("a");a.className="pn-offer";a.href=LINK;
-  const FINE=C.offerFine||"";a.title="Free shipping to the contiguous US, no minimum (excludes HI, AK, territories and APO). Buy 3 tees, get 1 free. Free tee: any black, red or blue tee in L–2XL (not oversized). Max 2 per order. Can't be combined with discount codes.";const AP=C.offerAfterpay!==false;a.innerHTML=`<b>${TXT}</b><span aria-hidden="true">·</span>${AP?`<em class="pn-ap">Pay in 4 with <img class="pn-ap-logo" src="/shop/brand/afterpay-badge-dark.svg" alt="Afterpay" width="98" height="24"></em><span class="pn-ap-dot" aria-hidden="true">·</span>`:""}<u>${CTA}</u>${FINE?`<small class="pn-offer-fine">${FINE}</small>`:""}`;a.addEventListener("click",()=>{try{window.pmnTrack&&pmnTrack("select_promotion",{promotion_name:TXT})}catch(e){}});pn.prepend(a)});
+  const FINE=C.offerFine||"";a.title="Free shipping to the contiguous US, no minimum (excludes HI, AK, territories and APO). Buy 2 tees, get 1 free. Free tee: any black, red or blue tee in L–2XL (not oversized). Max 2 per order. Can't be combined with discount codes.";const AP=C.offerAfterpay!==false;a.innerHTML=`<b>${TXT}</b><span aria-hidden="true">·</span>${AP?`<em class="pn-ap">Pay in 4 with <img class="pn-ap-logo" src="/shop/brand/afterpay-badge-dark.svg" alt="Afterpay" width="98" height="24"></em><span class="pn-ap-dot" aria-hidden="true">·</span>`:""}<u>${CTA}</u>${FINE?`<small class="pn-offer-fine">${FINE}</small>`:""}`;a.addEventListener("click",()=>{try{window.pmnTrack&&pmnTrack("select_promotion",{promotion_name:TXT})}catch(e){}});pn.prepend(a)});
 if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",add);else add();})();
 
 /* ---------- Behaviour log -> Supabase public.events. Every pmnTrack event, page view and content view, signed out (anon id) or in; the account page stitches anon history to the member on sign-in. ---------- */

@@ -490,6 +490,12 @@ s.was{color:var(--ink-dim);font-weight:400;margin-left:4px}
 
 /* ---------- hero headline + team CTAs ---------- */
 .hero-cta{position:relative;z-index:4;text-align:center;padding:16px 16px 0;display:grid;justify-items:center;gap:10px}
+/* BF-BANNER */
+.bf-rib{margin:0;display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:4px 12px;font-family:var(--display);letter-spacing:.08em;text-transform:uppercase;color:#fff;text-align:center}
+.bf-rib b{font-weight:400;font-size:clamp(20px,5.2vw,30px);line-height:1}
+.bf-rtag{background:#C8102E;color:#fff;font-size:13px;letter-spacing:.14em;line-height:1;padding:6px 11px;border-radius:999px}
+.bf-rsub{font-size:12px;letter-spacing:.1em;color:#c9c9ce;flex-basis:100%}
+@media(min-width:760px){.bf-rsub{flex-basis:auto;font-size:13px}}
 .hero-h{margin:0;font-family:var(--display);font-weight:400;font-size:clamp(32px,9vw,48px);line-height:.95;letter-spacing:.02em;text-transform:uppercase;text-wrap:balance;text-shadow:0 2px 18px rgba(0,0,0,.6)}
 .hero-sub{margin:0;max-width:40ch;font-size:12.5px;line-height:1.4;color:rgba(244,242,238,.85)}
 .hero-btns{display:flex;gap:6px;flex-wrap:nowrap;justify-content:center;margin-top:4px}
@@ -763,6 +769,7 @@ s.was{color:var(--ink-dim);font-weight:400;margin-left:4px}
       <span class="hdr-r"><nav class="desk-nav" aria-label="Collections"><button type="button" data-coll="toa-samoa">Toa Samoa</button><button type="button" data-coll="mate-maa-tonga">Mate Ma'a Tonga</button><button type="button" data-coll="pmn-plus" data-f="pmn">PMN+</button></nav><button class="shop-link" id="heroShop" type="button">Shop</button><button class="icon-btn bag" aria-label="Bag"><svg viewBox="0 0 24 24"><path d="M5 8h14l-1 12H6L5 8z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg><span class="bag-count" hidden></span></button></span>
     </header>
     <div class="hero-cta">
+      <!-- BF-BANNER (remove after Mon Nov 30 11:59pm PST) --><p class="bf-rib"><span class="bf-rtag">Black Friday</span><b>30% off everything</b><span class="bf-rsub">Buy 2 tees, get 1 free &middot; Free US shipping &middot; Ends Mon 11:59pm PST</span></p><!-- /BF-BANNER -->
       <h1 class="hero-h">It's time to represent your Pacific team</h1>
       <div class="hero-btns"><button type="button" class="hb hb-s" data-coll="toa-samoa">Shop Toa Samoa</button><button type="button" class="hb hb-t" data-coll="mate-maa-tonga">Shop Mate Ma'a Tonga</button></div>
     </div>

@@ -133,6 +133,30 @@ button[disabled]{opacity:.5;cursor:default}
 .shop .home-bs .sts-off{font-size:11px}
 .shop .home-bs .sts-shopall{font-family:var(--display);font-size:1.3rem;letter-spacing:.08em;text-transform:uppercase;min-height:60px}
 
+/* BF-BANNER: Black Friday 2026 sale banner (remove with the section after Mon Nov 30) */
+.bf{background:#000;padding:clamp(1.25rem,3vw,2.5rem) 0}
+.bf-card{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);align-items:center;gap:clamp(1.25rem,3vw,2.5rem);background:#0b0b0d;border-top:5px solid #C8102E;border-radius:26px;padding:clamp(1.5rem,4vw,3rem);overflow:hidden}
+.bf-meta{display:flex;flex-wrap:wrap;align-items:center;gap:.6rem 1rem}
+.bf-tag{display:inline-block;background:#C8102E;color:#fff;font-family:var(--display);letter-spacing:.14em;font-size:1.05rem;line-height:1;padding:.4em .9em;border-radius:999px;text-transform:uppercase}
+.bf-date{font-family:var(--display);letter-spacing:.14em;font-size:1.05rem;color:#b9b9be;text-transform:uppercase}
+.bf h2{font-family:var(--display);font-weight:400;text-transform:uppercase;color:#fff;font-size:clamp(2.8rem,5.6vw,5.2rem);line-height:.86;letter-spacing:.01em;margin:.9rem 0 1rem}
+.bf-sub{color:#d9d9dc;font-size:1.08rem;max-width:34ch}
+.bf-btn{display:inline-flex;align-items:center;gap:.6rem;min-height:60px;padding:0 2.2rem;margin-top:1.4rem;border-radius:999px;background:#fff;color:#050507;font-family:var(--display);font-size:clamp(1.25rem,2.4vw,1.55rem);letter-spacing:.08em;line-height:1;text-transform:uppercase;text-decoration:none;transition:transform .18s,opacity .18s}
+.bf-btn svg{width:1.1em;height:1.1em;transition:transform .2s}
+.bf-btn:hover{opacity:.9}.bf-btn:hover svg{transform:translateX(3px)}
+.bf-btn:focus-visible,.bf-tile:focus-visible{outline:2px solid #fff;outline-offset:3px}
+.bf-end{margin-top:.9rem;font-family:var(--display);letter-spacing:.14em;font-size:1rem;color:#ff6b6b;text-transform:uppercase}
+.bf-tiles{display:grid;grid-template-columns:1fr 1fr;gap:clamp(.6rem,1.6vw,1rem)}
+.bf-tile{position:relative;display:block;aspect-ratio:4/5;border-radius:22px;overflow:hidden;background-size:cover;background-position:center;isolation:isolate}
+.bf-samoa{background-image:url(/shop/brand/toa-samoa-pattern-background-blue.webp)}
+.bf-tonga{background-image:url(/shop/brand/mate-maa-tonga-pattern-background-red.webp)}
+.bf-tile img{position:absolute;left:50%;top:50%;width:92%;height:auto;transform:translate(-50%,-50%) rotate(-3deg);filter:drop-shadow(0 22px 30px rgba(0,0,0,.55));transition:transform .5s cubic-bezier(.2,.7,.2,1)}
+.bf-tonga img{transform:translate(-50%,-50%) rotate(3deg)}
+.bf-tile:hover img{transform:translate(-50%,-52%) rotate(0) scale(1.04)}
+.bf-chip{position:absolute;left:12px;bottom:12px;background:#C8102E;color:#fff;font-weight:800;font-size:12px;letter-spacing:.06em;line-height:1;padding:6px 9px;border-radius:6px}
+@media(max-width:820px){.bf-card{grid-template-columns:1fr}.bf-btn{width:100%;justify-content:center}}
+@media(prefers-reduced-motion:reduce){.bf-tile img,.bf-btn svg{transition:none}}
+
 /* instagram */
 .ig{position:relative;padding:clamp(4rem,9vw,7rem) 0;background:#f4f2ee;color:#050507}
 .ig .eyebrow{color:#5f5f66}
@@ -392,6 +416,32 @@ button[disabled]{opacity:.5;cursor:default}
   </div>
   </div>
 </section>
+
+<!-- BF-BANNER (remove after Mon Nov 30 11:59pm PST) -->
+<section class="bf" aria-labelledby="bfH">
+  <div class="wrap">
+    <div class="bf-card">
+      <div class="bf-copy">
+        <p class="bf-meta"><span class="bf-tag">Black Friday</span><span class="bf-date">Fri Nov 27 &ndash; Mon Nov 30</span></p>
+        <h2 id="bfH">30% off<br>everything</h2>
+        <p class="bf-sub">Applied automatically at checkout. Or buy 2 tees, get 1 free. Free US shipping.</p>
+        <a class="bf-btn" href="/shop?ref=home-bf-banner">Shop the sale <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        <p class="bf-end">Ends Monday 11:59pm PST</p>
+      </div>
+      <div class="bf-tiles">
+        <a class="bf-tile bf-samoa" href="/shop/toa-samoa-crest-oversized-tee-black?ref=home-bf-banner" aria-label="Shop the Toa Samoa Crest Oversized Tee, 30% off">
+          <img src="/shop/hires/toa-oversized/toa-samoa-crest-oversized-tee-black-front-640.webp" alt="Toa Samoa Crest Oversized Tee in black" width="640" height="640" loading="lazy" decoding="async">
+          <span class="bf-chip">30% OFF</span>
+        </a>
+        <a class="bf-tile bf-tonga" href="/shop/mate-maa-tonga-crest-oversized-tee-black?ref=home-bf-banner" aria-label="Shop the Mate Ma&#8217;a Tonga Crest Oversized Tee, 30% off">
+          <img src="/shop/hires/mmt-oversized/mate-maa-tonga-crest-oversized-tee-black-front-640.webp" alt="Mate Ma&#8217;a Tonga Crest Oversized Tee in black" width="640" height="640" loading="lazy" decoding="async">
+          <span class="bf-chip">30% OFF</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- /BF-BANNER -->
 
 <section class="wyr" id="reppin" aria-labelledby="wyrH">
   <div class="wrap">

@@ -712,7 +712,7 @@ s.was{color:var(--ink-dim);font-weight:400;margin-left:4px}
 .bx p{margin:0;font-size:13.5px;line-height:1.4}.bx b{font-weight:700}
 .bx .bar{height:6px;border-radius:99px;background:rgba(255,255,255,.12);overflow:hidden}.bx .bar i{display:block;height:100%;width:0;background:#C8102E;border-radius:inherit;transition:width .35s ease}
 .bx.done .bar i{background:#3DDC84}.bx small{font-size:11.5px;color:var(--ink-dim)}
-.promo{display:none!important}s.was{text-decoration:line-through}.pr s.was,.hcard s.was,.hcard .num s.was{color:inherit;font-weight:500;opacity:.6;margin:0 6px 0 0;font-size:.8em}b.sale{font-weight:inherit}#pDeal{display:none!important}
+.promo{display:none!important}s.was{text-decoration:line-through}.pr s.was,.hcard s.was,.hcard .num s.was{color:inherit;font-weight:500;opacity:.6;margin:0 6px 0 0;font-size:.72em}b.sale{font-weight:800;font-size:1.15em}#cGrid .gcard .num b.sale{color:#f4f2ee}i.off{font-style:normal;font-size:11px;font-weight:800;letter-spacing:.06em;line-height:1;background:#C8102E;color:#fff;padding:4px 7px;border-radius:5px;margin-left:8px;vertical-align:middle;white-space:nowrap}#pDeal{display:none!important}
 .bx{margin:12px 16px 0;min-width:0}
 .seg{display:grid;gap:4px}.seg i{height:22px;border-radius:6px;background:transparent;box-shadow:inset 0 0 0 1.5px rgba(61,220,132,.55);font-style:normal;font-size:9.5px;font-weight:800;letter-spacing:.08em;display:grid;place-items:center;color:#3DDC84;transition:background .25s,box-shadow .25s}
 .seg i.f,.seg i.got{background:#3DDC84;box-shadow:none;color:#08240f}
@@ -1334,7 +1334,7 @@ const hex2rgb=h=>[1,3,5].map(i=>parseInt(h.slice(i,i+2),16));
 const mix=(a,b,t)=>{const A=hex2rgb(a),B=hex2rgb(b);return`rgb(${A.map((v,i)=>Math.round(v+(B[i]-v)*t)).join(",")})`};
 const money=v=>"$"+v.toFixed(2);
 /* Black Friday 2026 storewide sale (Shopify automatic discount "Black Friday 30% Off"). Set SALE=0 after the sale to go back to regular prices everywhere. */
-const SALE=0.30,salePx=n=>Math.round(n*(1-SALE)*100)/100,pHTML=n=>SALE?`<s class="was">${money(n)}</s> <b class="sale">${money(salePx(n))}</b>`:money(n);
+const SALE=0.30,salePx=n=>Math.round(n*(1-SALE)*100)/100,pHTML=(n,chip)=>SALE?`<s class="was">${money(n)}</s> <b class="sale">${money(salePx(n))}</b>${chip?`<i class="off">${Math.round(SALE*100)}% OFF</i>`:""}`:money(n);
 /* Afterpay on-site messaging (Square). Official logo + pay-in-4 amount, rendered by square-marketplace.js. Hide with PMN_CONFIG.payLater=false. */
 const AP={mpid:"4b2abf80-35ba-4a68-9832-c961a5bd3456",product:"a376d56d-a294-498e-a486-79cf044ee6e5",cart:"4307347a-3b2c-453c-84ee-66ccdb14da6d"};
 function apPlace(id,type,amt){const el=document.getElementById(id);if(!el)return;if((window.PMN_CONFIG||{}).payLater===false||!amt){el.innerHTML="";return}
@@ -1488,7 +1488,7 @@ const PDP=(()=>{
   function fit(){const r=stage.getBoundingClientRect(),m=META[cur],asp=m.w/m.h;let w=r.width*0.86,h=w/asp;if(h>r.height*0.86){h=r.height*0.86;w=h*asp}sp.size(w,h)}
   function setWorld(p){pdp.style.setProperty("--flood",p.team==="pmn"?"#141416":p.team==="samoa"?"#0b1b5e":"#8f0a14");pdp.dataset.team=p.team;$("pdpCrest").src=crestURL(p.team);cv.setAttribute("aria-label",`${altFor(p)} — drag to rotate 360°`)}
   function fill(p){
-    $("pTeam").textContent=teamName(p);$("pName").textContent=p.name;$("pPrice").innerHTML=pHTML(p.price);
+    $("pTeam").textContent=teamName(p);$("pName").textContent=p.name;$("pPrice").innerHTML=pHTML(p.price,1);
     const opts=p.opts.map(o=>BY[o]);
     $("pColour").textContent=`${p.colourName} · ${teamName(p)}`;
     const sw=$("pSwatches");sw.innerHTML="";sw.hidden=opts.length<2;$("pPromo").innerHTML=p.kind==="tee"?`<b>Buy 2 tees, get 1 free</b> · mix any designs`:"";$("pPromo").hidden=p.kind!=="tee";
@@ -1720,7 +1720,7 @@ $("pTeam").onclick=()=>{const c=PDP.current(),t=BY[c]?BY[c].team:"tonga";documen
   const cardTitle=p=>p.name;
   const card=(p,cls)=>{const b=document.createElement("button");b.className=cls;b.type="button";
     b.innerHTML=`<span class="im">${isLimited(p)?'<i class="tag">Exclusive</i>':""}<img loading="lazy" decoding="async" alt="${altFor(p).replace(/"/g,"&quot;")}" src="${cardURL(p.id)}"></span>
-      <b class="nm">${cardTitle(p)}</b><strong class="pr num">${pHTML(p.price)}</strong>${isLimited(p)?'<small class="lim">Limited drop · While stocks last</small>':""}`;
+      <b class="nm">${cardTitle(p)}</b><strong class="pr num">${pHTML(p.price,1)}</strong>${isLimited(p)?'<small class="lim">Limited drop · While stocks last</small>':""}`;
     b.setAttribute("aria-label",`${cardTitle(p)}, ${p.colourName}, ${SALE?`was ${money(p.price)}, now ${money(salePx(p.price))}`:money(p.price)}${BADGE[p.id]?", "+BADGE[p.id].toLowerCase():""}`);queueMicrotask(()=>decorate(b,p));
     b.onclick=()=>PDP.open(p.id,b.querySelector("img"),"home");return b};
   BEST.map(id=>BY[id]).filter(Boolean).forEach(p=>$("hRail").append(card(p,"card")));

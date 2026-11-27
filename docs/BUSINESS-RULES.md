@@ -66,3 +66,6 @@ The site, Shopify, Klaviyo emails and Google Merchant Center must all say the sa
 - Voice: proud, warm, short; talks to fans as family. No fake urgency or invented stock counts.
 - Headings Bebas Neue, body Instrument Sans.
 - Footer pill "Powered by ICM Creative" (icmcreative.com) on every page.
+
+- **Story "Shop this story" cards** also show the sale price + 30% OFF chip: set `SALE = 0` in `_source/content/shop-this-story.js`
+  (and copy it to `assets/content/`) after the sale. It covers every story, since the script is shared.

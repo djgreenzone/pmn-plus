@@ -383,7 +383,7 @@ const hex2rgb=h=>[1,3,5].map(i=>parseInt(h.slice(i,i+2),16));
 const mix=(a,b,t)=>{const A=hex2rgb(a),B=hex2rgb(b);return`rgb(${A.map((v,i)=>Math.round(v+(B[i]-v)*t)).join(",")})`};
 const money=v=>"$"+v.toFixed(2);
 /* Black Friday 2026 storewide sale (Shopify automatic discount "Black Friday 30% Off"). Set SALE=0 after the sale to go back to regular prices everywhere. */
-const SALE=0.30,sp=n=>Math.round(n*(1-SALE)*100)/100,pHTML=n=>SALE?`<s class="was">${money(n)}</s> <b class="sale">${money(sp(n))}</b>`:money(n);
+const SALE=0.30,sp=n=>Math.round(n*(1-SALE)*100)/100,pHTML=(n,chip)=>SALE?`<s class="was">${money(n)}</s> <b class="sale">${money(sp(n))}</b>${chip?`<i class="off">${Math.round(SALE*100)}% OFF</i>`:""}`:money(n);
 /* Afterpay on-site messaging (Square). Official logo + pay-in-4 amount, rendered by square-marketplace.js. Hide with PMN_CONFIG.payLater=false. */
 const AP={mpid:"4b2abf80-35ba-4a68-9832-c961a5bd3456",product:"a376d56d-a294-498e-a486-79cf044ee6e5",cart:"4307347a-3b2c-453c-84ee-66ccdb14da6d"};
 function apPlace(id,type,amt){const el=document.getElementById(id);if(!el)return;if((window.PMN_CONFIG||{}).payLater===false||!amt){el.innerHTML="";return}
@@ -539,7 +539,7 @@ const PDP=(()=>{
   function fit(){const r=stage.getBoundingClientRect(),m=META[cur],asp=m.w/m.h;let w=r.width*0.86,h=w/asp;if(h>r.height*0.86){h=r.height*0.86;w=h*asp}sp.size(w,h)}
   function setWorld(p){pdp.style.setProperty("--flood",p.team==="pmn"?"#141416":p.team==="samoa"?"#0b1b5e":"#8f0a14");pdp.dataset.team=p.team;{const cu=crestURL(p.team),ce=$("pdpCrest");if(ce.getAttribute("src")!==cu){ce.removeAttribute("srcset");ce.src=cu}}cv.setAttribute("aria-label",`${altFor(p)} — drag to rotate 360°`)}
   function fill(p){
-    $("pTeam").textContent=teamName(p);$("pName").textContent=p.name;try{klReviews(p)}catch(e){}try{svPdp(p)}catch(e){}$("pPrice").innerHTML=pHTML(p.price);
+    $("pTeam").textContent=teamName(p);$("pName").textContent=p.name;try{klReviews(p)}catch(e){}try{svPdp(p)}catch(e){}$("pPrice").innerHTML=pHTML(p.price,1);
     const opts=p.opts.map(o=>BY[o]);
     $("pColour").textContent=`${p.colourName} · ${teamName(p)}`;
     const sw=$("pSwatches");sw.innerHTML="";sw.hidden=opts.length<2;$("pPromo").innerHTML=p.kind==="tee"?`<b>Buy 2 tees, get 1 free</b> · mix any designs`:"";$("pPromo").hidden=p.kind!=="tee";
@@ -729,7 +729,7 @@ const Coll=(()=>{
   $("cFilter").querySelectorAll(".chip").forEach(b=>b.onclick=()=>{filt=b.dataset.f;$("cFilter").querySelectorAll(".chip").forEach(x=>x.setAttribute("aria-pressed",x===b));grid()});
   function grid(){const c=SEO.collections[key],g=$("cGrid");g.innerHTML="";queueMicrotask(()=>g.querySelectorAll("[data-id]").forEach(b=>decorate(b,BY[b.dataset.id])));
     const L=sortList(c.products.map(id=>BY[id]).filter(p=>p&&(filt==="all"||(filt==="pmn"?p.team==="pmn":p.kind===filt))),$("cSort").value);$("cCount").textContent=L.length+(L.length===1?" piece":" pieces");L.forEach(p=>{const b=document.createElement("a");b.className="gcard";b.href=pmnURL(p.id);b.dataset.id=p.id;
-      b.innerHTML=`<span class="im">${SOLD.has(p.id)?'<i class="sold">Sold out</i>':""}<img loading="lazy" decoding="async" alt="${altFor(p).replace(/"/g,"&quot;")}" src="${cardURL(p.id)}"></span><b>${p.name}</b><span class="num">${SOLD.has(p.id)?"Sold out":pHTML(p.price)}</span>`;
+      b.innerHTML=`<span class="im">${SOLD.has(p.id)?'<i class="sold">Sold out</i>':""}<img loading="lazy" decoding="async" alt="${altFor(p).replace(/"/g,"&quot;")}" src="${cardURL(p.id)}"></span><b>${p.name}</b><span class="num">${SOLD.has(p.id)?"Sold out":pHTML(p.price,1)}</span>`;
       pmnNav(b,()=>PDP.open(p.id,b.querySelector("img"),"coll"));g.append(b)})}
   let _stories=null;
   async function readRail(k,team){
@@ -772,7 +772,7 @@ $("pTeam").onclick=()=>{const c=PDP.current(),t=BY[c]?BY[c].team:"tonga";documen
   const cardTitle=p=>p.name;
   const card=(p,cls)=>{const b=document.createElement("a");b.className=cls;b.href=pmnURL(p.id);b.dataset.pid=p.id;
     b.innerHTML=`<span class="im">${SOLD.has(p.id)?'<i class="sold">Sold out</i>':isLimited(p)?'<i class="tag">Exclusive</i>':""}<img loading="lazy" decoding="async" alt="${altFor(p).replace(/"/g,"&quot;")}" src="${cardURL(p.id)}"></span>
-      <b class="nm">${cardTitle(p)}</b><strong class="pr num">${pHTML(p.price)}</strong>${isLimited(p)?'<small class="lim">Limited drop · While stocks last</small>':""}`;
+      <b class="nm">${cardTitle(p)}</b><strong class="pr num">${pHTML(p.price,1)}</strong>${isLimited(p)?'<small class="lim">Limited drop · While stocks last</small>':""}`;
     b.setAttribute("aria-label",`${cardTitle(p)}, ${p.colourName}, ${SALE?`was ${money(p.price)}, now ${money(sp(p.price))}`:money(p.price)}${BADGE[p.id]?", "+BADGE[p.id].toLowerCase():""}`);queueMicrotask(()=>decorate(b,p));
     pmnNav(b,()=>PDP.open(p.id,b.querySelector("img"),"home"));return b};
   BEST.map(id=>BY[id]).filter(Boolean).forEach(p=>$("hRail").append(card(p,"card")));

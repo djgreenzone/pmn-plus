@@ -119,6 +119,7 @@ button[disabled]{opacity:.5;cursor:default}
 @media (max-width:760px){.teams{grid-template-columns:1fr}.team{min-height:440px}}
 
 /* Black Friday pill on the "Who you reppin" eyebrow */
+@media(max-width:700px){.bf-ship{display:none}.wyr .eyebrow .bf-pill{letter-spacing:.05em;padding:.4em .9em;font-size:.92em;white-space:nowrap}}
 .wyr .eyebrow .bf-pill{display:inline-block;background:#C8102E;color:#fff;padding:.35em 1.1em;border-radius:999px;line-height:1.15}
 /* Best sellers carousel: white panel like the stories "Shop this story", bigger cards */
 .shop .home-bs{margin:0;padding:clamp(1.25rem,3vw,2.25rem);border-radius:26px}@media(min-width:700px){.shop .home-bs{min-height:520px}}
@@ -271,6 +272,7 @@ button[disabled]{opacity:.5;cursor:default}
 @media (max-width:640px){.rlp-in{grid-template-columns:1fr;grid-template-areas:"txt" "s" "t"}}
 @media (max-width:520px){.rlp .go{width:100%;justify-content:center}}
 @media (prefers-reduced-motion:reduce){.rlp video{display:none}.rlp .go svg{transition:none}}
+.bf-slide{background:#050507;padding:clamp(1rem,3vw,2rem) 0}.bf-slide a{display:block;border-radius:clamp(12px,2vw,20px);overflow:hidden;line-height:0}.bf-slide img{display:block;width:100%;height:auto;transition:transform .4s}.bf-slide a:hover img{transform:scale(1.015)}
 .wyr{background:#fff;color:#050507;padding:clamp(3rem,7vw,5.5rem) 0}
 .wyr .eyebrow{color:#5f5f66;text-align:center}
 .wyr h2{color:#050507;text-align:center;margin:.4rem 0 clamp(1.25rem,3vw,2rem)}
@@ -393,9 +395,13 @@ button[disabled]{opacity:.5;cursor:default}
   </div>
 </section>
 
+<section class="bf-slide" aria-label="Black Friday sale">
+  <div class="wrap"><a href="/shop/?utm_source=home&amp;utm_medium=banner&amp;utm_campaign=bf2026"><picture><source media="(max-width:700px)" srcset="/assets/banners/bf26-slider-750x250.webp" width="750" height="250"><img src="/assets/banners/bf26-slider-1500x500.webp" width="1500" height="500" alt="Black Friday at the PMN+ Shop: up to 30% off. Get all products. For the culture." loading="lazy" decoding="async"></picture></a></div>
+</section>
+
 <section class="wyr" id="reppin" aria-labelledby="wyrH">
   <div class="wrap">
-    <p class="eyebrow"><span class="bf-pill">Black Friday: 30% off everything | Free US shipping</span></p>
+    <p class="eyebrow"><span class="bf-pill">Black Friday: 30% off everything<span class="bf-ship"> | Free US shipping</span></span></p>
     <h2 id="wyrH">Who you reppin&#8217;?</h2>
     <a class="wyr-card" href="/shop">
       <picture>

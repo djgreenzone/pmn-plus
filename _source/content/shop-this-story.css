@@ -93,3 +93,12 @@
 .sts-shopall:focus-visible{outline:2px solid #0b0b0d;outline-offset:3px;}
 .ed-shop .sts-shopall{color:#fff !important;}
 @media(min-width:560px){.sts-shopall{width:auto;}}
+
+/* Black Friday 2026 sale price + chip (remove with SALE in shop-this-story.js) */
+.sts-price{display:flex;align-items:baseline;flex-wrap:wrap;gap:2px 6px;}
+.sts-was{font-size:12px;font-weight:500;text-decoration:line-through;opacity:.6;}
+.sts-sale{font-size:18px;font-weight:800;}
+.sts-off{font-style:normal;font-size:10px;font-weight:800;letter-spacing:.06em;line-height:1;
+  background:#C8102E;color:#fff;padding:4px 6px;border-radius:5px;white-space:nowrap;align-self:center;}
+.sts-inline .sts-was,.sts-inline .sts-off{display:none;}
+.sts-inline .sts-sale{font-size:13px;}

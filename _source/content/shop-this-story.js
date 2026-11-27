@@ -75,9 +75,19 @@
     if (document.fonts && document.fonts.ready) document.fonts.ready.then(sync);
   };
 
+  // Black Friday 2026 storewide sale (Shopify automatic discount "Black Friday 30% Off").
+  // Set SALE = 0 after Mon Nov 30 11:59pm PST to go back to regular prices.
+  var SALE = 0.30;
+  var salePx = function (n) { return Math.round(n * (1 - SALE) * 100) / 100; };
+
   var card = function (p) {
     var href = "/shop/" + p.s + "?ref=story-" + encodeURIComponent(slugOfPost);
     var price = p.p != null ? "$" + p.p : "";
+    var priceHtml = esc(price);
+    if (SALE && p.p != null) {
+      priceHtml = '<s class="sts-was">$' + esc(p.p) + '</s> <b class="sts-sale">$' + salePx(p.p).toFixed(2) + '</b>' +
+        '<i class="sts-off">' + Math.round(SALE * 100) + '% OFF</i>';
+    }
     var sold = p.so ? '<span class="sts-so">Sold out</span>' : "";
     return '<a class="sts-card ' + teamClass(p.t) + '" href="' + href + '"' +
       ' data-pid="' + esc(p.id) + '">' +
@@ -86,7 +96,7 @@
       '<span class="sts-body">' +
       '<span class="sts-team">' + esc(p.t) + "</span>" +
       '<span class="sts-name">' + esc(p.n) + "</span>" +
-      '<span class="sts-row"><span class="sts-price">' + esc(price) + "</span>" + sold +
+      '<span class="sts-row"><span class="sts-price">' + priceHtml + "</span>" + sold +
       '<span class="sts-cta">Shop</span></span>' +
       "</span></a>";
   };

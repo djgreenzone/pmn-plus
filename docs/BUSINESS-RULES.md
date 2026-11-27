@@ -15,13 +15,23 @@ The site, Shopify, Klaviyo emails and Google Merchant Center must all say the sa
 - **Never name the blank manufacturer on the site.** Describe weight, fabric and fit instead.
 - White tees and other drafts in Shopify are **not** sold; don't publish them.
 
-## Buy 3 tees, get 1 free
-- Shopify automatic Buy X Get Y discount "Buy 3 tees, get 1 free" (id `1536209322183`).
-- Any 3 tees qualify (oversized included). The **free tee** must be a **black, red or royal standard tee in L, XL or 2XL**.
-  Oversized tees are never the free one.
-- 100% off one tee per 4 tees, **max 2 free per order**.
-- Doesn't combine with discount codes or the Game Day Set (Shopify applies the better discount). Combines with shipping discounts.
-- Site mirrors this in `bx()` / `FREE_SZ` (bag meter + messages) and fine print. Every new tee product must be added to the discount.
+## Buy 2 tees, get 1 free (Black Friday weekend 2026: Fri Nov 27 to Mon Nov 30, ends 11:59pm PST)
+- Shopify automatic Buy X Get Y discount "Buy 2 tees, get 1 free" (id `1544616935623`, ends 2026-12-01T07:59:59Z).
+  For the weekend it **replaces** the standing "Buy 3 tees, get 1 free" (id `1536209322183`), which was deactivated on Nov 27.
+- Any 2 tees qualify (oversized included). The **free tee** must be a **black, red or royal standard tee in L, XL or 2XL**.
+  Oversized tees are never the free one. Same buy/get products and variants as the Buy 3 offer.
+- 100% off one tee per 3 tees, **max 2 free per order**.
+- Doesn't combine with discount codes or the Game Day Set (Shopify applies the better discount). Doesn't combine with the
+  Black Friday 30% off either: Shopify gives each cart whichever saves more (1-2 tees: 30%; 3 tees: the free tee).
+- Site mirrors this in `bx()` / `BX_BUY` / `FREE_SZ` (bag meter + messages), the offer bar and account page. Every new tee
+  product must be added to the discount.
+- **After the sale:** reactivate "Buy 3 tees, get 1 free" in Shopify and `git revert` the commit that switched the site to Buy 2
+  (it restores `BX_BUY=3`, `BUNDLE_OFF=10`, the product-page Game Day Set box, the SEO/feed copy and the offer bar text in `assets/pmn-config.js`).
+  Also reactivate "Game Day Set: $10 off" (id `1535948751047`), which was deactivated for the weekend.
+
+## Black Friday 30% off (Nov 27 to Nov 30, 2026)
+- Shopify automatic discount "Black Friday 30% Off" (id `1544614904007`), store-wide, no code, doesn't combine with any other
+  discount or code. Ends 2026-12-01T07:59:59Z (Mon 11:59pm PST). Free US shipping stays.
 
 ## Other offers and codes
 | Offer | Rule |

@@ -5,6 +5,7 @@ window.PMN_CONFIG={
   google:true,           // Google sign-in (Supabase provider on, Google Cloud project pmn-plus)
   apple:false,           // true once Apple sign-in is switched on in Supabase
   memberGift:"A surprise from the PMN+ vault in every order. What\u2019s inside changes with each drop.",
+  offerText:"Black Friday: 30% off everything · Free US shipping",offerCta:"Shop now",offerLink:"/shop",offerFine:"30% off applied automatically at checkout. Or Buy 2 tees, get 1 free.",  // Black Friday 2026 banner; delete these 4 keys after Mon Nov 30 to restore the default offer bar
   accountsLive:true,      // shows the account icon in the header
   analytics:{ga4:"G-KEQ8HPTH9W", meta:"1983591485663494", tiktok:"", clarity:"ys5h8s9j8m"}  // GA4 G-…, Meta Pixel ID, TikTok Pixel ID, Clarity project ID; blank = off
 };

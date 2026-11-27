@@ -126,7 +126,7 @@
           if (same && /samoa/i.test(teams[0])) cta = { href: "/shop/toa-samoa", label: "Shop all Toa Samoa" };
           else if (same && /tonga/i.test(teams[0])) cta = { href: "/shop/mate-maa-tonga", label: "Shop all Mate Ma'a Tonga" };
           var ctaHref = cta.href + "?ref=story-" + encodeURIComponent(slugOfPost);
-          if (!el.querySelector(".sts-head")) {
+          if (!el.querySelector(".sts-head") && el.dataset.head !== "none") {
             el.insertAdjacentHTML("afterbegin", '<p class="sts-head">Shop this story</p>');
           }
           // terminal "see all" card lives at the end of the slider

@@ -69,3 +69,16 @@ The site, Shopify, Klaviyo emails and Google Merchant Center must all say the sa
 
 - **Story "Shop this story" cards** also show the sale price + 30% OFF chip: set `SALE = 0` in `_source/content/shop-this-story.js`
   (and copy it to `assets/content/`) after the sale. It covers every story, since the script is shared.
+
+## End-of-sale checklist (Tue Dec 1, right after Mon Nov 30 11:59pm PST)
+Shopify (the two sale discounts end themselves at 07:59:59Z Dec 1; the old ones were given an end date, so clear it):
+1. "Buy 3 tees, get 1 free" (`gid://shopify/DiscountAutomaticNode/1536209322183`): set `endsAt` to null so it is ACTIVE again.
+2. "Game Day Set: $10 off" (`.../1535948751047`): set `endsAt` to null.
+3. Leave "Black Friday 30% Off" (`.../1544614904007`) and "Buy 2 tees, get 1 free" (`.../1544616935623`) ended.
+Site (one PR to main, then check /shop, a product page, the bag, a story, the homepage):
+4. `_source/site2/index.html`: `SALE=0`, `BX_BUY=3`, `BUNDLE_OFF=10`, remove the `#pDeal` hide rule; rebuild with the pipeline in CLAUDE.md.
+5. `_source/content/shop-this-story.js` and `assets/content/shop-this-story.js`: `SALE = 0`.
+6. `assets/pmn-config.js`: delete the 4 `offer*` keys (offerText, offerCta, offerLink, offerFine).
+7. `index.html`: change the `.bf-pill` eyebrow in the "Who you reppin" section back to "RLWC 2026 &middot; Toa Samoa vs Mate Ma&#8217;a Tonga" (drop the pill span), and replace the Black Friday line under the best-sellers carousel with the normal shipping line.
+8. Restore the SEO copy and homepage promo line per the sections above.
+9. Mark red/blue 4XL-6XL sizes as needed (they are sold out in Shopify by inventory tracking at 0; restock = set quantity).

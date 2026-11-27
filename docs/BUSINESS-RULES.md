@@ -83,4 +83,5 @@ Site (one PR to main, then check /shop, a product page, the bag, a story, the ho
 8. Restore the SEO copy and homepage promo line per the sections above.
 9a. Story sidebar sale banner: in `_source/content/build.py` set `BF_BANNER_HTML = ""`, rebuild stories (or strip the `<a class="ed-bf">` block from each story), and delete `assets/banners/bf26-*.webp`. (The sidebar is no longer sticky because the banner makes it taller than the screen; restore `position:sticky;top:76px` on `.ed-aside` in `story.css` only if you want that back.)
 9b. Homepage: delete the `<section class="bf-slide">` block and its `.bf-slide` CSS in `index.html`, and `assets/banners/bf26-slider-*.webp`.
+9c. Shop hero headline (`<h1 class="hero-h">` in `_source/site2/index.html`): change "Black Friday: 30% off for the culture" back to "It's time to represent your Pacific team" and rebuild.
 9. Mark red/blue 4XL-6XL sizes as needed (they are sold out in Shopify by inventory tracking at 0; restock = set quantity).

@@ -81,4 +81,5 @@ Site (one PR to main, then check /shop, a product page, the bag, a story, the ho
 6. `assets/pmn-config.js`: delete the 3 `offer*` keys (offerText, offerCta, offerLink).
 7. `index.html`: change the `.bf-pill` eyebrow in the "Who you reppin" section back to "RLWC 2026 &middot; Toa Samoa vs Mate Ma&#8217;a Tonga" (drop the pill span), and replace the Black Friday line under the best-sellers carousel with the normal shipping line.
 8. Restore the SEO copy and homepage promo line per the sections above.
+9a. Story sidebar sale banner: in `_source/content/build.py` set `BF_BANNER_HTML = ""`, rebuild stories (or strip the `<a class="ed-bf">` block from each story), and delete `assets/banners/bf26-*.webp`. (The sidebar is no longer sticky because the banner makes it taller than the screen; restore `position:sticky;top:76px` on `.ed-aside` in `story.css` only if you want that back.)
 9. Mark red/blue 4XL-6XL sizes as needed (they are sold out in Shopify by inventory tracking at 0; restock = set quantity).

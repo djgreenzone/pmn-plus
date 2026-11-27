@@ -70,7 +70,12 @@ body{font-family:var(--body);color:var(--ink);background:var(--bg)}
 .ed-rights a{color:var(--accent)}
 
 /* right rail — ESPN model, ICM card style */
-.ed-aside{min-width:0;position:sticky;top:76px}
+.ed-aside{min-width:0}
+/* sale banner above "More Stories": the half page is 300x600, so the rail is no longer sticky (it would outgrow the screen) */
+.ed-bf{display:block;margin:0 0 22px;border-radius:16px;overflow:hidden;line-height:0;border:1px solid var(--line);transition:transform .25s,border-color .25s}
+.ed-bf:hover{transform:translateY(-2px);border-color:#36373d}
+.ed-bf img{display:block;width:100%;height:auto}
+@media(max-width:900px){.ed-bf{margin:6px 0 22px}}
 .ed-rail-h{font-family:var(--display);letter-spacing:.06em;font-size:20px;color:var(--ink);margin:0 0 14px;display:flex;align-items:center;gap:10px}
 .ed-rail-h::after{content:"";height:1px;flex:1;background:var(--line)}
 .ed-cards{display:flex;flex-direction:column;gap:14px}

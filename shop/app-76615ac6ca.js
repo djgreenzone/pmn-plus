@@ -138,7 +138,7 @@ const SHOPIFY_MAP={
   /* add when published: mmt-snapback, toa-snapback (curved bill) */
 };
 /* sold out on the site regardless of Shopify stock */
-var SOLD=new Set([]);
+var SOLD=new Set(["toa-hp-snapback"]);
 const SHOPIFY_BUMP_HANDLE="sticker-pack";
 const VAR={};let shopifyOK=false;
 async function sf(query,variables){
@@ -154,7 +154,7 @@ const shopifyReady=(async()=>{try{
     VAR[id]=m;const pr=Math.min(...vs.map(v=>+v.price.amount));if(pr&&pr!==p.price){p.price=pr;changed=true}}
   const b=H[SHOPIFY_BUMP_HANDLE];if(b&&b.variants.nodes[0]){BUMP.variant=b.variants.nodes[0].id;BUMP.price=+b.variants.nodes[0].price.amount}
   SOLD.forEach(id=>{if(VAR[id])Object.values(VAR[id]).forEach(v=>v.ok=false)});
-  shopifyOK=true;
+  shopifyOK=true;window.pmnStock&&window.pmnStock();
   if(changed)document.querySelectorAll("[data-pid]").forEach(el=>{const p=BY[el.dataset.pid],pr=el.querySelector(".pr");if(p&&pr)pr.textContent=money(p.price)});
 }catch(e){console.warn("Shopify",e)}})();
 /* back-in-stock requests -> Klaviyo list "PMN+ Back in Stock Requests" (X4re4C) */
@@ -561,8 +561,15 @@ const PDP=(()=>{
       b.onclick=()=>{size=s;sz.querySelectorAll(".size").forEach(x=>x.setAttribute("aria-pressed",x===b));cta();intent("select_size","Selected Size",{Size:s})};sz.append(b)});
     if(ladder!==list){const ord=[...sz.children].sort((x,y)=>ladder.indexOf(x.dataset.na||x.textContent)-ladder.indexOf(y.dataset.na||y.textContent));ord.forEach(x=>sz.append(x))}
     if(p.kind==="tee"&&!size)sz.style.gridTemplateColumns="";
-    extras(p);cta();
+    extras(p);cta();oos();
   }
+  function oos(){const n=$("pOos");if(!n)return;const f=$("pBis");if(f&&f.dataset.sz){f.querySelector(".bis-h").textContent="Back soon. Get an email the moment it restocks.";f.hidden=!SOLD.has(cur);f.dataset.sz=""}
+    const m=typeof VAR!=="undefined"&&cur&&VAR[cur];if(!m||!shopifyOK){n.hidden=true;return}
+    const out=[];$("pSizes").querySelectorAll("button.size:not(.na)").forEach(b=>{const z=b.textContent==="OSFA"?"One size":b.textContent,v=m[z];if(v&&!v.ok){out.push(z);if(!b.disabled){b.disabled=true;b.classList.add("so");b.setAttribute("aria-label",z+", sold out");if(size===z){size=null;b.setAttribute("aria-pressed","false")}}}});
+    if(!out.length||SOLD.has(cur)){n.hidden=true;return}
+    n.dataset.sizes=out.join(", ");$("pOosT").textContent=(out.length===1?out[0]+" is":out.join(", ")+" are")+" sold out.";n.hidden=false}
+  window.pmnStock=oos;
+  $("pOosBtn").onclick=()=>{const f=$("pBis"),z=$("pOos").dataset.sizes;f.hidden=false;f.dataset.sz=z;f.dataset.name=BY[cur].name+" ("+z+")";f.querySelector(".bis-h").textContent="Get an email when "+z+(z.includes(",")?" are":" is")+" back in stock.";f.scrollIntoView({block:"center",behavior:reduceMotion?"auto":"smooth"});setTimeout(()=>$("bisEmail").focus({preventScroll:true}),300)};
   let qty=1;
   const views=a=>{a=((+a%360)+360)%360;const d=Math.min(a,360-a);return d<=10?"Front":d>=165?"Back":(d>=70&&d<=110)?"Side":d<90?"3/4 front":"3/4 back"};
   function extras(p){

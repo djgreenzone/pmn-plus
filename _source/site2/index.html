@@ -311,6 +311,7 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--ink);outline-offset
 
 /* ---------- home below the hero ---------- */
 .home{position:relative;z-index:2;background:#05060a;padding:8px 16px calc(env(safe-area-inset-bottom,0px) + 24px);display:grid;gap:44px;border-top:1px solid var(--line)}
+.bfs{display:block;border-radius:16px;overflow:hidden;line-height:0}.bfs img{display:block;width:100%;height:auto}.bfs-coll{flex:none;margin:4px auto 14px;max-width:970px;width:calc(100% - 2*clamp(1rem,5vw,2.5rem))}.bfs-coll{aspect-ratio:970/90;overflow:visible;contain:none}.bfs-coll img{border-radius:16px}@media(max-width:560px){.bfs-coll{max-width:420px;aspect-ratio:320/100}}
 .h-sec{display:grid;gap:14px}
 .h-row{display:flex;justify-content:space-between;align-items:baseline;gap:12px}
 .h-title{margin:0;font-family:var(--display);font-weight:400;font-size:32px;line-height:1;letter-spacing:.02em;color:var(--ink)}
@@ -792,6 +793,7 @@ s.was{color:var(--ink-dim);font-weight:400;margin-left:4px}
       <p class="ap-line">Get it now, pay in 4. Interest-free with <img class="ap-logo" src="/shop/brand/afterpay-badge-dark.svg" alt="Afterpay" width="98" height="24"></p>
       <div class="teams" id="hTeamsGrid"></div>
     </section>
+    <section class="h-sec h-bfs" aria-label="Black Friday sale"><a class="bfs" href="/shop/all"><picture><source media="(max-width:700px)" srcset="/assets/promo/bf26-wide2-sm.webp" width="750" height="250"><img src="/assets/promo/bf26-wide2.webp" width="1500" height="500" alt="Black Friday at the PMN+ Shop: up to 30% off. Get all products. For the culture." loading="lazy" decoding="async"></picture></a></section>
     <section class="h-sec h-light" aria-labelledby="hBest">
       <div class="h-row"><div><span class="eyebrow h-eyebrow">What the fam is repping</span><h2 class="h-title" id="hBest">Best sellers</h2></div><button class="link" type="button" id="hAll">Shop all</button></div>
       <div class="rail" id="hRail"></div>
@@ -939,6 +941,7 @@ s.was{color:var(--ink-dim);font-weight:400;margin-left:4px}
     </header>
     <div class="coll-scroll" id="collScroll">
       <nav class="crumbs" aria-label="Breadcrumb"><a href="#" id="crHome">Shop</a><span aria-hidden="true">/</span><span id="crHere" aria-current="page"></span></nav>
+      <a class="bfs bfs-coll" href="/shop/all" aria-label="Black Friday: 30% off everything"><picture><source media="(max-width:560px)" srcset="/assets/promo/bf26-slim.webp" width="320" height="100"><img src="/assets/promo/bf26-bar.webp" width="970" height="90" alt="Black Friday at the PMN+ Shop: up to 30% off. Get all products." loading="lazy" decoding="async"></picture></a>
       <div class="coll-head"><img class="coll-crest" id="cCrest" alt=""><h2 id="collH" class="sr"></h2><p id="cIntro" class="sr"></p></div>
       <div class="tabs" role="tablist" aria-label="Collections" id="cTabs"></div>
       <div class="chips" role="group" aria-label="Filter" id="cFilter"><button class="chip" data-f="all" aria-pressed="true">All</button><button class="chip" data-f="tee" aria-pressed="false">Tees</button><button class="chip" data-f="hat" aria-pressed="false">Hats</button></div>

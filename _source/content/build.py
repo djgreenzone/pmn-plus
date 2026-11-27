@@ -223,9 +223,17 @@ def page(title, desc, canonical, *, body, og_image=None, og_video=None, og_type=
 BF_BANNER_HTML = (
     '<a class="ed-bf" href="/shop/?utm_source=stories&amp;utm_medium=sidebar&amp;utm_campaign=bf2026" aria-label="Black Friday: 30% off everything at the PMN+ Shop">'
     '<picture>'
-    '<source media="(max-width:560px)" srcset="/assets/banners/bf26-mobile-320x100.webp" width="320" height="100">'
-    '<source media="(max-width:900px)" srcset="/assets/banners/bf26-leaderboard-970x90.webp" width="970" height="90">'
-    '<img src="/assets/banners/bf26-halfpage-300x600.webp" width="300" height="600" alt="Black Friday at the PMN+ Shop: up to 30% off. Get all products." loading="lazy" decoding="async">'
+    '<source media="(max-width:560px)" srcset="/assets/promo/bf26-slim.webp" width="320" height="100">'
+    '<source media="(max-width:900px)" srcset="/assets/promo/bf26-bar.webp" width="970" height="90">'
+    '<img src="/assets/promo/bf26-side.webp" width="300" height="600" alt="Black Friday at the PMN+ Shop: up to 30% off. Get all products." loading="lazy" decoding="async">'
+    '</picture></a>'
+)
+
+# Wide Black Friday banner for listing pages (/stories, categories, tags, authors, /digital-magazine). Remove with BF_SLIDE_HTML = "".
+BF_SLIDE_HTML = (
+    '<a class="ed-bfs" href="/shop/?utm_source=stories&amp;utm_medium=listing&amp;utm_campaign=bf2026" aria-label="Black Friday: 30% off everything at the PMN+ Shop">'
+    '<picture><source media="(max-width:700px)" srcset="/assets/promo/bf26-wide-sm.webp" width="750" height="250">'
+    '<img src="/assets/promo/bf26-wide.webp" width="1500" height="500" alt="Black Friday at the PMN+ Shop: up to 30% off. Get all products. For the culture." loading="lazy" decoding="async">'
     '</picture></a>'
 )
 
@@ -435,7 +443,7 @@ def index_page(title, desc, canonical, heading, eyebrow, posts, idx, *, cats_nav
             for c in cats_nav) + "</nav>"
     head = (f'<div class="ed-head"><span class="ey">{esc(eyebrow)}</span>'
             f'<h1>{esc(heading)}</h1>{("<p>"+esc(intro)+"</p>") if intro else ""}{cat_links}</div>')
-    grid = f'<div class="ed-grid-cards">{cards}</div>'
+    grid = BF_SLIDE_HTML + f'<div class="ed-grid-cards">{cards}</div>'
     if bg_video:
         vid = ("<script>(function(){var v=document.querySelector('.ed-maghero .bgv video[data-lazy]');"
                "if(!v)return;var c=navigator.connection;"
@@ -689,7 +697,7 @@ def magazine_index(issues, idx, og=None):
                 SITE + "/digital-magazine",
                 og_image=SITE + "/assets/og/digital-magazine.jpg",
                 og_video=SITE + "/assets/og/digital-magazine.mp4",
-                body=maghero + ('<div class="ed-wrap">' + archive + '</div>' if archive else '') + vidjs)
+                body=maghero + ('<div class="ed-wrap">' + BF_SLIDE_HTML + archive + '</div>' if archive else '') + vidjs)
 
 
 # ---------- team hubs ----------

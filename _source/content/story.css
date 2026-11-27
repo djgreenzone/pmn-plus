@@ -153,3 +153,8 @@ body{font-family:var(--body);color:var(--ink);background:var(--bg)}
 .ed-ad-label{display:block;font:600 11px/1.2 "Instrument Sans",system-ui,sans-serif;letter-spacing:.09em;text-transform:uppercase;color:#6a6a6e;margin-bottom:.55rem}
 .ed-ad ins.adsbygoogle[data-ad-status="unfilled"]{display:none}
 .ed-ad:has(ins.adsbygoogle[data-ad-status="unfilled"]){display:none}
+
+/* Black Friday wide banner on listing pages */
+.ed-bfs{display:block;margin:0 0 28px;border-radius:18px;overflow:hidden;line-height:0;border:1px solid var(--line);transition:transform .25s,border-color .25s}
+.ed-bfs:hover{transform:translateY(-2px);border-color:#36373d}
+.ed-bfs img{display:block;width:100%;height:auto}

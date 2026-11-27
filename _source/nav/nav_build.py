@@ -39,7 +39,7 @@ CONTENT_DD=[
   ("Culture","/stories/culture","View all culture",[("Moana 2","/stories/tag/moana-2"),("Samoan Culture","/stories/tag/samoan-culture"),("Language","/stories/tag/samoan-language"),("Faith","/stories/tag/faith"),("Community","/stories/community")]),
   ("Events","/stories/tag/holo-holo","View all events",[("Holo Holo","/stories/tag/holo-holo"),("Pacific Championships","/stories/tag/pacific-championships"),("NRL Vegas","/stories/tag/las-vegas")]),
 ]
-SHOP_CATS=[("PMN+","/"),("Shop All","/shop"),("Mens","/shop/mens"),("Womens","/shop/womens"),("Toa Samoa","/shop/toa-samoa"),("Mate Ma'a Tonga","/shop/mate-maa-tonga")]
+SHOP_CATS=[("PMN+","/"),("Shop All","/shop"),("Mens","/shop/mens"),("Womens","/shop/womens"),("Toa Samoa","/shop/toa-samoa"),("Mate Ma'a Tonga","/shop/mate-maa-tonga"),("PMN+ Apparel","/shop/pmn-plus")]
 def _content_dd(label,all_href,all_label,items):
     return ('<div class="pn-dd" data-pn-mag>'
             f'<a class="pn-dd-t" href="{all_href}">{label}{_DDCX}</a>'

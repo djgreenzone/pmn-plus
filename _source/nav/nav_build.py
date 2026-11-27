@@ -65,8 +65,7 @@ def header(back_id=None,back_label="Back",bag="button",extra="",shop=False):
           '<a href="/stories">Stories</a>'+mag
           +''.join(_content_dd(*d) for d in CONTENT_DD)
           +f'<a href="{YOUTUBE}" target="_blank" rel="noopener">Watch</a>')
-    shop_cats=(f'<button type="button" class="pn-shopmode-off">{_BKCX}Stories</button>'
-          +''.join(f'<a href="{h}">{t}</a>' for t,h in SHOP_CATS))
+    shop_cats=(''.join(f'<a href="{h}">{t}</a>' for t,h in SHOP_CATS))
     return (f'<div class="pn"><div class="pn-row">'
       f'<div class="pn-l">{back}<button type="button" class="pn-ic pn-menu" aria-label="Open menu" aria-expanded="false" aria-controls="pnDrawer">{I_MENU}</button></div>'
       f'{logo}'

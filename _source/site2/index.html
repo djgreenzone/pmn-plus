@@ -1334,7 +1334,7 @@ const hex2rgb=h=>[1,3,5].map(i=>parseInt(h.slice(i,i+2),16));
 const mix=(a,b,t)=>{const A=hex2rgb(a),B=hex2rgb(b);return`rgb(${A.map((v,i)=>Math.round(v+(B[i]-v)*t)).join(",")})`};
 const money=v=>"$"+v.toFixed(2);
 /* Black Friday 2026 storewide sale (Shopify automatic discount "Black Friday 30% Off"). Set SALE=0 after the sale to go back to regular prices everywhere. */
-const SALE=0.30,sp=n=>Math.round(n*(1-SALE)*100)/100,pHTML=n=>SALE?`<s class="was">${money(n)}</s> <b class="sale">${money(sp(n))}</b>`:money(n);
+const SALE=0.30,salePx=n=>Math.round(n*(1-SALE)*100)/100,pHTML=n=>SALE?`<s class="was">${money(n)}</s> <b class="sale">${money(salePx(n))}</b>`:money(n);
 /* Afterpay on-site messaging (Square). Official logo + pay-in-4 amount, rendered by square-marketplace.js. Hide with PMN_CONFIG.payLater=false. */
 const AP={mpid:"4b2abf80-35ba-4a68-9832-c961a5bd3456",product:"a376d56d-a294-498e-a486-79cf044ee6e5",cart:"4307347a-3b2c-453c-84ee-66ccdb14da6d"};
 function apPlace(id,type,amt){const el=document.getElementById(id);if(!el)return;if((window.PMN_CONFIG||{}).payLater===false||!amt){el.innerHTML="";return}
@@ -1572,7 +1572,7 @@ const PDP=(()=>{
       l.forEach(z=>{const b=document.createElement("button");b.type="button";b.textContent=z;b.setAttribute("aria-pressed",z===compSize);b.onclick=()=>{compSize=z;syncDeal()};sz.append(b)})}
     cta()}
   function cta(){
-    const p=BY[cur];if(!p)return;const c=BY[comp],set=tier==="set"&&!!c,unit0=set?p.price+c.price-BUNDLE_OFF:p.price,unit=SALE?sp(unit0):unit0,t=unit*qty;
+    const p=BY[cur];if(!p)return;const c=BY[comp],set=tier==="set"&&!!c,unit0=set?p.price+c.price-BUNDLE_OFF:p.price,unit=SALE?salePx(unit0):unit0,t=unit*qty;
     $("pBuy").textContent=`${set?"Add both":"Add to bag"} · ${money(t)}`;apPlace("pAp","product",unit);
     {const bn=$("pBnpl");bn.hidden=(window.PMN_CONFIG||{}).payLater===false;const apMin=(window.PMN_CONFIG||{}).afterpayMin||35;bn.innerHTML=unit>=apMin?`or 4 interest-free payments of <b>${money(unit/4)}</b> with <b>Afterpay</b>`:`Pay in 4 interest-free with <b>Afterpay</b> on orders $${apMin}+`}$("stBuy").textContent=set?"Add both":"Add to bag";
     $("stPrice").innerHTML=set?`${money(unit)} <s class="was">${money(unit0+BUNDLE_OFF)}</s>`:pHTML(p.price);
@@ -1721,7 +1721,7 @@ $("pTeam").onclick=()=>{const c=PDP.current(),t=BY[c]?BY[c].team:"tonga";documen
   const card=(p,cls)=>{const b=document.createElement("button");b.className=cls;b.type="button";
     b.innerHTML=`<span class="im">${isLimited(p)?'<i class="tag">Exclusive</i>':""}<img loading="lazy" decoding="async" alt="${altFor(p).replace(/"/g,"&quot;")}" src="${cardURL(p.id)}"></span>
       <b class="nm">${cardTitle(p)}</b><strong class="pr num">${pHTML(p.price)}</strong>${isLimited(p)?'<small class="lim">Limited drop · While stocks last</small>':""}`;
-    b.setAttribute("aria-label",`${cardTitle(p)}, ${p.colourName}, ${SALE?`was ${money(p.price)}, now ${money(sp(p.price))}`:money(p.price)}${BADGE[p.id]?", "+BADGE[p.id].toLowerCase():""}`);queueMicrotask(()=>decorate(b,p));
+    b.setAttribute("aria-label",`${cardTitle(p)}, ${p.colourName}, ${SALE?`was ${money(p.price)}, now ${money(salePx(p.price))}`:money(p.price)}${BADGE[p.id]?", "+BADGE[p.id].toLowerCase():""}`);queueMicrotask(()=>decorate(b,p));
     b.onclick=()=>PDP.open(p.id,b.querySelector("img"),"home");return b};
   BEST.map(id=>BY[id]).filter(Boolean).forEach(p=>$("hRail").append(card(p,"card")));
   // full grid of every piece, with quick filters

@@ -214,9 +214,23 @@ rep('<button class="buy" id="pBuy">Add to bag</button>','<button class="buy" id=
 rep('$("pDeal").hidden=so;','$("pDeal").hidden=so;$("pBis").hidden=!so;$("pBuy").hidden=so;$("pBis").dataset.id=p.id;$("pBis").dataset.name=p.name;')
 rep('.size.so{','.buy-row:has(.bis:not([hidden])) .qty{display:none}.buy-row:has(.bis:not([hidden])){grid-template-columns:1fr}.bis{display:grid;gap:8px;margin-top:4px;min-width:0}.bis-h{margin:0;font-weight:600}.bis-row{display:flex;gap:8px}.bis input{flex:1;min-width:0;height:52px;border-radius:14px;border:1px solid var(--line);background:transparent;color:var(--ink);padding:0 14px;font:inherit}.bis-go{flex:none;height:52px;padding:0 20px;border-radius:14px;background:var(--ink);color:var(--night);font-family:var(--display);font-size:20px;letter-spacing:.04em}.bis-msg{margin:0;min-height:1.2em;font-size:13px}.bis-msg.ok{color:#1a8f4c}.bis-fine{margin:0;font-size:12px;opacity:.65}.size.so{')
 rep('const reduceMotion=',open(os.path.join(os.path.dirname(os.path.abspath(__file__)),'bis.js')).read()+'const reduceMotion=')
+# ---------- SOLD-OUT SIZES: grey out + "email me when back" ----------
+rep('<div class="sizes" id="pSizes" role="group" aria-label="Size"></div>','<div class="sizes" id="pSizes" role="group" aria-label="Size"></div><p class="size-oos" id="pOos" hidden><span id="pOosT"></span> <button type="button" class="link" id="pOosBtn">Email me when back in stock</button></p>')
+rep('    extras(p);cta();\n  }\n  let qty=1;','''    extras(p);cta();oos();
+  }
+  function oos(){const n=$("pOos");if(!n)return;const f=$("pBis");if(f&&f.dataset.sz){f.querySelector(".bis-h").textContent="Back soon. Get an email the moment it restocks.";f.hidden=!SOLD.has(cur);f.dataset.sz=""}
+    const m=typeof VAR!=="undefined"&&cur&&VAR[cur];if(!m||!shopifyOK){n.hidden=true;return}
+    const out=[];$("pSizes").querySelectorAll("button.size:not(.na)").forEach(b=>{const z=b.textContent==="OSFA"?"One size":b.textContent,v=m[z];if(v&&!v.ok){out.push(z);if(!b.disabled){b.disabled=true;b.classList.add("so");b.setAttribute("aria-label",z+", sold out");if(size===z){size=null;b.setAttribute("aria-pressed","false")}}}});
+    if(!out.length||SOLD.has(cur)){n.hidden=true;return}
+    n.dataset.sizes=out.join(", ");$("pOosT").textContent=(out.length===1?out[0]+" is":out.join(", ")+" are")+" sold out.";n.hidden=false}
+  window.pmnStock=oos;
+  $("pOosBtn").onclick=()=>{const f=$("pBis"),z=$("pOos").dataset.sizes;f.hidden=false;f.dataset.sz=z;f.dataset.name=BY[cur].name+" ("+z+")";f.querySelector(".bis-h").textContent="Get an email when "+z+(z.includes(",")?" are":" is")+" back in stock.";f.scrollIntoView({block:"center",behavior:reduceMotion?"auto":"smooth"});setTimeout(()=>$("bisEmail").focus({preventScroll:true}),300)};
+  let qty=1;''')
+rep('.size.so{','.size-oos{margin:8px 0 0;font-size:13px;color:var(--ink-dim)}.size-oos .link{font-size:13px;font-weight:600;text-decoration:underline;text-underline-offset:3px;color:var(--ink)}.size.so{')
+
 # structured data: out of stock
 import json as _j, re as _r
-_OVS_SOLD=bool(_r.search(r'SOLD=new Set\(\["', open(os.path.join(os.path.dirname(os.path.abspath(__file__)),'shopify_layer.js')).read()))
+_OVS_SOLD=bool(_r.search(r'SOLD=new Set\(\[[^\]]*"(?:mmt|toa)-oversized"', open(os.path.join(os.path.dirname(os.path.abspath(__file__)),'shopify_layer.js')).read()))
 def _ld(m):
     d=_j.loads(m.group(1))
     for x in d['@graph']:

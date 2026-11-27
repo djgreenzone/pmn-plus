@@ -16,7 +16,7 @@ const SHOPIFY_MAP={
   /* add when published: mmt-snapback, toa-snapback (curved bill) */
 };
 /* sold out on the site regardless of Shopify stock */
-var SOLD=new Set([]);
+var SOLD=new Set(["toa-hp-snapback"]);
 const SHOPIFY_BUMP_HANDLE="sticker-pack";
 const VAR={};let shopifyOK=false;
 async function sf(query,variables){
@@ -32,6 +32,6 @@ const shopifyReady=(async()=>{try{
     VAR[id]=m;const pr=Math.min(...vs.map(v=>+v.price.amount));if(pr&&pr!==p.price){p.price=pr;changed=true}}
   const b=H[SHOPIFY_BUMP_HANDLE];if(b&&b.variants.nodes[0]){BUMP.variant=b.variants.nodes[0].id;BUMP.price=+b.variants.nodes[0].price.amount}
   SOLD.forEach(id=>{if(VAR[id])Object.values(VAR[id]).forEach(v=>v.ok=false)});
-  shopifyOK=true;
+  shopifyOK=true;window.pmnStock&&window.pmnStock();
   if(changed)document.querySelectorAll("[data-pid]").forEach(el=>{const p=BY[el.dataset.pid],pr=el.querySelector(".pr");if(p&&pr)pr.textContent=money(p.price)});
 }catch(e){console.warn("Shopify",e)}})();

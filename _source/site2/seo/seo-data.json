@@ -3854,7 +3854,7 @@
     "https://www.polynesianmusicnetwork.com/shop/hires/toa-hp-snapback/toa-samoa-high-profile-snapback-navy-white-front.webp"
    ],
    "og": "https://www.polynesianmusicnetwork.com/shop/og/toa-samoa-high-profile-snapback-navy-white.jpg",
-   "sold": false,
+   "sold": true,
    "kind": "hat",
    "teamName": "Toa Samoa",
    "alt": [
@@ -3910,7 +3910,7 @@
        "priceCurrency": "USD",
        "validFrom": "2026-10-01",
        "priceValidUntil": "2027-12-31",
-       "availability": "https://schema.org/InStock",
+       "availability": "https://schema.org/OutOfStock",
        "itemCondition": "https://schema.org/NewCondition",
        "seller": {
         "@id": "https://www.polynesianmusicnetwork.com/#org"

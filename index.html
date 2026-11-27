@@ -119,6 +119,7 @@ button[disabled]{opacity:.5;cursor:default}
 @media (max-width:760px){.teams{grid-template-columns:1fr}.team{min-height:440px}}
 
 /* Black Friday pill on the "Who you reppin" eyebrow */
+@media(max-width:700px){.bf-ship{display:none}.wyr .eyebrow .bf-pill{letter-spacing:.05em;padding:.4em .9em;font-size:.92em;white-space:nowrap}}
 .wyr .eyebrow .bf-pill{display:inline-block;background:#C8102E;color:#fff;padding:.35em 1.1em;border-radius:999px;line-height:1.15}
 /* Best sellers carousel: white panel like the stories "Shop this story", bigger cards */
 .shop .home-bs{margin:0;padding:clamp(1.25rem,3vw,2.25rem);border-radius:26px}@media(min-width:700px){.shop .home-bs{min-height:520px}}
@@ -400,7 +401,7 @@ button[disabled]{opacity:.5;cursor:default}
 
 <section class="wyr" id="reppin" aria-labelledby="wyrH">
   <div class="wrap">
-    <p class="eyebrow"><span class="bf-pill">Black Friday: 30% off everything | Free US shipping</span></p>
+    <p class="eyebrow"><span class="bf-pill">Black Friday: 30% off everything<span class="bf-ship"> | Free US shipping</span></span></p>
     <h2 id="wyrH">Who you reppin&#8217;?</h2>
     <a class="wyr-card" href="/shop">
       <picture>
